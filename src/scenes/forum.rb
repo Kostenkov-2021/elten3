@@ -52,6 +52,11 @@ class Scene_Forum
   @@lastCache=nil
   @@lastCacheIdent=nil
   @@lastCacheTime=nil
+
+  def self.forum_target(id)
+    { "type" => "forum", "id" => id.to_i }
+  end
+
   def initialize(pre = nil, preparam = nil, cat = 0, query = "", tc=nil, tag=nil)
     @pre = pre
     @preparam = preparam
@@ -62,6 +67,18 @@ class Scene_Forum
     @tc=tc
   @tag=tag
     end
+
+  def forum_target?(target)
+    target.is_a?(Hash) && target["type"].to_s == "forum" && target["id"].to_i.positive?
+  end
+
+  def forum_target_id(target)
+    target["id"].to_i
+  end
+
+  def forum_id?(value)
+    value.is_a?(Integer) && value.positive?
+  end
 
   def forum_new_status
     ListBox.item_status("listbox_itemnew", p_("Forum", "New")+":", p_("Forum", "New"))
@@ -129,7 +146,7 @@ class Scene_Forum
     @threads.each { |candidate| candidate.readposts = candidate.posts if candidate.id == thread_id }
     @sthreads.each { |candidate| candidate.readposts = candidate.posts if candidate.id == thread_id }
 
-    forum.readposts = @threads.select { |candidate| candidate.forum.name == forum.name }.map(&:readposts).sum
+    forum.readposts = @threads.select { |candidate| candidate.forum.id == forum.id }.map(&:readposts).sum
     forum.group.readposts = @forums.select { |candidate| candidate.group.id == forum.group.id }.map(&:readposts).sum
 
     @sthreads.each_with_index do |candidate, index|
@@ -158,31 +175,31 @@ class Scene_Forum
     getcache
     return if $scene != self
     if @pre == nil
-      if @preparam.is_a?(Integer)
+      if forum_target?(@preparam)
+        return threadsmain(forum_target_id(@preparam))
+      elsif @preparam.is_a?(Integer)
 return forumsmain(@preparam)
-elsif @preparam.is_a?(String)
-  return threadsmain(@preparam)
       else
       groupsmain(@cat)
       end
     else
-      if @preparam.is_a?(String) or @preparam == nil or @preparam == -5
+      if forum_target?(@preparam) || forum_id?(@preparam) || @preparam == nil || @preparam == -5
         foll = false
         foll = true if @preparam == -5
         @frmindex = 0
         forum = nil
         for thread in @threads
-          forum = thread.forum.name if thread.id == @pre
+          forum = thread.forum.id if thread.id == @pre
         end
         group = nil
         for tforum in @forums
-          group = tforum.group.id if tforum.name == forum
+          group = tforum.group.id if tforum.id == forum
         end
         group = -5 if @preparam == -5
         group = 0 if group == nil
         @grpsetindex = group if group > 0
         @grpindex[0] = 1 if @preparam == -5
-        @frmsetname = forum
+        @frmsetid = forum
         @group = group
         threadsmain(forum)
       else
@@ -302,7 +319,7 @@ break
         grpselt.push([group.name, group.forums.to_s, group.threads.to_s, group.posts.to_s, (group.posts - group.readposts).to_s])
         @grpindex[0] = i + @grpheadindex if group.id == @grpsetindex
       end
-      forfol = @forums.find_all{|forum|forum.followed}.map{|forum|forum.name}
+      forfol = @forums.find_all{|forum|forum.followed}.map{|forum|forum.id}
             flt = flr = flp = 0
       ft = fp = fr = 0
       fmt=fmp=fmr=0
@@ -1061,11 +1078,11 @@ if (e.group1!=group.id || e.group2!=group.id)
   group2=g2.name if g2!=nil
 end
 if e.forum1!=nil
-f=@forums.find{|f|f.name==e.forum1}
+f=@forums.find{|f|f.id==e.forum1}
 forum1=f.fullname if f!=nil
   end
 if e.forum2!=nil
-f=@forums.find{|f|f.name==e.forum2}
+f=@forums.find{|f|f.id==e.forum2}
 forum2=f.fullname if f!=nil
   end
   if e.thread1!=nil
@@ -1382,7 +1399,7 @@ chk_transcriptions.checked=false if !requires_premiumpackage("courier")
           elsif obj.is_a?(Struct_Forum_Group)
             result.groupid=obj.id
             elsif obj.is_a?(Struct_Forum_Forum)
-            result.forumid=obj.name
+            result.forumid=obj.id
             end
         result.transcriptions=true if chk_transcriptions.checked
             form.resume
@@ -1409,7 +1426,7 @@ chk_transcriptions.checked=false if !requires_premiumpackage("courier")
       break if $scene!=self
       if (key_pressed?(:key_enter) or (key_pressed?(:key_right) and !key_held?(0x10))) and @sforums.size > 0
         @frmindex = @frmsel.index
-        return threadsmain(@sforums[@frmsel.index].name)
+        return threadsmain(@sforums[@frmsel.index].id)
       end
       break if $scene!=self
     end
@@ -1428,25 +1445,25 @@ chk_transcriptions.checked=false if !requires_premiumpackage("courier")
     end
     if forum_sort == SORT_DEFAULT
       forum_order = {}
-      @sforums.each_with_index { |forum, i| forum_order[forum.name] = i }
+      @sforums.each_with_index { |forum, i| forum_order[forum.id] = i }
       forum_last_update = Hash.new(0)
       for thread in @threads
         forum = thread.forum
-        next if forum == nil || !forum_order.key?(forum.name)
-        forum_last_update[forum.name] = thread.lastupdate if forum_last_update[forum.name] < thread.lastupdate
+        next if forum == nil || !forum_order.key?(forum.id)
+        forum_last_update[forum.id] = thread.lastupdate if forum_last_update[forum.id] < thread.lastupdate
       end
       @sforums.sort! { |a, b|
-        result = forum_last_update[b.name] <=> forum_last_update[a.name]
-        result = forum_order[a.name] <=> forum_order[b.name] if result == 0
+        result = forum_last_update[b.id] <=> forum_last_update[a.id]
+        result = forum_order[a.id] <=> forum_order[b.id] if result == 0
         result
       }
     else
       @sforums.sort! {|a,b| forumsorter(a,b)}
     end
-    if @frmsetname != nil
-      index = @sforums.find_index { |forum| forum.name == @frmsetname }
+    if @frmsetid != nil
+      index = @sforums.find_index { |forum| forum.id == @frmsetid }
       @frmindex = index if index != nil
-      @frmsetname = nil
+      @frmsetid = nil
     end
     frmselt = []
     for forum in @sforums
@@ -1493,7 +1510,7 @@ def forumtagsedit(forum)
   menu.option(p_("Forum", "New tag"), nil, "n") {
   t = forumtageditor
   if t!=nil
-    tagid = forum_fetch(nil, nil) { EltenLink::Forum.create_forum_tag(elten_link, forum: forum.id, label: t[1], taglist: t[2..-1].join(",")) }
+    tagid = forum_fetch(nil, nil) { EltenLink::Forum.create_forum_tag(elten_link, forumid: forum.id, label: t[1], taglist: t[2..-1].join(",")) }
     return if tagid == nil
     t[0] = tagid
     tags.push(t)
@@ -1505,7 +1522,7 @@ def forumtagsedit(forum)
     menu.option(p_("Forum", "Delete tag"), nil, :del) {
     confirm(p_("Forum", "Are you sure you want to delete this tag?")) {
     if forum_attempt(nil) {
-      EltenLink::Forum.delete_forum_tag(elten_link, forum: forum.id, tag_id: tags[sel.index][0])
+      EltenLink::Forum.delete_forum_tag(elten_link, forumid: forum.id, tag_id: tags[sel.index][0])
     }
     tags.delete_at(sel.index)
     sel.options.delete_at(sel.index)
@@ -1585,7 +1602,7 @@ form.focus
     end
   
   def forumtags(forum)
-    forum_fetch([], nil) { EltenLink::Forum.list_forum_tags(elten_link, forum: forum.id) }.map { |tag|
+    forum_fetch([], nil) { EltenLink::Forum.list_forum_tags(elten_link, forumid: forum.id) }.map { |tag|
       [tag.id, tag.label] + tag.taglist.split(",")
     }
     end
@@ -1594,7 +1611,7 @@ form.focus
     if @frmsel.options.size > 0
       menu.option(p_("Forum", "Open")) {
         @frmindex = @frmsel.index
-        threadsmain(@sforums[@frmsel.index].name)
+        threadsmain(@sforums[@frmsel.index].id)
       }
             s = p_("Forum", "Follow this forum")
       s = p_("Forum", "Unfollow this forum") if @sforums.size > 0 and @sforums[@frmsel.index].followed == true
@@ -1602,14 +1619,14 @@ form.focus
       if @sforums[@frmsel.index].group.role==2 || requires_premiumpackage("courier")
         if @sforums[@frmsel.index].followed == false
           if forum_attempt(nil) {
-            EltenLink::Forum.follow_forum(elten_link, forum: @sforums[@frmsel.index].name)
+            EltenLink::Forum.follow_forum(elten_link, forumid: @sforums[@frmsel.index].id)
           }
             alert(p_("Forum", "Added to followed forums list."))
             @sforums[@frmsel.index].followed = true
           end
         else
           if forum_attempt(nil) {
-            EltenLink::Forum.unfollow_forum(elten_link, forum: @sforums[@frmsel.index].name)
+            EltenLink::Forum.unfollow_forum(elten_link, forumid: @sforums[@frmsel.index].id)
           }
             alert(p_("Forum", "Removed from followed forums list."))
             @sforums[@frmsel.index].followed = false
@@ -1632,10 +1649,10 @@ form.focus
       menu.option(p_("Forum", "Mark this forum as read"), nil, "w") {
         if @sforums[@frmsel.index].posts - @sforums[@frmsel.index].readposts < 100 or confirm(p_("Forum", "All posts on this forum will be marked as read. Are you sure you want to continue?"))
           if forum_attempt(nil) {
-            EltenLink::Forum.mark_forum_as_read(elten_link, forum: @sforums[@frmsel.index].name)
+            EltenLink::Forum.mark_forum_as_read(elten_link, forumid: @sforums[@frmsel.index].id)
           }
             for t in @threads
-              t.readposts = t.posts if t.forum.name == @sforums[@frmsel.index].name
+              t.readposts = t.posts if t.forum.id == @sforums[@frmsel.index].id
             end
             @sforums[@frmsel.index].readposts = @sforums[@frmsel.index].posts
             @sforums[@frmsel.index].group.readposts = @forums.find_all{|f|f.group==@sforums[@frmsel.index].group}.map{|f|f.readposts}.sum
@@ -1647,7 +1664,7 @@ form.focus
         end
       }
       menu.option(p_("Forum", "Add this forum to quick actions"), nil, "q") {
-        if QuickActions.create(Scene_Forum, @sforums[@frmsel.index].fullname+" (#{p_("Forum", "Forum")})", [nil, @sforums[@frmsel.index].name])
+        if QuickActions.create(Scene_Forum, @sforums[@frmsel.index].fullname+" (#{p_("Forum", "Forum")})", [nil, Scene_Forum.forum_target(@sforums[@frmsel.index].id)])
           alert(p_("Forum", "Forum added to quick actions"), false)
         else
           alert(_("Error"))
@@ -1680,7 +1697,7 @@ form.focus
                 description = form.fields[1].text
               end
               if forum_attempt(nil) {
-                EltenLink::Forum.update_forum(elten_link, forum: @sforums[@frmsel.index].name, name: form.fields[0].text, type: form.fields[2].index, description: description)
+                EltenLink::Forum.update_forum(elten_link, forumid: @sforums[@frmsel.index].id, name: form.fields[0].text, type: form.fields[2].index, description: description)
               }
                 alert(_("Saved"))
               end
@@ -1702,7 +1719,7 @@ break
         m.option(s, nil, "k") {
           clo = ((@sforums[@frmsel.index].closed) ? 0 : 1)
           if forum_attempt(nil) {
-            EltenLink::Forum.set_forum_closed(elten_link, forum: @sforums[@frmsel.index].name, closed: clo)
+            EltenLink::Forum.set_forum_closed(elten_link, forumid: @sforums[@frmsel.index].id, closed: clo)
           }
             if @sforums[@frmsel.index].closed
               @sforums[@frmsel.index].closed = false
@@ -1726,7 +1743,7 @@ break
           ind = selector(selt + [p_("Forum", "Move to end")], header: p_("Forum", "Move forum"), start_index: 0, cancel_index: -1)
           if ind != -1
             if forum_attempt(nil) {
-              EltenLink::Forum.move_forum(elten_link, forum: @sforums[@frmsel.index].name, position: ind)
+              EltenLink::Forum.move_forum(elten_link, forumid: @sforums[@frmsel.index].id, position: ind)
             }
               alert(_("Saved"))
             end
@@ -1740,7 +1757,7 @@ break
           m.option(p_("Forum", "Delete forum")) {
             confirm(p_("Forum", "Are you sure you want to delete this forum?")) {
               if forum_attempt(nil) {
-                EltenLink::Forum.delete_forum(elten_link, forum: @sforums[@frmsel.index].name)
+                EltenLink::Forum.delete_forum(elten_link, forumid: @sforums[@frmsel.index].id)
               }
                 alert(p_("Forum", "The forum has been deleted."))
               end
@@ -1795,7 +1812,7 @@ break
     @lastthreadindex = nil
     @forumtype = 0
     for forum in @forums
-      @forumtype = forum.type if forum.name == id
+      @forumtype = forum.type if forum.id == id
     end
     @sthreads = []
     if id == -7
@@ -1868,9 +1885,9 @@ break
       when -6
         folfor = []
         for forum in @forums
-          folfor.push(forum.name) if forum.followed == true
+          folfor.push(forum.id) if forum.followed == true
         end
-        if folfor.include?(t.forum.name) and t.readposts < t.posts
+        if folfor.include?(t.forum.id) and t.readposts < t.posts
           t
         else
           nil
@@ -1878,9 +1895,9 @@ break
       when -4
         folfor = []
         for forum in @forums
-          folfor.push(forum.name) if forum.followed == true
+          folfor.push(forum.id) if forum.followed == true
         end
-        if folfor.include?(t.forum.name) and t.readposts == 0
+        if folfor.include?(t.forum.id) and t.readposts == 0
           t
         else
           nil
@@ -1907,14 +1924,14 @@ break
       when 0
         t
       else
-        if t.forum.name == id
+        if t.forum.id == id
           t
         else
           nil
           end
       end
     }.compact.flatten
-    if id.is_a?(String)
+    if forum_id?(id)
       u = []
       d = []
       @sthreads.each { |t|
@@ -1990,9 +2007,9 @@ break
       @thrsel.update
       LocalConfig["ForumColumnThread"] = @thrsel.column if LocalConfig["ForumColumnThread", type: :numeric] != @thrsel.column
       if (key_pressed?(:key_left) and !key_held?(0x10)) or key_pressed?(:key_escape)
-        return $scene=Scene_Main.new if @pre==nil && @preparam.is_a?(String)
-        if id.is_a?(String)
-          @frmsetname = id
+        return $scene=Scene_Main.new if @pre==nil && forum_target?(@preparam)
+        if forum_id?(id)
+          @frmsetid = id
           return forumsmain
         elsif id == -2 or id == -4 or id == -6 or id == -7
           return $scene = Scene_Main.new
@@ -2025,13 +2042,13 @@ threadopen(@thrsel.index)
     group_order = {}
     @groups.each_with_index { |group, index| group_order[group.id] = index }
     forum_order = {}
-    @forums.each_with_index { |forum, index| forum_order[forum.name] = index }
+    @forums.each_with_index { |forum, index| forum_order[forum.id] = index }
     current_group_id = source_forum.group.id
 
     @forums.select { |forum|
       forum.group.role == 2 || (Session.moderator == 1 && forum.group.recommended)
     }.sort_by { |forum|
-      priority = if forum.name == source_forum.name
+      priority = if forum.id == source_forum.id
         0
       elsif forum.group.id == current_group_id
         1
@@ -2039,14 +2056,14 @@ threadopen(@thrsel.index)
         2
       end
       group_index = priority == 2 ? group_order.fetch(forum.group.id, @groups.size) : 0
-      [priority, group_index, forum_order.fetch(forum.name, @forums.size)]
+      [priority, group_index, forum_order.fetch(forum.id, @forums.size)]
     }
   end
 
   def context_threads(menu)
     group = Struct_Forum_Group.new
     for f in @forums
-      group = f.group if f.name == @forum
+      group = f.group if f.id == @forum
     end
     if @sthreads.size > 0
       menu.option(p_("Forum", "Open")) {
@@ -2092,7 +2109,7 @@ threadopen(@thrsel.index)
       menu.option(s, nil, "l") {
         if @sthreads[@thrsel.index].followed == false
           if forum_attempt(nil) {
-            EltenLink::Forum.follow_thread(elten_link, thread_id: @sthreads[@thrsel.index].id, forum: @sthreads[@thrsel.index].forum.name)
+            EltenLink::Forum.follow_thread(elten_link, thread_id: @sthreads[@thrsel.index].id)
           }
             alert(p_("Forum", "Added to the list of followed threads."))
             @sthreads[@thrsel.index].followed = true
@@ -2126,8 +2143,8 @@ threadopen(@thrsel.index)
       }
     end
     forum=@forum
-    @forums.each {|f| forum=f if f.name==@forum}
-    if forum.is_a?(String)==false and forum.is_a?(Integer)==false and @noteditable!=true and ((group.public==true and group.open==true) or [1,2].include?(group.role)) and group.role!=3 and forum.closed==false
+    @forums.each {|f| forum=f if f.id==@forum}
+    if forum.is_a?(Struct_Forum_Forum) and @noteditable!=true and ((group.public==true and group.open==true) or [1,2].include?(group.role)) and group.role!=3 and forum.closed==false
       menu.option(p_("Forum", "New thread"), nil, "n") {
         newthread
         getcache
@@ -2143,12 +2160,12 @@ threadopen(@thrsel.index)
           mforums = thread_move_forums(@sthreads[@thrsel.index].forum)
           for f in mforums
             selt.push(f.fullname + " (" + f.group.name + ")")
-            ind = selt.size-1 if f.name == @sthreads[@thrsel.index].forum.name
+            ind = selt.size-1 if f.id == @sthreads[@thrsel.index].forum.id
           end
           destination = selector(selt, header: p_("Forum", "Thread destination"), start_index: ind, cancel_index: -1)
           if destination != -1
             if forum_attempt(nil) {
-              EltenLink::Forum.move_thread(elten_link, thread_id: @sthreads[@thrsel.index].id, forum: mforums[destination].name)
+              EltenLink::Forum.move_thread(elten_link, thread_id: @sthreads[@thrsel.index].id, forum_id: mforums[destination].id)
             }
               alert(p_("Forum", "The thread has been moved."))
               getcache
@@ -2278,7 +2295,7 @@ forum_fetch([], nil) { EltenLink::Forum.group_members(elten_link, group_id: @sth
               if ind>=0
                 dest=forums[ind]
 if forum_attempt(nil) {
-  EltenLink::Forum.accept_thread_offer(elten_link, thread_id: @sthreads[@thrsel.index].id, forum: dest.name)
+  EltenLink::Forum.accept_thread_offer(elten_link, thread_id: @sthreads[@thrsel.index].id, forum_id: dest.id)
 }
   @sthreads[@thrsel.index].offered=0
   @sthreads[@thrsel.index].forum=dest
@@ -2397,13 +2414,13 @@ when :move
           mforums = thread_move_forums(threads[0].forum)
           for f in mforums
             selt.push(f.fullname + " (" + f.group.name + ")")
-            ind = selt.size-1 if f.name == threads[0].forum.name
+            ind = selt.size-1 if f.id == threads[0].forum.id
           end
           destination = selector(selt, header: p_("Forum", "Threads destination"), start_index: ind, cancel_index: -1)
           if destination != -1
             if forum_attempt(nil) {
               for thread in threads
-                EltenLink::Forum.move_thread(elten_link, thread_id: thread.id, forum: mforums[destination].name)
+                EltenLink::Forum.move_thread(elten_link, thread_id: thread.id, forum_id: mforums[destination].id)
               end
             }
               alert(p_("Forum", "Selected threads have been moved."))
@@ -2471,7 +2488,7 @@ form.wait
           if f.group.id == g.id
             forums.push(f.fullname + " (#{g.name})")
             forumclasses.push(f)
-            forumindex = forums.size - 1 if f.name == @forum
+            forumindex = forums.size - 1 if f.id == @forum
           end
         end
       end
@@ -2648,7 +2665,7 @@ form.wait
         attachments = atts
       end
       ft = forum_attempt(nil, p_("Forum", "Error creating thread!")) {
-        EltenLink::Forum.create_thread(elten_link, forum: forumclasses[form.fields[-3].index].name, name: form.fields[0].text, text: text, format: format, follow: form.fields[-4].checked, polls: polls, attachments: attachments)
+        EltenLink::Forum.create_thread(elten_link, forumid: forumclasses[form.fields[-3].index].id, name: form.fields[0].text, text: text, format: format, follow: form.fields[-4].checked, polls: polls, attachments: attachments)
       }
     else
       fl = form.fields[1].get_recording_file(true)
@@ -2658,7 +2675,7 @@ if flp[0..3] != "OggS"
         return $scene = Scene_Main.new
       end
       ft = forum_attempt(nil, p_("Forum", "Error creating thread!")) {
-        EltenLink::Forum.create_audio_thread(elten_link, forum: forumclasses[form.fields[-3].index].name, name: form.fields[0].text, audio: flp, follow: form.fields[-4].checked)
+        EltenLink::Forum.create_audio_thread(elten_link, forumid: forumclasses[form.fields[-3].index].id, name: form.fields[0].text, audio: flp, follow: form.fields[-4].checked)
       }
       form.fields[1].delete_audio(true)
     end
@@ -2743,7 +2760,7 @@ if flp[0..3] != "OggS"
           suc_th=true if @query.thread_in.include?(:recommended) && thread.forum.group.recommended
           suc_th=true if @query.thread_in.include?(:notjoined) && (thread.forum.group.role!=1 && thread.forum.group.role!=2)
           suc_th=true if @query.groupid==thread.forum.group.id
-          suc_th=true if @query.forumid==thread.forum.name
+          suc_th=true if @query.forumid==thread.forum.id
           if suc_se && suc_th
           thread.id
         else
@@ -3299,7 +3316,7 @@ if post.edited && !post.locked
     menu.option(s, nil, "l") {
       if @followed == false
         if forum_attempt(nil) {
-          EltenLink::Forum.follow_thread(elten_link, thread_id: @thread, forum: @threadclass.forum.name)
+          EltenLink::Forum.follow_thread(elten_link, thread_id: @thread)
         }
           alert(p_("Forum", "Added to the list of followed threads."))
           @followed = true
@@ -3848,7 +3865,7 @@ attr_accessor :hidden
 end
 
 class Struct_Forum_Forum
-  attr_accessor :name
+  attr_accessor :id
   attr_accessor :group
   attr_accessor :fullname
   attr_accessor :threads
@@ -3859,8 +3876,8 @@ class Struct_Forum_Forum
   attr_accessor :description
   attr_accessor :closed
 
-  def initialize(name = "")
-    @name = name
+  def initialize(id = 0)
+    @id = id.to_i
     @group = Struct_Forum_Group.new(0)
     @fullname = ""
     @posts = 0
@@ -3872,13 +3889,6 @@ class Struct_Forum_Forum
     @closed=false
   end
 
-  def id
-    return @name
-  end
-
-  def id=(id)
-    @name = id
-  end
 end
 
 class Struct_Forum_Thread

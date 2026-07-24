@@ -29,7 +29,7 @@ when "forum"
   when "group"
     insert_scene(Scene_Forum.new(nil, q[2].to_i))
     when "forum"
-      insert_scene(Scene_Forum.new(nil, q[2]))
+      insert_scene(Scene_Forum.new(nil, Scene_Forum.forum_target(q[2].to_i)))
       when "thread"
         t=q[3].to_i
         t=nil if q[3]==nil
