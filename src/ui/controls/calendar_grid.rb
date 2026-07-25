@@ -76,7 +76,7 @@ module EltenAPI
       end
 
       def lpos
-        (@date.cwday - 1).to_f / 6.0 * 100.0
+        ((@date.wday - first_day_of_week) % 7).to_f / 6.0 * 100.0
       end
 
       def tips
@@ -95,6 +95,13 @@ module EltenAPI
       end
 
       private
+
+      def first_day_of_week
+        weekday = EltenSystemHelpers.first_day_of_week
+        (0..6).include?(weekday) ? weekday : 1
+      rescue Exception
+        1
+      end
 
       def shift_month(offset)
         @date >> offset.to_i
