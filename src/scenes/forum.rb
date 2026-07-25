@@ -3622,7 +3622,7 @@ sent = forum_attempt(nil) {
   end
 }
 if sent
-alert(p_("Forum", "The mention has been sent."))
+alert(np_("Forum", "The mention has been sent.", "The mentions have been sent.", selections.size))
 end
 form.resume
 end
