@@ -479,7 +479,7 @@ module NotificationGroups
     post.name = payload["title"].to_s
     post.author = payload["author"].to_s
     post.mention = blog_mention_from_payload(payload) if cat.to_s == "blogmention" && payload["mentionid"].to_i > 0
-    insert_scene(Scene_Blog_Read.new(post, -1, 0, 0), true)
+    insert_scene(Scene_Blog_Read.new(post, -1, 0, 0, Scene_Main.new), true, return_to_main: true)
   end
 
   def blog_mention_from_payload(payload)
