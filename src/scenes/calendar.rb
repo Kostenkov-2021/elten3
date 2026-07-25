@@ -486,15 +486,21 @@ class Scene_Calendar_Management
       if key_pressed?(:key_escape)
         $scene = Scene_Calendar.new(@return_filter_id, @return_date)
       end
-      if @sel.selected? && current_calendar != nil
-        $scene = Scene_Calendar.new(current_calendar.id, @return_date)
+      if @sel.selected? && current_entry != nil
+        if current_invitation != nil
+          manage_invitation(current_invitation)
+        else
+          $scene = Scene_Calendar.new(current_calendar.id, @return_date)
+        end
       end
       if @reload
         target_id = @target_calendar_id
         @reload = false
         @target_calendar_id = nil
         if load_management
-          index = @calendars.index { |calendar| calendar.id == target_id } || [@sel.index, @calendars.size - 1].min
+          entries = management_entries
+          index = entries.index { |entry| calendar_for_entry(entry).id == target_id } ||
+            [@sel.index, entries.size - 1].min
           build_list([index, 0].max)
         end
       end
@@ -503,13 +509,26 @@ class Scene_Calendar_Management
   end
 
   def build_list(index=0)
-    @sel = ListBox.new(@calendars.map { |calendar| calendar_label(calendar) }, header: p_("Calendar", "Calendars Management"), index: index, quiet: false)
+    @entries = management_entries
+    labels = @entries.map do |entry|
+      calendar = calendar_for_entry(entry)
+      if entry.is_a?(EltenLink::CalendarInvitation)
+        p_("Calendar", "Invitation: %{calendar}") % { calendar: calendar_label(calendar) }
+      else
+        calendar_label(calendar)
+      end
+    end
+    @sel = ListBox.new(labels, header: p_("Calendar", "Calendars Management"), index: index, quiet: false)
     @sel.bind_context { |menu| context(menu) }
   end
 
   def context(menu)
+    invitation = current_invitation
     calendar = current_calendar
-    if calendar != nil
+    if invitation != nil
+      menu.option(p_("Calendar", "Accept invitation")) { manage_invitation(invitation, 0) }
+      menu.option(p_("Calendar", "Reject invitation")) { manage_invitation(invitation, 1) }
+    elsif calendar != nil
       menu.option(p_("Calendar", "Show in calendar")) do
         $scene = Scene_Calendar.new(calendar.id, @return_date)
       end
@@ -517,12 +536,11 @@ class Scene_Calendar_Management
         menu.option(p_("Calendar", "Share calendar"), nil, "s") { share_calendar(calendar) }
         menu.option(p_("Calendar", "Manage calendar shares")) { manage_shares(calendar) }
         menu.option(p_("Calendar", "Delete calendar"), nil, :del) { delete_calendar(calendar) }
+      elsif !calendar.personal?
+        menu.option(p_("Calendar", "Leave calendar"), nil, "l") { leave_calendar(calendar) }
       end
     end
     menu.option(p_("Calendar", "New calendar"), nil, "n") { create_calendar }
-    if @invitations.size > 0
-      menu.option(p_("Calendar", "Calendar invitations"), nil, "i") { manage_invitations }
-    end
     menu.option(p_("Calendar", "Public calendars"), nil, "p") do
       excluded_ids = @calendars.map(&:id) + @invitations.map { |invitation| invitation.calendar.id }
       $scene = Scene_Calendar_Public.new(@return_filter_id, @return_date, excluded_ids)
@@ -540,9 +558,28 @@ class Scene_Calendar_Management
     false
   end
 
+  def management_entries
+    (@invitations || []) + (@calendars || [])
+  end
+
+  def current_entry
+    return nil if @entries == nil || @entries.empty? || @sel == nil
+    @entries[@sel.index]
+  end
+
+  def current_invitation
+    entry = current_entry
+    entry if entry.is_a?(EltenLink::CalendarInvitation)
+  end
+
   def current_calendar
-    return nil if @calendars == nil || @calendars.empty? || @sel == nil
-    @calendars[@sel.index]
+    entry = current_entry
+    return nil if entry == nil
+    calendar_for_entry(entry)
+  end
+
+  def calendar_for_entry(entry)
+    entry.is_a?(EltenLink::CalendarInvitation) ? entry.calendar : entry
   end
 
   def request_reload(calendar_id=nil)
@@ -606,6 +643,17 @@ class Scene_Calendar_Management
     alert(_("Error"))
   end
 
+  def leave_calendar(calendar)
+    return if !confirm(p_("Calendar", "Do you really want to leave calendar %{name}?") % { name: calendar.name })
+
+    EltenLink::Calendars.delete_membership(elten_link, calendar)
+    play_sound("editbox_delete")
+    request_reload
+  rescue EltenLink::Error => error
+    Log.warning("Calendar leave failed: #{error.message}")
+    alert(_("Error"))
+  end
+
   def share_calendar(calendar)
     user = input_user(p_("Calendar", "User to share this calendar with"), escapable: true)
     return if user == nil || user.to_s == ""
@@ -639,18 +687,18 @@ class Scene_Calendar_Management
     alert(_("Error"))
   end
 
-  def manage_invitations
-    labels = @invitations.map { |invitation| calendar_label(invitation.calendar) }
-    index = selector(labels, header: p_("Calendar", "Calendar invitations"), cancel_index: -1)
-    return if index < 0
-    invitation = @invitations[index]
-    action = selector([p_("Calendar", "Accept invitation"), p_("Calendar", "Reject invitation"), _("Cancel")], header: calendar_label(invitation.calendar), cancel_index: 2)
+  def manage_invitation(invitation, action=nil)
+    action ||= selector(
+      [p_("Calendar", "Accept invitation"), p_("Calendar", "Reject invitation"), _("Cancel")],
+      header: calendar_label(invitation.calendar),
+      cancel_index: 2
+    )
     if action == 0
       EltenLink::Calendars.accept_share(elten_link, invitation.calendar)
       request_reload(invitation.calendar.id)
     elsif action == 1
-      EltenLink::Calendars.reject_share(elten_link, invitation.calendar)
-      request_reload(current_calendar && current_calendar.id)
+      EltenLink::Calendars.delete_membership(elten_link, invitation.calendar)
+      request_reload
     end
   rescue EltenLink::Error => error
     Log.warning("Calendar invitation action failed: #{error.message}")

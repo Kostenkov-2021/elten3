@@ -204,7 +204,7 @@ module EltenLink
         true
       end
 
-      def reject_share(client, calendar)
+      def delete_membership(client, calendar)
         client.api_data("DELETE", "/api/v1/calendars/#{calendar_id(calendar)}/shares/membership")
         true
       end
