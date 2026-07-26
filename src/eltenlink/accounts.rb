@@ -82,6 +82,14 @@ module EltenLink
 
   module Accounts
     class << self
+      def registration_name_availability(client, name:)
+        data = client.api_data("GET", "/api/v1/accounts/name-availability", { "name" => name })
+        return :available if truthy?(data["available"])
+
+        reason = data["reason"].to_s
+        %w[forbidden exists].include?(reason) ? reason.to_sym : :unavailable
+      end
+
       def register(client, name:, password:, mail:, stamp: nil)
         params = { "name" => name, "password" => password, "mail" => mail }
         if stamp != nil
