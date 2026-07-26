@@ -503,33 +503,30 @@ else
           end
         end
       }
-  opt=""
-      if @post[@sel.index].followed==false
-    opt=p_("Blog", "Follow this post")
-  else
-    opt=p_("Blog", "Unfollow this post")
-  end
-  menu.option(opt, nil, "l") {
-  if requires_premiumpackage("courier")
-  begin
-    if @post[@sel.index].followed==false
-      EltenLink::Blog.follow_post(elten_link, blog: @post[@sel.index].owner, post_id: @post[@sel.index].id)
-    else
-      EltenLink::Blog.unfollow_post(elten_link, blog: @post[@sel.index].owner, post_id: @post[@sel.index].id)
-    end
-  rescue EltenLink::Error
-    alert(_("Error"))
-  else
-        if @post[@sel.index].followed==false
-      @post[@sel.index].followed=true
-      alert(p_("Blog", "Post followed"))
-    else
-      @post[@sel.index].followed=false
-      alert(p_("Blog", "Post unfollowed"))
+  post = @post[@sel.index]
+  if Session.name!="guest" && (post.followed==true || !post.owner.to_s.start_with?("[*"))
+    opt=post.followed==true ? p_("Blog", "Unfollow this post") : p_("Blog", "Follow this post")
+    menu.option(opt, nil, "l") {
+      next if post.followed==false && !requires_premiumpackage("courier")
+      begin
+        if post.followed==true
+          EltenLink::Blog.unfollow_post(elten_link, blog: post.owner, post_id: post.id)
+        else
+          EltenLink::Blog.follow_post(elten_link, blog: post.owner, post_id: post.id)
+        end
+      rescue EltenLink::Error
+        alert(_("Error"))
+      else
+        if post.followed==true
+          post.followed=false
+          alert(p_("Blog", "Post unfollowed"))
+        else
+          post.followed=true
+          alert(p_("Blog", "Post followed"))
+        end
       end
+    }
   end
-  end
-  }
   menu.option(p_("Blog", "Copy post URL")) {
   Clipboard.text=@post[@sel.index].url
   alert(p_("Blog", "Post URL copied to clipboard"))
@@ -568,6 +565,13 @@ if @post.mention!=nil
 @knownposts=blogtemp.known_posts
 @comments=blogtemp.comments_open ? 1 : 0
 @iseltenblog=blogtemp.is_elten_blog
+if @post.followed.nil? && Session.name!="guest"
+  begin
+    @post.followed=EltenLink::Blog.post_followed?(elten_link, blog: @post.owner, post_id: @post.id)
+  rescue EltenLink::Error => e
+    Log.warning("Cannot determine blog post follow state: #{e.message}")
+  end
+end
 @comments=0 if @iseltenblog==false
 text = ""
 @posts = []
@@ -738,35 +742,29 @@ def context(menu)
         mention
       }
     end
-    if @iseltenblog
-        opt=""
-      if @post.followed==false
-    opt=p_("Blog", "Follow this post")
-  else
-    opt=p_("Blog", "Unfollow this post")
-  end
-  menu.option(opt, nil, "l") {
-  if requires_premiumpackage("courier")
-  begin
-    if @post.followed==false
-      EltenLink::Blog.follow_post(elten_link, blog: @post.owner, post_id: @post.id)
-    else
-      EltenLink::Blog.unfollow_post(elten_link, blog: @post.owner, post_id: @post.id)
+    if Session.name!="guest" && (@post.followed==true || (@iseltenblog && @post.followed==false))
+      opt=@post.followed==true ? p_("Blog", "Unfollow this post") : p_("Blog", "Follow this post")
+      menu.option(opt, nil, "l") {
+        next if @post.followed==false && !requires_premiumpackage("courier")
+        begin
+          if @post.followed==true
+            EltenLink::Blog.unfollow_post(elten_link, blog: @post.owner, post_id: @post.id)
+          else
+            EltenLink::Blog.follow_post(elten_link, blog: @post.owner, post_id: @post.id)
+          end
+        rescue EltenLink::Error
+          alert(_("Error"))
+        else
+          if @post.followed==true
+            @post.followed=false
+            alert(p_("Blog", "Post unfollowed"))
+          else
+            @post.followed=true
+            alert(p_("Blog", "Post followed"))
+          end
+        end
+      }
     end
-  rescue EltenLink::Error
-    alert(_("Error"))
-  else
-        if @post.followed==false
-      @post.followed=true
-      alert(p_("Blog", "Post followed"))
-    else
-      @post.followed=false
-      alert(p_("Blog", "Post unfollowed"))
-      end
-  end
-  end
-  }
-      end
     menu.submenu(p_("Blog", "Navigation")) {|m|
     m.option(p_("Blog", "Go to post"), nil, ",") {
           @form.index=@postcur=0
@@ -1838,7 +1836,7 @@ class Struct_Blog_Post
     @excerpt=""
     @url=""
     @comments=0
-    @followed=false
+    @followed=nil
   end
 end
 
