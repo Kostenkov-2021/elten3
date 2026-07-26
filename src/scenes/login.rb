@@ -268,6 +268,24 @@ else
     speech_wait
     @skipauto=true
     return main
+  when "authentication.sms_cooldown"
+    alert(p_("Login", "A text message with a verification code can be requested only once per minute. Please try again later."))
+    Session.token = nil
+    speech_wait
+    @skipauto=true
+    return main
+  when "authentication.sms_daily_limit"
+    alert(p_("Login", "The daily limit for text messages with verification codes has been reached. Please try again later."))
+    Session.token = nil
+    speech_wait
+    @skipauto=true
+    return main
+  when "authentication.sms_limiter_unavailable"
+    alert(p_("Login", "Text message verification is temporarily unavailable. Please try again later."))
+    Session.token = nil
+    speech_wait
+    @skipauto=true
+    return main
   else
     alert(p_("Login", "Login failure."))
     Session.token = nil
