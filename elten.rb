@@ -608,8 +608,7 @@ if deferred_main != nil
     end
     EltenWindow.run_appkit_main_loop(app_thread)
     app_thread.join
-    raise app_error if app_error != nil && !app_error.is_a?(SystemExit)
-    raise app_error if app_error.is_a?(SystemExit)
+    raise app_error if app_error != nil
   else
     load deferred_main
   end
