@@ -90,6 +90,8 @@ rescue EltenLink::Error => e
     alert(p_("Registration", "This username is forbidden."))
   elsif e.code.to_s == "accounts.name_exists"
     alert(p_("Registration", "Account with the specified username already exists."))
+  elsif e.code.to_s == "accounts.disposable_email"
+    alert(p_("Registration", "Disposable e-mail addresses cannot be used for registration. Please use a permanent e-mail address."))
   elsif e.code.to_s == "network_error"
     alert(p_("Registration", "An error occurred while connecting to the server."))
   else
