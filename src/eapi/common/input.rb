@@ -25,12 +25,12 @@ def getkeychar(keybd=nil,multi=false)
   end
 if default_keyboard && EltenWindow.character_input_supported?
     ret = EltenWindow.take_character(multi)
+    $getkeychar_cache_serial = serial
+    $getkeychar_cache = ret.to_s
     if ret != ""
-      $getkeychar_cache_serial = serial
-      $getkeychar_cache = ret.to_s
       $lastkeychar=[ret,Time.now.to_i*1000000+Time.now.usec.to_i]
-      return ret.to_s
     end
+    return ret.to_s
   end
   akey = default_keyboard && defined?(EltenAPI::KeyboardState) ? EltenAPI::KeyboardState.current.pressed : nil
   akey=keybd if keybd!=nil
