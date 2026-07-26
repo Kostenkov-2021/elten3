@@ -2,6 +2,8 @@
 # Copyright (C) 2026 Dawid Pieper
 # Elten is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.
 
+require "monitor"
+
 unless defined?(Fiddle)
   verbose = $VERBOSE
   $VERBOSE = nil
@@ -36,7 +38,6 @@ module OSXWindowNative
   TIMER_INTERVAL_SECONDS = 1.0 / 30.0
   TIMER_STATE_REFRESH_SECONDS = 0.05
   TIMER_FOCUS_REPAIR_SECONDS = 0.10
-  TIMER_KEY_RECONCILE_SECONDS = 0.10
   MAX_KEY_EVENT_QUEUE = 1024
   MAC_KEY_Q = 12
   MAC_KEY_FN = 63
@@ -186,7 +187,7 @@ module OSXWindowNative
     end
 
     def keyboard_active?(hwnd)
-      return @keyboard_allowed == true if @app_thread != nil && Thread.current != @app_thread
+      return keyboard_allowed_state? if @app_thread != nil && Thread.current != @app_thread
       keyboard_focus_active?(hwnd)
     rescue Exception
       false
@@ -236,17 +237,23 @@ module OSXWindowNative
     end
 
     def keyboard_state
-      @keyboard_state ||= ("\0" * 256)
-      keyboard_state_allowed? ? @keyboard_state.dup : ("\0" * 256)
+      return "\0" * 256 if keyboard_state_allowed? != true
+      keyboard_state_monitor.synchronize do
+        @keyboard_state ||= ("\0" * 256)
+        @keyboard_state.dup
+      end
     rescue Exception
       "\0" * 256
     end
 
     def consume_key_events
-      @key_event_queue ||= []
-      events = @key_event_queue
-      @key_event_queue = []
-      events
+      keyboard_state_monitor.synchronize do
+        @key_event_queue ||= []
+        reconcile_keyboard_state_locked if @keyboard_allowed == true
+        events = @key_event_queue
+        @key_event_queue = []
+        events
+      end
     rescue Exception
       []
     end
@@ -256,10 +263,12 @@ module OSXWindowNative
     end
 
     def consume_keyboard_reset
-      serial = @keyboard_reset_serial.to_i
-      return false if @keyboard_reset_consumed_serial.to_i == serial
-      @keyboard_reset_consumed_serial = serial
-      true
+      keyboard_state_monitor.synchronize do
+        serial = @keyboard_reset_serial.to_i
+        next false if @keyboard_reset_consumed_serial.to_i == serial
+        @keyboard_reset_consumed_serial = serial
+        true
+      end
     rescue Exception
       false
     end
@@ -708,8 +717,7 @@ module OSXWindowNative
         refresh_window_cache(@main_window) if @main_window.to_i != 0
         refresh_keyboard_active
       end
-      reconcile_option_control_state if @keyboard_allowed == true
-      reconcile_stale_keyboard_state(now) if @keyboard_allowed == true && timer_due?(:key_reconcile, TIMER_KEY_RECONCILE_SECONDS, now)
+      reconcile_option_control_state if keyboard_allowed_state?
       refresh_key_sink_focus if timer_due?(:focus_repair, TIMER_FOCUS_REPAIR_SECONDS, now)
       if @exit_requested == true || (@worker_thread != nil && !@worker_thread.alive?)
         clear_keyboard_state
@@ -735,7 +743,7 @@ module OSXWindowNative
     def refresh_key_sink_focus
       return false if @main_window.to_i == 0 || @key_sink_view == nil || @key_sink_view.to_i == 0
       @key_sink_focused = first_responder(@main_window).to_i == @key_sink_view.to_i
-      if @keyboard_allowed == true && @key_sink_focused != true
+      if keyboard_allowed_state? && @key_sink_focused != true
         focus_key_sink(@main_window)
         refresh_keyboard_active
       end
@@ -962,16 +970,19 @@ module OSXWindowNative
     end
 
     def reconcile_option_control_state
-      return false if @keyboard_state == nil || (@keyboard_state.getbyte(::EltenKeyboard::VK_OPTION).to_i & 0x80) == 0
-      left_control = ::EltenKeyboard.physical_key_down?(::EltenKeyboard::VK_CONTROL_LEFT)
-      right_control = ::EltenKeyboard.physical_key_down?(::EltenKeyboard::VK_CONTROL_RIGHT)
-      return false if left_control == nil && right_control == nil
-      set_keyboard_key(::EltenKeyboard::VK_CONTROL_LEFT, left_control == true)
-      set_keyboard_key(::EltenKeyboard::VK_CONTROL_RIGHT, right_control == true)
-      command_down = (@keyboard_state.getbyte(::EltenKeyboard::VK_COMMAND_LEFT).to_i & 0x80) != 0 ||
-        (@keyboard_state.getbyte(::EltenKeyboard::VK_COMMAND_RIGHT).to_i & 0x80) != 0
-      set_keyboard_key(::EltenKeyboard::VK_CONTROL, left_control == true || right_control == true || command_down)
-      true
+      keyboard_state_monitor.synchronize do
+        next false if @keyboard_state == nil || (@keyboard_state.getbyte(::EltenKeyboard::VK_OPTION).to_i & 0x80) == 0
+        first_pressed = first_pressed_keys_locked
+        left_control = ::EltenKeyboard.physical_key_down?(::EltenKeyboard::VK_CONTROL_LEFT)
+        right_control = ::EltenKeyboard.physical_key_down?(::EltenKeyboard::VK_CONTROL_RIGHT)
+        next false if left_control == nil && right_control == nil
+        reconcile_keyboard_key_locked(::EltenKeyboard::VK_CONTROL_LEFT, left_control == true, first_pressed)
+        reconcile_keyboard_key_locked(::EltenKeyboard::VK_CONTROL_RIGHT, right_control == true, first_pressed)
+        command_down = (@keyboard_state.getbyte(::EltenKeyboard::VK_COMMAND_LEFT).to_i & 0x80) != 0 ||
+          (@keyboard_state.getbyte(::EltenKeyboard::VK_COMMAND_RIGHT).to_i & 0x80) != 0
+        reconcile_keyboard_key_locked(::EltenKeyboard::VK_CONTROL, left_control == true || right_control == true || command_down, first_pressed)
+        true
+      end
     rescue Exception
       false
     end
@@ -1021,20 +1032,9 @@ module OSXWindowNative
     end
 
     def set_keyboard_key(key, down, repeat = false)
-      @keyboard_state ||= ("\0" * 256)
-      @keyboard_allowed = true
-      @key_down_since ||= {}
-      key = key.to_i & 0xff
-      previous = (@keyboard_state.getbyte(key).to_i & 0x80) != 0
-      return false if down == true && repeat == true && previous != true
-      @keyboard_state.setbyte(key, down ? 0x80 : 0)
-      if down == true
-        @key_down_since[key] = monotonic_time if previous != true
-      else
-        @key_down_since.delete(key)
+      keyboard_state_monitor.synchronize do
+        set_keyboard_key_locked(key, down, repeat)
       end
-      queue_key_event(key, down) if !repeat && previous != (down == true)
-      true
     end
 
     def event_repeat?(event)
@@ -1043,7 +1043,7 @@ module OSXWindowNative
       false
     end
 
-    def queue_key_event(key, state)
+    def queue_key_event_locked(key, state)
       @key_event_queue ||= []
       @key_event_queue << [key.to_i & 0xff, state]
       @key_event_queue = @key_event_queue.last(MAX_KEY_EVENT_QUEUE) if @key_event_queue.size > MAX_KEY_EVENT_QUEUE
@@ -1051,20 +1051,24 @@ module OSXWindowNative
     end
 
     def clear_keyboard_state(notify = false)
-      @keyboard_reset_serial = @keyboard_reset_serial.to_i + 1 if notify == true
-      @keyboard_state = "\0" * 256
-      @key_event_queue ||= []
-      @key_event_queue.clear
-      @key_down_since ||= {}
-      @key_down_since.clear
-      @translated_key_chars ||= {}
-      @translated_key_chars.clear
-      @keyboard_allowed = false
-      true
+      keyboard_state_monitor.synchronize do
+        @keyboard_reset_serial = @keyboard_reset_serial.to_i + 1 if notify == true
+        @keyboard_state = "\0" * 256
+        @key_event_queue ||= []
+        @key_event_queue.clear
+        @pressed_keys ||= {}
+        @pressed_keys.clear
+        @translated_key_chars ||= {}
+        @translated_key_chars.clear
+        @keyboard_allowed = false
+        true
+      end
     end
 
     def keyboard_state_allowed?
-      return @keyboard_allowed == true if @app_thread != nil && Thread.current != @app_thread
+      if @app_thread != nil && Thread.current != @app_thread
+        return keyboard_allowed_state?
+      end
       keyboard_focus_active?(@main_window)
     rescue Exception
       false
@@ -1072,16 +1076,16 @@ module OSXWindowNative
 
     def refresh_keyboard_active
       hwnd = @main_window
-      was_allowed = @keyboard_allowed == true
+      was_allowed = keyboard_allowed_state?
       allowed = keyboard_focus_active?(hwnd)
       if allowed
-        @keyboard_allowed = true
+        keyboard_state_monitor.synchronize { @keyboard_allowed = true }
       else
         clear_keyboard_state(was_allowed)
       end
-      @keyboard_allowed
+      keyboard_allowed_state?
     rescue Exception
-      @keyboard_allowed = false
+      keyboard_state_monitor.synchronize { @keyboard_allowed = false }
     end
 
     def keyboard_focus_active?(hwnd)
@@ -1105,21 +1109,38 @@ module OSXWindowNative
       false
     end
 
-    def reconcile_stale_keyboard_state(now = nil)
-      return false if @keyboard_allowed != true
+    def set_keyboard_key_locked(key, down, repeat = false)
       @keyboard_state ||= ("\0" * 256)
-      @key_down_since ||= {}
-      now ||= monotonic_time
-      @key_down_since.to_a.each do |key, since|
+      @keyboard_allowed = true
+      @pressed_keys ||= {}
+      key = key.to_i & 0xff
+      previous = (@keyboard_state.getbyte(key).to_i & 0x80) != 0
+      return false if down == true && repeat == true && previous != true
+      @keyboard_state.setbyte(key, down ? 0x80 : 0)
+      if down == true
+        @pressed_keys[key] = true
+      else
+        @pressed_keys.delete(key)
+      end
+      queue_key_event_locked(key, down) if !repeat && previous != (down == true)
+      true
+    end
+
+    def reconcile_keyboard_state_locked
+      @keyboard_state ||= ("\0" * 256)
+      @pressed_keys ||= {}
+      first_pressed = first_pressed_keys_locked
+      @pressed_keys.keys.each do |key|
         if (@keyboard_state.getbyte(key).to_i & 0x80) == 0
-          @key_down_since.delete(key)
+          @pressed_keys.delete(key)
           next
         end
-        next if now - since.to_f <= stale_key_timeout(key)
+        # Deliver a captured keyDown once even if the key was released before this input frame.
+        next if first_pressed[key] == true
         physical = ::EltenKeyboard.physical_key_down?(key)
         next if physical != false
-        set_keyboard_key(key, false)
-        Log.debug("Keyboard stale key released: #{key}") if defined?(Log)
+        set_keyboard_key_locked(key, false)
+        Log.debug("Keyboard state reconciled: released key #{key}") if defined?(Log)
       end
       true
     rescue Exception => e
@@ -1127,12 +1148,24 @@ module OSXWindowNative
       false
     end
 
-    def stale_key_timeout(key)
-      if ::EltenKeyboard::MODIFIER_KEYS.include?(key.to_i)
-        ::EltenKeyboard::STALE_MODIFIER_KEY_SECONDS
-      else
-        ::EltenKeyboard::STALE_REPEATABLE_KEY_SECONDS
+    def reconcile_keyboard_key_locked(key, down, first_pressed)
+      key = key.to_i & 0xff
+      return true if down != true && first_pressed[key] == true
+      set_keyboard_key_locked(key, down)
+    end
+
+    def first_pressed_keys_locked
+      @key_event_queue.to_a.each_with_object({}) do |(key, state), keys|
+        keys[key.to_i & 0xff] = true if state == true
       end
+    end
+
+    def keyboard_allowed_state?
+      keyboard_state_monitor.synchronize { @keyboard_allowed == true }
+    end
+
+    def keyboard_state_monitor
+      @keyboard_state_monitor ||= Monitor.new
     end
 
     def monotonic_time
