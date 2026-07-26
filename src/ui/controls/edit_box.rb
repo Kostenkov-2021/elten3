@@ -133,24 +133,36 @@ elsif Configuration.typingecho==:characters or Configuration.typingecho==:charac
           delete_action = keyboard_action_pressed?(:delete_next_word, :delete_line_end)
           if raw_key_pressed?(:key_delete) and (@index<text_len or @check<text_len) and (@flags&Flags::ReadOnly)==0
             play_sound("editbox_delete")
-            c=selected_range || deletion_range(delete_action)
+            selection=selected_range
+            c=selection || deletion_range(delete_action)
             c=selected_or_current_range if c==nil && delete_action==nil
             if c!=nil
+              deleted_text=text_range(c[0],c[1])
               edelete(c[0],c[1])
-              espeech(text_char(@index))
+              if delete_action!=nil && selection==nil
+                espeech(deleted_text)
+              else
+                espeech(text_char(@index))
+              end
             end
           end
           delete_action = keyboard_action_pressed?(:delete_previous_word, :delete_line_start)
           if raw_key_pressed?(:backspace) and (@index>0 or @check>0) and (@flags&Flags::ReadOnly)==0
             play_sound("editbox_delete")
-            c=selected_range || deletion_range(delete_action)
+            selection=selected_range
+            c=selection || deletion_range(delete_action)
             if c==nil && delete_action==nil
               oind=ind=@index-1
               ind=char_borders(ind)[0]
               c=[ind,oind]
             end
             if c!=nil
-              espeech(text_range(c[0],c[1]).split("")[0])
+              deleted_text=text_range(c[0],c[1])
+              if delete_action!=nil && selection==nil
+                espeech(deleted_text)
+              else
+                espeech(deleted_text.split("")[0])
+              end
               edelete(c[0],c[1])
             end
                                                 end
@@ -200,6 +212,7 @@ url=nil
             prvindex=@vindex
             last=@vindex
             @ch=false
+            macos_character_movement=false
             navigation_action=keyboard_action_pressed?(:text_start, :text_end, :text_line_start, :text_line_end, :text_previous_word, :text_next_word, :text_previous_paragraph, :text_next_paragraph)
           if navigation_action==:text_start
             @vindex=0
@@ -214,11 +227,9 @@ url=nil
             @vindex=line_ending
             announce_navigation_character(true)
           elsif navigation_action==:text_previous_word
-            @vindex=previous_word_index(@vindex)
-            espeech(text_range(@vindex,last-1)) if @vindex<last
+            move_word(:previous)
           elsif navigation_action==:text_next_word
-            @vindex=next_word_index(@vindex)
-            espeech(text_range(last,@vindex-1)) if @vindex>last
+            move_word(:next)
           elsif navigation_action==:text_previous_paragraph
             @vindex=previous_paragraph_index(@vindex)
             announce_navigation_position
@@ -226,6 +237,7 @@ url=nil
             @vindex=next_paragraph_index(@vindex)
             announce_navigation_position
           elsif EltenAPI::KeyboardScheme.macos_character_navigation? && key_pressed?(:key_right) && !navigation_modifier_held?
+            macos_character_movement=true
             if !raw_key_held?(:key_shift) && @index!=@check
               @vindex=[@index,@check].max
               @ch=true
@@ -234,6 +246,7 @@ url=nil
               move_character_macos(:right)
             end
           elsif EltenAPI::KeyboardScheme.macos_character_navigation? && key_pressed?(:key_left) && !navigation_modifier_held?
+            macos_character_movement=true
             if !raw_key_held?(:key_shift) && @index!=@check
               @vindex=[@index,@check].min
               @ch=true
@@ -347,8 +360,8 @@ espeech(p_("EAPI_Form", "End of line"))
             @check=@vindex
           end
         end
-        if EltenAPI::KeyboardScheme.macos_character_navigation?
-          announce_macos_selection_change(previous_selection, selection_bounds) if raw_key_held?(:key_shift) || select_all_action!=nil
+        if macos_character_movement
+          announce_macos_selection_change(previous_selection, selection_bounds) if raw_key_held?(:key_shift)
         elsif (lastcheck!="" || checked) && lastcheck!=get_check
                                     if @index!=@check
                                       chk=get_check
@@ -852,6 +865,50 @@ def next_word_index(index)
   index += 1 while index<text_len && !word_separator?(text_char(index))
   index += 1 while index<text_len && word_separator?(text_char(index))
   index
+end
+def next_word_end_index(index)
+  index = clamp_text_index(index)
+  index += 1 while index<text_len && word_separator?(text_char(index))
+  index += 1 while index<text_len && !word_separator?(text_char(index))
+  index
+end
+def word_navigation_index(index, direction)
+  target=EltenAPI::KeyboardScheme.word_navigation_target(direction)
+  return previous_word_index(index) if direction==:previous && target==:beginning
+  return next_word_index(index) if direction==:next && target==:beginning
+  return next_word_end_index(index) if direction==:next && target==:end
+
+  raise ArgumentError, "Unsupported word navigation: #{direction} to #{target}"
+end
+def move_word(direction)
+  previous_index=@vindex
+  @vindex=word_navigation_index(@vindex,direction)
+  if @vindex==previous_index
+    if Configuration.soundthemeactivation==true
+      play_sound("border")
+    else
+      espeech(p_("EAPI_Form", "End of line"))
+    end
+  elsif direction==:next && @vindex==text_len
+    play_sound("editbox_endofline")
+  else
+    announce_word_at_navigation_target(direction)
+  end
+end
+def announce_word_at_navigation_target(direction)
+  target=EltenAPI::KeyboardScheme.word_navigation_target(direction)
+  if target==:end
+    ending=@vindex-1
+    beginning=ending
+    beginning-=1 while beginning>0 && !word_separator?(text_char(beginning-1))
+  else
+    beginning=@vindex
+    beginning+=1 while beginning<text_len && word_separator?(text_char(beginning))
+    return if beginning>=text_len
+    ending=beginning
+    ending+=1 while ending+1<text_len && !word_separator?(text_char(ending+1))
+  end
+  espeech(text_range(beginning,ending))
 end
 def previous_paragraph_index(index)
   index = clamp_text_index(index)

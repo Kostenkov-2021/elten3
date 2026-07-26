@@ -37,6 +37,10 @@ module EltenAPI
       windows: {
         main_modifier: :control,
         word_modifier: :control,
+        word_navigation: {
+          previous: :beginning,
+          next: :beginning
+        }.freeze,
         actions: {
           list_position: [:up, :control],
           list_count: [:down, :control],
@@ -64,6 +68,10 @@ module EltenAPI
       macos: {
         main_modifier: :command,
         word_modifier: :option,
+        word_navigation: {
+          previous: :beginning,
+          next: :end
+        }.freeze,
         actions: {
           list_position: [:up, :command],
           list_count: [:down, :command],
@@ -116,6 +124,10 @@ module EltenAPI
 
       def word_modifier
         PROFILES.fetch(current).fetch(:word_modifier)
+      end
+
+      def word_navigation_target(direction)
+        PROFILES.fetch(current).fetch(:word_navigation).fetch(direction.to_sym)
       end
 
       def modifier_name(modifier = :main_modifier)
