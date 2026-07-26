@@ -181,6 +181,7 @@ def prepend_options(opts, states=[], audio_urls=[])
   @grayed+=old_grayed
   @selected+=old_selected
   @item_states+=old_states
+  @item_audio_urls.fill(nil, @item_audio_urls.size...opts.size)
   @item_audio_urls+=old_audio_urls
   audio_offset=opts.size
   old_audio_entries.each{|i, entry|@item_audio_entries[i+audio_offset]=entry}
