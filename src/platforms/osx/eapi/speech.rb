@@ -88,12 +88,12 @@ module OSXSpeechBridge
       false
     end
 
-    def start(synth, text)
+    def start(synth, text, track: true)
       return false if synth.to_i == 0
-      reset_events(synth)
+      reset_events(synth) if track
       settings = synth_settings(synth)
       utterance = build_utterance(text, settings[:voice_id], settings[:rate], settings[:volume])
-      track_utterance(synth, utterance)
+      track_utterance(synth, utterance) if track
       send_void(synth, "speakUtterance:", utterance, [PTR])
       true
     rescue Exception
@@ -732,11 +732,13 @@ class OSXSpeech < SpeechOutput
     def speak_text(text, method: 1, spelling: false, interrupt: true, pitch: 50)
       stop if interrupt
       @stop_requested = false
-      @bookmark = nil
-      @bookmark_id = nil
-      clear_index_tracking
+      if interrupt
+        @bookmark = nil
+        @bookmark_id = nil
+        clear_index_tracking
+      end
       text = text.to_s.chars.join(" ") if spelling
-      speak_async(text)
+      speak_async(text, false, track: interrupt)
       0
     rescue Exception => e
       Log.warning("OSX speech failed: #{e.class}: #{e.message}")
@@ -799,12 +801,12 @@ class OSXSpeech < SpeechOutput
       false
     end
 
-    def speak_async(text, stop_previous = true)
+    def speak_async(text, stop_previous = true, track: true)
       stop_current_backend if stop_previous
       return false unless bridge_active?
       @paused = false
       apply_synth_settings
-      OSXSpeechBridge.start(synth, text.to_s)
+      OSXSpeechBridge.start(synth, text.to_s, track: track)
       true
     end
 

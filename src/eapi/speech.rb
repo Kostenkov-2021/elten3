@@ -145,7 +145,7 @@ if nvda != nil && output == nvda && !nvda.check && spelling && use_dictionary
     text_d = get_character_name(text_d)
     spelling=false
 end
-output.speak_text(text_d, method: method, spelling: spelling, interrupt: !swait, pitch: Configuration.voicepitch)
+output.speak_text(text_d, method: method, spelling: spelling, interrupt: stop && !swait, pitch: Configuration.voicepitch)
 $speech_lasttext = text_d
 end
 text_d = text if text_d == nil
