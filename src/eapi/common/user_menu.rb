@@ -148,6 +148,10 @@ module EltenAPI
         end
       end
 
+      actions << user_menu_action(p_("EAPI_Common", "Show forum posts")) do
+        insert_scene(Scene_Forum_UserPosts.new(user, Scene_Main.new), true)
+      end
+
       if has_honors
         actions << user_menu_action(p_("EAPI_Common", "badges of this user")) do
           insert_scene(Scene_Honors.new(user, Scene_Main.new), true)

@@ -23,6 +23,8 @@ module EltenLink
   end
 
   ForumThreadPage = Struct.new(:time, :count, :read_posts, :followed, :posts, keyword_init: true)
+  ForumUserPost = Struct.new(:post_id, :thread_id, :text, :transcription, :audio_url, :date, :format, keyword_init: true)
+  ForumUserPostsPage = Struct.new(:posts, :more, :next_before, keyword_init: true)
   ForumThreadStats = Struct.new(:followers, :mentions, :authors, :readers, :readers_below_half, :readers_above_90, :readers_all, keyword_init: true)
   ForumSearchResult = Struct.new(:thread, :count, keyword_init: true)
   ForumMember = Struct.new(:user, :role, :inherit, keyword_init: true)
@@ -67,6 +69,29 @@ module EltenLink
           read_posts: data["read_posts"].to_i,
           followed: truthy?(data["followed"]),
           posts: data["posts"].to_a.map { |row| build_post(row) }
+        )
+      end
+
+      def user_posts(client, user:, before: nil, limit: 50)
+        data = client.api_data("GET", "/api/v1/forum/users/#{user.to_s.urlenc}/posts", clean_hash(
+          "before" => before,
+          "limit" => limit
+        ))
+        posts = data["posts"].to_a.map do |row|
+          ForumUserPost.new(
+            post_id: row["postid"].to_i,
+            thread_id: row["threadid"].to_i,
+            text: content_text(row, "text"),
+            transcription: row["transcription"].to_s,
+            audio_url: content_audio_url(row),
+            date: forum_post_date(row["date"]),
+            format: row["format"].to_i
+          )
+        end
+        ForumUserPostsPage.new(
+          posts: posts,
+          more: truthy?(data["more"]),
+          next_before: data["next_before"].nil? ? nil : data["next_before"].to_i
         )
       end
 

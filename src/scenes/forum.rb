@@ -3805,6 +3805,126 @@ form.wait
   end
 end
 
+class Scene_Forum_UserPosts
+  include ForumSceneClient
+
+  PAGE_SIZE = 50
+
+  def initialize(user, return_scene = nil)
+    @user = user.to_s
+    @return_scene = return_scene
+    @posts = []
+    @more = false
+    @next_before = nil
+    @loaded = false
+    @threads_by_id = {}
+  end
+
+  def main
+    unless @loaded
+      load_structure
+      unless load_page
+        $scene = return_scene
+        return
+      end
+      @loaded = true
+      rebuild_list
+    end
+
+    @list.focus
+    loop do
+      loop_update
+      @list.update
+
+      if key_pressed?(:key_enter)
+        if @list.index < @posts.length
+          open_post
+          return
+        elsif @more
+          load_older
+        end
+      end
+
+      if key_pressed?(:key_escape)
+        $scene = return_scene
+        return
+      end
+
+      return if $scene != self
+    end
+  end
+
+  private
+
+  def load_structure
+    structure = Scene_Forum.getstruct
+    @threads_by_id = structure["threads"].to_a.each_with_object({}) do |thread, threads|
+      threads[thread.id] = thread
+    end
+  end
+
+  def load_page(before = nil)
+    page = forum_fetch(nil) do
+      EltenLink::Forum.user_posts(elten_link, user: @user, before: before, limit: PAGE_SIZE)
+    end
+    return false if page.nil?
+
+    @posts.concat(page.posts.select { |post| @threads_by_id.key?(post.thread_id) })
+    @more = page.more && page.next_before.to_i.positive?
+    @next_before = @more ? page.next_before.to_i : nil
+    true
+  end
+
+  def load_older
+    first_new_index = @posts.length
+    return unless load_page(@next_before)
+
+    rebuild_list(first_new_index)
+    @list.say_option
+  end
+
+  def rebuild_list(index = nil)
+    options = @posts.map { |post| post_label(post) }
+    options << p_("Forum", "Show older") if @more
+    options << p_("Forum", "No forum posts") if options.empty?
+    index = @list.index if index.nil? && @list != nil
+    index = 0 if index.nil?
+    index = [[index, 0].max, options.length - 1].min
+
+    if @list == nil
+      @list = ListBox.new(options, header: p_("Forum", "Forum posts by %{user}") % { user: @user }, index: index, flags: 0, quiet: true)
+    else
+      @list.options = options
+      @list.index = index
+    end
+    @posts.each_with_index do |post, post_index|
+      @list.set_item_audio(post_index, post.audio_url) unless post.audio_url.to_s.empty?
+    end
+  end
+
+  def post_label(post)
+    thread = @threads_by_id[post.thread_id]
+    text = post.transcription.to_s.strip
+    text = post.text.to_s if text.empty?
+    text = p_("Forum", "Audio post") if text.strip.empty? && !post.audio_url.to_s.empty?
+    label = "#{thread.name} (#{thread.forum.fullname}): #{text[0...5000]}"
+    label += "\r\n#{post.date}" unless post.date.to_s.empty?
+    label
+  end
+
+  def open_post
+    post = @posts[@list.index]
+    thread = @threads_by_id[post.thread_id]
+    return if thread.nil?
+
+    $scene = Scene_Forum_Thread.new(thread, -13, 0, post.post_id, nil, self)
+  end
+
+  def return_scene
+    @return_scene ||= Scene_Main.new
+  end
+end
+
 class Struct_Forum_Group
   attr_accessor :id
   attr_accessor :name
