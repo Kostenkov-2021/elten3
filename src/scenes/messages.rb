@@ -16,7 +16,7 @@ class Scene_Messages
 if notif['cat']==1
   play_sound(notif['sound']) if notif['sound']!=nil
 else
-  speak(notif['alert']) if notif['alert']!=nil
+  speak(notif['alert'], stop: false, break_sequence: false) if notif['alert']!=nil
   play_sound(notif['sound']) if notif['sound']!=nil
   end
       }

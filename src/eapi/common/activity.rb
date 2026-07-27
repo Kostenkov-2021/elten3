@@ -10,7 +10,7 @@ module EltenAPI
        def process_notification(notif)
          play_sound(notif['sound']) if notif['sound']!=nil
         if notif['alert']!=nil
-            speak(notif['alert'], stop: false)
+            speak(notif['alert'], stop: false, break_sequence: false)
         end
        end
 
