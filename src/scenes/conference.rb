@@ -389,7 +389,9 @@ if ch.passworded
   end
   if ps!=nil || !ch.passworded
     if !ch.passworded || ps!=nil
-          Conference.join(ch.id, ps)
+          unless Conference.join(ch.id, ps)
+            alert(p_("Conference", "You cannot join this channel"))
+          end
                     @chans=get_channelslist
   locha.call(@chans)
 end
@@ -500,7 +502,9 @@ when 1
     ps=input_text(p_("Conference", "Channel password"), flags: EditBox::Flags::Password, text: "", escapable: true) if ch.passworded
     loop_update if ch.passworded
     if !ch.passworded || ps!=nil
-      Conference.join(ch.id, ps)
+      unless Conference.join(ch.id, ps)
+        alert(p_("Conference", "You cannot join this channel"))
+      end
       delay(1)
       return if Conference.channel.id!=0
       end
@@ -582,6 +586,11 @@ for preset in presets
     chk_conference = CheckBox.new(p_("Conference", "Enable conference mode (only channel administrators and allowed users can speak)"), checked: channel.conference_mode>0),
     chk_waiting = CheckBox.new(p_("Conference", "Enable waiting room"), checked: channel.waiting_type>0),
     chk_allowguests = CheckBox.new(p_("Conference", "Allow guests to join this channel"), checked: channel.allow_guests),
+    lst_blacklist_policy = ListBox.new([
+      p_("Conference", "Disabled"),
+      p_("Conference", "Channel creator's blacklist"),
+      p_("Conference", "Blacklists of all channel administrators")
+    ], header: p_("Conference", "Block users from joining based on"), index: channel.blacklist_policy),
 chk_hidden = CheckBox.new(p_("Conference", "Make this channel hidden"), checked: !channel.public),
     chk_permanent = CheckBox.new(p_("Conference", "Store as permanent channel"), checked: channel.permanent),
     edt_width = EditBox.new(p_("Conference", "Channel width"), type: EditBox::Flags::Numbers, text: channel.width.to_s, quiet: true),
@@ -629,6 +638,7 @@ chk_hidden = CheckBox.new(p_("Conference", "Make this channel hidden"), checked:
       form.hide(chk_conference)
       end
   form.hide(chk_hidden) if (channel.groupid!=0 && channel.groupid!=nil)
+  form.hide(lst_blacklist_policy) if channel.groupid!=0 && channel.groupid!=nil
   form.hide(chk_permanent) if (channel.groupid!=0 && channel.groupid!=nil) || (channel.permanent==false && (chans.find_all{|c|c.creator==Session.name && c.permanent==true}.size>=3))
   lst_preset.on(:move) {
   if presets.size>lst_preset.index
@@ -720,6 +730,7 @@ chk_hidden = CheckBox.new(p_("Conference", "Make this channel hidden"), checked:
             waiting_type=chk_waiting.checked ? 1 : 0
             conference_mode=chk_conference.checked ? 1 : 0
             allow_guests=chk_allowguests.checked
+            blacklist_policy=lst_blacklist_policy.index
       permanent = chk_permanent.checked
 key_len=256
 case lst_encryption.index
@@ -731,9 +742,9 @@ when 1
       key_len=0
 end
       if channel.id==0
-      Conference.create(name, public, bitrate, framesize, vbr_type, codec_application, prediction_disabled, fec, password, spatialization, channels, lang, width, height, key_len, waiting_type, permanent, motd, allow_guests, conference_mode)
+      Conference.create(name, public, bitrate, framesize, vbr_type, codec_application, prediction_disabled, fec, password, spatialization, channels, lang, width, height, key_len, waiting_type, permanent, motd, allow_guests, conference_mode, blacklist_policy)
     else
-      Conference.edit(channel.id, name, public, bitrate, framesize, vbr_type, codec_application, prediction_disabled, fec, password, spatialization, channels, lang, width, height, key_len, waiting_type, permanent, motd, allow_guests, conference_mode)
+      Conference.edit(channel.id, name, public, bitrate, framesize, vbr_type, codec_application, prediction_disabled, fec, password, spatialization, channels, lang, width, height, key_len, waiting_type, permanent, motd, allow_guests, conference_mode, blacklist_policy)
       end
       form.resume
       end

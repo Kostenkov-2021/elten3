@@ -9,7 +9,7 @@
 module EltenAPI
   class Conference
 class Channel
-      attr_accessor :id, :name, :bitrate, :framesize, :vbr_type, :codec_application, :prediction_disabled, :fec, :public, :users, :passworded, :spatialization, :channels, :lang, :creator, :width, :height, :objects, :administrators, :key_len, :groupid, :waiting_type, :banned, :permanent, :password, :uuid, :motd, :allow_guests, :room_id, :followed, :join_url, :conference_mode, :whitelist, :followers_count, :stream_bitrate, :stream_framesize
+      attr_accessor :id, :name, :bitrate, :framesize, :vbr_type, :codec_application, :prediction_disabled, :fec, :public, :users, :passworded, :spatialization, :channels, :lang, :creator, :width, :height, :objects, :administrators, :key_len, :groupid, :waiting_type, :banned, :permanent, :password, :uuid, :motd, :allow_guests, :room_id, :followed, :join_url, :conference_mode, :blacklist_policy, :whitelist, :followers_count, :stream_bitrate, :stream_framesize
       def initialize
         @name=""
         @framesize=60
@@ -34,6 +34,7 @@ class Channel
         @banned=[]
         @permanent=false
         @conference_mode=0
+        @blacklist_policy=1
         @whitelist=[]
 @followers_count=0
         end
@@ -462,9 +463,9 @@ def self.join(id, password=nil)
   self.open
   delay(1)
 else
-  return if @@channel.id==id
+  return true if @@channel.id==id
   end
-  safe {@@core.join_channel(id, password) if @@core!=nil}
+  safe(false) {@@core.join_channel(id, password) if @@core!=nil}
 end
 def self.leave
   if @@opened==false
@@ -735,22 +736,23 @@ end
 def self.whisper(userid)
   safe {@@core.whisper=userid if @@core!=nil}
   end
-def self.create(name="", public=true, bitrate=64, framesize=60, vbr_type=1, codec_application=0, prediction_disabled=false, fec=false, password=nil, spatialization=0, channels=2, lang='', width=15, height=15, key_len=256, waiting_type=0, permanent=false, motd="", allow_guests=false, conference_mode=0)
+def self.create(name="", public=true, bitrate=64, framesize=60, vbr_type=1, codec_application=0, prediction_disabled=false, fec=false, password=nil, spatialization=0, channels=2, lang='', width=15, height=15, key_len=256, waiting_type=0, permanent=false, motd="", allow_guests=false, conference_mode=0, blacklist_policy=1)
   if @@opened==false
   self.open
   delay(1)
   end
   @@created=nil
-  params={'name'=>name, 'public'=>public, 'bitrate'=>bitrate, 'framesize'=>framesize, 'vbr_type'=>vbr_type, 'codec_application'=>codec_application, 'prediction_disabled'=>prediction_disabled, 'fec'=>fec, 'password'=>password, 'spatialization'=>spatialization, 'channels'=>channels, 'lang'=>lang, 'width'=>width, 'height'=>height, 'key_len'=>key_len, 'waiting_type'=>waiting_type, 'permanent'=>permanent, 'motd'=>motd, 'allow_guests'=>allow_guests, 'conference_mode'=>conference_mode}
+  params={'name'=>name, 'public'=>public, 'bitrate'=>bitrate, 'framesize'=>framesize, 'vbr_type'=>vbr_type, 'codec_application'=>codec_application, 'prediction_disabled'=>prediction_disabled, 'fec'=>fec, 'password'=>password, 'spatialization'=>spatialization, 'channels'=>channels, 'lang'=>lang, 'width'=>width, 'height'=>height, 'key_len'=>key_len, 'waiting_type'=>waiting_type, 'permanent'=>permanent, 'motd'=>motd, 'allow_guests'=>allow_guests, 'conference_mode'=>conference_mode, 'blacklist_policy'=>blacklist_policy}
   @@created=safe(nil) {@@core.create_channel(params) if @@core!=nil}
   return @@created
 end
-def self.edit(id, name, public, bitrate, framesize, vbr_type, codec_application, prediction_disabled, fec, password, spatialization, channels, lang, width, height, key_len, waiting_type, permanent, motd, allow_guests, conference_mode)
+def self.edit(id, name, public, bitrate, framesize, vbr_type, codec_application, prediction_disabled, fec, password, spatialization, channels, lang, width, height, key_len, waiting_type, permanent, motd, allow_guests, conference_mode, blacklist_policy=nil)
   if @@opened==false
   self.open
   delay(1)
 end
-params={'channel'=>id, 'name'=>name, 'public'=>public, 'bitrate'=>bitrate, 'framesize'=>framesize, 'vbr_type'=>vbr_type, 'codec_application'=>codec_application, 'prediction_disabled'=>prediction_disabled, 'fec'=>fec, 'password'=>password, 'spatialization'=>spatialization, 'channels'=>channels, 'lang'=>lang, 'width'=>width, 'height'=>height, 'key_len'=>key_len, 'waiting_type'=>waiting_type, 'permanent'=>permanent, 'motd'=>motd, 'allow_guests'=>allow_guests, 'conference_mode'=>conference_mode}
+params={'channel'=>id, 'name'=>name, 'public'=>public, 'bitrate'=>bitrate, 'framesize'=>framesize, 'vbr_type'=>vbr_type, 'codec_application'=>codec_application, 'prediction_disabled'=>prediction_disabled, 'fec'=>fec, 'password'=>password, 'spatialization'=>spatialization, 'channels'=>channels, 'lang'=>lang, 'width'=>width, 'height'=>height, 'key_len'=>key_len, 'waiting_type'=>waiting_type, 'permanent'=>permanent, 'motd'=>motd, 'allow_guests'=>allow_guests, 'conference_mode'=>conference_mode, 'blacklist_policy'=>blacklist_policy}
+params.delete('blacklist_policy') if blacklist_policy==nil
 safe {@@core.edit_channel(id, params) if @@core!=nil && id.is_a?(Integer)}
 delay(1)
 end
@@ -896,6 +898,7 @@ def self.waiting_channel_id
       ch.followed=(cha['followed']==true)
       ch.join_url=cha['join_url']
       ch.conference_mode = cha['conference_mode']||0
+      ch.blacklist_policy = [0, 1, 2].include?(cha['blacklist_policy']) ? cha['blacklist_policy'] : 1
       ch.followers_count=cha['followers_count']||0
       ch.stream_bitrate=cha['stream_bitrate'].to_i
       ch.stream_framesize=cha['stream_framesize'].to_f
@@ -1014,6 +1017,7 @@ end
       ch.allow_guests = params['allow_guests']      
       ch.join_url=params['join_url']
       ch.conference_mode = params['conference_mode']||0
+      ch.blacklist_policy = [0, 1, 2].include?(params['blacklist_policy']) ? params['blacklist_policy'] : 1
       ch.followers_count=params['followers_count']||0
       ch.stream_framesize=(params['stream_framesize']||100).to_f
             ch.stream_bitrate=(params['stream_bitrate']||0).to_i
