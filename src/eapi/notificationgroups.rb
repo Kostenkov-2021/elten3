@@ -252,18 +252,14 @@ module NotificationGroups
       else
         ["message", message_participant(payload)].join(":")
       end
-    when "followedthread", "followedforum", "followedforumpost", "mention"
+    when "followedthread", "followedforum", "followedforumpost"
       ["forum", payload["threadid"].to_i].join(":")
-    when "followedblog", "blogcomment", "followedblogpost", "blogmention"
+    when "followedblog", "blogcomment", "followedblogpost"
       ["blog", payload["blog"], payload["postid"].to_i].join(":")
     when "blogfollower"
       ["blog", payload["blog"]].join(":")
-    when "birthday"
-      [cat, payload["user"], payload["date"]].join(":")
     when "friend", "mtr"
       [cat, payload["user"]].join(":")
-    when "groupinvitation"
-      [cat, payload["groupid"].to_i].join(":")
     else
       [cat, notification.id.to_i].join(":")
     end
