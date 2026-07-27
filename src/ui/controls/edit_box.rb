@@ -21,8 +21,9 @@ module EltenAPI
     attr_accessor :max_length
     attr_accessor :header
     attr_accessor :audiostream
+    attr_accessor :detect_text_links
     attr_reader :permitted_characters, :denied_characters
-        def initialize(header="", type: 0, text: "", quiet: true, init: false, silent: false, max_length: -1)
+        def initialize(header="", type: 0, text: "", quiet: true, init: false, silent: false, max_length: -1, detect_text_links: true)
       if type.is_a?(String)
         Log.warning("Text flags are no longer supported: "+Kernel.caller.join(" "))
         end
@@ -31,6 +32,7 @@ module EltenAPI
 @flags=type if type.is_a?(Integer)
 @silent=silent
 @max_length=max_length
+@detect_text_links=detect_text_links
       @index=@check=0
         set_text(text)
                 @origtext=text
@@ -1234,11 +1236,7 @@ def set_text(text,reset=true)
     elsif (@flags&Flags::HTML)!=0
       html_proceed
     else
-          @text.indices(/http(s?)\:\/\/([^\"\<\>\: \n]+)/).each {|ind|
-            tail=text_range(ind,text_len-1)
-            len=tail.index(/[ \n]/)||text_len-ind
-            @elements.push(Element.new(ind,ind+len-1,Element::Link,[0,text_range_exclusive(ind,ind+len)]))
-          } if (@flags&Flags::ReadOnly)>0
+      append_text_links if (@flags&Flags::ReadOnly)>0 && @detect_text_links
     end
     @text_length=@text.length
     @index=0 if reset==true
@@ -1302,6 +1300,22 @@ def html_proceed
   output=+""
   fragment.children.each { |node| html_append_node(node, output) }
   @text=output.gsub("\u00a0", " ")
+  append_text_links if (@flags&Flags::ReadOnly)>0 && @detect_text_links
+end
+
+def append_text_links
+  offset=0
+  while (match=@text.match(/http(s?)\:\/\/([^\"\<\>\: \n]+)/, offset))!=nil
+    ind=match.begin(0)
+    tail=text_range(ind,text_len-1)
+    len=tail.index(/[ \n]/)||text_len-ind
+    last=ind+len-1
+    covered=@elements.any? do |element|
+      (element.type==Element::Link || element.type==Element::Frame) && element.from<=last && element.to>=ind
+    end
+    @elements.push(Element.new(ind,last,Element::Link,[0,text_range_exclusive(ind,ind+len)])) if !covered
+    offset=match.end(0)
+  end
 end
 
 def html_append_node(node, output)
