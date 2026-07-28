@@ -346,57 +346,34 @@ module EltenSystemHelpers
     end
 
     def installer_extension
-      "tar.zst"
+      "run"
     end
 
     def installer_filename
-      "elten.tar.zst"
+      "elten.run"
     end
 
     def installer_path(data_dir)
       EltenPath.join(data_dir, installer_filename)
     end
 
-    # The Linux release is a tarball laid out against the filesystem root:
-    # opt/elten/** plus usr/share/applications/elten.desktop. Installation is
-    # `tar -C / -xf elten.tar.zst` as root; the update command below runs
-    # detached after the app exits. A root-owned installation goes through
-    # pkexec and refreshes both the application and the global menu entry; a
-    # user-writable root only replaces the application files.
+    # The downloaded file is the same self-extracting installer distributed to
+    # users. It selects the current architecture, verifies its embedded payload
+    # and handles privilege elevation, so updates and fresh installs exercise
+    # exactly the same path.
     def update_install_command(installer, silent: true)
-      # The package (EltenPkg) is a filesystem-root archive: opt/elten/... plus
-      # usr/share/applications/elten.desktop. Updating must mirror installing it,
-      # i.e. `tar -C / -xf`, so opt/elten merges into the existing /opt/elten and
-      # usr/share/applications into /usr/share - keeping user data and other
-      # programs' .desktop files. The canonical location is fixed at /opt/elten
-      # (hardcoded in elten.desktop), so the target is / rather than ELTEN_ROOT;
-      # the previous --strip-components=2 -C "$root" only worked when root was
-      # exactly /opt/elten and otherwise dropped files into the wrong place (a
-      # root of / put the executable straight into /).
-      #
-      # Replacing the running binary and loaded .so files is safe on Linux: tar
-      # unlinks the old inodes and creates new files, and the running process
-      # keeps the old ones mapped until it re-execs the new /opt/elten/elten.
-      #
-      # One pkexec, so the user is asked for a password once per update, not per
-      # file; update-desktop-database rides inside it because it writes to
-      # /usr/share/applications too. Removing the password prompt entirely is a
-      # packaging decision (per-user install, a polkit policy, or a distro
-      # package), not something the updater can do on its own.
       script = <<~'SH'
         sleep 2
-        tarball="$1"
-        if [ -w /opt/elten ] && [ -w /usr/share/applications ]; then
-          tar -xf "$tarball" -C / opt usr || exit 1
-          update-desktop-database /usr/share/applications 2>/dev/null
-        elif command -v pkexec >/dev/null 2>&1; then
-          pkexec sh -c 'tar -xf "$1" -C / opt usr && update-desktop-database /usr/share/applications 2>/dev/null; true' elten-update "$tarball" || exit 1
+        installer="$1"
+        chmod 0700 "$installer" || exit 1
+        if [ "$2" = "1" ]; then
+          "$installer" --silent || exit 1
         else
-          exit 1
+          "$installer" || exit 1
         fi
         [ -x /opt/elten/elten ] && exec /opt/elten/elten
       SH
-      ["/bin/sh", "-c", script, "elten-update", installer.to_s]
+      ["/bin/sh", "-c", script, "elten-update", installer.to_s, silent ? "1" : "0"]
     end
 
     private

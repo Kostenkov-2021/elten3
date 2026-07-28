@@ -374,7 +374,14 @@ elseif(UNIX AND NOT APPLE)
   # Match each family explicitly instead of treating everything unrecognised as
   # 64-bit: on i686 the old else() branch claimed x64, so the build silently
   # looked for bin/linux-x64 and produced a package that could not run.
-  if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64|arm64|ARM64)$")
+  set(ELTEN_LINUX_ARCH "" CACHE STRING "Linux release architecture override: arm64, x64 or x86")
+  set_property(CACHE ELTEN_LINUX_ARCH PROPERTY STRINGS "" arm64 x64 x86)
+  if(ELTEN_LINUX_ARCH)
+    if(NOT ELTEN_LINUX_ARCH MATCHES "^(arm64|x64|x86)$")
+      message(FATAL_ERROR "Unsupported ELTEN_LINUX_ARCH '${ELTEN_LINUX_ARCH}'")
+    endif()
+    set(ELTEN_LAUNCHER_ARCH "${ELTEN_LINUX_ARCH}")
+  elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64|arm64|ARM64)$")
     set(ELTEN_LAUNCHER_ARCH "arm64")
   elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^(i[3-6]86|x86|IA32)$")
     set(ELTEN_LAUNCHER_ARCH "x86")
@@ -384,7 +391,7 @@ elseif(UNIX AND NOT APPLE)
     message(WARNING "Unrecognised CMAKE_SYSTEM_PROCESSOR '${CMAKE_SYSTEM_PROCESSOR}'; assuming x64")
     set(ELTEN_LAUNCHER_ARCH "x64")
   endif()
-  set(ELTEN_LAUNCHER_OUTPUT_NAME "elten")
+  set(ELTEN_LAUNCHER_OUTPUT_NAME "elten-${ELTEN_LAUNCHER_ARCH}")
   set(ELTEN_RUNTIME_ARCH_DIR "linux-${ELTEN_LAUNCHER_ARCH}")
   elten_configure_ruby_runtime(PLATFORM linux ARCH "${ELTEN_LAUNCHER_ARCH}")
   set(ELTEN_PACKAGE_ROOT "${ELTEN_RELEASE_BASE}/linux")
@@ -432,7 +439,8 @@ elseif(UNIX AND NOT APPLE)
 
   add_custom_command(
     OUTPUT "${ELTEN_EMBEDDED_CPP}" "${ELTEN_STAMP_PAYLOAD_FILE}"
-    COMMAND "${CMAKE_COMMAND}" -E rm -rf "${ELTEN_PACKAGE_ROOT}"
+    COMMAND "${CMAKE_COMMAND}" -E rm -rf "${ELTEN_RUNTIME_DIR}"
+    COMMAND "${CMAKE_COMMAND}" -E rm -f "${ELTEN_PACKAGE_ROOT}/${ELTEN_LAUNCHER_OUTPUT_NAME}"
     COMMAND "${CMAKE_COMMAND}" -E make_directory "${ELTEN_GENERATED_DIR}" "${ELTEN_PACKAGE_ROOT}" "${ELTEN_RUNTIME_DIR}"
     # Two passes, following the macOS shape, because the generator's stale-native
     # -extension sweep deletes any .so in the runtime dir it did not place - and
@@ -548,22 +556,22 @@ elseif(UNIX AND NOT APPLE)
   add_dependencies(EltenLauncher EltenRubyRuntime)
 
   add_custom_target(EltenApp
-    COMMAND "${CMAKE_COMMAND}" -E echo "Linux release assembled in ${ELTEN_PACKAGE_ROOT}"
+    COMMAND "${CMAKE_COMMAND}" -E rm -f "${ELTEN_PACKAGE_ROOT}/elten"
+    COMMAND "${CMAKE_COMMAND}" -E echo "Linux platform release assembled in ${ELTEN_PACKAGE_ROOT}"
     DEPENDS EltenLauncher "${ELTEN_EMBEDDED_CPP}"
     COMMENT "Assembling build/release/linux"
     VERBATIM
   )
 
-  # Filesystem-root layout: `tar -C / -xf` installs /opt/elten and the global
-  # menu entry in one step; the in-app updater extracts the same archive.
+  # Packaging is deliberately multiarch. Platform builds stop at EltenApp;
+  # once all three release trees have been merged, this target creates one .run.
   add_custom_target(EltenPkg
-    COMMAND "${CMAKE_COMMAND}" -E rm -rf "${ELTEN_DIST_LINUX_DIR}/stage"
-    COMMAND "${CMAKE_COMMAND}" -E make_directory "${ELTEN_DIST_LINUX_DIR}/stage/opt" "${ELTEN_DIST_LINUX_DIR}/stage/usr/share/applications"
-    COMMAND "${CMAKE_COMMAND}" -E copy_directory "${ELTEN_PACKAGE_ROOT}" "${ELTEN_DIST_LINUX_DIR}/stage/opt/elten"
-    COMMAND "${CMAKE_COMMAND}" -E copy "${CMAKE_SOURCE_DIR}/tools/elten.desktop" "${ELTEN_DIST_LINUX_DIR}/stage/usr/share/applications/elten.desktop"
-    COMMAND "${CMAKE_COMMAND}" -E chdir "${ELTEN_DIST_LINUX_DIR}/stage" "${CMAKE_COMMAND}" -E tar cf "${ELTEN_DIST_LINUX_DIR}/elten-linux-${ELTEN_LAUNCHER_ARCH}.tar.zst" --zstd opt usr
+    COMMAND "/bin/sh" "${CMAKE_SOURCE_DIR}/tools/build-linux.sh"
+            --pkg
+            --release-dir "${ELTEN_PACKAGE_ROOT}"
+            --dist-dir "${ELTEN_DIST_LINUX_DIR}"
     DEPENDS EltenApp
-    COMMENT "Creating dist/linux/elten-linux-${ELTEN_LAUNCHER_ARCH}.tar.zst"
+    COMMENT "Creating dist/linux/elten-linux.run"
     VERBATIM
   )
 else()
