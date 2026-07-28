@@ -691,7 +691,8 @@ class Scene_Calendar_Management
     action ||= selector(
       [p_("Calendar", "Accept invitation"), p_("Calendar", "Reject invitation"), _("Cancel")],
       header: calendar_label(invitation.calendar),
-      cancel_index: 2
+      cancel_index: 2,
+      flags: ListBox::Flags::LeftRight
     )
     if action == 0
       EltenLink::Calendars.accept_share(elten_link, invitation.calendar)
