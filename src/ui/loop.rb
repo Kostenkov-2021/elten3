@@ -160,7 +160,7 @@ end
        if loop_update_due?(:clock, PERIODIC_SLOW_SECONDS, loop_now)
          if (clock_event = Clock.update) != nil
            play_sound("clock") if clock_event[0]
-           speak(clock_event[1]) if clock_event[1] != nil
+           speak(clock_event[1], stop: false, break_sequence: false) if clock_event[1] != nil
          end
        end
        EltenAPI::Conference.tick
