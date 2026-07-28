@@ -1,3 +1,5 @@
+cmake_minimum_required(VERSION 3.24)
+
 # Copies the shared libraries that the packaged Ruby runtime pulls in from the
 # build host into the runtime directory, so the release does not depend on the
 # target machine happening to have compatible versions.
