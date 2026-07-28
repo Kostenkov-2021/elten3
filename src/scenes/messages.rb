@@ -589,10 +589,13 @@ end
             sender << attachment_message_command if m.attachments.size>0
             selt.push(sender)
             states[selt.size-1]=message_item_statuses(m)
-            audio_urls[selt.size-1]=message_list_audio_url(m)
-            text=message_list_content(m)
-            subject=utf8(m.subject)
-            selt[-1]+=":\r\n"+((sp!=nil and sp!="new")?(subject+":\r\n"):"")+text.split("")[0...5000].join+((text.size>5000)?"... #{p_("Messages", "Open this message to read more")}":"")+"\r\n"+format_date(m.date)+"\r\n"
+            audio_url=message_list_audio_url(m)
+            audio_urls[selt.size-1]=audio_url
+            if audio_url==""
+              text=message_list_content(m)
+              subject=utf8(m.subject)
+              selt[-1]+=":\r\n"+((sp!=nil and sp!="new")?(subject+":\r\n"):"")+text.split("")[0...5000].join+((text.size>5000)?"... #{p_("Messages", "Open this message to read more")}":"")+"\r\n"+format_date(m.date)+"\r\n"
+            end
             end
     end
     selt.push(p_("Messages", "Show older")) if @messages_more and !complete
