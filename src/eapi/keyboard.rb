@@ -175,7 +175,7 @@ module EltenAPI
     DEFAULT_REPEAT_INTERVAL = 1.0 / 30.0
 
     class << self
-      def update(raw_state:, events: [], synthetic_keys: [], active: true, now: nil, pressed_implies_held: true)
+      def update(raw_state:, events: [], synthetic_keys: [], active: true, now: nil, pressed_implies_held: true, synthesize_repeats: true)
         initialize_state
         return reset_result if active != true
 
@@ -239,7 +239,7 @@ module EltenAPI
             first_pressed[key] = true
             @next_repeat[key] = now + @repeat_delay
           elsif is_down && repeatable_key?(key)
-            if event_repeated[key] || now >= @next_repeat[key].to_f
+            if event_repeated[key] || (synthesize_repeats && now >= @next_repeat[key].to_f)
               repeated[key] = true
               @next_repeat[key] = next_repeat_time(now, @next_repeat[key].to_f)
             end

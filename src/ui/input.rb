@@ -417,7 +417,7 @@ if $setkeys.is_a?(Array)
     return
   end
   pressed_implies_held = EltenWindow.keyboard_pressed_implies_held?
-  EltenAPI::KeyboardState.update(raw_state: raw_state, events: events, synthetic_keys: tokeys, pressed_implies_held: pressed_implies_held)
+  EltenAPI::KeyboardState.update(raw_state: raw_state, events: events, synthetic_keys: tokeys, pressed_implies_held: pressed_implies_held, synthesize_repeats: !keyboard_flags_driven)
         end
 
         def keyboard_events_from_flags(flags)
