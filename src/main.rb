@@ -66,11 +66,15 @@ $toscene = false
               $exit = true
   if $exitupdate==true
     installer=platform_installer_path
-    if $exitupdate_donotsilent!=true
-    File.binwrite(EltenPath.join(Dirs.eltendata, "update.last"),Zlib::Deflate.deflate(Elten.version.to_s))
-    $exit_runproc=platform_update_install_command(installer, silent: true)
-  else
-    $exit_runproc=platform_update_install_command(installer, silent: false)
+    if !installer_sha256_valid?(installer, $update_installer_sha256)
+      Log.error("Installer hash verification failed immediately before execution")
+      $exitupdate=false
+      $exit_runproc=nil
+    elsif $exitupdate_donotsilent!=true
+      File.binwrite(EltenPath.join(Dirs.eltendata, "update.last"),Zlib::Deflate.deflate(Elten.version.to_s))
+      $exit_runproc=platform_update_install_command(installer, silent: true)
+    else
+      $exit_runproc=platform_update_install_command(installer, silent: false)
     end
   end
   end
