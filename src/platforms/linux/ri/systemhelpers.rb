@@ -87,9 +87,7 @@ module EltenSystemHelpers
     end
 
     def appdata_dir
-      base = ENV["XDG_DATA_HOME"].to_s
-      base = File.join(home_dir, ".local", "share") if base == ""
-      base
+      xdg_dir("XDG_DATA_HOME", ".local", "share")
     end
 
     def user_dir
@@ -159,7 +157,12 @@ module EltenSystemHelpers
 
     def platform_target
       cpu = RbConfig::CONFIG["host_cpu"].to_s.downcase
-      arch = cpu =~ /arm|aarch64/ ? "arm64" : "x64"
+      arch = case cpu
+             when /aarch64|arm64/ then "arm64"
+             when /i[3-6]86/ then "x86"
+             when /arm/ then "armhf"
+             else "x64"
+             end
       "linux-#{arch}"
     rescue Exception
       "linux-x64"
@@ -194,7 +197,7 @@ module EltenSystemHelpers
         if variant.to_s.downcase.start_with?("bin/")
           suffix = variant[4..-1]
           lower = suffix.downcase
-          if lower.start_with?("linux-x64/", "linux-arm64/", "osx/", "windows-x64/", "windows-x86/", "windows-arm64/")
+          if lower.start_with?("linux-x64/", "linux-x86/", "linux-arm64/", "linux-armhf/", "osx/", "windows-x64/", "windows-x86/", "windows-arm64/")
             candidates << File.expand_path(variant, root)
           else
             candidates << File.join(arch_bin, suffix)
@@ -417,9 +420,19 @@ module EltenSystemHelpers
       "."
     end
 
+    # Per the XDG spec an unset variable, an empty one and a relative path all
+    # mean "use the default" - the last one because a relative base directory
+    # would resolve against whatever the current directory happens to be.
+    def xdg_dir(variable, *default_parts)
+      value = ENV[variable].to_s
+      return value if value.start_with?("/")
+      File.join(home_dir, *default_parts)
+    rescue Exception
+      File.join(home_dir, *default_parts)
+    end
+
     def xdg_user_dir(name)
-      config = ENV["XDG_CONFIG_HOME"].to_s
-      config = File.join(home_dir, ".config") if config == ""
+      config = xdg_dir("XDG_CONFIG_HOME", ".config")
       file = File.join(config, "user-dirs.dirs")
       return nil unless File.file?(file)
       line = File.foreach(file).find { |entry| entry =~ /\AXDG_#{name}_DIR=/ }
