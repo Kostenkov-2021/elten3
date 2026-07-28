@@ -45,6 +45,7 @@ $toscene = false
           if $scene != nil and $exit!=true
         $notifications_callback = nil
         Log.debug("Loading scene: #{$scene.class.to_s}")
+        EltenAPI::KeyboardState.clear_current_frame if defined?(EltenAPI::KeyboardState)
                               $scene.main
   else
     break
