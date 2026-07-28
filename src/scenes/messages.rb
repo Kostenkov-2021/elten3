@@ -977,6 +977,7 @@ def audiolimit
 @polls=[]
                                  loop do                     
              loop_update
+             @form.fields[3].start_recording if main_shortcut_pressed?("r", shift: true)
              notempt = (@form.fields[2].is_a?(EditBox) && @form.fields[2].text!="") || (@form.fields[3].is_a?(OpusRecordButton) && !@form.fields[3].empty?)
              notempt=true if @form.fields[2]==nil and @form.fields[3]==nil
                           if @form.fields[4]==nil && notempt

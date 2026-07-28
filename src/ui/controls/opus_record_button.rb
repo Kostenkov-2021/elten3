@@ -407,6 +407,11 @@ form.resume
         @form.index=0
         @form.wait
       end
+      def start_recording
+        @btn_record.press
+        @form.index = @recorder == nil ? @btn_record : @btn_pause
+        @form.wait
+      end
       def empty?
         @status==0
       end
