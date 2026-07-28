@@ -433,8 +433,7 @@ module NotificationGroups
   end
 
   def message_subject(payload)
-    subject = payload["subject"].to_s.delete("\r\n").gsub(/re: /i, "")
-    subject.empty? ? nil : subject
+    payload["subject"].to_s.delete("\r\n").gsub(/re: /i, "")
   end
 
   def normalized_subject(payload)
