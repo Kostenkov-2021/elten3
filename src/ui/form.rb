@@ -296,6 +296,10 @@ if @fields[@index]!=nil && @accept_button!=nil && !@fields[@index].is_a?(Button)
   end
   @timers.each{|timer|timer.update}
 end
+def shortcut_pressed?(key, shift: false, first: false)
+  return false unless $activecontrols.is_a?(Array) && $activecontrols.include?(self)
+  main_shortcut_pressed?(key, shift: shift, first: first)
+end
 def add_timer(timer, start=true)
   @timers.push(timer) if timer.is_a?(FormTimer)
 end
