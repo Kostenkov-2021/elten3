@@ -101,9 +101,31 @@ def import(arr)
   def attachment_message_command
     EltenAPI::SpeechCommands::SoundCommand.new("listbox_itemattachment", " ("+p_("EAPI_Speech", "Attachment")+") ", "⣏⣹", immediate: true)
   end
+  def audio_message?(message)
+    message != nil && message.audio_url.to_s != ""
+  end
+  def audio_message_status
+    ListBox.item_status("file_audio", p_("Messages", "Audio message")+":", p_("Messages", "Audio message"))
+  end
+  def message_list_content(message)
+    return EltenLink.legacy_line_to_text(utf8(message.text)) unless audio_message?(message)
+    transcription = message.transcription.to_s.strip
+    return transcription if Configuration.autoplay == :without_transcription && transcription != ""
+    ""
+  end
+  def message_list_audio_url(message)
+    return "" unless audio_message?(message)
+    return message.audio_url.to_s if Configuration.autoplay == :always
+    return message.audio_url.to_s if Configuration.autoplay == :without_transcription && message.transcription.to_s.strip == ""
+    ""
+  end
+  def message_display_text(message, date)
+    [message.text, message.transcription, date].map(&:to_s).reject { |part| part.strip == "" }.join("\r\n")
+  end
   def message_item_statuses(message)
     states=[]
     states << unread_message_status if message.mread==0
+    states << audio_message_status if audio_message?(message)
     states
   end
   def name_conversation(conv)
@@ -567,9 +589,8 @@ end
             sender << attachment_message_command if m.attachments.size>0
             selt.push(sender)
             states[selt.size-1]=message_item_statuses(m)
-            audio_urls[selt.size-1]=m.audio_url.to_s if m.respond_to?(:audio_url) && m.audio_url.to_s!=""
-            text=EltenLink.legacy_line_to_text(utf8(m.text))
-            text=p_("EAPI_Form", "Media") if text.delete(" \r\n")=="" && m.respond_to?(:audio_url) && m.audio_url.to_s!=""
+            audio_urls[selt.size-1]=message_list_audio_url(m)
+            text=message_list_content(m)
             subject=utf8(m.subject)
             selt[-1]+=":\r\n"+((sp!=nil and sp!="new")?(subject+":\r\n"):"")+text.split("")[0...5000].join+((text.size>5000)?"... #{p_("Messages", "Open this message to read more")}":"")+"\r\n"+format_date(m.date)+"\r\n"
             end
@@ -798,10 +819,12 @@ end
          message.mread = 1 if message.receiver==Session.name
          date=format_date(message.date)
          @sel_messages.close_item_audio(@sel_messages.index) if @sel_messages.respond_to?(:close_item_audio)
+         type=EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly
+         type|=EditBox::Flags::Transcripted if message.transcription.to_s.strip!=""
          if message.receiver!=Session.name
-                                        message_field=EditBox.new(message.subject + " #{p_("Messages", "From")}: " + message.sender,type: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly,text: message.text+"\r\n"+date)
+                                        message_field=EditBox.new(message.subject + " #{p_("Messages", "From")}: " + message.sender,type: type,text: message_display_text(message, date))
                                       else
-                                        message_field=EditBox.new(message.subject + " #{p_("Messages", "To")}: " + message.receiver,type: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly,text: message.text+"\r\n"+date)
+                                        message_field=EditBox.new(message.subject + " #{p_("Messages", "To")}: " + message.receiver,type: type,text: message_display_text(message, date))
                                         end
                                         message_field.audio_url=message.audio_url if message.respond_to?(:audio_url) && message.audio_url.to_s!=""
                                         @form_messages.fields[0]=message_field
