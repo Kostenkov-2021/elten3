@@ -45,6 +45,7 @@ class OpusOggWriter
     head += [0].pack("C")
     add_packet(head, true, false)
     add_packet(opus_tags(tags), false, false, false)
+    flush_headers
   end
 
   def opus_tags(tags)
@@ -70,17 +71,29 @@ class OpusOggWriter
     text.to_s.encode("UTF-8", invalid: :replace, undef: :replace).b
   end
 
+  def flush_headers
+    return if @lastpacket == nil
+    OggNative.stream_packetin.call(@ogg, @lastpacket)
+    @lastpacket = nil
+    @lastpacket_data = nil
+    @lastpacket_data_pointer = nil
+    write_pages(true)
+  end
+
+  def write_pages(flush = false)
+    page = OggNative.page_buffer
+    function = flush ? OggNative.stream_flush : OggNative.stream_pageout
+    while function.call(@ogg, page) != 0
+      values = OggNative.page_values(page)
+      @output.write(OggNative.page_part(values[0], values[1], 282))
+      @output.write(OggNative.page_part(values[2], values[3], 65_025))
+    end
+  end
+
   def add_packet(data, b_o_s = false, e_o_s = false, writepages = true)
     if @lastpacket != nil
       OggNative.stream_packetin.call(@ogg, @lastpacket)
-      if writepages
-        page = OggNative.page_buffer
-        while OggNative.stream_pageout.call(@ogg, page) != 0
-          values = OggNative.page_values(page)
-          @output.write(OggNative.page_part(values[0], values[1], 282))
-          @output.write(OggNative.page_part(values[2], values[3], 65_025))
-        end
-      end
+      write_pages if writepages
     end
     if data != nil
       @packetno += 1

@@ -214,11 +214,13 @@ end
       $ogg_stream_init=Fiddle::Function.new(ogg["ogg_stream_init"], [Fiddle::TYPE_VOIDP, Fiddle::TYPE_INT], Fiddle::TYPE_INT)
       $ogg_stream_packetin=Fiddle::Function.new(ogg["ogg_stream_packetin"], [Fiddle::TYPE_VOIDP, Fiddle::TYPE_VOIDP], Fiddle::TYPE_INT)
       $ogg_stream_pageout=Fiddle::Function.new(ogg["ogg_stream_pageout"], [Fiddle::TYPE_VOIDP, Fiddle::TYPE_VOIDP], Fiddle::TYPE_INT)
+      $ogg_stream_flush=Fiddle::Function.new(ogg["ogg_stream_flush"], [Fiddle::TYPE_VOIDP, Fiddle::TYPE_VOIDP], Fiddle::TYPE_INT)
       $ogg_stream_clear=Fiddle::Function.new(ogg["ogg_stream_clear"], [Fiddle::TYPE_VOIDP], Fiddle::TYPE_INT)
     rescue Exception
       $ogg_stream_init=EltenRubyFunction.new { |_stream, _serial| 0 }
       $ogg_stream_packetin=EltenRubyFunction.new { |_stream, _packet| 0 }
       $ogg_stream_pageout=EltenRubyFunction.new { |_stream, _page| 0 }
+      $ogg_stream_flush=EltenRubyFunction.new { |_stream, _page| 0 }
       $ogg_stream_clear=EltenRubyFunction.new { |_stream| 0 }
     end
   end

@@ -28,6 +28,15 @@ def ogg_page_values(buffer)
   end
 end
 
+def ogg_flush_pages(stream, output)
+  page=ogg_page_buffer
+  while $ogg_stream_flush.call(stream, page) != 0
+    values=ogg_page_values(page)
+    output.write(EltenNativeStructs.pointer_bytes(values[0], values[1]))
+    output.write(EltenNativeStructs.pointer_bytes(values[2], values[3]))
+  end
+end
+
 def ogg_packet(data, bytes, b_o_s, e_o_s, granulepos, packetno)
   buffer = "\0" * (EltenNativeStructs::POINTER_SIZE == 8 ? 40 : 32)
   if EltenNativeStructs::POINTER_SIZE == 8
@@ -222,7 +231,14 @@ encinfo="ENCODER=ELTEN"
 tags+=[encinfo.bytesize].pack("I")
 tags+=encinfo
 ogg_addpacket(tags, false, false, false)
+ogg_flush_headers
 }
+end
+def ogg_flush_headers
+return if @ogg_lastpacket==nil
+$ogg_stream_packetin.call(@ogg, @ogg_lastpacket)
+@ogg_lastpacket=@ogg_lastpacket_data=nil
+EltenAPI::Conference::Core.ogg_flush_pages(@ogg, @ogg_file)
 end
 def ogg_addpacket(data, b_o_s=false, e_o_s=false, writepages=true)
 if @ogg_lastpacket!=nil
@@ -668,7 +684,14 @@ encinfo="ENCODER=ELTEN"
 tags+=[encinfo.bytesize].pack("I")
 tags+=encinfo
 ogg_addpacket(tags, false, false, false)
+ogg_flush_headers
 }
+end
+def ogg_flush_headers
+return if @ogg_lastpacket==nil
+$ogg_stream_packetin.call(@ogg, @ogg_lastpacket)
+@ogg_lastpacket=@ogg_lastpacket_data=nil
+EltenAPI::Conference::Core.ogg_flush_pages(@ogg, @ogg_file)
 end
 def ogg_addpacket(data, b_o_s=false, e_o_s=false, writepages=true)
 if @ogg_lastpacket!=nil
