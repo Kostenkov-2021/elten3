@@ -608,6 +608,8 @@ return result
            forumsmain(g.id) if g.role == 1 or g.role == 2 or g.public
          end
          @grpsel.rows[@grpsel.index][-1]=(g.posts-g.readposts).to_s
+      else
+        alert(p_("Forum", "You cannot access this group."))
       end
     end
   end
