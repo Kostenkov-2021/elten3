@@ -258,13 +258,25 @@ Bass::BASS_ChannelSetAttribute.call(stream, 2, volume.to_f/100.0)
       shift_required = requirements.delete(:shift) != nil
       key_pressed = first ? raw_key_first_pressed?(key) : raw_key_pressed?(key)
       return false unless key_pressed
+      key_code = EltenAPI::KeyboardScheme.key_code(key)
+      key_code, = keyboard_code(key) if key_code == nil
 
       required_modifiers = requirements.map(&:to_sym).sort
-      active_modifiers = [:control, :option, :command].select { |modifier| keyboard_modifier_state?(modifier, :held) }.sort
+      active_modifiers = [:control, :option, :command].select { |modifier| keyboard_modifier_held_when_pressed?(key_code, modifier) }.sort
       return false unless active_modifiers == required_modifiers
       return true if shift_optional
 
-      raw_key_held?(:key_shift) == shift_required
+      keyboard_modifier_held_when_pressed?(key_code, :shift) == shift_required
+    end
+
+    def keyboard_modifier_held_when_pressed?(key, modifier)
+      press_state = EltenAPI::KeyboardState.state_when_pressed(key)
+      return keyboard_modifier_state?(modifier, :held) if press_state == nil
+
+      modifier_keys(modifier).any? do |modifier_key|
+        code = EltenAPI::KeyboardScheme.key_code(modifier_key)
+        code != nil && press_state[code] == true
+      end
     end
 
     def keyboard_modifier_state?(modifier, state)

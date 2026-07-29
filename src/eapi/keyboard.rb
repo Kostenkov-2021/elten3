@@ -168,7 +168,7 @@ module EltenAPI
   end
 
   module KeyboardState
-    Result = Struct.new(:pressed, :held, :released, :first_pressed, :repeated, :state, keyword_init: true)
+    Result = Struct.new(:pressed, :held, :released, :first_pressed, :repeated, :state, :press_states, keyword_init: true)
 
     MODIFIER_KEYS = [:shift, :control, :option, :caps_lock, :command_left, :command_right, :context_menu, :control_left, :control_right].map { |key| KeyboardScheme.key_code(key) }.freeze
     DEFAULT_REPEAT_DELAY = 0.45
@@ -186,18 +186,21 @@ module EltenAPI
         event_pressed = Array.new(256, false)
         event_released = Array.new(256, false)
         event_repeated = Array.new(256, false)
+        press_states = Array.new(256)
 
         Array(events).each do |event|
-          key, state = event
+          key, state, press_state = event
           key = key.to_i
           next if key < 0 || key > 255
           case state
           when true
             down[key] = true
             event_pressed[key] = true
+            press_states[key] = normalize_state(press_state) if press_state != nil
           when :repeat
             down[key] = true
             event_repeated[key] = true
+            press_states[key] = normalize_state(press_state) if press_state != nil
           when :held
             down[key] = true
           else
@@ -274,7 +277,8 @@ module EltenAPI
           released: released,
           first_pressed: first_pressed,
           repeated: repeated,
-          state: state_string(held)
+          state: state_string(held),
+          press_states: press_states
         )
       rescue Exception => e
         Log.error("Keyboard state update failed: #{e.class}: #{e.message}")
@@ -317,6 +321,12 @@ module EltenAPI
         false
       end
 
+      def state_when_pressed(key)
+        current.press_states[key.to_i & 0xff]
+      rescue Exception
+        nil
+      end
+
       def any_pressed?
         current.pressed.include?(true)
       rescue Exception
@@ -355,7 +365,8 @@ module EltenAPI
           released: empty.dup,
           first_pressed: empty.dup,
           repeated: empty.dup,
-          state: state_string(held)
+          state: state_string(held),
+          press_states: Array.new(256)
         )
         true
       end
@@ -396,7 +407,8 @@ module EltenAPI
           released: empty.dup,
           first_pressed: empty.dup,
           repeated: empty.dup,
-          state: "\0" * 256
+          state: "\0" * 256,
+          press_states: Array.new(256)
         )
       end
 

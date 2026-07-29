@@ -1146,9 +1146,10 @@ module EltenWindow
       return false if key <= 0 || key > 255
       down = message == WM_KEYDOWN || message == WM_SYSKEYDOWN
       event = down && repeated_key_message?(lparam) ? :repeat : down
+      press_state = capture_key_event_state if down
       window_state_monitor.synchronize do
         @key_event_queue ||= []
-        @key_event_queue << [key, event]
+        @key_event_queue << [key, event, press_state]
         @key_event_queue.shift while @key_event_queue.size > 256
       end
       false
@@ -1160,6 +1161,14 @@ module EltenWindow
       (lparam.to_i & (1 << 30)) != 0
     rescue Exception
       false
+    end
+
+    def capture_key_event_state
+      state = "\0" * 256
+      return nil if GET_KEYBOARD_STATE.call(state) == 0
+      state
+    rescue Exception
+      nil
     end
 
     def enqueue_character_message(message, wparam)
