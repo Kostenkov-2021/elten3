@@ -2794,9 +2794,13 @@ class Scene_Forum_Thread
 
   def main
     if @threadclass.is_a?(Integer)
-      Scene_Forum.getstruct['threads'].each{|t|
-      @threadclass=t if t.id==@threadclass
-      }
+      thread_id = @threadclass
+      @threadclass = Scene_Forum.getstruct['threads'].to_a.find { |thread| thread.id == thread_id }
+    end
+    if @threadclass == nil
+      alert(_("Error"))
+      $scene = @scene || Scene_Main.new
+      return
     end
     @thread=@threadclass.id
     if !Session.logged?
