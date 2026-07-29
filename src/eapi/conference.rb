@@ -26,7 +26,7 @@ class Channel
         @spatialization=0
         @lang=""
         @creator=nil
-        @width=@height=15
+        @width=@height=30
         @administrators=[]
         @key_len=256
         @groupid=0
@@ -736,7 +736,7 @@ end
 def self.whisper(userid)
   safe {@@core.whisper=userid if @@core!=nil}
   end
-def self.create(name="", public=true, bitrate=64, framesize=60, vbr_type=1, codec_application=0, prediction_disabled=false, fec=false, password=nil, spatialization=0, channels=2, lang='', width=15, height=15, key_len=256, waiting_type=0, permanent=false, motd="", allow_guests=false, conference_mode=0, blacklist_policy=1)
+def self.create(name="", public=true, bitrate=64, framesize=60, vbr_type=1, codec_application=0, prediction_disabled=false, fec=false, password=nil, spatialization=0, channels=2, lang='', width=30, height=30, key_len=256, waiting_type=0, permanent=false, motd="", allow_guests=false, conference_mode=0, blacklist_policy=1)
   if @@opened==false
   self.open
   delay(1)
