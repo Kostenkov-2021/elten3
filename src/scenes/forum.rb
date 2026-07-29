@@ -3112,12 +3112,13 @@ end
       input_text(p_("Forum", "Mention by %{user}")%{:user=>mention.author}, flags: EditBox::Flags::ReadOnly, text: mention.message, escapable: true)
       }
       m.option(p_("Forum", "Send reply to mentioner"), nil, "?") {
-      if requires_premiumpackage("courier")
-      to=mention.author
-      subj="RE: "+mention.message.to_s+" ("+@threadclass.name+")"
-      insert_scene(Scene_Messages_New.new(to, subj, "", Scene_Main.new))
-      end
+      reply_to_mention(mention)
       }
+      if ["mention", "message"].include?(LocalConfig["MentionReplyType", "", type: :string])
+      m.option(p_("Forum", "Reply to mention as...")) {
+      reply_to_mention(mention, true)
+      }
+      end
       }
       end
     if @form.index < @postscount * 3 and !@noteditable
@@ -3455,6 +3456,49 @@ end
         menu.option(_("Refresh"), nil, "r") {
       refresh
     }
+  end
+
+  def reply_to_mention(mention, select_type=false)
+    return if !requires_premiumpackage("courier")
+    to=mention.author
+    subj="RE: "+@threadclass.name
+    text="\r\n-- (#{to}):\r\n#{mention.message}\r\n--\r\n"
+    begin
+      users=EltenLink::Contacts.added_me(elten_link)
+    rescue EltenLink::Error
+      alert(_("Error"))
+      return
+    end
+    if !users.include?(to)
+      insert_scene(Scene_Messages_New.new(to, subj, text, Scene_Main.new))
+      return
+    end
+    reply_type=LocalConfig["MentionReplyType", "", type: :string]
+    if select_type || !["mention", "message"].include?(reply_type)
+      selection=selector([p_("Forum", "Mention"), p_("Forum", "Private message")], header: p_("Forum", "Reply to mention as..."), start_index: reply_type=="message" ? 1 : 0, cancel_index: -1)
+      return if selection==-1
+      reply_type=["mention", "message"][selection]
+      LocalConfig["MentionReplyType"]=reply_type
+    end
+    if reply_type=="message"
+      insert_scene(Scene_Messages_New.new(to, subj, text, Scene_Main.new))
+      return
+    end
+    message=input_text(p_("Forum", "Message: "), flags: 0, text: "", escapable: true)
+    if message!=nil && message!=""
+      begin
+        EltenLink::Forum.create_mention(elten_link, user: to, message: message, thread_id: mention.thread, post_id: mention.post)
+      rescue EltenLink::Error => e
+        log_forum_error(e)
+        if e.code.to_s=="forum.mention_not_allowed"
+          insert_scene(Scene_Messages_New.new(to, subj, message+text, Scene_Main.new))
+        else
+          alert(_("Error"))
+        end
+      else
+        alert(p_("Forum", "The mention has been sent."))
+      end
+    end
   end
 
   def moderation_mass_posts

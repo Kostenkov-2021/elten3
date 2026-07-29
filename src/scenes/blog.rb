@@ -742,10 +742,13 @@ def context(menu)
       input_text(p_("Blog", "Mention by %{user}")%{:user=>@post.mention.author}, flags: EditBox::Flags::ReadOnly, text: @post.mention.message, escapable: true)
       }
       m.option(p_("Blog", "Send reply to mentioner"), nil, "?") {
-      to=@post.mention.author
-      subj="RE: "+@post.mention.message.to_s+" ("+@post.name+")"
-      insert_scene(Scene_Messages_New.new(to, subj, "", Scene_Main.new))
+      reply_to_mention
       }
+      if ["mention", "message"].include?(LocalConfig["MentionReplyType", "", type: :string])
+      m.option(p_("Blog", "Reply to mention as...")) {
+      reply_to_mention(true)
+      }
+      end
       }
     end
     if @iseltenblog && Session.name!="guest"
@@ -805,6 +808,46 @@ def context(menu)
          main
          }
     }
+    end
+  end
+  def reply_to_mention(select_type=false)
+    to=@post.mention.author
+    subj="RE: "+@post.name
+    text="\r\n-- (#{to}):\r\n#{@post.mention.message}\r\n--\r\n"
+    begin
+      users=EltenLink::Contacts.added_me(elten_link)
+    rescue EltenLink::Error
+      alert(_("Error"))
+      return
+    end
+    if !users.include?(to)
+      insert_scene(Scene_Messages_New.new(to, subj, text, Scene_Main.new))
+      return
+    end
+    reply_type=LocalConfig["MentionReplyType", "", type: :string]
+    if select_type || !["mention", "message"].include?(reply_type)
+      selection=selector([p_("Blog", "Mention"), p_("Blog", "Private message")], header: p_("Blog", "Reply to mention as..."), start_index: reply_type=="message" ? 1 : 0, cancel_index: -1)
+      return if selection==-1
+      reply_type=["mention", "message"][selection]
+      LocalConfig["MentionReplyType"]=reply_type
+    end
+    if reply_type=="message"
+      insert_scene(Scene_Messages_New.new(to, subj, text, Scene_Main.new))
+      return
+    end
+    message=input_text(p_("Blog", "Message"), flags: 0, text: "", escapable: true)
+    if message!=nil && message!=""
+      begin
+        EltenLink::Blog.send_mention(elten_link, user: to, message: message, blog: @post.mention.blog, post_id: @post.mention.postid)
+      rescue EltenLink::Error => e
+        if e.code.to_s.end_with?(".mention_not_allowed")
+          insert_scene(Scene_Messages_New.new(to, subj, message+text, Scene_Main.new))
+        else
+          alert(_("Error"))
+        end
+      else
+        alert(p_("Blog", "The mention has been sent."))
+      end
     end
   end
   def mention
