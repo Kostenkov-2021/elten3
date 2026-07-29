@@ -592,9 +592,11 @@ eredo
     end
   }
   end
-  menu.option(p_("EAPI_Form", "Find"), nil, "f") {
+  if (@flags&Flags::MultiLine)>0
+    menu.option(p_("EAPI_Form", "Find"), nil, "f") {
 search
-  }
+    }
+  end
   menu.option(p_("EAPI_Form", "Quick translation"), nil, "t") {
   if requires_premiumpackage("scribe")
   espeech(translatetext(0,Configuration.language,get_check_or_all))
