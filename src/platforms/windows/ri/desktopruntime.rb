@@ -720,7 +720,7 @@ module EltenWindow
     end
 
     def keyboard_flags_driven?
-      true
+      false
     end
 
     def character_input_supported?
@@ -728,10 +728,14 @@ module EltenWindow
     end
 
     def keyboard_event_driven?
-      false
+      true
     end
 
     def keyboard_pressed_implies_held?
+      false
+    end
+
+    def keyboard_native_repeat_events?
       true
     end
 
@@ -756,6 +760,16 @@ module EltenWindow
         events = @key_event_queue
         @key_event_queue = []
         events
+      end
+    end
+
+    def consume_keyboard_snapshot
+      window_state_monitor.synchronize do
+        @keyboard_state ||= ("\0" * 256)
+        @key_event_queue ||= []
+        events = @key_event_queue
+        @key_event_queue = []
+        [@keyboard_state.dup, events]
       end
     end
 

@@ -388,6 +388,8 @@ Bass::BASS_ChannelSetAttribute.call(stream, 2, volume.to_f/100.0)
         EltenKeyboard.fill_flags(flags)
         events = keyboard_events_from_flags(flags)
         raw_state = EltenKeyboard.flags_state
+      elsif keyboard_event_driven && EltenWindow.respond_to?(:consume_keyboard_snapshot)
+        raw_state, events = EltenWindow.consume_keyboard_snapshot
       else
         events = EltenWindow.consume_key_events
         raw_state = if keyboard_event_driven
@@ -417,7 +419,8 @@ if $setkeys.is_a?(Array)
     return
   end
   pressed_implies_held = EltenWindow.keyboard_pressed_implies_held?
-  EltenAPI::KeyboardState.update(raw_state: raw_state, events: events, synthetic_keys: tokeys, pressed_implies_held: pressed_implies_held, synthesize_repeats: !keyboard_flags_driven)
+  native_repeat_events = EltenWindow.respond_to?(:keyboard_native_repeat_events?) && EltenWindow.keyboard_native_repeat_events?
+  EltenAPI::KeyboardState.update(raw_state: raw_state, events: events, synthetic_keys: tokeys, pressed_implies_held: pressed_implies_held, synthesize_repeats: !keyboard_flags_driven && !native_repeat_events)
         end
 
         def keyboard_events_from_flags(flags)
