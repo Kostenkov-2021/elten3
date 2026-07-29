@@ -41,8 +41,30 @@ module ForumSceneClient
   end
 end
 
+module ForumFeaturedThreads
+  def featured_thread_definitions
+    [
+      [:thread_introductions, p_("Forum", "Introductions")],
+      [:thread_hydepark, p_("Forum", "Off-topic discussion")],
+      [:thread_moderation, p_("Forum", "Moderation announcements")],
+      [:thread_welcome, p_("Forum", "Information for new members")]
+    ]
+  end
+
+  def featured_threads_for(group, threads)
+    featured_thread_definitions.filter_map do |field, label|
+      thread_id = group.public_send(field).to_i
+      thread = threads.to_a.find { |candidate| candidate.id == thread_id }
+      next if thread == nil || thread.forum&.group&.id != group.id
+
+      [field, label, thread]
+    end
+  end
+end
+
 class Scene_Forum
   include ForumSceneClient
+  include ForumFeaturedThreads
   SORT_DEFAULT = "default"
   SORT_NAME_ASCENDING = "name_ascending"
   SORT_NAME_DESCENDING = "name_descending"
@@ -619,12 +641,22 @@ return result
       groupopen(@grpsel.index, type)
     }
     if @grpsel.index >= @grpheadindex and @grpsel.index < @grpheadindex + @sgroups.size
+      g = @sgroups[@grpsel.index - @grpheadindex]
       menu.option(p_("Forum", "Show all threads"), nil, :shift_enter) {
       groupopen(@grpsel.index, type, true)
       }
+      featured_threads = featured_threads_for(g, @threads)
+      if featured_threads.any?
+        menu.submenu(p_("Forum", "Featured threads")) do |submenu|
+          featured_threads.each do |_field, label, thread|
+            submenu.option("#{label}: #{thread.name} (#{thread.forum.fullname})") do
+              $scene = Scene_Forum_Thread.new(thread)
+            end
+          end
+        end
+      end
       if holds_premiumpackage("courier")
         pinned=LocalConfig["ForumGroupsPinned", [], type: :array_of_numerics]
-        g = @sgroups[@grpsel.index - @grpheadindex]
           s=p_("Forum", "Pin this group")
           s=p_("Forum", "Unpin this group") if pinned.include?(g.id)
           menu.option(s, nil, "p") {
@@ -4006,7 +4038,11 @@ attr_accessor :blog
 attr_accessor :showpostreports
 attr_accessor :parent
 attr_accessor :applyglobalbans
-attr_accessor :hidden
+  attr_accessor :hidden
+  attr_accessor :thread_introductions
+  attr_accessor :thread_welcome
+  attr_accessor :thread_moderation
+  attr_accessor :thread_hydepark
 
   def initialize(id = 0)
     @id = id
@@ -4035,6 +4071,10 @@ attr_accessor :hidden
     @parent=0
   @applyglobalbans=false
   @hidden=false
+  @thread_introductions=0
+  @thread_welcome=0
+  @thread_moderation=0
+  @thread_hydepark=0
     end
 end
 
@@ -4183,6 +4223,7 @@ class Struct_Forum_Bookmark
     
     class Scene_Forum_GroupSettings
   include ForumSceneClient
+  include ForumFeaturedThreads
   def initialize(group, scene=nil)
     @group=group
     @settings=[]
@@ -4214,7 +4255,7 @@ end
 def save_category
   for i in 2...@settings[@category].size
     setting=@settings[@category][i]
-    next if setting==nil || setting[1]==:custom
+    next if setting==nil || [:custom, :featured_thread].include?(setting[1])
     index=i-1
     field=@form.fields[index]
     next if field==nil
@@ -4248,6 +4289,9 @@ for s in @settings[id][2..-1]
         field=Button.new(label)
         proc=key
         field.on(:press, 0, true, &proc)
+      when :featured_thread
+        field=Button.new(featured_thread_button_label(label, key))
+        field.on(:press) { select_featured_thread(label, key, field) }
     else
       index=currentconfig(key)
       index=mapping.find_index(index)||0 if mapping!=nil
@@ -4264,7 +4308,13 @@ def apply_settings
     v=@values[k]
     j[k]=v
   end
-  forum_attempt(nil) { EltenLink::Forum.update_group_settings(elten_link, group_id: @group.id, settings: j) }
+  saved = forum_attempt(nil) { EltenLink::Forum.update_group_settings(elten_link, group_id: @group.id, settings: j) }
+  if saved
+    featured_thread_definitions.each do |field, _label|
+      @group.public_send("#{field}=", currentconfig(field.to_s).to_i)
+    end
+  end
+  saved
   end
 def make_window
   @form=Form.new
@@ -4342,6 +4392,41 @@ def load_regulations
   setting_category(p_("Forum", "Regulations"))
   make_setting(p_("Forum", "Group regulations"), :longtext, "regulations")
 end
+def load_featured_threads
+  setting_category(p_("Forum", "Featured threads"))
+  featured_thread_definitions.each do |field, label|
+    key = field.to_s
+    setcurrentconfig(key, 0) if currentconfig(key).to_i != 0 && selected_featured_thread(key) == nil
+    make_setting(label, :featured_thread, key)
+  end
+end
+def group_featured_thread_options
+  @group_featured_thread_options ||= Scene_Forum.getstruct["threads"].to_a.select do |thread|
+    thread.forum&.group&.id == @group.id
+  end.sort_by { |thread| [thread.forum.fullname.to_s.downcase, thread.name.to_s.downcase] }
+end
+def selected_featured_thread(key)
+  thread_id = currentconfig(key).to_i
+  group_featured_thread_options.find { |thread| thread.id == thread_id }
+end
+def featured_thread_button_label(label, key)
+  thread = selected_featured_thread(key)
+  "#{label}: #{thread == nil ? p_("Forum", "Not selected") : thread.name}"
+end
+def select_featured_thread(label, key, button)
+  threads = group_featured_thread_options
+  selected = selected_featured_thread(key)
+  start_index = selected == nil ? 0 : threads.index(selected).to_i + 1
+  options = [p_("Forum", "Not selected")] + threads.map do |thread|
+    "#{thread.name} (#{thread.forum.fullname})"
+  end
+  index = selector(options, header: label, start_index: start_index, cancel_index: -1)
+  return if index < 0
+
+  setcurrentconfig(key, index == 0 ? 0 : threads[index - 1].id)
+  button.label = featured_thread_button_label(label, key)
+  button.focus
+end
 def load_permissions
   setting_category(p_("Forum", "Permissions"))
 make_setting(p_("Forum", "Prevent users from editing their posts"), :bool, "prevent_editing")
@@ -4356,6 +4441,7 @@ end
       def main
         make_window
         load_general
+        load_featured_threads
         load_regulations
                 load_permissions
                 @form.focus

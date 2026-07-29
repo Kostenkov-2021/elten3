@@ -31,6 +31,13 @@ module EltenLink
   ForumTag = Struct.new(:id, :label, :taglist, keyword_init: true)
 
   module Forum
+    FEATURED_THREAD_FIELDS = %i[
+      thread_introductions
+      thread_hydepark
+      thread_moderation
+      thread_welcome
+    ].freeze
+
     class << self
       def structure(client, last_ident: nil, last_cache: nil, old_groups: [], old_forums: [], old_threads: [])
         params = {}
@@ -54,6 +61,7 @@ module EltenLink
         groups = build_groups(data["groups"])
         forums = build_forums(data["forums"], groups)
         threads = build_threads(data["threads"], forums)
+        validate_group_featured_threads(groups, threads)
         raw_cache_data = raw_structure_data(data)
         raw_cache = JSON.generate(raw_cache_data)
         ident = data["ident"].to_s
@@ -584,6 +592,9 @@ module EltenLink
           group.parent = row["parent"].to_i
           group.applyglobalbans = truthy?(row["applyglobalbans"])
           group.hidden = truthy?(row["hidden"])
+          FEATURED_THREAD_FIELDS.each do |field|
+            group.public_send("#{field}=", row[field.to_s].to_i)
+          end
           group
         end
       end
@@ -621,6 +632,19 @@ module EltenLink
           thread.readposts = row["readposts"].to_i
           thread.offered = row["offered"].to_i
           thread
+        end
+      end
+
+      def validate_group_featured_threads(groups, threads)
+        group_by_thread_id = threads.each_with_object({}) do |thread, result|
+          group = thread.forum&.group
+          result[thread.id] = group.id if group != nil
+        end
+        groups.each do |group|
+          FEATURED_THREAD_FIELDS.each do |field|
+            thread_id = group.public_send(field).to_i
+            group.public_send("#{field}=", 0) unless group_by_thread_id[thread_id] == group.id
+          end
         end
       end
 
