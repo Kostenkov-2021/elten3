@@ -3889,7 +3889,9 @@ class Scene_Forum_UserPosts
           open_post
           return
         elsif @more
-          load_older
+          limit = PAGE_SIZE
+          limit = 500 if key_held?(0x10)
+          load_older(limit)
         end
       end
 
@@ -3911,9 +3913,9 @@ class Scene_Forum_UserPosts
     end
   end
 
-  def load_page(before = nil)
+  def load_page(before = nil, limit = PAGE_SIZE)
     page = forum_fetch(nil) do
-      EltenLink::Forum.user_posts(elten_link, user: @user, before: before, limit: PAGE_SIZE)
+      EltenLink::Forum.user_posts(elten_link, user: @user, before: before, limit: limit)
     end
     return false if page.nil?
 
@@ -3923,9 +3925,9 @@ class Scene_Forum_UserPosts
     true
   end
 
-  def load_older
+  def load_older(limit = PAGE_SIZE)
     first_new_index = @posts.length
-    return unless load_page(@next_before)
+    return unless load_page(@next_before, limit)
 
     rebuild_list(first_new_index)
     @list.say_option
