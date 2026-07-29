@@ -182,7 +182,7 @@ end
 @sel.focus
 end
 def categorydelete
-          confirm(p_("Blog", "Are you sure you want to delete this category?")) {
+          confirm(p_("Blog", "Are you sure you want to delete this category?")+"\r\n"+@categories[@sel.index-1].name) {
             begin
               EltenLink::Blog.delete_category(elten_link, blog: @owner, category_id: @categories[@sel.index-1].id)
             rescue EltenLink::Error
@@ -420,7 +420,7 @@ else
   end
   end
   def postdelete
-    confirm(p_("Blog", "Are you sure you want to delete this post?")) {
+    confirm(p_("Blog", "Are you sure you want to delete this post?")+"\r\n"+@post[@sel.index].name) {
     begin
     EltenLink::Blog.delete_post(elten_link, blog: @owner, post_id: @post[@sel.index].id)
     rescue EltenLink::Error
