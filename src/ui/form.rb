@@ -386,6 +386,7 @@ def delete_timer(timer)
   ae = escapable
   dialog_open
   inp = EditBox.new(header, type: flags, text: text, quiet: false)
+  inp.add_tip(p_("EAPI_Form", "Press Tab to check the number of entered characters")) if character_counter
   inp.max_length = max_length if max_length>0
   if move_to_end
     inp.index=inp.check=text.length
