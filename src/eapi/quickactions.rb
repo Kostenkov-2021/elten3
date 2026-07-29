@@ -38,7 +38,15 @@ module EltenAPI
         end
         insert_scene(scene.new(*@params)) if !GlobalMenu.opened?
         end
-      rescue Exception => e
+      rescue StandardError => e
+        owner = QuickActions.program_owner(@action)
+        if defined?(Programs)
+          runtime = Programs.runtime_from_error(e, owner)
+          if runtime != nil
+            Programs.associate_error_runtime(e, runtime)
+            raise
+          end
+        end
         Log.error("Quick action failed: #{e.class}: #{e.message}") if defined?(Log)
         alert(_("Error"), false)
       end
@@ -485,10 +493,23 @@ end
       index
     end
         def get_proc(pr)
+      entry=get_proc_entry(pr)
+      entry==nil ? nil : entry[1]
+    end
+    def get_proc_entry(pr)
       for a in @@addprocs
-        return a[3] if a[1]==pr
+        return [a[0],a[3]] if a[1]==pr
       end
       return nil
+    end
+    def program_owner(action)
+      if action.is_a?(Symbol)
+        entry=get_proc_entry(action)
+        return entry[0] if entry!=nil
+      else
+        return resolve_scene(action)
+      end
+      nil
     end
     def build_hotkey_actions
       index={}

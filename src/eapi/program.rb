@@ -649,6 +649,10 @@ module Programs
       @native_materialized = true
     end
 
+    def logical_source_path(path)
+      logical_path_from_runtime_path(path)
+    end
+
     private
 
     def collect_physical_sound_assets
@@ -1001,6 +1005,154 @@ module Programs
         return runtime if physical == root || physical.start_with?(root + "/")
       end
       nil
+    end
+
+    def runtime_for(target)
+      cls = target.is_a?(Class) ? target : target.class
+      if cls.respond_to?(:app_runtime)
+        runtime = cls.app_runtime
+        return runtime if runtime.is_a?(Runtime)
+      end
+      class_name = Module.instance_method(:name).bind(cls).call.to_s
+      return nil if class_name == ""
+      @@runtimes.each_value do |runtime|
+        namespace = runtime.namespace.name.to_s
+        return runtime if class_name == namespace || class_name.start_with?(namespace + "::")
+      end
+      nil
+    rescue StandardError
+      nil
+    end
+
+    def runtime_from_error(error, scene=nil)
+      return nil if !error.is_a?(StandardError)
+      associated = error.instance_variable_get(:@elten_program_runtime)
+      return associated if associated.is_a?(Runtime)
+      Array(error.backtrace_locations).each do |location|
+        [location.path, location.absolute_path].compact.uniq.each do |path|
+          runtime = runtime_from_path(path)
+          return runtime if runtime != nil
+        end
+      end
+      Array(error.backtrace).each do |line|
+        path = line.to_s.sub(/:\d+(?::in .*)?\z/, "")
+        runtime = runtime_from_path(path)
+        return runtime if runtime != nil
+      end
+      runtime_for(error.class) || (scene == nil ? nil : runtime_for(scene))
+    rescue StandardError
+      nil
+    end
+
+    def associate_error_runtime(error, runtime)
+      error.instance_variable_set(:@elten_program_runtime, runtime) if error != nil && runtime.is_a?(Runtime)
+      error
+    rescue StandardError
+      error
+    end
+
+    def handle_execution_error(error, scene=nil)
+      runtime = runtime_from_error(error, scene)
+      return false if runtime == nil
+      begin
+        close_scene_after_error(scene) if scene != nil && runtime_for(scene).equal?(runtime)
+        report_execution_error(scene || error.class, error, runtime: runtime)
+      rescue Exception => handler_error
+        Log.error("Cannot handle program error: #{handler_error.class}: #{handler_error.message}") if defined?(Log)
+      end
+      true
+    end
+
+    def close_scene_after_error(scene)
+      return if scene == nil || !scene.respond_to?(:close, true)
+      scene.__send__(:close)
+    rescue Exception => error
+      Log.error("Program cleanup failed: #{error.class}: #{error.message}\n#{Array(error.backtrace).join("\n")}")
+    end
+
+    def report_execution_error(target, error, runtime: nil)
+      runtime ||= runtime_for(target)
+      name = program_display_name(target, runtime)
+      raw_trace = Array(error.backtrace).join("\n")
+      Log.error("Program #{name} failed: #{error.class}: #{error.message}\n#{raw_trace}")
+      error_name = clean_program_identifier(error.class.name.to_s, runtime)
+      message = clean_program_identifier(error.message.to_s, runtime)
+      trace = clean_program_backtrace(error, runtime)
+      details = "#{error_name}: #{message}"
+      details += "\n\n#{p_("Program", "Backtrace:")}\n#{trace.join("\n")}" if trace.size > 0
+      input_text(
+        p_("Program", "Error in program %{name}") % { name: name },
+        flags: EditBox::Flags::MultiLine | EditBox::Flags::ReadOnly,
+        text: details,
+        escapable: true
+      )
+    rescue Exception => report_error
+      Log.error("Cannot display program error: #{report_error.class}: #{report_error.message}") if defined?(Log)
+    end
+
+    def program_display_name(target, runtime=nil)
+      name = runtime.manifest.name.to_s if runtime != nil
+      cls = target.is_a?(Class) ? target : target.class
+      name = cls.name.to_s if name == nil || name == ""
+      clean_program_identifier(name, runtime)
+    rescue StandardError
+      p_("Program", "Unknown program")
+    end
+
+    def clean_program_backtrace(error, runtime=nil)
+      locations = Array(error.backtrace_locations)
+      if locations.size == 0
+        return Array(error.backtrace).map { |line| clean_program_identifier(line, runtime) }
+      end
+      if runtime != nil
+        last_program_frame = locations.rindex { |location| logical_program_path(location, runtime) != nil }
+        locations = locations[0..last_program_frame] if last_program_frame != nil
+      end
+      locations.map do |location|
+        path = display_backtrace_path(location, runtime)
+        label = clean_program_identifier(location.base_label.to_s, runtime)
+        line = location.lineno.to_i
+        label == "" ? "#{path}:#{line}" : "#{path}:#{line}:in #{label}"
+      end
+    end
+
+    def display_backtrace_path(location, runtime=nil)
+      logical = logical_program_path(location, runtime)
+      return logical if logical != nil
+      path = (location.path || location.absolute_path).to_s
+      path = clean_program_identifier(path, runtime).tr("\\", "/")
+      src_index = path.rindex("/src/")
+      return path[(src_index + 1)..-1] if src_index != nil
+      gems_index = path.rindex("/gems/")
+      return path[(gems_index + 1)..-1] if gems_index != nil
+      absolute = path.start_with?("/") || path.start_with?("//") || path.match?(/\A[A-Za-z]:\//)
+      absolute ? File.basename(path) : path
+    rescue StandardError
+      File.basename(location.path.to_s)
+    end
+
+    def logical_program_path(location, runtime)
+      return nil if runtime == nil
+      [location.path, location.absolute_path].compact.uniq.each do |candidate|
+        logical = runtime.logical_source_path(candidate)
+        return logical if logical != nil && logical != ""
+      end
+      nil
+    rescue StandardError
+      nil
+    end
+
+    def clean_program_identifier(value, runtime=nil)
+      text = value.to_s.dup
+      if runtime != nil
+        text.gsub!(runtime.virtual_prefix, "")
+        namespace = runtime.namespace.name.to_s
+        text.gsub!(namespace + "::", "") if namespace != ""
+        text.gsub!(namespace, runtime.manifest.name.to_s) if namespace != ""
+      end
+      text.gsub!(%r{eltenapp://[0-9a-f-]+/}i, "")
+      text.gsub!(/EltenPrograms::P[0-9a-f]+::/i, "")
+      text
     end
 
     def register(cls, path = nil, listed = nil)

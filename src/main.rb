@@ -96,8 +96,13 @@ rescue SystemExit
   $toscene = true
     retry if $exit == nil
   end
-rescue Exception
-  Log.error($!.class.name+": "+$!.message+" - "+$@.to_s)
+rescue Exception => error
+  if defined?(Programs) && Programs.handle_execution_error(error, $scene)
+    $scene=Scene_Main.new
+    $toscene=true
+    retry
+  end
+  Log.error(error.class.name+": "+error.message+" - "+Array(error.backtrace).to_s)
   Log.error("Critical exception occurred, terminating!")
   fail
             ensure

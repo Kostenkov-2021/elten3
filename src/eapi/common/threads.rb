@@ -55,13 +55,14 @@ EltenAPI::KeyboardState.clear_current_frame if defined?(EltenAPI::KeyboardState)
 $focus = true if $scene.is_a?(Scene_Main) == false                     and $scene!=nil
 Log.info("Exiting parallel scenes thread")
 end
-rescue Exception
+rescue Exception => error
+      handled = defined?(Programs) && Programs.handle_execution_error(error, $scene)
       stopct=true
                                                                         $scene = sc
 $scene=Scene_Main.new if $scene.is_a?(Scene_Main) or $scene == nil
 loop_update
 $focus = true if $scene.is_a?(Scene_Main) == false
-Log.error("Parallel scene: #{$!.to_s} #{$@.to_s}")
+Log.error("Parallel scene: #{error} #{Array(error.backtrace)}") if !handled
   retry
 end
 sleep(0.1)
