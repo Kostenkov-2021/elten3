@@ -2191,7 +2191,7 @@ threadopen(@thrsel.index)
             end
           end
         }
-        m.option(p_("Forum", "Delete thread")) {
+        m.option(p_("Forum", "Delete thread"), nil, "-") {
           confirm(p_("Forum", "Do you really want to delete thread %{thrname}?")%{ :thrname => @sthreads[@thrsel.index].name }) do
             if forum_attempt(nil) {
               EltenLink::Forum.delete_thread(elten_link, thread_id: @sthreads[@thrsel.index].id)
