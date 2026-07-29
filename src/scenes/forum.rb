@@ -167,7 +167,7 @@ class Scene_Forum
   end
   
   def main
-    if Session.name == "guest"
+    unless Session.logged?
       @noteditable = true
     else
       @noteditable = false
@@ -854,7 +854,7 @@ if (((@sgroups[@grpsel.index - @grpheadindex].role==1 || (@sgroups[@grpsel.index
       }
       end
     sortermenu(0, type, menu)
-    if Session.name!="guest"
+    if Session.logged?
     menu.option(p_("Forum", "New group"), nil, "n") {
       newgroup
     }
@@ -2799,7 +2799,7 @@ class Scene_Forum_Thread
       }
     end
     @thread=@threadclass.id
-    if Session.name == "guest"
+    if !Session.logged?
       @noteditable = true
     elsif @threadclass.closed
       @noteditable = true
@@ -2845,7 +2845,7 @@ return $scene=Scene_Main.new if @form==nil
           voted = false
         end
         selt = [p_("Polls", "Vote"), p_("Polls", "Show results"), p_("Polls", "Show report")]
-        selt[0] = nil if voted || isbanned(Session.name) || Session.name=="guest"
+        selt[0] = nil if voted || !Session.logged? || isbanned(Session.name)
         case menuselector(selt)
         when 0
           insert_scene(Scene_Polls_Answer.new(pl.to_i, Scene_Main.new))
@@ -3251,7 +3251,7 @@ if post.edited && !post.locked
         }
       end
     }
-    if @form.index < @postscount * 3 && Session.name!="guest"
+    if @form.index < @postscount * 3 && Session.logged?
       menu.option(p_("Forum", "Mention post"), nil, "w") {
       mention(@thread, @posts[@form.index / 3].id)
       }

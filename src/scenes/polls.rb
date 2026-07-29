@@ -22,7 +22,7 @@ loop do
   $scene=Scene_Main.new if key_pressed?(:key_escape)
       if key_pressed?(:key_enter) and @sel.options.size>0
                  selt=[p_("Polls", "Vote"),p_("Polls", "Show results"), p_("Polls", "Show report")]
-       if Session.name!="guest"
+       if Session.logged?
          begin
            voted=EltenLink::Polls.voted?(elten_link, @polls[@sel.index])
          rescue EltenLink::Error
@@ -34,7 +34,7 @@ loop do
          selt[0]=nil
 end
        end         
-       if Session.name=="guest" || @banned
+       if !Session.logged? || @banned
          selt[0]=""
          end
          case menuselector(selt)
@@ -51,7 +51,7 @@ end
 end
 def refresh
   @banned=false
-  @banned=isbanned(Session.name) if Session.name!="guest"
+  @banned=isbanned(Session.name) if Session.logged?
   begin
     @allpolls=EltenLink::Polls.list(elten_link, details: 2)
   rescue EltenLink::Error
@@ -81,7 +81,7 @@ end
   end
 def context(menu)
                   if @sel.options.size>0
-                           if Session.name!="guest" && !@banned
+                           if Session.logged? && !@banned
                              if !@polls[@sel.index].voted
          menu.option(p_("Polls", "Vote"), nil, "v") {
                     $scene=Scene_Polls_Answer.new(@polls[@sel.index].id)
@@ -121,7 +121,7 @@ polls_filter
 @sel.focus
       }
     end
-    if Session.name!="guest" && !@banned
+    if Session.logged? && !@banned
          menu.option(p_("Polls", "New poll"), nil, "n") {
                         $scene = Scene_Polls_Create.new
          }

@@ -52,8 +52,9 @@ class Scene_Loading
       Log.info("Computer: #{$computer}")
             $sprite = Sprite.new
     $sprite.bitmap = Bitmap.new("elten.jpg") if FileTest.exists?("elten.jpg")
-        Session.name = ""
-    Session.token = ""
+        Session.name = nil
+    Session.token = nil
+    Session.feeds_clear
       Dirs.appsdata = EltenPath.join(Dirs.eltendata, "apps")
       Dirs.apps = EltenPath.join(Dirs.appsdata, "src")
 Dirs.extras = EltenPath.join(Dirs.eltendata, "extras")
@@ -366,9 +367,10 @@ loop_update
             when 2
               $scene=Scene_ForgotPassword.new
               when 3
-                Session.name="guest"
-                Session.token="guest"
+                Session.name=nil
+                Session.token=nil
                 Session.moderator=0
+                $preinitialized=true
                 $scene=Scene_Main.new
                 when 4
               $scene = Scene_Settings.new

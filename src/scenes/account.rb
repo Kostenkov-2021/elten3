@@ -491,8 +491,8 @@ def globallogout
         rescue EltenLink::Error
           alert(p_("Account", "An error occurred while authenticating the account. You might have provided an  incorrect password."))
         else
-          Session.name=""
-          Session.token=""
+          Session.name=nil
+          Session.token=nil
           File.delete(EltenPath.join(Dirs.eltendata, "login.dat")) if FileTest.exists?(EltenPath.join(Dirs.eltendata, "login.dat"))
           $restart=true
           $scene=Scene_Main.new
@@ -719,8 +719,8 @@ else
     next
   end
   alert(p_("Account", "Account archived"))
-  Session.name=""
-  Session.token=""
+  Session.name=nil
+  Session.token=nil
   $scene = Scene_Loading.new
   form.resume
   }

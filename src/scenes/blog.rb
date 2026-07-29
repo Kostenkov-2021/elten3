@@ -11,7 +11,7 @@ class Scene_Blog
     end
   def main
         @sel = ListBox.new([p_("Blog", "Managed blogs"),p_("Blog", "Recently updated blogs"),p_("Blog", "Frequently updated blogs"),p_("Blog", "Frequently commented blogs"),p_("Blog", "Followed blogs"), p_("Blog", "Blogs popular with my friends"), p_("Blog", "Open external wordpress blog"), p_("Blog", "Followed blog posts"), p_("Blog", "Received mentions"), p_("Blog", "Blogs library")],header: p_("Blog", "Blogs"),index: @index)
-  if Session.name=="guest"
+  unless Session.logged?
     @sel.disable_item(0)
     @sel.index=1
     @sel.disable_item(4)
@@ -515,7 +515,7 @@ else
         end
       }
   post = @post[@sel.index]
-  if Session.name!="guest" && (post.followed==true || !post.owner.to_s.start_with?("[*"))
+  if Session.logged? && (post.followed==true || !post.owner.to_s.start_with?("[*"))
     opt=post.followed==true ? p_("Blog", "Unfollow this post") : p_("Blog", "Follow this post")
     menu.option(opt, nil, "l") {
       next if post.followed==false && !requires_premiumpackage("courier")
@@ -576,7 +576,7 @@ if @post.mention!=nil
 @knownposts=blogtemp.known_posts
 @comments=blogtemp.comments_open ? 1 : 0
 @iseltenblog=blogtemp.is_elten_blog
-if @post.followed.nil? && Session.name!="guest"
+if @post.followed.nil? && Session.logged?
   begin
     @post.followed=EltenLink::Blog.post_followed?(elten_link, blog: @post.owner, post_id: @post.id)
   rescue EltenLink::Error => e
@@ -644,7 +644,7 @@ else
     $scene = @scene
     end
 end
-if Session.name!="guest"
+if Session.logged?
 @fields.push(EditBox.new(p_("Blog", "Your comment"),type: EditBox::Flags::MultiLine,text: "",quiet: true))
 else
   @fields.push(nil)
@@ -751,12 +751,12 @@ def context(menu)
       end
       }
     end
-    if @iseltenblog && Session.name!="guest"
+    if @iseltenblog && Session.logged?
       menu.option(p_("Blog", "Mention post"), nil, "w") {
         mention
       }
     end
-    if Session.name!="guest" && (@post.followed==true || (@iseltenblog && @post.followed==false))
+    if Session.logged? && (@post.followed==true || (@iseltenblog && @post.followed==false))
       opt=@post.followed==true ? p_("Blog", "Unfollow this post") : p_("Blog", "Follow this post")
       menu.option(opt, nil, "l") {
         next if @post.followed==false && !requires_premiumpackage("courier")

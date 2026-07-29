@@ -761,7 +761,7 @@ module EltenAPI
       end
 
       def logged_in?
-        Session.name != nil && Session.name != "" && Session.name != "guest" && Session.token != nil && Session.token != ""
+        Session.logged?
       end
 
       def session_name

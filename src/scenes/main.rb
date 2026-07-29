@@ -18,7 +18,7 @@ class Scene_Main
     if @@feed_id==-1
       @@feed_id = LocalConfig['MainFeedId', type: :numeric]
     end
-    if Session.name==nil||Session.name==""
+    if !Session.logged? && $preinitialized!=true
       $scene=Scene_Loading.new
       return
     end
@@ -26,6 +26,7 @@ class Scene_Main
     if $restart==true
       $restart=false
       $scene=Scene_Loading.new
+      return
     end
     dialog_close if dialog_opened
     waiting_end if $waitingopened
@@ -252,6 +253,7 @@ def notification_visibility_time(latest_time=0)
 end
 
 def fetch_main_notifications
+  return [] unless Session.logged?
   EltenLink::Notifications.list(elten_link, all: false)
 rescue EltenLink::Error => e
   Log.warning("Main notifications list failed: #{e.message}")
@@ -623,6 +625,7 @@ end
 dialog_close
     }
     end
+    if Session.logged?
       menu.option(p_("Main", "Reply"), nil, "r") {
     users=[feed.user]
     users+=feed.message.scan(/\@([a-zA-Z0-9\.\-\_]+)/).map{|r|r[0]}
@@ -662,6 +665,7 @@ dialog_close
     end
   end
   menu.option(p_("Main", "Publish to a feed"), nil, "n") {feed_new}
+  end
   end
 def feed_new(users=[], response=0)
   text=users.map{|u|"@"+u}.join(" ")

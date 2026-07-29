@@ -9,7 +9,7 @@ class Scene_Users_AddedMeToContacts
     @new=new
     end
   def main
-    if Session.name=="guest"
+    unless Session.logged?
       alert(_("UsersAddedMeToThis section is unavailable for guests"))
       $scene=Scene_Main.new
       return

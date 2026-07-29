@@ -2,7 +2,7 @@ class Scene_PremiumPackages
   CURRENCIES = ["PLN", "EUR", "USD", "GBP"].freeze
 
   def main
-    if Session.name=="guest"
+    unless Session.logged?
       alert(_("This section is unavailable for guests"))
       $scene=Scene_Main.new
       return

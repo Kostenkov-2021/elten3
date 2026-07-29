@@ -53,7 +53,7 @@ $toscene = false
   end
   if $immediateexit!=true
       register_activity(wait: true, final: true)
-      if defined?(Session) && Session.logged? && Session.name.to_s != "guest"
+      if defined?(Session) && Session.logged?
         begin
           EltenLink::System.logout_session(EltenLink.client(nil))
           Log.info("Session token invalidated on shutdown")
@@ -166,7 +166,7 @@ loop do
       speak("Rescue mode")
       speech_wait
       @sels = ["Quit", "Reinstall"]
-      @sels += ["Try to open forum", "Try to open messages"] if Session.name != nil and Session.name != ""
+      @sels += ["Try to open forum", "Try to open messages"] if Session.logged?
       @sel = ListBox.new(@sels, header: "", index: 0, flags: ListBox::Flags::AnyDir, quiet: false)
       loop do
         loop_update

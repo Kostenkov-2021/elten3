@@ -70,7 +70,7 @@ module EltenAPI
     end
 
     def user_menu_actions(user, user_info, ringtone)
-      guest = Session.name == "guest"
+      guest = !Session.logged?
       in_contacts = user_info[8].to_b unless guest
       banned = user_info[10].to_b
       has_blog = user_info[1]

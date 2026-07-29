@@ -9,9 +9,8 @@ module EltenAPI
     private
     def voicecall(channel=nil, channel_password=nil, invite=[])
       invite=[invite] if invite.is_a?(String)
+      return unless Session.logged?
       Conference.open if !Conference.opened?
-      return    if Session.name=="guest"
-Conference.open if !Conference.opened?
 if !Conference.opened?
 $scene=Scene_Main.new
 return

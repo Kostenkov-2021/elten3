@@ -48,7 +48,7 @@ class Scene_Update
               return
             end
     speech_wait
-    if Session.name!="" and Session.name!=nil
+    if Session.logged?
     alert(p_("Update", "The update has been downloaded. To install it, the program must be restarted.  Press enter to continue or escape to cancel."))
     cn=true
     deadline = Time.now.to_f + 30

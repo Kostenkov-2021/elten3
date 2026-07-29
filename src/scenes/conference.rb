@@ -14,7 +14,7 @@ class Scene_Conference
     end
   def main
     nick=nil
-    if Session.name=="guest"
+    unless Session.logged?
       nick=input_text(p_("Conference", "Type your nickname"), flags: 0, text: "", escapable: true)
       if nick==nil
       $scene=Scene_Main.new

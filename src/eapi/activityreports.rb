@@ -172,9 +172,9 @@ module EltenAPI
       end
 
       def current_session_key
+        return nil unless Session.logged?
         name = Session.name
         token = Session.token
-        return nil if name == nil || name == "" || name == "guest" || token == nil || token == ""
         [name.to_s, token.to_s]
       rescue Exception
         nil

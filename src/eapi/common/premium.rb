@@ -12,7 +12,7 @@ module EltenAPI
     @@premiumpackages=packages if packages.is_a?(Array)
     end
   def holds_premiumpackage(package)
-    return false if Session.name==""||Session.name==nil||Session.name=="guest"
+    return false unless Session.logged?
     return @@premiumpackages.include?(package)
     end
 

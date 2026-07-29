@@ -166,7 +166,7 @@ module EltenLink
 
       def launcher_stamp
         session = Client.session_object
-        return nil if session == nil || session.name.to_s == "" || session.name.to_s == "guest"
+        return nil if session == nil || !session.respond_to?(:logged?) || !session.logged?
 
         get_stamp(session.name)
       rescue StandardError

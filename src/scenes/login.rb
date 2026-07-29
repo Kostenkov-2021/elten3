@@ -297,7 +297,7 @@ end
                 $speech_wait = true
         $scene = Scene_Loading.new
         $preinitialized = false
-                $scene = Scene_Main.new if Session.token != nil
+                $scene = Scene_Main.new if Session.logged?
       end
       def handle_account_activation(name)
         header = p_("Login", "This account has not been activated. Enter the activation code from the e-mail message or request the message again.")

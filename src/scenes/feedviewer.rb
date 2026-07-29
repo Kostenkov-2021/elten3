@@ -104,6 +104,7 @@ end
 dialog_close
       }
       end
+    if Session.logged?
     menu.option(p_("FeedViewer", "Reply"), nil, "r") {
     users=[feed.user]
     users+=feed.message.scan(/\@([a-zA-Z0-9\.\-\_]+)/).map{|r|r[0]}
@@ -144,6 +145,7 @@ dialog_close
   end
   end
     menu.option(p_("FeedViewer", "Publish to a feed"), nil, "n") {feed_new}
+    end
 end
 def feed_new(users=[], response=0)
   text=users.map{|u|"@"+u}.join(" ")

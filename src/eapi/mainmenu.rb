@@ -37,31 +37,29 @@ module GlobalMenu
     end
   end
   end
-  if defaults==true && !$scene.is_a?(Scene_Main)
-    if Session.logged?
+  if defaults==true && !$scene.is_a?(Scene_Main) && (Session.logged? || $preinitialized==true)
     @menu.submenu(p_("MainMenu", "Quick &actions")) {|m|
     QuickActions.get.each {|a|m.quickaction(a.label, a) if a.show}
     }
   end
-  end
     if defaults or defaults==:defaults
             @menu.header=@header if $activecontrols==nil || $activecontrols.size==0
-            if Session.logged?
+            if Session.logged? || $preinitialized==true
       @menu.submenu(p_("MainMenu", "&Community")) {|m|
-      if Session.name!=nil && Session.name!="guest"
+      if Session.logged?
     m.scene(p_("MainMenu", "&Messages"), Scene_Messages)
     end
     m.scene(p_("MainMenu", "&Blogs"), Scene_Blog)
     m.scene(p_("MainMenu", "&Forum"), Scene_Forum)
         m.scene(p_("MainMenu", "&Conferences"), Scene_Conference)
-            if Session.name!=nil && Session.name!="guest"
+            if Session.logged?
             m.scene(p_("MainMenu", "Notification hi&story"), Scene_Notifications)
         m.scene(p_("MainMenu", "No&tes"), Scene_Notes)
         m.scene(p_("MainMenu", "Calenda&r"), Scene_Calendar)
     m.scene(p_("MainMenu", "Po&lls"), Scene_Polls)
     end
     @menu.submenu(p_("MainMenu", "&Users")) {|m|
-    if Session.name!=nil && Session.name!="guest"
+    if Session.logged?
     m.scene(p_("MainMenu", "My &contacts"), Scene_Contacts)
     m.scene(p_("MainMenu", "Users who a&dded me to contacts"), Scene_Users_AddedMeToContacts)
     end
@@ -74,7 +72,7 @@ module GlobalMenu
     m.scene(p_("MainMenu", "Recently &registered users"), Scene_Users_RecentlyRegistered)
     m.scene(p_("MainMenu", "&Sponsors"), Scene_Users_Sponsors)
     }
-    if Session.name!=nil&&Session.name!='guest'
+    if Session.logged?
             @menu.scene(p_("MainMenu", "Call &history"), Scene_CallHistory)
       @menu.scene(p_("MainMenu", "Premium packa&ges"), Scene_PremiumPackages)
             @menu.scene(p_("MainMenu", "Manage my &account"), Scene_Account)
