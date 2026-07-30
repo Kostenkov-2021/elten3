@@ -2540,24 +2540,41 @@ form.wait
     end
     fields += [CheckBox.new(p_("Forum", "Add to followed threads list")), ListBox.new(forums, header: p_("Forum", "Forum"), index: forumindex), nil, Button.new(_("Cancel"))]
     form = Form.new(fields)
+    selected_tags = {}
+    current_tag_forum_id = nil
+    current_tags = []
+    current_tag_fields = []
     form.fields[-3].on(:move) {
+    if current_tag_forum_id!=nil
+      selections=selected_tags[current_tag_forum_id]||={}
+      current_tags.each_with_index do |tag, index|
+        field=current_tag_fields[index]
+        next if field==nil
+        selections[tag[0]]=field.index>0 ? field.options[field.index] : nil
+      end
+    end
     tin=false
     tin=true if form.index==form.fields.size-3
+    forum=forumclasses[form.fields[-3].index]
+    tags=forumtags(forum)
     f=[]
-    for t in forumtags(forumclasses[form.fields[-3].index])
-      f.push(ListBox.new([p_("Forum", "No tag value")]+t[2..-1], header: t[1], index: 0))
+    for t in tags
+      options=[p_("Forum", "No tag value")]+t[2..-1]
+      selected_value=selected_tags.dig(forum.id, t[0])
+      selected_index=selected_value==nil ? nil : t[2..-1].find_index(selected_value)
+      f.push(ListBox.new(options, header: t[1], index: selected_index==nil ? 0 : selected_index+1))
     end
     if type==1
-      fields[1].timelimit=forumclasses[form.fields[-3].index].group.audiolimit
+      fields[1].timelimit=forum.group.audiolimit
       end
-    if forumclasses[form.fields[-3].index].group.preventpolls
+    if forum.group.preventpolls
       form.hide(4)
       form.hide(3)
     else
       form.show(4)
       form.show(3)
     end
-    if forumclasses[form.fields[-3].index].group.preventattachments
+    if forum.group.preventattachments
       form.hide(6)
       form.hide(5)
     else
@@ -2565,6 +2582,9 @@ form.wait
       form.show(5)
     end
     fields[7...-4]=f
+    current_tag_forum_id=forum.id
+    current_tags=tags
+    current_tag_fields=f
     form.index=form.fields.size-3 if tin
     }
     form.fields[-3].trigger(:move)
