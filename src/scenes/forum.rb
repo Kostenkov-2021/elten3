@@ -3487,7 +3487,7 @@ end
               end
             end
           }
-          m.option(p_("Forum", "Change post position")) {
+          m.option(p_("Forum", "Change post position"), nil, "o") {
             sels = []
             for post in @posts
               sels.push((sels.size + 1).to_s + ": " + post.author + ": " + post.date)
