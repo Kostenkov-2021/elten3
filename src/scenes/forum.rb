@@ -102,6 +102,10 @@ class Scene_Forum
     value.is_a?(Integer) && value.positive?
   end
 
+  def forum_group_moderator?(group)
+    group.role == 2 || (Session.moderator == 1 && group.recommended)
+  end
+
   def forum_new_status
     ListBox.item_status("listbox_itemnew", p_("Forum", "New")+":", p_("Forum", "New"))
   end
@@ -2082,7 +2086,7 @@ threadopen(@thrsel.index)
     current_group_id = source_forum.group.id
 
     @forums.select { |forum|
-      forum.group.role == 2 || (Session.moderator == 1 && forum.group.recommended)
+      forum_group_moderator?(forum.group)
     }.sort_by { |forum|
       priority = if forum.id == source_forum.id
         0
@@ -2180,7 +2184,7 @@ threadopen(@thrsel.index)
     end
     forum=@forum
     @forums.each {|f| forum=f if f.id==@forum}
-    if forum.is_a?(Struct_Forum_Forum) and @noteditable!=true and ((group.public==true and group.open==true) or [1,2].include?(group.role)) and group.role!=3 and forum.closed==false
+    if forum.is_a?(Struct_Forum_Forum) and @noteditable!=true and ((group.public==true and group.open==true) or [1,2].include?(group.role)) and group.role!=3 and (!forum.closed || forum_group_moderator?(group))
       menu.option(p_("Forum", "New thread"), nil, "n") {
         newthread
         getcache
@@ -2514,7 +2518,7 @@ form.wait
     forumindex = 0
     for g in @groups
       for f in @forums
-        if f.type == @forumtype && !f.closed
+        if f.type == @forumtype && (!f.closed || forum_group_moderator?(f.group))
           if f.group.id == g.id
             forums.push(f.fullname + " (#{g.name})")
             forumclasses.push(f)
@@ -2594,6 +2598,10 @@ form.wait
       else
         true
       end
+    }
+    confirm_closed_forum = lambda {
+      selected_forum = forumclasses[form.fields[-3].index]
+      !selected_forum.closed || confirm(p_("Forum", "The selected forum is closed. Are you sure you want to create a thread there?"))
     }
         loop do
       loop_update
@@ -2688,6 +2696,7 @@ form.wait
       if type == 0
         if (key_held?(0x11) and key_pressed?(:key_enter)) or (form.fields[-2]!=nil && form.fields[-2].pressed?)
           next if !confirm_missing_tag.call
+          next if !confirm_closed_forum.call
           play_sound("listbox_select")
           text = form.fields[1].text
           break
@@ -2695,6 +2704,7 @@ form.wait
       else
         if form.fields[-2]!=nil && form.fields[-2].pressed?
           next if !confirm_missing_tag.call
+          next if !confirm_closed_forum.call
           break
         end
       end
