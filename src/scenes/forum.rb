@@ -22,6 +22,10 @@ module ForumSceneClient
     false
   end
 
+  def forum_group_moderator?(group)
+    group.role == 2 || (Session.moderator == 1 && group.recommended)
+  end
+
   def log_forum_error(error)
 
     details = [
@@ -100,10 +104,6 @@ class Scene_Forum
 
   def forum_id?(value)
     value.is_a?(Integer) && value.positive?
-  end
-
-  def forum_group_moderator?(group)
-    group.role == 2 || (Session.moderator == 1 && group.recommended)
   end
 
   def forum_new_status
@@ -2861,6 +2861,10 @@ class Scene_Forum_Thread
     forum_fetch(nil, nil) { EltenLink::Forum.notice_mention(elten_link, mention_id: mention.id) } if mention != nil
   end
 
+  def can_post_to_closed_thread?
+    Session.logged? && @threadclass.closed && @threadclass.forum.group.role != 3 && forum_group_moderator?(@threadclass.forum.group)
+  end
+
   def main
     if @threadclass.is_a?(Integer)
       thread_id = @threadclass
@@ -2885,6 +2889,13 @@ return $scene=Scene_Main.new if @form==nil
     loop do
       loop_update
       @form.update
+      if @closed_thread_reply_button != nil && @closed_thread_reply_button.pressed?
+        @noteditable = false
+        refresh
+        @form.index = @postscount * 3 + ((@type == 2) ? 0 : 1)
+        @form.focus
+        next
+      end
       if @noteditable == false
         case @posttype
         when 0
@@ -2894,7 +2905,8 @@ return $scene=Scene_Main.new if @form==nil
         end
       end
       if key_pressed?(:key_escape) or @form.fields[-1].pressed?
-        if @posttype!=0 or (@form.fields[@postscount*3+1]==nil or @form.fields[@postscount*3+1].text=="") or confirm(p_("Forum", "Are you sure you want to cancel creating this post?"))
+        reply_field = @form.fields[@postscount * 3 + 1]
+        if @posttype != 0 or !reply_field.is_a?(EditBox) or reply_field.text == "" or confirm(p_("Forum", "Are you sure you want to cancel creating this post?"))
           r=true
           f=@form.fields[@form.fields.size-8]
           r=f.delete_audio if @posttype==1 && f!=nil
@@ -3013,6 +3025,7 @@ loop do
       @sponsors = []
     end
     @fields = []
+    @closed_thread_reply_button = nil
     return if @posts == nil
     for i in 0...@posts.size
       post = @posts[i]
@@ -3079,6 +3092,9 @@ end
       else
         @fields += @audiofields
       end
+    elsif can_post_to_closed_thread?
+      @closed_thread_reply_button = Button.new(p_("Forum", "Write a post despite the thread being closed"))
+      @fields += [@closed_thread_reply_button, nil, nil, nil, nil, nil, nil]
     else
       @fields += [nil, nil, nil, nil, nil, nil, nil]
     end
