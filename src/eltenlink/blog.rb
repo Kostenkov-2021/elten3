@@ -77,8 +77,13 @@ module EltenLink
       end
 
       def send_mention(client, user:, blog:, post_id:, message:)
-        client.api_data("POST", "/api/v1/blogs/mentions", { "user" => user, "blog" => blog, "post" => post_id, "message" => message })
+        send_mentions(client, users: [user], blog: blog, post_id: post_id, message: message)
         true
+      end
+
+      def send_mentions(client, users:, blog:, post_id:, message:)
+        data = client.api_data("POST", "/api/v1/blogs/mentions", { "users" => users, "blog" => blog, "post" => post_id, "message" => message })
+        data["ids"].to_a.map(&:to_i)
       end
 
       def posts(client, blog:, category_id: nil, page: nil, search: nil)

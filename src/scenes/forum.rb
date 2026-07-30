@@ -3718,12 +3718,11 @@ form.show(btn_mentionOK)
 end
 }
 btn_mentionOK.on(:press) {
-if lst_users.multiselections.size >= 0
+if lst_users.multiselections.size > 0
 selections = lst_users.multiselections()
 sent = forum_attempt(nil) {
-  for i in 0..selections.size - 1
-    EltenLink::Forum.create_mention(elten_link, user: users[selections[i]], message: edt_message.text, thread_id: thread, post_id: post)
-  end
+  selected_users = selections.map { |index| users[index] }
+  EltenLink::Forum.create_mentions(elten_link, users: selected_users, message: edt_message.text, thread_id: thread, post_id: post)
 }
 if sent
 alert(np_("Forum", "The mention has been sent.", "The mentions have been sent.", selections.size))

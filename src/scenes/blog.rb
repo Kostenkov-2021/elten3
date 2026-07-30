@@ -501,9 +501,8 @@ else
           if (key_pressed?(:key_enter) or key_pressed?(:key_space)) and form.index == 2
             selections = lst_users.multiselections()
             begin
-              for i in 0..selections.size - 1
-                EltenLink::Blog.send_mention(elten_link, user: users[selections[i]], message: form.fields[1].text, blog: @post[@sel.index].owner, post_id: @post[@sel.index].id)
-              end
+              selected_users = selections.map { |index| users[index] }
+              EltenLink::Blog.send_mentions(elten_link, users: selected_users, message: form.fields[1].text, blog: @post[@sel.index].owner, post_id: @post[@sel.index].id)
             rescue EltenLink::Error
               alert(_("Error"))
             else
@@ -882,9 +881,8 @@ def context(menu)
       if (key_pressed?(:key_enter) or key_pressed?(:key_space)) and form.index == 2
         selections = lst_users.multiselections()
         begin
-          for i in 0..selections.size - 1
-            EltenLink::Blog.send_mention(elten_link, user: users[selections[i]], message: form.fields[1].text, blog: @post.owner, post_id: @post.id)
-          end
+          selected_users = selections.map { |index| users[index] }
+          EltenLink::Blog.send_mentions(elten_link, users: selected_users, message: form.fields[1].text, blog: @post.owner, post_id: @post.id)
         rescue EltenLink::Error
           alert(_("Error"))
         else

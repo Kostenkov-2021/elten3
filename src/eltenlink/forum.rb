@@ -333,8 +333,12 @@ module EltenLink
       end
 
       def create_mention(client, user:, thread_id:, post_id:, message:)
-        data = client.api_data("POST", "/api/v1/forum/mentions", { "user" => user, "thread" => thread_id, "post" => post_id, "message" => message })
-        data["id"].to_i
+        create_mentions(client, users: [user], thread_id: thread_id, post_id: post_id, message: message).first
+      end
+
+      def create_mentions(client, users:, thread_id:, post_id:, message:)
+        data = client.api_data("POST", "/api/v1/forum/mentions", { "users" => users, "thread" => thread_id, "post" => post_id, "message" => message })
+        data["ids"].to_a.map(&:to_i)
       end
 
       def notice_mention(client, mention_id:)
