@@ -90,16 +90,6 @@ module EltenAPI
         text += "\r\n"
         text += "#{p_("EAPI_Common", "Forum posts")}: " + ui[4].to_s + "\r\n"
         text += "#{p_("EAPI_Common", "Polls answered")}: " + ui[7].to_s.delete("\r\n") + "\r\n"
-        v=""
-        ui[5].split(" ").each {|e|
-          if v==""
-            e=e.delete(".").split("").join(".")
-          else
-            v+=" "
-          end
-          v+=e
-        }
-        text += "#{p_("EAPI_Common", "Used version")}: " + v + "\r\n"
         text += "#{p_("EAPI_Common", "Registered")}: " + ui[6].to_s.split(" ")[0] + "\r\n" if ui[6]!=""
       end
       if vc[1]!="     " and vc.size!=1
