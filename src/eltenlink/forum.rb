@@ -179,6 +179,11 @@ module EltenLink
         true
       end
 
+      def move_threads(client, thread_ids:, forum_id:)
+        client.api_data("PATCH", "/api/v1/forum/threads/move", { "threads" => thread_ids, "forum" => forum_id.to_i })
+        true
+      end
+
       def rename_thread(client, thread_id:, name:)
         client.api_data("PATCH", "/api/v1/forum/#{thread_id.to_i}", { "name" => name })
         true
@@ -186,6 +191,11 @@ module EltenLink
 
       def delete_thread(client, thread_id:)
         client.api_data("DELETE", "/api/v1/forum/#{thread_id.to_i}", {})
+        true
+      end
+
+      def delete_threads(client, thread_ids:)
+        client.api_data("DELETE", "/api/v1/forum/threads", { "threads" => thread_ids })
         true
       end
 
@@ -201,6 +211,11 @@ module EltenLink
 
       def offer_thread(client, thread_id:, group_id:)
         client.api_data("PATCH", "/api/v1/forum/#{thread_id.to_i}", { "offered" => group_id })
+        true
+      end
+
+      def offer_threads(client, thread_ids:, group_id:)
+        client.api_data("PATCH", "/api/v1/forum/threads/offer", { "threads" => thread_ids, "group" => group_id })
         true
       end
 
@@ -272,8 +287,18 @@ module EltenLink
         true
       end
 
+      def delete_posts(client, post_ids:)
+        client.api_data("DELETE", "/api/v1/forum/posts", { "posts" => post_ids })
+        true
+      end
+
       def move_post(client, post_id:, thread_id:)
         client.api_data("PATCH", "/api/v1/forum/post/#{post_id.to_i}/move", { "destination_thread" => thread_id })
+        true
+      end
+
+      def move_posts(client, post_ids:, thread_id:)
+        client.api_data("PATCH", "/api/v1/forum/posts/move", { "posts" => post_ids, "destination_thread" => thread_id })
         true
       end
 

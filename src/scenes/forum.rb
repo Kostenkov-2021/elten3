@@ -2455,9 +2455,7 @@ when :move
           destination = selector(selt, header: p_("Forum", "Threads destination"), start_index: ind, cancel_index: -1)
           if destination != -1
             if forum_attempt(nil) {
-              for thread in threads
-                EltenLink::Forum.move_thread(elten_link, thread_id: thread.id, forum_id: mforums[destination].id)
-              end
+              EltenLink::Forum.move_threads(elten_link, thread_ids: threads.map(&:id), forum_id: mforums[destination].id)
             }
               alert(p_("Forum", "Selected threads have been moved."))
               ret=true
@@ -2468,9 +2466,7 @@ when :move
               end
             when :delete
               if forum_attempt(nil) {
-                for thread in threads
-                  EltenLink::Forum.delete_thread(elten_link, thread_id: thread.id)
-                end
+                EltenLink::Forum.delete_threads(elten_link, thread_ids: threads.map(&:id))
               }
               alert(p_("Forum", "Selected threads have been deleted."))
               ret=true
@@ -2488,10 +2484,8 @@ forum_fetch([], nil) { EltenLink::Forum.group_members(elten_link, group_id: @sth
         if ind>=0
         dest=dgroups[ind]
         if forum_attempt(nil) {
-          for thread in threads
-            next if thread.offered!=0
-            EltenLink::Forum.offer_thread(elten_link, thread_id: thread.id, group_id: dest.id)
-          end
+          thread_ids = threads.select { |thread| thread.offered == 0 }.map(&:id)
+          EltenLink::Forum.offer_threads(elten_link, thread_ids: thread_ids, group_id: dest.id) unless thread_ids.empty?
         }
                 alert(p_("Forum", "The offer has been created"))
                 ret=true
@@ -3677,9 +3671,7 @@ when :move
             destination = selector(selt, header: p_("Forum", "Post destination"), start_index: curr, cancel_index: -1)
             if destination != -1
               if forum_attempt(nil) {
-                for post in posts
-                  EltenLink::Forum.move_post(elten_link, post_id: post.id, thread_id: mthreads[destination].id)
-                end
+                EltenLink::Forum.move_posts(elten_link, post_ids: posts.map(&:id), thread_id: mthreads[destination].id)
               }
             alert(p_("Forum", "The posts have been moved."))
             ret=true
@@ -3688,9 +3680,7 @@ when :move
             end
   when :delete
     if forum_attempt(nil) {
-      for post in posts
-        EltenLink::Forum.delete_post(elten_link, post_id: post.id)
-      end
+      EltenLink::Forum.delete_posts(elten_link, post_ids: posts.map(&:id))
     }
   alert(p_("Forum", "The posts have been deleted."))
             ret=true
