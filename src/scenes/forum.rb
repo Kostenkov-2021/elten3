@@ -3490,7 +3490,7 @@ end
           m.option(p_("Forum", "Change post position"), nil, "o") {
             sels = []
             for post in @posts
-              sels.push((sels.size + 1).to_s + ": " + post.author + ": " + post.date)
+              sels.push((sels.size + 1).to_s + ": " + post.author + ": " + (post.transcription.strip!="" ? post.transcription[0...5000] : post.post[0...5000]) + ": " + post.date)
             end
             sels.push(p_("Forum", "Move to end"))
             dest = selector(sels, header: p_("Forum", "Place post above"), start_index: @form.index, cancel_index: -1)
