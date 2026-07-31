@@ -205,7 +205,13 @@ module EltenLink
 
     def self.query(params)
       if params.is_a?(Hash)
-        query_hash(params).map { |key, value| "#{key}=#{url_encode(value)}" }.join("&")
+        query_hash(params).flat_map do |key, value|
+          if value.is_a?(Array)
+            value.map { |item| ["#{key}[]", item] }
+          else
+            [[key, value]]
+          end
+        end.map { |key, value| "#{key}=#{url_encode(value)}" }.join("&")
       elsif params.is_a?(String)
         parsed = {}
         params.split("&").each do |part|
