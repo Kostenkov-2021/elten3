@@ -110,42 +110,6 @@ module EltenLink
         end
       end
 
-      def parse_list(lines)
-        polls = []
-        state = 0
-        poll = nil
-        lines[2..-1].to_a.each do |line|
-          clean = EltenLink.clean_line(line)
-          case state
-          when 0
-            poll = Poll.new(clean.to_i)
-          when 1
-            poll.name = clean
-          when 2
-            poll.author = clean
-          when 3
-            poll.created = clean.to_i
-          when 4
-            poll.language = clean
-          when 5
-            poll.voted = clean.to_i > 0
-          when 6
-            poll.votes = clean.to_i
-          when 7
-            if !EltenLink.legacy_end?(clean)
-              poll.description += line
-              state -= 1
-            else
-              polls.push(poll)
-              poll = nil
-              state = -1
-            end
-          end
-          state += 1
-        end
-        polls
-      end
-
       def parse_details(data, id)
         poll = PollDetails.new(id)
         poll.name = data["name"].to_s
@@ -167,27 +131,6 @@ module EltenLink
           ))
         end
         PollResults.new(data["votes"].to_i, answers)
-      end
-
-      def parse_short_list(lines)
-        polls = []
-        return polls if lines[1].to_i <= 0
-        for index in 1...lines.size
-          clean = EltenLink.clean_line(lines[index])
-          next unless index == 1 || EltenLink.legacy_end?(clean)
-          id = lines[index + 1].to_i
-          name = EltenLink.clean_line(lines[index + 2])
-          poll = Poll.new(id)
-          poll.name = name
-          polls.push(poll)
-        end
-        polls
-      end
-
-      def parse_questions(text)
-        JSON.load(EltenLink.clean_line(text).delete(";"))
-      rescue JSON::ParserError, TypeError
-        raise Error.new("Invalid poll questions", code: -5, module_name: "polls")
       end
 
       def poll_id(poll)

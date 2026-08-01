@@ -68,40 +68,6 @@ module EltenLink
 
       private
 
-      def parse_list(lines)
-        notes = []
-        state = 0
-        current = nil
-        lines[2..-1].to_a.each do |line|
-          clean = EltenLink.clean_line(line)
-          case state
-          when 0
-            current = Note.new(id: clean.to_i)
-            notes.push(current)
-            state = 1
-          when 1
-            current.name = clean
-            state = 2
-          when 2
-            current.author = clean
-            state = 3
-          when 3
-            current.created = Time.at(clean.to_i)
-            state = 4
-          when 4
-            current.modified = Time.at(clean.to_i)
-            state = 5
-          when 5
-            if EltenLink.legacy_end?(clean)
-              state = 0
-            else
-              current.text += line
-            end
-          end
-        end
-        notes
-      end
-
       def note_id(note)
         note.respond_to?(:id) ? note.id : note
       end

@@ -165,27 +165,6 @@ module EltenLink
         bool_value(value) ? 1 : 0
       end
 
-      def parse_statuses(statuses)
-        @status_users = []
-        @status_texts = []
-        index = 0
-        line = 1
-        user_line = true
-        while line < statuses.size
-          if user_line
-            @status_users[index] = statuses[line]
-            user_line = false
-          elsif !EltenLink.legacy_end?(statuses[line])
-            @status_texts[index] ||= ""
-            @status_texts[index] += statuses[line]
-          else
-            index += 1
-            user_line = true
-          end
-          line += 1
-        end
-      end
-
     end
   end
 end

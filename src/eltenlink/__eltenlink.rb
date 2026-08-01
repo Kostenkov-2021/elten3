@@ -4,7 +4,6 @@
 module EltenLink
   LEGACY_SEPARATOR = 4.chr
   LEGACY_LINE = "#{LEGACY_SEPARATOR}LINE#{LEGACY_SEPARATOR}"
-  LEGACY_END = "#{LEGACY_SEPARATOR}END#{LEGACY_SEPARATOR}"
 
   class << self
     def client(context)
@@ -25,10 +24,6 @@ module EltenLink
 
     def text_to_legacy_line(value)
       value.to_s.gsub("\r\n", LEGACY_LINE).gsub("\n", LEGACY_LINE)
-    end
-
-    def legacy_end?(value)
-      clean_line(value) == LEGACY_END
     end
 
     def close
