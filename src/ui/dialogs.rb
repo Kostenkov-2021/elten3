@@ -48,6 +48,90 @@ if key_held?(0x10) and key_held?(84) and key_held?(78)
       end
     end
 
+    # Creates a dialog with a listbox and returns the option selected by user
+    #
+    # @param options [Array] an array of option
+    # @param header [String] a window caption
+    # @param index [Numeric] an initial index
+    # @param escapeindex [Numeric] a value to return when pressed the escape key, if nil, the escape is not supported
+    # @param type [Numeric] if 1, the listbox is horizontal
+    # @param focus_on_tab [Boolean] whether Tab reads the selector header and current option
+    # @return [Numeric] the index of a selected option
+    def selector(options, header: "", start_index: 0, cancel_index: nil, flags: 0, border: true, cancel_key: nil, focus_on_tab: true)
+      dialog_open
+      dis=[]
+      for i in 0..options.size-1
+        if options[i]==nil
+          dis.push(i)
+          options[i]=""
+        end
+      end
+      list_flags=flags
+      list_flags=EltenAPI::Controls::ListBox::Flags::AnyDir if flags==1
+      lsel=EltenAPI::Controls::ListBox.new(options, header: header, index: start_index, flags: list_flags)
+      for d in dis
+        lsel.disable_item(d)
+      end
+      lsel.focus
+      @cancel=false
+      if cancel_key!=nil
+        begin
+          s=("key_"+cancel_key.to_s).to_sym
+          lsel.on(s) {@cancel=true}
+        rescue Exception
+        end
+      end
+      loop do
+        loop_update
+        lsel.update
+        lsel.focus if focus_on_tab && !header.to_s.empty? && key_pressed?(:key_tab)
+        if key_pressed?(:key_enter)
+          dialog_close
+          return lsel.index
+        end
+        if (key_pressed?(:key_escape) or @cancel==true) and cancel_index!=nil
+          dialog_close
+          loop_update
+          return cancel_index
+        end
+      end
+    end
+
+    def menuselector(options)
+      dis=[]
+      for i in 0..options.size-1
+        if options[i]==nil
+          dis.push(i)
+          options[i]=""
+        end
+      end
+      play_sound("menu_open")
+      EltenAPI::Controls::Menu.menubg_play if Configuration.bgsounds==true && Configuration.soundthemeactivation==true
+      lsel=EltenAPI::Controls::ListBox.new(options, header: "", index: 0, flags: EltenAPI::Controls::ListBox::Flags::AnyDir)
+      for d in dis
+        lsel.disable_item(d)
+      end
+      lsel.update
+      lsel.focus
+      ret=-1
+      loop do
+        loop_update
+        lsel.update
+        if key_pressed?(:key_enter)
+          ret=lsel.index
+          break
+        end
+        if key_pressed?(:key_alt) or key_pressed?(:key_escape)
+          ret=-1
+          break
+        end
+      end
+      EltenAPI::Controls::Menu.menubg_close
+      play_sound("menu_close")
+      loop_update
+      ret
+    end
+
     def prompt(header="",confirmation="Ok",cancellation=_("Cancel"))
       form=Form.new([EditBox.new(header,type: EditBox::Flags::MultiLine),Button.new(confirmation),Button.new(cancellation)])
       snd=form.fields[1]
