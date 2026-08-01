@@ -3253,6 +3253,11 @@ msgctxt "Blog"
 msgid "The comment has been added."
 msgstr ""
 
+#: src/scenes/blog.rb
+msgctxt "Blog"
+msgid "The comment has been submitted and is awaiting moderation."
+msgstr ""
+
 #: src/scenes/blog.rb:722 src/ui/controls/edit_box.rb:1474
 msgctxt "EAPI_Form"
 msgid "Media"
