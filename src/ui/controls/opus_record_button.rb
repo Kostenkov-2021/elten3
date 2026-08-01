@@ -113,9 +113,10 @@ set_source(file)
     @form.focus
     }
     @btn_encodeplay.on(:press) {
-    get_file
-    @form.index=@btn_play
-    @btn_play.press
+    if get_recording_file!=nil
+      @form.index=@btn_play
+      @btn_play.press
+    end
     }
     @btn_pause.on(:press) {
     if @recorder.paused
