@@ -180,7 +180,6 @@ def make_window
                     make_setting(p_("Settings", "Wrap long lines in text fields"), :bool, "Interface", "LineWrapping")
             make_setting(p_("Settings", "The display method of selection lists"), [p_("Settings", "Linear"),p_("Settings", "Circular")], "Interface", "ListType", ["linear", "circular"])
             make_setting(p_("Settings", "Round up the forms"), :bool, "Interface", "RoundUpForms")                    
-            make_setting(p_("Settings", "Disable feed notifications"), :bool, "Interface", "DisableFeedNotifications")
             make_setting(p_("Settings", "Automatically play audio content"), [p_("Settings", "Always"),p_("Settings", "Only when transcription is not available"), p_("Settings", "Never")], "Interface", "AutoPlay", ["always", "without_transcription", "never"])
             make_setting(p_("Settings", "Keyboard scheme"), [p_("Settings", "Default"), p_("Settings", "Windows"), p_("Settings", "macOS")], "Interface", "KeyboardScheme", ["default", "windows", "macos"])
             make_setting(p_("Settings", "Use MacOS-style character navigation in text fields"), [p_("Settings", "System Default"), p_("Settings", "Disable"), p_("Settings", "Enable")], "Interface", "MacOSCharacterNavigation", ["default", "disabled", "enabled"])
@@ -201,6 +200,44 @@ def make_window
             @form.fields[1].trigger(:change)
             }
         end
+      def load_main_window
+        setcurrentconfig("MainWindow", "Tabs", Configuration.maintabs.join(","))
+        setcurrentconfig("MainWindow", "ShowNotificationsWhenEmpty", Configuration.showemptynotifications.to_s)
+        setcurrentconfig("MainWindow", "NotificationFocus", Configuration.mainnotificationfocus.to_s)
+        setting_category(p_("Settings", "Main window"))
+        make_setting(
+          p_("Settings", "Tabs visible in the main window"),
+          [p_("Settings", "Notifications"), p_("Settings", "Feed"), p_("Settings", "Quick actions")],
+          "MainWindow",
+          "Tabs",
+          ["notifications", "feed", "actions"],
+          true
+        )
+        make_setting(p_("Settings", "Show the notifications tab even when there are no new notifications"), :bool, "MainWindow", "ShowNotificationsWhenEmpty")
+        make_setting(
+          p_("Settings", "Notification focus after returning to the main window"),
+          [
+            p_("Settings", "Keep the previously selected tab"),
+            p_("Settings", "Switch only when new notifications arrived"),
+            p_("Settings", "Switch whenever unread notifications are present")
+          ],
+          "MainWindow",
+          "NotificationFocus",
+          ["keep_current", "new_notifications", "unread_notifications"]
+        )
+        make_setting(p_("Settings", "Disable feed notifications"), :bool, "Interface", "DisableFeedNotifications")
+        make_setting(p_("Settings", "Reset quick actions"), :custom, Proc.new {
+          confirm(p_("Settings", "Are you sure you want to restore default quick actions?")) {
+            begin
+              QuickActions.reset_defaults
+              alert(p_("Settings", "Quick actions have been reset"))
+            rescue Exception => error
+              Log.error("Cannot reset quick actions: #{error.class}: #{error.message}")
+              alert(_("Error"))
+            end
+          }
+        })
+      end
       def load_voice
         setting_category(p_("Settings", "Voice"))
                 speechvoices=SpeechOutput.voices
@@ -352,6 +389,7 @@ def make_window
         make_window
         load_general
         load_interface
+        load_main_window
         load_voice
         load_clock
         load_soundcards

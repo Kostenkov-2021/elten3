@@ -20,7 +20,7 @@ class Scene_FeedViewer
     rescue EltenLink::Error => e
       Log.warning("Feed viewer load failed: #{e.message}")
       alert(_("Error"))
-      $scene=Scene_Main.new
+      $scene=@scene || Scene_Main.new
       return
     end
 selt=@feeds.map{|f|

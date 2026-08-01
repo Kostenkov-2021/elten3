@@ -7,12 +7,19 @@
 class Scene_Main
   include NotificationGroups
 
+  NOTIFICATION_FOCUS_POLICIES = [:configured, :keep_current, :new_notifications, :unread_notifications].freeze
+
   @@acselindex=nil
   @@notification_index=0
   @@notifications_last_visible_time=0
   @@feed_id=-1
   @@focus=:actions
   @@specials=[]
+
+  def initialize(notification_focus: :configured)
+    raise ArgumentError, "Invalid notification focus policy: #{notification_focus}" if !NOTIFICATION_FOCUS_POLICIES.include?(notification_focus)
+    @notification_focus = notification_focus
+  end
 
   def main
     if @@feed_id==-1
@@ -46,7 +53,7 @@ class Scene_Main
     plsinfo = false
     ci += 1 if ci < 20
 
-    notifications_load(false, focus_if_new: true)
+    notifications_load(false, focus_policy: entry_notification_focus_policy)
     acsel_load(false)
     feeds_load(false)
     focus_current_control
@@ -72,6 +79,8 @@ class Scene_Main
           else
             announce_after_notifications_reload(previous_section)
           end
+        elsif active && current_main_section != previous_section
+          focus_current_control
         end
       end
       focus_deferred_notifications_if_active
@@ -113,13 +122,28 @@ end
 def main_sections
   sections=[]
   sections << :notifications if notifications_visible?
-  sections << :actions
-  sections << :feed
+  sections << :actions if main_tab_enabled?(:actions)
+  sections << :feed if main_tab_enabled?(:feed)
+  sections << :empty if sections.empty?
   sections
 end
 
+def main_tab_enabled?(tab)
+  Configuration.maintabs.to_a.include?(tab)
+end
+
+def entry_notification_focus_policy
+  return Configuration.mainnotificationfocus if @notification_focus == :configured
+  @notification_focus
+end
+
 def notifications_visible?
-  @notification_groups.is_a?(Array) && @notification_groups.size>0
+  return false if !main_tab_enabled?(:notifications)
+  Configuration.showemptynotifications == true || (@notification_groups.is_a?(Array) && @notification_groups.size>0)
+end
+
+def empty_main_control
+  @empty_main_control ||= ListBox.new([], header: p_("Main", "Main window"))
 end
 
 def normalize_main_focus
@@ -161,6 +185,8 @@ def focus_current_control
     @acsel.focus if @acsel!=nil
   when :feed
     @feedsel.focus if @feedsel!=nil
+  when :empty
+    empty_main_control.focus
   end
 end
 
@@ -172,6 +198,8 @@ def say_current_option
     @acsel.sayoption if @acsel!=nil
   when :feed
     @feedsel.sayoption if @feedsel!=nil
+  when :empty
+    empty_main_control.sayoption
   end
 end
 
@@ -211,24 +239,32 @@ def update_current_main_control
     @acsel.update if @acsel!=nil
   when :feed
     @feedsel.update if @feedsel!=nil
+  when :empty
+    empty_main_control.update
   end
 end
 
-def notifications_load(fc=false, focus_if_new: false)
-  old_focus = @@focus
+def notifications_load(fc=false, focus_policy: :keep_current)
   previous_visible_time = @@notifications_last_visible_time.to_i
   @@notification_index=@notifications_sel.index if @notifications_sel!=nil
+  if !main_tab_enabled?(:notifications)
+    @notification_groups = []
+    @notifications_sel = nil
+    normalize_main_focus
+    focus_current_control if fc
+    return
+  end
   notifications = fetch_main_notifications
   groups = build_notification_groups(notifications, include_revoked: false)
   append_virtual_notification_groups(groups, collect_virtual_notification_groups, include_revoked: false)
   @notification_groups = sort_notification_groups(groups)
   latest_time = latest_notification_group_time(@notification_groups)
-  jump_to_notifications = focus_if_new == true && @notification_groups.size > 0 && (previous_visible_time <= 0 || latest_time > previous_visible_time)
+  jump_to_notifications = focus_notifications_on_entry?(focus_policy, latest_time, previous_visible_time)
   @@notifications_last_visible_time = [previous_visible_time, notification_visibility_time(latest_time), latest_time].max
-  if @notification_groups.empty?
+  if !notifications_visible?
     @notifications_sel = nil
-    @@focus = :actions if old_focus == :notifications || @@focus == :notifications
-    @acsel.focus if fc && @acsel!=nil
+    normalize_main_focus
+    focus_current_control if fc
     return
   end
   @@notification_index = [[@@notification_index.to_i, 0].max, [@notification_groups.size - 1, 0].max].min
@@ -240,6 +276,18 @@ def notifications_load(fc=false, focus_if_new: false)
     @notifications_sel.focus if fc
   elsif fc
     @notifications_sel.focus
+  end
+end
+
+def focus_notifications_on_entry?(policy, latest_time, previous_visible_time)
+  return false if @notification_groups.empty?
+  case policy
+  when :new_notifications
+    previous_visible_time <= 0 || latest_time > previous_visible_time
+  when :unread_notifications
+    true
+  else
+    false
   end
 end
 
@@ -358,7 +406,7 @@ def feed_update
     if @feedsel.expanded?
       feed=@feeds[@feedsel.index]
       if feed.responses>0
-        $scene = Scene_FeedViewer.new(feed, nil, false)
+        $scene = Scene_FeedViewer.new(feed, Scene_Main.new(notification_focus: :keep_current), false)
       end
     end
   end
