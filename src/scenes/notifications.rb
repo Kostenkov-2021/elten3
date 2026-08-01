@@ -50,7 +50,9 @@ class Scene_Notifications
   end
 
   def fetch_notifications
-    EltenLink::Notifications.list(elten_link, all: true)
+    notifications = EltenLink::Notifications.list(elten_link, all: true)
+    EltenAPI::NotificationService.synchronize_active_notifications(notifications)
+    notifications
   rescue EltenLink::Error => e
     Log.warning("Notifications list failed: #{e.message}")
     alert(_("Error")) if @quiet != true

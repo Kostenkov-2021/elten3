@@ -302,10 +302,7 @@ end
 
 def fetch_main_notifications
   return [] unless Session.logged?
-  EltenLink::Notifications.list(elten_link, all: false)
-rescue EltenLink::Error => e
-  Log.warning("Main notifications list failed: #{e.message}")
-  []
+  EltenAPI::NotificationService.active_notifications
 end
 
 def current_notification_group
@@ -358,6 +355,7 @@ def notifications_context(menu)
     menu.option(p_("Notifications", "Mark all as read"), nil, "W") { notifications_revoke_all }
   end
   menu.option(_("Refresh"), nil, "r") do
+    EltenAPI::NotificationService.refresh_active_notifications
     previous_section = current_main_section
     notifications_load(false)
     announce_after_notifications_reload(previous_section)

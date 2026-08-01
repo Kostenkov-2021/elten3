@@ -8,7 +8,22 @@ module EltenLink
     class << self
       def list(client, all: false)
         data = client.api_data("GET", "/api/v1/notifications", { "all" => truth_param(all) })
-        data["notifications"].to_a.map { |row| build_notification(row) }
+        data["notifications"].to_a.map { |row| from_data(row) }
+      end
+
+      def from_data(row)
+        Notification.new(
+          id: row["id"].to_i,
+          date: row["date"].to_i,
+          update_time: row["update_time"].to_i,
+          alert: row["alert"].to_s,
+          notification: row["notification"].to_s,
+          sound: row["sound"].to_s,
+          cat: row["cat"].to_s,
+          expiration: row["expiration"].to_i,
+          revoked: truthy?(row["revoked"]),
+          payload: row["payload"].is_a?(Hash) ? row["payload"] : {}
+        )
       end
 
       def revoke(client, id)
@@ -30,21 +45,6 @@ module EltenLink
       end
 
       private
-
-      def build_notification(row)
-        Notification.new(
-          id: row["id"].to_i,
-          date: row["date"].to_i,
-          update_time: row["update_time"].to_i,
-          alert: row["alert"].to_s,
-          notification: row["notification"].to_s,
-          sound: row["sound"].to_s,
-          cat: row["cat"].to_s,
-          expiration: row["expiration"].to_i,
-          revoked: truthy?(row["revoked"]),
-          payload: row["payload"].is_a?(Hash) ? row["payload"] : {}
-        )
-      end
 
       def truth_param(value)
         value ? "1" : "0"

@@ -63,6 +63,67 @@ module EltenAPI
         @wnlasttime
       end
 
+      def active_notifications
+        ensure_state
+        key = session_key
+        @active_notifications_mutex.synchronize do
+          return [] if key == nil || @session_key != key
+
+          @active_notifications.dup
+        end
+      rescue Exception
+        []
+      end
+
+      def synchronize_active_notifications(notifications)
+        ensure_state
+        values = normalize_active_notifications(notifications)
+        changed = false
+        @active_notifications_mutex.synchronize do
+          return false if @session_key != session_key
+
+          changed = active_notification_signature(@active_notifications) != active_notification_signature(values)
+          @active_notifications = values
+          @active_notifications_request_id = @request_serial.to_i + 1
+        end
+        enqueue_event("func" => "notifications") if changed
+        true
+      end
+
+      def revoke_active_notifications(ids=nil)
+        ensure_state
+        values = ids == nil ? nil : Array(ids).flatten.map(&:to_i).select(&:positive?).uniq
+        changed = false
+        @active_notifications_mutex.synchronize do
+          return false if @session_key != session_key
+
+          previous_size = @active_notifications.size
+          if values == nil
+            @active_notifications = []
+          elsif !values.empty?
+            @active_notifications = @active_notifications.reject { |notification| values.include?(notification.id.to_i) }
+          end
+          changed = previous_size != @active_notifications.size
+          @active_notifications_hash = ""
+          @active_notifications_request_id = @request_serial.to_i + 1
+          @next_request_at = monotonic_time
+        end
+        enqueue_event("func" => "notifications") if changed
+        true
+      end
+
+      def refresh_active_notifications
+        ensure_state
+        @active_notifications_mutex.synchronize do
+          return false if @session_key != session_key
+
+          @active_notifications_hash = ""
+          @active_notifications_request_id = @request_serial.to_i + 1
+          @next_request_at = monotonic_time
+        end
+        true
+      end
+
       private
 
       def ensure_state
@@ -72,6 +133,10 @@ module EltenAPI
         @responses = Queue.new
         @background_responses = Queue.new
         @notification_ids = {}
+        @active_notifications_mutex = Mutex.new
+        @active_notifications = []
+        @active_notifications_hash = ""
+        @active_notifications_request_id = 0
         @sigids = []
         @request_serial = 0
         @inflight_requests = {}
@@ -155,6 +220,11 @@ module EltenAPI
         @virtual_update_request_pending = false
         @next_virtual_update_check_at = 0.0
         @notification_ids.clear
+        @active_notifications_mutex.synchronize do
+          @active_notifications = []
+          @active_notifications_hash = ""
+          @active_notifications_request_id = 0
+        end
         NotificationGroups.clear_virtual_notifications if defined?(NotificationGroups)
       end
 
@@ -210,12 +280,12 @@ module EltenAPI
           end
           info = @inflight_requests.delete(request_id)
           calibrating = info.is_a?(Hash) && info["calibrating"] == true
-          handle_status_response(answer, key, calibrating)
+          handle_status_response(answer, key, calibrating, request_id)
           count += 1
         end
       end
 
-      def handle_status_response(answer, key, calibrating=false)
+      def handle_status_response(answer, key, calibrating=false, request_id=0)
         return if key != @session_key
         return if !answer.is_a?(String)
         body = answer.dup.force_encoding("UTF-8").encode("UTF-8", invalid: :replace, undef: :replace)
@@ -229,6 +299,7 @@ module EltenAPI
         end
         handle_message_counter(response)
         handle_feed_counter(response, key)
+        handle_active_notifications(response, request_id)
         handle_notification_counter(response, calibrating)
         handle_signals(response) if calibrating != true
         handle_premium_packages(response)
@@ -277,6 +348,23 @@ module EltenAPI
         return if calibrating == true || previous <= 0 || notificationtime <= previous
 
         enqueue_event("func" => "notifications", "notificationtime" => notificationtime)
+      end
+
+      def handle_active_notifications(response, request_id)
+        rows = response["notifications_state"]
+        return unless rows.is_a?(Array)
+
+        values = normalize_active_notifications(rows.map { |row| EltenLink::Notifications.from_data(row) })
+        changed = false
+        @active_notifications_mutex.synchronize do
+          return if request_id.to_i < @active_notifications_request_id.to_i
+
+          changed = active_notification_signature(@active_notifications) != active_notification_signature(values)
+          @active_notifications = values
+          @active_notifications_hash = response["notifications_hash"].to_s
+          @active_notifications_request_id = request_id.to_i
+        end
+        enqueue_event("func" => "notifications") if changed
       end
 
       def handle_signals(response)
@@ -638,10 +726,30 @@ module EltenAPI
           "token" => token,
           "lasttime" => lasttime,
           "language" => configuration_string(:language),
-          "soundtheme" => configuration_string(:soundtheme)
+          "soundtheme" => configuration_string(:soundtheme),
+          "notifications_hash" => active_notifications_hash
         }
         params["shown"] = 1 if shown == true
         params
+      end
+
+      def active_notifications_hash
+        @active_notifications_mutex.synchronize { @active_notifications_hash.to_s }
+      end
+
+      def normalize_active_notifications(notifications)
+        now = Time.now.to_i
+        notifications.to_a.each_with_object({}) do |notification, result|
+          next unless notification.is_a?(EltenLink::Notification)
+          next if notification.id.to_i <= 0 || notification.revoked == true
+          next if notification.expiration.to_i > 0 && notification.date.to_i + notification.expiration.to_i < now
+
+          result[notification.id.to_i] = notification
+        end.values.sort_by { |notification| [notification.date.to_i, notification.id.to_i] }
+      end
+
+      def active_notification_signature(notifications)
+        notifications.to_a.map { |notification| [notification.id.to_i, notification.update_time.to_i] }
       end
 
       def notification_request_lasttime(base_lasttime, calibrating=false)

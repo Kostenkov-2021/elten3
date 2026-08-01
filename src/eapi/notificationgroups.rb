@@ -507,6 +507,7 @@ module NotificationGroups
     return false if group.ids.empty?
 
     EltenLink::Notifications.revoke_many(elten_link, group.ids)
+    EltenAPI::NotificationService.revoke_active_notifications(group.ids)
     group.revoked = true
     $main_notifications_changed = true
     Session.notifications_update if defined?(Session)
@@ -523,6 +524,7 @@ module NotificationGroups
 
   def revoke_all_notification_groups(groups=nil)
     EltenLink::Notifications.revoke_all(elten_link)
+    EltenAPI::NotificationService.revoke_active_notifications
     groups.to_a.each do |group|
       revoke_virtual_notification(group) if group.virtual? && !group.revoked
     end
