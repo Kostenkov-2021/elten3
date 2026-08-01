@@ -3488,7 +3488,9 @@ end
             end
           }
           m.option(p_("Forum", "Delete post"), nil, "-") {
-            confirm(p_("Forum", "Are you sure you want to delete this post?")) do
+            content = post.transcription.strip!="" ? post.transcription : post.post
+            preview = content.lines.first.to_s.strip
+            confirm(p_("Forum", "Are you sure you want to delete this post?")+"\r\n"+post.authorname+":\r\n"+preview) do
               if forum_attempt(nil) {
                 if @posts.size == 1
                   EltenLink::Forum.delete_thread(elten_link, thread_id: @thread)
