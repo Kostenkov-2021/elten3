@@ -190,6 +190,7 @@ src/ui/form.rb
 src/ui/controls/form_field.rb
 src/ui/controls/edit_box.rb
 src/ui/controls/list_box.rb
+src/ui/controls/choice_list_box.rb
 src/ui/controls/button.rb
 src/ui/controls/check_box.rb
 src/ui/controls/files_tree.rb
