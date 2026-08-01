@@ -17,9 +17,48 @@ module EltenLink
     :public_mail,
     keyword_init: true
   )
+  UserCardHonor = Struct.new(:name, :enname, keyword_init: true) do
+    def name_for(language)
+      language == "pl-PL" ? name : enname
+    end
+  end
+  UserCard = Struct.new(
+    :name,
+    :profile,
+    :info,
+    :visiting_card,
+    :status,
+    :main_honor,
+    keyword_init: true
+  )
 
   module Profiles
     class << self
+      def card(client, user)
+        data = client.api_data("GET", "/api/v1/users/#{user.to_s.urlenc}/card")
+        visiting_card = data["visiting_card"]
+        visiting_card = {} unless visiting_card.is_a?(Hash)
+        status = data["status"]
+        status = {} unless status.is_a?(Hash)
+        main_honor = data["main_honor"]
+
+        UserCard.new(
+          name: data["name"].to_s,
+          profile: build_profile(data["profile"]),
+          info: Users.build_info(data["info"]),
+          visiting_card: Client.truthy?(visiting_card["exists"]) ? visiting_card["text"].to_s : nil,
+          status: UserStatus.new(
+            text: status["text"].to_s,
+            online: Client.truthy?(status["online"]),
+            sponsor: Client.truthy?(status["sponsor"])
+          ),
+          main_honor: main_honor.is_a?(Hash) ? UserCardHonor.new(
+            name: main_honor["name"].to_s,
+            enname: main_honor["enname"].to_s
+          ) : nil
+        )
+      end
+
       def visiting_card(client, user)
         data = client.api_data("GET", "/api/v1/users/#{user.to_s.urlenc}/visiting-card")
         return nil unless Client.truthy?(data["exists"])
@@ -36,21 +75,7 @@ module EltenLink
         payload = client.api_payload("GET", "/api/v1/users/#{user.to_s.urlenc}/profile")
         return nil unless payload.is_a?(Hash) && Client.truthy?(payload["success"])
 
-        data = payload["data"] || {}
-        birthdate = data["birthdate"] || {}
-        UserProfile.new(
-          name: data["name"].to_s,
-          fullname: data["fullname"].to_s,
-          gender: data["gender"].to_i,
-          birthdate: UserProfileBirthdate.new(
-            year: birthdate["year"].to_i,
-            month: birthdate["month"].to_i,
-            day: birthdate["day"].to_i
-          ),
-          location: data["location"].to_s,
-          public_profile: data["public_profile"].to_i,
-          public_mail: data["public_mail"].to_i
-        )
+        build_profile(payload["data"])
       end
 
       def update_profile(client, fullname: nil, gender: nil, birthdate_year: nil, birthdate_month: nil, birthdate_day: nil, location: nil, public_profile: nil, public_mail: nil)
@@ -68,6 +93,24 @@ module EltenLink
       end
 
       private
+
+      def build_profile(data)
+        data = {} unless data.is_a?(Hash)
+        birthdate = data["birthdate"] || {}
+        UserProfile.new(
+          name: data["name"].to_s,
+          fullname: data["fullname"].to_s,
+          gender: data["gender"].to_i,
+          birthdate: UserProfileBirthdate.new(
+            year: birthdate["year"].to_i,
+            month: birthdate["month"].to_i,
+            day: birthdate["day"].to_i
+          ),
+          location: data["location"].to_s,
+          public_profile: data["public_profile"].to_i,
+          public_mail: data["public_mail"].to_i
+        )
+      end
 
       def clean_hash(hash)
         hash.each_with_object({}) { |(key, value), result| result[key] = value unless value.nil? }

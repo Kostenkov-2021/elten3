@@ -57,6 +57,11 @@ module EltenLink
 
       def info(client, user, stateonly: false)
         data = client.api_data("GET", "/api/v1/users/#{user.to_s.urlenc}", { "stateonly" => bool_int(stateonly) })
+        build_info(data)
+      end
+
+      def build_info(data)
+        data = {} unless data.is_a?(Hash)
         UserInfo.new(
           name: data["name"].to_s,
           last_seen: time_value(data["last_seen"]),

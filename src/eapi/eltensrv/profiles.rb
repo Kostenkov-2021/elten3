@@ -9,18 +9,20 @@ module EltenAPI
     private
     def visitingcard(user=Session.name)
       begin
-        vc = EltenLink::Profiles.visiting_card(elten_link, user)
-        pr = EltenLink::Profiles.profile(elten_link, user)
+        card = EltenLink::Profiles.card(elten_link, user)
       rescue EltenLink::Error => e
         Log.warning("Visiting card failed: #{e.message}")
         alert(_("Database Error"))
         return -1
       end
+      vc = card.visiting_card
+      pr = card.profile
+      ui = card.info
       dialog_open
       text = ""
-      honor=gethonor(user)
+      honor = card.main_honor&.name_for(Configuration.language)
       text += "#{if honor==nil;p_("EAPI_Common", "User");else;honor;end}: #{user} \r\n"
-      text += getstatus(user,false,false)
+      text += card.status.text
       text += "\r\n"
       fullname = ""
       gender = -1
@@ -68,7 +70,6 @@ module EltenAPI
           text+="\r\n"
         end
       end
-      ui = userinfo(user)
       if ui != -1
         if gender == 0
           text += p_("EAPI_Common_female", "Last seen")
