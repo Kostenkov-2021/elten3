@@ -365,7 +365,10 @@ module EltenWindow
   WM_APP = 0x8000
   WM_DISPATCH_ACTIONS = WM_APP + 0x51
   WM_REQUEST_EXIT = WM_APP + 0x52
+  VK_CONTROL = 0x11
+  VK_MENU = 0x12
   VK_F4 = 0x73
+  VK_LCONTROL = 0xA2
   UNICODE_NOCHAR = 0xFFFF
   SIZE_MINIMIZED = 1
   GWL_STYLE = -16
@@ -655,7 +658,7 @@ module EltenWindow
     def keyboard_state
       window_state_monitor.synchronize do
         @keyboard_state ||= ("\0" * 256)
-        @keyboard_state.dup
+        normalize_altgr_keyboard_state(@keyboard_state.dup)
       end
     end
 
@@ -757,7 +760,7 @@ module EltenWindow
     def consume_key_events
       window_state_monitor.synchronize do
         @key_event_queue ||= []
-        events = @key_event_queue
+        events = normalize_altgr_key_events(@key_event_queue)
         @key_event_queue = []
         events
       end
@@ -767,9 +770,11 @@ module EltenWindow
       window_state_monitor.synchronize do
         @keyboard_state ||= ("\0" * 256)
         @key_event_queue ||= []
-        events = @key_event_queue
+        state = normalize_altgr_keyboard_state(@keyboard_state.dup)
+        events = normalize_altgr_key_events(@key_event_queue)
         @key_event_queue = []
-        [@keyboard_state.dup, events]
+        clear_finished_altgr_character_input
+        [state, events]
       end
     end
 
@@ -980,6 +985,8 @@ module EltenWindow
       window_state_monitor.synchronize do
         @key_event_queue ||= []
         @key_event_queue.clear
+        @right_alt_down = false
+        @altgr_character_input = false
       end
       true
     end
@@ -1148,6 +1155,17 @@ module EltenWindow
       event = down && repeated_key_message?(lparam) ? :repeat : down
       press_state = capture_key_event_state if down
       window_state_monitor.synchronize do
+        @right_alt_down = down if key == VK_MENU && extended_key_message?(lparam)
+        if @altgr_character_input == true && altgr_control_key?(key)
+          if down == false
+            @altgr_character_input = false
+            next
+          elsif @right_alt_down == true
+            next
+          else
+            @altgr_character_input = false
+          end
+        end
         @key_event_queue ||= []
         @key_event_queue << [key, event, press_state]
         @key_event_queue.shift while @key_event_queue.size > 256
@@ -1159,6 +1177,12 @@ module EltenWindow
 
     def repeated_key_message?(lparam)
       (lparam.to_i & (1 << 30)) != 0
+    rescue Exception
+      false
+    end
+
+    def extended_key_message?(lparam)
+      (lparam.to_i & (1 << 24)) != 0
     rescue Exception
       false
     end
@@ -1177,6 +1201,7 @@ module EltenWindow
       return if message == WM_DEADCHAR
       window_state_monitor.synchronize do
         @character_queue ||= []
+        begin_altgr_character_input if @right_alt_down == true
         if code >= 0xD800 && code <= 0xDBFF
           @high_surrogate = code
           next
@@ -1190,6 +1215,37 @@ module EltenWindow
       end
     rescue Exception
       @high_surrogate = nil
+    end
+
+    def begin_altgr_character_input
+      @altgr_character_input = true
+      @key_event_queue ||= []
+      @key_event_queue.delete_if { |key, _event, _press_state| altgr_control_key?(key) }
+    end
+
+    def normalize_altgr_keyboard_state(state)
+      return state if @altgr_character_input != true
+      [VK_CONTROL, VK_LCONTROL].each do |key|
+        state.setbyte(key, state.getbyte(key).to_i & 0x7f)
+      end
+      state
+    end
+
+    def normalize_altgr_key_events(events)
+      return events if @altgr_character_input != true
+      events.reject { |key, _event, _press_state| altgr_control_key?(key) }
+    end
+
+    def clear_finished_altgr_character_input
+      return if @altgr_character_input != true || @right_alt_down == true
+      control_down = [VK_CONTROL, VK_LCONTROL].any? do |key|
+        (@keyboard_state.getbyte(key).to_i & 0x80) != 0
+      end
+      @altgr_character_input = false if !control_down
+    end
+
+    def altgr_control_key?(key)
+      key.to_i == VK_CONTROL || key.to_i == VK_LCONTROL
     end
 
     def menu_message?(message, wparam)
