@@ -2882,9 +2882,8 @@ return $scene=Scene_Main.new if @form==nil
       @form.update
       if @closed_thread_reply_button != nil && @closed_thread_reply_button.pressed?
         @noteditable = false
-        refresh
         @form.index = @postscount * 3 + ((@type == 2) ? 0 : 1)
-        @form.focus
+        refresh
         next
       end
       if @noteditable == false
@@ -3058,7 +3057,7 @@ end
     @type = @threadclass.forum.type
     @posttype=0
     @posttype=1 if @type==1
-    if @type==2
+    if @type==2 && @noteditable==false
     sel=ListBox.new([p_("Forum", "Text post"), p_("Forum", "Audio post")], header: p_("Forum", "Post type"))
     sel.on(:move) {|i|
     if @noteditable==false
