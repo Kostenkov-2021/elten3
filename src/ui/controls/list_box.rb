@@ -487,6 +487,100 @@ def idle_update
   true
 end
 
+def multiselection_limit_exceeded
+  play_sound("border")
+  alert(np_("EAPI_Form", "You can heck only %{count} item", "You can check only %{count} items", @limit)%{:count=>@limit})
+end
+
+def select_multiselection_indices(indices)
+  indices=indices.uniq.select{|i| i>=0 && i<@options.size && @selected[i]!=true}
+  return :unchanged if indices.empty?
+  if @limit>0 && @selected.count(true)+indices.size>@limit
+    multiselection_limit_exceeded
+    return :limit
+  end
+  trigger(:multiselection_beforechanged)
+  indices.each do |i|
+    @selected[i]=true
+    trigger(:multiselection_selected, i)
+  end
+  trigger(:multiselection_changed)
+  :changed
+end
+
+def deselect_multiselection_indices(indices)
+  indices=indices.uniq.select{|i| i>=0 && i<@options.size && @selected[i]==true}
+  return :unchanged if indices.empty?
+  trigger(:multiselection_beforechanged)
+  indices.each do |i|
+    @selected[i]=false
+    trigger(:multiselection_unselected, i)
+  end
+  trigger(:multiselection_changed)
+  :changed
+end
+
+def select_all_multiselection_items
+  indices=(0...@options.size).reject{|i| hidden?(i)}
+  result=select_multiselection_indices(indices)
+  if result==:changed
+    play_sound("listbox_statechecked")
+    alert(p_("EAPI_Form", "Checked"), false)
+  end
+end
+
+def deselect_all_multiselection_items
+  result=deselect_multiselection_indices(0...@options.size)
+  if result==:changed
+    play_sound("listbox_stateunchecked")
+    alert(p_("EAPI_Form", "Unchecked"), false)
+  end
+end
+
+def multiselection_range_target(action)
+  visible=(0...@options.size).reject{|i| hidden?(i)}
+  return nil if visible.empty?
+  return visible.first if action==:list_select_start
+  return visible.last if action==:list_select_end
+  position=visible.index(self.index)
+  return nil if position==nil
+  offset={
+    list_select_previous: -1,
+    list_select_next: 1,
+    list_select_page_up: -15,
+    list_select_page_down: 15
+  }[action]
+  return nil if offset==nil
+  visible[[[position+offset, 0].max, visible.size-1].min]
+end
+
+def select_multiselection_range(action)
+  target=multiselection_range_target(action)
+  return false if target==nil
+  from, to=[self.index, target].minmax
+  indices=(from..to).reject{|i| hidden?(i)}
+  return false if select_multiselection_indices(indices)==:limit
+  @run=true
+  self.index=target
+  true
+end
+
+def context(menu, submenu=true)
+  if @multi && !@options.empty?
+    menu.option(p_("EAPI_Form", "Select all"), nil, EltenAPI::KeyboardScheme.action(:select_all)) {
+      select_all_multiselection_items
+    }
+    menu.option(p_("EAPI_Form", "Deselect all"), nil, EltenAPI::KeyboardScheme.action(:deselect_all)) {
+      deselect_all_multiselection_items
+    }
+  end
+  super(menu, submenu)
+end
+
+def hascontext
+  (@multi && !@options.empty?) || super
+end
+
             # Update the listbox
     def update
 return idle_update if idle_update_frame?
@@ -498,7 +592,9 @@ speak((@index+1).to_s) if position_action == :list_position
 speak(@options.size.to_s) if position_action == :list_count
     oldindex = self.index
       options = @options
-boundary_action = keyboard_action_pressed?(:list_start, :list_end)
+multiselection_range_action=keyboard_action_pressed?(:list_select_start, :list_select_end, :list_select_previous, :list_select_next, :list_select_page_up, :list_select_page_down) if @multi
+select_multiselection_range(multiselection_range_action) if multiselection_range_action!=nil
+  boundary_action = keyboard_action_pressed?(:list_start, :list_end)
 if boundary_action == :list_start && !options.empty?
   @run = true
   self.index = 0
@@ -552,7 +648,7 @@ if key_held?(0x2D) and key_pressed?(:key_up)
   play_item_states(@index)
   lspeak(option_speech_text(@index))
 end
-  if key_held?(0x10) and (key_pressed?(:key_up) or key_pressed?(:key_down)) and @tagged
+  if !@multi && raw_key_held?(:key_shift) and (key_pressed?(:key_up) or key_pressed?(:key_down)) and @tagged
     tgs=tags
   ind=(tgs.index(@tag)||-1)+1
         if key_pressed?(:key_up)
@@ -573,7 +669,7 @@ end
     speak(tag+": "+o)
     end
   end
-  if key_pressed?(:key_page_up) == true and @lr==false && !modifier_held?(:command)
+  if multiselection_range_action==nil && key_pressed?(:key_page_up) == true and @lr==false && !modifier_held?(:command)
     if self.index > 14
             for i in 1..15
               self.index-=1
@@ -589,7 +685,7 @@ end
     self.index += 1
   end
     end
-        if key_pressed?(:key_page_down) == true and @lr==false && !modifier_held?(:command)
+        if multiselection_range_action==nil && key_pressed?(:key_page_down) == true and @lr==false && !modifier_held?(:command)
        if self.index < (options.size - 15)
             for i in 1..15
               self.index+=1
@@ -687,23 +783,14 @@ elsif oldindex == self.index and @run == true and (k.chrsize<=1 or (@options[sel
   end
   if key_pressed?(:key_space) && @multi != true && item_audio?(self.index)
     toggle_item_audio(self.index)
-  elsif key_pressed?(:key_space) and @multi == true
-    trigger(:multiselection_beforechanged)
+  elsif key_pressed?(:key_space) and @multi == true and @index>=0 and @index<@options.size
     if @selected[@index] == false
-      if @limit<=0 || @selected.count(true)<@limit
-            @selected[@index] = true
-            trigger(:multiselection_selected, @index)
-            trigger(:multiselection_changed)
+      if select_multiselection_indices([@index])!=:limit
       play_sound("listbox_statechecked", volume: 100, pitch: 100, pan: self.index.to_f/(options.size-1).to_f*100.0)
       alert(p_("EAPI_Form", "Checked") ,false)
-    else
-      play_sound("border")
-      alert(np_("EAPI_Form", "You can heck only %{count} item", "You can check only %{count} items", @limit)%{:count=>@limit})
       end
     else
-      @selected[@index] = false
-      trigger(:multiselection_unselected, @index)
-      trigger(:multiselection_changed)
+      deselect_multiselection_indices([@index])
       play_sound("listbox_stateunchecked", volume: 100, pitch: 100, pan: self.index.to_f/(options.size-1).to_f*100.0)
       alert(p_("EAPI_Form", "Unchecked"), false)
       end
