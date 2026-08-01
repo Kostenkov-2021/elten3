@@ -118,7 +118,7 @@ super(@label)
     if @sel_min.index==0
       @sel_sec.options=[p_("EAPI_Form", "Not selected")]
     else
-      @sel_sec.options=[p_("EAPI_Form", "Not selected")]+@mins
+      @sel_sec.options=[p_("EAPI_Form", "Not selected")]+@secs
     end
     @sel_sec.index-=1 while @sel_sec.index>=@sel_sec.options.size
               @sel_sec.trigger(:move, @sel_sec.index)
@@ -161,7 +161,9 @@ genlabel
 @sel_day.index=@day
 @sel_day.trigger(:move, @sel_day.index)
 @sel_hour.index=@hour+1
+@sel_hour.trigger(:move, @sel_hour.index)
 @sel_min.index=@min+1
+@sel_min.trigger(:move, @sel_min.index)
 @sel_sec.index=@sec+1
   end
   end
