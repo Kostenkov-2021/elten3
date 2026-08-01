@@ -77,6 +77,7 @@ end
     Log.info("Thread resumed #{l}")
     $scene=sc
        end
+       Programs::Extensions.tick if defined?(Programs::Extensions) && Thread::current == $mainthread
        $input_frame_serial=($input_frame_serial||0)+1
        EltenAPI::Controls::ListBox.tick_audio_players if defined?(EltenAPI::Controls::ListBox)
        $getkeychar_cache_serial=nil

@@ -457,12 +457,8 @@ module Programs
       code = code_for(logical)
       raise ProgramError, "Cannot load missing program file #{logical}" if code == nil
       @loaded[logical] = true
-      previous = Thread.current[:elten_program_runtime]
-      Thread.current[:elten_program_runtime] = self
-      @namespace.module_eval(code, virtual_path(logical), 1)
+      Programs.with_runtime(self) { @namespace.module_eval(code, virtual_path(logical), 1) }
       true
-    ensure
-      Thread.current[:elten_program_runtime] = previous
     end
 
     def require_file(name)
@@ -802,6 +798,19 @@ module Programs
       Thread.current[:elten_program_runtime]
     end
 
+    def with_runtime(runtime)
+      previous = Thread.current[:elten_program_runtime]
+      Thread.current[:elten_program_runtime] = runtime
+      yield
+    ensure
+      Thread.current[:elten_program_runtime] = previous
+    end
+
+    def runtime_registered?(runtime)
+      return false if runtime == nil
+      @@runtimes.values.any? { |registered| registered.equal?(runtime) }
+    end
+
     def register_runtime(runtime)
       @@runtimes[runtime.entry_id] = runtime
       @@runtime_by_prefix[runtime.virtual_prefix] = runtime
@@ -823,8 +832,10 @@ module Programs
       root.const_set(name, Module.new)
     end
 
-    def unregister_runtime(runtime)
+    def unregister_runtime(runtime, reason = :unload)
       return if runtime == nil
+      Extensions.unregister_runtime(runtime, reason) if defined?(Extensions)
+      @@runtimes.delete(runtime.entry_id) if @@runtimes[runtime.entry_id].equal?(runtime)
       @@runtime_by_prefix.delete(runtime.virtual_prefix)
       root = File.expand_path(runtime.root).tr("\\", "/").downcase rescue nil
       @@runtime_by_root.delete(root) if root != nil
@@ -1155,7 +1166,7 @@ module Programs
       text
     end
 
-    def register(cls, path = nil, listed = nil)
+    def register(cls, path = nil, listed = nil, initialize_class: true)
       return if !cls.is_a?(Class)
       listed = (cls < Program) if listed == nil
       if path != nil
@@ -1166,9 +1177,19 @@ module Programs
         Log.warning("Registered program class without identification: #{cls}")
       end
       if listed
-        @@programs.push(cls) if !@@programs.include?(cls)
-        initialize_program_class(cls)
+        added = !@@programs.include?(cls)
+        @@programs.push(cls) if added
+        if added
+          activate_program_class(cls)
+          initialize_program_class(cls) if initialize_class
+        end
       end
+    end
+
+    def activate_program_class(cls)
+      return if !cls.is_a?(Class) || !cls.respond_to?(:activate)
+      runtime = runtime_for(cls)
+      with_runtime(runtime) { cls.activate }
     end
 
     def discover(cls)
@@ -1222,20 +1243,25 @@ module Programs
       EditBox.unregister_class(program) if defined?(EditBox)
     end
 
-    def delete(path)
+    def delete(path, reason: :unload)
       Log.info("Deleting program #{path}")
+      runtime = @@runtimes[path]
+      if runtime != nil && runtime.equal?(current_runtime)
+        Log.warning("Cannot unload program #{path} while it is executing")
+        return false
+      end
       classes = @@bypaths[path] || []
+      removed = runtime != nil || classes.size > 0
+      unregister_runtime(runtime, reason)
       @@bypaths.delete(path)
       @@configs.delete(path)
-      runtime = @@runtimes.delete(path)
-      unregister_runtime(runtime)
       classes.each { |cls| unregister(cls) }
-      classes.size > 0
+      removed
     end
 
-    def delete_all
+    def delete_all(reason = :unload)
       Log.info("Flushing programs data")
-      @@bypaths.keys.dup.each { |key| delete(key) }
+      @@bypaths.keys.dup.each { |key| delete(key, :reason => reason) }
       count = @@programs.size
       unregister(@@programs[0]) while @@programs.size > 0
       @@configs.clear
@@ -1739,6 +1765,7 @@ module Programs
     def load_sig(entry, persist: true, installation_source: nil, installation_source_path: nil)
       Log.info("Loading program #{entry}")
       return true if @@runtimes.key?(entry)
+      runtime = nil
       source = discover_source(entry)
       raise ProgramError, "Program #{entry} has no Elten3AppInfo" if source == nil
       manifest = source[:manifest]
@@ -1762,15 +1789,29 @@ module Programs
       runtime.load_main
       main_class = resolve_main_class(runtime)
       bind_manifest(main_class, runtime)
-      register(main_class, entry, true)
+      register(main_class, entry, true, :initialize_class => false)
       if persist
         source = installation_source
         source = "autodetected" if source == nil && registry_record(entry) == nil
         register_app_entry(entry, uuid: manifest.id, loaded: true, installation_source: source, installation_source_path: installation_source_path)
       end
+      initialize_program_class(main_class)
       true
     rescue Exception => e
+      rollback_program_load(entry, runtime)
       Log.error("Failed to load program #{entry}: #{e.class}: #{e.message}, #{e.backtrace}")
+      false
+    end
+
+    def rollback_program_load(entry, runtime)
+      classes = @@bypaths[entry] || []
+      unregister_runtime(runtime, :load_rollback)
+      @@bypaths.delete(entry)
+      @@configs.delete(entry)
+      classes.each { |cls| unregister(cls) }
+      true
+    rescue Exception => error
+      Log.error("Cannot roll back program #{entry}: #{error.class}: #{error.message}")
       false
     end
 
@@ -2013,6 +2054,9 @@ class Program
   class << self
     attr_reader :app_info, :app_runtime
 
+    def activate
+    end
+
     def init
     end
 
@@ -2137,6 +2181,12 @@ class Program
 
     def on(event, &proc)
       Programs.register_event_listener(event, self, proc)
+    end
+
+    def extension(name, &block)
+      raise Programs::ProgramError, "Program extensions require an application runtime" if @app_runtime == nil
+      raise Programs::ProgramError, "Program extension API is unavailable" if !defined?(Programs::Extensions)
+      Programs::Extensions.register(@app_runtime, name, &block)
     end
 
     def register_quickaction(ident, label, &proc)

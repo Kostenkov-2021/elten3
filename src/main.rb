@@ -106,6 +106,7 @@ rescue Exception => error
   Log.error("Critical exception occurred, terminating!")
   fail
             ensure
+            Programs::Extensions.shutdown(:client_shutdown) if defined?(Programs::Extensions)
             if $immediateexit!=true
   ActivityReports.shutdown
   NVDA.join if defined?(NVDA)

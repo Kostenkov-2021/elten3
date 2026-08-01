@@ -603,8 +603,8 @@ when 1
      end
 
      def activate_installed_entry(entry,existing_entry,destination,backups,installation_source: nil, installation_source_path: nil)
-       Programs.delete(existing_entry) if existing_entry!=nil
-       Programs.delete(entry) if existing_entry==nil || existing_entry!=entry
+       Programs.delete(existing_entry, :reason => :reload) if existing_entry!=nil
+       Programs.delete(entry, :reason => :reload) if existing_entry==nil || existing_entry!=entry
        if Programs.load_sig(entry, installation_source: installation_source, installation_source_path: installation_source_path)
          cleanup_install_backups(backups)
          entry

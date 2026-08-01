@@ -8,8 +8,23 @@ class Scene_Settings
   def initialize
     @settings=[]
     @values={}
+    @bound_settings={}
   end
   def currentconfig(group, key)
+    if group==:extension_setting
+      value_key=[group,key]
+      return @values[value_key] if @values.key?(value_key)
+      binding=@bound_settings[key.to_s]
+      if binding!=nil
+        begin
+          return binding[0].call.to_s
+        rescue Exception => error
+          Log.error("Cannot read extension setting #{key}: #{error.class}: #{error.message}")
+          return ""
+        end
+      end
+      return ""
+    end
     return @values[[group,key]]||readconfig(group,key)
   end
   def setcurrentconfig(group,key,val)
@@ -36,6 +51,10 @@ def make_setting(label, type, section, config=nil, mapping=nil, multi=false)
   return if @settings.size==0
   mapping=mapping.map{|x|x.to_s} if mapping!=nil
   @settings.last.push([label, type, section, config, mapping, multi])
+end
+def make_bound_setting(label, type, key, getter, setter, mapping=nil, multi=false)
+  @bound_settings[key.to_s]=[getter,setter]
+  make_setting(label,type,:extension_setting,key.to_s,mapping,multi)
 end
 def save_category
   for i in 2...@settings[@category].size
@@ -107,12 +126,24 @@ end
 end
 def apply_settings
   save_category
-  for k in @values.keys
-    v=@values[k]
-    writeconfig(k[0], k[1], v)
+  begin
+    for k in @values.keys
+      v=@values[k]
+      if k[0]==:extension_setting
+        binding=@bound_settings[k[1].to_s]
+        binding[1].call(v) if binding!=nil
+      else
+        writeconfig(k[0], k[1], v)
+      end
+    end
+    load_configuration
+    true
+  rescue Exception => error
+    Log.error("Cannot apply settings: #{error.class}: #{error.message}")
+    alert(p_("Settings", "Cannot save settings: %{error}") % {:error => error.message.to_s})
+    false
   end
-  load_configuration
-  end
+end
 def make_window
   @form=Form.new
   @form.fields[0] = ListBox.new([], header: p_("Settings", "Category"))
@@ -326,19 +357,20 @@ def make_window
         load_soundcards
         load_ii
         load_advanced
+        Programs::Extensions.render_settings(self) if defined?(Programs::Extensions)
         @form.focus
         loop do
           loop_update
           @form.update
           show_category(@form.fields[0].index) if @category!=@form.fields[0].index
           if @form.fields[-3].pressed?
-            apply_settings
-            speak(_("Saved"))
+            speak(_("Saved")) if apply_settings
           end
                     if @form.fields[-2].pressed? or (key_pressed?(:key_enter) and !@form.fields[@form.index].is_a?(Button))
-            apply_settings
-            alert(_("Saved"))
-            $scene=Scene_Main.new
+            if apply_settings
+              alert(_("Saved"))
+              $scene=Scene_Main.new
+            end
           end
           if key_pressed?(:key_escape) or @form.fields[-1].pressed?
             $scene=Scene_Main.new
