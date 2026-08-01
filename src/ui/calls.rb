@@ -45,7 +45,7 @@ caller=@callers[@lst_callers.index]
 if caller!=nil
 ui=userinfo(caller)
 if ui!=-1
-  callable=ui[12].to_b
+  callable=ui.callable
   if callable
     voicecall(nil, nil, [caller])
         close

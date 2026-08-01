@@ -3,6 +3,26 @@
 
 module EltenLink
   UserStatus = Struct.new(:text, :online, :sponsor, keyword_init: true)
+  UserInfo = Struct.new(
+    :name,
+    :last_seen,
+    :has_blog,
+    :knows,
+    :known_by,
+    :version,
+    :registered,
+    :polls,
+    :forum_posts,
+    :in_contacts,
+    :has_avatar,
+    :banned,
+    :honors,
+    :callable,
+    :feed_followed,
+    :monitored,
+    :archived,
+    keyword_init: true
+  )
 
   module Users
     @status_time = 0
@@ -37,26 +57,25 @@ module EltenLink
 
       def info(client, user, stateonly: false)
         data = client.api_data("GET", "/api/v1/users/#{user.to_s.urlenc}", { "stateonly" => bool_int(stateonly) })
-        response = [
-          "0\r\n",
-          "#{int_value(data["last_seen"])}\r\n",
-          "#{bool_int(data["has_blog"])}\r\n",
-          "#{int_value(data["knows"])}\r\n",
-          "#{int_value(data["known_by"])}\r\n",
-          "#{data["version"]}\r\n",
-          "#{int_value(data["registered"])}\r\n",
-          "#{int_value(data["polls"])}\r\n",
-          "#{int_value(data["forum_posts"])}\r\n",
-          "#{bool_int(data["in_contacts"])}\r\n",
-          "#{bool_int(data["has_avatar"])}\r\n",
-          "#{bool_int(data["banned"])}\r\n",
-          "#{int_value(data["honors"])}\r\n",
-          "#{bool_int(data["callable"])}\r\n",
-          "#{bool_int(data["feed_followed"])}\r\n",
-          "#{bool_int(data["monitored"])}\r\n",
-          "#{bool_int(data["archived"])}\r\n"
-        ]
-        parse_info(response)
+        UserInfo.new(
+          name: data["name"].to_s,
+          last_seen: time_value(data["last_seen"]),
+          has_blog: bool_value(data["has_blog"]),
+          knows: int_value(data["knows"]),
+          known_by: int_value(data["known_by"]),
+          version: data["version"].to_s,
+          registered: time_value(data["registered"]),
+          polls: int_value(data["polls"]),
+          forum_posts: int_value(data["forum_posts"]),
+          in_contacts: bool_value(data["in_contacts"]),
+          has_avatar: bool_value(data["has_avatar"]),
+          banned: bool_value(data["banned"]),
+          honors: int_value(data["honors"]),
+          callable: bool_value(data["callable"]),
+          feed_followed: bool_value(data["feed_followed"]),
+          monitored: bool_value(data["monitored"]),
+          archived: bool_value(data["archived"])
+        )
       end
 
       def exists?(client, user)
@@ -137,6 +156,11 @@ module EltenLink
         value.to_i
       end
 
+      def time_value(value)
+        timestamp = int_value(value)
+        timestamp.positive? ? Time.at(timestamp) : nil
+      end
+
       def bool_int(value)
         bool_value(value) ? 1 : 0
       end
@@ -162,38 +186,6 @@ module EltenLink
         end
       end
 
-      def parse_info(lines)
-        info = []
-        if lines[1].to_i > 1_000_000_000 && lines[1].to_i < 2_000_000_000
-          info[0] = format_info_date(Time.at(lines[1].to_i))
-        else
-          info[0] = ""
-        end
-        info[1] = lines[2].to_b
-        info[2] = lines[3].to_i
-        info[3] = lines[4].to_i
-        info[4] = lines[8].to_i
-        info[5] = EltenLink.clean_line(lines[5])
-        info[6] = lines[6].to_i == 0 || lines[6] == nil ? "" : format_info_date(Time.at(lines[6].to_i))
-        info[7] = lines[7]
-        info[8] = lines[9].to_b
-        info[9] = lines[10].to_b
-        info[10] = lines[11].to_b
-        info[11] = lines[12].to_i
-        info[12] = lines[13].to_b
-        info[13] = lines[14].to_b
-        info[14] = lines[15].to_b
-        info[15] = lines[16].to_b
-        info
-      end
-
-      def format_info_date(time)
-        if Object.respond_to?(:format_date)
-          Object.__send__(:format_date, time, false, false)
-        else
-          time.strftime("%Y-%m-%d")
-        end
-      end
     end
   end
 end

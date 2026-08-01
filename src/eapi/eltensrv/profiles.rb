@@ -28,15 +28,15 @@ module EltenAPI
       birthdatemonth = 0
       birthdateday = 0
       location = ""
-      if pr != nil && pr[0].to_i == 0
-        fullname = pr[1].delete("\r\n")
-        gender = pr[2].delete("\r\n").to_i
-        if pr[3].to_i>1900 and pr[4].to_i > 0 and pr[4].to_i < 13 and pr[5].to_i > 0 and pr[5].to_i < 32
-          birthdateyear = pr[3].delete("\r\n")
-          birthdatemonth = pr[4].delete("\r\n")
-          birthdateday = pr[5].delete("\r\n")
+      if pr != nil
+        fullname = pr.fullname
+        gender = pr.gender
+        if pr.birthdate.complete?
+          birthdateyear = pr.birthdate.year
+          birthdatemonth = pr.birthdate.month
+          birthdateday = pr.birthdate.day
         end
-        location = pr[6].delete("\r\n")
+        location = pr.location
         text += fullname+"\r\n"
         text+="#{p_("EAPI_Common", "Gender")}: "
         if gender == 0
@@ -77,26 +77,24 @@ module EltenAPI
         else
           text += p_("EAPI_Common", "Last seen")
         end
-        text+= ": " + ui[0] + "\r\n"
-        text += p_("EAPI_Common", "User has a blog")+"\r\n" if ui[1] == true
-        text += "#{np_("EAPI_Common", "Knows %{count} user", "Knows %{count} users", ui[2])%{:count=>ui[2].to_s}}\r\n"
+        text+= ": " + format_date(ui.last_seen, false, false) + "\r\n"
+        text += p_("EAPI_Common", "User has a blog")+"\r\n" if ui.has_blog
+        text += "#{np_("EAPI_Common", "Knows %{count} user", "Knows %{count} users", ui.knows)%{:count=>ui.knows.to_s}}\r\n"
         if gender == -1
-          text += np_("EAPI_Common", "Known by %{count} user", "Known by %{count} users", ui[3])%{:count=>ui[3].to_s}
+          text += np_("EAPI_Common", "Known by %{count} user", "Known by %{count} users", ui.known_by)%{:count=>ui.known_by.to_s}
         elsif gender == 0
-          text += np_("EAPI_Common_female", "Known by %{count} user", "Known by %{count} users", ui[3])%{:count=>ui[3].to_s}
+          text += np_("EAPI_Common_female", "Known by %{count} user", "Known by %{count} users", ui.known_by)%{:count=>ui.known_by.to_s}
         elsif gender == 1
-          text += np_("EAPI_Common_male", "Known by %{count} user", "Known by %{count} users", ui[3])%{:count=>ui[3].to_s}
+          text += np_("EAPI_Common_male", "Known by %{count} user", "Known by %{count} users", ui.known_by)%{:count=>ui.known_by.to_s}
         end
         text += "\r\n"
-        text += "#{p_("EAPI_Common", "Forum posts")}: " + ui[4].to_s + "\r\n"
-        text += "#{p_("EAPI_Common", "Polls answered")}: " + ui[7].to_s.delete("\r\n") + "\r\n"
-        text += "#{p_("EAPI_Common", "Registered")}: " + ui[6].to_s.split(" ")[0] + "\r\n" if ui[6]!=""
+        text += "#{p_("EAPI_Common", "Forum posts")}: " + ui.forum_posts.to_s + "\r\n"
+        text += "#{p_("EAPI_Common", "Polls answered")}: " + ui.polls.to_s + "\r\n"
+        text += "#{p_("EAPI_Common", "Registered")}: " + format_date(ui.registered, true) + "\r\n" if ui.registered != nil
       end
-      if vc[1]!="     " and vc.size!=1
+      if vc != nil
         text += "\r\n\r\n"
-        for i in 1..vc.size - 1
-          text += vc[i]
-        end
+        text += vc
       end
       input_text(p_("EAPI_Common", "Visiting card of %{user}:")%{:user=>user},flags: EditBox::Flags::ReadOnly|EditBox::Flags::MultiLine,text: text, escapable: true)
       $focus = true if $scene.is_a?(Scene_Main) == false

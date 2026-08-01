@@ -2,77 +2,25 @@
 # Copyright (C) 2014-2026 Dawid Pieper
 
 module EltenLink
-  class ClientState
-    attr_reader :raw
-
-    def initialize(raw)
-      @raw = raw
-    end
-
-    def [](index)
-      @raw[index]
-    end
-
-    def error_code
-      @raw[0].to_i
-    end
-
-    def messages
-      @raw[6].to_i
-    end
-
-    def posts
-      @raw[7].to_i
-    end
-
-    def blog_posts
-      @raw[8].to_i
-    end
-
-    def blog_comments
-      @raw[9].to_i
-    end
-
-    def forums
-      @raw[10].to_i
-    end
-
-    def forum_posts
-      @raw[11].to_i
-    end
-
-    def friends
-      @raw[12].to_i
-    end
-
-    def birthdays
-      @raw[13].to_i
-    end
-
-    def mentions
-      @raw[14].to_i
-    end
-
-    def followed_blog_posts
-      @raw[15].to_i
-    end
-
-    def blog_followers
-      @raw[16].to_i
-    end
-
-    def blog_mentions
-      @raw[17].to_i
-    end
-
-    def group_invitations
-      @raw[18].to_i
-    end
-
-    def version_string
-      @raw[2].to_s
-    end
-  end
+  ClientStateProfile = Struct.new(:fullname, :gender, keyword_init: true)
+  ClientStateChat = Struct.new(:enabled, :last, keyword_init: true)
+  ClientStateCounts = Struct.new(
+    :messages,
+    :followed_threads,
+    :followed_blogs,
+    :blog_comments,
+    :followed_forums,
+    :forum_posts,
+    :friends,
+    :birthdays,
+    :mentions,
+    :followed_blog_posts,
+    :blog_followers,
+    :blog_mentions,
+    :group_invitations,
+    keyword_init: true
+  )
+  ClientState = Struct.new(:time, :version_string, :profile, :chat, :counts, keyword_init: true)
 
   BuildInfo = Struct.new(:build_id, :version_string, keyword_init: true) do
     def to_i
@@ -268,27 +216,33 @@ module EltenLink
         profile = data["profile"] || {}
         chat = data["chat"] || {}
         counts = data["counts"] || {}
-        ClientState.new([
-          "0\r\n",
-          "#{data["time"].to_i}\r\n",
-          "#{version["version_string"]}\r\n",
-          "#{profile["fullname"]}\r\n",
-          "#{profile["gender"].to_i}\r\n",
-          "#{chat["last"]}\r\n",
-          "#{counts["messages"].to_i}\r\n",
-          "#{counts["followed_threads"].to_i}\r\n",
-          "#{counts["followed_blogs"].to_i}\r\n",
-          "#{counts["blog_comments"].to_i}\r\n",
-          "#{counts["followed_forums"].to_i}\r\n",
-          "#{counts["forum_posts"].to_i}\r\n",
-          "#{counts["friends"].to_i}\r\n",
-          "#{counts["birthdays"].to_i}\r\n",
-          "#{counts["mentions"].to_i}\r\n",
-          "#{counts["followed_blog_posts"].to_i}\r\n",
-          "#{counts["blog_followers"].to_i}\r\n",
-          "#{counts["blog_mentions"].to_i}\r\n",
-          "#{counts["group_invitations"].to_i}\r\n"
-        ])
+        ClientState.new(
+          time: Time.at(data["time"].to_i),
+          version_string: version["version_string"].to_s,
+          profile: ClientStateProfile.new(
+            fullname: profile["fullname"].to_s,
+            gender: profile["gender"].to_i
+          ),
+          chat: ClientStateChat.new(
+            enabled: Client.truthy?(chat["enabled"]),
+            last: chat["last"].to_s
+          ),
+          counts: ClientStateCounts.new(
+            messages: counts["messages"].to_i,
+            followed_threads: counts["followed_threads"].to_i,
+            followed_blogs: counts["followed_blogs"].to_i,
+            blog_comments: counts["blog_comments"].to_i,
+            followed_forums: counts["followed_forums"].to_i,
+            forum_posts: counts["forum_posts"].to_i,
+            friends: counts["friends"].to_i,
+            birthdays: counts["birthdays"].to_i,
+            mentions: counts["mentions"].to_i,
+            followed_blog_posts: counts["followed_blog_posts"].to_i,
+            blog_followers: counts["blog_followers"].to_i,
+            blog_mentions: counts["blog_mentions"].to_i,
+            group_invitations: counts["group_invitations"].to_i
+          )
+        )
       end
 
       private

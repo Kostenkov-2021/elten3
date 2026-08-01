@@ -2,11 +2,29 @@
 # Copyright (C) 2014-2026 Dawid Pieper
 
 module EltenLink
+  UserProfileBirthdate = Struct.new(:year, :month, :day, keyword_init: true) do
+    def complete?
+      year.to_i > 1900 && month.to_i.between?(1, 12) && day.to_i.between?(1, 31)
+    end
+  end
+  UserProfile = Struct.new(
+    :name,
+    :fullname,
+    :gender,
+    :birthdate,
+    :location,
+    :public_profile,
+    :public_mail,
+    keyword_init: true
+  )
+
   module Profiles
     class << self
       def visiting_card(client, user)
         data = client.api_data("GET", "/api/v1/users/#{user.to_s.urlenc}/visiting-card")
-        ["0\r\n", (data["exists"] ? data["text"].to_s : "     ")]
+        return nil unless Client.truthy?(data["exists"])
+
+        data["text"].to_s
       end
 
       def set_visiting_card(client, text:)
@@ -20,16 +38,19 @@ module EltenLink
 
         data = payload["data"] || {}
         birthdate = data["birthdate"] || {}
-        [
-          "0\r\n",
-          "#{data["fullname"]}\r\n",
-          "#{data["gender"].to_i}\r\n",
-          "#{birthdate["year"].to_i}\r\n",
-          "#{birthdate["month"].to_i}\r\n",
-          "#{birthdate["day"].to_i}\r\n",
-          "#{data["location"]}\r\n",
-          "#{data["public_profile"].to_i}\r\n"
-        ]
+        UserProfile.new(
+          name: data["name"].to_s,
+          fullname: data["fullname"].to_s,
+          gender: data["gender"].to_i,
+          birthdate: UserProfileBirthdate.new(
+            year: birthdate["year"].to_i,
+            month: birthdate["month"].to_i,
+            day: birthdate["day"].to_i
+          ),
+          location: data["location"].to_s,
+          public_profile: data["public_profile"].to_i,
+          public_mail: data["public_mail"].to_i
+        )
       end
 
       def update_profile(client, fullname: nil, gender: nil, birthdate_year: nil, birthdate_month: nil, birthdate_day: nil, location: nil, public_profile: nil, public_mail: nil)

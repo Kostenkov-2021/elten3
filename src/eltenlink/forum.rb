@@ -29,6 +29,11 @@ module EltenLink
   ForumSearchResult = Struct.new(:thread, :count, keyword_init: true)
   ForumMember = Struct.new(:user, :role, :inherit, keyword_init: true)
   ForumTag = Struct.new(:id, :label, :taglist, keyword_init: true)
+  ForumGroupSize = Struct.new(:audio, :attachments, :text, keyword_init: true) do
+    def total
+      audio.to_i + attachments.to_i + text.to_i
+    end
+  end
 
   module Forum
     FEATURED_THREAD_FIELDS = %i[
@@ -401,7 +406,11 @@ module EltenLink
 
       def group_size(client, group_id:)
         data = client.api_data("GET", "/api/v1/forum/group/#{group_id.to_i}/size")
-        [data["audio_size"].to_i, data["attachments_size"].to_i, data["text_size"].to_i]
+        ForumGroupSize.new(
+          audio: data["audio_size"].to_i,
+          attachments: data["attachments_size"].to_i,
+          text: data["text_size"].to_i
+        )
       end
 
       def join_group(client, group_id:)

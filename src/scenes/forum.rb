@@ -725,27 +725,18 @@ return result
         acs = forum_fetch([], nil) { EltenLink::Forum.group_most_active_members(elten_link, group_id: g.id) }
         s += p_("Forum", "The most active members") + ": " + acs.map { |x| x.to_s.delete("\r\n") }.join(", ") + "\n" if acs.size > 0
         s += "\r\n\n"
-        szs = forum_fetch([], nil) { EltenLink::Forum.group_size(elten_link, group_id: g.id) }
-        if szs.size >= 3
+        group_size = forum_fetch(nil, nil) { EltenLink::Forum.group_size(elten_link, group_id: g.id) }
+        if group_size != nil
           s += p_("Forum", "Group size") + "\n"
-          for i in 0..3
-            if i < 3
-              a = szs[i].to_i
-            else
-              a = szs[0].to_i + szs[1].to_i + szs[2].to_i
-            end
+          {
+            p_("Forum", "Audio posts") => group_size.audio,
+            p_("Forum", "Attachments") => group_size.attachments,
+            p_("Forum", "Text") => group_size.text,
+            p_("Forum", "Overall size") => group_size.total
+          }.each do |label, size|
+            a = size.to_i
             if a > 0
-              case i
-              when 0
-                s += p_("Forum", "Audio posts")
-              when 1
-                s += p_("Forum", "Attachments")
-              when 2
-                s += p_("Forum", "Text")
-              when 3
-                s += p_("Forum", "Overall size")
-              end
-              s += ": "
+              s += label + ": "
               if a >= 1048576
                 s += ((a / 1048576.0 * 10.0).round / 10.0).to_s + "MB"
               elsif a < 1048576 and a >= 1024

@@ -13,7 +13,7 @@ module EltenAPI
       user_info = userinfo(user, true)
       return if user_info == -1
 
-      if user_info[15] == true
+      if user_info.archived
         alert(p_("EAPI_Common", "This account is archived"))
         return
       end
@@ -71,13 +71,13 @@ module EltenAPI
 
     def user_menu_actions(user, user_info, ringtone)
       guest = !Session.logged?
-      in_contacts = user_info[8].to_b unless guest
-      banned = user_info[10].to_b
-      has_blog = user_info[1]
-      has_honors = user_info[11] > 0
-      callable = user_info[12].to_b
-      feed_followed = user_info[13].to_b
-      monitored = user_info[14].to_b
+      in_contacts = user_info.in_contacts unless guest
+      banned = user_info.banned
+      has_blog = user_info.has_blog
+      has_honors = user_info.honors > 0
+      callable = user_info.callable
+      feed_followed = user_info.feed_followed
+      monitored = user_info.monitored
       actions = []
 
       unless guest
