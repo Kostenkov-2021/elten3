@@ -32,6 +32,8 @@ module EltenAPI
       WM_QUIT = 0x0012
       WM_SETFOCUS = 0x0007
       WM_KEYDOWN = 0x0100
+      WM_CHAR = 0x0102
+      WM_CLEAR = 0x0303
       WM_GETDLGCODE = 0x0087
       EN_CHANGE = 0x0300
       VK_ESCAPE = 0x1B
@@ -43,8 +45,10 @@ module EltenAPI
       DLGC_WANTALLKEYS = 0x0004
       DLGC_HASSETSEL = 0x0008
       DLGC_WANTCHARS = 0x0080
-      EM_SETLIMITTEXT = 0x00C5
+      EM_GETSEL = 0x00B0
       EM_SETSEL = 0x00B1
+      EM_SETLIMITTEXT = 0x00C5
+      DELETE_WORD_CHARACTER = 0x7F
       IDC_ARROW = 32512
       IDI_APPLICATION = 32512
       COLOR_WINDOW = 5
@@ -374,6 +378,13 @@ module EltenAPI
           when WM_SETFOCUS
             @focus_hwnd = hwnd.to_i
             call_previous(hwnd, message, wparam, lparam)
+          when WM_CHAR
+            if wparam.to_i == DELETE_WORD_CHARACTER
+              delete_previous_word(hwnd)
+              0
+            else
+              call_previous(hwnd, message, wparam, lparam)
+            end
           when WM_KEYDOWN
             key = wparam.to_i
             if key == VK_ESCAPE
@@ -532,6 +543,35 @@ module EltenAPI
           buffer = "\0" * ((len + 2) * 2)
           api.get_window_text.call(hwnd, buffer, len + 2)
           NativeDialogs.read_wide_buffer(buffer)
+        end
+
+        def delete_previous_word(hwnd)
+          from, to = edit_selection(hwnd)
+          from = previous_word_position(hwnd, from) if from == to
+          return if from >= to
+          api = NativeDialogs.api
+          api.send_message.call(hwnd, EM_SETSEL, from, to)
+          api.send_message.call(hwnd, WM_CLEAR, 0, 0)
+        end
+
+        def edit_selection(hwnd)
+          selection = NativeDialogs.api.send_message.call(hwnd, EM_GETSEL, 0, 0).to_i
+          [selection & 0xFFFF, (selection >> 16) & 0xFFFF]
+        end
+
+        def previous_word_position(hwnd, position)
+          text_utf16 = window_text(hwnd).encode(Encoding::UTF_16LE)
+          prefix_bytes = text_utf16.byteslice(0, [position.to_i * 2, text_utf16.bytesize].min).to_s
+          prefix = prefix_bytes.force_encoding(Encoding::UTF_16LE).encode(Encoding::UTF_8, invalid: :replace, undef: :replace)
+          characters = prefix.each_char.to_a
+          index = characters.size
+          index -= 1 while index > 0 && word_separator?(characters[index - 1])
+          index -= 1 while index > 0 && !word_separator?(characters[index - 1])
+          characters[0...index].join.encode(Encoding::UTF_16LE).bytesize / 2
+        end
+
+        def word_separator?(character)
+          character == " " || character == "\r" || character == "\n" || character == "\t"
         end
 
         def update_character_counter(hwnd)
