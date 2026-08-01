@@ -1223,7 +1223,21 @@ end
 def audio?
   return @isaudio==true
 end
-def set_text(text,reset=true)
+def add_speak_callback(index, &block)
+  raise ArgumentError, "A block is required" if block==nil
+  index=index.to_i
+  raise ArgumentError, "Speech callback index cannot be negative" if index<0
+  @speak_callbacks||={}
+  @speak_callbacks[index]||=[]
+  @speak_callbacks[index].push(block)
+  block
+end
+def remove_speak_callbacks
+  @speak_callbacks={}
+  @speak_callbacks_generation=@speak_callbacks_generation.to_i+1
+end
+def set_text(text,reset=true,reset_speak_callbacks: true)
+  remove_speak_callbacks if reset_speak_callbacks
   @isaudio=false
   text=text.to_s.dup
   text.force_encoding(Encoding::UTF_8) if text.encoding!=Encoding::UTF_8
@@ -1530,12 +1544,26 @@ def value
       end_byte = text_byte_offset(limit_end)
       fragment_char = index
       fragment_byte = start_byte
+      breaks={}
       tail = @text.byteslice(start_byte, end_byte - start_byte).to_s
       tail.force_encoding(@text.encoding)
       tail.to_enum(:scan, READ_TEXT_BREAK_PATTERN).each do
         match = Regexp.last_match
         break_char = index + match.end(0)
         break_byte = start_byte + match.byteoffset(0)[1]
+        next if break_char <= fragment_char || break_char >= limit_end
+        breaks[break_char]=break_byte
+      end
+      (@speak_callbacks||{}).each_key do |callback_index|
+        next if callback_index<index || callback_index>=limit_end
+        breaks[callback_index]=text_byte_offset(callback_index)
+      end
+      initial_callbacks=(@speak_callbacks||{})[fragment_char]
+      if head!=nil && head!="" && initial_callbacks!=nil && initial_callbacks.size>0
+        commands.push(head.to_s+"\n")
+        head=""
+      end
+      breaks.sort.each do |break_char, break_byte|
         next if break_char <= fragment_char || break_char >= limit_end
         append_read_text_fragment(commands, fragment_char, fragment_byte, break_byte, head)
         head = ""
@@ -1557,6 +1585,14 @@ def value
         fragment = head.to_s + "\n" + fragment if head!=nil && head!=""
         cmd = SpeechCommands::CustomCommand.new(position) {|pos|@index=pos if pos!=0}
         commands.push(cmd)
+        callbacks=(@speak_callbacks||{})[position]
+        if callbacks!=nil && callbacks.size>0
+          callbacks=callbacks.dup
+          generation=@speak_callbacks_generation
+          commands.push(SpeechCommands::CustomCommand.new {
+            callbacks.each(&:call) if @speak_callbacks_generation==generation
+          })
+        end
         commands.push(fragment)
       end
 
