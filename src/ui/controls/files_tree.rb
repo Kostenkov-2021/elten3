@@ -50,9 +50,10 @@ module EltenAPI
                 # @param path [String] an initial path
                 # @param hide_files [Boolean] hide files
         # @param quiet [Boolean] don't write the caption at creation
-                # @param extensions [Array] an array of file extensions to show
-                # @param use_sounds [Boolean] play file type sounds while navigating
-                def initialize(header="", path: "", hide_files: false, quiet: true, extensions: nil, use_sounds: true)
+        # @param extensions [Array] an array of file extensions to show
+        # @param use_sounds [Boolean] play file type sounds while navigating
+        # @param handle_file_previews [Boolean] handle file preview keyboard shortcuts
+                def initialize(header="", path: "", hide_files: false, quiet: true, extensions: nil, use_sounds: true, handle_file_previews: true)
                             $filestrees||={}
                             original_path=EltenPath.normalize(path)
                             path=tree_path_with_separator(path) if path!=""
@@ -67,6 +68,7 @@ module EltenAPI
                 @hidefiles=hide_files
         @header=header
         @specialvoices=use_sounds
+        @handle_file_previews=handle_file_previews==true
         @exts=extensions
         @editmenus=[]
         @filemenus=[]
@@ -85,6 +87,12 @@ module EltenAPI
                           @file=file if file!=""
                         end
                         focus if quiet==false
+        end
+
+        # Returns whether this control handles file preview keyboard shortcuts.
+        # Applications can use this capability instead of duplicating preview playback.
+        def handles_file_preview_keys?
+          @handle_file_previews
         end
 
         # Updates a files tree
@@ -191,6 +199,7 @@ $filestrees[@id]=[@path,@file]
 end
 
 def handle_preview_keys
+  return if !handles_file_preview_keys?
   if raw_key_held?(:key_shift)
     handle_audio_preview_controls
   elsif key_first_pressed?(:key_space)
