@@ -110,53 +110,49 @@ return ret
      # @param header [String] a window caption
      # @param path [String] an initial path
      # @param save [Boolean] hides a files, presents only directories
-     # @param file [String] a file to focus
-     # @return [String] an absolute path to a selected file or directory
-     def get_file(header="", path: "", save: false, extensions: nil)
-              dialog_open
-       loop_update
-       ft=FilesTree.new(header, path: path, hide_files: save, quiet: true, extensions: extensions)
-                     ft.focus
-       loop do
-         loop_update
-         ft.update
-         if key_pressed?(:key_escape)
-           dialog_close
-           loop_update
-           return nil
-           break
-         end
-         if key_pressed?(:key_enter)
-           dialog_close
-           f=EltenPath.join(ft.path, ft.file)
-           f=f[0...-1] if f.end_with?("/")
-           if save == false and File.file?(ft.selected(true))
-             loop_update
-             return f
-           break
-         end
-         if save == true
-           if File.directory?(f)
-             loop_update
-                          return f
-             break
-           else
-             f=EltenPath.dirname(f)
-             loop_update
-             return f
-             break
-             end
-           end
-         end
-         if key_pressed?(:key_space)
-           pt=ft.path
-           ftp=input_text(p_("EAPI_Form", "Choose a path"), text: ft.path, escapable: true)
-           ft.path=ftp if ftp!=nil and File.directory?(ftp)
-         end
-       end
-              rescue Exception
-         return nil
-                  end
+      # @param file [String] a file to focus
+      # @return [String] an absolute path to a selected file or directory
+      def get_file(header="", path: "", save: false, extensions: nil)
+        ft=nil
+        begin
+          dialog_open
+          loop_update
+          ft=FilesTree.new(header, path: path, hide_files: save, quiet: true, extensions: extensions)
+          ft.focus
+          loop do
+            loop_update
+            ft.update
+            if key_pressed?(:key_escape)
+              dialog_close
+              loop_update
+              return nil
+            end
+            if key_pressed?(:key_enter)
+              dialog_close
+              f=EltenPath.join(ft.path, ft.file)
+              f=f[0...-1] if f.end_with?("/")
+              if save==false && File.file?(ft.selected(true))
+                loop_update
+                return f
+              end
+              if save==true
+                if File.directory?(f)
+                  loop_update
+                  return f
+                else
+                  f=EltenPath.dirname(f)
+                  loop_update
+                  return f
+                end
+              end
+            end
+          end
+        rescue Exception
+          return nil
+        ensure
+          ft.close_preview if ft!=nil
+        end
+      end
 
 
   end

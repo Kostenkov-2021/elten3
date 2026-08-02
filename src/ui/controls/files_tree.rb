@@ -8,6 +8,17 @@ module EltenAPI
   module Controls
     private
       class FilesTree < FormField
+        AUDIO_EXTENSIONS = %w[
+          .mp3 .ogg .wav .mid .wma .flac .aac .opus .m4a .mov .mp4 .avi
+          .mts .aiff .m4v .mkv .vob .m2ts .w64 .mod
+        ].freeze
+        TEXT_EXTENSIONS = %w[.txt].freeze
+        ARCHIVE_EXTENSIONS = %w[.zip].freeze
+        DOCUMENT_EXTENSIONS = %w[.doc .rtf .htm .html .docx .pdf .epub].freeze
+        APP_EXTENSIONS = %w[.eapi].freeze
+        TEXT_PREVIEW_CHARACTER_LIMIT = 20_000
+        TEXT_PREVIEW_BYTE_LIMIT = TEXT_PREVIEW_CHARACTER_LIMIT * 4 + 4
+
         # @param header [String] a window caption
         attr_accessor :header
         # @return [String] selected file name
@@ -61,6 +72,8 @@ module EltenAPI
         @filemenus=[]
         @createmenus=[]
         @menus=[]
+        @preview_sound=nil
+        @preview_file=nil
           if $filestrees[@id]!=nil
             f=$filestrees[@id]
             @file=f[1]
@@ -141,7 +154,8 @@ elsif filetype==4
   end
 end
   end
-  if key_held?(0x10)==false
+  handle_preview_keys
+  if !raw_key_held?(:key_shift)
 if (key_pressed?(:key_right) or @go == true) and File.directory?(cfile(true))
   @lastfile=nil
   @go = false
@@ -174,6 +188,116 @@ if key_pressed?(:key_left) and @path.size>0
 end
 end
 $filestrees[@id]=[@path,@file]
+end
+
+def handle_preview_keys
+  if raw_key_held?(:key_shift)
+    handle_audio_preview_controls
+  elsif key_first_pressed?(:key_space)
+    preview_selected_file
+  end
+end
+
+def handle_audio_preview_controls
+  return if @preview_sound==nil
+  if key_pressed?(:key_right, repeat: true)
+    @preview_sound.position+=1
+  elsif key_pressed?(:key_left, repeat: true)
+    @preview_sound.position=[@preview_sound.position-1, 0].max
+  elsif key_pressed?(:key_up)
+    @preview_sound.volume=[@preview_sound.volume+0.05, 1.0].min
+  elsif key_pressed?(:key_down)
+    @preview_sound.volume=[@preview_sound.volume-0.05, 0.05].max if @preview_sound.volume>0.05
+  elsif key_first_pressed?(:key_space)
+    toggle_audio_preview_pause
+  end
+end
+
+def preview_selected_file
+  file=selected
+  return if file=="" || !File.file?(file)
+  case File.extname(file).downcase
+  when *AUDIO_EXTENSIONS
+    toggle_audio_preview(file)
+  when *TEXT_EXTENSIONS
+    preview_text_file(file)
+  end
+end
+
+def toggle_audio_preview(file)
+  if @preview_sound!=nil && @preview_file==file
+    close_preview
+    return
+  end
+  close_preview
+  @preview_sound=open_preview_sound(file)
+  if @preview_sound==nil
+    alert(p_("EAPI_Form", "This file cannot be played."))
+    return
+  end
+  @preview_file=file
+  @preview_sound.play
+rescue Exception => e
+  close_preview
+  Log.warning("File preview failed for #{file}: #{e.class}: #{e.message}")
+  alert(p_("EAPI_Form", "This file cannot be played."))
+end
+
+def open_preview_sound(file)
+  sound=Sound.new(file)
+  return sound if sound.opened?
+  sound.close
+  sound=Sound.new(file, sample: true)
+  return sound if sound.opened?
+  sound.close
+  nil
+rescue Exception
+  sound.close if sound!=nil
+  nil
+end
+
+def toggle_audio_preview_pause
+  if @preview_sound.playing?
+    @preview_sound.pause
+  else
+    length=@preview_sound.length
+    @preview_sound.position=0 if length>0 && @preview_sound.position>=length
+    @preview_sound.play
+  end
+end
+
+def preview_text_file(file)
+  close_preview
+  data=File.binread(file, TEXT_PREVIEW_BYTE_LIMIT)
+  text=decode_preview_text(data)[0, TEXT_PREVIEW_CHARACTER_LIMIT]
+  speak(text) if text!=""
+rescue Exception => e
+  Log.warning("Text file preview failed for #{file}: #{e.class}: #{e.message}")
+  alert(p_("EAPI_Form", "This file cannot be previewed."))
+end
+
+def decode_preview_text(data)
+  if data.start_with?("\xFF\xFE".b)
+    data.byteslice(2..).to_s.force_encoding(Encoding::UTF_16LE).encode(Encoding::UTF_8, invalid: :replace, undef: :replace)
+  elsif data.start_with?("\xFE\xFF".b)
+    data.byteslice(2..).to_s.force_encoding(Encoding::UTF_16BE).encode(Encoding::UTF_8, invalid: :replace, undef: :replace)
+  else
+    text_utf8(data.delete_prefix("\xEF\xBB\xBF".b))
+  end
+end
+
+def close_preview
+  sound=@preview_sound
+  @preview_sound=nil
+  @preview_file=nil
+  sound.close if sound!=nil
+rescue Exception => e
+  Log.warning("Closing file preview failed: #{e.class}: #{e.message}")
+end
+
+def blur
+  close_preview
+  super
 end
 
 def bind_editmenu(&m)
@@ -247,15 +371,15 @@ end
 def filetype
   return 0 if File.directory?(cfile(true))
   ext=File.extname(selected).downcase
-  if ext==".mp3" or ext==".ogg" or ext==".wav" or ext==".mid" or ext==".wma" or ext==".flac" or ext==".aac" or ext==".opus" or ext==".m4a" or ext==".mov" or ext==".mp4" or ext==".avi" or ext==".mts" or ext==".aiff" or ext==".m4v" or ext==".mkv" or ext==".vob" or ext==".m2ts" or ext==".w64"
+  if AUDIO_EXTENSIONS.include?(ext)
     return 1
-  elsif ext==".txt"
+  elsif TEXT_EXTENSIONS.include?(ext)
     return 2
-  elsif ext==".zip"
+  elsif ARCHIVE_EXTENSIONS.include?(ext)
     return 3
-  elsif ext==".doc" or ext==".rtf" or ext==".htm" or ext==".html" or ext==".docx" or ext==".pdf" or ext==".epub"
+  elsif DOCUMENT_EXTENSIONS.include?(ext)
     return 4
-  elsif ext==".eapi"
+  elsif APP_EXTENSIONS.include?(ext)
     return 5
       else
     return -1
