@@ -64,7 +64,7 @@ loop_update
             rescue EltenLink::Error => e
               Log.warning("Contact birthday acknowledgement failed: #{e.message}")
             end
-            $scene=Scene_Notifications.new
+            $scene=Scene_Main.new
             end
         end
         if key_pressed?(0x2e) and @type==0
