@@ -564,9 +564,13 @@ class Scene_Blog_Read
   def main
 begin
 blogtemp = EltenLink::Blog.read_post(elten_link, blog: @post.owner, post_id: @post.id)
-rescue EltenLink::Error
-  alert(_("Error"))
-  $scene = Scene_Blog_Main.new(@post.owner)
+rescue EltenLink::Error => e
+  if e.code == "blogs.post_not_found"
+    alert(p_("Blog", "The blog post is unavailable. It may have been deleted or you may not have access to it."))
+  else
+    alert(_("Error"))
+  end
+  $scene = @scene || Scene_Blog_Main.new(@post.owner)
   return
 end
 if @post.mention!=nil
