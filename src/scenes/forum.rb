@@ -2881,7 +2881,7 @@ class Scene_Forum_Thread
       @threadclass = Scene_Forum.getstruct['threads'].to_a.find { |thread| thread.id == thread_id }
     end
     if @threadclass == nil
-      alert(_("Error"))
+      alert(p_("Forum", "The thread is unavailable. It may have been deleted or you may not have access to it."))
       $scene = @scene || Scene_Main.new
       return
     end
