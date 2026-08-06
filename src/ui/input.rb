@@ -36,7 +36,6 @@ module EltenAPI
                                                 sound=getsound(voice)
                                                 if sound!=nil || FileTest.exists?(voice)
 stream=nil
-Bass.cleanup_memory_streams
 if sound!=nil
                                                   stream=Bass.create_file_stream_from_memory(sound, Bass::BASS_STREAM_AUTOFREE)
                                                 else

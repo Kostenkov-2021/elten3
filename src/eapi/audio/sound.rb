@@ -397,7 +397,6 @@ class Sound
   end
 
   def self.free_stream_handle(handle)
-    Bass.release_stream_data(handle) if defined?(Bass) && Bass.respond_to?(:release_stream_data)
     Bass::BASS_StreamFree.call(handle)
   end
 

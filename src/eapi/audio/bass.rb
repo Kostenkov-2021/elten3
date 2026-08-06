@@ -233,39 +233,9 @@ module Bass
     "BASS_ERROR_UNKNOWN"
   end
 
-  def self.remember_stream_data(channel, data, auto_free = false)
-    return if channel.to_i == 0 || data == nil
-    @@memory_stream_data ||= {}
-    @@memory_stream_data[channel.to_i] = [data, auto_free == true]
-  end
-
-  def self.release_stream_data(channel)
-    @@memory_stream_data ||= {}
-    @@memory_stream_data.delete(channel.to_i)
-  end
-
-  def self.cleanup_memory_streams
-    @@memory_stream_data ||= {}
-    @@memory_stream_data.keys.each do |channel|
-      _data, auto_free = @@memory_stream_data[channel]
-      next if auto_free != true
-      @@memory_stream_data.delete(channel) if BASS_ChannelIsActive.call(channel.to_i) == 0
-    rescue Exception
-      @@memory_stream_data.delete(channel)
-    end
-  end
-
   def self.create_file_stream_from_memory(data, flags)
     data = data.to_s.b
-    source = BASS_StreamCreateFile.call(1, data, 0, data.bytesize, flags)
-    if source.to_i == 0 && BASS_ErrorGetCode.call == 41 && data.byteslice(0, 4) == "OggS"
-      wave = decode_ogg_vorbis_to_wave(data)
-      if wave != nil
-        source = BASS_StreamCreateFile.call(1, wave, 0, wave.bytesize, flags)
-        remember_stream_data(source, wave, (flags.to_i & BASS_STREAM_AUTOFREE) != 0) if source.to_i != 0
-      end
-    end
-    source
+    BASS_StreamCreateFile.call(1, data, 0, data.bytesize, flags)
   end
 
   def self.create_file_stream_from_path(filename, pos = 0, flags = 0, tries = 1)
@@ -275,19 +245,7 @@ module Bass
       break if source.to_i != 0
       sleep(0.01) if tries > 1
     end
-    if source.to_i == 0 && BASS_ErrorGetCode.call == 41 && pos.to_i == 0 && File.file?(filename.to_s)
-      data = File.binread(filename)
-      source = create_file_stream_from_memory(data, flags)
-    end
     source
-  end
-
-  def self.decode_ogg_vorbis_to_wave(data)
-    require_relative "oggvorbis" unless defined?(OggVorbis)
-    OggVorbis.decode_to_wave(data)
-  rescue Exception => e
-    Log.warning("Ogg Vorbis fallback failed: #{e.class}: #{e.message}")
-    nil
   end
 
   class Device
