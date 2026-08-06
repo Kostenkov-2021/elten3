@@ -3547,10 +3547,10 @@ end
               main
             end
           }
+            m.option(p_("Forum", "Mass Actions"), nil, "\\") {
+            moderation_mass_posts
+            }
         end
-        m.option(p_("Forum", "Mass Actions"), nil, "\\") {
-        moderation_mass_posts
-        }
         }
     end
         menu.option(_("Refresh"), nil, "r") {
