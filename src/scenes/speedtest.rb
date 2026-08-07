@@ -14,6 +14,8 @@ class Scene_SpeedTest
       break if $scene!=self
       $scene=Scene_Main.new if ((key_pressed?(:key_space) or key_pressed?(:key_enter)) and @form.index==3) or key_pressed?(:key_escape)
       if @form.fields[2].pressed? and @form.fields[1].text.to_i>0
+        n=@form.fields[1].text.to_i
+        next unless confirm_attempt_count(n)
         measure = nil
         case @form.fields[0].index
         when 0
@@ -27,7 +29,6 @@ class Scene_SpeedTest
                 end
                 speak(p_("SpeedTest", "Performing test, please wait"))
                 times=[]
-                n=@form.fields[1].text.to_i
                 errors=0
                 waiting {
                   n.times {
@@ -54,4 +55,15 @@ result = "#{p_("SpeedTest", "Average time")}: #{((times.sum).to_f / (n-errors.to
       end
       end
   end
+
+  def confirm_attempt_count(attempts)
+    if attempts == 418
+      alert(p_("SpeedTest", "HTCPCP/1.0 418. The teapot refuses to brew coffee. No request has been sent."))
+      return false
+    end
+    return true if attempts <= 20
+
+    confirm(p_("SpeedTest", "The server rate limiter may limit the number of requests depending on the current load. Are you sure you want to continue?"))
+  end
+
   end
