@@ -10,6 +10,7 @@ class Scene_SpeedTest
     loop do
       loop_update
       @form.update
+      insert_scene(Scene_Palantiri.new, true) if keyboard_binding_pressed?([:p, :control], first: true)
       break if $scene!=self
       $scene=Scene_Main.new if ((key_pressed?(:key_space) or key_pressed?(:key_enter)) and @form.index==3) or key_pressed?(:key_escape)
       if @form.fields[2].pressed? and @form.fields[1].text.to_i>0

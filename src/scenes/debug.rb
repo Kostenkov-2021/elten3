@@ -10,6 +10,7 @@ class Scene_Debug
     loop do
       loop_update
       @form.update
+      insert_scene(Scene_Palantiri.new, true) if keyboard_binding_pressed?([:p, :control], first: true)
       break if key_pressed?(:key_escape)
       if (key_pressed?(:key_enter) or key_pressed?(:key_space)) and @form.index==2
                 $netsignal=@form.fields[1].checked

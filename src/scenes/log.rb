@@ -17,6 +17,7 @@ class Scene_Log
     loop do
       loop_update
       @form.update
+      insert_scene(Scene_Palantiri.new, true) if keyboard_binding_pressed?([:p, :control], first: true)
       if @oldlevel!=@form.fields[0].index || @olddsplevel!=@form.fields[1].checked||@olddspdate!=@form.fields[2].checked
         @oldlevel=@form.fields[0].index
         @olddsplevel=@form.fields[1].checked

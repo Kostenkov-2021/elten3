@@ -167,6 +167,7 @@ loop_update
       loop do
         loop_update
         form.update
+        insert_scene(Scene_Palantiri.new, true) if keyboard_binding_pressed?([:p, :control], first: true)
         if form.fields[2].pressed? or keyboard_action_pressed?(:submit)
           kom = form.fields[0].text
           if LocalConfig['ConsoleDontCopySource', type: :bool]
