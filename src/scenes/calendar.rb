@@ -260,6 +260,11 @@ class Scene_Calendar
     loop do
       loop_update
       @grid.update
+      if keyboard_binding_pressed?([:tab, :shift_optional])
+        tab_code, = keyboard_code(:tab)
+        direction = keyboard_modifier_held_when_pressed?(tab_code, :shift) ? -1 : 1
+        move_to_adjacent_event_day(direction)
+      end
       if key_pressed?(:key_escape)
         $scene = Scene_Main.new
       end
@@ -378,6 +383,31 @@ class Scene_Calendar
     return if private_count == 0
 
     play_sound("listbox_itemcontaining", volume: 100, pitch: 100, pan: @grid.lpos)
+  end
+
+  def move_to_adjacent_event_day(direction)
+    target = adjacent_event_day(@grid.date, direction)
+    if target == nil
+      play_sound("border", volume: 100, pitch: 100, pan: direction < 0 ? 0 : 100)
+    else
+      @grid.move_to(target)
+    end
+  end
+
+  def adjacent_event_day(date, direction)
+    current = normalize_calendar_date(date)
+    threshold = current + (direction < 0 ? -1 : 1)
+    candidates = (@events || []).filter_map do |event|
+      first = normalize_calendar_date(event.starttime)
+      last = normalize_calendar_date(event.endtime)
+      first, last = last, first if last < first
+      if direction < 0
+        [last, threshold].min if first <= threshold
+      else
+        [first, threshold].max if last >= threshold
+      end
+    end
+    direction < 0 ? candidates.max : candidates.min
   end
 
   def select_calendar(calendar)
