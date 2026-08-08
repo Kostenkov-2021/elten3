@@ -572,8 +572,11 @@ class Scene_Calendar_Management
     end
     menu.option(p_("Calendar", "New calendar"), nil, "n") { create_calendar }
     menu.option(p_("Calendar", "Public calendars"), nil, "p") do
-      excluded_ids = @calendars.map(&:id) + @invitations.map { |invitation| invitation.calendar.id }
-      $scene = Scene_Calendar_Public.new(@return_filter_id, @return_date, excluded_ids)
+      subscribed_ids = @calendars.select do |item|
+        item.public && !item.owned_by?(Session.name) && !item.moderator?
+      end.map(&:id)
+      invitation_ids = @invitations.map { |invitation| invitation.calendar.id }
+      $scene = Scene_Calendar_Public.new(@return_filter_id, @return_date, subscribed_ids, invitation_ids)
     end
     menu.option(_("Refresh"), nil, "r") { request_reload(calendar && calendar.id) }
   end
@@ -740,10 +743,11 @@ end
 class Scene_Calendar_Public
   include CalendarSceneHelpers
 
-  def initialize(return_filter_id=nil, date=nil, excluded_ids=[])
+  def initialize(return_filter_id=nil, date=nil, subscribed_ids=[], invitation_ids=[])
     @return_filter_id = return_filter_id == nil ? nil : return_filter_id.to_i
     @return_date = normalize_calendar_date(date || Date.today)
-    @excluded_ids = excluded_ids.map(&:to_i).uniq
+    @subscribed_ids = subscribed_ids.map(&:to_i).uniq
+    @invitation_ids = invitation_ids.map(&:to_i).uniq
   end
 
   def main
@@ -764,7 +768,7 @@ class Scene_Calendar_Public
 
   def load_public_calendars
     @all_calendars = EltenLink::Calendars.list_public(elten_link)
-    @all_calendars.reject! { |calendar| @excluded_ids.include?(calendar.id) }
+    @all_calendars.reject! { |calendar| @invitation_ids.include?(calendar.id) }
     apply_language_filter
     true
   rescue EltenLink::Error => error
@@ -796,7 +800,11 @@ class Scene_Calendar_Public
   def context(menu)
     calendar = current_calendar
     if calendar != nil
-      menu.option(p_("Calendar", "Subscribe"), nil, "s") { subscribe(calendar) }
+      if @subscribed_ids.include?(calendar.id)
+        menu.option(p_("Calendar", "Unsubscribe"), nil, "s") { unsubscribe(calendar) }
+      elsif !calendar.owned_by?(Session.name) && !calendar.moderator?
+        menu.option(p_("Calendar", "Subscribe"), nil, "s") { subscribe(calendar) }
+      end
     end
     if Session.languages.to_s != ""
       label = p_("Calendar", "Show calendars in unknown languages")
@@ -822,13 +830,24 @@ class Scene_Calendar_Public
 
   def subscribe(calendar)
     EltenLink::Calendars.subscribe(elten_link, calendar)
-    @excluded_ids << calendar.id
-    @excluded_ids.uniq!
-    @all_calendars.reject! { |item| item.id == calendar.id }
+    @subscribed_ids << calendar.id
+    @subscribed_ids.uniq!
     alert(p_("Calendar", "The calendar has been subscribed"))
-    build_list
+    build_list(calendar.id)
   rescue EltenLink::Error => error
     Log.warning("Public calendar subscription failed: #{error.message}")
+    alert(_("Error"))
+  end
+
+  def unsubscribe(calendar)
+    return if !confirm(p_("Calendar", "Do you really want to unsubscribe from calendar %{name}?") % { name: calendar.name })
+
+    EltenLink::Calendars.delete_membership(elten_link, calendar)
+    @subscribed_ids.delete(calendar.id)
+    alert(p_("Calendar", "The calendar has been unsubscribed"))
+    build_list(calendar.id)
+  rescue EltenLink::Error => error
+    Log.warning("Public calendar unsubscription failed: #{error.message}")
     alert(_("Error"))
   end
 
