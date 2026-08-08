@@ -2,31 +2,46 @@
 # Copyright (C) 2014-2026 Dawid Pieper
 
 module EltenLink
+  AttachmentInfo = Struct.new(:id, :name, :size, :url, :uploadtime, :uploader, keyword_init: true)
+
   module Attachments
     @name_cache = {}
+    @info_cache = {}
 
     class << self
       def names(client, attachments, names: [])
         return names if names != nil && names.size > 0
         attachments.dup.each do |attachment|
-          if @name_cache[attachment] != nil
-            names.push(@name_cache[attachment])
+          key = attachment.to_s
+          if @name_cache[key] != nil
+            names.push(@name_cache[key])
             next
           end
-          info = client.api_payload("GET", "/api/v1/attachments/#{attachment.to_s.urlenc}")
-          if !info.is_a?(Hash) || !info["success"]
+          attachment_info = info(client, attachment)
+          if attachment_info == nil
             attachments.delete(attachment)
             next
           end
-          name = (info["data"] || {})["name"].to_s
-          names.push(name)
-          @name_cache[attachment] = name
+          names.push(attachment_info.name)
         end
         names
       end
 
       def name(client, attachment)
         names(client, [attachment], names: [])[0]
+      end
+
+      def info(client, attachment)
+        key = attachment.to_s
+        return @info_cache[key] if @info_cache[key] != nil
+
+        payload = client.api_payload("GET", "/api/v1/attachments/#{key.urlenc}")
+        return nil unless payload.is_a?(Hash) && payload["success"]
+
+        attachment_info = build_info(payload["data"], key)
+        @info_cache[key] = attachment_info
+        @name_cache[key] = attachment_info.name
+        attachment_info
       end
 
       def send_file(client, file)
@@ -42,6 +57,30 @@ module EltenLink
 
       def download_url(attachment)
         Client.absolute_api_url("/api/v1/attachments/#{attachment.to_s.urlenc}/download")
+      end
+
+      private
+
+      def build_info(data, fallback_id)
+        data = {} unless data.is_a?(Hash)
+        id = data["id"].to_s
+        id = fallback_id if id == ""
+        size = begin
+          value = Integer(data["size"])
+          value >= 0 ? value : nil
+        rescue ArgumentError, TypeError
+          nil
+        end
+        url = data["url"].to_s
+        url = download_url(id) if url == ""
+        AttachmentInfo.new(
+          id: id,
+          name: data["name"].to_s,
+          size: size,
+          url: url,
+          uploadtime: data["uploadtime"].to_i,
+          uploader: data["uploader"].to_s
+        )
       end
     end
   end
