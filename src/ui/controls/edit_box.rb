@@ -205,8 +205,8 @@ url=nil
   if e!=nil
     @index=e.from
     espeech(text_range(e.from,e.to))
-    elsif getkeychar!=""
-    play_sound("border")
+    elsif (character=getkeychar)!=""
+    play_sound("border") unless audio? && character==" "
     end
   end
           def navupdate
