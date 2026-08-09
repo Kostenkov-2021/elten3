@@ -46,6 +46,11 @@ module EltenLink
         }
       end
 
+      def followed_users(client)
+        data = client.api_data("GET", "/api/v1/feeds/follows")
+        data["users"].to_a.map(&:to_s)
+      end
+
       def set_liked(client, message_id, liked)
         method = liked ? "PUT" : "DELETE"
         client.api_data(method, "/api/v1/feeds/#{message_id.to_i}/like")
