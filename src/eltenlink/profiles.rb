@@ -97,10 +97,16 @@ module EltenLink
       def build_profile(data)
         data = {} unless data.is_a?(Hash)
         birthdate = data["birthdate"] || {}
+        gender = begin
+          Integer(data.fetch("gender").to_s, 10)
+        rescue KeyError, ArgumentError, TypeError
+          -1
+        end
+        gender = -1 unless [0, 1].include?(gender)
         UserProfile.new(
           name: data["name"].to_s,
           fullname: data["fullname"].to_s,
-          gender: data["gender"].to_i,
+          gender: gender,
           birthdate: UserProfileBirthdate.new(
             year: birthdate["year"].to_i,
             month: birthdate["month"].to_i,

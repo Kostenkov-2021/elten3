@@ -40,11 +40,10 @@ module EltenAPI
         end
         location = pr.location
         text += fullname+"\r\n"
-        text+="#{p_("EAPI_Common", "Gender")}: "
         if gender == 0
-          text += "#{_("Female")}\r\n"
-        else
-          text += "#{_("male")}\r\n"
+          text += "#{p_("EAPI_Common", "Gender")}: #{_("Female")}\r\n"
+        elsif gender == 1
+          text += "#{p_("EAPI_Common", "Gender")}: #{_("male")}\r\n"
         end
         if birthdateyear.to_i>0
           age = Time.now.year-birthdateyear.to_i
