@@ -54,7 +54,7 @@ module EltenLink
         Apps.resource_from(data, @app_uuid)
       end
 
-      def upload(resource, data, meta: nil)
+      def upload(resource, data, meta: nil, timeout: nil)
         Apps.validate_resource_name!(resource)
         Apps.validate_resource_meta!(meta)
         params = { "resource" => resource.to_s }
@@ -64,7 +64,8 @@ module EltenLink
           path,
           data.to_s.b,
           { "Content-Type" => "application/octet-stream" },
-          params
+          params,
+          timeout: timeout
         )
         Apps.resource_from(result, @app_uuid)
       end
