@@ -2179,6 +2179,14 @@ class Program
       EltenLink::Apps.table(EltenLink.client(self), uuid || app_uuid, name)
     end
 
+    def server_resources(uuid = nil)
+      EltenLink::Apps.resources(EltenLink.client(self), uuid || app_uuid)
+    end
+
+    def delete_server_app(uuid = nil)
+      EltenLink::Apps.delete(EltenLink.client(self), uuid || app_uuid)
+    end
+
     def on(event, &proc)
       Programs.register_event_listener(event, self, proc)
     end
@@ -2204,6 +2212,14 @@ class Program
 
   def server_table(name, uuid = nil)
     self.class.server_table(name, uuid)
+  end
+
+  def server_resources(uuid = nil)
+    self.class.server_resources(uuid)
+  end
+
+  def delete_server_app(uuid = nil)
+    self.class.delete_server_app(uuid)
   end
 
   def sound_asset(name)
