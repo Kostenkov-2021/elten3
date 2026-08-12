@@ -8,16 +8,15 @@ msgstr ""
 "Project-Id-Version: Elten 2.4\n"
 "Report-Msgid-Bugs-To: dawidpieper@o2.pl\n"
 "POT-Creation-Date: 2022-06-22 00:07+0200\n"
-"PO-Revision-Date: 2022-08-16 12:26+0200\n"
+"PO-Revision-Date: 2026-08-12 22:55+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lt_LT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && (n%100<11 || n%100>19) ? 0 : n"
-"%10>=2 && n%10<=9 && (n%100<11 || n%100>19) ? 1 : 2);\n"
-"X-Generator: Poedit 1.6.11\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && (n%100<11 || n%100>19) ? 0 : n%10>=2 && n%10<=9 && (n%100<11 || n%100>19) ? 1 : 2);\n"
+"X-Generator: Poedit 3.9\n"
 
 #: ../agent/eprocessor.rb:99
 msgctxt "Conference"
@@ -139,34 +138,27 @@ msgctxt "Conference_cards"
 msgid "joker"
 msgstr "džiokeris"
 
-#: ../agent/eprocessor.rb:208 ../agent/eprocessor.rb:210
-#: ../src/EAPI/Conference.rb:108 ../src/EAPI/Conference.rb:110
+#: ../agent/eprocessor.rb:208 ../agent/eprocessor.rb:210 ../src/EAPI/Conference.rb:108 ../src/EAPI/Conference.rb:110
 msgctxt "Conference_cards"
 msgid "Skip"
 msgstr "Praleisti"
 
-#: ../agent/eprocessor.rb:212 ../agent/eprocessor.rb:214
-#: ../src/EAPI/Conference.rb:112 ../src/EAPI/Conference.rb:114
+#: ../agent/eprocessor.rb:212 ../agent/eprocessor.rb:214 ../src/EAPI/Conference.rb:112 ../src/EAPI/Conference.rb:114
 msgctxt "Conference_cards"
 msgid "Draw two"
 msgstr "Ištraukti dvi"
 
-#: ../agent/eprocessor.rb:216 ../agent/eprocessor.rb:218
-#: ../src/EAPI/Conference.rb:116 ../src/EAPI/Conference.rb:118
+#: ../agent/eprocessor.rb:216 ../agent/eprocessor.rb:218 ../src/EAPI/Conference.rb:116 ../src/EAPI/Conference.rb:118
 msgctxt "Conference_cards"
 msgid "Reverse"
 msgstr "Atvirkščia tvarka"
 
-#: ../agent/eprocessor.rb:223 ../src/EAPI/Conference.rb:124
-#: ../src/EAPI/Conference.rb:126 ../src/EAPI/Conference.rb:128
-#: ../src/EAPI/Conference.rb:130
+#: ../agent/eprocessor.rb:223 ../src/EAPI/Conference.rb:124 ../src/EAPI/Conference.rb:126 ../src/EAPI/Conference.rb:128 ../src/EAPI/Conference.rb:130
 msgctxt "Conference_cards"
 msgid "Wild"
 msgstr "Bet koks skaičius"
 
-#: ../agent/eprocessor.rb:225 ../src/EAPI/Conference.rb:132
-#: ../src/EAPI/Conference.rb:134 ../src/EAPI/Conference.rb:136
-#: ../src/EAPI/Conference.rb:138
+#: ../agent/eprocessor.rb:225 ../src/EAPI/Conference.rb:132 ../src/EAPI/Conference.rb:134 ../src/EAPI/Conference.rb:136 ../src/EAPI/Conference.rb:138
 msgctxt "Conference_cards"
 msgid "Wild draw four"
 msgstr "Traukti bet kokias keturias"
@@ -191,8 +183,7 @@ msgctxt "FeedViewer"
 msgid "Feed"
 msgstr "Siena"
 
-#: ../agent/quicknav.rb:101 ../src/Scenes/Conference.rb:167
-#: ../src/Scenes/Conference.rb:274
+#: ../agent/quicknav.rb:101 ../src/Scenes/Conference.rb:167 ../src/Scenes/Conference.rb:274
 msgctxt "Conference"
 msgid "Conference"
 msgstr "Konferencija"
@@ -217,59 +208,23 @@ msgctxt "Messages"
 msgid "Recipient"
 msgstr "Gavėjas"
 
-#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465
-#: ../src/Scenes/Conference.rb:771 ../src/Scenes/Conference.rb:829
-#: ../src/Scenes/Conference.rb:857 ../src/Scenes/Conference.rb:931
-#: ../src/Scenes/Conference.rb:1047 ../src/Scenes/Conference.rb:1118
-#: ../src/Scenes/Conference.rb:1258 ../src/Scenes/Conference.rb:1755
-#: ../src/Scenes/Conference.rb:1787 ../src/Scenes/Conference.rb:1824
-#: ../src/Scenes/Conference.rb:1926 ../src/Scenes/Conference.rb:1947
-#: ../src/Scenes/Conference.rb:1972 ../src/Scenes/Conference.rb:2228
-#: ../src/eapi/Common.rb:16 ../src/eapi/Common.rb:1211
-#: ../src/eapi/Controls.rb:950 ../src/eapi/Controls.rb:1049
-#: ../src/eapi/Controls.rb:3264 ../src/eapi/Controls.rb:3330
-#: ../src/eapi/Controls.rb:4284 ../src/eapi/Controls.rb:4362
-#: ../src/eapi/Controls.rb:4425 ../src/eapi/Controls.rb:4578
-#: ../src/eapi/External.rb:120 ../src/eapi/UI.rb:772
-#: ../src/scenes/Account.rb:117 ../src/scenes/Ban.rb:26
-#: ../src/scenes/Ban.rb:108 ../src/scenes/Blog.rb:511
-#: ../src/scenes/Blog.rb:1047 ../src/scenes/Blog.rb:1249
-#: ../src/scenes/Blog.rb:1387 ../src/scenes/Blog.rb:1441
-#: ../src/scenes/Blog.rb:1561 ../src/scenes/Blog.rb:1938
-#: ../src/scenes/Blog.rb:2390 ../src/scenes/Blog.rb:2519
-#: ../src/scenes/Clock.rb:12 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Forum.rb:728 ../src/scenes/Forum.rb:754
-#: ../src/scenes/Forum.rb:899 ../src/scenes/Forum.rb:1134
-#: ../src/scenes/Forum.rb:1172 ../src/scenes/Forum.rb:1328
-#: ../src/scenes/Forum.rb:1471 ../src/scenes/Forum.rb:1571
-#: ../src/scenes/Forum.rb:2185 ../src/scenes/Forum.rb:3123
-#: ../src/scenes/Forum.rb:3365 ../src/scenes/Forum.rb:3390
-#: ../src/scenes/Forum.rb:3878 ../src/scenes/Honors.rb:186
-#: ../src/scenes/Honors.rb:222 ../src/scenes/Honors.rb:303
-#: ../src/scenes/Install.rb:3 ../src/scenes/Login.rb:88
-#: ../src/scenes/Main.rb:247 ../src/scenes/Messages.rb:275
-#: ../src/scenes/Messages.rb:853 ../src/scenes/Notes.rb:118
-#: ../src/scenes/Notes.rb:252 ../src/scenes/Polls.rb:180
-#: ../src/scenes/Polls.rb:230 ../src/scenes/Polls.rb:373
-#: ../src/scenes/Portable.rb:9 ../src/scenes/Settings.rb:119
-#: ../src/scenes/SpeedTest.rb:9
+#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465 ../src/Scenes/Conference.rb:771 ../src/Scenes/Conference.rb:829 ../src/Scenes/Conference.rb:857 ../src/Scenes/Conference.rb:931 ../src/Scenes/Conference.rb:1047 ../src/Scenes/Conference.rb:1118 ../src/Scenes/Conference.rb:1258 ../src/Scenes/Conference.rb:1755 ../src/Scenes/Conference.rb:1787 ../src/Scenes/Conference.rb:1824 ../src/Scenes/Conference.rb:1926 ../src/Scenes/Conference.rb:1947 ../src/Scenes/Conference.rb:1972 ../src/Scenes/Conference.rb:2228 ../src/eapi/Common.rb:16 ../src/eapi/Common.rb:1211 ../src/eapi/Controls.rb:950 ../src/eapi/Controls.rb:1049 ../src/eapi/Controls.rb:3264 ../src/eapi/Controls.rb:3330 ../src/eapi/Controls.rb:4284 ../src/eapi/Controls.rb:4362 ../src/eapi/Controls.rb:4425 ../src/eapi/Controls.rb:4578 ../src/eapi/External.rb:120 ../src/eapi/UI.rb:772
+#: ../src/scenes/Account.rb:117 ../src/scenes/Ban.rb:26 ../src/scenes/Ban.rb:108 ../src/scenes/Blog.rb:511 ../src/scenes/Blog.rb:1047 ../src/scenes/Blog.rb:1249 ../src/scenes/Blog.rb:1387 ../src/scenes/Blog.rb:1441 ../src/scenes/Blog.rb:1561 ../src/scenes/Blog.rb:1938 ../src/scenes/Blog.rb:2390 ../src/scenes/Blog.rb:2519 ../src/scenes/Clock.rb:12 ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:728 ../src/scenes/Forum.rb:754 ../src/scenes/Forum.rb:899 ../src/scenes/Forum.rb:1134 ../src/scenes/Forum.rb:1172 ../src/scenes/Forum.rb:1328 ../src/scenes/Forum.rb:1471 ../src/scenes/Forum.rb:1571 ../src/scenes/Forum.rb:2185 ../src/scenes/Forum.rb:3123 ../src/scenes/Forum.rb:3365 ../src/scenes/Forum.rb:3390 ../src/scenes/Forum.rb:3878 ../src/scenes/Honors.rb:186 ../src/scenes/Honors.rb:222 ../src/scenes/Honors.rb:303 ../src/scenes/Install.rb:3 ../src/scenes/Login.rb:88
+#: ../src/scenes/Main.rb:247 ../src/scenes/Messages.rb:275 ../src/scenes/Messages.rb:853 ../src/scenes/Notes.rb:118 ../src/scenes/Notes.rb:252 ../src/scenes/Polls.rb:180 ../src/scenes/Polls.rb:230 ../src/scenes/Polls.rb:373 ../src/scenes/Portable.rb:9 ../src/scenes/Settings.rb:119 ../src/scenes/SpeedTest.rb:9
 msgid "Cancel"
 msgstr "Atšaukti"
 
-#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465
-#: ../src/scenes/Messages.rb:675 ../src/scenes/Messages.rb:941
+#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465 ../src/scenes/Messages.rb:675 ../src/scenes/Messages.rb:941
 msgctxt "Messages"
 msgid "Send"
 msgstr "Siųsti"
 
-#: ../agent/quicknav.rb:162 ../agent/quicknav.rb:166 ../agent/quicknav.rb:302
-#: ../agent/quicknav.rb:306 ../src/scenes/Messages.rb:687
+#: ../agent/quicknav.rb:162 ../agent/quicknav.rb:166 ../agent/quicknav.rb:302 ../agent/quicknav.rb:306 ../src/scenes/Messages.rb:687
 msgctxt "Messages"
 msgid "Failed to send message"
 msgstr "Žinutės išsiųsti nepavyko"
 
-#: ../agent/quicknav.rb:220 ../agent/quicknav.rb:222
-#: ../src/scenes/Messages.rb:785
+#: ../agent/quicknav.rb:220 ../agent/quicknav.rb:222 ../src/scenes/Messages.rb:785
 msgctxt "Messages"
 msgid "To"
 msgstr "Kam"
@@ -329,8 +284,7 @@ msgctxt "Conference"
 msgid "Stream audio file"
 msgstr "Transliuoti audio failą"
 
-#: ../agent/quicknav.rb:348 ../src/Scenes/Conference.rb:778
-#: ../src/Scenes/Conference.rb:1092
+#: ../agent/quicknav.rb:348 ../src/Scenes/Conference.rb:778 ../src/Scenes/Conference.rb:1092
 msgctxt "Conference"
 msgid "Select audio file"
 msgstr "Pasirinkite audio failą"
@@ -395,8 +349,7 @@ msgctxt "Conference"
 msgid "Chat message"
 msgstr "Susirašinėjimo žinutė"
 
-#: ../agent/quicknav.rb:509 ../src/scenes/Messages.rb:157
-#: ../src/scenes/Messages.rb:702
+#: ../agent/quicknav.rb:509 ../src/scenes/Messages.rb:157 ../src/scenes/Messages.rb:702
 msgctxt "Messages"
 msgid "Reply"
 msgstr "Atsakyti"
@@ -408,8 +361,7 @@ msgstr "Atsakymas"
 
 #: ../src/EAPI/Documents.rb:3
 msgctxt "License"
-msgid ""
-"The original content of the GNU General Public License V3 can be found below."
+msgid "The original content of the GNU General Public License V3 can be found below."
 msgstr "GNU General Public License V3 originalus turinys pateikiamas žemiau."
 
 #: ../src/EAPI/Documents.rb:3
@@ -420,122 +372,25 @@ msgstr "Elten išeities tekstus galite rasti Github:"
 #: ../src/EAPI/Documents.rb:3
 msgctxt "License"
 msgid ""
-"Elten is free software: you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation, version 3.\n"
-"Elten is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details."
-msgstr ""
-"Elten programa platinama turint omenyje, jog ji bus naudinga, tačiau be "
-"jokios garantijos, taip pat be jokios išreikštinės įsigyjimo ar tinkamumo "
-"konkrečiam tikslui garantijos. Daugiau informacijos rasite GNU General "
-"Public License dokumente."
+"Elten is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.\n"
+"Elten is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details."
+msgstr "Elten programa platinama turint omenyje, jog ji bus naudinga, tačiau be jokios garantijos, taip pat be jokios išreikštinės įsigyjimo ar tinkamumo konkrečiam tikslui garantijos. Daugiau informacijos rasite GNU General Public License dokumente."
 
 #: ../src/EAPI/Documents.rb:689
 msgctxt "Documentation"
 msgid "Current Invisible Interface modifier key"
 msgstr "Dabartinis Elten modifikatorius"
 
-#: ../src/Scenes/Auctions.rb:25 ../src/Scenes/CallHistory.rb:16
-#: ../src/Scenes/Conference.rb:798 ../src/Scenes/FeedViewer.rb:20
-#: ../src/Scenes/FeedViewer.rb:145 ../src/Scenes/PremiumPackages.rb:345
-#: ../src/Scenes/PremiumPackages.rb:383 ../src/Scenes/PremiumPackages.rb:400
-#: ../src/Scenes/PremiumPackages.rb:410 ../src/eapi/Common.rb:328
-#: ../src/eapi/Common.rb:354 ../src/eapi/Common.rb:362
-#: ../src/eapi/Common.rb:514 ../src/eapi/Common.rb:1203
-#: ../src/eapi/EltenSRV.rb:224 ../src/eapi/EltenSRV.rb:242
-#: ../src/eapi/EltenSRV.rb:313 ../src/eapi/EltenSRV.rb:340
-#: ../src/eapi/EltenSRV.rb:378 ../src/eapi/EltenSRV.rb:393
-#: ../src/eapi/EltenSRV.rb:431 ../src/scenes/Account.rb:484
-#: ../src/scenes/Account.rb:547 ../src/scenes/Account.rb:619
-#: ../src/scenes/Account.rb:627 ../src/scenes/Account.rb:633
-#: ../src/scenes/Authentication.rb:16 ../src/scenes/Authentication.rb:43
-#: ../src/scenes/Authentication.rb:78 ../src/scenes/Authentication.rb:91
-#: ../src/scenes/Ban.rb:67 ../src/scenes/Ban.rb:99 ../src/scenes/Ban.rb:122
-#: ../src/scenes/Blog.rb:92 ../src/scenes/Blog.rb:111
-#: ../src/scenes/Blog.rb:166 ../src/scenes/Blog.rb:187
-#: ../src/scenes/Blog.rb:202 ../src/scenes/Blog.rb:264
-#: ../src/scenes/Blog.rb:376 ../src/scenes/Blog.rb:452
-#: ../src/scenes/Blog.rb:501 ../src/scenes/Blog.rb:523
-#: ../src/scenes/Blog.rb:555 ../src/scenes/Blog.rb:588
-#: ../src/scenes/Blog.rb:722 ../src/scenes/Blog.rb:812
-#: ../src/scenes/Blog.rb:993 ../src/scenes/Blog.rb:1059
-#: ../src/scenes/Blog.rb:1105 ../src/scenes/Blog.rb:1132
-#: ../src/scenes/Blog.rb:1140 ../src/scenes/Blog.rb:1148
-#: ../src/scenes/Blog.rb:1185 ../src/scenes/Blog.rb:1195
-#: ../src/scenes/Blog.rb:1235 ../src/scenes/Blog.rb:1265
-#: ../src/scenes/Blog.rb:1298 ../src/scenes/Blog.rb:1326
-#: ../src/scenes/Blog.rb:1346 ../src/scenes/Blog.rb:1405
-#: ../src/scenes/Blog.rb:1430 ../src/scenes/Blog.rb:1448
-#: ../src/scenes/Blog.rb:1830 ../src/scenes/Blog.rb:1845
-#: ../src/scenes/Blog.rb:1901 ../src/scenes/Blog.rb:1914
-#: ../src/scenes/Blog.rb:1997 ../src/scenes/Blog.rb:2146
-#: ../src/scenes/Blog.rb:2153 ../src/scenes/Blog.rb:2361
-#: ../src/scenes/Blog.rb:2382 ../src/scenes/Blog.rb:2488
-#: ../src/scenes/ForgotPassword.rb:24 ../src/scenes/Forum.rb:621
-#: ../src/scenes/Forum.rb:645 ../src/scenes/Forum.rb:665
-#: ../src/scenes/Forum.rb:680 ../src/scenes/Forum.rb:743
-#: ../src/scenes/Forum.rb:768 ../src/scenes/Forum.rb:781
-#: ../src/scenes/Forum.rb:910 ../src/scenes/Forum.rb:925
-#: ../src/scenes/Forum.rb:958 ../src/scenes/Forum.rb:968
-#: ../src/scenes/Forum.rb:1011 ../src/scenes/Forum.rb:1153
-#: ../src/scenes/Forum.rb:1289 ../src/scenes/Forum.rb:1301
-#: ../src/scenes/Forum.rb:1383 ../src/scenes/Forum.rb:1408
-#: ../src/scenes/Forum.rb:1415 ../src/scenes/Forum.rb:1451
-#: ../src/scenes/Forum.rb:1488 ../src/scenes/Forum.rb:1511
-#: ../src/scenes/Forum.rb:1536 ../src/scenes/Forum.rb:1551
-#: ../src/scenes/Forum.rb:1591 ../src/scenes/Forum.rb:1907
-#: ../src/scenes/Forum.rb:1926 ../src/scenes/Forum.rb:1933
-#: ../src/scenes/Forum.rb:1984 ../src/scenes/Forum.rb:1997
-#: ../src/scenes/Forum.rb:2009 ../src/scenes/Forum.rb:2024
-#: ../src/scenes/Forum.rb:2044 ../src/scenes/Forum.rb:2077
-#: ../src/scenes/Forum.rb:2089 ../src/scenes/Forum.rb:2121
-#: ../src/scenes/Forum.rb:2137 ../src/scenes/Forum.rb:2262
-#: ../src/scenes/Forum.rb:2372 ../src/scenes/Forum.rb:2377
-#: ../src/scenes/Forum.rb:2407 ../src/scenes/Forum.rb:2439
-#: ../src/scenes/Forum.rb:2585 ../src/scenes/Forum.rb:2602
-#: ../src/scenes/Forum.rb:2620 ../src/scenes/Forum.rb:2921
-#: ../src/scenes/Forum.rb:2941 ../src/scenes/Forum.rb:2999
-#: ../src/scenes/Forum.rb:3113 ../src/scenes/Forum.rb:3135
-#: ../src/scenes/Forum.rb:3198 ../src/scenes/Forum.rb:3214
-#: ../src/scenes/Forum.rb:3221 ../src/scenes/Forum.rb:3282
-#: ../src/scenes/Forum.rb:3307 ../src/scenes/Forum.rb:3320
-#: ../src/scenes/Forum.rb:3347 ../src/scenes/Forum.rb:3373
-#: ../src/scenes/Forum.rb:3435 ../src/scenes/Forum.rb:3511
-#: ../src/scenes/Forum.rb:3523 ../src/scenes/Forum.rb:3916
-#: ../src/scenes/Honors.rb:20 ../src/scenes/Honors.rb:138
-#: ../src/scenes/Honors.rb:149 ../src/scenes/Honors.rb:165
-#: ../src/scenes/Honors.rb:210 ../src/scenes/Honors.rb:315
-#: ../src/scenes/Loading.rb:329 ../src/scenes/Main.rb:393
-#: ../src/scenes/Messages.rb:93 ../src/scenes/Messages.rb:174
-#: ../src/scenes/Messages.rb:238 ../src/scenes/Messages.rb:320
-#: ../src/scenes/Messages.rb:356 ../src/scenes/Messages.rb:363
-#: ../src/scenes/Messages.rb:388 ../src/scenes/Messages.rb:478
-#: ../src/scenes/Messages.rb:511 ../src/scenes/Messages.rb:718
-#: ../src/scenes/Messages.rb:725 ../src/scenes/Messages.rb:741
-#: ../src/scenes/Messages.rb:748 ../src/scenes/Messages.rb:799
-#: ../src/scenes/Messages.rb:915 ../src/scenes/Messages.rb:1022
-#: ../src/scenes/Notes.rb:16 ../src/scenes/Notes.rb:107
-#: ../src/scenes/Notes.rb:141 ../src/scenes/Notes.rb:181
-#: ../src/scenes/Notes.rb:194 ../src/scenes/Notes.rb:228
-#: ../src/scenes/Notes.rb:241 ../src/scenes/Notes.rb:271
-#: ../src/scenes/Polls.rb:28 ../src/scenes/Polls.rb:54
-#: ../src/scenes/Polls.rb:135 ../src/scenes/Polls.rb:307
-#: ../src/scenes/Polls.rb:324 ../src/scenes/Polls.rb:339
-#: ../src/scenes/Polls.rb:407 ../src/scenes/Polls.rb:441
-#: ../src/scenes/Polls.rb:451 ../src/scenes/Polls.rb:462
-#: ../src/scenes/Polls.rb:517 ../src/scenes/Polls.rb:531
-#: ../src/scenes/Polls.rb:548 ../src/scenes/SoundThemes.rb:82
-#: ../src/scenes/UserSearch.rb:19
+#: ../src/Scenes/Auctions.rb:25 ../src/Scenes/CallHistory.rb:16 ../src/Scenes/Conference.rb:798 ../src/Scenes/FeedViewer.rb:20 ../src/Scenes/FeedViewer.rb:145 ../src/Scenes/PremiumPackages.rb:345 ../src/Scenes/PremiumPackages.rb:383 ../src/Scenes/PremiumPackages.rb:400 ../src/Scenes/PremiumPackages.rb:410 ../src/eapi/Common.rb:328 ../src/eapi/Common.rb:354 ../src/eapi/Common.rb:362 ../src/eapi/Common.rb:514 ../src/eapi/Common.rb:1203 ../src/eapi/EltenSRV.rb:224 ../src/eapi/EltenSRV.rb:242 ../src/eapi/EltenSRV.rb:313 ../src/eapi/EltenSRV.rb:340 ../src/eapi/EltenSRV.rb:378 ../src/eapi/EltenSRV.rb:393 ../src/eapi/EltenSRV.rb:431 ../src/scenes/Account.rb:484 ../src/scenes/Account.rb:547 ../src/scenes/Account.rb:619 ../src/scenes/Account.rb:627 ../src/scenes/Account.rb:633 ../src/scenes/Authentication.rb:16 ../src/scenes/Authentication.rb:43
+#: ../src/scenes/Authentication.rb:78 ../src/scenes/Authentication.rb:91 ../src/scenes/Ban.rb:67 ../src/scenes/Ban.rb:99 ../src/scenes/Ban.rb:122 ../src/scenes/Blog.rb:92 ../src/scenes/Blog.rb:111 ../src/scenes/Blog.rb:166 ../src/scenes/Blog.rb:187 ../src/scenes/Blog.rb:202 ../src/scenes/Blog.rb:264 ../src/scenes/Blog.rb:376 ../src/scenes/Blog.rb:452 ../src/scenes/Blog.rb:501 ../src/scenes/Blog.rb:523 ../src/scenes/Blog.rb:555 ../src/scenes/Blog.rb:588 ../src/scenes/Blog.rb:722 ../src/scenes/Blog.rb:812 ../src/scenes/Blog.rb:993 ../src/scenes/Blog.rb:1059 ../src/scenes/Blog.rb:1105 ../src/scenes/Blog.rb:1132 ../src/scenes/Blog.rb:1140 ../src/scenes/Blog.rb:1148 ../src/scenes/Blog.rb:1185 ../src/scenes/Blog.rb:1195 ../src/scenes/Blog.rb:1235 ../src/scenes/Blog.rb:1265 ../src/scenes/Blog.rb:1298 ../src/scenes/Blog.rb:1326 ../src/scenes/Blog.rb:1346
+#: ../src/scenes/Blog.rb:1405 ../src/scenes/Blog.rb:1430 ../src/scenes/Blog.rb:1448 ../src/scenes/Blog.rb:1830 ../src/scenes/Blog.rb:1845 ../src/scenes/Blog.rb:1901 ../src/scenes/Blog.rb:1914 ../src/scenes/Blog.rb:1997 ../src/scenes/Blog.rb:2146 ../src/scenes/Blog.rb:2153 ../src/scenes/Blog.rb:2361 ../src/scenes/Blog.rb:2382 ../src/scenes/Blog.rb:2488 ../src/scenes/ForgotPassword.rb:24 ../src/scenes/Forum.rb:621 ../src/scenes/Forum.rb:645 ../src/scenes/Forum.rb:665 ../src/scenes/Forum.rb:680 ../src/scenes/Forum.rb:743 ../src/scenes/Forum.rb:768 ../src/scenes/Forum.rb:781 ../src/scenes/Forum.rb:910 ../src/scenes/Forum.rb:925 ../src/scenes/Forum.rb:958 ../src/scenes/Forum.rb:968 ../src/scenes/Forum.rb:1011 ../src/scenes/Forum.rb:1153 ../src/scenes/Forum.rb:1289 ../src/scenes/Forum.rb:1301 ../src/scenes/Forum.rb:1383 ../src/scenes/Forum.rb:1408
+#: ../src/scenes/Forum.rb:1415 ../src/scenes/Forum.rb:1451 ../src/scenes/Forum.rb:1488 ../src/scenes/Forum.rb:1511 ../src/scenes/Forum.rb:1536 ../src/scenes/Forum.rb:1551 ../src/scenes/Forum.rb:1591 ../src/scenes/Forum.rb:1907 ../src/scenes/Forum.rb:1926 ../src/scenes/Forum.rb:1933 ../src/scenes/Forum.rb:1984 ../src/scenes/Forum.rb:1997 ../src/scenes/Forum.rb:2009 ../src/scenes/Forum.rb:2024 ../src/scenes/Forum.rb:2044 ../src/scenes/Forum.rb:2077 ../src/scenes/Forum.rb:2089 ../src/scenes/Forum.rb:2121 ../src/scenes/Forum.rb:2137 ../src/scenes/Forum.rb:2262 ../src/scenes/Forum.rb:2372 ../src/scenes/Forum.rb:2377 ../src/scenes/Forum.rb:2407 ../src/scenes/Forum.rb:2439 ../src/scenes/Forum.rb:2585 ../src/scenes/Forum.rb:2602 ../src/scenes/Forum.rb:2620 ../src/scenes/Forum.rb:2921 ../src/scenes/Forum.rb:2941 ../src/scenes/Forum.rb:2999 ../src/scenes/Forum.rb:3113
+#: ../src/scenes/Forum.rb:3135 ../src/scenes/Forum.rb:3198 ../src/scenes/Forum.rb:3214 ../src/scenes/Forum.rb:3221 ../src/scenes/Forum.rb:3282 ../src/scenes/Forum.rb:3307 ../src/scenes/Forum.rb:3320 ../src/scenes/Forum.rb:3347 ../src/scenes/Forum.rb:3373 ../src/scenes/Forum.rb:3435 ../src/scenes/Forum.rb:3511 ../src/scenes/Forum.rb:3523 ../src/scenes/Forum.rb:3916 ../src/scenes/Honors.rb:20 ../src/scenes/Honors.rb:138 ../src/scenes/Honors.rb:149 ../src/scenes/Honors.rb:165 ../src/scenes/Honors.rb:210 ../src/scenes/Honors.rb:315 ../src/scenes/Loading.rb:329 ../src/scenes/Main.rb:393 ../src/scenes/Messages.rb:93 ../src/scenes/Messages.rb:174 ../src/scenes/Messages.rb:238 ../src/scenes/Messages.rb:320 ../src/scenes/Messages.rb:356 ../src/scenes/Messages.rb:363 ../src/scenes/Messages.rb:388 ../src/scenes/Messages.rb:478 ../src/scenes/Messages.rb:511
+#: ../src/scenes/Messages.rb:718 ../src/scenes/Messages.rb:725 ../src/scenes/Messages.rb:741 ../src/scenes/Messages.rb:748 ../src/scenes/Messages.rb:799 ../src/scenes/Messages.rb:915 ../src/scenes/Messages.rb:1022 ../src/scenes/Notes.rb:16 ../src/scenes/Notes.rb:107 ../src/scenes/Notes.rb:141 ../src/scenes/Notes.rb:181 ../src/scenes/Notes.rb:194 ../src/scenes/Notes.rb:228 ../src/scenes/Notes.rb:241 ../src/scenes/Notes.rb:271 ../src/scenes/Polls.rb:28 ../src/scenes/Polls.rb:54 ../src/scenes/Polls.rb:135 ../src/scenes/Polls.rb:307 ../src/scenes/Polls.rb:324 ../src/scenes/Polls.rb:339 ../src/scenes/Polls.rb:407 ../src/scenes/Polls.rb:441 ../src/scenes/Polls.rb:451 ../src/scenes/Polls.rb:462 ../src/scenes/Polls.rb:517 ../src/scenes/Polls.rb:531 ../src/scenes/Polls.rb:548 ../src/scenes/SoundThemes.rb:82 ../src/scenes/UserSearch.rb:19
 msgid "Error"
 msgstr "Klaida"
 
-#: ../src/Scenes/CallHistory.rb:10 ../src/Scenes/PremiumPackages.rb:4
-#: ../src/scenes/Authentication.rb:10 ../src/scenes/Contacts.rb:13
-#: ../src/scenes/Messages.rb:26 ../src/scenes/Notes.rb:10
-#: ../src/scenes/WhatsNew.rb:15
+#: ../src/Scenes/CallHistory.rb:10 ../src/Scenes/PremiumPackages.rb:4 ../src/scenes/Authentication.rb:10 ../src/scenes/Contacts.rb:13 ../src/scenes/Messages.rb:26 ../src/scenes/Notes.rb:10 ../src/scenes/WhatsNew.rb:15
 msgid "This section is unavailable for guests"
 msgstr "Ši skiltis svečiams nepasiekiama"
 
@@ -579,22 +434,8 @@ msgctxt "CallHistory"
 msgid "Call History"
 msgstr "Skambučių istorija"
 
-#: ../src/Scenes/CallHistory.rb:61 ../src/Scenes/Conference.rb:1378
-#: ../src/Scenes/Conference.rb:1390 ../src/Scenes/Conference.rb:1399
-#: ../src/Scenes/Conference.rb:1460 ../src/Scenes/Conference.rb:1509
-#: ../src/Scenes/Conference.rb:1557 ../src/Scenes/Conference.rb:1644
-#: ../src/Scenes/Conference.rb:2220 ../src/Scenes/PremiumPackages.rb:123
-#: ../src/Scenes/Sponsors.rb:30 ../src/scenes/Account.rb:441
-#: ../src/scenes/Account.rb:559 ../src/scenes/Blog.rb:1221
-#: ../src/scenes/Forum.rb:707 ../src/scenes/Forum.rb:1564
-#: ../src/scenes/Forum.rb:2148 ../src/scenes/Forum.rb:3355
-#: ../src/scenes/Honors.rb:174 ../src/scenes/Honors.rb:295
-#: ../src/scenes/Messages.rb:258 ../src/scenes/Messages.rb:469
-#: ../src/scenes/Messages.rb:774 ../src/scenes/Notes.rb:97
-#: ../src/scenes/Online.rb:37 ../src/scenes/Polls.rb:163
-#: ../src/scenes/Users.rb:56 ../src/scenes/UsersAddedMeToContacts.rb:60
-#: ../src/scenes/Users_RecentlyActived.rb:40
-#: ../src/scenes/Users_RecentlyRegistered.rb:40
+#: ../src/Scenes/CallHistory.rb:61 ../src/Scenes/Conference.rb:1378 ../src/Scenes/Conference.rb:1390 ../src/Scenes/Conference.rb:1399 ../src/Scenes/Conference.rb:1460 ../src/Scenes/Conference.rb:1509 ../src/Scenes/Conference.rb:1557 ../src/Scenes/Conference.rb:1644 ../src/Scenes/Conference.rb:2220 ../src/Scenes/PremiumPackages.rb:123 ../src/Scenes/Sponsors.rb:30 ../src/scenes/Account.rb:441 ../src/scenes/Account.rb:559 ../src/scenes/Blog.rb:1221 ../src/scenes/Forum.rb:707 ../src/scenes/Forum.rb:1564 ../src/scenes/Forum.rb:2148 ../src/scenes/Forum.rb:3355 ../src/scenes/Honors.rb:174 ../src/scenes/Honors.rb:295 ../src/scenes/Messages.rb:258 ../src/scenes/Messages.rb:469 ../src/scenes/Messages.rb:774 ../src/scenes/Notes.rb:97 ../src/scenes/Online.rb:37 ../src/scenes/Polls.rb:163 ../src/scenes/Users.rb:56 ../src/scenes/UsersAddedMeToContacts.rb:60
+#: ../src/scenes/Users_RecentlyActived.rb:40 ../src/scenes/Users_RecentlyRegistered.rb:40
 msgid "Refresh"
 msgstr "Perkrauti"
 
@@ -806,8 +647,7 @@ msgctxt "Conference"
 msgid "Would you like to disconnect?"
 msgstr "Ar norėtumėte atsijungti?"
 
-#: ../src/Scenes/Conference.rb:322 ../src/Scenes/Conference.rb:395
-#: ../src/Scenes/Conference.rb:548
+#: ../src/Scenes/Conference.rb:322 ../src/Scenes/Conference.rb:395 ../src/Scenes/Conference.rb:548
 msgctxt "Conference"
 msgid "Channels"
 msgstr "Kanalai"
@@ -980,16 +820,12 @@ msgstr "Kokybė mobiliesiems arba riboto tinklo naudojimo įrenginiams"
 #: ../src/Scenes/Conference.rb:504
 msgctxt "Conference"
 msgid "Quality for mobile or limited connections with surround sound"
-msgstr ""
-"Kokybė mobiliesiems arba riboto tinklo naudojimo įrenginiams su supančiais "
-"garsais"
+msgstr "Kokybė mobiliesiems arba riboto tinklo naudojimo įrenginiams su supančiais garsais"
 
 #: ../src/Scenes/Conference.rb:505
 msgctxt "Conference"
 msgid "Quality for mobile or limited connections with round table"
-msgstr ""
-"Kokybė mobiliesiems arba riboto tinklo naudojimo įrenginiams su apskrito "
-"stalo režimu"
+msgstr "Kokybė mobiliesiems arba riboto tinklo naudojimo įrenginiams su apskrito stalo režimu"
 
 #: ../src/Scenes/Conference.rb:506
 msgctxt "Conference"
@@ -1053,12 +889,8 @@ msgstr "Išjungti koduotės prognozavimą"
 
 #: ../src/Scenes/Conference.rb:550
 msgctxt "Conference"
-msgid ""
-"Enable conference mode (only channel administrators and allowed users can "
-"speak)"
-msgstr ""
-"Įjungti konferencijos režimą (kalbėti gali tik kanalo administratoriai ir "
-"vartotojai, kuriems tai leista)"
+msgid "Enable conference mode (only channel administrators and allowed users can speak)"
+msgstr "Įjungti konferencijos režimą (kalbėti gali tik kanalo administratoriai ir vartotojai, kuriems tai leista)"
 
 #: ../src/Scenes/Conference.rb:551
 msgctxt "Conference"
@@ -1092,11 +924,8 @@ msgstr "Kanalo aukštis"
 
 #: ../src/Scenes/Conference.rb:557
 msgctxt "Conference"
-msgid ""
-"Channel password (leave this field blank to set a channel without a password)"
-msgstr ""
-"Kanalo slaptažodis (lauką palikite tuščią, kad kanalą nustatytumėte be "
-"slaptažodžio)"
+msgid "Channel password (leave this field blank to set a channel without a password)"
+msgstr "Kanalo slaptažodis (lauką palikite tuščią, kad kanalą nustatytumėte be slaptažodžio)"
 
 #: ../src/Scenes/Conference.rb:558
 msgctxt "Conference"
@@ -1168,15 +997,12 @@ msgctxt "Conference"
 msgid "Available objects"
 msgstr "Galimi objektai"
 
-#: ../src/Scenes/Conference.rb:769 ../src/Scenes/Conference.rb:1594
-#: ../src/Scenes/Conference.rb:1666 ../src/Scenes/Conference.rb:1753
-#: ../src/Scenes/Conference.rb:1785 ../src/Scenes/Conference.rb:1822
+#: ../src/Scenes/Conference.rb:769 ../src/Scenes/Conference.rb:1594 ../src/Scenes/Conference.rb:1666 ../src/Scenes/Conference.rb:1753 ../src/Scenes/Conference.rb:1785 ../src/Scenes/Conference.rb:1822
 msgctxt "Conference"
 msgid "Everywhere"
 msgstr "Visur"
 
-#: ../src/Scenes/Conference.rb:769 ../src/Scenes/Conference.rb:1753
-#: ../src/Scenes/Conference.rb:1785 ../src/Scenes/Conference.rb:1822
+#: ../src/Scenes/Conference.rb:769 ../src/Scenes/Conference.rb:1753 ../src/Scenes/Conference.rb:1785 ../src/Scenes/Conference.rb:1822
 msgctxt "Conference"
 msgid "Here"
 msgstr "Čia"
@@ -1201,8 +1027,7 @@ msgctxt "Conference"
 msgid "This file is too large"
 msgstr "Šis failas yra per didelis"
 
-#: ../src/Scenes/Conference.rb:796 ../src/Scenes/Conference.rb:1499
-#: ../src/Scenes/Conference.rb:1548
+#: ../src/Scenes/Conference.rb:796 ../src/Scenes/Conference.rb:1499 ../src/Scenes/Conference.rb:1548
 msgctxt "Conference"
 msgid "Delete"
 msgstr "Trinti"
@@ -1212,8 +1037,7 @@ msgctxt "Conference"
 msgid "Object deleted"
 msgstr "Objektas ištrintas"
 
-#: ../src/Scenes/Conference.rb:826 ../src/Scenes/Conference.rb:854
-#: ../src/Scenes/Conference.rb:2224
+#: ../src/Scenes/Conference.rb:826 ../src/Scenes/Conference.rb:854 ../src/Scenes/Conference.rb:2224
 msgctxt "Conference"
 msgid "Destination"
 msgstr "Galutinė vieta"
@@ -1223,19 +1047,7 @@ msgctxt "Conference"
 msgid "File name"
 msgstr "Failo vardas"
 
-#: ../src/Scenes/Conference.rb:828 ../src/Scenes/Conference.rb:856
-#: ../src/Scenes/Conference.rb:930 ../src/eapi/Controls.rb:3329
-#: ../src/eapi/Controls.rb:4283 ../src/eapi/Controls.rb:4361
-#: ../src/eapi/Controls.rb:4424 ../src/scenes/Account.rb:116
-#: ../src/scenes/Blog.rb:1248 ../src/scenes/Blog.rb:1387
-#: ../src/scenes/Blog.rb:1560 ../src/scenes/Clock.rb:11
-#: ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:727
-#: ../src/scenes/Forum.rb:753 ../src/scenes/Forum.rb:1327
-#: ../src/scenes/Forum.rb:1476 ../src/scenes/Forum.rb:3390
-#: ../src/scenes/Forum.rb:3877 ../src/scenes/Honors.rb:186
-#: ../src/scenes/Honors.rb:221 ../src/scenes/Notes.rb:158
-#: ../src/scenes/Notes.rb:175 ../src/scenes/Polls.rb:230
-#: ../src/scenes/Settings.rb:118
+#: ../src/Scenes/Conference.rb:828 ../src/Scenes/Conference.rb:856 ../src/Scenes/Conference.rb:930 ../src/eapi/Controls.rb:3329 ../src/eapi/Controls.rb:4283 ../src/eapi/Controls.rb:4361 ../src/eapi/Controls.rb:4424 ../src/scenes/Account.rb:116 ../src/scenes/Blog.rb:1248 ../src/scenes/Blog.rb:1387 ../src/scenes/Blog.rb:1560 ../src/scenes/Clock.rb:11 ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:727 ../src/scenes/Forum.rb:753 ../src/scenes/Forum.rb:1327 ../src/scenes/Forum.rb:1476 ../src/scenes/Forum.rb:3390 ../src/scenes/Forum.rb:3877 ../src/scenes/Honors.rb:186 ../src/scenes/Honors.rb:221 ../src/scenes/Notes.rb:158 ../src/scenes/Notes.rb:175 ../src/scenes/Polls.rb:230 ../src/scenes/Settings.rb:118
 msgid "Save"
 msgstr "Įrašyti"
 
@@ -1254,14 +1066,12 @@ msgctxt "Conference"
 msgid "Directory name"
 msgstr "Direktorijos vardas"
 
-#: ../src/Scenes/Conference.rb:887 ../src/Scenes/Conference.rb:889
-#: ../src/Scenes/Conference.rb:891 ../src/Scenes/Conference.rb:928
+#: ../src/Scenes/Conference.rb:887 ../src/Scenes/Conference.rb:889 ../src/Scenes/Conference.rb:891 ../src/Scenes/Conference.rb:928
 msgctxt "Conference"
 msgid "Left"
 msgstr "Kairė"
 
-#: ../src/Scenes/Conference.rb:893 ../src/Scenes/Conference.rb:895
-#: ../src/Scenes/Conference.rb:897 ../src/Scenes/Conference.rb:928
+#: ../src/Scenes/Conference.rb:893 ../src/Scenes/Conference.rb:895 ../src/Scenes/Conference.rb:897 ../src/Scenes/Conference.rb:928
 msgctxt "Conference"
 msgid "Right"
 msgstr "Dešinė"
@@ -1316,8 +1126,7 @@ msgctxt "Conference"
 msgid "Master volume"
 msgstr "Pagrindinis garsas"
 
-#: ../src/Scenes/Conference.rb:982 ../src/Scenes/Conference.rb:1622
-#: ../src/Scenes/Conference.rb:1705
+#: ../src/Scenes/Conference.rb:982 ../src/Scenes/Conference.rb:1622 ../src/Scenes/Conference.rb:1705
 msgctxt "Conference"
 msgid "Stream volume"
 msgstr "Transliacijos garsas"
@@ -1337,14 +1146,12 @@ msgctxt "Conference"
 msgid "Stream from sound card"
 msgstr "Transliuoti iš garso kortelės"
 
-#: ../src/Scenes/Conference.rb:1044 ../src/Scenes/Conference.rb:1820
-#: ../src/Scenes/Conference.rb:1970
+#: ../src/Scenes/Conference.rb:1044 ../src/Scenes/Conference.rb:1820 ../src/Scenes/Conference.rb:1970
 msgctxt "Conference"
 msgid "Loopback device"
 msgstr "Atgalinis įrenginys"
 
-#: ../src/Scenes/Conference.rb:1044 ../src/Scenes/Conference.rb:1820
-#: ../src/Scenes/Conference.rb:1970
+#: ../src/Scenes/Conference.rb:1044 ../src/Scenes/Conference.rb:1820 ../src/Scenes/Conference.rb:1970
 msgctxt "Conference"
 msgid "Select sound card to stream"
 msgstr "Pasirinkite garso kortelę, iš kurios transliuosite"
@@ -1359,14 +1166,12 @@ msgctxt "Conference"
 msgid "Stream"
 msgstr "Transliuoti"
 
-#: ../src/Scenes/Conference.rb:1085 ../src/Scenes/Conference.rb:1730
-#: ../src/Scenes/Conference.rb:1907
+#: ../src/Scenes/Conference.rb:1085 ../src/Scenes/Conference.rb:1730 ../src/Scenes/Conference.rb:1907
 msgctxt "Conference"
 msgid "Scroll backward"
 msgstr "Slinkti atgal"
 
-#: ../src/Scenes/Conference.rb:1086 ../src/Scenes/Conference.rb:1735
-#: ../src/Scenes/Conference.rb:1910
+#: ../src/Scenes/Conference.rb:1086 ../src/Scenes/Conference.rb:1735 ../src/Scenes/Conference.rb:1910
 msgctxt "Conference"
 msgid "Scroll forward"
 msgstr "Slinkti priekin"
@@ -1596,9 +1401,7 @@ msgctxt "Conference"
 msgid "Placed cards"
 msgstr "Išdėlioti kortas"
 
-#: ../src/Scenes/Conference.rb:1330 ../src/eapi/Controls.rb:4455
-#: ../src/scenes/Loading.rb:354 ../src/scenes/Log.rb:14
-#: ../src/scenes/Polls.rb:574
+#: ../src/Scenes/Conference.rb:1330 ../src/eapi/Controls.rb:4455 ../src/scenes/Loading.rb:354 ../src/scenes/Log.rb:14 ../src/scenes/Polls.rb:574
 msgid "Close"
 msgstr "Uždaryti"
 
@@ -1614,12 +1417,8 @@ msgstr "Sumaišyti"
 
 #: ../src/Scenes/Conference.rb:1353
 msgctxt "Conference"
-msgid ""
-"Are you sure you want to shuffle this deck? All placed cards will be "
-"returned to this deck."
-msgstr ""
-"Ar tikrai norite sumaišyti šią krūvą? Visos jau išdėliotos kortos sugrįš "
-"atgal."
+msgid "Are you sure you want to shuffle this deck? All placed cards will be returned to this deck."
+msgstr "Ar tikrai norite sumaišyti šią krūvą? Visos jau išdėliotos kortos sugrįš atgal."
 
 #: ../src/Scenes/Conference.rb:1359 ../src/Scenes/Conference.rb:1429
 msgctxt "Conference"
@@ -1726,9 +1525,7 @@ msgctxt "Conference"
 msgid "User to add to channel whitelist"
 msgstr "Vartotojas, kurį norima pridėti į kanalo baltąjį sąrašą"
 
-#: ../src/Scenes/Conference.rb:1588 ../src/Scenes/Conference.rb:1661
-#: ../src/Scenes/Conference.rb:1753 ../src/Scenes/Conference.rb:1785
-#: ../src/Scenes/Conference.rb:1822
+#: ../src/Scenes/Conference.rb:1588 ../src/Scenes/Conference.rb:1661 ../src/Scenes/Conference.rb:1753 ../src/Scenes/Conference.rb:1785 ../src/Scenes/Conference.rb:1822
 msgctxt "Conference"
 msgid "Location"
 msgstr "Vieta"
@@ -1738,9 +1535,7 @@ msgctxt "Conference"
 msgid "User"
 msgstr "Vartotojas"
 
-#: ../src/Scenes/Conference.rb:1596 ../src/Scenes/Conference.rb:1668
-#: ../src/Scenes/Conference.rb:1753 ../src/Scenes/Conference.rb:1785
-#: ../src/Scenes/Conference.rb:1822
+#: ../src/Scenes/Conference.rb:1596 ../src/Scenes/Conference.rb:1668 ../src/Scenes/Conference.rb:1753 ../src/Scenes/Conference.rb:1785 ../src/Scenes/Conference.rb:1822
 msgctxt "Conference"
 msgid "Right next to me"
 msgstr "Šalia manęs"
@@ -1765,8 +1560,7 @@ msgctxt "Conference"
 msgid "Stream muted"
 msgstr "Transliacija užtildyta"
 
-#: ../src/Scenes/Conference.rb:1618 ../src/Scenes/Conference.rb:1703
-#: ../src/Scenes/Conference.rb:1883
+#: ../src/Scenes/Conference.rb:1618 ../src/Scenes/Conference.rb:1703 ../src/Scenes/Conference.rb:1883
 msgctxt "Conference"
 msgid "Change volume"
 msgstr "Keisti garsumą"
@@ -1821,15 +1615,12 @@ msgctxt "Conference"
 msgid "New file stream"
 msgstr "Nauja failo transliacija"
 
-#: ../src/Scenes/Conference.rb:1752 ../src/Scenes/Conference.rb:1924
-#: ../src/Scenes/Conference.rb:2006
+#: ../src/Scenes/Conference.rb:1752 ../src/Scenes/Conference.rb:1924 ../src/Scenes/Conference.rb:2006
 msgctxt "Conference"
 msgid "File"
 msgstr "Failas"
 
-#: ../src/Scenes/Conference.rb:1754 ../src/Scenes/Conference.rb:1786
-#: ../src/Scenes/Conference.rb:1823 ../src/Scenes/Conference.rb:1925
-#: ../src/Scenes/Conference.rb:1946 ../src/Scenes/Conference.rb:1971
+#: ../src/Scenes/Conference.rb:1754 ../src/Scenes/Conference.rb:1786 ../src/Scenes/Conference.rb:1823 ../src/Scenes/Conference.rb:1925 ../src/Scenes/Conference.rb:1946 ../src/Scenes/Conference.rb:1971
 msgctxt "Conference"
 msgid "Place"
 msgstr "Vieta"
@@ -2009,19 +1800,7 @@ msgctxt "Conference"
 msgid "Name for this chain"
 msgstr "Grandinės pavadinimas"
 
-#: ../src/Scenes/Conference.rb:2204 ../src/Scenes/Conference.rb:2262
-#: ../src/Scenes/Conference.rb:2310 ../src/eapi/Controls.rb:3361
-#: ../src/eapi/Controls.rb:4494 ../src/scenes/Account.rb:287
-#: ../src/scenes/Account.rb:291 ../src/scenes/Blog.rb:1267
-#: ../src/scenes/Blog.rb:1300 ../src/scenes/Blog.rb:1744
-#: ../src/scenes/Blog.rb:1748 ../src/scenes/Clock.rb:35
-#: ../src/scenes/Clock.rb:80 ../src/scenes/Forum.rb:1005
-#: ../src/scenes/Forum.rb:1490 ../src/scenes/Forum.rb:1538
-#: ../src/scenes/Forum.rb:3979 ../src/scenes/Forum.rb:3983
-#: ../src/scenes/Honors.rb:212 ../src/scenes/Messages.rb:225
-#: ../src/scenes/Messages.rb:354 ../src/scenes/Settings.rb:341
-#: ../src/scenes/Settings.rb:345 ../src/scenes/SoundThemes.rb:73
-#: ../src/scenes/SoundThemes.rb:136
+#: ../src/Scenes/Conference.rb:2204 ../src/Scenes/Conference.rb:2262 ../src/Scenes/Conference.rb:2310 ../src/eapi/Controls.rb:3361 ../src/eapi/Controls.rb:4494 ../src/scenes/Account.rb:287 ../src/scenes/Account.rb:291 ../src/scenes/Blog.rb:1267 ../src/scenes/Blog.rb:1300 ../src/scenes/Blog.rb:1744 ../src/scenes/Blog.rb:1748 ../src/scenes/Clock.rb:35 ../src/scenes/Clock.rb:80 ../src/scenes/Forum.rb:1005 ../src/scenes/Forum.rb:1490 ../src/scenes/Forum.rb:1538 ../src/scenes/Forum.rb:3979 ../src/scenes/Forum.rb:3983 ../src/scenes/Honors.rb:212 ../src/scenes/Messages.rb:225 ../src/scenes/Messages.rb:354 ../src/scenes/Settings.rb:341 ../src/scenes/Settings.rb:345 ../src/scenes/SoundThemes.rb:73 ../src/scenes/SoundThemes.rb:136
 msgid "Saved"
 msgstr "Įrašyta"
 
@@ -2065,13 +1844,7 @@ msgctxt "Conference"
 msgid "Saved chains"
 msgstr "Grandinės įrašytos"
 
-#: ../src/Scenes/Conference.rb:2354 ../src/Scenes/FeedViewer.rb:153
-#: ../src/eapi/Controls.rb:2561 ../src/eapi/Controls.rb:4487
-#: ../src/scenes/Account.rb:544 ../src/scenes/Blog.rb:220
-#: ../src/scenes/Blog.rb:475 ../src/scenes/Main.rb:401
-#: ../src/scenes/Messages.rb:759 ../src/scenes/Notes.rb:82
-#: ../src/scenes/Notes.rb:160 ../src/scenes/Polls.rb:131
-#: ../src/scenes/Polls.rb:614
+#: ../src/Scenes/Conference.rb:2354 ../src/Scenes/FeedViewer.rb:153 ../src/eapi/Controls.rb:2561 ../src/eapi/Controls.rb:4487 ../src/scenes/Account.rb:544 ../src/scenes/Blog.rb:220 ../src/scenes/Blog.rb:475 ../src/scenes/Main.rb:401 ../src/scenes/Messages.rb:759 ../src/scenes/Notes.rb:82 ../src/scenes/Notes.rb:160 ../src/scenes/Polls.rb:131 ../src/scenes/Polls.rb:614
 msgid "Delete"
 msgstr "Trinti"
 
@@ -2450,12 +2223,8 @@ msgstr "Nustatyti savo vaizdus kanaluose"
 
 #: ../src/Scenes/PremiumPackages.rb:69
 msgctxt "PremiumPackages"
-msgid ""
-"Creating conference-mode channels, where only administrators and allowed "
-"users can speak"
-msgstr ""
-"Konferencijos režimo kanalų kūrimas, kuriuose kalbėti gali tik "
-"administratoriai ir vartotojai, kuriems tai leidžiama"
+msgid "Creating conference-mode channels, where only administrators and allowed users can speak"
+msgstr "Konferencijos režimo kanalų kūrimas, kuriuose kalbėti gali tik administratoriai ir vartotojai, kuriems tai leidžiama"
 
 #: ../src/Scenes/PremiumPackages.rb:70
 msgctxt "PremiumPackages"
@@ -2475,8 +2244,7 @@ msgstr "Orkestro paketas"
 #: ../src/Scenes/PremiumPackages.rb:76
 msgctxt "PremiumPackages"
 msgid "Includes the benefits of Courier, Audiophile, Scribe and Director"
-msgstr ""
-"Įtraukiami kurjerio, audio failo, raštininko ir direktoriaus privalumai"
+msgstr "Įtraukiami kurjerio, audio failo, raštininko ir direktoriaus privalumai"
 
 #: ../src/Scenes/PremiumPackages.rb:80
 msgctxt "PremiumPackages"
@@ -2555,21 +2323,13 @@ msgstr "Aktyvus iki %{time}"
 
 #: ../src/Scenes/PremiumPackages.rb:233
 msgctxt "PremiumPackages"
-msgid ""
-"Regardless of the remaining duration of other packages, they will be "
-"replaced by the selected package. This package will be activated for a "
-"period of one year. The remaining period for other packages will be deducted "
-"from the package price. Do you want to continue?"
-msgstr ""
-"Nepaisant kitų paketų trukmės, jie bus pakeisti pasirinktu paketu. Šis "
-"paketas bus aktyvuotas metams laiko. Likęs paketų periodas bus išskaičiuotas "
-"iš paketo kainos. Ar norite tęsti?"
+msgid "Regardless of the remaining duration of other packages, they will be replaced by the selected package. This package will be activated for a period of one year. The remaining period for other packages will be deducted from the package price. Do you want to continue?"
+msgstr "Nepaisant kitų paketų trukmės, jie bus pakeisti pasirinktu paketu. Šis paketas bus aktyvuotas metams laiko. Likęs paketų periodas bus išskaičiuotas iš paketo kainos. Ar norite tęsti?"
 
 #: ../src/Scenes/PremiumPackages.rb:235
 msgctxt "PremiumPackages"
 msgid "This package is currently unavailable. Try to buy it next month."
-msgstr ""
-"Šis paketas kol kas nepasiekiamas. Pabandykite jį nusipirkti kitą mėnesį."
+msgstr "Šis paketas kol kas nepasiekiamas. Pabandykite jį nusipirkti kitą mėnesį."
 
 #: ../src/Scenes/PremiumPackages.rb:240 ../src/Scenes/PremiumPackages.rb:309
 msgctxt "PremiumPackages"
@@ -2579,21 +2339,13 @@ msgstr "Informacija"
 #: ../src/Scenes/PremiumPackages.rb:240
 msgctxt "PremiumPackages"
 msgid ""
-"EltenLink's premium packages are given to users as a reward for supporting "
-"the portal.\n"
+"EltenLink's premium packages are given to users as a reward for supporting the portal.\n"
 "A project of this size cannot exist without the help of users.\n"
-"The granting of a premium package does not constitute a commitment or a "
-"commercial contract. The user who supports the project is aware that if the "
-"necessary amount is not raised for EltenLink to continue, the premium "
-"packages will become unavailable."
+"The granting of a premium package does not constitute a commitment or a commercial contract. The user who supports the project is aware that if the necessary amount is not raised for EltenLink to continue, the premium packages will become unavailable."
 msgstr ""
-"EltenLink premium paketai vartotojams suteikiami kaip apdovanojimai, remiant "
-"portalą.\n"
+"EltenLink premium paketai vartotojams suteikiami kaip apdovanojimai, remiant portalą.\n"
 "Tokio dydžio projektas negali egzistuoti be vartotojų pagalbos.\n"
-"Premium paketo suteikimas nesukuria jokio įsipareigojimo ar komercinės "
-"sutarties. Vartotojas, suteikdamas paramą projektui, turėtų žinoti, jog jei "
-"nesurenkamas pakankamas kiekis paramos tam, kad būtų tęsiama EltenLink "
-"veikla, premium paketai bus nepasiekiami."
+"Premium paketo suteikimas nesukuria jokio įsipareigojimo ar komercinės sutarties. Vartotojas, suteikdamas paramą projektui, turėtų žinoti, jog jei nesurenkamas pakankamas kiekis paramos tam, kad būtų tęsiama EltenLink veikla, premium paketai bus nepasiekiami."
 
 #: ../src/Scenes/PremiumPackages.rb:244 ../src/Scenes/PremiumPackages.rb:310
 msgctxt "PremiumPackages"
@@ -2647,42 +2399,38 @@ msgstr "Žemiau pateikiama pervedimo informacija\n"
 
 #: ../src/Scenes/PremiumPackages.rb:290
 msgctxt "PremiumPackages"
-msgid ""
-"In the title of the transfer, please indicate your user name on the "
-"EltenLink portal and which package the payment concerns."
-msgstr ""
-"Pervedimo paskirtyje prašome nurodyti savo vartotojo vardą EltenLink portale "
-"ir už kurį paketą mokama."
+msgid "In the title of the transfer, please indicate your user name on the EltenLink portal and which package the payment concerns."
+msgstr "Pervedimo paskirtyje prašome nurodyti savo vartotojo vardą EltenLink portale ir už kurį paketą mokama."
 
 #: ../src/Scenes/PremiumPackages.rb:292
 msgctxt "PremiumPackages"
-msgid ""
-"If you wish to receive a code that can be used to activate any of the "
-"packages: %{packages} by any user, mark this information in the transfer "
-"title."
-msgstr ""
-"Jeigu norėtumėte gauti kodą, kuris galėtų būti naudojamas aktyvuojant bet "
-"kokį paketą: bet kurio vartotojo %{packages}, nurodykite šią informaciją "
-"mokėjimo paskirtyje."
+msgid "If you wish to receive a code that can be used to activate any of the packages: %{packages} by any user, mark this information in the transfer title."
+msgstr "Jeigu norėtumėte gauti kodą, kuris galėtų būti naudojamas aktyvuojant bet kokį paketą: bet kurio vartotojo %{packages}, nurodykite šią informaciją mokėjimo paskirtyje."
 
 #: ../src/Scenes/PremiumPackages.rb:294
 msgctxt "PremiumPackages"
 msgid ""
-"Please note that if you transfer a larger amount, the remainder will be "
-"treated as a donation.\n"
+"Please note that if you transfer a larger amount, the remainder will be treated as a donation.\n"
 "\n"
-"In order to reduce the processing time of your payment, you can forward the "
-"transfer confirmation to the Council of Elders."
+"In order to reduce the processing time of your payment, you can forward the transfer confirmation to the Council of Elders."
 msgstr ""
-"Atkreipkite dėmesį, jog pervedus didesnį pinigų kiekį, likusios lėšos bus "
-"laikomos parama.\n"
+"Atkreipkite dėmesį, jog pervedus didesnį pinigų kiekį, likusios lėšos bus laikomos parama.\n"
 "\n"
-"Tam, kad sumažintumėte mokėjimo vykdymo laiką, galite persiųsti pervedimo "
-"patvirtinimą vyresniųjų tarybai."
+"Tam, kad sumažintumėte mokėjimo vykdymo laiką, galite persiųsti pervedimo patvirtinimą vyresniųjų tarybai."
 
 #: ../src/Scenes/PremiumPackages.rb:298
 msgctxt "PremiumPackages"
-msgid "Domestic bank transfer details (from Poland):\n%{holder}\nAddress: %{address}\nAccount number: %{placcount}\n\nAdditional data for foreign transfers:\nIBAN: %{iban}\nBIC / SWIFT: %{swift}\nBank address: %{bankaddress}\nSort code: %{sortcode}"
+msgid ""
+"Domestic bank transfer details (from Poland):\n"
+"%{holder}\n"
+"Address: %{address}\n"
+"Account number: %{placcount}\n"
+"\n"
+"Additional data for foreign transfers:\n"
+"IBAN: %{iban}\n"
+"BIC / SWIFT: %{swift}\n"
+"Bank address: %{bankaddress}\n"
+"Sort code: %{sortcode}"
 msgstr ""
 "Vietinio pervedimo duomenys (iš Lenkijos):\n"
 "%{holder}\n"
@@ -2697,12 +2445,8 @@ msgstr ""
 
 #: ../src/Scenes/PremiumPackages.rb:316
 msgctxt "PremiumPackages"
-msgid ""
-"This payment method requires a redirect to an external website. A web "
-"browser will open. Do you wish to continue?"
-msgstr ""
-"Šis mokėjimo būdas reikalauja nukreipimo į išorinį tinklalapį. Atsidarys "
-"naršyklė. Ar norėtumėte tęsti?"
+msgid "This payment method requires a redirect to an external website. A web browser will open. Do you wish to continue?"
+msgstr "Šis mokėjimo būdas reikalauja nukreipimo į išorinį tinklalapį. Atsidarys naršyklė. Ar norėtumėte tęsti?"
 
 #: ../src/Scenes/PremiumPackages.rb:334 ../src/Scenes/PremiumPackages.rb:369
 msgctxt "PremiumPackages"
@@ -2711,12 +2455,8 @@ msgstr "Kiek premium kodų norėtumėte įsigyti?"
 
 #: ../src/Scenes/PremiumPackages.rb:342 ../src/Scenes/PremiumPackages.rb:377
 msgctxt "PremiumPackages"
-msgid ""
-"You will be charged a %{amount} pln commission for the selected payment "
-"method. Do you want to continue?"
-msgstr ""
-"Dėl pasirinkto mokėjimo būdo būsite apmokestintas(-a) %{amount} zlotų "
-"mokesčiu. Ar norite tęsti?"
+msgid "You will be charged a %{amount} pln commission for the selected payment method. Do you want to continue?"
+msgstr "Dėl pasirinkto mokėjimo būdo būsite apmokestintas(-a) %{amount} zlotų mokesčiu. Ar norite tęsti?"
 
 #: ../src/Scenes/PremiumPackages.rb:378
 msgctxt "PremiumPackages"
@@ -2726,9 +2466,7 @@ msgstr "Įveskite blik kodą"
 #: ../src/Scenes/PremiumPackages.rb:385
 msgctxt "PremiumPackages"
 msgid "The payment has been initiated. Additional confirmation may be required. The order will be processed once the payment is complete."
-msgstr ""
-"Mokėjimas užsakytas. Gali prireikti papildomo patvirtinimo. Užsakymas bus "
-"atliktas, kai mokėjimas bus pilnai baigtas."
+msgstr "Mokėjimas užsakytas. Gali prireikti papildomo patvirtinimo. Užsakymas bus atliktas, kai mokėjimas bus pilnai baigtas."
 
 #: ../src/Scenes/PremiumPackages.rb:390
 msgctxt "PremiumPackages"
@@ -2748,9 +2486,7 @@ msgstr "Šis kodas jau naudojamas."
 #: ../src/Scenes/PremiumPackages.rb:407
 msgctxt "PremiumPackages"
 msgid "The package %{name} will be active until %{time}. This code will be redeemed and you will not be able to use it again. Do you want to continue?"
-msgstr ""
-"Paketas %{name} bus aktyvus iki %{time}. Šis kodas bus pradėtas naudoti ir "
-"jo daugiau naudoti jau nebegalėsite. Ar norite tęsti?"
+msgstr "Paketas %{name} bus aktyvus iki %{time}. Šis kodas bus pradėtas naudoti ir jo daugiau naudoti jau nebegalėsite. Ar norite tęsti?"
 
 #: ../src/Scenes/PremiumPackages.rb:412
 msgctxt "PremiumPackages"
@@ -2772,9 +2508,7 @@ msgctxt "EAPI_Common"
 msgid "Hide program in Tray"
 msgstr "Slėpti programą tarp ikonų"
 
-#: ../src/eapi/Common.rb:16 ../src/scenes/Account.rb:644
-#: ../src/scenes/Authentication.rb:23 ../src/scenes/Authentication.rb:25
-#: ../src/scenes/ForgotPassword.rb:31 ../src/scenes/Loading.rb:370
+#: ../src/eapi/Common.rb:16 ../src/scenes/Account.rb:644 ../src/scenes/Authentication.rb:23 ../src/scenes/Authentication.rb:25 ../src/scenes/ForgotPassword.rb:31 ../src/scenes/Loading.rb:370
 msgid "Exit"
 msgstr "Uždaryti"
 
@@ -2803,14 +2537,12 @@ msgctxt "EAPI_Common"
 msgid "Enable auto clear input"
 msgstr "Įjungti automatinio valymo įvestį"
 
-#: ../src/eapi/Common.rb:102 ../src/eapi/Common.rb:116
-#: ../src/eapi/Common.rb:134
+#: ../src/eapi/Common.rb:102 ../src/eapi/Common.rb:116 ../src/eapi/Common.rb:134
 msgctxt "EAPI_Common"
 msgid "Disabled"
 msgstr "Išjungta"
 
-#: ../src/eapi/Common.rb:105 ../src/eapi/Common.rb:119
-#: ../src/eapi/Common.rb:131
+#: ../src/eapi/Common.rb:105 ../src/eapi/Common.rb:119 ../src/eapi/Common.rb:131
 msgctxt "EAPI_Common"
 msgid "Enabled"
 msgstr "Įjungta"
@@ -3005,22 +2737,11 @@ msgctxt "EAPI_Common"
 msgid "Sent."
 msgstr "Išsiųsta."
 
-#: ../src/eapi/Common.rb:534 ../src/eapi/Common.rb:582
-#: ../src/scenes/Account.rb:342 ../src/scenes/Account.rb:379
-#: ../src/scenes/Account.rb:527 ../src/scenes/Blog.rb:733
-#: ../src/scenes/Contacts.rb:27 ../src/scenes/Contacts.rb:127
-#: ../src/scenes/Contacts.rb:160 ../src/scenes/Forum.rb:1057
-#: ../src/scenes/Login.rb:212 ../src/scenes/Messages.rb:1043
-#: ../src/scenes/Users.rb:13
+#: ../src/eapi/Common.rb:534 ../src/eapi/Common.rb:582 ../src/scenes/Account.rb:342 ../src/scenes/Account.rb:379 ../src/scenes/Account.rb:527 ../src/scenes/Blog.rb:733 ../src/scenes/Contacts.rb:27 ../src/scenes/Contacts.rb:127 ../src/scenes/Contacts.rb:160 ../src/scenes/Forum.rb:1057 ../src/scenes/Login.rb:212 ../src/scenes/Messages.rb:1043 ../src/scenes/Users.rb:13
 msgid "Database Error"
 msgstr "Duomenų bazės klaida"
 
-#: ../src/eapi/Common.rb:538 ../src/scenes/Account.rb:345
-#: ../src/scenes/Account.rb:382 ../src/scenes/Account.rb:529
-#: ../src/scenes/Blog.rb:735 ../src/scenes/Contacts.rb:31
-#: ../src/scenes/Contacts.rb:130 ../src/scenes/Contacts.rb:163
-#: ../src/scenes/Forum.rb:1059 ../src/scenes/Messages.rb:1047
-#: ../src/scenes/Users.rb:17
+#: ../src/eapi/Common.rb:538 ../src/scenes/Account.rb:345 ../src/scenes/Account.rb:382 ../src/scenes/Account.rb:529 ../src/scenes/Blog.rb:735 ../src/scenes/Contacts.rb:31 ../src/scenes/Contacts.rb:130 ../src/scenes/Contacts.rb:163 ../src/scenes/Forum.rb:1059 ../src/scenes/Messages.rb:1047 ../src/scenes/Users.rb:17
 msgid "Token expired"
 msgstr "Požymis negalioja"
 
@@ -3167,16 +2888,12 @@ msgstr "Nesutinku, uždaryti"
 #: ../src/eapi/Common.rb:712
 msgctxt "EAPI_Common"
 msgid "Do you accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy?"
-msgstr ""
-"Ar sutinkate su Elten licencijos sutartimi, sąlygomis ir privatumo politika?"
+msgstr "Ar sutinkate su Elten licencijos sutartimi, sąlygomis ir privatumo politika?"
 
 #: ../src/eapi/Common.rb:733
 msgctxt "EAPI_Common"
 msgid "You are trying to play a MIDI file. Elten needs an external instrument sound bank to play MIDI files. Do you want to download it from the server now? This may take several minutes."
-msgstr ""
-"Mėginate paklausyti midi failo. Tam, kad Elten gebėtų juos pagroti, "
-"reikalinga išorinė instrumentų bazė. Ar norėtumėte atsisiųsti bazę iš "
-"serverio? Tai gali užtrukti kelias minutes."
+msgstr "Mėginate paklausyti midi failo. Tam, kad Elten gebėtų juos pagroti, reikalinga išorinė instrumentų bazė. Ar norėtumėte atsisiųsti bazę iš serverio? Tai gali užtrukti kelias minutes."
 
 #: ../src/eapi/Common.rb:734
 msgctxt "EAPI_Common"
@@ -3190,12 +2907,8 @@ msgstr "Garsai atsiųsti sėkmingai."
 
 #: ../src/eapi/Common.rb:929
 msgctxt "EAPI_Common"
-msgid ""
-"In order to use HRTF functionality, Elten needs to download Phonon library. "
-"Would you like to download it now?"
-msgstr ""
-"Tam, kad būtų galima naudotis HRTF funkcionalumu, Elten reiktų atsiųsti "
-"Phonon biblioteką. Ar norėtumėte atsiųsti ją dabar?"
+msgid "In order to use HRTF functionality, Elten needs to download Phonon library. Would you like to download it now?"
+msgstr "Tam, kad būtų galima naudotis HRTF funkcionalumu, Elten reiktų atsiųsti Phonon biblioteką. Ar norėtumėte atsiųsti ją dabar?"
 
 #: ../src/eapi/Common.rb:1045
 msgid "Function not supported on this platform"
@@ -3241,8 +2954,7 @@ msgctxt "EAPI_Common"
 msgid "Close"
 msgstr "Uždaryti"
 
-#: ../src/eapi/Controls.rb:103 ../src/eapi/Controls.rb:105
-#: ../src/eapi/Controls.rb:1027 ../src/eapi/Controls.rb:2596
+#: ../src/eapi/Controls.rb:103 ../src/eapi/Controls.rb:105 ../src/eapi/Controls.rb:1027 ../src/eapi/Controls.rb:2596
 msgid "Context menu"
 msgstr "Kontekstinis meniu"
 
@@ -3266,8 +2978,7 @@ msgctxt "EAPI_Form"
 msgid "Opening a link..."
 msgstr "Atidaroma nuoroda..."
 
-#: ../src/eapi/Controls.rb:642 ../src/eapi/Controls.rb:649
-#: ../src/eapi/Controls.rb:673
+#: ../src/eapi/Controls.rb:642 ../src/eapi/Controls.rb:649 ../src/eapi/Controls.rb:673
 msgctxt "EAPI_Form"
 msgid "End of line"
 msgstr "Eilutės pabaiga"
@@ -3483,9 +3194,7 @@ msgstr "Sąrašo elementas"
 #: ../src/eapi/Controls.rb:1795
 msgctxt "EAPI_Form"
 msgid "Use H or the number keys 1 to 6 to navigate to the next heading"
-msgstr ""
-"Spauskite h arba skaičius nuo 1 iki 6, kad nueitumėte prie sekančios "
-"antraštės"
+msgstr "Spauskite h arba skaičius nuo 1 iki 6, kad nueitumėte prie sekančios antraštės"
 
 #: ../src/eapi/Controls.rb:1796
 msgctxt "EAPI_Form"
@@ -3500,9 +3209,7 @@ msgstr "Spauskite i tam, kad nueitumėte prie sekančio sąrašo elemento"
 #: ../src/eapi/Controls.rb:1798
 msgctxt "EAPI_Form"
 msgid "Use the above shortcuts with shift to navigate to the previous items"
-msgstr ""
-"Naudokite anksčiau aptartus klavišus su shift tam, kad nueitumėte prie "
-"ankstesnių elementų"
+msgstr "Naudokite anksčiau aptartus klavišus su shift tam, kad nueitumėte prie ankstesnių elementų"
 
 #: ../src/eapi/Controls.rb:1957
 msgctxt "EAPI_Form"
@@ -3519,8 +3226,7 @@ msgctxt "EAPI_Common"
 msgid "Unchecked"
 msgstr "Nepažymėta"
 
-#: ../src/eapi/Controls.rb:2107 ../src/eapi/Controls.rb:2342
-#: ../src/eapi/Controls.rb:2361
+#: ../src/eapi/Controls.rb:2107 ../src/eapi/Controls.rb:2342 ../src/eapi/Controls.rb:2361
 msgctxt "EAPI_Form"
 msgid "Checked"
 msgstr "Pažymėta"
@@ -3548,9 +3254,7 @@ msgstr "Su tarpu pasirinkite elementus arba atšaukite pasirinkimą"
 #: ../src/eapi/Controls.rb:2261
 msgctxt "EAPI_Form"
 msgid "Press Shift+Up/Down Arrow to filter content by tags"
-msgstr ""
-"Naudokite shift su rodyklėmis aukštyn/žemyn, kad filtruotumėte turinį pagal "
-"žymes"
+msgstr "Naudokite shift su rodyklėmis aukštyn/žemyn, kad filtruotumėte turinį pagal žymes"
 
 #: ../src/eapi/Controls.rb:2263
 msgctxt "EAPI_Form"
@@ -3665,9 +3369,7 @@ msgstr "Pasirinkite kelią"
 #: ../src/eapi/Controls.rb:3123
 msgctxt "EAPI_Form"
 msgid "Use Shift+Left/Right Arrow to select the column you want to navigate by"
-msgstr ""
-"Naudokite shift su rodyklėmis kairėn/dešinėn, kad pasirinktumėte stulpelį, "
-"pagal kurį norite naviguoti"
+msgstr "Naudokite shift su rodyklėmis kairėn/dešinėn, kad pasirinktumėte stulpelį, pagal kurį norite naviguoti"
 
 #: ../src/eapi/Controls.rb:3160 ../src/eapi/Controls.rb:3170
 msgctxt "EAPI_Common"
@@ -3822,23 +3524,19 @@ msgstr "Naudokite Backspace, kad nustatytumėte numatytuosius nustatymus"
 #: ../src/eapi/Controls.rb:3545
 msgctxt "EAPI_Form"
 msgid "Press Home or End to move to the beginning or end of the track"
-msgstr ""
-"Naudokite home arba end, kad pereitumėte į takelio pradžią arba pabaigą"
+msgstr "Naudokite home arba end, kad pereitumėte į takelio pradžią arba pabaigą"
 
 #: ../src/eapi/Controls.rb:3546
 msgctxt "EAPI_Form"
 msgid "Press Page Up or Page Down to move to the previous or next chapter"
-msgstr ""
-"Naudokite page up arba page down, kad pereitumėte į sekantį arba ankstesnį "
-"skyrių"
+msgstr "Naudokite page up arba page down, kad pereitumėte į sekantį arba ankstesnį skyrių"
 
 #: ../src/eapi/Controls.rb:4127
 msgctxt "EAPI_Form"
 msgid "record"
 msgstr "įrašas"
 
-#: ../src/eapi/Controls.rb:4128 ../src/eapi/Controls.rb:4188
-#: ../src/eapi/Controls.rb:4217
+#: ../src/eapi/Controls.rb:4128 ../src/eapi/Controls.rb:4188 ../src/eapi/Controls.rb:4217
 msgctxt "EAPI_Form"
 msgid "Pause recording"
 msgstr "Pristabdyti įrašymą"
@@ -3885,8 +3583,7 @@ msgstr "Pasiruošęs"
 
 #: ../src/eapi/Controls.rb:4145 ../src/eapi/Controls.rb:4193
 msgctxt "EAPI_Form"
-msgid ""
-"Are you sure you want to delete the previous recording and create a new one?"
+msgid "Are you sure you want to delete the previous recording and create a new one?"
 msgstr "Ar tikrai norite ištrinti ankstesnį įrašą ir sukurti naują?"
 
 #: ../src/eapi/Controls.rb:4187
@@ -3917,8 +3614,7 @@ msgstr "Pratęsti įrašymą"
 #: ../src/eapi/Controls.rb:4227
 msgctxt "EAPI_Form"
 msgid "The encoder settings will not apply to the current recording. Are you sure you want to continue?"
-msgstr ""
-"Enkoderio nustatymai negalios einamajam įrašui. Ar tikrai norite tęsti?"
+msgstr "Enkoderio nustatymai negalios einamajam įrašui. Ar tikrai norite tęsti?"
 
 #: ../src/eapi/Controls.rb:4245
 msgctxt "EAPI_Form"
@@ -4018,10 +3714,7 @@ msgstr "Skyriaus laikas (hh:mm:ss.uuu)"
 #: ../src/eapi/Controls.rb:4434
 msgctxt "EAPI_Form"
 msgid "Invalid time format. Use hh:mm:ss.uuu: two digits each for hours, minutes and seconds, optionally followed by a full stop and three digits for milliseconds."
-msgstr ""
-"Blogas laiko formatas, tinkamas formatas yra du valandų skaitmenys, "
-"dvitaškis, du minučių skaitmenys, dvitaškis, du sekundžių skaitmenys ir "
-"pasirinktinai trys milisekundžių skaitmenys po taško"
+msgstr "Blogas laiko formatas, tinkamas formatas yra du valandų skaitmenys, dvitaškis, du minučių skaitmenys, dvitaškis, du sekundžių skaitmenys ir pasirinktinai trys milisekundžių skaitmenys po taško"
 
 #: ../src/eapi/Controls.rb:4451
 msgctxt "EAPI_Form"
@@ -4036,8 +3729,7 @@ msgstr "Pridėti skyrius su atsukimu atgal"
 #: ../src/eapi/Controls.rb:4454
 msgctxt "EAPI_Form"
 msgid "Chapter editor; use the context menu to add chapters"
-msgstr ""
-"Skyrių redaktorius, naudokite kontekstinį meniu, kad redaguotumėte skyrius"
+msgstr "Skyrių redaktorius, naudokite kontekstinį meniu, kad redaguotumėte skyrius"
 
 #: ../src/eapi/Controls.rb:4458
 msgctxt "EAPI_Form"
@@ -4114,15 +3806,7 @@ msgctxt "EAPI_Form"
 msgid "Year"
 msgstr "Metai"
 
-#: ../src/eapi/Controls.rb:4571 ../src/eapi/Controls.rb:4572
-#: ../src/eapi/Controls.rb:4573 ../src/eapi/Controls.rb:4574
-#: ../src/eapi/Controls.rb:4575 ../src/eapi/Controls.rb:4576
-#: ../src/eapi/Controls.rb:4618 ../src/eapi/Controls.rb:4620
-#: ../src/eapi/Controls.rb:4627 ../src/eapi/Controls.rb:4638
-#: ../src/eapi/Controls.rb:4645 ../src/eapi/Controls.rb:4647
-#: ../src/eapi/Controls.rb:4654 ../src/eapi/Controls.rb:4656
-#: ../src/eapi/Controls.rb:4663 ../src/eapi/Controls.rb:4665
-#: ../src/eapi/Controls.rb:4674
+#: ../src/eapi/Controls.rb:4571 ../src/eapi/Controls.rb:4572 ../src/eapi/Controls.rb:4573 ../src/eapi/Controls.rb:4574 ../src/eapi/Controls.rb:4575 ../src/eapi/Controls.rb:4576 ../src/eapi/Controls.rb:4618 ../src/eapi/Controls.rb:4620 ../src/eapi/Controls.rb:4627 ../src/eapi/Controls.rb:4638 ../src/eapi/Controls.rb:4645 ../src/eapi/Controls.rb:4647 ../src/eapi/Controls.rb:4654 ../src/eapi/Controls.rb:4656 ../src/eapi/Controls.rb:4663 ../src/eapi/Controls.rb:4665 ../src/eapi/Controls.rb:4674
 msgctxt "EAPI_Form"
 msgid "Not selected"
 msgstr "Nepasirinkta"
@@ -4909,12 +4593,8 @@ msgstr "Šiam vartotojui paskambinti negalite"
 
 #: ../src/eapi/UI.rb:498
 msgctxt "EAPI_UI"
-msgid ""
-"An unexpected error of Elten agent occurred. Do you want to report this "
-"event? It  may definitely help us solve the problem."
-msgstr ""
-"Įvyko netikėta Elten agento klaida. Ar norite pranešti apie šį įvykį? Tai "
-"galbūt mums padėtų išspręsti problemą."
+msgid "An unexpected error of Elten agent occurred. Do you want to report this event? It  may definitely help us solve the problem."
+msgstr "Įvyko netikėta Elten agento klaida. Ar norite pranešti apie šį įvykį? Tai galbūt mums padėtų išspręsti problemą."
 
 #: ../src/eapi/UI.rb:502
 msgctxt "EAPI_UI"
@@ -4924,11 +4604,7 @@ msgstr "Programa bando atsikurti iš užšaldytos būsenos."
 #: ../src/eapi/UI.rb:577
 msgctxt "EAPI_UI"
 msgid "Errors occurred while trying to register keyboard shortcuts for the Invisible Interface. Make sure that the specified shortcuts are not used by other applications. You can change the Invisible Interface modifier keys in the Settings window."
-msgstr ""
-"Registruojant sparčiuosius klavišus nematomajai sąsajai įvyko klaidų. "
-"Prašome įsitikinti, kad kitos programos nenaudoja šių kombinacijų. "
-"Nematomosios sąsajos modifikatoriaus kombinacijas galite pakeisti nustatymų "
-"lange."
+msgstr "Registruojant sparčiuosius klavišus nematomajai sąsajai įvyko klaidų. Prašome įsitikinti, kad kitos programos nenaudoja šių kombinacijų. Nematomosios sąsajos modifikatoriaus kombinacijas galite pakeisti nustatymų lange."
 
 #: ../src/eapi/UI.rb:661
 msgctxt "EAPI_UI"
@@ -4945,38 +4621,20 @@ msgstr "Ne"
 
 #: ../src/eapi/__eapi.rb:848
 msgctxt "EAPI_EltenAPI"
-msgid ""
-"Do you want to send reports on how Elten is used? This data does not contain "
-"any confidential information and is very helpful in program development. "
-"This selection can be changed at any time from the Settings."
-msgstr ""
-"Ar norite siųsti pranešimus apie Elten naudojimą? Šiuose duomenyse nėra "
-"jokios konfidencialios informacijos ir tai būtų labai naudinga tolimesniam "
-"Elten vystymui. Šis pasirinkimas gali būti bet kada pakeistas nustatymuose."
+msgid "Do you want to send reports on how Elten is used? This data does not contain any confidential information and is very helpful in program development. This selection can be changed at any time from the Settings."
+msgstr "Ar norite siųsti pranešimus apie Elten naudojimą? Šiuose duomenyse nėra jokios konfidencialios informacijos ir tai būtų labai naudinga tolimesniam Elten vystymui. Šis pasirinkimas gali būti bet kada pakeistas nustatymuose."
 
 #: ../src/eapi/__eapi.rb:853
 msgctxt "EAPI_EltenAPI"
-msgid ""
-"You are currently using a beta version of Elten. In these versions, "
-"uploading usage statistics is always enabled. They contain information about "
-"the most frequently used functions, configurations and problems with program "
-"operation. They do not contain any confidential or private information. If "
-"you do not want to send statistics, please use the stable version of Elten."
-msgstr ""
-"Šiuo metu naudojate Elten beta versiją. Šiose versijose, naudojimo "
-"statistikos įkėlimas visada yra įjungtas. Renkama statistika apie "
-"dažniausiai naudojamas funkcijas, konfiguracijas ir problemas, susijusias su "
-"programos funkcionavimu. Jokia privati ar konfidenciali informacija nėra "
-"renkama. Jeigu nenorite siųsti statistikos, prašome naudoti stabilią Elten "
-"versiją."
+msgid "You are currently using a beta version of Elten. In these versions, uploading usage statistics is always enabled. They contain information about the most frequently used functions, configurations and problems with program operation. They do not contain any confidential or private information. If you do not want to send statistics, please use the stable version of Elten."
+msgstr "Šiuo metu naudojate Elten beta versiją. Šiose versijose, naudojimo statistikos įkėlimas visada yra įjungtas. Renkama statistika apie dažniausiai naudojamas funkcijas, konfiguracijas ir problemas, susijusias su programos funkcionavimu. Jokia privati ar konfidenciali informacija nėra renkama. Jeigu nenorite siųsti statistikos, prašome naudoti stabilią Elten versiją."
 
 #: ../src/scenes/Account.rb:114
 msgctxt "Account"
 msgid "Category"
 msgstr "Kategorija"
 
-#: ../src/scenes/Account.rb:115 ../src/scenes/Blog.rb:1559
-#: ../src/scenes/Forum.rb:3876 ../src/scenes/Settings.rb:117
+#: ../src/scenes/Account.rb:115 ../src/scenes/Blog.rb:1559 ../src/scenes/Forum.rb:3876 ../src/scenes/Settings.rb:117
 msgid "Apply"
 msgstr "Patvirtinti"
 
@@ -5295,8 +4953,7 @@ msgstr "Pakartokite naują slaptažodį."
 #: ../src/scenes/Account.rb:332
 msgctxt "Account"
 msgid "The passwords do not match."
-msgstr ""
-"Laukai naujas slaptažodis ir pakartokite naują slaptažodį yra skirtingi."
+msgstr "Laukai naujas slaptažodis ir pakartokite naują slaptažodį yra skirtingi."
 
 #: ../src/scenes/Account.rb:339
 msgctxt "Account"
@@ -5308,9 +4965,7 @@ msgctxt "Account"
 msgid "The old password is incorrect."
 msgstr "Senas slaptažodis neteisingas."
 
-#: ../src/scenes/Account.rb:359 ../src/scenes/Account.rb:399
-#: ../src/scenes/Account.rb:456 ../src/scenes/Account.rb:569
-#: ../src/scenes/Account.rb:615
+#: ../src/scenes/Account.rb:359 ../src/scenes/Account.rb:399 ../src/scenes/Account.rb:456 ../src/scenes/Account.rb:569 ../src/scenes/Account.rb:615
 msgctxt "Account"
 msgid "Enter your password."
 msgstr "Įveskite slaptažodį."
@@ -5330,12 +4985,10 @@ msgctxt "Account"
 msgid "Error: you must disable email event reporting first."
 msgstr "Klaida, pirma turite išjungti pašto įvykių pranešimus."
 
-#: ../src/scenes/Account.rb:406 ../src/scenes/Account.rb:464
-#: ../src/scenes/Account.rb:576
+#: ../src/scenes/Account.rb:406 ../src/scenes/Account.rb:464 ../src/scenes/Account.rb:576
 msgctxt "Account"
 msgid "An error occurred while verifying your account. You may have entered an incorrect password."
-msgstr ""
-"Autentifikuojant paskyrą įvyko klaida. Ko gero įvedėte neteisingą slaptažodį."
+msgstr "Autentifikuojant paskyrą įvyko klaida. Ko gero įvedėte neteisingą slaptažodį."
 
 #: ../src/scenes/Account.rb:431
 msgctxt "Account"
@@ -5365,9 +5018,7 @@ msgstr "Atjungti visas sesijas"
 #: ../src/scenes/Account.rb:454
 msgctxt "Account"
 msgid "Are you sure you want to remove all auto-login tokens and log out of all sessions? You will be logged out immediately."
-msgstr ""
-"Ar tikrai norite pašalinti visus automatinio prisijungimo tokenus ir "
-"atjungti visas sesijas? Jūs būsite iš karto atjungtas(-a)."
+msgstr "Ar tikrai norite pašalinti visus automatinio prisijungimo tokenus ir atjungti visas sesijas? Jūs būsite iš karto atjungtas(-a)."
 
 #: ../src/scenes/Account.rb:516
 msgctxt "Account"
@@ -5381,12 +5032,8 @@ msgstr "Vartotojas, kurį norite pridėti į juodąjį sąrašą."
 
 #: ../src/scenes/Account.rb:519
 msgctxt "Account"
-msgid ""
-"The users added to your black list cannot send you private messages. Are you "
-"sure  you want to continue?"
-msgstr ""
-"Vartotojai, esantys Jūsų juodajame sąraše, negali jums siųsti privačių "
-"žinučių. Ar tikrai norite tęsti?"
+msgid "The users added to your black list cannot send you private messages. Are you sure  you want to continue?"
+msgstr "Vartotojai, esantys Jūsų juodajame sąraše, negali jums siųsti privačių žinučių. Ar tikrai norite tęsti?"
 
 #: ../src/scenes/Account.rb:523
 msgctxt "Account"
@@ -5426,16 +5073,11 @@ msgstr "Paskutiniai prisijungimai"
 #: ../src/scenes/Account.rb:624
 msgctxt "Account"
 msgid "You can configure Elten to notify you by email about changes to your account and logins from new devices. To do so, you must verify your email address. Do you want to verify it now?"
-msgstr ""
-"Jei norite, galite Elten sukonfiguruoti, kad jums praneštų apie bet kokius "
-"pasikeitimus ir prisijungimus prie Jūsų paskyros iš kitų įrenginių el. "
-"paštu. Tam reikia, kad patvirtintumėte el. paštą. Ar norite tai padaryti "
-"dabar?"
+msgstr "Jei norite, galite Elten sukonfiguruoti, kad jums praneštų apie bet kokius pasikeitimus ir prisijungimus prie Jūsų paskyros iš kitų įrenginių el. paštu. Tam reikia, kad patvirtintumėte el. paštą. Ar norite tai padaryti dabar?"
 
 #: ../src/scenes/Account.rb:630 ../src/scenes/Account.rb:655
 msgctxt "Account"
-msgid ""
-"The verification code has been sent to you via E-mail. Please type it here."
+msgid "The verification code has been sent to you via E-mail. Please type it here."
 msgstr "El. paštu buvo išsiųstas patvirtinimo kodas. Prašome įvesti jį čia."
 
 #: ../src/scenes/Account.rb:642
@@ -5456,10 +5098,7 @@ msgstr "Pranešimai el. paštu įjungti."
 #: ../src/scenes/Account.rb:643
 msgctxt "Account"
 msgid "Email event reporting is disabled. If you wish, you can enable it to receive information about changes to your account and logins from new devices by email."
-msgstr ""
-"Pranešimai el. paštu išjungti. Jei norite, galite juos įjungti ir gauti "
-"informaciją apie pasikeitimus Jūsų paskyroje ir prisijungimus iš naujų "
-"įrenginių el. paštu"
+msgstr "Pranešimai el. paštu išjungti. Jei norite, galite juos įjungti ir gauti informaciją apie pasikeitimus Jūsų paskyroje ir prisijungimus iš naujų įrenginių el. paštu"
 
 #: ../src/scenes/Admins.rb:15
 msgctxt "Admins"
@@ -5498,17 +5137,8 @@ msgstr "Administratoriai ir autoriai"
 
 #: ../src/scenes/Authentication.rb:23
 msgctxt "Authentication"
-msgid ""
-"Two-factor authentication enables better account security by requiring the  "
-"confirmation of each login with your phone. When activated, a text message "
-"with a  verification code will be sent to you each time you log in from a "
-"new device.  Entering this code will be required to sign in to the program."
-msgstr ""
-"Dviejų lygmenų autentifikacija įgalina stipresnį paskyros saugumą, nes "
-"kiekvieną kartą jungiantis reikalaujama patvirtinimo iš Jūsų telefono. Ją "
-"aktyvavus, kiekvieną kartą, jungiantis iš naujo įrenginio, jums bus išsiųsta "
-"žinutė su patvirtinimo kodu. Norint prisijungti prie programos, būtina kodą "
-"įvesti."
+msgid "Two-factor authentication enables better account security by requiring the  confirmation of each login with your phone. When activated, a text message with a  verification code will be sent to you each time you log in from a new device.  Entering this code will be required to sign in to the program."
+msgstr "Dviejų lygmenų autentifikacija įgalina stipresnį paskyros saugumą, nes kiekvieną kartą jungiantis reikalaujama patvirtinimo iš Jūsų telefono. Ją aktyvavus, kiekvieną kartą, jungiantis iš naujo įrenginio, jums bus išsiųsta žinutė su patvirtinimo kodu. Norint prisijungti prie programos, būtina kodą įvesti."
 
 #: ../src/scenes/Authentication.rb:23
 msgid "Enable"
@@ -5528,37 +5158,25 @@ msgstr "Dviejų lygmenų autentifikacija šiai paskyrai įjungta."
 msgid "Disable"
 msgstr "Išjungti"
 
-#: ../src/scenes/Authentication.rb:32 ../src/scenes/Authentication.rb:70
-#: ../src/scenes/Authentication.rb:87
+#: ../src/scenes/Authentication.rb:32 ../src/scenes/Authentication.rb:70 ../src/scenes/Authentication.rb:87
 msgctxt "Authentication"
 msgid "Type your password"
 msgstr "Įveskite slaptažodį"
 
 #: ../src/scenes/Authentication.rb:34
 msgctxt "Authentication"
-msgid ""
-"Type your phone number that will be used during verification. Remember to "
-"enter  the country code, for example, +48 for Poland"
-msgstr ""
-"Įveskite telefono numerį, kuris bus naudojamas autentifikuojantis. "
-"Atminkite, jog reikia įvesti šalies kodą, pavyzdžiui, +370 Lietuviškam "
-"numeriui"
+msgid "Type your phone number that will be used during verification. Remember to enter  the country code, for example, +48 for Poland"
+msgstr "Įveskite telefono numerį, kuris bus naudojamas autentifikuojantis. Atminkite, jog reikia įvesti šalies kodą, pavyzdžiui, +370 Lietuviškam numeriui"
 
 #: ../src/scenes/Authentication.rb:36
 msgctxt "Authentication"
 msgid "Two-factor authentication was introduced in Elten 2.28. After activating it, you will not be able to log in using older versions of the program. Do you wish to continue anyway?"
-msgstr ""
-"Dviejų lygmenų autentifikacija atsirado nuo 2.28 Elten versijos. Ją "
-"aktyvavus, nebus galima prisijungti naudojant senesnių versijų programą. Ar "
-"norėtumėte tęsti vis tiek?"
+msgstr "Dviejų lygmenų autentifikacija atsirado nuo 2.28 Elten versijos. Ją aktyvavus, nebus galima prisijungti naudojant senesnių versijų programą. Ar norėtumėte tęsti vis tiek?"
 
 #: ../src/scenes/Authentication.rb:37
 msgctxt "Authentication"
-msgid ""
-"Is this phone number correct? Press enter to continue or escape to cancel."
-msgstr ""
-"Ar šis telefono numeris teisingas? Spauskite Enter, jei taip, arba escape ir "
-"atšaukite."
+msgid "Is this phone number correct? Press enter to continue or escape to cancel."
+msgstr "Ar šis telefono numeris teisingas? Spauskite Enter, jei taip, arba escape ir atšaukite."
 
 #: ../src/scenes/Authentication.rb:39
 msgctxt "Authentication"
@@ -5568,9 +5186,7 @@ msgstr "Prašome palaukti, jungiamasi prie serverio..."
 #: ../src/scenes/Authentication.rb:47
 msgctxt "Authentication"
 msgid "A text message containing the code to activate two-factor authentication will be sent to the phone number you provided. Enter the code."
-msgstr ""
-"Nurodytu telefono numeriu gausite kodą, reikalingą aktyvuojant dviejų "
-"lygmenų autentifikacijai. Įveskite šį kodą"
+msgstr "Nurodytu telefono numeriu gausite kodą, reikalingą aktyvuojant dviejų lygmenų autentifikacijai. Įveskite šį kodą"
 
 #: ../src/scenes/Authentication.rb:55
 msgctxt "Authentication"
@@ -5604,13 +5220,8 @@ msgstr "Neteisingas slaptažodis"
 
 #: ../src/scenes/Authentication.rb:85
 msgctxt "Authentication"
-msgid ""
-"Do you want to generate backup codes? These can be used to sign in when you "
-"have no access to your phone. All previously generated codes will be deleted."
-msgstr ""
-"Ar norite sugeneruoti atsarginius kodus? Jie gali būti naudojami "
-"prisijungiant, kai neturite prieeigos prie telefono. Visi anksčiau "
-"sugeneruoti kodai bus ištrinti."
+msgid "Do you want to generate backup codes? These can be used to sign in when you have no access to your phone. All previously generated codes will be deleted."
+msgstr "Ar norite sugeneruoti atsarginius kodus? Jie gali būti naudojami prisijungiant, kai neturite prieeigos prie telefono. Visi anksčiau sugeneruoti kodai bus ištrinti."
 
 #: ../src/scenes/Authentication.rb:97
 msgctxt "Authentication"
@@ -5782,8 +5393,7 @@ msgctxt "Blog"
 msgid "All posts"
 msgstr "Visi įrašai"
 
-#: ../src/scenes/Blog.rb:136 ../src/scenes/Blog.rb:861
-#: ../src/scenes/Blog.rb:1647
+#: ../src/scenes/Blog.rb:136 ../src/scenes/Blog.rb:861 ../src/scenes/Blog.rb:1647
 msgctxt "Blog"
 msgid "Posts"
 msgstr "Įrašai"
@@ -5863,8 +5473,7 @@ msgctxt "Blog"
 msgid "Author"
 msgstr "Autorius"
 
-#: ../src/scenes/Blog.rb:309 ../src/scenes/Blog.rb:861
-#: ../src/scenes/Blog.rb:1579 ../src/scenes/Blog.rb:2210
+#: ../src/scenes/Blog.rb:309 ../src/scenes/Blog.rb:861 ../src/scenes/Blog.rb:1579 ../src/scenes/Blog.rb:2210
 msgctxt "Blog"
 msgid "Comments"
 msgstr "Komentarai"
@@ -6136,11 +5745,8 @@ msgstr "Ar tikrai norite ištrinti blogą %{name}?"
 
 #: ../src/scenes/Blog.rb:934
 msgctxt "Blog"
-msgid ""
-"All posts written on this blog will be lost. Are you sure you want to "
-"continue?"
-msgstr ""
-"Visi įrašai, paskelbti šiame bloge, bus prarasti. Ar tikrai norite tęsti?"
+msgid "All posts written on this blog will be lost. Are you sure you want to continue?"
+msgstr "Visi įrašai, paskelbti šiame bloge, bus prarasti. Ar tikrai norite tęsti?"
 
 #: ../src/scenes/Blog.rb:936
 msgctxt "Blog"
@@ -6240,10 +5846,7 @@ msgstr "Pridėti prie sekamų blogų"
 #: ../src/scenes/Blog.rb:1135
 msgctxt "Blog"
 msgid "You are now following this blog. Do you want to mark all of its existing posts as read so that they do not appear in What's New?"
-msgstr ""
-"Šis blogas pridėtas prie sekamų blogų. Ar norite pažymėti visus iki šiol "
-"paskelbtus įrašus kaip perskaitytus, kad nematytumėte jų \"Kas naujo\" "
-"sekcijoje?"
+msgstr "Šis blogas pridėtas prie sekamų blogų. Ar norite pažymėti visus iki šiol paskelbtus įrašus kaip perskaitytus, kad nematytumėte jų \"Kas naujo\" sekcijoje?"
 
 #: ../src/scenes/Blog.rb:1138 ../src/scenes/Blog.rb:1183
 msgctxt "Blog"
@@ -6303,8 +5906,7 @@ msgstr "Pažymėti blogą kaip perskaitytą"
 #: ../src/scenes/Blog.rb:1180
 msgctxt "Blog"
 msgid "All posts on this blog will be marked as read. Do you want to continue?"
-msgstr ""
-"Visi įrašai šiame bloge bus pažymėti kaip perskaityti. Ar norite tęsti?"
+msgstr "Visi įrašai šiame bloge bus pažymėti kaip perskaityti. Ar norite tęsti?"
 
 #: ../src/scenes/Blog.rb:1191
 msgctxt "Blog"
@@ -6448,14 +6050,8 @@ msgstr "Kalba"
 
 #: ../src/scenes/Blog.rb:1576
 msgctxt "Blog"
-msgid ""
-"Mark this blog as public. Blogs that are not marked public request search "
-"engines such as Google not to show them in search results (some search "
-"engines may not respect this setting)"
-msgstr ""
-"Pažymėti šį blogą kaip viešą. Blogai, nepažymėti kaip vieši, instruktuoja "
-"paieškos variklius, tokius kaip Google, jų nerodyti paieškos rezultatuose "
-"(kai kurie paieškos varikliai gali nepaisyti šio nustatymo)"
+msgid "Mark this blog as public. Blogs that are not marked public request search engines such as Google not to show them in search results (some search engines may not respect this setting)"
+msgstr "Pažymėti šį blogą kaip viešą. Blogai, nepažymėti kaip vieši, instruktuoja paieškos variklius, tokius kaip Google, jų nerodyti paieškos rezultatuose (kai kurie paieškos varikliai gali nepaisyti šio nustatymo)"
 
 #: ../src/scenes/Blog.rb:1580
 msgctxt "Blog"
@@ -6475,8 +6071,7 @@ msgstr "Visų lankytojų"
 #: ../src/scenes/Blog.rb:1580
 msgctxt "Blog"
 msgid "By all visitors, but I must approve each person's first comment"
-msgstr ""
-"Visų lankytojų, bet aš turiu patvirtinti pirmą naujo vartotojo komentarą"
+msgstr "Visų lankytojų, bet aš turiu patvirtinti pirmą naujo vartotojo komentarą"
 
 #: ../src/scenes/Blog.rb:1580
 msgctxt "Blog"
@@ -6566,8 +6161,7 @@ msgstr "Paprastas (https://example.com/?p=123)"
 #: ../src/scenes/Blog.rb:1650
 msgctxt "Blog"
 msgid "Full date and post name (https://example.com/2020/01/01/example-post)"
-msgstr ""
-"Pilna data ir įrašo pavadinimas (https://example.com/2020/01/01/example-post)"
+msgstr "Pilna data ir įrašo pavadinimas (https://example.com/2020/01/01/example-post)"
 
 #: ../src/scenes/Blog.rb:1650
 msgctxt "Blog"
@@ -6686,12 +6280,8 @@ msgstr "Nenustatyti"
 
 #: ../src/scenes/Blog.rb:1702
 msgctxt "Blog"
-msgid ""
-"If you want to redirect all browsers visiting this blog to another site, "
-"select it here"
-msgstr ""
-"Jei norite visas naršykles iš šio blogo nukreipti į kitą tinklalapį, "
-"pasirinkite jį čia"
+msgid "If you want to redirect all browsers visiting this blog to another site, select it here"
+msgstr "Jei norite visas naršykles iš šio blogo nukreipti į kitą tinklalapį, pasirinkite jį čia"
 
 #: ../src/scenes/Blog.rb:1704
 msgctxt "Blog"
@@ -6936,13 +6526,10 @@ msgstr "Domeno tipas"
 msgctxt "Blog"
 msgid ""
 "To continue, you should point your domain to Elten Blogging server.\n"
-"You can buy your own domain from domain providers, such as ovh.com, domain."
-"com, godaddy.com or bluehost.com."
+"You can buy your own domain from domain providers, such as ovh.com, domain.com, godaddy.com or bluehost.com."
 msgstr ""
-"Tam, kad galėtumėte tęsti, turite nukreipti savo domeną į Elten blogų "
-"serverį.\n"
-"Galite nusipirkti nuosavą domeną iš domeno tiekėjų, tokių kaip ovh.com, "
-"domain.com, godaddy.com or bluehost.com."
+"Tam, kad galėtumėte tęsti, turite nukreipti savo domeną į Elten blogų serverį.\n"
+"Galite nusipirkti nuosavą domeną iš domeno tiekėjų, tokių kaip ovh.com, domain.com, godaddy.com or bluehost.com."
 
 #: ../src/scenes/Blog.rb:2412
 msgctxt "Blog"
@@ -6976,12 +6563,8 @@ msgstr "Naujas domenas yra toks pats kaip ir ankstesnis"
 
 #: ../src/scenes/Blog.rb:2454
 msgctxt "Blog"
-msgid ""
-"You already have one blog associated with your Elten profile. Please change "
-"its type and then proceed."
-msgstr ""
-"Jūs jau turite blogą, susietą su Jūsų Elten profiliu. Prašome pakeisti jo "
-"tipą ir tada tęsti."
+msgid "You already have one blog associated with your Elten profile. Please change its type and then proceed."
+msgstr "Jūs jau turite blogą, susietą su Jūsų Elten profiliu. Prašome pakeisti jo tipą ir tada tęsti."
 
 #: ../src/scenes/Blog.rb:2458
 msgctxt "Blog"
@@ -7006,11 +6589,7 @@ msgstr "Įvestas domenas nekorektiškas"
 #: ../src/scenes/Blog.rb:2477
 msgctxt "Blog"
 msgid "Warning! If you change your blog URL, some links may stop working. Direct links to posts or other resources on your blog will no longer work at their previous URLs. You will need to update them manually. Are you sure you want to continue?"
-msgstr ""
-"Dėmesio! Jei pakeisite blogo URL, kai kurios nuorodos gali neveikti. Jei "
-"tiesiogiai nukreipėte įrašus arba kitus resursus šiame bloge, jie bus "
-"nepasiekiami ankstesniais URL. Tokiais atvejais jums reikės sutvarkyti juos "
-"rankiniu būdu. Ar tikrai norite tęsti?"
+msgstr "Dėmesio! Jei pakeisite blogo URL, kai kurios nuorodos gali neveikti. Jei tiesiogiai nukreipėte įrašus arba kitus resursus šiame bloge, jie bus nepasiekiami ankstesniais URL. Tokiais atvejais jums reikės sutvarkyti juos rankiniu būdu. Ar tikrai norite tęsti?"
 
 #: ../src/scenes/Blog.rb:2491
 msgctxt "Blog"
@@ -7019,31 +6598,35 @@ msgstr "Blogo domenas pakeistas"
 
 #: ../src/scenes/Blog.rb:2500
 msgctxt "Blog"
-msgid "Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n\nWhere possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n\nMany domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n%{ip}\n\nPointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n\nDetailed instructions are available from your domain provider, for example at:\nhttps://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n\nOnce you have finished, continue."
-msgstr ""
-"Dabar galite nukreipti įsigytą domeną į Elten blogų serverį. Žemiau surašyta "
-"reikalinga informacija. Jei iškyla problemų, galite drąsiai klausti forume.\n"
+msgid ""
+"Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n"
 "\n"
-"      Kur tik įmanoma, rekomenduojame naudoti CNAME įrašą, kadangi jo "
-"nereiktų redaguoti, jei pasikeistų serverio, talpinančio Jūsų blogą, IP "
-"adresas. Jūsų blogo IP adresas gali pasikeisti, pavyzdžiui, dėl Elten blogų "
-"serverio migravimo. Sukonfiguravus Jūsų domeno CNAME įrašą, nieko papildomo "
-"daryti nereikės.\n"
-"      Tam, kad tai padarytumėte, prašome nukreipti Jūsų cname įrašą į kelią "
-"\"%{host}.\"\n"
+"Where possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n"
+"\n"
+"Many domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n"
+"%{ip}\n"
+"\n"
+"Pointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n"
+"\n"
+"Detailed instructions are available from your domain provider, for example at:\n"
+"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
+"\n"
+"Once you have finished, continue."
+msgstr ""
+"Dabar galite nukreipti įsigytą domeną į Elten blogų serverį. Žemiau surašyta reikalinga informacija. Jei iškyla problemų, galite drąsiai klausti forume.\n"
+"\n"
+"      Kur tik įmanoma, rekomenduojame naudoti CNAME įrašą, kadangi jo nereiktų redaguoti, jei pasikeistų serverio, talpinančio Jūsų blogą, IP adresas. Jūsų blogo IP adresas gali pasikeisti, pavyzdžiui, dėl Elten blogų serverio migravimo. Sukonfiguravus Jūsų domeno CNAME įrašą, nieko papildomo daryti nereikės.\n"
+"      Tam, kad tai padarytumėte, prašome nukreipti Jūsų cname įrašą į kelią \"%{host}.\"\n"
 "      \n"
-"      Deja, daugelis domeno registruotojų nepalaiko CNAME įrašo aukščiausio "
-"lygio domenams, taigi jums vietoje to gali tekti naudoti A įrašo domeną.\n"
+"      Deja, daugelis domeno registruotojų nepalaiko CNAME įrašo aukščiausio lygio domenams, taigi jums vietoje to gali tekti naudoti A įrašo domeną.\n"
 "      Tokiu atveju, prašome nukreipti A įrašą į IP adresą:\n"
 "%{ip}\n"
 ".\n"
 "\n"
-"Atkreipkite dėmesį, kad Jūsų domeno nukreipimas nesukuria pseudopavadinimo, "
-"todėl seudopavadinimų arba HTTP 301/ 3xx nukreipimų nustatymas neveiks.\n"
+"Atkreipkite dėmesį, kad Jūsų domeno nukreipimas nesukuria pseudopavadinimo, todėl seudopavadinimų arba HTTP 301/ 3xx nukreipimų nustatymas neveiks.\n"
 "\n"
 "Daugiau informacijos galite gauti iš Jūsų domeno tiekėjo, pavyzdžiui:\n"
-"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-"
-"Familiar-with-DNS\n"
+"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
 "\n"
 "Tai užpildžius, prašome tęsti."
 
@@ -7060,17 +6643,12 @@ msgstr "Pasiruošęs, eiti toliau"
 #: ../src/scenes/Blog.rb:2530
 msgctxt "Blog"
 msgid "Your domain does not point to Elten Blogs. Try again, or wait for the DNS changes to propagate. Full DNS propagation may take up to 24 hours."
-msgstr ""
-"Jūsų domenas nenukreipia į Elten blogus, prašome pabandyti dar kartą arba "
-"truputį palaukti, kol persikraus DNS. Gali prireikti 24 valandų, kad pilnai "
-"atsinaujintų DNS."
+msgstr "Jūsų domenas nenukreipia į Elten blogus, prašome pabandyti dar kartą arba truputį palaukti, kol persikraus DNS. Gali prireikti 24 valandų, kad pilnai atsinaujintų DNS."
 
 #: ../src/scenes/Blog.rb:2532
 msgctxt "Blog"
 msgid "Your domain points to Elten Blogs, but the www subdomain does not. Please fix it."
-msgstr ""
-"Jūsų domenas nukreiptas į Elten blogus, bet www priešdėlis nenukreiptas. "
-"Prašome tai sutvarkyti."
+msgstr "Jūsų domenas nukreiptas į Elten blogus, bet www priešdėlis nenukreiptas. Prašome tai sutvarkyti."
 
 #: ../src/scenes/Changes.rb:135
 msgctxt "Changes"
@@ -7082,14 +6660,12 @@ msgctxt "Clock"
 msgid "Alarms"
 msgstr "Žadintuvai"
 
-#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Clock.rb:97
+#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70 ../src/scenes/Clock.rb:97
 msgctxt "Clock"
 msgid "Type"
 msgstr "Tipas"
 
-#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Clock.rb:97
+#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70 ../src/scenes/Clock.rb:97
 msgctxt "Clock"
 msgid "One time"
 msgstr "Kartą"
@@ -7099,8 +6675,7 @@ msgctxt "Clock"
 msgid "repeated"
 msgstr "besikartojantis"
 
-#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Clock.rb:97
+#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70 ../src/scenes/Clock.rb:97
 msgctxt "Clock"
 msgid "Hour"
 msgstr "Valanda"
@@ -7158,8 +6733,7 @@ msgstr "Naujas kontaktas"
 #: ../src/scenes/Contacts.rb:108
 msgctxt "Contacts"
 msgid "Enter the name of the user you want to add to your contact list."
-msgstr ""
-"Įveskite vartotojo, kurį norite įtraukti į savo kontaktų sąrašą, vardą."
+msgstr "Įveskite vartotojo, kurį norite įtraukti į savo kontaktų sąrašą, vardą."
 
 #: ../src/scenes/Contacts.rb:124
 msgctxt "Contacts"
@@ -7179,8 +6753,7 @@ msgstr "Toks vartotojas neegzistuoja."
 #: ../src/scenes/Contacts.rb:151
 msgctxt "Contacts"
 msgid "Enter the username of the person you want to remove from your contact list."
-msgstr ""
-"Įveskite vartotojo, kurį norite pašalinti iš savo kontaktų sąrašo, vardą."
+msgstr "Įveskite vartotojo, kurį norite pašalinti iš savo kontaktų sąrašo, vardą."
 
 #: ../src/scenes/Contacts.rb:157
 msgctxt "Contacts"
@@ -7210,13 +6783,7 @@ msgstr "Pranešimas"
 #: ../src/scenes/ForgotPassword.rb:11
 msgctxt "ForgotPassword"
 msgid "If you forget your password, you can reset it using the email address you provided when registering. You can request a password reset code to verify your identity. The code will be sent to your email address. Warning: two-factor authentication will be disabled on your account. To continue, enter your username."
-msgstr ""
-"Jei pametėte slaptažodį, Jūs dar galite jį atstatyti naudodami el. pašto, "
-"kurį pateikėte registruodamiesi, adresą. Tokiu būdu sugeneruosite "
-"slaptažodžio atstatymo kodą, kuris bus naudojamas jūsų tapatybės "
-"patvirtinimui. Kodas bus išsiųstas Jūsų el. pašto adresu. Dėmesio! Dviejų "
-"lygmenų autentifikacija Jūsų paskyrai bus išjungta. Tam, kad tęstumėte, "
-"įveskite savo vartotojo vardą"
+msgstr "Jei pametėte slaptažodį, Jūs dar galite jį atstatyti naudodami el. pašto, kurį pateikėte registruodamiesi, adresą. Tokiu būdu sugeneruosite slaptažodžio atstatymo kodą, kuris bus naudojamas jūsų tapatybės patvirtinimui. Kodas bus išsiųstas Jūsų el. pašto adresu. Dėmesio! Dviejų lygmenų autentifikacija Jūsų paskyrai bus išjungta. Tam, kad tęstumėte, įveskite savo vartotojo vardą"
 
 #: ../src/scenes/ForgotPassword.rb:18
 msgctxt "ForgotPassword"
@@ -7256,9 +6823,7 @@ msgstr "Netikėta klaida"
 #: ../src/scenes/ForgotPassword.rb:57
 msgctxt "ForgotPassword"
 msgid "The password reset code has been sent to the email address you provided. To continue, select the option to enter the code."
-msgstr ""
-"Slaptažodžio atstatymo raktas išsiųstas Jūsų nurodytu el. pašto adresu. Tam, "
-"kad tęstumėte, pasirinkite rakto įvedimo parinktį."
+msgstr "Slaptažodžio atstatymo raktas išsiųstas Jūsų nurodytu el. pašto adresu. Tam, kad tęstumėte, pasirinkite rakto įvedimo parinktį."
 
 #: ../src/scenes/ForgotPassword.rb:64
 msgctxt "ForgotPassword"
@@ -7298,9 +6863,7 @@ msgstr "Prašome palaukti, kos keičiamas slaptažodis"
 #: ../src/scenes/ForgotPassword.rb:93
 msgctxt "ForgotPassword"
 msgid "You can log in to your account using your new credentials."
-msgstr ""
-"Slaptažodis pakeistas. Prie paskyros galite prisijungti naudodami naujus "
-"duomenis."
+msgstr "Slaptažodis pakeistas. Prie paskyros galite prisijungti naudodami naujus duomenis."
 
 #: ../src/scenes/Forum.rb:92
 msgctxt "Forum"
@@ -7425,68 +6988,42 @@ msgctxt "Forum"
 msgid "My threads"
 msgstr "Mano gijos"
 
-#: ../src/scenes/Forum.rb:211 ../src/scenes/Forum.rb:492
-#: ../src/scenes/Forum.rb:1171 ../src/scenes/Forum.rb:1429
+#: ../src/scenes/Forum.rb:211 ../src/scenes/Forum.rb:492 ../src/scenes/Forum.rb:1171 ../src/scenes/Forum.rb:1429
 msgctxt "Forum"
 msgid "Search"
 msgstr "Ieškoti"
 
-#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243
-#: ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285
-#: ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325
-#: ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361
-#: ../src/scenes/Forum.rb:380
+#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243 ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285 ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325 ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361 ../src/scenes/Forum.rb:380
 msgctxt "Forum"
 msgid "Forums"
 msgstr "Forumai"
 
-#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243
-#: ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285
-#: ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325
-#: ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361
-#: ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:1254
+#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243 ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285 ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325 ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361 ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:1254
 msgctxt "Forum"
 msgid "Threads"
 msgstr "Gijos"
 
-#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243
-#: ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285
-#: ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325
-#: ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361
-#: ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:1254
-#: ../src/scenes/Forum.rb:1850
+#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243 ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285 ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325 ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361 ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:1254 ../src/scenes/Forum.rb:1850
 msgctxt "Forum"
 msgid "posts"
 msgstr "įrašai"
 
-#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243
-#: ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285
-#: ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325
-#: ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361
-#: ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:1254
-#: ../src/scenes/Forum.rb:1850
+#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243 ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285 ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325 ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361 ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:1254 ../src/scenes/Forum.rb:1850
 msgctxt "Forum"
 msgid "Unread"
 msgstr "Neperskaityti"
 
-#: ../src/scenes/Forum.rb:243 ../src/scenes/Forum.rb:285
-#: ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325
-#: ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361
-#: ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:937
+#: ../src/scenes/Forum.rb:243 ../src/scenes/Forum.rb:285 ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325 ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361 ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:937
 msgctxt "Forum"
 msgid "Administrator"
 msgstr "Administratorius"
 
-#: ../src/scenes/Forum.rb:388 ../src/scenes/Forum.rb:391
-#: ../src/scenes/Forum.rb:1258 ../src/scenes/Forum.rb:1456
-#: ../src/scenes/Forum.rb:1854 ../src/scenes/Forum.rb:2185
-#: ../src/scenes/Forum.rb:2880
+#: ../src/scenes/Forum.rb:388 ../src/scenes/Forum.rb:391 ../src/scenes/Forum.rb:1258 ../src/scenes/Forum.rb:1456 ../src/scenes/Forum.rb:1854 ../src/scenes/Forum.rb:2185 ../src/scenes/Forum.rb:2880
 msgctxt "Forum"
 msgid "Forum"
 msgstr "Forumas"
 
-#: ../src/scenes/Forum.rb:466 ../src/scenes/Forum.rb:1398
-#: ../src/scenes/Forum.rb:1897
+#: ../src/scenes/Forum.rb:466 ../src/scenes/Forum.rb:1398 ../src/scenes/Forum.rb:1897
 msgctxt "Forum"
 msgid "Open"
 msgstr "Atverti"
@@ -7526,40 +7063,32 @@ msgctxt "Forum"
 msgid "Group summary"
 msgstr "Grupės santrauka"
 
-#: ../src/scenes/Forum.rb:509 ../src/scenes/Forum.rb:1134
-#: ../src/scenes/Forum.rb:3892
+#: ../src/scenes/Forum.rb:509 ../src/scenes/Forum.rb:1134 ../src/scenes/Forum.rb:3892
 msgctxt "Forum"
 msgid "Language"
 msgstr "Kalba"
 
-#: ../src/scenes/Forum.rb:510 ../src/scenes/Forum.rb:1134
-#: ../src/scenes/Forum.rb:3894
+#: ../src/scenes/Forum.rb:510 ../src/scenes/Forum.rb:1134 ../src/scenes/Forum.rb:3894
 msgctxt "Forum"
 msgid "Hidden"
 msgstr "Paslėpta"
 
-#: ../src/scenes/Forum.rb:511 ../src/scenes/Forum.rb:1134
-#: ../src/scenes/Forum.rb:3894
+#: ../src/scenes/Forum.rb:511 ../src/scenes/Forum.rb:1134 ../src/scenes/Forum.rb:3894
 msgctxt "Forum"
 msgid "Public"
 msgstr "Vieša"
 
-#: ../src/scenes/Forum.rb:515 ../src/scenes/Forum.rb:1146
-#: ../src/scenes/Forum.rb:3943
+#: ../src/scenes/Forum.rb:515 ../src/scenes/Forum.rb:1146 ../src/scenes/Forum.rb:3943
 msgctxt "Forum"
 msgid "closed (only invited users can join)"
 msgstr "uždara (tik pakviesti vartotojai gali prisijungti)"
 
-#: ../src/scenes/Forum.rb:517 ../src/scenes/Forum.rb:521
-#: ../src/scenes/Forum.rb:1134 ../src/scenes/Forum.rb:1146
-#: ../src/scenes/Forum.rb:1148 ../src/scenes/Forum.rb:3943
-#: ../src/scenes/Forum.rb:3945
+#: ../src/scenes/Forum.rb:517 ../src/scenes/Forum.rb:521 ../src/scenes/Forum.rb:1134 ../src/scenes/Forum.rb:1146 ../src/scenes/Forum.rb:1148 ../src/scenes/Forum.rb:3943 ../src/scenes/Forum.rb:3945
 msgctxt "Forum"
 msgid "Moderated (everyone can request)"
 msgstr "Moderuojama (kiekvienas gali pateikti užklausą)"
 
-#: ../src/scenes/Forum.rb:523 ../src/scenes/Forum.rb:1134
-#: ../src/scenes/Forum.rb:1148 ../src/scenes/Forum.rb:3945
+#: ../src/scenes/Forum.rb:523 ../src/scenes/Forum.rb:1134 ../src/scenes/Forum.rb:1148 ../src/scenes/Forum.rb:3945
 msgctxt "Forum"
 msgid "open (everyone can join)"
 msgstr "atvira (kiekvienas gali prisijungti)"
@@ -7569,14 +7098,12 @@ msgctxt "Forum"
 msgid "Recommended"
 msgstr "Rekomenduojama"
 
-#: ../src/scenes/Forum.rb:529 ../src/scenes/Forum.rb:1134
-#: ../src/scenes/Forum.rb:3894
+#: ../src/scenes/Forum.rb:529 ../src/scenes/Forum.rb:1134 ../src/scenes/Forum.rb:3894
 msgctxt "Forum"
 msgid "Group type"
 msgstr "Grupės tipas"
 
-#: ../src/scenes/Forum.rb:530 ../src/scenes/Forum.rb:1134
-#: ../src/scenes/Forum.rb:3895
+#: ../src/scenes/Forum.rb:530 ../src/scenes/Forum.rb:1134 ../src/scenes/Forum.rb:3895
 msgctxt "Forum"
 msgid "Group join type"
 msgstr "Prisijungimo prie grupės tipas"
@@ -7611,9 +7138,7 @@ msgctxt "Forum"
 msgid "Audio posts"
 msgstr "Audio įrašai"
 
-#: ../src/scenes/Forum.rb:554 ../src/scenes/Forum.rb:2289
-#: ../src/scenes/Forum.rb:2748 ../src/scenes/Forum.rb:2831
-#: ../src/scenes/Forum.rb:3390
+#: ../src/scenes/Forum.rb:554 ../src/scenes/Forum.rb:2289 ../src/scenes/Forum.rb:2748 ../src/scenes/Forum.rb:2831 ../src/scenes/Forum.rb:3390
 msgctxt "Forum"
 msgid "Attachments"
 msgstr "Priedai"
@@ -7735,12 +7260,8 @@ msgstr "Pažymėti šią grupę kaip perskaitytą"
 
 #: ../src/scenes/Forum.rb:652
 msgctxt "Forum"
-msgid ""
-"All posts in this group will be marked as read. Are you sure you want to "
-"continue?"
-msgstr ""
-"Visi įrašai šioje grupėje bus pažymėti kaip perskaityti. Ar tikrai norite "
-"tęsti?"
+msgid "All posts in this group will be marked as read. Are you sure you want to continue?"
+msgstr "Visi įrašai šioje grupėje bus pažymėti kaip perskaityti. Ar tikrai norite tęsti?"
 
 #: ../src/scenes/Forum.rb:663
 msgctxt "Forum"
@@ -7792,8 +7313,7 @@ msgctxt "Forum"
 msgid "Message of the day updated"
 msgstr "Dienos žinutė atnaujinta"
 
-#: ../src/scenes/Forum.rb:752 ../src/scenes/Forum.rb:1107
-#: ../src/scenes/Forum.rb:2788
+#: ../src/scenes/Forum.rb:752 ../src/scenes/Forum.rb:1107 ../src/scenes/Forum.rb:2788
 msgctxt "Forum"
 msgid "Rules of group %{groupname}"
 msgstr "Grupės %{groupname} taisyklės"
@@ -7858,8 +7378,7 @@ msgctxt "Forum"
 msgid "Show reported post"
 msgstr "Rodyti raportuotą įrašą"
 
-#: ../src/scenes/Forum.rb:853 ../src/scenes/Forum.rb:885
-#: ../src/scenes/Forum.rb:2180
+#: ../src/scenes/Forum.rb:853 ../src/scenes/Forum.rb:885 ../src/scenes/Forum.rb:2180
 msgctxt "Forum"
 msgid "Post"
 msgstr "Įrašas"
@@ -7937,9 +7456,7 @@ msgstr "Perleisti administravimo privilegijas"
 #: ../src/scenes/Forum.rb:986
 msgctxt "Forum"
 msgid "Are you sure you want to give up your administrator privileges in %{groupname} and transfer them to %{user}?"
-msgstr ""
-"Ar tikrai norite atsisakyti grupės %{groupname} administravimo privilegijų "
-"ir jas perleisti vartotojui %{user}?"
+msgstr "Ar tikrai norite atsisakyti grupės %{groupname} administravimo privilegijų ir jas perleisti vartotojui %{user}?"
 
 #: ../src/scenes/Forum.rb:994
 msgctxt "Forum"
@@ -8009,9 +7526,7 @@ msgstr "Atšaukti kvietimą"
 #: ../src/scenes/Forum.rb:1042
 msgctxt "Forum"
 msgid "Are you sure you want to cancel %{user}'s invitation to %{groupname}?"
-msgstr ""
-"Ar tikrai norite atšaukti vartotojo %{user} kvietimą prisijungti prie grupės "
-"%{groupname}?"
+msgstr "Ar tikrai norite atšaukti vartotojo %{user} kvietimą prisijungti prie grupės %{groupname}?"
 
 #: ../src/scenes/Forum.rb:1049
 msgctxt "Forum"
@@ -8028,8 +7543,7 @@ msgctxt "Forum"
 msgid "The user has been invited"
 msgstr "Vartotojas pakviestas"
 
-#: ../src/scenes/Forum.rb:1061 ../src/scenes/Messages.rb:1051
-#: ../src/scenes/Users.rb:21
+#: ../src/scenes/Forum.rb:1061 ../src/scenes/Messages.rb:1051 ../src/scenes/Users.rb:21
 msgid "You do not have permission to do this"
 msgstr "Neturite leidimo tai padaryti"
 
@@ -8210,11 +7724,8 @@ msgstr "Pažymėti šį forumą kaip perskaitytą"
 
 #: ../src/scenes/Forum.rb:1439
 msgctxt "Forum"
-msgid ""
-"All posts on this forum will be marked as read. Are you sure you want to "
-"continue?"
-msgstr ""
-"Visi šio forumo įrašai bus pažymėti kaip perskaityti. Ar tikrai norite tęsti?"
+msgid "All posts on this forum will be marked as read. Are you sure you want to continue?"
+msgstr "Visi šio forumo įrašai bus pažymėti kaip perskaityti. Ar tikrai norite tęsti?"
 
 #: ../src/scenes/Forum.rb:1449
 msgctxt "Forum"
@@ -8231,8 +7742,7 @@ msgctxt "Forum"
 msgid "Forum added to quick actions"
 msgstr "Forumas pridėtas į greituosius veiksmus"
 
-#: ../src/scenes/Forum.rb:1463 ../src/scenes/Forum.rb:1969
-#: ../src/scenes/Forum.rb:3242
+#: ../src/scenes/Forum.rb:1463 ../src/scenes/Forum.rb:1969 ../src/scenes/Forum.rb:3242
 msgctxt "Forum"
 msgid "Moderation"
 msgstr "Moderacija"
@@ -8402,8 +7912,7 @@ msgctxt "Forum"
 msgid "Thread marked"
 msgstr "Gija pažymėta"
 
-#: ../src/scenes/Forum.rb:1921 ../src/scenes/Forum.rb:2185
-#: ../src/scenes/Forum.rb:3209
+#: ../src/scenes/Forum.rb:1921 ../src/scenes/Forum.rb:2185 ../src/scenes/Forum.rb:3209
 msgctxt "Forum"
 msgid "Follow this thread"
 msgstr "Pridėti į sekamų gijų sąrašą"
@@ -8618,8 +8127,7 @@ msgctxt "Forum"
 msgid "Offer refused"
 msgstr "Pasiūlymas atmestas"
 
-#: ../src/scenes/Forum.rb:2158 ../src/scenes/Forum.rb:2183
-#: ../src/scenes/Forum.rb:2849 ../src/scenes/Forum.rb:2864
+#: ../src/scenes/Forum.rb:2158 ../src/scenes/Forum.rb:2183 ../src/scenes/Forum.rb:2849 ../src/scenes/Forum.rb:2864
 msgctxt "Forum"
 msgid "Audio post"
 msgstr "Audio įrašas"
@@ -8639,8 +8147,7 @@ msgctxt "Forum"
 msgid "Thread name"
 msgstr "Gijos pavadinimas"
 
-#: ../src/scenes/Forum.rb:2180 ../src/scenes/Forum.rb:2862
-#: ../src/scenes/Forum.rb:3390
+#: ../src/scenes/Forum.rb:2180 ../src/scenes/Forum.rb:2862 ../src/scenes/Forum.rb:3390
 msgctxt "Forum"
 msgid "Use MarkDown in this post"
 msgstr "Naudoti MarkDown šiame įraše"
@@ -8660,8 +8167,7 @@ msgctxt "Forum"
 msgid "No tag value"
 msgstr "Nėra žymens reikšmės"
 
-#: ../src/scenes/Forum.rb:2221 ../src/scenes/Forum.rb:2229
-#: ../src/scenes/Forum.rb:2896 ../src/scenes/Forum.rb:2933
+#: ../src/scenes/Forum.rb:2221 ../src/scenes/Forum.rb:2229 ../src/scenes/Forum.rb:2896 ../src/scenes/Forum.rb:2933
 msgctxt "Forum"
 msgid "Send"
 msgstr "Siųsti"
@@ -8691,8 +8197,7 @@ msgctxt "Forum"
 msgid "You haven't created any polls yet."
 msgstr "Nesate sukūręs(-usi) jokių balsavimų."
 
-#: ../src/scenes/Forum.rb:2280 ../src/scenes/Forum.rb:2739
-#: ../src/scenes/Forum.rb:3397
+#: ../src/scenes/Forum.rb:2280 ../src/scenes/Forum.rb:2739 ../src/scenes/Forum.rb:3397
 msgctxt "Forum"
 msgid "Select file to attach"
 msgstr "Pasirinkite failą, kurį norite prikabinti"
@@ -8702,8 +8207,7 @@ msgctxt "Forum"
 msgid "This file has already been attached"
 msgstr "Šis failas jau prikabintas"
 
-#: ../src/scenes/Forum.rb:2286 ../src/scenes/Forum.rb:2745
-#: ../src/scenes/Forum.rb:3403
+#: ../src/scenes/Forum.rb:2286 ../src/scenes/Forum.rb:2745 ../src/scenes/Forum.rb:3403
 msgctxt "Forum"
 msgid "This file is too large"
 msgstr "Šis failas per didelis"
@@ -8733,21 +8237,17 @@ msgctxt "Forum"
 msgid "Are you sure you want to cancel creating this post?"
 msgstr "Ar tikrai norite atšaukti šio įrašo kūrimą?"
 
-#: ../src/scenes/Forum.rb:2719 ../src/scenes/Messages.rb:620
-#: ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:124
+#: ../src/scenes/Forum.rb:2719 ../src/scenes/Messages.rb:620 ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:124
 msgctxt "Polls"
 msgid "Show results"
 msgstr "Rodyti rezultatus"
 
-#: ../src/scenes/Forum.rb:2719 ../src/scenes/Messages.rb:620
-#: ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:127
+#: ../src/scenes/Forum.rb:2719 ../src/scenes/Messages.rb:620 ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:127
 msgctxt "Polls"
 msgid "Show report"
 msgstr "Rodyti raportą"
 
-#: ../src/scenes/Forum.rb:2719 ../src/scenes/Messages.rb:620
-#: ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:119
-#: ../src/scenes/Polls.rb:373
+#: ../src/scenes/Forum.rb:2719 ../src/scenes/Messages.rb:620 ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:119 ../src/scenes/Polls.rb:373
 msgctxt "Polls"
 msgid "Vote"
 msgstr "Balsuoti"
@@ -9128,8 +8628,7 @@ msgstr "Pasirinkite grupės tėvą"
 #: ../src/scenes/Forum.rb:3908
 msgctxt "Forum"
 msgid "Prevent globally banned users from posting in this group"
-msgstr ""
-"Drausti globaliai užblokuotiems vartotojams skelbti įrašus šioje grupėje"
+msgstr "Drausti globaliai užblokuotiems vartotojams skelbti įrašus šioje grupėje"
 
 #: ../src/scenes/Forum.rb:3911
 msgctxt "Forum"
@@ -9236,8 +8735,7 @@ msgctxt "Honors"
 msgid "The user has not been awarded any honors."
 msgstr "Vartotojas negavo jokių ženklelių."
 
-#: ../src/scenes/Honors.rb:107 ../src/scenes/Honors.rb:122
-#: ../src/scenes/Honors.rb:219
+#: ../src/scenes/Honors.rb:107 ../src/scenes/Honors.rb:122 ../src/scenes/Honors.rb:219
 msgctxt "Honors"
 msgid "Level"
 msgstr "Lygis"
@@ -9280,17 +8778,14 @@ msgstr "Trinti"
 #: ../src/scenes/Honors.rb:162
 msgctxt "Honors"
 msgid "Are you sure you want to delete this badge? All users who have been granted this badge will lose it."
-msgstr ""
-"Ar tikrai norite ištrinti šį ženklelį? Visi vartotojai, kuriems jis buvo "
-"suteiktas, jį praras."
+msgstr "Ar tikrai norite ištrinti šį ženklelį? Visi vartotojai, kuriems jis buvo suteiktas, jį praras."
 
 #: ../src/scenes/Honors.rb:167
 msgctxt "Honors"
 msgid "Honor deleted"
 msgstr "Garbė ištrinta"
 
-#: ../src/scenes/Honors.rb:185 ../src/scenes/Honors.rb:198
-#: ../src/scenes/Honors.rb:237
+#: ../src/scenes/Honors.rb:185 ../src/scenes/Honors.rb:198 ../src/scenes/Honors.rb:237
 msgctxt "Honors"
 msgid "Add challenge"
 msgstr "Pridėti iššūkį"
@@ -9358,30 +8853,17 @@ msgstr "Parsiųsti ir įdiegti naujausią versiją"
 #: ../src/scenes/Loading.rb:262
 msgctxt "Loading"
 msgid "Elten has detected that you are using NVDA. To support some features of this screen reader, the Elten add-on for NVDA must be installed. Do you want to install it now?"
-msgstr ""
-"Elten nustatė, jog naudojate NVDA. Kad būtų palaikomos kai kurios šio ekrano "
-"skaitytuvo funkcijos, reikėtų įdiegti Elten priedą. Ar norite tai padaryti "
-"dabar?"
+msgstr "Elten nustatė, jog naudojate NVDA. Kad būtų palaikomos kai kurios šio ekrano skaitytuvo funkcijos, reikėtų įdiegti Elten priedą. Ar norite tai padaryti dabar?"
 
 #: ../src/scenes/Loading.rb:264
 msgctxt "Loading"
 msgid "A new version of the Elten add-on for NVDA is available. The version you are using is no longer supported by this Elten release and may cause errors. Do you want to update it now?"
-msgstr ""
-"Yra galima nauja NVDA Elten priedo versija. Versija, kurią naudojate šiuo "
-"metu, nėra palaikoma ir gali kilti klaidų. Ar norite priedą atnaujinti dabar?"
+msgstr "Yra galima nauja NVDA Elten priedo versija. Versija, kurią naudojate šiuo metu, nėra palaikoma ir gali kilti klaidų. Ar norite priedą atnaujinti dabar?"
 
 #: ../src/scenes/Loading.rb:303
 msgctxt "Loading"
 msgid "Warning! Elten failed to verify the server's encryption key. You may be connecting not to an Elten server, but to a server controlled by an attacker. The Elten server's key may also have changed. Details of any legitimate key change should be published on the Elten website or forum. If no such information has been published, this connection may be under attack. Any data you provide, including your password, could be stolen. Are you sure you want to continue with this connection? Select No to exit Elten."
-msgstr ""
-"Dėmesio! Elten nepavyko patvirtinti serverio kodavimo rakto. Gali būti, kad "
-"jungiatės ne prie Elten, bet prie įsilaužėlių paruošto serverio. Taip pat "
-"gali būti, kad Elten serverio kodavimo raktas yra pasikeitęs. Bet kokios "
-"detalės turėtų būti pateiktos Elten tinklalapio forume. Jei jokia "
-"informacija dėl rakto pakeitimo nebuvo pateikta, labai panašu, kad jūs esate "
-"pažeidžiamas(-a) dėl įsilaužėlių atakų. Tokiu atveju, duomenys, kuriuos "
-"pateiksite, įskaitant slaptažodį, gali būti pavogti. Ar tikrai norite tęsti "
-"šį prisijungimą? Pasirinkite Ne, kad uždarytumėte Elten."
+msgstr "Dėmesio! Elten nepavyko patvirtinti serverio kodavimo rakto. Gali būti, kad jungiatės ne prie Elten, bet prie įsilaužėlių paruošto serverio. Taip pat gali būti, kad Elten serverio kodavimo raktas yra pasikeitęs. Bet kokios detalės turėtų būti pateiktos Elten tinklalapio forume. Jei jokia informacija dėl rakto pakeitimo nebuvo pateikta, labai panašu, kad jūs esate pažeidžiamas(-a) dėl įsilaužėlių atakų. Tokiu atveju, duomenys, kuriuos pateiksite, įskaitant slaptažodį, gali būti pavogti. Ar tikrai norite tęsti šį prisijungimą? Pasirinkite Ne, kad uždarytumėte Elten."
 
 #: ../src/scenes/Loading.rb:320
 msgctxt "Loading"
@@ -9460,24 +8942,8 @@ msgstr "Įveskite pin kodą"
 
 #: ../src/scenes/Login.rb:60 ../src/scenes/Login.rb:169
 msgctxt "Login"
-msgid ""
-"Do you want to enable auto-Login-key encryption? When encrypted, the Auto-"
-"Login Key will be readable only on this computer, and its copying or "
-"exporting will not allow other devices to access your account. Note: If you "
-"encrypt your Auto-Login Key, the created portable versions will not be able "
-"to automatically log into your account from other devices, even if you copy "
-"your settings, and you will be prompted to enter your password. You can "
-"create as many auto-login-keys as you wish for all other computers you are "
-"using."
-msgstr ""
-"Ar norite įjungti automatinį prisijungimo rakto kodavimą? Užkodavus, "
-"automatinio prisijungimo raktas bus perskaitomas tik šiame kompiuteryje ir "
-"jo kopijavimas ar eksportavimas kitame įrenginyje neleis prieiti prie Jūsų "
-"paskyros. Pastaba: jei užkoduojate Jūsų automatinio prisijungimo raktą, "
-"sukurtos nešiojamos versijos negalės automatiškai prisijungti prie Jūsų "
-"paskyros kituose įrenginiuose, net jeigu nukopijavote nustatymus, ir jums "
-"reikės suvesti slaptažodį. Kituose kompiuteriuose, kuriuos naudojate, galite "
-"susikurti tiek automatinio prisijungimo raktų, kiek norite."
+msgid "Do you want to enable auto-Login-key encryption? When encrypted, the Auto-Login Key will be readable only on this computer, and its copying or exporting will not allow other devices to access your account. Note: If you encrypt your Auto-Login Key, the created portable versions will not be able to automatically log into your account from other devices, even if you copy your settings, and you will be prompted to enter your password. You can create as many auto-login-keys as you wish for all other computers you are using."
+msgstr "Ar norite įjungti automatinį prisijungimo rakto kodavimą? Užkodavus, automatinio prisijungimo raktas bus perskaitomas tik šiame kompiuteryje ir jo kopijavimas ar eksportavimas kitame įrenginyje neleis prieiti prie Jūsų paskyros. Pastaba: jei užkoduojate Jūsų automatinio prisijungimo raktą, sukurtos nešiojamos versijos negalės automatiškai prisijungti prie Jūsų paskyros kituose įrenginiuose, net jeigu nukopijavote nustatymus, ir jums reikės suvesti slaptažodį. Kituose kompiuteriuose, kuriuos naudojate, galite susikurti tiek automatinio prisijungimo raktų, kiek norite."
 
 #: ../src/scenes/Login.rb:88
 msgctxt "Login"
@@ -9487,9 +8953,7 @@ msgstr "Autentifikuoti naudojant atsarginį kodą"
 #: ../src/scenes/Login.rb:88
 msgctxt "Login"
 msgid "Two-factor authentication is enabled on this account. Select an authentication method."
-msgstr ""
-"Šiai paskyrai yra įjungta dviejų lygmenų autentifikacija. Pasirinkite "
-"autentifikavimo metodą."
+msgstr "Šiai paskyrai yra įjungta dviejų lygmenų autentifikacija. Pasirinkite autentifikavimo metodą."
 
 #: ../src/scenes/Login.rb:88
 msgctxt "Login"
@@ -9499,11 +8963,7 @@ msgstr "Autentifikuoti naudojant SMS"
 #: ../src/scenes/Login.rb:104
 msgctxt "Login"
 msgid "Enter the code sent to you by text message to allow this device to log in. If you cannot access the phone number used, select the password reset option to disable two-factor authentication."
-msgstr ""
-"Įveskite kodą, atsiųstą jums tekstine žinute, kad galėtumėte prisijungti su "
-"šiuo įrenginiu. Jei neturite prieeigos prie naudojamo telefono numerio, "
-"pasirinkite slaptažodžio atstatymo parinktį, kad išjungtumėte dviejų lygmenų "
-"autentifikaciją."
+msgstr "Įveskite kodą, atsiųstą jums tekstine žinute, kad galėtumėte prisijungti su šiuo įrenginiu. Jei neturite prieeigos prie naudojamo telefono numerio, pasirinkite slaptažodžio atstatymo parinktį, kad išjungtumėte dviejų lygmenų autentifikaciją."
 
 #: ../src/scenes/Login.rb:106
 msgctxt "Login"
@@ -9532,46 +8992,28 @@ msgstr "Ar norite įjungti automatinį prisijungimą paskyrai %{user}?"
 
 #: ../src/scenes/Login.rb:148
 msgctxt "Login"
-msgid ""
-"The saved login data uses the old account authentication method in which  "
-"susceptibility to hacker attacks has been detected. New, safer automatic "
-"login  algorithms have been introduced in Elten 2.2. It is recommended that "
-"you convert  the saved information into a new system in order to improve the "
-"security of your  account. Do you want to update the saved information now?"
-msgstr ""
-"Išsaugoti prisijungimo duomenys naudoja seną paskyros autentifikavimo "
-"metodą, kuriame aptikta įsilaužimo atakų galimybė. Elten 2.2 atsirado nauji, "
-"saugesni automatinio prisijungimo algoritmai. Rekomenduojama konvertuoti "
-"išsaugotą informaciją į naują sistemą tam, kad paskyros saugumas būtų "
-"patobulintas. Ar norite atnaujinti išsaugotą informaciją dabar?"
+msgid "The saved login data uses the old account authentication method in which  susceptibility to hacker attacks has been detected. New, safer automatic login  algorithms have been introduced in Elten 2.2. It is recommended that you convert  the saved information into a new system in order to improve the security of your  account. Do you want to update the saved information now?"
+msgstr "Išsaugoti prisijungimo duomenys naudoja seną paskyros autentifikavimo metodą, kuriame aptikta įsilaužimo atakų galimybė. Elten 2.2 atsirado nauji, saugesni automatinio prisijungimo algoritmai. Rekomenduojama konvertuoti išsaugotą informaciją į naują sistemą tam, kad paskyros saugumas būtų patobulintas. Ar norite atnaujinti išsaugotą informaciją dabar?"
 
 #: ../src/scenes/Login.rb:164
 msgctxt "Login"
 msgid "An error occurred while verifying your identity. You may have entered an incorrect password."
-msgstr ""
-"Autentifikuojant paskyrą įvyko klaida. Galimai įvedėte neteisingą slaptažodį."
+msgstr "Autentifikuojant paskyrą įvyko klaida. Galimai įvedėte neteisingą slaptažodį."
 
 #: ../src/scenes/Login.rb:179
 msgctxt "Login"
 msgid "Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
-msgstr ""
-"Automatinis prisijungimas galios tol, kol neatsijungsite. Automatinio "
-"prisijungimo raktai gali būti tvarkomi Mano paskyros kortelėje bendruomenės "
-"meniu."
+msgstr "Automatinis prisijungimas galios tol, kol neatsijungsite. Automatinio prisijungimo raktai gali būti tvarkomi Mano paskyros kortelėje bendruomenės meniu."
 
 #: ../src/scenes/Login.rb:181
 msgctxt "Login"
 msgid "Login data has been updated. Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
-msgstr ""
-"Prisijungimo duomenys atnaujinti. Automatinis prisijungimas galios tol, kol "
-"neatsijungsite. Automatinio prisijungimo raktai gali būti tvarkomi Mano "
-"paskyros kortelėje bendruomenės meniu."
+msgstr "Prisijungimo duomenys atnaujinti. Automatinis prisijungimas galios tol, kol neatsijungsite. Automatinio prisijungimo raktai gali būti tvarkomi Mano paskyros kortelėje bendruomenės meniu."
 
 #: ../src/scenes/Login.rb:192
 msgctxt "Login"
 msgid "To re-enable auto-login, go to General settings."
-msgstr ""
-"Vėl įjungti automatinio prisijungimo funkciją galite bendruose nustatymuose."
+msgstr "Vėl įjungti automatinio prisijungimo funkciją galite bendruose nustatymuose."
 
 #: ../src/scenes/Login.rb:206
 msgctxt "Login"
@@ -9596,11 +9038,7 @@ msgstr "Interneto ryšio klaida."
 #: ../src/scenes/Login.rb:242
 msgctxt "Login"
 msgid "Do you want to encrypt this key with a custom PIN? You will be prompted for this PIN every time you start Elten to unlock your account. It will not be saved on the server and will apply only to the auto-login key stored on this device."
-msgstr ""
-"Ar norite užkoduoti šį raktą specifiniu pin kodu? Kaskart paleidžiant Elten, "
-"jums reikės jį suvesti, kad atrakintumėte savo paskyrą, bet jis nebus "
-"saugomas serveryje, ir galios tik automatinio prisijungimo raktui šiame "
-"kompiuteryje."
+msgstr "Ar norite užkoduoti šį raktą specifiniu pin kodu? Kaskart paleidžiant Elten, jums reikės jį suvesti, kad atrakintumėte savo paskyrą, bet jis nebus saugomas serveryje, ir galios tik automatinio prisijungimo raktui šiame kompiuteryje."
 
 #: ../src/scenes/Login.rb:247
 msgctxt "Login"
@@ -9625,9 +9063,7 @@ msgstr "Greitieji veiksmai"
 #: ../src/scenes/Main.rb:169
 msgctxt "Main"
 msgid "Use Shift with up/down arrows to move quick actions"
-msgstr ""
-"Naudokite shift su rodyklėmis aukštyn/žemyn, kad kilnotumėte greituosius "
-"veiksmus"
+msgstr "Naudokite shift su rodyklėmis aukštyn/žemyn, kad kilnotumėte greituosius veiksmus"
 
 #: ../src/scenes/Main.rb:184
 msgctxt "Main"
@@ -9691,14 +9127,8 @@ msgstr "Ar tikrai norite ištrinti šį greitąjį veiksmą?"
 
 #: ../src/scenes/Main.rb:247
 msgctxt "Main"
-msgid ""
-"If you delete this action, you will also delete the keyboard shortcut "
-"assigned to it. If you want to keep the keyboard shortcut, you can hide this "
-"action. You can show or remove hidden actions at any time."
-msgstr ""
-"Jei ištrinsite šį veiksmą, taip pat ištrinsite ir su juo susietą karštąjį "
-"klavišą. Jei norite išsaugoti šį karštąjį klavišą, galite šį veiksmą "
-"paslėpti. Slėpti ar rodyti greituosius veiksmus galite bet kada."
+msgid "If you delete this action, you will also delete the keyboard shortcut assigned to it. If you want to keep the keyboard shortcut, you can hide this action. You can show or remove hidden actions at any time."
+msgstr "Jei ištrinsite šį veiksmą, taip pat ištrinsite ir su juo susietą karštąjį klavišą. Jei norite išsaugoti šį karštąjį klavišą, galite šį veiksmą paslėpti. Slėpti ar rodyti greituosius veiksmus galite bet kada."
 
 #: ../src/scenes/Main.rb:259
 msgctxt "Main"
@@ -9793,14 +9223,12 @@ msgctxt "Messages"
 msgid "Last message"
 msgstr "Paskutinė žinutė"
 
-#: ../src/scenes/Messages.rb:127 ../src/scenes/Messages.rb:422
-#: ../src/scenes/Messages.rb:572
+#: ../src/scenes/Messages.rb:127 ../src/scenes/Messages.rb:422 ../src/scenes/Messages.rb:572
 msgctxt "Messages"
 msgid "New"
 msgstr "Nauja"
 
-#: ../src/scenes/Messages.rb:130 ../src/scenes/Messages.rb:425
-#: ../src/scenes/Messages.rb:575
+#: ../src/scenes/Messages.rb:130 ../src/scenes/Messages.rb:425 ../src/scenes/Messages.rb:575
 msgctxt "Messages"
 msgid "Show older"
 msgstr "Rodyti senesnes"
@@ -9917,10 +9345,8 @@ msgstr "Pažymėti visas žinutes kaip perskaitytas"
 
 #: ../src/scenes/Messages.rb:235
 msgctxt "messages"
-msgid ""
-"Are you sure you want to mark all messages in all conversations as read?"
-msgstr ""
-"Ar tikrai norite pažymėti visas žinutes visuose pokalbiuose kaip pažymėtas?"
+msgid "Are you sure you want to mark all messages in all conversations as read?"
+msgstr "Ar tikrai norite pažymėti visas žinutes visuose pokalbiuose kaip pažymėtas?"
 
 #: ../src/scenes/Messages.rb:241
 msgctxt "Messages"
@@ -10025,8 +9451,7 @@ msgstr "Siųsti naują žinutę šiame pokalbyje"
 #: ../src/scenes/Messages.rb:476
 msgctxt "Messages"
 msgid "Are you sure you want to delete the conversation %{conversationname} with %{user}?"
-msgstr ""
-"Ar tikrai norite ištrinti vartotojo %{user} pokalbį %{conversationname}?"
+msgstr "Ar tikrai norite ištrinti vartotojo %{user} pokalbį %{conversationname}?"
 
 #: ../src/scenes/Messages.rb:481
 msgctxt "Messages"
@@ -10316,9 +9741,7 @@ msgstr "Ar tikrai norite ištrinti %{name}?"
 #: ../src/scenes/Notes.rb:221
 msgctxt "Notes"
 msgid "Do you really want to stop sharing %{name}? It will be deleted from your list of notes."
-msgstr ""
-"Ar tikrai norite pabaigti bendrinti pastabą %{name}? Ji bus ištrinta iš Jūsų "
-"pastabų sąrašo."
+msgstr "Ar tikrai norite pabaigti bendrinti pastabą %{name}? Ji bus ištrinta iš Jūsų pastabų sąrašo."
 
 #: ../src/scenes/Notes.rb:231
 msgctxt "Notes"
@@ -10373,8 +9796,7 @@ msgctxt "Polls"
 msgid "Votes"
 msgstr "Balsavimai"
 
-#: ../src/scenes/Polls.rb:12 ../src/scenes/Polls.rb:352
-#: ../src/scenes/Polls.rb:459
+#: ../src/scenes/Polls.rb:12 ../src/scenes/Polls.rb:352 ../src/scenes/Polls.rb:459
 msgctxt "Polls"
 msgid "Author"
 msgstr "Autorius"
@@ -10661,16 +10083,8 @@ msgstr "Klausti kiekvieną kartą"
 
 #: ../src/scenes/Portable.rb:36
 msgctxt "Portable"
-msgid ""
-"If you use a created copy of Elten on another computer, the voice settings "
-"may  not work properly. This is especially noticeable in a situation when "
-"another  computer has other voices installed. How do you want to configure "
-"the generated  version?"
-msgstr ""
-"Jei naudojate sukurtą Elten kopiją kitame kompiuteryje, balso nustatymai "
-"gali tinkamai nefunkcionuoti. Tai ypatingai pastebima, kai kitame "
-"kompiuteryje yra įdiegti kiti balsai. Kaip norite sukonfiguruoti generuojamą "
-"versiją?"
+msgid "If you use a created copy of Elten on another computer, the voice settings may  not work properly. This is especially noticeable in a situation when another  computer has other voices installed. How do you want to configure the generated  version?"
+msgstr "Jei naudojate sukurtą Elten kopiją kitame kompiuteryje, balso nustatymai gali tinkamai nefunkcionuoti. Tai ypatingai pastebima, kai kitame kompiuteryje yra įdiegti kiti balsai. Kaip norite sukonfiguruoti generuojamą versiją?"
 
 #: ../src/scenes/Portable.rb:47
 msgctxt "Portable"
@@ -10709,8 +10123,7 @@ msgstr "Atnaujinti"
 
 #: ../src/scenes/Programs.rb:85
 msgctxt "Programs"
-msgid ""
-"Do you want to install program %{name}? Need to download %{size} of data."
+msgid "Do you want to install program %{name}? Need to download %{size} of data."
 msgstr "Ar norite įdiegti programą %{name}? Reiktų parsiųsti %{size} duomenų."
 
 #: ../src/scenes/Programs.rb:124
@@ -10735,12 +10148,8 @@ msgstr "Programa pašalinta"
 
 #: ../src/scenes/Registration.rb:13
 msgctxt "Registration"
-msgid ""
-"Enter your username. It will be used for identification.The maximum length "
-"of the  username is 64 characters"
-msgstr ""
-"Įveskite savo vartotojo vardą. Jis bus naudojamas identifikacijai. "
-"Maksimalus vartotojo vardo ilgis yra 64 simboliai"
+msgid "Enter your username. It will be used for identification.The maximum length of the  username is 64 characters"
+msgstr "Įveskite savo vartotojo vardą. Jis bus naudojamas identifikacijai. Maksimalus vartotojo vardo ilgis yra 64 simboliai"
 
 #: ../src/scenes/Registration.rb:16
 msgctxt "Registration"
@@ -10750,9 +10159,7 @@ msgstr "Vartotojas tokiu vardu jau egzistuoja."
 #: ../src/scenes/Registration.rb:27
 msgctxt "Registration"
 msgid "Enter your password. We recommend using a strong password consisting of letters and numbers. The maximum password length is 256 characters."
-msgstr ""
-"Įveskite slaptažodį. Rekomenduojama naudoti stiprų slaptažodį, susidedantį "
-"iš numerių ir raidžių. Maksimalus slaptažodžio ilgis yra 256 simboliai."
+msgstr "Įveskite slaptažodį. Rekomenduojama naudoti stiprų slaptažodį, susidedantį iš numerių ir raidžių. Maksimalus slaptažodžio ilgis yra 256 simboliai."
 
 #: ../src/scenes/Registration.rb:29
 msgctxt "Registration"
@@ -10767,16 +10174,12 @@ msgstr "Įvesti slaptažodžiai skiriasi"
 #: ../src/scenes/Registration.rb:40
 msgctxt "Registration"
 msgid "Enter your email address. It will be used to reset a forgotten password and to send you important information."
-msgstr ""
-"Įveskite el. pašto adresą. Jis bus naudojamas tais atvejais, kai pamiršite "
-"slaptažodį, bei svarbios informacijos siuntimui."
+msgstr "Įveskite el. pašto adresą. Jis bus naudojamas tais atvejais, kai pamiršite slaptažodį, bei svarbios informacijos siuntimui."
 
 #: ../src/scenes/Registration.rb:51
 msgctxt "Registration"
 msgid "Registration was successful. Thank you. You can log in using your username and password."
-msgstr ""
-"Registracija sėkminga, dėkojame. Galite prisijungti naudodami vartotojo "
-"vardą ir slaptažodį."
+msgstr "Registracija sėkminga, dėkojame. Galite prisijungti naudodami vartotojo vardą ir slaptažodį."
 
 #: ../src/scenes/Registration.rb:53
 msgctxt "Registration"
@@ -10966,9 +10369,7 @@ msgstr "Įjungti Brailio išvestį (reikės NVDA priedo)"
 #: ../src/scenes/Settings.rb:193
 msgctxt "Settings"
 msgid "Use a voice dictionary when processing characters (requires the NVDA add-on when using NVDA for speech output)"
-msgstr ""
-"Einant per simbolius naudoti balso žodyną (reikės NVDA priedo naudojant NVDA "
-"kaip kalbos išvestį)"
+msgstr "Einant per simbolius naudoti balso žodyną (reikės NVDA priedo naudojant NVDA kaip kalbos išvestį)"
 
 #: ../src/scenes/Settings.rb:194 ../src/scenes/Settings.rb:246
 msgctxt "Settings"
@@ -11553,8 +10954,7 @@ msgstr "Pranešimas: prisijungusiųjų monitoringas"
 #: ../src/scenes/Sounds.rb:78
 msgctxt "Sounds"
 msgid "Notification: a new user joined a conference channel you follow"
-msgstr ""
-"Pranešimas: naujas vartotojas prisijungė prie sekamą konferencijos kanalą"
+msgstr "Pranešimas: naujas vartotojas prisijungė prie sekamą konferencijos kanalą"
 
 #: ../src/scenes/Sounds.rb:79
 msgctxt "Sounds"
@@ -11824,11 +11224,9 @@ msgstr "Testo rezultatai"
 #: ../src/scenes/Update.rb:13
 msgctxt "Update"
 msgid "A new version of this program is available. Do you want to download and install it?"
-msgstr ""
-"Yra naujesnė šios programos versija. Ar norėtumėte ją parsiųsti ir įdiegti?"
+msgstr "Yra naujesnė šios programos versija. Ar norėtumėte ją parsiųsti ir įdiegti?"
 
-#: ../src/scenes/Update.rb:36 ../src/scenes/Update.rb:66
-#: ../src/scenes/Update.rb:68
+#: ../src/scenes/Update.rb:36 ../src/scenes/Update.rb:66 ../src/scenes/Update.rb:68
 msgctxt "Update"
 msgid "Please wait while files are downloaded."
 msgstr "Prašome palaukti, kol parsiunčiami failai."
@@ -11836,9 +11234,7 @@ msgstr "Prašome palaukti, kol parsiunčiami failai."
 #: ../src/scenes/Update.rb:40
 msgctxt "Update"
 msgid "The update has been downloaded. To install it, the program must be restarted. Press Return to continue or Esc to cancel."
-msgstr ""
-"Atnaujinimas buvo parsiųstas. Tam, kad jis būtų įdiegtas, Elten turi "
-"persikrauti. Spauskite Enter, kad tęstumėte, arba escape, kad atšauktumėte."
+msgstr "Atnaujinimas buvo parsiųstas. Tam, kad jis būtų įdiegtas, Elten turi persikrauti. Spauskite Enter, kad tęstumėte, arba escape, kad atšauktumėte."
 
 #: ../src/scenes/Update.rb:53
 msgctxt "Update"
@@ -11848,9 +11244,7 @@ msgstr "Atnaujinimas bus įdiegtas. Elten persikraus."
 #: ../src/scenes/Update.rb:71
 msgctxt "Update"
 msgid "The program will now be reverted to the latest stable version. Elten will restart. This may take several minutes."
-msgstr ""
-"Programa bus atstatyta į naujausią stabilią versiją. Elten persikraus. Tai "
-"gali užtrukti kelias minutes."
+msgstr "Programa bus atstatyta į naujausią stabilią versiją. Elten persikraus. Tai gali užtrukti kelias minutes."
 
 #: ../src/scenes/UserSearch.rb:11
 msgctxt "UserSearch"

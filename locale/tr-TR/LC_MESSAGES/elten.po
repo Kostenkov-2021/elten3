@@ -11,7 +11,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.4.4\n"
+"X-Generator: Poedit 3.9\n"
 
 #: ../agent/eprocessor.rb:99
 msgctxt "Conference"
@@ -133,34 +133,27 @@ msgctxt "Conference_cards"
 msgid "joker"
 msgstr "joker"
 
-#: ../agent/eprocessor.rb:208 ../agent/eprocessor.rb:210
-#: ../src/EAPI/Conference.rb:108 ../src/EAPI/Conference.rb:110
+#: ../agent/eprocessor.rb:208 ../agent/eprocessor.rb:210 ../src/EAPI/Conference.rb:108 ../src/EAPI/Conference.rb:110
 msgctxt "Conference_cards"
 msgid "Skip"
 msgstr "Pas"
 
-#: ../agent/eprocessor.rb:212 ../agent/eprocessor.rb:214
-#: ../src/EAPI/Conference.rb:112 ../src/EAPI/Conference.rb:114
+#: ../agent/eprocessor.rb:212 ../agent/eprocessor.rb:214 ../src/EAPI/Conference.rb:112 ../src/EAPI/Conference.rb:114
 msgctxt "Conference_cards"
 msgid "Draw two"
 msgstr "2 kart çekme"
 
-#: ../agent/eprocessor.rb:216 ../agent/eprocessor.rb:218
-#: ../src/EAPI/Conference.rb:116 ../src/EAPI/Conference.rb:118
+#: ../agent/eprocessor.rb:216 ../agent/eprocessor.rb:218 ../src/EAPI/Conference.rb:116 ../src/EAPI/Conference.rb:118
 msgctxt "Conference_cards"
 msgid "Reverse"
 msgstr "Yön değiştir"
 
-#: ../agent/eprocessor.rb:223 ../src/EAPI/Conference.rb:124
-#: ../src/EAPI/Conference.rb:126 ../src/EAPI/Conference.rb:128
-#: ../src/EAPI/Conference.rb:130
+#: ../agent/eprocessor.rb:223 ../src/EAPI/Conference.rb:124 ../src/EAPI/Conference.rb:126 ../src/EAPI/Conference.rb:128 ../src/EAPI/Conference.rb:130
 msgctxt "Conference_cards"
 msgid "Wild"
 msgstr "Joker"
 
-#: ../agent/eprocessor.rb:225 ../src/EAPI/Conference.rb:132
-#: ../src/EAPI/Conference.rb:134 ../src/EAPI/Conference.rb:136
-#: ../src/EAPI/Conference.rb:138
+#: ../agent/eprocessor.rb:225 ../src/EAPI/Conference.rb:132 ../src/EAPI/Conference.rb:134 ../src/EAPI/Conference.rb:136 ../src/EAPI/Conference.rb:138
 msgctxt "Conference_cards"
 msgid "Wild draw four"
 msgstr "Joker 4 kart çekme"
@@ -185,8 +178,7 @@ msgctxt "FeedViewer"
 msgid "Feed"
 msgstr "Yayın"
 
-#: ../agent/quicknav.rb:101 ../src/Scenes/Conference.rb:176
-#: ../src/Scenes/Conference.rb:283
+#: ../agent/quicknav.rb:101 ../src/Scenes/Conference.rb:176 ../src/Scenes/Conference.rb:283
 msgctxt "Conference"
 msgid "Conference"
 msgstr "Sohbet"
@@ -196,8 +188,7 @@ msgctxt "Messages"
 msgid "Send a new message"
 msgstr "Yeni mesaj gönder"
 
-#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465
-#: ../src/scenes/Messages.rb:693 ../src/scenes/Messages.rb:960
+#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465 ../src/scenes/Messages.rb:693 ../src/scenes/Messages.rb:960
 msgctxt "Messages"
 msgid "Send"
 msgstr "Gönder"
@@ -212,44 +203,9 @@ msgctxt "Messages"
 msgid "Subject:"
 msgstr "Konu:"
 
-#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465
-#: ../src/Scenes/Conference.rb:799 ../src/Scenes/Conference.rb:857
-#: ../src/Scenes/Conference.rb:885 ../src/Scenes/Conference.rb:959
-#: ../src/Scenes/Conference.rb:1075 ../src/Scenes/Conference.rb:1148
-#: ../src/Scenes/Conference.rb:1288 ../src/Scenes/Conference.rb:1785
-#: ../src/Scenes/Conference.rb:1817 ../src/Scenes/Conference.rb:1854
-#: ../src/Scenes/Conference.rb:1956 ../src/Scenes/Conference.rb:1977
-#: ../src/Scenes/Conference.rb:2002 ../src/Scenes/Conference.rb:2258
-#: ../src/eapi/Common.rb:16 ../src/eapi/Common.rb:1230
-#: ../src/eapi/Controls.rb:965 ../src/eapi/Controls.rb:1066
-#: ../src/eapi/Controls.rb:3328 ../src/eapi/Controls.rb:3394
-#: ../src/eapi/Controls.rb:4347 ../src/eapi/Controls.rb:4425
-#: ../src/eapi/Controls.rb:4488 ../src/eapi/Controls.rb:4641
-#: ../src/eapi/External.rb:120 ../src/eapi/UI.rb:783
-#: ../src/scenes/Account.rb:117 ../src/scenes/Account.rb:702
-#: ../src/scenes/Ban.rb:26 ../src/scenes/Ban.rb:113 ../src/scenes/Blog.rb:513
-#: ../src/scenes/Blog.rb:1049 ../src/scenes/Blog.rb:1251
-#: ../src/scenes/Blog.rb:1389 ../src/scenes/Blog.rb:1443
-#: ../src/scenes/Blog.rb:1565 ../src/scenes/Blog.rb:1961
-#: ../src/scenes/Blog.rb:2413 ../src/scenes/Blog.rb:2542
-#: ../src/scenes/Clock.rb:12 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Forum.rb:738 ../src/scenes/Forum.rb:764
-#: ../src/scenes/Forum.rb:910 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:1305 ../src/scenes/Forum.rb:1465
-#: ../src/scenes/Forum.rb:1608 ../src/scenes/Forum.rb:1709
-#: ../src/scenes/Forum.rb:2308 ../src/scenes/Forum.rb:2373
-#: ../src/scenes/Forum.rb:2473 ../src/scenes/Forum.rb:3691
-#: ../src/scenes/Forum.rb:3742 ../src/scenes/Forum.rb:3859
-#: ../src/scenes/Forum.rb:3884 ../src/scenes/Forum.rb:4397
-#: ../src/scenes/Honors.rb:186 ../src/scenes/Honors.rb:222
-#: ../src/scenes/Honors.rb:303 ../src/scenes/Install.rb:3
-#: ../src/scenes/Login.rb:88 ../src/scenes/Main.rb:247
-#: ../src/scenes/Messages.rb:290 ../src/scenes/Messages.rb:871
-#: ../src/scenes/Notes.rb:118 ../src/scenes/Notes.rb:252
-#: ../src/scenes/Polls.rb:182 ../src/scenes/Polls.rb:240
-#: ../src/scenes/Polls.rb:416 ../src/scenes/Portable.rb:9
-#: ../src/scenes/Settings.rb:119 ../src/scenes/Sounds.rb:237
-#: ../src/scenes/SpeedTest.rb:9
+#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465 ../src/Scenes/Conference.rb:799 ../src/Scenes/Conference.rb:857 ../src/Scenes/Conference.rb:885 ../src/Scenes/Conference.rb:959 ../src/Scenes/Conference.rb:1075 ../src/Scenes/Conference.rb:1148 ../src/Scenes/Conference.rb:1288 ../src/Scenes/Conference.rb:1785 ../src/Scenes/Conference.rb:1817 ../src/Scenes/Conference.rb:1854 ../src/Scenes/Conference.rb:1956 ../src/Scenes/Conference.rb:1977 ../src/Scenes/Conference.rb:2002 ../src/Scenes/Conference.rb:2258 ../src/eapi/Common.rb:16 ../src/eapi/Common.rb:1230 ../src/eapi/Controls.rb:965 ../src/eapi/Controls.rb:1066 ../src/eapi/Controls.rb:3328 ../src/eapi/Controls.rb:3394 ../src/eapi/Controls.rb:4347 ../src/eapi/Controls.rb:4425 ../src/eapi/Controls.rb:4488 ../src/eapi/Controls.rb:4641 ../src/eapi/External.rb:120 ../src/eapi/UI.rb:783 ../src/scenes/Account.rb:117
+#: ../src/scenes/Account.rb:702 ../src/scenes/Ban.rb:26 ../src/scenes/Ban.rb:113 ../src/scenes/Blog.rb:513 ../src/scenes/Blog.rb:1049 ../src/scenes/Blog.rb:1251 ../src/scenes/Blog.rb:1389 ../src/scenes/Blog.rb:1443 ../src/scenes/Blog.rb:1565 ../src/scenes/Blog.rb:1961 ../src/scenes/Blog.rb:2413 ../src/scenes/Blog.rb:2542 ../src/scenes/Clock.rb:12 ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:738 ../src/scenes/Forum.rb:764 ../src/scenes/Forum.rb:910 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:1305 ../src/scenes/Forum.rb:1465 ../src/scenes/Forum.rb:1608 ../src/scenes/Forum.rb:1709 ../src/scenes/Forum.rb:2308 ../src/scenes/Forum.rb:2373 ../src/scenes/Forum.rb:2473 ../src/scenes/Forum.rb:3691 ../src/scenes/Forum.rb:3742 ../src/scenes/Forum.rb:3859 ../src/scenes/Forum.rb:3884 ../src/scenes/Forum.rb:4397 ../src/scenes/Honors.rb:186 ../src/scenes/Honors.rb:222 ../src/scenes/Honors.rb:303
+#: ../src/scenes/Install.rb:3 ../src/scenes/Login.rb:88 ../src/scenes/Main.rb:247 ../src/scenes/Messages.rb:290 ../src/scenes/Messages.rb:871 ../src/scenes/Notes.rb:118 ../src/scenes/Notes.rb:252 ../src/scenes/Polls.rb:182 ../src/scenes/Polls.rb:240 ../src/scenes/Polls.rb:416 ../src/scenes/Portable.rb:9 ../src/scenes/Settings.rb:119 ../src/scenes/Sounds.rb:237 ../src/scenes/SpeedTest.rb:9
 msgid "Cancel"
 msgstr "İptal"
 
@@ -258,14 +214,12 @@ msgctxt "Messages"
 msgid "Recipient"
 msgstr "Alıcı"
 
-#: ../agent/quicknav.rb:162 ../agent/quicknav.rb:166 ../agent/quicknav.rb:302
-#: ../agent/quicknav.rb:306 ../src/scenes/Messages.rb:705
+#: ../agent/quicknav.rb:162 ../agent/quicknav.rb:166 ../agent/quicknav.rb:302 ../agent/quicknav.rb:306 ../src/scenes/Messages.rb:705
 msgctxt "Messages"
 msgid "Failed to send message"
 msgstr "Mesaj gönderilemedi"
 
-#: ../agent/quicknav.rb:220 ../agent/quicknav.rb:222
-#: ../src/scenes/Messages.rb:803
+#: ../agent/quicknav.rb:220 ../agent/quicknav.rb:222 ../src/scenes/Messages.rb:803
 msgctxt "Messages"
 msgid "To"
 msgstr "Kime"
@@ -325,8 +279,7 @@ msgctxt "Conference"
 msgid "Stream audio file"
 msgstr "Ses dosyası yayınla"
 
-#: ../agent/quicknav.rb:348 ../src/Scenes/Conference.rb:806
-#: ../src/Scenes/Conference.rb:1120
+#: ../agent/quicknav.rb:348 ../src/Scenes/Conference.rb:806 ../src/Scenes/Conference.rb:1120
 msgctxt "Conference"
 msgid "Select audio file"
 msgstr "Ses dosyası seçin"
@@ -391,8 +344,7 @@ msgctxt "Conference"
 msgid "Chat message"
 msgstr "Sohbet mesajı"
 
-#: ../agent/quicknav.rb:509 ../src/scenes/Messages.rb:165
-#: ../src/scenes/Messages.rb:720
+#: ../agent/quicknav.rb:509 ../src/scenes/Messages.rb:165 ../src/scenes/Messages.rb:720
 msgctxt "Messages"
 msgid "Reply"
 msgstr "Yanıtla"
@@ -415,19 +367,11 @@ msgstr "Yanıtla"
 #: ../src/EAPI/Documents.rb:3
 msgctxt "License"
 msgid ""
-"Elten is free software: you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation, version 3.\n"
-"Elten is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details."
+"Elten is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.\n"
+"Elten is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details."
 msgstr ""
-"Elten ücretsiz bir yazılımdır: GNU Public License version 3 şartları "
-"uyarınca yeniden dağıtılabilir veya değiştirilebilir.\n"
-"Elten kullanışlı olması umuduyla dağıtılmaktadır. Satılabilirliği veya özel "
-"bir amaç için kullanılabilirliği garantisi ima dahi edilmemiştir. Daha fazla "
-"ayrıntı için GNU Public License lisansına bakın."
+"Elten ücretsiz bir yazılımdır: GNU Public License version 3 şartları uyarınca yeniden dağıtılabilir veya değiştirilebilir.\n"
+"Elten kullanışlı olması umuduyla dağıtılmaktadır. Satılabilirliği veya özel bir amaç için kullanılabilirliği garantisi ima dahi edilmemiştir. Daha fazla ayrıntı için GNU Public License lisansına bakın."
 
 #: ../src/EAPI/Documents.rb:3
 msgctxt "License"
@@ -436,8 +380,7 @@ msgstr "Elten kaynak kodu GitHub'dadır:"
 
 #: ../src/EAPI/Documents.rb:3
 msgctxt "License"
-msgid ""
-"The original content of the GNU General Public License V3 can be found below."
+msgid "The original content of the GNU General Public License V3 can be found below."
 msgstr "GNU General Public License v3 lisansının orijinal içeriği aşağıdadır."
 
 #: ../src/EAPI/Documents.rb:689
@@ -445,104 +388,16 @@ msgctxt "Documentation"
 msgid "Current Invisible Interface modifier key"
 msgstr "Şu anki değişken tuş"
 
-#: ../src/Scenes/Auctions.rb:25 ../src/Scenes/CallHistory.rb:16
-#: ../src/Scenes/Conference.rb:826 ../src/Scenes/FeedViewer.rb:20
-#: ../src/Scenes/FeedViewer.rb:145 ../src/Scenes/PremiumPackages.rb:370
-#: ../src/Scenes/PremiumPackages.rb:408 ../src/Scenes/PremiumPackages.rb:425
-#: ../src/Scenes/PremiumPackages.rb:435 ../src/eapi/Common.rb:327
-#: ../src/eapi/Common.rb:355 ../src/eapi/Common.rb:363
-#: ../src/eapi/Common.rb:515 ../src/eapi/Common.rb:1222
-#: ../src/eapi/EltenSRV.rb:224 ../src/eapi/EltenSRV.rb:242
-#: ../src/eapi/EltenSRV.rb:313 ../src/eapi/EltenSRV.rb:340
-#: ../src/eapi/EltenSRV.rb:379 ../src/eapi/EltenSRV.rb:394
-#: ../src/eapi/EltenSRV.rb:432 ../src/scenes/Account.rb:497
-#: ../src/scenes/Account.rb:560 ../src/scenes/Account.rb:632
-#: ../src/scenes/Account.rb:640 ../src/scenes/Account.rb:646
-#: ../src/scenes/Authentication.rb:16 ../src/scenes/Authentication.rb:43
-#: ../src/scenes/Authentication.rb:78 ../src/scenes/Authentication.rb:91
-#: ../src/scenes/Ban.rb:72 ../src/scenes/Ban.rb:104 ../src/scenes/Ban.rb:127
-#: ../src/scenes/Blog.rb:94 ../src/scenes/Blog.rb:113 ../src/scenes/Blog.rb:168
-#: ../src/scenes/Blog.rb:189 ../src/scenes/Blog.rb:204
-#: ../src/scenes/Blog.rb:266 ../src/scenes/Blog.rb:378
-#: ../src/scenes/Blog.rb:454 ../src/scenes/Blog.rb:503
-#: ../src/scenes/Blog.rb:525 ../src/scenes/Blog.rb:557
-#: ../src/scenes/Blog.rb:590 ../src/scenes/Blog.rb:724
-#: ../src/scenes/Blog.rb:814 ../src/scenes/Blog.rb:995
-#: ../src/scenes/Blog.rb:1061 ../src/scenes/Blog.rb:1107
-#: ../src/scenes/Blog.rb:1134 ../src/scenes/Blog.rb:1142
-#: ../src/scenes/Blog.rb:1150 ../src/scenes/Blog.rb:1187
-#: ../src/scenes/Blog.rb:1197 ../src/scenes/Blog.rb:1237
-#: ../src/scenes/Blog.rb:1267 ../src/scenes/Blog.rb:1300
-#: ../src/scenes/Blog.rb:1328 ../src/scenes/Blog.rb:1348
-#: ../src/scenes/Blog.rb:1407 ../src/scenes/Blog.rb:1432
-#: ../src/scenes/Blog.rb:1450 ../src/scenes/Blog.rb:1712
-#: ../src/scenes/Blog.rb:1853 ../src/scenes/Blog.rb:1868
-#: ../src/scenes/Blog.rb:1924 ../src/scenes/Blog.rb:1937
-#: ../src/scenes/Blog.rb:2020 ../src/scenes/Blog.rb:2169
-#: ../src/scenes/Blog.rb:2176 ../src/scenes/Blog.rb:2384
-#: ../src/scenes/Blog.rb:2405 ../src/scenes/Blog.rb:2511
-#: ../src/scenes/ForgotPassword.rb:24 ../src/scenes/Forum.rb:626
-#: ../src/scenes/Forum.rb:650 ../src/scenes/Forum.rb:670
-#: ../src/scenes/Forum.rb:690 ../src/scenes/Forum.rb:753
-#: ../src/scenes/Forum.rb:778 ../src/scenes/Forum.rb:791
-#: ../src/scenes/Forum.rb:932 ../src/scenes/Forum.rb:1051
-#: ../src/scenes/Forum.rb:1084 ../src/scenes/Forum.rb:1094
-#: ../src/scenes/Forum.rb:1141 ../src/scenes/Forum.rb:1285
-#: ../src/scenes/Forum.rb:1426 ../src/scenes/Forum.rb:1438
-#: ../src/scenes/Forum.rb:1520 ../src/scenes/Forum.rb:1545
-#: ../src/scenes/Forum.rb:1552 ../src/scenes/Forum.rb:1588
-#: ../src/scenes/Forum.rb:1625 ../src/scenes/Forum.rb:1648
-#: ../src/scenes/Forum.rb:1673 ../src/scenes/Forum.rb:1688
-#: ../src/scenes/Forum.rb:1729 ../src/scenes/Forum.rb:2049
-#: ../src/scenes/Forum.rb:2068 ../src/scenes/Forum.rb:2075
-#: ../src/scenes/Forum.rb:2126 ../src/scenes/Forum.rb:2139
-#: ../src/scenes/Forum.rb:2151 ../src/scenes/Forum.rb:2166
-#: ../src/scenes/Forum.rb:2186 ../src/scenes/Forum.rb:2219
-#: ../src/scenes/Forum.rb:2231 ../src/scenes/Forum.rb:2266
-#: ../src/scenes/Forum.rb:2282 ../src/scenes/Forum.rb:2550
-#: ../src/scenes/Forum.rb:2660 ../src/scenes/Forum.rb:2665
-#: ../src/scenes/Forum.rb:2704 ../src/scenes/Forum.rb:2740
-#: ../src/scenes/Forum.rb:2923 ../src/scenes/Forum.rb:2940
-#: ../src/scenes/Forum.rb:2958 ../src/scenes/Forum.rb:3272
-#: ../src/scenes/Forum.rb:3293 ../src/scenes/Forum.rb:3352
-#: ../src/scenes/Forum.rb:3520 ../src/scenes/Forum.rb:3536
-#: ../src/scenes/Forum.rb:3543 ../src/scenes/Forum.rb:3604
-#: ../src/scenes/Forum.rb:3629 ../src/scenes/Forum.rb:3642
-#: ../src/scenes/Forum.rb:3669 ../src/scenes/Forum.rb:3806
-#: ../src/scenes/Forum.rb:3867 ../src/scenes/Forum.rb:3931
-#: ../src/scenes/Forum.rb:4007 ../src/scenes/Forum.rb:4019
-#: ../src/scenes/Forum.rb:4435 ../src/scenes/Honors.rb:20
-#: ../src/scenes/Honors.rb:138 ../src/scenes/Honors.rb:149
-#: ../src/scenes/Honors.rb:165 ../src/scenes/Honors.rb:210
-#: ../src/scenes/Honors.rb:315 ../src/scenes/Loading.rb:329
-#: ../src/scenes/Main.rb:393 ../src/scenes/Messages.rb:101
-#: ../src/scenes/Messages.rb:182 ../src/scenes/Messages.rb:252
-#: ../src/scenes/Messages.rb:337 ../src/scenes/Messages.rb:373
-#: ../src/scenes/Messages.rb:380 ../src/scenes/Messages.rb:405
-#: ../src/scenes/Messages.rb:495 ../src/scenes/Messages.rb:528
-#: ../src/scenes/Messages.rb:736 ../src/scenes/Messages.rb:743
-#: ../src/scenes/Messages.rb:759 ../src/scenes/Messages.rb:766
-#: ../src/scenes/Messages.rb:817 ../src/scenes/Messages.rb:934
-#: ../src/scenes/Messages.rb:1041 ../src/scenes/Notes.rb:16
-#: ../src/scenes/Notes.rb:107 ../src/scenes/Notes.rb:141
-#: ../src/scenes/Notes.rb:181 ../src/scenes/Notes.rb:194
-#: ../src/scenes/Notes.rb:228 ../src/scenes/Notes.rb:241
-#: ../src/scenes/Notes.rb:271 ../src/scenes/Polls.rb:28
-#: ../src/scenes/Polls.rb:56 ../src/scenes/Polls.rb:137
-#: ../src/scenes/Polls.rb:342 ../src/scenes/Polls.rb:359
-#: ../src/scenes/Polls.rb:374 ../src/scenes/Polls.rb:456
-#: ../src/scenes/Polls.rb:489 ../src/scenes/Polls.rb:499
-#: ../src/scenes/Polls.rb:510 ../src/scenes/Polls.rb:566
-#: ../src/scenes/Polls.rb:580 ../src/scenes/Polls.rb:597
-#: ../src/scenes/SoundThemes.rb:82 ../src/scenes/Sounds.rb:285
-#: ../src/scenes/Sounds.rb:323 ../src/scenes/UserSearch.rb:19
+#: ../src/Scenes/Auctions.rb:25 ../src/Scenes/CallHistory.rb:16 ../src/Scenes/Conference.rb:826 ../src/Scenes/FeedViewer.rb:20 ../src/Scenes/FeedViewer.rb:145 ../src/Scenes/PremiumPackages.rb:370 ../src/Scenes/PremiumPackages.rb:408 ../src/Scenes/PremiumPackages.rb:425 ../src/Scenes/PremiumPackages.rb:435 ../src/eapi/Common.rb:327 ../src/eapi/Common.rb:355 ../src/eapi/Common.rb:363 ../src/eapi/Common.rb:515 ../src/eapi/Common.rb:1222 ../src/eapi/EltenSRV.rb:224 ../src/eapi/EltenSRV.rb:242 ../src/eapi/EltenSRV.rb:313 ../src/eapi/EltenSRV.rb:340 ../src/eapi/EltenSRV.rb:379 ../src/eapi/EltenSRV.rb:394 ../src/eapi/EltenSRV.rb:432 ../src/scenes/Account.rb:497 ../src/scenes/Account.rb:560 ../src/scenes/Account.rb:632 ../src/scenes/Account.rb:640 ../src/scenes/Account.rb:646 ../src/scenes/Authentication.rb:16 ../src/scenes/Authentication.rb:43 ../src/scenes/Authentication.rb:78
+#: ../src/scenes/Authentication.rb:91 ../src/scenes/Ban.rb:72 ../src/scenes/Ban.rb:104 ../src/scenes/Ban.rb:127 ../src/scenes/Blog.rb:94 ../src/scenes/Blog.rb:113 ../src/scenes/Blog.rb:168 ../src/scenes/Blog.rb:189 ../src/scenes/Blog.rb:204 ../src/scenes/Blog.rb:266 ../src/scenes/Blog.rb:378 ../src/scenes/Blog.rb:454 ../src/scenes/Blog.rb:503 ../src/scenes/Blog.rb:525 ../src/scenes/Blog.rb:557 ../src/scenes/Blog.rb:590 ../src/scenes/Blog.rb:724 ../src/scenes/Blog.rb:814 ../src/scenes/Blog.rb:995 ../src/scenes/Blog.rb:1061 ../src/scenes/Blog.rb:1107 ../src/scenes/Blog.rb:1134 ../src/scenes/Blog.rb:1142 ../src/scenes/Blog.rb:1150 ../src/scenes/Blog.rb:1187 ../src/scenes/Blog.rb:1197 ../src/scenes/Blog.rb:1237 ../src/scenes/Blog.rb:1267 ../src/scenes/Blog.rb:1300 ../src/scenes/Blog.rb:1328 ../src/scenes/Blog.rb:1348 ../src/scenes/Blog.rb:1407 ../src/scenes/Blog.rb:1432 ../src/scenes/Blog.rb:1450
+#: ../src/scenes/Blog.rb:1712 ../src/scenes/Blog.rb:1853 ../src/scenes/Blog.rb:1868 ../src/scenes/Blog.rb:1924 ../src/scenes/Blog.rb:1937 ../src/scenes/Blog.rb:2020 ../src/scenes/Blog.rb:2169 ../src/scenes/Blog.rb:2176 ../src/scenes/Blog.rb:2384 ../src/scenes/Blog.rb:2405 ../src/scenes/Blog.rb:2511 ../src/scenes/ForgotPassword.rb:24 ../src/scenes/Forum.rb:626 ../src/scenes/Forum.rb:650 ../src/scenes/Forum.rb:670 ../src/scenes/Forum.rb:690 ../src/scenes/Forum.rb:753 ../src/scenes/Forum.rb:778 ../src/scenes/Forum.rb:791 ../src/scenes/Forum.rb:932 ../src/scenes/Forum.rb:1051 ../src/scenes/Forum.rb:1084 ../src/scenes/Forum.rb:1094 ../src/scenes/Forum.rb:1141 ../src/scenes/Forum.rb:1285 ../src/scenes/Forum.rb:1426 ../src/scenes/Forum.rb:1438 ../src/scenes/Forum.rb:1520 ../src/scenes/Forum.rb:1545 ../src/scenes/Forum.rb:1552 ../src/scenes/Forum.rb:1588 ../src/scenes/Forum.rb:1625
+#: ../src/scenes/Forum.rb:1648 ../src/scenes/Forum.rb:1673 ../src/scenes/Forum.rb:1688 ../src/scenes/Forum.rb:1729 ../src/scenes/Forum.rb:2049 ../src/scenes/Forum.rb:2068 ../src/scenes/Forum.rb:2075 ../src/scenes/Forum.rb:2126 ../src/scenes/Forum.rb:2139 ../src/scenes/Forum.rb:2151 ../src/scenes/Forum.rb:2166 ../src/scenes/Forum.rb:2186 ../src/scenes/Forum.rb:2219 ../src/scenes/Forum.rb:2231 ../src/scenes/Forum.rb:2266 ../src/scenes/Forum.rb:2282 ../src/scenes/Forum.rb:2550 ../src/scenes/Forum.rb:2660 ../src/scenes/Forum.rb:2665 ../src/scenes/Forum.rb:2704 ../src/scenes/Forum.rb:2740 ../src/scenes/Forum.rb:2923 ../src/scenes/Forum.rb:2940 ../src/scenes/Forum.rb:2958 ../src/scenes/Forum.rb:3272 ../src/scenes/Forum.rb:3293 ../src/scenes/Forum.rb:3352 ../src/scenes/Forum.rb:3520 ../src/scenes/Forum.rb:3536 ../src/scenes/Forum.rb:3543 ../src/scenes/Forum.rb:3604 ../src/scenes/Forum.rb:3629
+#: ../src/scenes/Forum.rb:3642 ../src/scenes/Forum.rb:3669 ../src/scenes/Forum.rb:3806 ../src/scenes/Forum.rb:3867 ../src/scenes/Forum.rb:3931 ../src/scenes/Forum.rb:4007 ../src/scenes/Forum.rb:4019 ../src/scenes/Forum.rb:4435 ../src/scenes/Honors.rb:20 ../src/scenes/Honors.rb:138 ../src/scenes/Honors.rb:149 ../src/scenes/Honors.rb:165 ../src/scenes/Honors.rb:210 ../src/scenes/Honors.rb:315 ../src/scenes/Loading.rb:329 ../src/scenes/Main.rb:393 ../src/scenes/Messages.rb:101 ../src/scenes/Messages.rb:182 ../src/scenes/Messages.rb:252 ../src/scenes/Messages.rb:337 ../src/scenes/Messages.rb:373 ../src/scenes/Messages.rb:380 ../src/scenes/Messages.rb:405 ../src/scenes/Messages.rb:495 ../src/scenes/Messages.rb:528 ../src/scenes/Messages.rb:736 ../src/scenes/Messages.rb:743 ../src/scenes/Messages.rb:759 ../src/scenes/Messages.rb:766 ../src/scenes/Messages.rb:817 ../src/scenes/Messages.rb:934
+#: ../src/scenes/Messages.rb:1041 ../src/scenes/Notes.rb:16 ../src/scenes/Notes.rb:107 ../src/scenes/Notes.rb:141 ../src/scenes/Notes.rb:181 ../src/scenes/Notes.rb:194 ../src/scenes/Notes.rb:228 ../src/scenes/Notes.rb:241 ../src/scenes/Notes.rb:271 ../src/scenes/Polls.rb:28 ../src/scenes/Polls.rb:56 ../src/scenes/Polls.rb:137 ../src/scenes/Polls.rb:342 ../src/scenes/Polls.rb:359 ../src/scenes/Polls.rb:374 ../src/scenes/Polls.rb:456 ../src/scenes/Polls.rb:489 ../src/scenes/Polls.rb:499 ../src/scenes/Polls.rb:510 ../src/scenes/Polls.rb:566 ../src/scenes/Polls.rb:580 ../src/scenes/Polls.rb:597 ../src/scenes/SoundThemes.rb:82 ../src/scenes/Sounds.rb:285 ../src/scenes/Sounds.rb:323 ../src/scenes/UserSearch.rb:19
 msgid "Error"
 msgstr "Hata"
 
-#: ../src/Scenes/CallHistory.rb:10 ../src/Scenes/PremiumPackages.rb:4
-#: ../src/scenes/Authentication.rb:10 ../src/scenes/Contacts.rb:13
-#: ../src/scenes/Messages.rb:26 ../src/scenes/Notes.rb:10
-#: ../src/scenes/WhatsNew.rb:15
+#: ../src/Scenes/CallHistory.rb:10 ../src/Scenes/PremiumPackages.rb:4 ../src/scenes/Authentication.rb:10 ../src/scenes/Contacts.rb:13 ../src/scenes/Messages.rb:26 ../src/scenes/Notes.rb:10 ../src/scenes/WhatsNew.rb:15
 msgid "This section is unavailable for guests"
 msgstr "Bu bölüm konuklar için kullanılamaz"
 
@@ -586,23 +441,8 @@ msgctxt "CallHistory"
 msgid "Call History"
 msgstr "Arama geçmişi"
 
-#: ../src/Scenes/CallHistory.rb:61 ../src/Scenes/Conference.rb:1408
-#: ../src/Scenes/Conference.rb:1420 ../src/Scenes/Conference.rb:1429
-#: ../src/Scenes/Conference.rb:1490 ../src/Scenes/Conference.rb:1539
-#: ../src/Scenes/Conference.rb:1587 ../src/Scenes/Conference.rb:1674
-#: ../src/Scenes/Conference.rb:2250 ../src/Scenes/PremiumPackages.rb:133
-#: ../src/Scenes/Sponsors.rb:30 ../src/scenes/Account.rb:454
-#: ../src/scenes/Account.rb:572 ../src/scenes/Blog.rb:1223
-#: ../src/scenes/Forum.rb:717 ../src/scenes/Forum.rb:1025
-#: ../src/scenes/Forum.rb:1701 ../src/scenes/Forum.rb:2293
-#: ../src/scenes/Forum.rb:3680 ../src/scenes/Honors.rb:174
-#: ../src/scenes/Honors.rb:295 ../src/scenes/Messages.rb:272
-#: ../src/scenes/Messages.rb:486 ../src/scenes/Messages.rb:792
-#: ../src/scenes/Notes.rb:97 ../src/scenes/Online.rb:37
-#: ../src/scenes/Polls.rb:165 ../src/scenes/Users.rb:56
-#: ../src/scenes/UsersAddedMeToContacts.rb:60
-#: ../src/scenes/Users_RecentlyActived.rb:40
-#: ../src/scenes/Users_RecentlyRegistered.rb:40
+#: ../src/Scenes/CallHistory.rb:61 ../src/Scenes/Conference.rb:1408 ../src/Scenes/Conference.rb:1420 ../src/Scenes/Conference.rb:1429 ../src/Scenes/Conference.rb:1490 ../src/Scenes/Conference.rb:1539 ../src/Scenes/Conference.rb:1587 ../src/Scenes/Conference.rb:1674 ../src/Scenes/Conference.rb:2250 ../src/Scenes/PremiumPackages.rb:133 ../src/Scenes/Sponsors.rb:30 ../src/scenes/Account.rb:454 ../src/scenes/Account.rb:572 ../src/scenes/Blog.rb:1223 ../src/scenes/Forum.rb:717 ../src/scenes/Forum.rb:1025 ../src/scenes/Forum.rb:1701 ../src/scenes/Forum.rb:2293 ../src/scenes/Forum.rb:3680 ../src/scenes/Honors.rb:174 ../src/scenes/Honors.rb:295 ../src/scenes/Messages.rb:272 ../src/scenes/Messages.rb:486 ../src/scenes/Messages.rb:792 ../src/scenes/Notes.rb:97 ../src/scenes/Online.rb:37 ../src/scenes/Polls.rb:165 ../src/scenes/Users.rb:56 ../src/scenes/UsersAddedMeToContacts.rb:60
+#: ../src/scenes/Users_RecentlyActived.rb:40 ../src/scenes/Users_RecentlyRegistered.rb:40
 msgid "Refresh"
 msgstr "Yenile"
 
@@ -644,8 +484,7 @@ msgstr "Kanal aralığında gezinmek için ok tuşlarını kullanın"
 #: ../src/Scenes/Conference.rb:48
 msgctxt "Conference"
 msgid "Use Shift+Left/Right Arrow to rotate"
-msgstr ""
-"Değiştirmek için Shift tuşuna basılı tutup sol ve sağ ok tuşlarını kullanın"
+msgstr "Değiştirmek için Shift tuşuna basılı tutup sol ve sağ ok tuşlarını kullanın"
 
 #: ../src/Scenes/Conference.rb:59
 msgctxt "Conference"
@@ -819,8 +658,7 @@ msgctxt "Conference"
 msgid "Would you like to disconnect?"
 msgstr "Bağlantıyı kesmek istiyor musunuz?"
 
-#: ../src/Scenes/Conference.rb:331 ../src/Scenes/Conference.rb:404
-#: ../src/Scenes/Conference.rb:557
+#: ../src/Scenes/Conference.rb:331 ../src/Scenes/Conference.rb:404 ../src/Scenes/Conference.rb:557
 msgctxt "Conference"
 msgid "Channels"
 msgstr "Kanallar"
@@ -1062,12 +900,8 @@ msgstr "Kodlama tahminini devredışı bırak"
 
 #: ../src/Scenes/Conference.rb:559
 msgctxt "Conference"
-msgid ""
-"Enable conference mode (only channel administrators and allowed users can "
-"speak)"
-msgstr ""
-"Konferans modunu etkinleştir (sadece kanal yöneticileri ve izin verilen "
-"kullanıcılar konuşabilir)"
+msgid "Enable conference mode (only channel administrators and allowed users can speak)"
+msgstr "Konferans modunu etkinleştir (sadece kanal yöneticileri ve izin verilen kullanıcılar konuşabilir)"
 
 #: ../src/Scenes/Conference.rb:560
 msgctxt "Conference"
@@ -1101,8 +935,7 @@ msgstr "Kanal boyutu"
 
 #: ../src/Scenes/Conference.rb:566
 msgctxt "Conference"
-msgid ""
-"Channel password (leave this field blank to set a channel without a password)"
+msgid "Channel password (leave this field blank to set a channel without a password)"
 msgstr "Kanal şifresi (şifresiz kanal oluşturmak için boş bırakın)"
 
 #: ../src/Scenes/Conference.rb:567
@@ -1175,15 +1008,12 @@ msgctxt "Conference"
 msgid "Available objects"
 msgstr "Mevcut nesneler"
 
-#: ../src/Scenes/Conference.rb:797 ../src/Scenes/Conference.rb:1783
-#: ../src/Scenes/Conference.rb:1815 ../src/Scenes/Conference.rb:1852
+#: ../src/Scenes/Conference.rb:797 ../src/Scenes/Conference.rb:1783 ../src/Scenes/Conference.rb:1815 ../src/Scenes/Conference.rb:1852
 msgctxt "Conference"
 msgid "Here"
 msgstr "Burada"
 
-#: ../src/Scenes/Conference.rb:797 ../src/Scenes/Conference.rb:1624
-#: ../src/Scenes/Conference.rb:1696 ../src/Scenes/Conference.rb:1783
-#: ../src/Scenes/Conference.rb:1815 ../src/Scenes/Conference.rb:1852
+#: ../src/Scenes/Conference.rb:797 ../src/Scenes/Conference.rb:1624 ../src/Scenes/Conference.rb:1696 ../src/Scenes/Conference.rb:1783 ../src/Scenes/Conference.rb:1815 ../src/Scenes/Conference.rb:1852
 msgctxt "Conference"
 msgid "Everywhere"
 msgstr "Her yerde"
@@ -1208,8 +1038,7 @@ msgctxt "Conference"
 msgid "This file is too large"
 msgstr "Bu dosya çok büyük"
 
-#: ../src/Scenes/Conference.rb:824 ../src/Scenes/Conference.rb:1529
-#: ../src/Scenes/Conference.rb:1578
+#: ../src/Scenes/Conference.rb:824 ../src/Scenes/Conference.rb:1529 ../src/Scenes/Conference.rb:1578
 msgctxt "Conference"
 msgid "Delete"
 msgstr "Sil"
@@ -1219,8 +1048,7 @@ msgctxt "Conference"
 msgid "Object deleted"
 msgstr "Nesne silindi"
 
-#: ../src/Scenes/Conference.rb:854 ../src/Scenes/Conference.rb:882
-#: ../src/Scenes/Conference.rb:2254
+#: ../src/Scenes/Conference.rb:854 ../src/Scenes/Conference.rb:882 ../src/Scenes/Conference.rb:2254
 msgctxt "Conference"
 msgid "Destination"
 msgstr "Konum"
@@ -1230,19 +1058,7 @@ msgctxt "Conference"
 msgid "File name"
 msgstr "Dosya adı"
 
-#: ../src/Scenes/Conference.rb:856 ../src/Scenes/Conference.rb:884
-#: ../src/Scenes/Conference.rb:958 ../src/eapi/Controls.rb:3393
-#: ../src/eapi/Controls.rb:4346 ../src/eapi/Controls.rb:4424
-#: ../src/eapi/Controls.rb:4487 ../src/scenes/Account.rb:116
-#: ../src/scenes/Blog.rb:1250 ../src/scenes/Blog.rb:1389
-#: ../src/scenes/Blog.rb:1564 ../src/scenes/Clock.rb:11
-#: ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:737
-#: ../src/scenes/Forum.rb:763 ../src/scenes/Forum.rb:1464
-#: ../src/scenes/Forum.rb:1613 ../src/scenes/Forum.rb:3884
-#: ../src/scenes/Forum.rb:4396 ../src/scenes/Honors.rb:186
-#: ../src/scenes/Honors.rb:221 ../src/scenes/Notes.rb:158
-#: ../src/scenes/Notes.rb:175 ../src/scenes/Polls.rb:239
-#: ../src/scenes/Settings.rb:118
+#: ../src/Scenes/Conference.rb:856 ../src/Scenes/Conference.rb:884 ../src/Scenes/Conference.rb:958 ../src/eapi/Controls.rb:3393 ../src/eapi/Controls.rb:4346 ../src/eapi/Controls.rb:4424 ../src/eapi/Controls.rb:4487 ../src/scenes/Account.rb:116 ../src/scenes/Blog.rb:1250 ../src/scenes/Blog.rb:1389 ../src/scenes/Blog.rb:1564 ../src/scenes/Clock.rb:11 ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:737 ../src/scenes/Forum.rb:763 ../src/scenes/Forum.rb:1464 ../src/scenes/Forum.rb:1613 ../src/scenes/Forum.rb:3884 ../src/scenes/Forum.rb:4396 ../src/scenes/Honors.rb:186 ../src/scenes/Honors.rb:221 ../src/scenes/Notes.rb:158 ../src/scenes/Notes.rb:175 ../src/scenes/Polls.rb:239 ../src/scenes/Settings.rb:118
 msgid "Save"
 msgstr "Kaydet"
 
@@ -1261,14 +1077,12 @@ msgctxt "Conference"
 msgid "Directory name"
 msgstr "Klasör adı"
 
-#: ../src/Scenes/Conference.rb:915 ../src/Scenes/Conference.rb:917
-#: ../src/Scenes/Conference.rb:919 ../src/Scenes/Conference.rb:956
+#: ../src/Scenes/Conference.rb:915 ../src/Scenes/Conference.rb:917 ../src/Scenes/Conference.rb:919 ../src/Scenes/Conference.rb:956
 msgctxt "Conference"
 msgid "Left"
 msgstr "Sol"
 
-#: ../src/Scenes/Conference.rb:921 ../src/Scenes/Conference.rb:923
-#: ../src/Scenes/Conference.rb:925 ../src/Scenes/Conference.rb:956
+#: ../src/Scenes/Conference.rb:921 ../src/Scenes/Conference.rb:923 ../src/Scenes/Conference.rb:925 ../src/Scenes/Conference.rb:956
 msgctxt "Conference"
 msgid "Right"
 msgstr "Sağ"
@@ -1323,8 +1137,7 @@ msgctxt "Conference"
 msgid "Master volume"
 msgstr "Hoparlör ses seviyesi"
 
-#: ../src/Scenes/Conference.rb:1010 ../src/Scenes/Conference.rb:1652
-#: ../src/Scenes/Conference.rb:1735
+#: ../src/Scenes/Conference.rb:1010 ../src/Scenes/Conference.rb:1652 ../src/Scenes/Conference.rb:1735
 msgctxt "Conference"
 msgid "Stream volume"
 msgstr "Yayın ses seviyesi"
@@ -1344,14 +1157,12 @@ msgctxt "Conference"
 msgid "Stream from sound card"
 msgstr "Ses kartını yayınla"
 
-#: ../src/Scenes/Conference.rb:1072 ../src/Scenes/Conference.rb:1850
-#: ../src/Scenes/Conference.rb:2000
+#: ../src/Scenes/Conference.rb:1072 ../src/Scenes/Conference.rb:1850 ../src/Scenes/Conference.rb:2000
 msgctxt "Conference"
 msgid "Loopback device"
 msgstr "Loopback aygıtı"
 
-#: ../src/Scenes/Conference.rb:1072 ../src/Scenes/Conference.rb:1850
-#: ../src/Scenes/Conference.rb:2000
+#: ../src/Scenes/Conference.rb:1072 ../src/Scenes/Conference.rb:1850 ../src/Scenes/Conference.rb:2000
 msgctxt "Conference"
 msgid "Select sound card to stream"
 msgstr "Yayın yapılacak ses kartını seçin"
@@ -1366,14 +1177,12 @@ msgctxt "Conference"
 msgid "Stream"
 msgstr "Yayın yap"
 
-#: ../src/Scenes/Conference.rb:1113 ../src/Scenes/Conference.rb:1760
-#: ../src/Scenes/Conference.rb:1937
+#: ../src/Scenes/Conference.rb:1113 ../src/Scenes/Conference.rb:1760 ../src/Scenes/Conference.rb:1937
 msgctxt "Conference"
 msgid "Scroll backward"
 msgstr "Geri kaydır"
 
-#: ../src/Scenes/Conference.rb:1114 ../src/Scenes/Conference.rb:1765
-#: ../src/Scenes/Conference.rb:1940
+#: ../src/Scenes/Conference.rb:1114 ../src/Scenes/Conference.rb:1765 ../src/Scenes/Conference.rb:1940
 msgctxt "Conference"
 msgid "Scroll forward"
 msgstr "İleri kaydır"
@@ -1603,9 +1412,7 @@ msgctxt "Conference"
 msgid "Placed cards"
 msgstr "Masadaki kartlar"
 
-#: ../src/Scenes/Conference.rb:1360 ../src/eapi/Controls.rb:4518
-#: ../src/scenes/Loading.rb:367 ../src/scenes/Log.rb:14
-#: ../src/scenes/Polls.rb:624
+#: ../src/Scenes/Conference.rb:1360 ../src/eapi/Controls.rb:4518 ../src/scenes/Loading.rb:367 ../src/scenes/Log.rb:14 ../src/scenes/Polls.rb:624
 msgid "Close"
 msgstr "Kapat"
 
@@ -1621,12 +1428,8 @@ msgstr "Karıştır"
 
 #: ../src/Scenes/Conference.rb:1383
 msgctxt "Conference"
-msgid ""
-"Are you sure you want to shuffle this deck? All placed cards will be "
-"returned to this deck."
-msgstr ""
-"Desteyi karıştırmak istediğinizden emin misiniz? masadaki tüm kartlar "
-"desteye dönecek."
+msgid "Are you sure you want to shuffle this deck? All placed cards will be returned to this deck."
+msgstr "Desteyi karıştırmak istediğinizden emin misiniz? masadaki tüm kartlar desteye dönecek."
 
 #: ../src/Scenes/Conference.rb:1389 ../src/Scenes/Conference.rb:1459
 msgctxt "Conference"
@@ -1733,9 +1536,7 @@ msgctxt "Conference"
 msgid "User to add to channel whitelist"
 msgstr "Kanal beyaz listesine eklenecek kullanıcı"
 
-#: ../src/Scenes/Conference.rb:1618 ../src/Scenes/Conference.rb:1691
-#: ../src/Scenes/Conference.rb:1783 ../src/Scenes/Conference.rb:1815
-#: ../src/Scenes/Conference.rb:1852
+#: ../src/Scenes/Conference.rb:1618 ../src/Scenes/Conference.rb:1691 ../src/Scenes/Conference.rb:1783 ../src/Scenes/Conference.rb:1815 ../src/Scenes/Conference.rb:1852
 msgctxt "Conference"
 msgid "Location"
 msgstr "Yer"
@@ -1745,9 +1546,7 @@ msgctxt "Conference"
 msgid "User"
 msgstr "Kullanıcı"
 
-#: ../src/Scenes/Conference.rb:1626 ../src/Scenes/Conference.rb:1698
-#: ../src/Scenes/Conference.rb:1783 ../src/Scenes/Conference.rb:1815
-#: ../src/Scenes/Conference.rb:1852
+#: ../src/Scenes/Conference.rb:1626 ../src/Scenes/Conference.rb:1698 ../src/Scenes/Conference.rb:1783 ../src/Scenes/Conference.rb:1815 ../src/Scenes/Conference.rb:1852
 msgctxt "Conference"
 msgid "Right next to me"
 msgstr "Yanımda"
@@ -1772,8 +1571,7 @@ msgctxt "Conference"
 msgid "Stream muted"
 msgstr "Yayının sesi kapatıldı"
 
-#: ../src/Scenes/Conference.rb:1648 ../src/Scenes/Conference.rb:1733
-#: ../src/Scenes/Conference.rb:1913
+#: ../src/Scenes/Conference.rb:1648 ../src/Scenes/Conference.rb:1733 ../src/Scenes/Conference.rb:1913
 msgctxt "Conference"
 msgid "Change volume"
 msgstr "Ses seviyesini değiştir"
@@ -1828,15 +1626,12 @@ msgctxt "Conference"
 msgid "New file stream"
 msgstr "Yeni dosya yayını"
 
-#: ../src/Scenes/Conference.rb:1782 ../src/Scenes/Conference.rb:1954
-#: ../src/Scenes/Conference.rb:2036
+#: ../src/Scenes/Conference.rb:1782 ../src/Scenes/Conference.rb:1954 ../src/Scenes/Conference.rb:2036
 msgctxt "Conference"
 msgid "File"
 msgstr "Dosya"
 
-#: ../src/Scenes/Conference.rb:1784 ../src/Scenes/Conference.rb:1816
-#: ../src/Scenes/Conference.rb:1853 ../src/Scenes/Conference.rb:1955
-#: ../src/Scenes/Conference.rb:1976 ../src/Scenes/Conference.rb:2001
+#: ../src/Scenes/Conference.rb:1784 ../src/Scenes/Conference.rb:1816 ../src/Scenes/Conference.rb:1853 ../src/Scenes/Conference.rb:1955 ../src/Scenes/Conference.rb:1976 ../src/Scenes/Conference.rb:2001
 msgctxt "Conference"
 msgid "Place"
 msgstr "Yerleştir"
@@ -2021,19 +1816,7 @@ msgctxt "Conference"
 msgid "Name for this chain"
 msgstr "Zincir adı"
 
-#: ../src/Scenes/Conference.rb:2234 ../src/Scenes/Conference.rb:2292
-#: ../src/Scenes/Conference.rb:2340 ../src/eapi/Controls.rb:3425
-#: ../src/eapi/Controls.rb:4557 ../src/scenes/Account.rb:300
-#: ../src/scenes/Account.rb:304 ../src/scenes/Blog.rb:1269
-#: ../src/scenes/Blog.rb:1302 ../src/scenes/Blog.rb:1767
-#: ../src/scenes/Blog.rb:1771 ../src/scenes/Clock.rb:35
-#: ../src/scenes/Clock.rb:80 ../src/scenes/Forum.rb:1135
-#: ../src/scenes/Forum.rb:1627 ../src/scenes/Forum.rb:1675
-#: ../src/scenes/Forum.rb:4498 ../src/scenes/Forum.rb:4502
-#: ../src/scenes/Honors.rb:212 ../src/scenes/Messages.rb:239
-#: ../src/scenes/Messages.rb:371 ../src/scenes/Settings.rb:343
-#: ../src/scenes/Settings.rb:347 ../src/scenes/SoundThemes.rb:73
-#: ../src/scenes/SoundThemes.rb:207 ../src/scenes/Sounds.rb:246
+#: ../src/Scenes/Conference.rb:2234 ../src/Scenes/Conference.rb:2292 ../src/Scenes/Conference.rb:2340 ../src/eapi/Controls.rb:3425 ../src/eapi/Controls.rb:4557 ../src/scenes/Account.rb:300 ../src/scenes/Account.rb:304 ../src/scenes/Blog.rb:1269 ../src/scenes/Blog.rb:1302 ../src/scenes/Blog.rb:1767 ../src/scenes/Blog.rb:1771 ../src/scenes/Clock.rb:35 ../src/scenes/Clock.rb:80 ../src/scenes/Forum.rb:1135 ../src/scenes/Forum.rb:1627 ../src/scenes/Forum.rb:1675 ../src/scenes/Forum.rb:4498 ../src/scenes/Forum.rb:4502 ../src/scenes/Honors.rb:212 ../src/scenes/Messages.rb:239 ../src/scenes/Messages.rb:371 ../src/scenes/Settings.rb:343 ../src/scenes/Settings.rb:347 ../src/scenes/SoundThemes.rb:73 ../src/scenes/SoundThemes.rb:207 ../src/scenes/Sounds.rb:246
 msgid "Saved"
 msgstr "Kaydedildi"
 
@@ -2077,13 +1860,7 @@ msgctxt "Conference"
 msgid "Saved chains"
 msgstr "Kayıtlı zincirler"
 
-#: ../src/Scenes/Conference.rb:2384 ../src/Scenes/FeedViewer.rb:153
-#: ../src/eapi/Controls.rb:2608 ../src/eapi/Controls.rb:4550
-#: ../src/scenes/Account.rb:557 ../src/scenes/Blog.rb:222
-#: ../src/scenes/Blog.rb:477 ../src/scenes/Main.rb:401
-#: ../src/scenes/Messages.rb:777 ../src/scenes/Notes.rb:82
-#: ../src/scenes/Notes.rb:160 ../src/scenes/Polls.rb:133
-#: ../src/scenes/Polls.rb:664
+#: ../src/Scenes/Conference.rb:2384 ../src/Scenes/FeedViewer.rb:153 ../src/eapi/Controls.rb:2608 ../src/eapi/Controls.rb:4550 ../src/scenes/Account.rb:557 ../src/scenes/Blog.rb:222 ../src/scenes/Blog.rb:477 ../src/scenes/Main.rb:401 ../src/scenes/Messages.rb:777 ../src/scenes/Notes.rb:82 ../src/scenes/Notes.rb:160 ../src/scenes/Polls.rb:133 ../src/scenes/Polls.rb:664
 msgid "Delete"
 msgstr "Sil"
 
@@ -2466,12 +2243,8 @@ msgstr "Kanala özgün arka plan ekleme"
 
 #: ../src/Scenes/PremiumPackages.rb:75
 msgctxt "PremiumPackages"
-msgid ""
-"Creating conference-mode channels, where only administrators and allowed "
-"users can speak"
-msgstr ""
-"Sadece yöneticilerin ve izin verilen kullanıcıların konuşabildiği konferans "
-"modunda sohbetler oluşturabilme"
+msgid "Creating conference-mode channels, where only administrators and allowed users can speak"
+msgstr "Sadece yöneticilerin ve izin verilen kullanıcıların konuşabildiği konferans modunda sohbetler oluşturabilme"
 
 #: ../src/Scenes/PremiumPackages.rb:76
 msgctxt "PremiumPackages"
@@ -2600,21 +2373,13 @@ msgstr "%{time} zamanına kadar etkin"
 
 #: ../src/Scenes/PremiumPackages.rb:250
 msgctxt "PremiumPackages"
-msgid ""
-"Regardless of the remaining duration of other packages, they will be "
-"replaced by the selected package. This package will be activated for a "
-"period of one year. The remaining period for other packages will be deducted "
-"from the package price. Do you want to continue?"
-msgstr ""
-"Diğer paketlerin süresi fark etmeksizin, diğer paketler seçtiğiniz paketle "
-"değiştirilecektir. Bu paket 1 yıl boyunca etkin kalacaktır. Diğer paketlerin "
-"kalan süresi bu paketin fiyatından düşülecektir. Devam etmek istiyor musunuz?"
+msgid "Regardless of the remaining duration of other packages, they will be replaced by the selected package. This package will be activated for a period of one year. The remaining period for other packages will be deducted from the package price. Do you want to continue?"
+msgstr "Diğer paketlerin süresi fark etmeksizin, diğer paketler seçtiğiniz paketle değiştirilecektir. Bu paket 1 yıl boyunca etkin kalacaktır. Diğer paketlerin kalan süresi bu paketin fiyatından düşülecektir. Devam etmek istiyor musunuz?"
 
 #: ../src/Scenes/PremiumPackages.rb:252
 msgctxt "PremiumPackages"
 msgid "This package is currently unavailable. Try to buy it next month."
-msgstr ""
-"Bu paket şu anda mevcut değil. Sonraki ay satın almayı deneyebilirsiniz."
+msgstr "Bu paket şu anda mevcut değil. Sonraki ay satın almayı deneyebilirsiniz."
 
 #: ../src/Scenes/PremiumPackages.rb:257
 msgctxt "PremiumPackages"
@@ -2634,21 +2399,13 @@ msgstr "Bu paketi ne kadar süre için satın almak istiyorsunuz?"
 #: ../src/Scenes/PremiumPackages.rb:262
 msgctxt "PremiumPackages"
 msgid ""
-"EltenLink's premium packages are given to users as a reward for supporting "
-"the portal.\n"
+"EltenLink's premium packages are given to users as a reward for supporting the portal.\n"
 "A project of this size cannot exist without the help of users.\n"
-"The granting of a premium package does not constitute a commitment or a "
-"commercial contract. The user who supports the project is aware that if the "
-"necessary amount is not raised for EltenLink to continue, the premium "
-"packages will become unavailable."
+"The granting of a premium package does not constitute a commitment or a commercial contract. The user who supports the project is aware that if the necessary amount is not raised for EltenLink to continue, the premium packages will become unavailable."
 msgstr ""
-"Elten ücretli paketleri portalı destekleyen kullanıcılara ödül olarak "
-"verilir.\n"
+"Elten ücretli paketleri portalı destekleyen kullanıcılara ödül olarak verilir.\n"
 "Bu boyutta bir proje kullanıcıların yardımı olmadan ayakta duramaz.\n"
-"Ücretli paket verilmesi herhangi bir taahhüt veya ticari anlaşma teşkil "
-"etmez. Projeyi destekleyen kullanıcı EltenLink'in devam ettirilmesi için "
-"ihtiyaç duyulan miktar toplanamazsa ücretli paketlerin kaldırılacağının "
-"farkında olmalıdır."
+"Ücretli paket verilmesi herhangi bir taahhüt veya ticari anlaşma teşkil etmez. Projeyi destekleyen kullanıcı EltenLink'in devam ettirilmesi için ihtiyaç duyulan miktar toplanamazsa ücretli paketlerin kaldırılacağının farkında olmalıdır."
 
 #: ../src/Scenes/PremiumPackages.rb:262 ../src/Scenes/PremiumPackages.rb:331
 msgctxt "PremiumPackages"
@@ -2707,42 +2464,38 @@ msgstr "Transfer detayları aşağıdadır.\n"
 
 #: ../src/Scenes/PremiumPackages.rb:312
 msgctxt "PremiumPackages"
-msgid ""
-"In the title of the transfer, please indicate your user name on the "
-"EltenLink portal and which package the payment concerns."
-msgstr ""
-"Transfer başlığında EltenLink kullanıcı adınızı ve ödemenin hangi paketle "
-"ilgili olduğunu belirtin."
+msgid "In the title of the transfer, please indicate your user name on the EltenLink portal and which package the payment concerns."
+msgstr "Transfer başlığında EltenLink kullanıcı adınızı ve ödemenin hangi paketle ilgili olduğunu belirtin."
 
 #: ../src/Scenes/PremiumPackages.rb:314
 msgctxt "PremiumPackages"
-msgid ""
-"If you wish to receive a code that can be used to activate any of the "
-"packages: %{packages} by any user, mark this information in the transfer "
-"title."
-msgstr ""
-"Herhangi bir kullanıcı tarafından oluşturulan %{packages} paketlerinden "
-"birini etkinleştirmek için kullanılan bir kod almak isterseniz bunu transfer "
-"başlığında belirtin."
+msgid "If you wish to receive a code that can be used to activate any of the packages: %{packages} by any user, mark this information in the transfer title."
+msgstr "Herhangi bir kullanıcı tarafından oluşturulan %{packages} paketlerinden birini etkinleştirmek için kullanılan bir kod almak isterseniz bunu transfer başlığında belirtin."
 
 #: ../src/Scenes/PremiumPackages.rb:316
 msgctxt "PremiumPackages"
 msgid ""
-"Please note that if you transfer a larger amount, the remainder will be "
-"treated as a donation.\n"
+"Please note that if you transfer a larger amount, the remainder will be treated as a donation.\n"
 "\n"
-"In order to reduce the processing time of your payment, you can forward the "
-"transfer confirmation to the Council of Elders."
+"In order to reduce the processing time of your payment, you can forward the transfer confirmation to the Council of Elders."
 msgstr ""
-"Eğer gerekenden fazla miktar transfer ederseniz fazla paranın bağış olarak "
-"kullanılacağını unutmayın.\n"
+"Eğer gerekenden fazla miktar transfer ederseniz fazla paranın bağış olarak kullanılacağını unutmayın.\n"
 "\n"
-"Ödemenizin işleme zamanını azaltmak için transfer onayını portal yönetimine "
-"iletebilirsiniz."
+"Ödemenizin işleme zamanını azaltmak için transfer onayını portal yönetimine iletebilirsiniz."
 
 #: ../src/Scenes/PremiumPackages.rb:320
 msgctxt "PremiumPackages"
-msgid "Domestic bank transfer details (from Poland):\n%{holder}\nAddress: %{address}\nAccount number: %{placcount}\n\nAdditional data for foreign transfers:\nIBAN: %{iban}\nBIC / SWIFT: %{swift}\nBank address: %{bankaddress}\nSort code: %{sortcode}"
+msgid ""
+"Domestic bank transfer details (from Poland):\n"
+"%{holder}\n"
+"Address: %{address}\n"
+"Account number: %{placcount}\n"
+"\n"
+"Additional data for foreign transfers:\n"
+"IBAN: %{iban}\n"
+"BIC / SWIFT: %{swift}\n"
+"Bank address: %{bankaddress}\n"
+"Sort code: %{sortcode}"
 msgstr ""
 "Polonya için ulusal transfer ayrıntıları:\n"
 "%{holder}\n"
@@ -2757,12 +2510,8 @@ msgstr ""
 
 #: ../src/Scenes/PremiumPackages.rb:338
 msgctxt "PremiumPackages"
-msgid ""
-"This payment method requires a redirect to an external website. A web "
-"browser will open. Do you wish to continue?"
-msgstr ""
-"Bu ödeme bir web sitesinden yapılır. Web tarayıcınız açılacaktır. Devam "
-"etmek istiyor musunuz?"
+msgid "This payment method requires a redirect to an external website. A web browser will open. Do you wish to continue?"
+msgstr "Bu ödeme bir web sitesinden yapılır. Web tarayıcınız açılacaktır. Devam etmek istiyor musunuz?"
 
 #: ../src/Scenes/PremiumPackages.rb:359 ../src/Scenes/PremiumPackages.rb:394
 msgctxt "PremiumPackages"
@@ -2772,9 +2521,7 @@ msgstr "Kaç premium kod istersiniz?"
 #: ../src/Scenes/PremiumPackages.rb:367 ../src/Scenes/PremiumPackages.rb:402
 msgctxt "PremiumPackages"
 msgid "You will be charged a processing fee of %{amount} for the selected payment method."
-msgstr ""
-"Seçtiğiniz ödeme yöntemi için ödemenize %{amount} komisyon ücreti "
-"yansıyacaktır. Devam etmek istiyor musunuz?"
+msgstr "Seçtiğiniz ödeme yöntemi için ödemenize %{amount} komisyon ücreti yansıyacaktır. Devam etmek istiyor musunuz?"
 
 #: ../src/Scenes/PremiumPackages.rb:403
 msgctxt "PremiumPackages"
@@ -2784,9 +2531,7 @@ msgstr "Blik kodu girin"
 #: ../src/Scenes/PremiumPackages.rb:410
 msgctxt "PremiumPackages"
 msgid "The payment has been initiated. Additional confirmation may be required. The order will be processed once the payment is complete."
-msgstr ""
-"Ödeme alındı. Ek doğrulama gerekebilir. Ödeme tamamlandığında sipariş işleme "
-"koyulacak."
+msgstr "Ödeme alındı. Ek doğrulama gerekebilir. Ödeme tamamlandığında sipariş işleme koyulacak."
 
 #: ../src/Scenes/PremiumPackages.rb:415
 msgctxt "PremiumPackages"
@@ -2806,9 +2551,7 @@ msgstr "Bu kod zaten kullanılmış."
 #: ../src/Scenes/PremiumPackages.rb:432
 msgctxt "PremiumPackages"
 msgid "The package %{name} will be active until %{time}. This code will be redeemed and you will not be able to use it again. Do you want to continue?"
-msgstr ""
-"%{name} paketi %{time} zamanına kadar etkin olacaktır. Bu kodu bir daha "
-"kullanamayacaksınız. Devam etmek istiyor musunuz?"
+msgstr "%{name} paketi %{time} zamanına kadar etkin olacaktır. Bu kodu bir daha kullanamayacaksınız. Devam etmek istiyor musunuz?"
 
 #: ../src/Scenes/PremiumPackages.rb:437
 msgctxt "PremiumPackages"
@@ -2830,9 +2573,7 @@ msgctxt "EAPI_Common"
 msgid "Hide program in Tray"
 msgstr "Programı sistem tepsisine küçült"
 
-#: ../src/eapi/Common.rb:16 ../src/scenes/Account.rb:657
-#: ../src/scenes/Authentication.rb:23 ../src/scenes/Authentication.rb:25
-#: ../src/scenes/ForgotPassword.rb:31 ../src/scenes/Loading.rb:383
+#: ../src/eapi/Common.rb:16 ../src/scenes/Account.rb:657 ../src/scenes/Authentication.rb:23 ../src/scenes/Authentication.rb:25 ../src/scenes/ForgotPassword.rb:31 ../src/scenes/Loading.rb:383
 msgid "Exit"
 msgstr "Çık"
 
@@ -2861,14 +2602,12 @@ msgctxt "EAPI_Common"
 msgid "Enable auto clear input"
 msgstr "Girişi otomatik temizlemeyi etkinleştir"
 
-#: ../src/eapi/Common.rb:102 ../src/eapi/Common.rb:116
-#: ../src/eapi/Common.rb:134
+#: ../src/eapi/Common.rb:102 ../src/eapi/Common.rb:116 ../src/eapi/Common.rb:134
 msgctxt "EAPI_Common"
 msgid "Disabled"
 msgstr "Devredışı bırakıldı"
 
-#: ../src/eapi/Common.rb:105 ../src/eapi/Common.rb:119
-#: ../src/eapi/Common.rb:131
+#: ../src/eapi/Common.rb:105 ../src/eapi/Common.rb:119 ../src/eapi/Common.rb:131
 msgctxt "EAPI_Common"
 msgid "Enabled"
 msgstr "Etkinleştirildi"
@@ -3068,22 +2807,11 @@ msgctxt "EAPI_Common"
 msgid "Sent."
 msgstr "Gönderildi."
 
-#: ../src/eapi/Common.rb:535 ../src/eapi/Common.rb:583
-#: ../src/scenes/Account.rb:355 ../src/scenes/Account.rb:392
-#: ../src/scenes/Account.rb:540 ../src/scenes/Blog.rb:735
-#: ../src/scenes/Contacts.rb:27 ../src/scenes/Contacts.rb:127
-#: ../src/scenes/Contacts.rb:160 ../src/scenes/Forum.rb:1189
-#: ../src/scenes/Login.rb:212 ../src/scenes/Messages.rb:1062
-#: ../src/scenes/Users.rb:13
+#: ../src/eapi/Common.rb:535 ../src/eapi/Common.rb:583 ../src/scenes/Account.rb:355 ../src/scenes/Account.rb:392 ../src/scenes/Account.rb:540 ../src/scenes/Blog.rb:735 ../src/scenes/Contacts.rb:27 ../src/scenes/Contacts.rb:127 ../src/scenes/Contacts.rb:160 ../src/scenes/Forum.rb:1189 ../src/scenes/Login.rb:212 ../src/scenes/Messages.rb:1062 ../src/scenes/Users.rb:13
 msgid "Database Error"
 msgstr "Veritabanı hatası"
 
-#: ../src/eapi/Common.rb:539 ../src/scenes/Account.rb:358
-#: ../src/scenes/Account.rb:395 ../src/scenes/Account.rb:542
-#: ../src/scenes/Blog.rb:737 ../src/scenes/Contacts.rb:31
-#: ../src/scenes/Contacts.rb:130 ../src/scenes/Contacts.rb:163
-#: ../src/scenes/Forum.rb:1191 ../src/scenes/Messages.rb:1066
-#: ../src/scenes/Users.rb:17
+#: ../src/eapi/Common.rb:539 ../src/scenes/Account.rb:358 ../src/scenes/Account.rb:395 ../src/scenes/Account.rb:542 ../src/scenes/Blog.rb:737 ../src/scenes/Contacts.rb:31 ../src/scenes/Contacts.rb:130 ../src/scenes/Contacts.rb:163 ../src/scenes/Forum.rb:1191 ../src/scenes/Messages.rb:1066 ../src/scenes/Users.rb:17
 msgid "Token expired"
 msgstr "Belirtecin süresi doldu"
 
@@ -3221,24 +2949,17 @@ msgstr "Kabul etmiyorum, çık"
 #: ../src/eapi/Common.rb:695
 msgctxt "EAPI_Common"
 msgid "I accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy"
-msgstr ""
-"Elten lisans sözleşmesini, kullanım şartlarını ve gizlilik kurallarını kabul "
-"ediyorum"
+msgstr "Elten lisans sözleşmesini, kullanım şartlarını ve gizlilik kurallarını kabul ediyorum"
 
 #: ../src/eapi/Common.rb:713
 msgctxt "EAPI_Common"
 msgid "Do you accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy?"
-msgstr ""
-"Elten lisans anlaşmasını, kullanım şartlarını ve gizlilik sözleşmesini kabul "
-"ediyor musunuz?"
+msgstr "Elten lisans anlaşmasını, kullanım şartlarını ve gizlilik sözleşmesini kabul ediyor musunuz?"
 
 #: ../src/eapi/Common.rb:734
 msgctxt "EAPI_Common"
 msgid "You are trying to play a MIDI file. Elten needs an external instrument sound bank to play MIDI files. Do you want to download it from the server now? This may take several minutes."
-msgstr ""
-"Midi dosyası oynatmaya çalışıyorsunuz. Elten bu tür dosyaları oynatabilmek "
-"için dışarıdan enstruman paketine ihtiyaç duyuyor. Paketi sunucudan şimdi "
-"indirmek istiyor musunuz? Birkaç dakika alabilir."
+msgstr "Midi dosyası oynatmaya çalışıyorsunuz. Elten bu tür dosyaları oynatabilmek için dışarıdan enstruman paketine ihtiyaç duyuyor. Paketi sunucudan şimdi indirmek istiyor musunuz? Birkaç dakika alabilir."
 
 #: ../src/eapi/Common.rb:735
 msgctxt "EAPI_Common"
@@ -3252,12 +2973,8 @@ msgstr "Ses fontu başarıyla indirildi."
 
 #: ../src/eapi/Common.rb:930
 msgctxt "EAPI_Common"
-msgid ""
-"In order to use HRTF functionality, Elten needs to download Phonon library. "
-"Would you like to download it now?"
-msgstr ""
-"3d ses özelliğinin kullanılabilmesi için Phonon kütüphanesinin indirilmesi "
-"gerekiyor. Kütüphaneyi şimdi indirmek istiyor musunuz?"
+msgid "In order to use HRTF functionality, Elten needs to download Phonon library. Would you like to download it now?"
+msgstr "3d ses özelliğinin kullanılabilmesi için Phonon kütüphanesinin indirilmesi gerekiyor. Kütüphaneyi şimdi indirmek istiyor musunuz?"
 
 #: ../src/eapi/Common.rb:954
 msgctxt "EAPI_Common"
@@ -3282,9 +2999,7 @@ msgstr "Yönetmen"
 #: ../src/eapi/Common.rb:962
 msgctxt "EAPI_Common"
 msgid "This feature requires the %{package} premium package. Would you like to see the available premium packages?"
-msgstr ""
-"Bu özellik %{package} premium paketini gerektirir. Mevcut olan premium "
-"paketlere gözatmak ister misiniz?"
+msgstr "Bu özellik %{package} premium paketini gerektirir. Mevcut olan premium paketlere gözatmak ister misiniz?"
 
 #: ../src/eapi/Common.rb:1064
 msgid "Function not supported on this platform"
@@ -3330,8 +3045,7 @@ msgctxt "EAPI_Common"
 msgid "Close"
 msgstr "Kapat"
 
-#: ../src/eapi/Controls.rb:105 ../src/eapi/Controls.rb:107
-#: ../src/eapi/Controls.rb:1044 ../src/eapi/Controls.rb:2643
+#: ../src/eapi/Controls.rb:105 ../src/eapi/Controls.rb:107 ../src/eapi/Controls.rb:1044 ../src/eapi/Controls.rb:2643
 msgid "Context menu"
 msgstr "İçerik menüsü"
 
@@ -3355,8 +3069,7 @@ msgctxt "EAPI_Form"
 msgid "Opening a link..."
 msgstr "Bağlantı açılıyor..."
 
-#: ../src/eapi/Controls.rb:649 ../src/eapi/Controls.rb:656
-#: ../src/eapi/Controls.rb:680
+#: ../src/eapi/Controls.rb:649 ../src/eapi/Controls.rb:656 ../src/eapi/Controls.rb:680
 msgctxt "EAPI_Form"
 msgid "End of line"
 msgstr "Satır sonu"
@@ -3576,9 +3289,7 @@ msgstr "Çerçeve"
 #: ../src/eapi/Controls.rb:1833
 msgctxt "EAPI_Form"
 msgid "Use H or the number keys 1 to 6 to navigate to the next heading"
-msgstr ""
-"Sonraki başlığa gitmek için h tuşunu ya da 1'den 6'ya kadar sayı tuşlarını "
-"kullanın"
+msgstr "Sonraki başlığa gitmek için h tuşunu ya da 1'den 6'ya kadar sayı tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:1834
 msgctxt "EAPI_Form"
@@ -3655,15 +3366,12 @@ msgstr "Öğeleri seçmek veya seçimi iptal etmek için boşluk tuşunu kullan�
 #: ../src/eapi/Controls.rb:2309
 msgctxt "EAPI_Form"
 msgid "Press Shift+Up/Down Arrow to filter content by tags"
-msgstr ""
-"İçeriği etiketlerle filtrelemek için shift tuşu ile yukarı ve aşağı ok "
-"tuşlarını kullanın"
+msgstr "İçeriği etiketlerle filtrelemek için shift tuşu ile yukarı ve aşağı ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:2311
 msgctxt "EAPI_Form"
 msgid "Press Ctrl+Up Arrow to hear the item number"
-msgstr ""
-"Bulunulan öğenin sayısını okumak için ctrl+yukarı ok tuşlarını kullanın"
+msgstr "Bulunulan öğenin sayısını okumak için ctrl+yukarı ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:2312
 msgctxt "EAPI_Form"
@@ -3783,8 +3491,7 @@ msgstr "Yol seçin"
 #: ../src/eapi/Controls.rb:3176
 msgctxt "EAPI_Form"
 msgid "Use Shift+Left/Right Arrow to select the column you want to navigate by"
-msgstr ""
-"Dolaşacağınız sütunu seçmek için shift+sol veya sağ ok tuşlarını kullanın"
+msgstr "Dolaşacağınız sütunu seçmek için shift+sol veya sağ ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:3214 ../src/eapi/Controls.rb:3224
 msgctxt "EAPI_Common"
@@ -3914,27 +3621,22 @@ msgstr "İleri veya geri sarmak için sağ veya sol ok tuşlarını kullanın"
 #: ../src/eapi/Controls.rb:3603
 msgctxt "EAPI_Form"
 msgid "Use up/down arrows to change playback volume"
-msgstr ""
-"Ses seviyesini değiştirmek için yukarı veya aşağı ok tuşlarını kullanın"
+msgstr "Ses seviyesini değiştirmek için yukarı veya aşağı ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:3604
 msgctxt "EAPI_Form"
 msgid "Use Shift+Left/Right Arrow to change panning"
-msgstr ""
-"Ses yönünü değiştirmek için shift tuşu ile sağ veya sol ok tuşlarını kullanın"
+msgstr "Ses yönünü değiştirmek için shift tuşu ile sağ veya sol ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:3605
 msgctxt "EAPI_Form"
 msgid "Use Shift+Up/Down Arrow to change pitch"
-msgstr ""
-"Kalınlığı değiştirmek için shift tuşu ile yukarı veya aşağı ok tuşlarını "
-"kullanın"
+msgstr "Kalınlığı değiştirmek için shift tuşu ile yukarı veya aşağı ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:3606
 msgctxt "EAPI_Form"
 msgid "Use Ctrl+Up/Down Arrow to change tempo"
-msgstr ""
-"Tempoyu değiştirmek için ctrl tuşu ile yukarı ve aşağı ok tuşlarını kullanın"
+msgstr "Tempoyu değiştirmek için ctrl tuşu ile yukarı ve aşağı ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:3607
 msgctxt "EAPI_Form"
@@ -3944,23 +3646,19 @@ msgstr "Varsayılan ayarlara geri dönmek için backspace tuşunu kullanın"
 #: ../src/eapi/Controls.rb:3608
 msgctxt "EAPI_Form"
 msgid "Press Home or End to move to the beginning or end of the track"
-msgstr ""
-"Parçanın başına veya sonuna gitmek için home ya da end tuşlarını kullanın"
+msgstr "Parçanın başına veya sonuna gitmek için home ya da end tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:3609
 msgctxt "EAPI_Form"
 msgid "Press Page Up or Page Down to move to the previous or next chapter"
-msgstr ""
-"Sonraki veya önceki bölümlere gitmek için sayfa yukarı veya sayfa aşağı "
-"tuşlarını kullanın"
+msgstr "Sonraki veya önceki bölümlere gitmek için sayfa yukarı veya sayfa aşağı tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:4190
 msgctxt "EAPI_Form"
 msgid "record"
 msgstr "kaydet"
 
-#: ../src/eapi/Controls.rb:4191 ../src/eapi/Controls.rb:4251
-#: ../src/eapi/Controls.rb:4280
+#: ../src/eapi/Controls.rb:4191 ../src/eapi/Controls.rb:4251 ../src/eapi/Controls.rb:4280
 msgctxt "EAPI_Form"
 msgid "Pause recording"
 msgstr "Kaydı duraklat"
@@ -4007,10 +3705,8 @@ msgstr "Hazır"
 
 #: ../src/eapi/Controls.rb:4208 ../src/eapi/Controls.rb:4256
 msgctxt "EAPI_Form"
-msgid ""
-"Are you sure you want to delete the previous recording and create a new one?"
-msgstr ""
-"Önceki kaydı silip yeni bir kayıt oluşturmak istediğinizden emin misiniz?"
+msgid "Are you sure you want to delete the previous recording and create a new one?"
+msgstr "Önceki kaydı silip yeni bir kayıt oluşturmak istediğinizden emin misiniz?"
 
 #: ../src/eapi/Controls.rb:4250
 msgctxt "EAPI_Form"
@@ -4040,9 +3736,7 @@ msgstr "Kayda devam et"
 #: ../src/eapi/Controls.rb:4290
 msgctxt "EAPI_Form"
 msgid "The encoder settings will not apply to the current recording. Are you sure you want to continue?"
-msgstr ""
-"Kodlayıcı ayarları şu anki kayıt için geçerli olmayacak. Devam etmek "
-"istediğinizden emin misiniz?"
+msgstr "Kodlayıcı ayarları şu anki kayıt için geçerli olmayacak. Devam etmek istediğinizden emin misiniz?"
 
 #: ../src/eapi/Controls.rb:4308
 msgctxt "EAPI_Form"
@@ -4142,10 +3836,7 @@ msgstr "Bölüm zamanı (ss:dd:ss.msmsms)"
 #: ../src/eapi/Controls.rb:4497
 msgctxt "EAPI_Form"
 msgid "Invalid time format. Use hh:mm:ss.uuu: two digits each for hours, minutes and seconds, optionally followed by a full stop and three digits for milliseconds."
-msgstr ""
-"Yanlış zaman biçimi, iki basamaklı saat, iki nokta, iki basamaklı dakika, "
-"iki nokta, iki basamaklı saniye ve isteğe bağlı olarak nokta işareti ve "
-"milisaniye şeklinde girilmelidir"
+msgstr "Yanlış zaman biçimi, iki basamaklı saat, iki nokta, iki basamaklı dakika, iki nokta, iki basamaklı saniye ve isteğe bağlı olarak nokta işareti ve milisaniye şeklinde girilmelidir"
 
 #: ../src/eapi/Controls.rb:4514
 msgctxt "EAPI_Form"
@@ -4232,15 +3923,7 @@ msgctxt "EAPI_Form"
 msgid "March"
 msgstr "Mart"
 
-#: ../src/eapi/Controls.rb:4634 ../src/eapi/Controls.rb:4635
-#: ../src/eapi/Controls.rb:4636 ../src/eapi/Controls.rb:4637
-#: ../src/eapi/Controls.rb:4638 ../src/eapi/Controls.rb:4639
-#: ../src/eapi/Controls.rb:4681 ../src/eapi/Controls.rb:4683
-#: ../src/eapi/Controls.rb:4690 ../src/eapi/Controls.rb:4701
-#: ../src/eapi/Controls.rb:4708 ../src/eapi/Controls.rb:4710
-#: ../src/eapi/Controls.rb:4717 ../src/eapi/Controls.rb:4719
-#: ../src/eapi/Controls.rb:4726 ../src/eapi/Controls.rb:4728
-#: ../src/eapi/Controls.rb:4737
+#: ../src/eapi/Controls.rb:4634 ../src/eapi/Controls.rb:4635 ../src/eapi/Controls.rb:4636 ../src/eapi/Controls.rb:4637 ../src/eapi/Controls.rb:4638 ../src/eapi/Controls.rb:4639 ../src/eapi/Controls.rb:4681 ../src/eapi/Controls.rb:4683 ../src/eapi/Controls.rb:4690 ../src/eapi/Controls.rb:4701 ../src/eapi/Controls.rb:4708 ../src/eapi/Controls.rb:4710 ../src/eapi/Controls.rb:4717 ../src/eapi/Controls.rb:4719 ../src/eapi/Controls.rb:4726 ../src/eapi/Controls.rb:4728 ../src/eapi/Controls.rb:4737
 msgctxt "EAPI_Form"
 msgid "Not selected"
 msgstr "Seçili değil"
@@ -5052,12 +4735,8 @@ msgstr "Bu kullanıcıyı arayamazsınız"
 
 #: ../src/eapi/UI.rb:509
 msgctxt "EAPI_UI"
-msgid ""
-"An unexpected error of Elten agent occurred. Do you want to report this "
-"event? It  may definitely help us solve the problem."
-msgstr ""
-"Elten aracısında beklenmeyen bir hata oluştu. Raporlamak istiyor musunuz? "
-"Sorunu çözmemize kesinlikle yardımcı olabilir."
+msgid "An unexpected error of Elten agent occurred. Do you want to report this event? It  may definitely help us solve the problem."
+msgstr "Elten aracısında beklenmeyen bir hata oluştu. Raporlamak istiyor musunuz? Sorunu çözmemize kesinlikle yardımcı olabilir."
 
 #: ../src/eapi/UI.rb:513
 msgctxt "EAPI_UI"
@@ -5067,10 +4746,7 @@ msgstr "Program donma hâlinden kurtulmaya çalışıyor."
 #: ../src/eapi/UI.rb:588
 msgctxt "EAPI_UI"
 msgid "Errors occurred while trying to register keyboard shortcuts for the Invisible Interface. Make sure that the specified shortcuts are not used by other applications. You can change the Invisible Interface modifier keys in the Settings window."
-msgstr ""
-"Görünmez arayüz tuşlarını belirlerken hata oluştu. Diğer uygulamaların "
-"belirlenmeye çalışılan tuşları kullanmadığından emin olun. Görünmez arayüz "
-"kısayol tuşlarını ayarlar penceresinden değiştirebilirsiniz."
+msgstr "Görünmez arayüz tuşlarını belirlerken hata oluştu. Diğer uygulamaların belirlenmeye çalışılan tuşları kullanmadığından emin olun. Görünmez arayüz kısayol tuşlarını ayarlar penceresinden değiştirebilirsiniz."
 
 #: ../src/eapi/UI.rb:672
 msgctxt "EAPI_UI"
@@ -5087,37 +4763,20 @@ msgstr "Evet"
 
 #: ../src/eapi/__eapi.rb:853
 msgctxt "EAPI_EltenAPI"
-msgid ""
-"Do you want to send reports on how Elten is used? This data does not contain "
-"any confidential information and is very helpful in program development. "
-"This selection can be changed at any time from the Settings."
-msgstr ""
-"Elten'ın kullanımı hakkında rapor göndermek ister misiniz? Bu veri hiçbir "
-"kişisel veri içermez ve program üretimine katkıda bulunur. Bu ayar her zaman "
-"ayarlar menüsünden değiştirilebilir."
+msgid "Do you want to send reports on how Elten is used? This data does not contain any confidential information and is very helpful in program development. This selection can be changed at any time from the Settings."
+msgstr "Elten'ın kullanımı hakkında rapor göndermek ister misiniz? Bu veri hiçbir kişisel veri içermez ve program üretimine katkıda bulunur. Bu ayar her zaman ayarlar menüsünden değiştirilebilir."
 
 #: ../src/eapi/__eapi.rb:858
 msgctxt "EAPI_EltenAPI"
-msgid ""
-"You are currently using a beta version of Elten. In these versions, "
-"uploading usage statistics is always enabled. They contain information about "
-"the most frequently used functions, configurations and problems with program "
-"operation. They do not contain any confidential or private information. If "
-"you do not want to send statistics, please use the stable version of Elten."
-msgstr ""
-"Elten'ın beta sürümünü kullanıyorsunuz. Beta sürümlerde kullanım "
-"istatistikleri her zaman toplanır. Bu istatistiklerde sıklıkla kullanılan "
-"işlevler, ayarlar ve program işleyişindeki sorunlar hakkında bilgiler yer "
-"alır. İstatistik toplanmasını istemiyorsanız Elten'ın kararlı sürümünü "
-"kullanın."
+msgid "You are currently using a beta version of Elten. In these versions, uploading usage statistics is always enabled. They contain information about the most frequently used functions, configurations and problems with program operation. They do not contain any confidential or private information. If you do not want to send statistics, please use the stable version of Elten."
+msgstr "Elten'ın beta sürümünü kullanıyorsunuz. Beta sürümlerde kullanım istatistikleri her zaman toplanır. Bu istatistiklerde sıklıkla kullanılan işlevler, ayarlar ve program işleyişindeki sorunlar hakkında bilgiler yer alır. İstatistik toplanmasını istemiyorsanız Elten'ın kararlı sürümünü kullanın."
 
 #: ../src/scenes/Account.rb:114
 msgctxt "Account"
 msgid "Category"
 msgstr "Kategori"
 
-#: ../src/scenes/Account.rb:115 ../src/scenes/Blog.rb:1563
-#: ../src/scenes/Forum.rb:4395 ../src/scenes/Settings.rb:117
+#: ../src/scenes/Account.rb:115 ../src/scenes/Blog.rb:1563 ../src/scenes/Forum.rb:4395 ../src/scenes/Settings.rb:117
 msgid "Apply"
 msgstr "Uygula"
 
@@ -5468,9 +5127,7 @@ msgctxt "Account"
 msgid "The old password is incorrect."
 msgstr "Eski şifre yanlış."
 
-#: ../src/scenes/Account.rb:372 ../src/scenes/Account.rb:412
-#: ../src/scenes/Account.rb:469 ../src/scenes/Account.rb:582
-#: ../src/scenes/Account.rb:628 ../src/scenes/Account.rb:706
+#: ../src/scenes/Account.rb:372 ../src/scenes/Account.rb:412 ../src/scenes/Account.rb:469 ../src/scenes/Account.rb:582 ../src/scenes/Account.rb:628 ../src/scenes/Account.rb:706
 msgctxt "Account"
 msgid "Enter your password."
 msgstr "Şifrenizi girin."
@@ -5490,8 +5147,7 @@ msgctxt "Account"
 msgid "Error: you must disable email event reporting first."
 msgstr "Hata, ilk önce e-postayla olay raporlamayı devredışı bırakmalısınız."
 
-#: ../src/scenes/Account.rb:419 ../src/scenes/Account.rb:477
-#: ../src/scenes/Account.rb:589
+#: ../src/scenes/Account.rb:419 ../src/scenes/Account.rb:477 ../src/scenes/Account.rb:589
 msgctxt "Account"
 msgid "An error occurred while verifying your account. You may have entered an incorrect password."
 msgstr "Hesaba izin verilirken hata oluştu. Yanlış şifre girmiş olabilirsiniz."
@@ -5524,9 +5180,7 @@ msgstr "Bütün oturumları kapat"
 #: ../src/scenes/Account.rb:467
 msgctxt "Account"
 msgid "Are you sure you want to remove all auto-login tokens and log out of all sessions? You will be logged out immediately."
-msgstr ""
-"Tüm otomatik giriş belirteçlerini silip tüm istemcilerden çıkış yapmak "
-"istediğinizden emin misiniz? Çıkış işleminiz hemen gerçekleşir."
+msgstr "Tüm otomatik giriş belirteçlerini silip tüm istemcilerden çıkış yapmak istediğinizden emin misiniz? Çıkış işleminiz hemen gerçekleşir."
 
 #: ../src/scenes/Account.rb:529
 msgctxt "Account"
@@ -5540,12 +5194,8 @@ msgstr "Kara listeye eklemek istediğiniz kullanıcı."
 
 #: ../src/scenes/Account.rb:532
 msgctxt "Account"
-msgid ""
-"The users added to your black list cannot send you private messages. Are you "
-"sure  you want to continue?"
-msgstr ""
-"Kara listenize eklenmiş olan kullanıcılar size özel mesaj gönderemez. Devam "
-"etmek istediğinizden emin misiniz?"
+msgid "The users added to your black list cannot send you private messages. Are you sure  you want to continue?"
+msgstr "Kara listenize eklenmiş olan kullanıcılar size özel mesaj gönderemez. Devam etmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Account.rb:536
 msgctxt "Account"
@@ -5585,15 +5235,11 @@ msgstr "Son girişler"
 #: ../src/scenes/Account.rb:637
 msgctxt "Account"
 msgid "You can configure Elten to notify you by email about changes to your account and logins from new devices. To do so, you must verify your email address. Do you want to verify it now?"
-msgstr ""
-"İsterseniz, elten'ı hesabınıza yapılan değişiklikleri ve diğer cihazlardan "
-"girişleri e-posta ile bildirmek üzere ayarlayabilirsiniz. Bunu yapmak için, "
-"e-posta adresinizi doğrulamanız gerekir. Bunu şimdi yapmak ister misiniz?"
+msgstr "İsterseniz, elten'ı hesabınıza yapılan değişiklikleri ve diğer cihazlardan girişleri e-posta ile bildirmek üzere ayarlayabilirsiniz. Bunu yapmak için, e-posta adresinizi doğrulamanız gerekir. Bunu şimdi yapmak ister misiniz?"
 
 #: ../src/scenes/Account.rb:643 ../src/scenes/Account.rb:668
 msgctxt "Account"
-msgid ""
-"The verification code has been sent to you via E-mail. Please type it here."
+msgid "The verification code has been sent to you via E-mail. Please type it here."
 msgstr "Doğrulama kodu e-posta ile size gönderildi. Lütfen onu buraya yazın."
 
 #: ../src/scenes/Account.rb:655
@@ -5609,10 +5255,7 @@ msgstr "E-posta ile olay raporlamasını devredışı bırak"
 #: ../src/scenes/Account.rb:656
 msgctxt "Account"
 msgid "Email event reporting is disabled. If you wish, you can enable it to receive information about changes to your account and logins from new devices by email."
-msgstr ""
-"E-posta ile olay raporlama devredışı. İsterseniz, e-postayla hesabınızda "
-"yapılan değişiklikler ve diğer cihazlardan girişler hakkında bilgi almak "
-"için etkinleştirebilirsiniz"
+msgstr "E-posta ile olay raporlama devredışı. İsterseniz, e-postayla hesabınızda yapılan değişiklikler ve diğer cihazlardan girişler hakkında bilgi almak için etkinleştirebilirsiniz"
 
 #: ../src/scenes/Account.rb:656
 msgctxt "Account"
@@ -5621,26 +5264,36 @@ msgstr "Olay raporlama etkinleştirildi."
 
 #: ../src/scenes/Account.rb:684
 msgctxt "Account"
-msgid "Archiving your account will have the following effects:\n* An indication that the account is archived will appear next to all of its forum posts.\n* The account will not appear in user lists.\n* The account will be removed from all contact lists.\n* Users will not be able to send private messages to this account.\n* The profile, including the status, bio and signature, will be removed from the server.\n* You will leave all groups that you do not moderate and from which you are not banned.\n* You will leave all message conversations.\n* All information about threads you follow, groups you have pinned and threads you have marked will be removed.\n\nWarning:\nArchiving an account does not delete or hide its blogs or notes. You must do this manually before archiving the account.\n\nThe account will be unarchived automatically the next time you log in, but the removed data will not be restored."
+msgid ""
+"Archiving your account will have the following effects:\n"
+"* An indication that the account is archived will appear next to all of its forum posts.\n"
+"* The account will not appear in user lists.\n"
+"* The account will be removed from all contact lists.\n"
+"* Users will not be able to send private messages to this account.\n"
+"* The profile, including the status, bio and signature, will be removed from the server.\n"
+"* You will leave all groups that you do not moderate and from which you are not banned.\n"
+"* You will leave all message conversations.\n"
+"* All information about threads you follow, groups you have pinned and threads you have marked will be removed.\n"
+"\n"
+"Warning:\n"
+"Archiving an account does not delete or hide its blogs or notes. You must do this manually before archiving the account.\n"
+"\n"
+"The account will be unarchived automatically the next time you log in, but the removed data will not be restored."
 msgstr ""
 "Hesabınızı arşivlemek aşağıdakilere neden olabilir:\n"
-"* Forumdaki bütün mesajların yanına hesabın arşivlendiğine dair bir gösterge "
-"konur.\n"
+"* Forumdaki bütün mesajların yanına hesabın arşivlendiğine dair bir gösterge konur.\n"
 "* Hesap kullanıcı listelerinde görüntülenmez.\n"
 "* Hesap bütün kişi listelerinden kaldırılır.\n"
 "* Kullanıcılar bu hesaba özel mesaj gönderemez.\n"
 "* Profil (durum, kartvizit ve imza dahil) sunucudan kaldırılır.\n"
 "* Banlandığınız veya yöneticisi olmadığınız tüm gruplardan çıkartılırsınız.\n"
 "* Bütün mesajlardan yazışmalardan çıkartılırsınız.\n"
-"* Takip ettiğiniz konular, sabitlenmiş gruplarınız veya işaretlenmiş konular "
-"hakkındaki tüm bilgiler kaldırılır.\n"
+"* Takip ettiğiniz konular, sabitlenmiş gruplarınız veya işaretlenmiş konular hakkındaki tüm bilgiler kaldırılır.\n"
 "\n"
 "Dikkat.\n"
-"Hesabı arşivlemek bloğu veya ilgili notları silmek veya gizlemek anlamına "
-"gelmez, bu hesabı arşivlemeden elle yapılmalıdır.\n"
+"Hesabı arşivlemek bloğu veya ilgili notları silmek veya gizlemek anlamına gelmez, bu hesabı arşivlemeden elle yapılmalıdır.\n"
 "\n"
-"Sonraki girişinizde hesap otomatik olarak arşivden çıkartılır, ancak "
-"silinmiş veriler geri yüklenmez."
+"Sonraki girişinizde hesap otomatik olarak arşivden çıkartılır, ancak silinmiş veriler geri yüklenmez."
 
 #: ../src/scenes/Account.rb:700
 msgctxt "Account"
@@ -5703,16 +5356,8 @@ msgstr "Etkinleştir"
 
 #: ../src/scenes/Authentication.rb:23
 msgctxt "Authentication"
-msgid ""
-"Two-factor authentication enables better account security by requiring the  "
-"confirmation of each login with your phone. When activated, a text message "
-"with a  verification code will be sent to you each time you log in from a "
-"new device.  Entering this code will be required to sign in to the program."
-msgstr ""
-"İki öğeli kimlik doğrulama her girişin telefonla doğrulanmasını gerektirerek "
-"daha iyi hesap güvenliği sağlar. Etkinleştirildiğinde yeni bir cihazdan "
-"giriş yaptığınızda doğrulama kodu içeren bir sms mesajı gönderilecektir. "
-"Programa giriş yapmak için bu kodu girmeniz gerekecek."
+msgid "Two-factor authentication enables better account security by requiring the  confirmation of each login with your phone. When activated, a text message with a  verification code will be sent to you each time you log in from a new device.  Entering this code will be required to sign in to the program."
+msgstr "İki öğeli kimlik doğrulama her girişin telefonla doğrulanmasını gerektirerek daha iyi hesap güvenliği sağlar. Etkinleştirildiğinde yeni bir cihazdan giriş yaptığınızda doğrulama kodu içeren bir sms mesajı gönderilecektir. Programa giriş yapmak için bu kodu girmeniz gerekecek."
 
 #: ../src/scenes/Authentication.rb:25
 msgctxt "Authentication"
@@ -5728,36 +5373,25 @@ msgctxt "Authentication"
 msgid "Generate backup codes"
 msgstr "Yedek kod oluştur"
 
-#: ../src/scenes/Authentication.rb:32 ../src/scenes/Authentication.rb:70
-#: ../src/scenes/Authentication.rb:87
+#: ../src/scenes/Authentication.rb:32 ../src/scenes/Authentication.rb:70 ../src/scenes/Authentication.rb:87
 msgctxt "Authentication"
 msgid "Type your password"
 msgstr "Şifrenizi yazın"
 
 #: ../src/scenes/Authentication.rb:34
 msgctxt "Authentication"
-msgid ""
-"Type your phone number that will be used during verification. Remember to "
-"enter  the country code, for example, +48 for Poland"
-msgstr ""
-"Doğrulama için kullanılacak olan telefon numaranızı girin. Ülke kodunu, "
-"örneğin Türkiye için +90, girmeyi unutmayın."
+msgid "Type your phone number that will be used during verification. Remember to enter  the country code, for example, +48 for Poland"
+msgstr "Doğrulama için kullanılacak olan telefon numaranızı girin. Ülke kodunu, örneğin Türkiye için +90, girmeyi unutmayın."
 
 #: ../src/scenes/Authentication.rb:36
 msgctxt "Authentication"
 msgid "Two-factor authentication was introduced in Elten 2.28. After activating it, you will not be able to log in using older versions of the program. Do you wish to continue anyway?"
-msgstr ""
-"İki öğeli kimlik doğrulama Elten 2.28 sürümünden itibaren kullanılmaya "
-"başlanmıştır. Etkinleştirildikten sonra programın daha eski sürümlerinden "
-"giriş yapmak mümkün olmayacak. Buna rağmen devam etmek istiyor musunuz?"
+msgstr "İki öğeli kimlik doğrulama Elten 2.28 sürümünden itibaren kullanılmaya başlanmıştır. Etkinleştirildikten sonra programın daha eski sürümlerinden giriş yapmak mümkün olmayacak. Buna rağmen devam etmek istiyor musunuz?"
 
 #: ../src/scenes/Authentication.rb:37
 msgctxt "Authentication"
-msgid ""
-"Is this phone number correct? Press enter to continue or escape to cancel."
-msgstr ""
-"Bu telefon numarası doğru mu? Devam etmek için enter'a iptal etmek için "
-"escape'e basın."
+msgid "Is this phone number correct? Press enter to continue or escape to cancel."
+msgstr "Bu telefon numarası doğru mu? Devam etmek için enter'a iptal etmek için escape'e basın."
 
 #: ../src/scenes/Authentication.rb:39
 msgctxt "Authentication"
@@ -5767,9 +5401,7 @@ msgstr "Lütfen bekleyin, sunucuya bağlanılıyor..."
 #: ../src/scenes/Authentication.rb:47
 msgctxt "Authentication"
 msgid "A text message containing the code to activate two-factor authentication will be sent to the phone number you provided. Enter the code."
-msgstr ""
-"Belirtilen telefon numarasına iki öğeli kimlik doğrulamayı etkinleştirmek "
-"için kullanılacak olan kod sms mesajıyla gönderilecektir. Kodu girin"
+msgstr "Belirtilen telefon numarasına iki öğeli kimlik doğrulamayı etkinleştirmek için kullanılacak olan kod sms mesajıyla gönderilecektir. Kodu girin"
 
 #: ../src/scenes/Authentication.rb:55
 msgctxt "Authentication"
@@ -5789,9 +5421,7 @@ msgstr "İki öğeli kimlik doğrulaması bu hesapta etkinleştirildi."
 #: ../src/scenes/Authentication.rb:71
 msgctxt "Authentication"
 msgid "Are you sure you want to disable two-factor authentication?"
-msgstr ""
-"İki öğeli kimlik doğrulamasını devredışı bırakmak istediğinizden emin "
-"misiniz?"
+msgstr "İki öğeli kimlik doğrulamasını devredışı bırakmak istediğinizden emin misiniz?"
 
 #: ../src/scenes/Authentication.rb:74
 msgctxt "Authentication"
@@ -5805,13 +5435,8 @@ msgstr "Yanlış şifre"
 
 #: ../src/scenes/Authentication.rb:85
 msgctxt "Authentication"
-msgid ""
-"Do you want to generate backup codes? These can be used to sign in when you "
-"have no access to your phone. All previously generated codes will be deleted."
-msgstr ""
-"Yedek kodlar oluşturmak istiyor musunuz? Bunlar telefonunuza erişemediğiniz "
-"takdirde oturum açmak için kullanılabilir. Önceden oluşturulmuş tüm kodlar "
-"silinecektir."
+msgid "Do you want to generate backup codes? These can be used to sign in when you have no access to your phone. All previously generated codes will be deleted."
+msgstr "Yedek kodlar oluşturmak istiyor musunuz? Bunlar telefonunuza erişemediğiniz takdirde oturum açmak için kullanılabilir. Önceden oluşturulmuş tüm kodlar silinecektir."
 
 #: ../src/scenes/Authentication.rb:97
 msgctxt "Authentication"
@@ -5998,8 +5623,7 @@ msgctxt "Blog"
 msgid "All posts"
 msgstr "Tüm gönderiler"
 
-#: ../src/scenes/Blog.rb:138 ../src/scenes/Blog.rb:863
-#: ../src/scenes/Blog.rb:1651
+#: ../src/scenes/Blog.rb:138 ../src/scenes/Blog.rb:863 ../src/scenes/Blog.rb:1651
 msgctxt "Blog"
 msgid "Posts"
 msgstr "Gönderiler"
@@ -6079,8 +5703,7 @@ msgctxt "Blog"
 msgid "Author"
 msgstr "Oluşturan"
 
-#: ../src/scenes/Blog.rb:311 ../src/scenes/Blog.rb:863
-#: ../src/scenes/Blog.rb:1583 ../src/scenes/Blog.rb:2233
+#: ../src/scenes/Blog.rb:311 ../src/scenes/Blog.rb:863 ../src/scenes/Blog.rb:1583 ../src/scenes/Blog.rb:2233
 msgctxt "Blog"
 msgid "Comments"
 msgstr "Yorumlar"
@@ -6352,12 +5975,8 @@ msgstr "%{name} adlı bloğu silmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Blog.rb:936
 msgctxt "Blog"
-msgid ""
-"All posts written on this blog will be lost. Are you sure you want to "
-"continue?"
-msgstr ""
-"Bu bloğa gönderilen tüm gönderiler kaybolacak. Devam etmek istediğinizden "
-"emin misiniz?"
+msgid "All posts written on this blog will be lost. Are you sure you want to continue?"
+msgstr "Bu bloğa gönderilen tüm gönderiler kaybolacak. Devam etmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Blog.rb:938
 msgctxt "Blog"
@@ -6457,10 +6076,7 @@ msgstr "Takip edilen bloglara ekle"
 #: ../src/scenes/Blog.rb:1137
 msgctxt "Blog"
 msgid "You are now following this blog. Do you want to mark all of its existing posts as read so that they do not appear in What's New?"
-msgstr ""
-"Blog takip edilen bloglara eklendi. Blogda şu ana kadar yayınlanan tüm "
-"gönderileri neler yenide görmemek için okundu olarak işaretlemek ister "
-"misiniz?"
+msgstr "Blog takip edilen bloglara eklendi. Blogda şu ana kadar yayınlanan tüm gönderileri neler yenide görmemek için okundu olarak işaretlemek ister misiniz?"
 
 #: ../src/scenes/Blog.rb:1140 ../src/scenes/Blog.rb:1185
 msgctxt "Blog"
@@ -6520,9 +6136,7 @@ msgstr "Bloğu okundu olarak işaretle"
 #: ../src/scenes/Blog.rb:1182
 msgctxt "Blog"
 msgid "All posts on this blog will be marked as read. Do you want to continue?"
-msgstr ""
-"Bu blogdaki bütün gönderiler okundu olarak işaretlenecek. Devam etmek "
-"istediğinizden emin misiniz?"
+msgstr "Bu blogdaki bütün gönderiler okundu olarak işaretlenecek. Devam etmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Blog.rb:1193
 msgctxt "Blog"
@@ -6666,14 +6280,8 @@ msgstr "Dil"
 
 #: ../src/scenes/Blog.rb:1580
 msgctxt "Blog"
-msgid ""
-"Mark this blog as public. Blogs that are not marked public request search "
-"engines such as Google not to show them in search results (some search "
-"engines may not respect this setting)"
-msgstr ""
-"Bloğu açık olarak işaretle. Açık olarak işaretlenmeyen bloglar Google gibi "
-"arama motorlarından onları sonuçlarda göstermemelerini ister (bazı arama "
-"motorları bu ayara uymayabilir)"
+msgid "Mark this blog as public. Blogs that are not marked public request search engines such as Google not to show them in search results (some search engines may not respect this setting)"
+msgstr "Bloğu açık olarak işaretle. Açık olarak işaretlenmeyen bloglar Google gibi arama motorlarından onları sonuçlarda göstermemelerini ister (bazı arama motorları bu ayara uymayabilir)"
 
 #: ../src/scenes/Blog.rb:1584
 msgctxt "Blog"
@@ -6688,9 +6296,7 @@ msgstr "Tüm ziyaretçiler tarafından yapılan yorumlar"
 #: ../src/scenes/Blog.rb:1584
 msgctxt "Blog"
 msgid "By all visitors, but I must approve each person's first comment"
-msgstr ""
-"Tüm ziyaretçiler tarafından yapılan yorumlar her ziyaretçinin ilk yorumunu "
-"onaylamam gerekir"
+msgstr "Tüm ziyaretçiler tarafından yapılan yorumlar her ziyaretçinin ilk yorumunu onaylamam gerekir"
 
 #: ../src/scenes/Blog.rb:1584
 msgctxt "Blog"
@@ -6780,8 +6386,7 @@ msgstr "İfadeler kullan"
 #: ../src/scenes/Blog.rb:1654
 msgctxt "Blog"
 msgid "Full date and post name (https://example.com/2020/01/01/example-post)"
-msgstr ""
-"Tam tarih ve göndderi adı (https://example.com/2020/01/01/example-post)"
+msgstr "Tam tarih ve göndderi adı (https://example.com/2020/01/01/example-post)"
 
 #: ../src/scenes/Blog.rb:1654
 msgctxt "Blog"
@@ -6905,12 +6510,8 @@ msgstr "Ayarlama"
 
 #: ../src/scenes/Blog.rb:1706
 msgctxt "Blog"
-msgid ""
-"If you want to redirect all browsers visiting this blog to another site, "
-"select it here"
-msgstr ""
-"Bu bloğu ziyaret eden kullanıcıları başka bir siteye yönlendirmek "
-"istiyorsanız buradan ayarlayabilirsiniz"
+msgid "If you want to redirect all browsers visiting this blog to another site, select it here"
+msgstr "Bu bloğu ziyaret eden kullanıcıları başka bir siteye yönlendirmek istiyorsanız buradan ayarlayabilirsiniz"
 
 #: ../src/scenes/Blog.rb:1708
 msgctxt "Blog"
@@ -6935,11 +6536,7 @@ msgstr "Blog alan adını yönet"
 #: ../src/scenes/Blog.rb:1723
 msgctxt "Blog"
 msgid "The blog settings have been changed. If you continue with the domain change, your changes will be lost. Do you want to continue anyway? To save the new settings, select No, then select Apply before changing the domain."
-msgstr ""
-"Blog ayarları değiştirildi. Alan adı değişikliğine devam ederseniz "
-"yaptığınız değişiklikler kaybolacak. Yine de devam etmek istiyor musunuz? "
-"yeni ayarları depolamak istiyorsanız Hayır'ı seçin ve değişiklikleri alan "
-"adı değişikliği yapmadan önce uygulayın."
+msgstr "Blog ayarları değiştirildi. Alan adı değişikliğine devam ederseniz yaptığınız değişiklikler kaybolacak. Yine de devam etmek istiyor musunuz? yeni ayarları depolamak istiyorsanız Hayır'ı seçin ve değişiklikleri alan adı değişikliği yapmadan önce uygulayın."
 
 #: ../src/scenes/Blog.rb:1861
 msgctxt "Blog"
@@ -7174,12 +6771,10 @@ msgstr "Kendi alan adınızı satın alın"
 msgctxt "Blog"
 msgid ""
 "To continue, you should point your domain to Elten Blogging server.\n"
-"You can buy your own domain from domain providers, such as ovh.com, domain."
-"com, godaddy.com or bluehost.com."
+"You can buy your own domain from domain providers, such as ovh.com, domain.com, godaddy.com or bluehost.com."
 msgstr ""
 "Devam etmek için alan adınızı elten blog sunucusuna yönlendirmelisiniz.\n"
-"ovh.com, domain.com, godaddy.com veya bluehost.com gibi alan adı "
-"sağlayıcılarından alan adı satın alabilirsiniz."
+"ovh.com, domain.com, godaddy.com veya bluehost.com gibi alan adı sağlayıcılarından alan adı satın alabilirsiniz."
 
 #: ../src/scenes/Blog.rb:2437
 msgctxt "Blog"
@@ -7208,12 +6803,8 @@ msgstr "Yeni alan adı eskisiyle aynı"
 
 #: ../src/scenes/Blog.rb:2477
 msgctxt "Blog"
-msgid ""
-"You already have one blog associated with your Elten profile. Please change "
-"its type and then proceed."
-msgstr ""
-"Elten profilinizle ilişkilendirilmiş olan bir bloğunuz zaten var. Onun "
-"türünü değiştirip devam edin."
+msgid "You already have one blog associated with your Elten profile. Please change its type and then proceed."
+msgstr "Elten profilinizle ilişkilendirilmiş olan bir bloğunuz zaten var. Onun türünü değiştirip devam edin."
 
 #: ../src/scenes/Blog.rb:2481
 msgctxt "Blog"
@@ -7238,11 +6829,7 @@ msgstr "Girilen alan adı doğru değil"
 #: ../src/scenes/Blog.rb:2500
 msgctxt "Blog"
 msgid "Warning! If you change your blog URL, some links may stop working. Direct links to posts or other resources on your blog will no longer work at their previous URLs. You will need to update them manually. Are you sure you want to continue?"
-msgstr ""
-"Dikkat! Blog web adresini değiştirirseniz bazı linkler çalışmayabilir. "
-"Bloğunuzdaki gönderilere veya kaynaklara doğrudan bağlantı verdiyseniz "
-"önceki linkler çalışmayacak. Bu durumda linkleri el ile düzeltmeniz "
-"gerekecek. Devam etmek istediğinizden emin misiniz?"
+msgstr "Dikkat! Blog web adresini değiştirirseniz bazı linkler çalışmayabilir. Bloğunuzdaki gönderilere veya kaynaklara doğrudan bağlantı verdiyseniz önceki linkler çalışmayacak. Bu durumda linkleri el ile düzeltmeniz gerekecek. Devam etmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Blog.rb:2514
 msgctxt "Blog"
@@ -7251,30 +6838,34 @@ msgstr "Blog alan adı değiştirildi"
 
 #: ../src/scenes/Blog.rb:2523
 msgctxt "Blog"
-msgid "Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n\nWhere possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n\nMany domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n%{ip}\n\nPointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n\nDetailed instructions are available from your domain provider, for example at:\nhttps://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n\nOnce you have finished, continue."
+msgid ""
+"Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n"
+"\n"
+"Where possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n"
+"\n"
+"Many domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n"
+"%{ip}\n"
+"\n"
+"Pointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n"
+"\n"
+"Detailed instructions are available from your domain provider, for example at:\n"
+"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
+"\n"
+"Once you have finished, continue."
 msgstr ""
-"Satın aldığınız alan adını elten blog sunucusuna yönlendirmesi için "
-"ayarlamalısınız. Gerekli ayrıntılar aşağıdadır. Sorun olursa forumda "
-"sormaktan çekinmeyin.\n"
+"Satın aldığınız alan adını elten blog sunucusuna yönlendirmesi için ayarlamalısınız. Gerekli ayrıntılar aşağıdadır. Sorun olursa forumda sormaktan çekinmeyin.\n"
 "      \n"
-"      Mümkün oldukça CNAME kayıt tipini kullanmanızı öneririz. Böylece "
-"bloğunuza ev sahipliği yapan sunucunun İP adresi değişirse yeniden "
-"düzenlemeniz gerekmez. Örneğin Elten blog sunucu güncellemesiyle bloğunuzun "
-"İP adresi değişebilir. Alan adınızı CNAME kayıt tipiyle ayarlarsanız başka "
-"bir şey yapmanıza gerek kalmaz.\n"
+"      Mümkün oldukça CNAME kayıt tipini kullanmanızı öneririz. Böylece bloğunuza ev sahipliği yapan sunucunun İP adresi değişirse yeniden düzenlemeniz gerekmez. Örneğin Elten blog sunucu güncellemesiyle bloğunuzun İP adresi değişebilir. Alan adınızı CNAME kayıt tipiyle ayarlarsanız başka bir şey yapmanıza gerek kalmaz.\n"
 "      Bunu yapmak için CNAME kaydınızı şu adrese yönlendirin: \"%{host}.\"\n"
 "      \n"
-"      Maalesef çoğu alan adı kayıt kuruluşu üst düzey alan adlarında CNAME "
-"kayıt tipini desteklememektedir. Bu durumda A kayıt tipini kullanmalısınız.\n"
+"      Maalesef çoğu alan adı kayıt kuruluşu üst düzey alan adlarında CNAME kayıt tipini desteklememektedir. Bu durumda A kayıt tipini kullanmalısınız.\n"
 "Bu durumda A kaydını şu İP adresine yönlendirin:\n"
 "%{ip}\n"
 "\n"
-"Alan adınızı yönlendirmenin ikinci ad ayarlamak olmadığını unutmayın. İkinci "
-"ad veya HTTP 301/ 3xx yönlendirmesi ayarlamak işe yaramayacaktır.\n"
+"Alan adınızı yönlendirmenin ikinci ad ayarlamak olmadığını unutmayın. İkinci ad veya HTTP 301/ 3xx yönlendirmesi ayarlamak işe yaramayacaktır.\n"
 "\n"
 "Detaylı bilgiyi alan adı sağlayıcınızdan alabilirsiniz. Örneğin\n"
-"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-"
-"Familiar-with-DNS\n"
+"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
 "\n"
 "İşlem tamamlandığında lütfen devam edin."
 
@@ -7291,17 +6882,12 @@ msgstr "Hazırım, sonrakine götür"
 #: ../src/scenes/Blog.rb:2553
 msgctxt "Blog"
 msgid "Your domain does not point to Elten Blogs. Try again, or wait for the DNS changes to propagate. Full DNS propagation may take up to 24 hours."
-msgstr ""
-"Alan adınız Elten bloglarına yönlendirme yapmıyor, tekrar deneyin veya DNS "
-"tazeleme için bir süre bekleyin. Tam DNS güncellemesi yapmak 24 saat kadar "
-"sürebilir."
+msgstr "Alan adınız Elten bloglarına yönlendirme yapmıyor, tekrar deneyin veya DNS tazeleme için bir süre bekleyin. Tam DNS güncellemesi yapmak 24 saat kadar sürebilir."
 
 #: ../src/scenes/Blog.rb:2555
 msgctxt "Blog"
 msgid "Your domain points to Elten Blogs, but the www subdomain does not. Please fix it."
-msgstr ""
-"Alan adınız elten bloglarına yönlendiriyor ancak www ön eki yönlendirmiyor. "
-"Lütfen düzeltin."
+msgstr "Alan adınız elten bloglarına yönlendiriyor ancak www ön eki yönlendirmiyor. Lütfen düzeltin."
 
 #: ../src/scenes/Changes.rb:144
 msgctxt "Changes"
@@ -7313,20 +6899,17 @@ msgctxt "Clock"
 msgid "Alarms"
 msgstr "Alarmlar"
 
-#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Clock.rb:97
+#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70 ../src/scenes/Clock.rb:97
 msgctxt "Clock"
 msgid "Hour"
 msgstr "Saat"
 
-#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Clock.rb:97
+#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70 ../src/scenes/Clock.rb:97
 msgctxt "Clock"
 msgid "Type"
 msgstr "Tür"
 
-#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Clock.rb:97
+#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70 ../src/scenes/Clock.rb:97
 msgctxt "Clock"
 msgid "One time"
 msgstr "Bir kez"
@@ -7439,12 +7022,7 @@ msgstr "Bildir"
 #: ../src/scenes/ForgotPassword.rb:11
 msgctxt "ForgotPassword"
 msgid "If you forget your password, you can reset it using the email address you provided when registering. You can request a password reset code to verify your identity. The code will be sent to your email address. Warning: two-factor authentication will be disabled on your account. To continue, enter your username."
-msgstr ""
-"Şifrenizi kaybederseniz kayıt işleminde kullandığınız e-posta adresiyle "
-"sıfırlayabilirsiniz. Bu şekilde kimliğinizi doğrulamak için kullanılan şifre "
-"sıfırlama kodunu oluşturabilirsiniz. Kod e-posta adresinize gönderilecektir. "
-"Uyarı! İki öğeli kimlik doğrulaması devredışı bırakılacaktır. Devam etmek "
-"için kullanıcı adınızı girin"
+msgstr "Şifrenizi kaybederseniz kayıt işleminde kullandığınız e-posta adresiyle sıfırlayabilirsiniz. Bu şekilde kimliğinizi doğrulamak için kullanılan şifre sıfırlama kodunu oluşturabilirsiniz. Kod e-posta adresinize gönderilecektir. Uyarı! İki öğeli kimlik doğrulaması devredışı bırakılacaktır. Devam etmek için kullanıcı adınızı girin"
 
 #: ../src/scenes/ForgotPassword.rb:18
 msgctxt "ForgotPassword"
@@ -7484,9 +7062,7 @@ msgstr "Beklenmeyen hata"
 #: ../src/scenes/ForgotPassword.rb:57
 msgctxt "ForgotPassword"
 msgid "The password reset code has been sent to the email address you provided. To continue, select the option to enter the code."
-msgstr ""
-"Belirtilen e-posta adresinize şifre sıfırlama anahtarı gönderildi. Devam "
-"etmek için anahtar girme seçeneğini seçin."
+msgstr "Belirtilen e-posta adresinize şifre sıfırlama anahtarı gönderildi. Devam etmek için anahtar girme seçeneğini seçin."
 
 #: ../src/scenes/ForgotPassword.rb:64
 msgctxt "ForgotPassword"
@@ -7526,8 +7102,7 @@ msgstr "Şifre değiştirilirken lütfen bekleyin"
 #: ../src/scenes/ForgotPassword.rb:93
 msgctxt "ForgotPassword"
 msgid "You can log in to your account using your new credentials."
-msgstr ""
-"Şifre değiştirildi. Yeni şifreyi kullanarak hesabınıza giriş yapabilirsiniz."
+msgstr "Şifre değiştirildi. Yeni şifreyi kullanarak hesabınıza giriş yapabilirsiniz."
 
 #: ../src/scenes/Forum.rb:93
 msgctxt "Forum"
@@ -7636,8 +7211,7 @@ msgctxt "Forum"
 msgid "Threads popular with my friends"
 msgstr "Arkadaşlarım arasında popüler olan konular"
 
-#: ../src/scenes/Forum.rb:212 ../src/scenes/Forum.rb:497
-#: ../src/scenes/Forum.rb:1304 ../src/scenes/Forum.rb:1566
+#: ../src/scenes/Forum.rb:212 ../src/scenes/Forum.rb:497 ../src/scenes/Forum.rb:1304 ../src/scenes/Forum.rb:1566
 msgctxt "Forum"
 msgid "Search"
 msgstr "Ara"
@@ -7652,63 +7226,37 @@ msgctxt "Forum"
 msgid "Recently created groups"
 msgstr "Yakın zamanda oluşturulan gruplar"
 
-#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245
-#: ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288
-#: ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328
-#: ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365
-#: ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1391
-#: ../src/scenes/Forum.rb:1988
+#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245 ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288 ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328 ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365 ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1391 ../src/scenes/Forum.rb:1988
 msgctxt "Forum"
 msgid "posts"
 msgstr "Gönderiler"
 
-#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245
-#: ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288
-#: ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328
-#: ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365
-#: ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1391
-#: ../src/scenes/Forum.rb:1988
+#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245 ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288 ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328 ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365 ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1391 ../src/scenes/Forum.rb:1988
 msgctxt "Forum"
 msgid "Unread"
 msgstr "Okunmamış"
 
-#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245
-#: ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288
-#: ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328
-#: ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365
-#: ../src/scenes/Forum.rb:385
+#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245 ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288 ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328 ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365 ../src/scenes/Forum.rb:385
 msgctxt "Forum"
 msgid "Forums"
 msgstr "Forumlar"
 
-#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245
-#: ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288
-#: ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328
-#: ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365
-#: ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1391
-#: ../src/scenes/Forum.rb:2304
+#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245 ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288 ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328 ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365 ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1391 ../src/scenes/Forum.rb:2304
 msgctxt "Forum"
 msgid "Threads"
 msgstr "Konular"
 
-#: ../src/scenes/Forum.rb:245 ../src/scenes/Forum.rb:288
-#: ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328
-#: ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365
-#: ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1063
+#: ../src/scenes/Forum.rb:245 ../src/scenes/Forum.rb:288 ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328 ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365 ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1063
 msgctxt "Forum"
 msgid "Administrator"
 msgstr "Yönetici"
 
-#: ../src/scenes/Forum.rb:393 ../src/scenes/Forum.rb:396
-#: ../src/scenes/Forum.rb:939 ../src/scenes/Forum.rb:1395
-#: ../src/scenes/Forum.rb:1593 ../src/scenes/Forum.rb:1992
-#: ../src/scenes/Forum.rb:2473 ../src/scenes/Forum.rb:3227
+#: ../src/scenes/Forum.rb:393 ../src/scenes/Forum.rb:396 ../src/scenes/Forum.rb:939 ../src/scenes/Forum.rb:1395 ../src/scenes/Forum.rb:1593 ../src/scenes/Forum.rb:1992 ../src/scenes/Forum.rb:2473 ../src/scenes/Forum.rb:3227
 msgctxt "Forum"
 msgid "Forum"
 msgstr "Forum"
 
-#: ../src/scenes/Forum.rb:471 ../src/scenes/Forum.rb:1535
-#: ../src/scenes/Forum.rb:2039
+#: ../src/scenes/Forum.rb:471 ../src/scenes/Forum.rb:1535 ../src/scenes/Forum.rb:2039
 msgctxt "Forum"
 msgid "Open"
 msgstr "Aç"
@@ -7748,40 +7296,32 @@ msgctxt "Forum"
 msgid "Group summary"
 msgstr "Grup özeti"
 
-#: ../src/scenes/Forum.rb:514 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:4411
+#: ../src/scenes/Forum.rb:514 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:4411
 msgctxt "Forum"
 msgid "Language"
 msgstr "Dil"
 
-#: ../src/scenes/Forum.rb:515 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:4413
+#: ../src/scenes/Forum.rb:515 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:4413
 msgctxt "Forum"
 msgid "Hidden"
 msgstr "Gizli"
 
-#: ../src/scenes/Forum.rb:516 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:4413
+#: ../src/scenes/Forum.rb:516 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:4413
 msgctxt "Forum"
 msgid "Public"
 msgstr "Açık"
 
-#: ../src/scenes/Forum.rb:520 ../src/scenes/Forum.rb:1278
-#: ../src/scenes/Forum.rb:4462
+#: ../src/scenes/Forum.rb:520 ../src/scenes/Forum.rb:1278 ../src/scenes/Forum.rb:4462
 msgctxt "Forum"
 msgid "closed (only invited users can join)"
 msgstr "Kapalı (sadece davet edilen kullanıcılar katılabilir)"
 
-#: ../src/scenes/Forum.rb:522 ../src/scenes/Forum.rb:526
-#: ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:1278
-#: ../src/scenes/Forum.rb:1280 ../src/scenes/Forum.rb:4462
-#: ../src/scenes/Forum.rb:4464
+#: ../src/scenes/Forum.rb:522 ../src/scenes/Forum.rb:526 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:1278 ../src/scenes/Forum.rb:1280 ../src/scenes/Forum.rb:4462 ../src/scenes/Forum.rb:4464
 msgctxt "Forum"
 msgid "Moderated (everyone can request)"
 msgstr "Yönetilen (herkes istek gönderebilir)"
 
-#: ../src/scenes/Forum.rb:528 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:1280 ../src/scenes/Forum.rb:4464
+#: ../src/scenes/Forum.rb:528 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:1280 ../src/scenes/Forum.rb:4464
 msgctxt "Forum"
 msgid "open (everyone can join)"
 msgstr "Açık (herkes katılabilir)"
@@ -7791,14 +7331,12 @@ msgctxt "Forum"
 msgid "Recommended"
 msgstr "Önerilen"
 
-#: ../src/scenes/Forum.rb:534 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:4413
+#: ../src/scenes/Forum.rb:534 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:4413
 msgctxt "Forum"
 msgid "Group type"
 msgstr "Grup türü"
 
-#: ../src/scenes/Forum.rb:535 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:4414
+#: ../src/scenes/Forum.rb:535 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:4414
 msgctxt "Forum"
 msgid "Group join type"
 msgstr "Gruba katılım türü"
@@ -7833,9 +7371,7 @@ msgctxt "Forum"
 msgid "Audio posts"
 msgstr "Sesli gönderiler"
 
-#: ../src/scenes/Forum.rb:559 ../src/scenes/Forum.rb:2577
-#: ../src/scenes/Forum.rb:3087 ../src/scenes/Forum.rb:3177
-#: ../src/scenes/Forum.rb:3884
+#: ../src/scenes/Forum.rb:559 ../src/scenes/Forum.rb:2577 ../src/scenes/Forum.rb:3087 ../src/scenes/Forum.rb:3177 ../src/scenes/Forum.rb:3884
 msgctxt "Forum"
 msgid "Attachments"
 msgstr "Ekler"
@@ -7898,8 +7434,7 @@ msgstr "Bu gruba katılım isteği gönder"
 #: ../src/scenes/Forum.rb:611
 msgctxt "Forum"
 msgid "Do you want to request to join %{groupname}?"
-msgstr ""
-"%{groupname} grubuna katılım isteği göndermek istediğinizden emin misiniz?"
+msgstr "%{groupname} grubuna katılım isteği göndermek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Forum.rb:613
 msgctxt "Forum"
@@ -7958,12 +7493,8 @@ msgstr "Grubu okundu olarak işaretle"
 
 #: ../src/scenes/Forum.rb:657
 msgctxt "Forum"
-msgid ""
-"All posts in this group will be marked as read. Are you sure you want to "
-"continue?"
-msgstr ""
-"Gruptaki tüm gönderiler okundu olarak işaretlenecektir. Devam etmek "
-"istediğinizden emin misiniz?"
+msgid "All posts in this group will be marked as read. Are you sure you want to continue?"
+msgstr "Gruptaki tüm gönderiler okundu olarak işaretlenecektir. Devam etmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Forum.rb:668
 msgctxt "Forum"
@@ -8020,8 +7551,7 @@ msgctxt "Forum"
 msgid "Message of the day updated"
 msgstr "Günün mesajı güncellendi"
 
-#: ../src/scenes/Forum.rb:762 ../src/scenes/Forum.rb:1239
-#: ../src/scenes/Forum.rb:3127
+#: ../src/scenes/Forum.rb:762 ../src/scenes/Forum.rb:1239 ../src/scenes/Forum.rb:3127
 msgctxt "Forum"
 msgid "Rules of group %{groupname}"
 msgstr "%{groupname} grubunun kuralları"
@@ -8228,14 +7758,8 @@ msgstr "Moderasyon izinleri ver"
 
 #: ../src/scenes/Forum.rb:1109
 msgctxt "Forum"
-msgid ""
-"You want to give the role of moderator to a user who is banned globally. "
-"Groups with banned moderators are not displayed in most lists. Are you sure "
-"you want to continue?"
-msgstr ""
-"Küresel olarak banlanmış bir kullanıcıya moderatör yetkisi vermek "
-"üzeresiniz. Banlı moderatörlü olan gruplar çoğu listede gösterilmez. Devam "
-"etmek istediğinizden emin misiniz?"
+msgid "You want to give the role of moderator to a user who is banned globally. Groups with banned moderators are not displayed in most lists. Are you sure you want to continue?"
+msgstr "Küresel olarak banlanmış bir kullanıcıya moderatör yetkisi vermek üzeresiniz. Banlı moderatörlü olan gruplar çoğu listede gösterilmez. Devam etmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Forum.rb:1114
 msgctxt "Forum"
@@ -8250,9 +7774,7 @@ msgstr "Yönetici izinlerini devret"
 #: ../src/scenes/Forum.rb:1116
 msgctxt "Forum"
 msgid "Are you sure you want to give up your administrator privileges in %{groupname} and transfer them to %{user}?"
-msgstr ""
-"%{groupname} grubunda yönetici izinlerinizden vazgeçip onları %{user} "
-"kişisine devretmek istediğinizden emin misiniz?"
+msgstr "%{groupname} grubunda yönetici izinlerinizden vazgeçip onları %{user} kişisine devretmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Forum.rb:1124
 msgctxt "Forum"
@@ -8272,8 +7794,7 @@ msgstr "Bu gruptan banla"
 #: ../src/scenes/Forum.rb:1152
 msgctxt "Forum"
 msgid "Are you sure you want to ban %{user} from %{groupname}?"
-msgstr ""
-"%{groupname} grubunda %{user} kişisini banlamak istediğinizden emin misiniz?"
+msgstr "%{groupname} grubunda %{user} kişisini banlamak istediğinizden emin misiniz?"
 
 #: ../src/scenes/Forum.rb:1155
 msgctxt "Forum"
@@ -8283,9 +7804,7 @@ msgstr "Çıkart"
 #: ../src/scenes/Forum.rb:1156
 msgctxt "Forum"
 msgid "Are you sure you want to kick %{user} out of %{groupname}?"
-msgstr ""
-"%{groupname} grubundan %{user} kullanıcısını çıkartmak istediğinizden emin "
-"misiniz?"
+msgstr "%{groupname} grubundan %{user} kullanıcısını çıkartmak istediğinizden emin misiniz?"
 
 #: ../src/scenes/Forum.rb:1160
 msgctxt "Forum"
@@ -8295,9 +7814,7 @@ msgstr "Banı kaldır"
 #: ../src/scenes/Forum.rb:1161
 msgctxt "Forum"
 msgid "Are you sure you want to unban %{user} from %{groupname}?"
-msgstr ""
-"%{groupname} grubunda %{user} kişisinin banını kaldırmak istediğinizden emin "
-"misiniz?"
+msgstr "%{groupname} grubunda %{user} kişisinin banını kaldırmak istediğinizden emin misiniz?"
 
 #: ../src/scenes/Forum.rb:1164
 msgctxt "Forum"
@@ -8327,9 +7844,7 @@ msgstr "Daveti iptal et"
 #: ../src/scenes/Forum.rb:1172
 msgctxt "Forum"
 msgid "Are you sure you want to cancel %{user}'s invitation to %{groupname}?"
-msgstr ""
-"%{user} kullanıcısının %{groupname} grubuna olan davetini iptal etmek "
-"istediğinizden emin misiniz?"
+msgstr "%{user} kullanıcısının %{groupname} grubuna olan davetini iptal etmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Forum.rb:1179
 msgctxt "Forum"
@@ -8351,8 +7866,7 @@ msgctxt "Forum"
 msgid "The user has been invited"
 msgstr "Kullanıcı davet edildi"
 
-#: ../src/scenes/Forum.rb:1193 ../src/scenes/Messages.rb:1070
-#: ../src/scenes/Users.rb:21
+#: ../src/scenes/Forum.rb:1193 ../src/scenes/Messages.rb:1070 ../src/scenes/Users.rb:21
 msgid "You do not have permission to do this"
 msgstr "Bunu yapmaya izniniz yok"
 
@@ -8538,12 +8052,8 @@ msgstr "Bu forumu okundu olarak işaretle"
 
 #: ../src/scenes/Forum.rb:1576
 msgctxt "Forum"
-msgid ""
-"All posts on this forum will be marked as read. Are you sure you want to "
-"continue?"
-msgstr ""
-"Forumdaki tüm gönderiler okundu olarak işaretlenecektir. Devam etmek "
-"istediğinizden emin misiniz?"
+msgid "All posts on this forum will be marked as read. Are you sure you want to continue?"
+msgstr "Forumdaki tüm gönderiler okundu olarak işaretlenecektir. Devam etmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Forum.rb:1586
 msgctxt "Forum"
@@ -8560,8 +8070,7 @@ msgctxt "Forum"
 msgid "Forum added to quick actions"
 msgstr "Forum hızlı eylemlere eklendi"
 
-#: ../src/scenes/Forum.rb:1600 ../src/scenes/Forum.rb:2111
-#: ../src/scenes/Forum.rb:3564
+#: ../src/scenes/Forum.rb:1600 ../src/scenes/Forum.rb:2111 ../src/scenes/Forum.rb:3564
 msgctxt "Forum"
 msgid "Moderation"
 msgstr "Yönetim"
@@ -8726,8 +8235,7 @@ msgctxt "Forum"
 msgid "Thread marked"
 msgstr "Konu işaretlendi"
 
-#: ../src/scenes/Forum.rb:2063 ../src/scenes/Forum.rb:2473
-#: ../src/scenes/Forum.rb:3531
+#: ../src/scenes/Forum.rb:2063 ../src/scenes/Forum.rb:2473 ../src/scenes/Forum.rb:3531
 msgctxt "Forum"
 msgid "Follow this thread"
 msgstr "Takip edilen konular listesine ekle"
@@ -8775,14 +8283,12 @@ msgstr "Okuyanlar: %{count_readers}"
 #: ../src/scenes/Forum.rb:2093
 msgctxt "Forum"
 msgid "Users that have read less than 50 percent of posts: %{count_readers}"
-msgstr ""
-"Gönderilerin %50'sinden azını okumuş olan kullanıcılar: %{count_readers}"
+msgstr "Gönderilerin %50'sinden azını okumuş olan kullanıcılar: %{count_readers}"
 
 #: ../src/scenes/Forum.rb:2094
 msgctxt "Forum"
 msgid "Users that have read over 90 percent of posts: %{count_readers}"
-msgstr ""
-"Gönderilerin %90'ından fazlasını okumuş olan kullanıcılar: %{count_readers}"
+msgstr "Gönderilerin %90'ından fazlasını okumuş olan kullanıcılar: %{count_readers}"
 
 #: ../src/scenes/Forum.rb:2095
 msgctxt "Forum"
@@ -8944,8 +8450,7 @@ msgctxt "Forum"
 msgid "Offer refused"
 msgstr "Teklif reddedildi"
 
-#: ../src/scenes/Forum.rb:2305 ../src/scenes/Forum.rb:2362
-#: ../src/scenes/Forum.rb:3689 ../src/scenes/Forum.rb:3733
+#: ../src/scenes/Forum.rb:2305 ../src/scenes/Forum.rb:2362 ../src/scenes/Forum.rb:3689 ../src/scenes/Forum.rb:3733
 msgctxt "Forum"
 msgid "Move"
 msgstr "Taşı"
@@ -8955,8 +8460,7 @@ msgctxt "Forum"
 msgid "Offer"
 msgstr "Teklif"
 
-#: ../src/scenes/Forum.rb:2307 ../src/scenes/Forum.rb:2365
-#: ../src/scenes/Forum.rb:3690 ../src/scenes/Forum.rb:3736
+#: ../src/scenes/Forum.rb:2307 ../src/scenes/Forum.rb:2365 ../src/scenes/Forum.rb:3690 ../src/scenes/Forum.rb:3736
 msgctxt "Forum"
 msgid "Delete"
 msgstr "Sil"
@@ -9000,8 +8504,7 @@ msgctxt "Forum"
 msgid "Which group do you want to offer these threads to?"
 msgstr "Konuları hangi gruba teklif etmek istersiniz?"
 
-#: ../src/scenes/Forum.rb:2444 ../src/scenes/Forum.rb:2471
-#: ../src/scenes/Forum.rb:3195 ../src/scenes/Forum.rb:3211
+#: ../src/scenes/Forum.rb:2444 ../src/scenes/Forum.rb:2471 ../src/scenes/Forum.rb:3195 ../src/scenes/Forum.rb:3211
 msgctxt "Forum"
 msgid "Audio post"
 msgstr "Sesli gönderi"
@@ -9021,8 +8524,7 @@ msgctxt "Forum"
 msgid "Thread name"
 msgstr "Konu adı"
 
-#: ../src/scenes/Forum.rb:2466 ../src/scenes/Forum.rb:3207
-#: ../src/scenes/Forum.rb:3884
+#: ../src/scenes/Forum.rb:2466 ../src/scenes/Forum.rb:3207 ../src/scenes/Forum.rb:3884
 msgctxt "Forum"
 msgid "Use Markdown in this post"
 msgstr "Bu gönderide MarkDown kullan"
@@ -9037,8 +8539,7 @@ msgctxt "Forum"
 msgid "Attach a file"
 msgstr "Dosya ekle"
 
-#: ../src/scenes/Forum.rb:2466 ../src/scenes/Forum.rb:3688
-#: ../src/scenes/Forum.rb:3740
+#: ../src/scenes/Forum.rb:2466 ../src/scenes/Forum.rb:3688 ../src/scenes/Forum.rb:3740
 msgctxt "Forum"
 msgid "Post content"
 msgstr "Gönderi içeriği"
@@ -9048,8 +8549,7 @@ msgctxt "Forum"
 msgid "No tag value"
 msgstr "Etiket değeri yok"
 
-#: ../src/scenes/Forum.rb:2509 ../src/scenes/Forum.rb:2517
-#: ../src/scenes/Forum.rb:3247 ../src/scenes/Forum.rb:3285
+#: ../src/scenes/Forum.rb:2509 ../src/scenes/Forum.rb:2517 ../src/scenes/Forum.rb:3247 ../src/scenes/Forum.rb:3285
 msgctxt "Forum"
 msgid "Send"
 msgstr "Gönder"
@@ -9079,8 +8579,7 @@ msgctxt "Forum"
 msgid "You haven't created any polls yet."
 msgstr "Henüz hiçbir anket oluşturmadınız."
 
-#: ../src/scenes/Forum.rb:2568 ../src/scenes/Forum.rb:3078
-#: ../src/scenes/Forum.rb:3893
+#: ../src/scenes/Forum.rb:2568 ../src/scenes/Forum.rb:3078 ../src/scenes/Forum.rb:3893
 msgctxt "Forum"
 msgid "Select file to attach"
 msgstr "Eklenecek dosya seçin"
@@ -9090,8 +8589,7 @@ msgctxt "Forum"
 msgid "This file has already been attached"
 msgstr "Bu dosya zaten eklenmiş"
 
-#: ../src/scenes/Forum.rb:2574 ../src/scenes/Forum.rb:3084
-#: ../src/scenes/Forum.rb:3899
+#: ../src/scenes/Forum.rb:2574 ../src/scenes/Forum.rb:3084 ../src/scenes/Forum.rb:3899
 msgctxt "Forum"
 msgid "This file is too large"
 msgstr "Bu dosya çok büyük"
@@ -9121,21 +8619,17 @@ msgctxt "Forum"
 msgid "Are you sure you want to cancel creating this post?"
 msgstr "Bu gönderiyi oluşturmaktan vazgeçmek istediğinizden emin misiniz?"
 
-#: ../src/scenes/Forum.rb:3058 ../src/scenes/Messages.rb:638
-#: ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:126
+#: ../src/scenes/Forum.rb:3058 ../src/scenes/Messages.rb:638 ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:126
 msgctxt "Polls"
 msgid "Show results"
 msgstr "Sonuçları göster"
 
-#: ../src/scenes/Forum.rb:3058 ../src/scenes/Messages.rb:638
-#: ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:129
+#: ../src/scenes/Forum.rb:3058 ../src/scenes/Messages.rb:638 ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:129
 msgctxt "Polls"
 msgid "Show report"
 msgstr "Raporu göster"
 
-#: ../src/scenes/Forum.rb:3058 ../src/scenes/Messages.rb:638
-#: ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:121
-#: ../src/scenes/Polls.rb:416
+#: ../src/scenes/Forum.rb:3058 ../src/scenes/Messages.rb:638 ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:121 ../src/scenes/Polls.rb:416
 msgctxt "Polls"
 msgid "Vote"
 msgstr "Oyla"
@@ -9569,8 +9063,7 @@ msgstr "Grup yöneticisi seçin"
 #: ../src/scenes/Forum.rb:4427
 msgctxt "Forum"
 msgid "Prevent globally banned users from posting in this group"
-msgstr ""
-"Küresel olarak banlanan kullanıcıların bu grupta gönderi paylaşmasını engelle"
+msgstr "Küresel olarak banlanan kullanıcıların bu grupta gönderi paylaşmasını engelle"
 
 #: ../src/scenes/Forum.rb:4430
 msgctxt "Forum"
@@ -9677,8 +9170,7 @@ msgctxt "Honors"
 msgid "The user has not been awarded any honors."
 msgstr "Kullanıcıya rozet verilmemiş."
 
-#: ../src/scenes/Honors.rb:107 ../src/scenes/Honors.rb:122
-#: ../src/scenes/Honors.rb:219
+#: ../src/scenes/Honors.rb:107 ../src/scenes/Honors.rb:122 ../src/scenes/Honors.rb:219
 msgctxt "Honors"
 msgid "Level"
 msgstr "Seviye"
@@ -9721,17 +9213,14 @@ msgstr "Sil"
 #: ../src/scenes/Honors.rb:162
 msgctxt "Honors"
 msgid "Are you sure you want to delete this badge? All users who have been granted this badge will lose it."
-msgstr ""
-"Bu rozeti silmek istediğinizden emin misiniz? Bu rozeti alan bütün "
-"kullanıcılar rozeti kaybedecek."
+msgstr "Bu rozeti silmek istediğinizden emin misiniz? Bu rozeti alan bütün kullanıcılar rozeti kaybedecek."
 
 #: ../src/scenes/Honors.rb:167
 msgctxt "Honors"
 msgid "Honor deleted"
 msgstr "Onur silindi"
 
-#: ../src/scenes/Honors.rb:185 ../src/scenes/Honors.rb:198
-#: ../src/scenes/Honors.rb:237
+#: ../src/scenes/Honors.rb:185 ../src/scenes/Honors.rb:198 ../src/scenes/Honors.rb:237
 msgctxt "Honors"
 msgid "Add challenge"
 msgstr "Meydan okuma ekle"
@@ -9799,30 +9288,17 @@ msgstr "Hangi sürümü kullanmak istiyorsunuz?"
 #: ../src/scenes/Loading.rb:262
 msgctxt "Loading"
 msgid "Elten has detected that you are using NVDA. To support some features of this screen reader, the Elten add-on for NVDA must be installed. Do you want to install it now?"
-msgstr ""
-"Elten NVDA kullandığınızı algıladı. Bu ekran okuyucunun bazı özelliklerini "
-"desteklemek için, elten eklentisini kurmanız gereklidir. Bunu şimdi yapmak "
-"istiyor musunuz?"
+msgstr "Elten NVDA kullandığınızı algıladı. Bu ekran okuyucunun bazı özelliklerini desteklemek için, elten eklentisini kurmanız gereklidir. Bunu şimdi yapmak istiyor musunuz?"
 
 #: ../src/scenes/Loading.rb:264
 msgctxt "Loading"
 msgid "A new version of the Elten add-on for NVDA is available. The version you are using is no longer supported by this Elten release and may cause errors. Do you want to update it now?"
-msgstr ""
-"Elten NVDA eklentisinin yeni sürümü mevcut. Şu an kullandığınız sürüm bu "
-"Elten sürümünde desteklenmiyor ve hatalara sebep olabilir. Eklentiyi şimdi "
-"güncellemek istiyor musunuz?"
+msgstr "Elten NVDA eklentisinin yeni sürümü mevcut. Şu an kullandığınız sürüm bu Elten sürümünde desteklenmiyor ve hatalara sebep olabilir. Eklentiyi şimdi güncellemek istiyor musunuz?"
 
 #: ../src/scenes/Loading.rb:303
 msgctxt "Loading"
 msgid "Warning! Elten failed to verify the server's encryption key. You may be connecting not to an Elten server, but to a server controlled by an attacker. The Elten server's key may also have changed. Details of any legitimate key change should be published on the Elten website or forum. If no such information has been published, this connection may be under attack. Any data you provide, including your password, could be stolen. Are you sure you want to continue with this connection? Select No to exit Elten."
-msgstr ""
-"Uyarı! Elten sunucu şifreleleme anahtarını doğrulayamadı. Hackerlar "
-"tarafından hazırlanan bir sunucuya bağlanıyor olabilirsiniz. Elten sunucu "
-"şifresi de değişmiş olabilir. Ayrıntılar Elten forum web sitesinde olabilir. "
-"Eğer bir şifre değişikliği hakkında bilgi verilmediyse hacker saldırılarına "
-"karşı savunmasız olabilirsiniz. Bu durumda şifre dahil gireceğiniz bilgiler "
-"çalınabilir. Bu bağlantıyla devam etmek istediğinizden emin misiniz? "
-"Elten'dan çıkmak için hayırı seçin."
+msgstr "Uyarı! Elten sunucu şifreleleme anahtarını doğrulayamadı. Hackerlar tarafından hazırlanan bir sunucuya bağlanıyor olabilirsiniz. Elten sunucu şifresi de değişmiş olabilir. Ayrıntılar Elten forum web sitesinde olabilir. Eğer bir şifre değişikliği hakkında bilgi verilmediyse hacker saldırılarına karşı savunmasız olabilirsiniz. Bu durumda şifre dahil gireceğiniz bilgiler çalınabilir. Bu bağlantıyla devam etmek istediğinizden emin misiniz? Elten'dan çıkmak için hayırı seçin."
 
 #: ../src/scenes/Loading.rb:320
 msgctxt "Loading"
@@ -9833,42 +9309,29 @@ msgstr "Programın yeni sürümü mevcut."
 msgctxt "Loading"
 msgid ""
 "Attention!\n"
-"Since the release of version 2.5.2.1, new restrictions have been introduced "
-"for globally banned users.\n"
-"By default, they are prevented from speaking in any groups and writing to "
-"other people.\n"
+"Since the release of version 2.5.2.1, new restrictions have been introduced for globally banned users.\n"
+"By default, they are prevented from speaking in any groups and writing to other people.\n"
 "\n"
-"To allow banned people to speak in a group, change this option from the "
-"group's settings, General tab.\n"
-"Similarly, to allow these users to write private messages to you, you must "
-"allow this from within your account settings, Privacy tab.\n"
+"To allow banned people to speak in a group, change this option from the group's settings, General tab.\n"
+"Similarly, to allow these users to write private messages to you, you must allow this from within your account settings, Privacy tab.\n"
 "\n"
-"Also, all groups moderated by banned users have been removed from most "
-"public lists.\n"
+"Also, all groups moderated by banned users have been removed from most public lists.\n"
 "\n"
-"At the same time, three changes have since been made to the premium packages "
-"at the request of users:\n"
+"At the same time, three changes have since been made to the premium packages at the request of users:\n"
 "First of all, premium features are now visible in menus.\n"
-"It has also been made possible to buy premium packages for a period of one "
-"month.\n"
+"It has also been made possible to buy premium packages for a period of one month.\n"
 "Other billing currencies have also been added."
 msgstr ""
 "Dikkat!\n"
-"2.5.2.1 sürümünden itibaren küresel olarak banlanmış kullanıcılar için "
-"kısıtlamalar getirildi.\n"
-"varsayılan olarak onlar gruplara yazamaz veya başkalarına mesaj "
-"gönderemezler.\n"
+"2.5.2.1 sürümünden itibaren küresel olarak banlanmış kullanıcılar için kısıtlamalar getirildi.\n"
+"varsayılan olarak onlar gruplara yazamaz veya başkalarına mesaj gönderemezler.\n"
 "\n"
-"Banlanmış kişilerin gruplarda konuşmasına izin vermek için bu seçeneği grup "
-"ayarlarının genel sekmesinden değiştirin.\n"
-"Benzer şekilde bu kullanıcıların size özel mesaj göndermesine izin vermek "
-"için buna hesap ayarlarının gizlilik sekmesinden izin vermelisiniz.\n"
+"Banlanmış kişilerin gruplarda konuşmasına izin vermek için bu seçeneği grup ayarlarının genel sekmesinden değiştirin.\n"
+"Benzer şekilde bu kullanıcıların size özel mesaj göndermesine izin vermek için buna hesap ayarlarının gizlilik sekmesinden izin vermelisiniz.\n"
 "\n"
-"Ayrıca banlanmış kullanıcılar tarafından yönetilen tüm gruplar çoğu listeden "
-"kaldırıldı.\n"
+"Ayrıca banlanmış kullanıcılar tarafından yönetilen tüm gruplar çoğu listeden kaldırıldı.\n"
 "\n"
-"Aynı zamanda kullanıcıların isteğiyle premium paketlere üç değişiklik "
-"yapıldı:\n"
+"Aynı zamanda kullanıcıların isteğiyle premium paketlere üç değişiklik yapıldı:\n"
 "Birincisi premium paketler artık menülerde görünür.\n"
 "Aylık premium paket almak da mümkün hale getirildi.\n"
 "Diğer ödeme para birimleri de eklendi."
@@ -9945,32 +9408,15 @@ msgstr "Pin kodunu girin"
 
 #: ../src/scenes/Login.rb:60 ../src/scenes/Login.rb:169
 msgctxt "Login"
-msgid ""
-"Do you want to enable auto-Login-key encryption? When encrypted, the Auto-"
-"Login Key will be readable only on this computer, and its copying or "
-"exporting will not allow other devices to access your account. Note: If you "
-"encrypt your Auto-Login Key, the created portable versions will not be able "
-"to automatically log into your account from other devices, even if you copy "
-"your settings, and you will be prompted to enter your password. You can "
-"create as many auto-login-keys as you wish for all other computers you are "
-"using."
+msgid "Do you want to enable auto-Login-key encryption? When encrypted, the Auto-Login Key will be readable only on this computer, and its copying or exporting will not allow other devices to access your account. Note: If you encrypt your Auto-Login Key, the created portable versions will not be able to automatically log into your account from other devices, even if you copy your settings, and you will be prompted to enter your password. You can create as many auto-login-keys as you wish for all other computers you are using."
 msgstr ""
-"Otomatik giriş anahtar şifrelemesini etkinleştirmek istiyor musunuz? "
-"Şifrelendiğinde, otomatik giriş anahtarı sadece bu bilgisayarda okunabilir "
-"hâle gelecek ve onun dışarıya aktarılması diğer cihazların hesabınıza "
-"erişimine izin vermeyecek.\n"
-"Not: Otomatik giriş anahtarınızı şifrelerseniz, ayarlarınızı kopyalasanız "
-"bile, oluşturulan taşınabilir sürümler diğer cihazlarda şifrenizi otomatik "
-"olarak giremeyecek ve şifrenizi girmeniz istenecek. Kullandığınız diğer "
-"bilgisayarlar için istediğiniz miktarda otomatik giriş şifresi "
-"oluşturabilirsiniz."
+"Otomatik giriş anahtar şifrelemesini etkinleştirmek istiyor musunuz? Şifrelendiğinde, otomatik giriş anahtarı sadece bu bilgisayarda okunabilir hâle gelecek ve onun dışarıya aktarılması diğer cihazların hesabınıza erişimine izin vermeyecek.\n"
+"Not: Otomatik giriş anahtarınızı şifrelerseniz, ayarlarınızı kopyalasanız bile, oluşturulan taşınabilir sürümler diğer cihazlarda şifrenizi otomatik olarak giremeyecek ve şifrenizi girmeniz istenecek. Kullandığınız diğer bilgisayarlar için istediğiniz miktarda otomatik giriş şifresi oluşturabilirsiniz."
 
 #: ../src/scenes/Login.rb:88
 msgctxt "Login"
 msgid "Two-factor authentication is enabled on this account. Select an authentication method."
-msgstr ""
-"Bu hesapta iki öğeli kimlik doğrulama etkin. Doğrulamak için bir yöntem "
-"seçin."
+msgstr "Bu hesapta iki öğeli kimlik doğrulama etkin. Doğrulamak için bir yöntem seçin."
 
 #: ../src/scenes/Login.rb:88
 msgctxt "Login"
@@ -9985,10 +9431,7 @@ msgstr "Sms ile doğrula"
 #: ../src/scenes/Login.rb:104
 msgctxt "Login"
 msgid "Enter the code sent to you by text message to allow this device to log in. If you cannot access the phone number used, select the password reset option to disable two-factor authentication."
-msgstr ""
-"Bu cihazın giriş yapabilmesi için size mesaj olarak gönderilen kodu girin. "
-"Kullanılan telefon numarasına erişiminiz yoksa iki öğeli kimlik doğrulamayı "
-"devredışı bırakmak için şifre sıfırlama seçeneğini seçin."
+msgstr "Bu cihazın giriş yapabilmesi için size mesaj olarak gönderilen kodu girin. Kullanılan telefon numarasına erişiminiz yoksa iki öğeli kimlik doğrulamayı devredışı bırakmak için şifre sıfırlama seçeneğini seçin."
 
 #: ../src/scenes/Login.rb:106
 msgctxt "Login"
@@ -10017,18 +9460,8 @@ msgstr "Bir daha sorma"
 
 #: ../src/scenes/Login.rb:148
 msgctxt "Login"
-msgid ""
-"The saved login data uses the old account authentication method in which  "
-"susceptibility to hacker attacks has been detected. New, safer automatic "
-"login  algorithms have been introduced in Elten 2.2. It is recommended that "
-"you convert  the saved information into a new system in order to improve the "
-"security of your  account. Do you want to update the saved information now?"
-msgstr ""
-"Kayıtlı olan giriş verisi hacker saldırılarına maruz kalma ihtimali daha "
-"yüksek olan doğrulama yöntemini kullanıyor. Elten 2.2 sürümünden itibaren "
-"yeni ve daha güvenli otomatik giriş algoritmaları kullanılıyor. Hesabınızın "
-"güvenliğini arttırmak için kayıtlı bilgiyi yeni sisteme güncellemeniz "
-"önerilir. Kayıtlı bilgiyi şimdi güncellemek istiyor musunuz?"
+msgid "The saved login data uses the old account authentication method in which  susceptibility to hacker attacks has been detected. New, safer automatic login  algorithms have been introduced in Elten 2.2. It is recommended that you convert  the saved information into a new system in order to improve the security of your  account. Do you want to update the saved information now?"
+msgstr "Kayıtlı olan giriş verisi hacker saldırılarına maruz kalma ihtimali daha yüksek olan doğrulama yöntemini kullanıyor. Elten 2.2 sürümünden itibaren yeni ve daha güvenli otomatik giriş algoritmaları kullanılıyor. Hesabınızın güvenliğini arttırmak için kayıtlı bilgiyi yeni sisteme güncellemeniz önerilir. Kayıtlı bilgiyi şimdi güncellemek istiyor musunuz?"
 
 #: ../src/scenes/Login.rb:164
 msgctxt "Login"
@@ -10038,17 +9471,12 @@ msgstr "Kimlik doğrulamasında hata oluştu. Yanlış şifre girmiş olabilirsi
 #: ../src/scenes/Login.rb:179
 msgctxt "Login"
 msgid "Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
-msgstr ""
-"Otomatik giriş oturumu kapatana kadar geçerli olacaktır. Otomatik giriş "
-"anahtarları topluluk menüsündeki hesabım sekmesinden yönetilebilir."
+msgstr "Otomatik giriş oturumu kapatana kadar geçerli olacaktır. Otomatik giriş anahtarları topluluk menüsündeki hesabım sekmesinden yönetilebilir."
 
 #: ../src/scenes/Login.rb:181
 msgctxt "Login"
 msgid "Login data has been updated. Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
-msgstr ""
-"Giriş verisi güncellendi. Otomatik giriş oturumu kapatana kadar geçerli "
-"olacaktır. Otomatik giriş anahtarları topluluk menüsündeki hesabım "
-"sekmesinden yönetilebilir."
+msgstr "Giriş verisi güncellendi. Otomatik giriş oturumu kapatana kadar geçerli olacaktır. Otomatik giriş anahtarları topluluk menüsündeki hesabım sekmesinden yönetilebilir."
 
 #: ../src/scenes/Login.rb:192
 msgctxt "Login"
@@ -10078,11 +9506,7 @@ msgstr "Bağlantı başarısız oldu."
 #: ../src/scenes/Login.rb:242
 msgctxt "Login"
 msgid "Do you want to encrypt this key with a custom PIN? You will be prompted for this PIN every time you start Elten to unlock your account. It will not be saved on the server and will apply only to the auto-login key stored on this device."
-msgstr ""
-"Bu anahtarı özgün bir pin koduyla şifrelemek istiyor musunuz? Elten'ı her "
-"başlatışınızda hesabınızın kilidini açmak için bu kod sorulacak, ancak bu "
-"kod sunucuya kaydedilmeyecek ve sadece bu cihazdaki otomatik giriş anahtarı "
-"için geçerli olacak."
+msgstr "Bu anahtarı özgün bir pin koduyla şifrelemek istiyor musunuz? Elten'ı her başlatışınızda hesabınızın kilidini açmak için bu kod sorulacak, ancak bu kod sunucuya kaydedilmeyecek ve sadece bu cihazdaki otomatik giriş anahtarı için geçerli olacak."
 
 #: ../src/scenes/Login.rb:247
 msgctxt "Login"
@@ -10107,9 +9531,7 @@ msgstr "Hızlı eylemler"
 #: ../src/scenes/Main.rb:169
 msgctxt "Main"
 msgid "Use Shift with up/down arrows to move quick actions"
-msgstr ""
-"Hızlı eğlemleri taşımak için shift tuşu ile yukarı ve aşağı ok tuşlarını "
-"kullanın"
+msgstr "Hızlı eğlemleri taşımak için shift tuşu ile yukarı ve aşağı ok tuşlarını kullanın"
 
 #: ../src/scenes/Main.rb:184
 msgctxt "Main"
@@ -10173,14 +9595,8 @@ msgstr "Hızlı eylemi silmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Main.rb:247
 msgctxt "Main"
-msgid ""
-"If you delete this action, you will also delete the keyboard shortcut "
-"assigned to it. If you want to keep the keyboard shortcut, you can hide this "
-"action. You can show or remove hidden actions at any time."
-msgstr ""
-"Eylemi silerseniz onunla ilişkilendirilen kısayol tuşunu da silmiş "
-"olursunuz. Kısayol tuşunu silmek istemiyorsanız eylemi gizleyebilirsiniz. "
-"Gizli eylemleri istediğiniz zaman gösterebilir veya kaldırabilirsiniz."
+msgid "If you delete this action, you will also delete the keyboard shortcut assigned to it. If you want to keep the keyboard shortcut, you can hide this action. You can show or remove hidden actions at any time."
+msgstr "Eylemi silerseniz onunla ilişkilendirilen kısayol tuşunu da silmiş olursunuz. Kısayol tuşunu silmek istemiyorsanız eylemi gizleyebilirsiniz. Gizli eylemleri istediğiniz zaman gösterebilir veya kaldırabilirsiniz."
 
 #: ../src/scenes/Main.rb:259
 msgctxt "Main"
@@ -10274,14 +9690,12 @@ msgctxt "Messages"
 msgid "Last message"
 msgstr "Son mesaj"
 
-#: ../src/scenes/Messages.rb:135 ../src/scenes/Messages.rb:439
-#: ../src/scenes/Messages.rb:589
+#: ../src/scenes/Messages.rb:135 ../src/scenes/Messages.rb:439 ../src/scenes/Messages.rb:589
 msgctxt "Messages"
 msgid "New"
 msgstr "Yeni"
 
-#: ../src/scenes/Messages.rb:138 ../src/scenes/Messages.rb:442
-#: ../src/scenes/Messages.rb:592
+#: ../src/scenes/Messages.rb:138 ../src/scenes/Messages.rb:442 ../src/scenes/Messages.rb:592
 msgctxt "Messages"
 msgid "Show older"
 msgstr "Daha eskiyi göster"
@@ -10418,11 +9832,8 @@ msgstr "Tüm mesajları okundu olarak işaretle"
 
 #: ../src/scenes/Messages.rb:249
 msgctxt "messages"
-msgid ""
-"Are you sure you want to mark all messages in all conversations as read?"
-msgstr ""
-"Tüm konuşmalardaki mesajları okunmadı olarak işaretlemek istediğinizden emin "
-"misiniz?"
+msgid "Are you sure you want to mark all messages in all conversations as read?"
+msgstr "Tüm konuşmalardaki mesajları okunmadı olarak işaretlemek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Messages.rb:255
 msgctxt "Messages"
@@ -10527,9 +9938,7 @@ msgstr "Bu konuşmaya yeni mesaj gönder"
 #: ../src/scenes/Messages.rb:493
 msgctxt "Messages"
 msgid "Are you sure you want to delete the conversation %{conversationname} with %{user}?"
-msgstr ""
-"%{user} kullanıcısıyla olan %{conversationname} konuşmasını silmek "
-"istediğinizden emin misiniz?"
+msgstr "%{user} kullanıcısıyla olan %{conversationname} konuşmasını silmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Messages.rb:498
 msgctxt "Messages"
@@ -10804,8 +10213,7 @@ msgstr "Not değiştirildi."
 #: ../src/scenes/Notes.rb:190
 msgctxt "Notes"
 msgid "Do you want to stop sharing this note with %{user}?"
-msgstr ""
-"Bu notun %{user} ile paylaşımını durdurmak istediğinizden emin misiniz?"
+msgstr "Bu notun %{user} ile paylaşımını durdurmak istediğinizden emin misiniz?"
 
 #: ../src/scenes/Notes.rb:196
 msgctxt "Notes"
@@ -10820,9 +10228,7 @@ msgstr "%{name} öğesini silmek istediğinizden emin misiniz?"
 #: ../src/scenes/Notes.rb:221
 msgctxt "Notes"
 msgid "Do you really want to stop sharing %{name}? It will be deleted from your list of notes."
-msgstr ""
-"%{name} notunu paylaşmayı durdurmak istediğinizden emin misiniz? Notlar "
-"listenizden silinecektir."
+msgstr "%{name} notunu paylaşmayı durdurmak istediğinizden emin misiniz? Notlar listenizden silinecektir."
 
 #: ../src/scenes/Notes.rb:231
 msgctxt "Notes"
@@ -10876,8 +10282,7 @@ msgctxt "Polls"
 msgid "Polls"
 msgstr "Anketler"
 
-#: ../src/scenes/Polls.rb:12 ../src/scenes/Polls.rb:387
-#: ../src/scenes/Polls.rb:507
+#: ../src/scenes/Polls.rb:12 ../src/scenes/Polls.rb:387 ../src/scenes/Polls.rb:507
 msgctxt "Polls"
 msgid "Author"
 msgstr "Oluşturan"
@@ -11161,16 +10566,8 @@ msgstr "Ayarlar kopyalanıyor"
 
 #: ../src/scenes/Portable.rb:36
 msgctxt "Portable"
-msgid ""
-"If you use a created copy of Elten on another computer, the voice settings "
-"may  not work properly. This is especially noticeable in a situation when "
-"another  computer has other voices installed. How do you want to configure "
-"the generated  version?"
-msgstr ""
-"Elten'ın başka bir bilgisayarda oluşturulmuş olan kopyasını kullanırsanız "
-"ses ayarları düzgün çalışmayabilir. Bu özellikle başka bilgisayarda farklı "
-"sesler kurulu olduğunda fark edilir. Oluşturulan sürümü nasıl yapılandırmak "
-"istersiniz?"
+msgid "If you use a created copy of Elten on another computer, the voice settings may  not work properly. This is especially noticeable in a situation when another  computer has other voices installed. How do you want to configure the generated  version?"
+msgstr "Elten'ın başka bir bilgisayarda oluşturulmuş olan kopyasını kullanırsanız ses ayarları düzgün çalışmayabilir. Bu özellikle başka bilgisayarda farklı sesler kurulu olduğunda fark edilir. Oluşturulan sürümü nasıl yapılandırmak istersiniz?"
 
 #: ../src/scenes/Portable.rb:36
 msgctxt "Portable"
@@ -11229,11 +10626,8 @@ msgstr "Güncelle"
 
 #: ../src/scenes/Programs.rb:83
 msgctxt "Programs"
-msgid ""
-"Do you want to install program %{name}? Need to download %{size} of data."
-msgstr ""
-"%{name} programını kurmak istiyor musunuz? %{size} boyutunda veri "
-"indirilmesi gerekecek."
+msgid "Do you want to install program %{name}? Need to download %{size} of data."
+msgstr "%{name} programını kurmak istiyor musunuz? %{size} boyutunda veri indirilmesi gerekecek."
 
 #: ../src/scenes/Programs.rb:104
 msgctxt "Programs"
@@ -11262,12 +10656,8 @@ msgstr "Program kaldırıldı"
 
 #: ../src/scenes/Registration.rb:13
 msgctxt "Registration"
-msgid ""
-"Enter your username. It will be used for identification.The maximum length "
-"of the  username is 64 characters"
-msgstr ""
-"Kullanıcı adınızı girin. Doğrulama için kullanılacaktır. En fazla 64 "
-"karakter uzunluğunda olabilir"
+msgid "Enter your username. It will be used for identification.The maximum length of the  username is 64 characters"
+msgstr "Kullanıcı adınızı girin. Doğrulama için kullanılacaktır. En fazla 64 karakter uzunluğunda olabilir"
 
 #: ../src/scenes/Registration.rb:16
 msgctxt "Registration"
@@ -11277,9 +10667,7 @@ msgstr "Bu kullanıcı adı alınmış."
 #: ../src/scenes/Registration.rb:27
 msgctxt "Registration"
 msgid "Enter your password. We recommend using a strong password consisting of letters and numbers. The maximum password length is 256 characters."
-msgstr ""
-"Şifrenizi girin. Sayılardan ve harflerden oluşan güçlü bir şifre kullanmanız "
-"önerilir."
+msgstr "Şifrenizi girin. Sayılardan ve harflerden oluşan güçlü bir şifre kullanmanız önerilir."
 
 #: ../src/scenes/Registration.rb:29
 msgctxt "Registration"
@@ -11294,16 +10682,12 @@ msgstr "Girilen şifreler farklı"
 #: ../src/scenes/Registration.rb:40
 msgctxt "Registration"
 msgid "Enter your email address. It will be used to reset a forgotten password and to send you important information."
-msgstr ""
-"E-posta adresinizi girin. Şifrenizi unuttuğunuzda ve önemli bilgi göndermek "
-"için kullanılacaktır."
+msgstr "E-posta adresinizi girin. Şifrenizi unuttuğunuzda ve önemli bilgi göndermek için kullanılacaktır."
 
 #: ../src/scenes/Registration.rb:51
 msgctxt "Registration"
 msgid "Registration was successful. Thank you. You can log in using your username and password."
-msgstr ""
-"Kayıt başarılı, teşekkürler. Kullanıcı adınızı ve şifrenizi kullanarak giriş "
-"yapabilirsiniz."
+msgstr "Kayıt başarılı, teşekkürler. Kullanıcı adınızı ve şifrenizi kullanarak giriş yapabilirsiniz."
 
 #: ../src/scenes/Registration.rb:53
 msgctxt "Registration"
@@ -11538,9 +10922,7 @@ msgstr "Braille çıkışını etkinleştir (NVDA eklentisi gerektirir)"
 #: ../src/scenes/Settings.rb:195
 msgctxt "Settings"
 msgid "Use a voice dictionary when processing characters (requires the NVDA add-on when using NVDA for speech output)"
-msgstr ""
-"Karakterleri işlerken sözlük kullan (seslendirme olarak NVDA kullanırken "
-"NVDA eklentisi gerektirir)"
+msgstr "Karakterleri işlerken sözlük kullan (seslendirme olarak NVDA kullanırken NVDA eklentisi gerektirir)"
 
 #: ../src/scenes/Settings.rb:196
 msgctxt "Settings"
@@ -11825,9 +11207,7 @@ msgstr "İndir"
 #: ../src/scenes/SoundThemes.rb:159 ../src/scenes/SoundThemes.rb:193
 msgctxt "SoundThemes"
 msgid "Do you want to download the theme %{name}? You will need to download %{size} of data."
-msgstr ""
-"%{name} adlı temayı indirmek istiyor musunuz? %{size} boyutunda veri "
-"indirilmesi gerekecek."
+msgstr "%{name} adlı temayı indirmek istiyor musunuz? %{size} boyutunda veri indirilmesi gerekecek."
 
 #: ../src/scenes/SoundThemes.rb:168
 msgctxt "SoundThemes"
@@ -12381,19 +11761,13 @@ msgstr "Konum"
 
 #: ../src/scenes/Sounds.rb:271
 msgctxt "Sounds"
-msgid ""
-"This sound theme contains unsaved changes. Do you want to upload it anyway?"
-msgstr ""
-"Bu ses teması kaydedilmemiş değişiklikler içeriyor. Onu yine de yüklemek "
-"istiyor musunuz?"
+msgid "This sound theme contains unsaved changes. Do you want to upload it anyway?"
+msgstr "Bu ses teması kaydedilmemiş değişiklikler içeriyor. Onu yine de yüklemek istiyor musunuz?"
 
 #: ../src/scenes/Sounds.rb:276
 msgctxt "Sounds"
 msgid "Sound theme ID. This ID will be used to track updates to this sound theme. Keep the current ID if you want to update the existing sound theme."
-msgstr ""
-"Ses teması kimliği. bu kimlik ses temasının güncellemelerini izlemek için "
-"kullanılır. Var olan ses temasını gücellemek istiyorsanız geçerli kimliği "
-"koruyun."
+msgstr "Ses teması kimliği. bu kimlik ses temasının güncellemelerini izlemek için kullanılır. Var olan ses temasını gücellemek istiyorsanız geçerli kimliği koruyun."
 
 #: ../src/scenes/Sounds.rb:300 ../src/scenes/Sounds.rb:308
 msgctxt "Sounds"
@@ -12485,8 +11859,7 @@ msgctxt "Update"
 msgid "A new version of this program is available. Do you want to download and install it?"
 msgstr "Elten'ın yeni sürümü mevcut. İndirmek ve kurmak istiyor musunuz?"
 
-#: ../src/scenes/Update.rb:36 ../src/scenes/Update.rb:66
-#: ../src/scenes/Update.rb:68
+#: ../src/scenes/Update.rb:36 ../src/scenes/Update.rb:66 ../src/scenes/Update.rb:68
 msgctxt "Update"
 msgid "Please wait while files are downloaded."
 msgstr "Dosyalar indirilirken lütfen bekleyin."
@@ -12494,9 +11867,7 @@ msgstr "Dosyalar indirilirken lütfen bekleyin."
 #: ../src/scenes/Update.rb:40
 msgctxt "Update"
 msgid "The update has been downloaded. To install it, the program must be restarted. Press Return to continue or Esc to cancel."
-msgstr ""
-"Güncelleme indirildi. Kurmak için program yeniden başlatılmalıdır. Devam "
-"etmek için enter'a basın veya iptal etmek için escape'e basın."
+msgstr "Güncelleme indirildi. Kurmak için program yeniden başlatılmalıdır. Devam etmek için enter'a basın veya iptal etmek için escape'e basın."
 
 #: ../src/scenes/Update.rb:53
 msgctxt "Update"
@@ -12506,9 +11877,7 @@ msgstr "Şimdi, güncelleme kurulacak. Program yeniden başlayacak."
 #: ../src/scenes/Update.rb:71
 msgctxt "Update"
 msgid "The program will now be reverted to the latest stable version. Elten will restart. This may take several minutes."
-msgstr ""
-"Program en son kararlı sürümüne düşürülecektir. Elten yeniden başlayacak. "
-"Birkaç dakika alabilir."
+msgstr "Program en son kararlı sürümüne düşürülecektir. Elten yeniden başlayacak. Birkaç dakika alabilir."
 
 #: ../src/scenes/UserSearch.rb:11
 msgctxt "UserSearch"
@@ -12691,16 +12060,8 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "Ses teması indirme"
 
 #~ msgctxt "Blog"
-#~ msgid ""
-#~ "Warning! If you change your blog URL, some links may stop working. If you "
-#~ "directly linked posts or other resources on your blog, they would no "
-#~ "longer be available at previous URLs. In such case you will be required "
-#~ "to fix them manualy. Are you sure you want to continue?"
-#~ msgstr ""
-#~ "Uyarı! Blog web adresini değiştirirseniz bazı linkler çalışmayabilir. "
-#~ "Bloğunuzdaki gönderilerin veya diğer kanakların linklerini paylaştıysanız "
-#~ "bunlar eski web adreslerinde bulunmayacaklar. Bu durumda bunları elle "
-#~ "düzeltmeniz gerekecek. Devam etmek istediğinizden emin misiniz?"
+#~ msgid "Warning! If you change your blog URL, some links may stop working. If you directly linked posts or other resources on your blog, they would no longer be available at previous URLs. In such case you will be required to fix them manualy. Are you sure you want to continue?"
+#~ msgstr "Uyarı! Blog web adresini değiştirirseniz bazı linkler çalışmayabilir. Bloğunuzdaki gönderilerin veya diğer kanakların linklerini paylaştıysanız bunlar eski web adreslerinde bulunmayacaklar. Bu durumda bunları elle düzeltmeniz gerekecek. Devam etmek istediğinizden emin misiniz?"
 
 #~ msgctxt "Settings"
 #~ msgid "Force input through Wasapi"
@@ -12745,22 +12106,15 @@ msgstr "Yeni bir şey yok."
 #~ msgctxt "PremiumPackages"
 #~ msgid ""
 #~ "Below are the transfer details.\n"
-#~ "In the title of the transfer, please indicate your user name on the "
-#~ "EltenLink portal and which package the payment concerns."
+#~ "In the title of the transfer, please indicate your user name on the EltenLink portal and which package the payment concerns."
 #~ msgstr ""
 #~ "Para transfer detayları aşağıdadır.\n"
-#~ "Transfer başlığında EltenLink portalında kullandığınız kullanıcı adını ve "
-#~ "ödemenin hangi pakete yönelik yapıldığını belirtin."
+#~ "Transfer başlığında EltenLink portalında kullandığınız kullanıcı adını ve ödemenin hangi pakete yönelik yapıldığını belirtin."
 
 #~ msgctxt "PremiumPackages"
-#~ msgid ""
-#~ "If, instead of a package, you wish to receive a code that can be used to "
-#~ "activate any of the packages: %{packages} by any user, mark this "
-#~ "information in the transfer title."
+#~ msgid "If, instead of a package, you wish to receive a code that can be used to activate any of the packages: %{packages} by any user, mark this information in the transfer title."
 #~ msgstr ""
-#~ "Eğer bir paket yerine kullanıcılar tarafından hediye edilen şu "
-#~ "paketlerden herhangi birini etkinleştirmek için kullanılabilen bir kod "
-#~ "almak istiyorsanız bunu transfer başlığında belirtin.\n"
+#~ "Eğer bir paket yerine kullanıcılar tarafından hediye edilen şu paketlerden herhangi birini etkinleştirmek için kullanılabilen bir kod almak istiyorsanız bunu transfer başlığında belirtin.\n"
 #~ "Paketler: %{packages}"
 
 #~ msgctxt "VoiceCall"
@@ -12826,30 +12180,21 @@ msgstr "Yeni bir şey yok."
 #~ msgctxt "Blog"
 #~ msgid ""
 #~ "To continue, you should point your domain to Elten Blogging server.\n"
-#~ "You can buy your own domain from domain providers, such as ovh.com, "
-#~ "domain.com, godaddy.com or bluehost.com.\n"
+#~ "You can buy your own domain from domain providers, such as ovh.com, domain.com, godaddy.com or bluehost.com.\n"
 #~ "Once bought, you should point your domain's A DNS record to IP address:\n"
 #~ "%{ip}\n"
-#~ ". Please note that redirecting your domain is not aliasing and setting "
-#~ "aliases or HTTP 300 / 301 redirections will not work.\n"
-#~ "You can get detailed description from your domain provider, for example "
-#~ "at:\n"
-#~ "https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-"
-#~ "Familiar-with-DNS\n"
+#~ ". Please note that redirecting your domain is not aliasing and setting aliases or HTTP 300 / 301 redirections will not work.\n"
+#~ "You can get detailed description from your domain provider, for example at:\n"
+#~ "https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
 #~ "Once completed, please continue."
 #~ msgstr ""
-#~ "Devam etmek için etki alanınızı Elten blog sunucusuna "
-#~ "yönlendirmelisiniz.\n"
-#~ "Kendi etki alanınızı ovh.com, domain.com, godaddy.com veya bluehost.com "
-#~ "gibi etki alanı sağlayıcılarından satın alabilirsiniz.\n"
-#~ "Satın aldıktan sonra etki alanınızın A DNS kaydını şu IP adresine "
-#~ "yönlendirmelisiniz:\n"
+#~ "Devam etmek için etki alanınızı Elten blog sunucusuna yönlendirmelisiniz.\n"
+#~ "Kendi etki alanınızı ovh.com, domain.com, godaddy.com veya bluehost.com gibi etki alanı sağlayıcılarından satın alabilirsiniz.\n"
+#~ "Satın aldıktan sonra etki alanınızın A DNS kaydını şu IP adresine yönlendirmelisiniz:\n"
 #~ "%{ip}\n"
-#~ ". Etki alanınızı yönlendirmek kısaltma yapmak değildir ve kısaltma veya "
-#~ "http 300/301 yönlendirmesi yapılamaz.\n"
+#~ ". Etki alanınızı yönlendirmek kısaltma yapmak değildir ve kısaltma veya http 300/301 yönlendirmesi yapılamaz.\n"
 #~ "Etki alanı sağlayıcınızdan detaylı açıklamayı alabilirsiniz, örneğin:\n"
-#~ "https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-"
-#~ "Familiar-with-DNS\n"
+#~ "https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
 #~ "İşlemi tamamladığınızda devam edin."
 
 #~ msgctxt "Messages"
@@ -12858,20 +12203,15 @@ msgstr "Yeni bir şey yok."
 
 #~ msgctxt "EAPI_Form"
 #~ msgid "Press ALT + CTRL + up arrow to read item index"
-#~ msgstr ""
-#~ "Üzerinde bulunulan öğenin numarasını öğrenmek için alt+ctrl+yukarı ok "
-#~ "tuşlarını kullanın"
+#~ msgstr "Üzerinde bulunulan öğenin numarasını öğrenmek için alt+ctrl+yukarı ok tuşlarını kullanın"
 
 #~ msgctxt "EAPI_Form"
 #~ msgid "Press ALT + CTRL + down arrow to read count of items"
-#~ msgstr ""
-#~ "Kaç öğenin bulunduğunu öğrenmek için ctrl+alt+aşağı ok tuşlarını kullanın"
+#~ msgstr "Kaç öğenin bulunduğunu öğrenmek için ctrl+alt+aşağı ok tuşlarını kullanın"
 
 #~ msgctxt "Main"
 #~ msgid "Use CTRL with up/down arrows to move quick actions"
-#~ msgstr ""
-#~ "Hızlı eylemleri taşımak için ctrl tuşu ile yukarı veya aşağı ok tuşlarını "
-#~ "kullanın"
+#~ msgstr "Hızlı eylemleri taşımak için ctrl tuşu ile yukarı veya aşağı ok tuşlarını kullanın"
 
 #~ msgctxt "PremiumPackages"
 #~ msgid "Private messages protection again erroneous removal"
@@ -12898,24 +12238,16 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "İnceleme"
 
 #~ msgctxt "Forum"
-#~ msgid ""
-#~ "Are you sure you want to grant moderation privileges in %{groupname} to "
-#~ "user %{user}?"
-#~ msgstr ""
-#~ "%{groupname} grubunda %{user} kullanıcısına moderasyon izinleri vermek "
-#~ "istediğinizden emin misiniz?"
+#~ msgid "Are you sure you want to grant moderation privileges in %{groupname} to user %{user}?"
+#~ msgstr "%{groupname} grubunda %{user} kullanıcısına moderasyon izinleri vermek istediğinizden emin misiniz?"
 
 #~ msgctxt "Forum"
 #~ msgid "Are you sure you want to deny %{user}'s moderation privileges?"
-#~ msgstr ""
-#~ "%{user} kişisinin moderasyon yetkilerini almak istediğinizden emin "
-#~ "misiniz?"
+#~ msgstr "%{user} kişisinin moderasyon yetkilerini almak istediğinizden emin misiniz?"
 
 #~ msgctxt "Forum"
 #~ msgid "Are you sure you want to kick %{user} of %{groupname}?"
-#~ msgstr ""
-#~ "%{groupname} grubunun üyesi %{username} kişisini çıkartmak istediğinizden "
-#~ "emin misiniz?"
+#~ msgstr "%{groupname} grubunun üyesi %{username} kişisini çıkartmak istediğinizden emin misiniz?"
 
 #~ msgctxt "Forum"
 #~ msgid "Where to save this file?"
@@ -13070,156 +12402,72 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "Kapat"
 
 #~ msgctxt "Account"
-#~ msgid ""
-#~ " An error occurred while authenticating the account. You might have "
-#~ "provided an  incorrect password."
-#~ msgstr ""
-#~ "Hesaba izin verilirken bir hata oluştu. Yanlış şifre girmiş olabilirsiniz."
+#~ msgid " An error occurred while authenticating the account. You might have provided an  incorrect password."
+#~ msgstr "Hesaba izin verilirken bir hata oluştu. Yanlış şifre girmiş olabilirsiniz."
 
 #~ msgctxt "Account"
-#~ msgid ""
-#~ " Are you sure you want to remove all auto log in tokens and log out all "
-#~ "sessions?  You will be logged off immediately."
-#~ msgstr ""
-#~ "Bütün otomatik giriş belirteçlerini kaldırmak ve tüm oturumları kapatmak "
-#~ "istediğinizden emin misiniz? Oturumunuz hemen kapatılacak."
+#~ msgid " Are you sure you want to remove all auto log in tokens and log out all sessions?  You will be logged off immediately."
+#~ msgstr "Bütün otomatik giriş belirteçlerini kaldırmak ve tüm oturumları kapatmak istediğinizden emin misiniz? Oturumunuz hemen kapatılacak."
 
 #~ msgctxt "Account"
-#~ msgid ""
-#~ " The users added to your black list cannot send you private messages. Are "
-#~ "you sure  you want to continue?"
-#~ msgstr ""
-#~ "Kara listenize eklenen kullanıcılar size özel mesaj gönderemez. Devam "
-#~ "etmek istediğinizden emin misiniz?"
+#~ msgid " The users added to your black list cannot send you private messages. Are you sure  you want to continue?"
+#~ msgstr "Kara listenize eklenen kullanıcılar size özel mesaj gönderemez. Devam etmek istediğinizden emin misiniz?"
 
 #~ msgctxt "Authentication"
-#~ msgid ""
-#~ " Two-factor authentication enables better account security by requiring "
-#~ "the  confirmation of each login with your phone. When activated, a text "
-#~ "message with a  verification code will be sent to you each time you log "
-#~ "in from a new device.  Entering this code will be required to sign in to "
-#~ "the program."
-#~ msgstr ""
-#~ "İki öğeli kimlik doğrulaması her girişin telefonunuzla onaylanmasını "
-#~ "gerektirerek daha iyi hesap güvenliği sağlar. Etkinleştirildiğinde, yeni "
-#~ "bir aygıttan her giriş yaptığınızda size doğrulama kodu içeren bir SMS "
-#~ "gönderilecektir. Programa giriş yapmak için bu kodu girmeniz gerekecek."
+#~ msgid " Two-factor authentication enables better account security by requiring the  confirmation of each login with your phone. When activated, a text message with a  verification code will be sent to you each time you log in from a new device.  Entering this code will be required to sign in to the program."
+#~ msgstr "İki öğeli kimlik doğrulaması her girişin telefonunuzla onaylanmasını gerektirerek daha iyi hesap güvenliği sağlar. Etkinleştirildiğinde, yeni bir aygıttan her giriş yaptığınızda size doğrulama kodu içeren bir SMS gönderilecektir. Programa giriş yapmak için bu kodu girmeniz gerekecek."
 
 #~ msgctxt "Authentication"
-#~ msgid ""
-#~ " Type your phone number that will be used during verification. Remember "
-#~ "to enter  the country code, for example, +48 for Poland"
-#~ msgstr ""
-#~ "Doğrulama sırasında kullanılacak olan telefon numarasını yazın. ülke "
-#~ "kodunu girmeyi unutmayın, örneğin Türkiye için +90"
+#~ msgid " Type your phone number that will be used during verification. Remember to enter  the country code, for example, +48 for Poland"
+#~ msgstr "Doğrulama sırasında kullanılacak olan telefon numarasını yazın. ülke kodunu girmeyi unutmayın, örneğin Türkiye için +90"
 
 #~ msgctxt "Authentication"
-#~ msgid ""
-#~ " Two-factor authentication was introduced in Elten 2.28. After activating "
-#~ "it, it  will not be possible to log in from the older versions of the "
-#~ "program. DO you  wish to continue anyway?"
-#~ msgstr ""
-#~ "İki öğeli kimlik doğrulama Elten 2.28'de kullanılmaya başlanmıştır. "
-#~ "Etkinleştirildikten sonra, programın eski sürümlerinden giriş yapmak "
-#~ "mümkün olmayacak. Buna ramen devam etmek istediğinizden emin misiniz?"
+#~ msgid " Two-factor authentication was introduced in Elten 2.28. After activating it, it  will not be possible to log in from the older versions of the program. DO you  wish to continue anyway?"
+#~ msgstr "İki öğeli kimlik doğrulama Elten 2.28'de kullanılmaya başlanmıştır. Etkinleştirildikten sonra, programın eski sürümlerinden giriş yapmak mümkün olmayacak. Buna ramen devam etmek istediğinizden emin misiniz?"
 
 #~ msgctxt "Authentication"
-#~ msgid ""
-#~ " On the phone number indicated, you will receive a text message with the "
-#~ "code  activating two-factor authentication. Enter this code"
-#~ msgstr ""
-#~ "Belirtilen telefon numarasına iki öğeli kimlik doğrulamasını "
-#~ "etkinleştirmek için kodu içeren bir SMS alacaksınız. Bu kodu girin"
+#~ msgid " On the phone number indicated, you will receive a text message with the code  activating two-factor authentication. Enter this code"
+#~ msgstr "Belirtilen telefon numarasına iki öğeli kimlik doğrulamasını etkinleştirmek için kodu içeren bir SMS alacaksınız. Bu kodu girin"
 
 #~ msgctxt "EAPI_Common"
-#~ msgid ""
-#~ " You are trying to play a midi file. In order to play such files, Elten "
-#~ "needs an  external base of instruments. Do you want to download the base "
-#~ "from the server  now? It may take several minutes."
-#~ msgstr ""
-#~ "Midi dosyası oynatmaya çalışıyorsunuz. Böyle dosyaları oynatmak için, "
-#~ "Elten'ın dış enstruman tabanına ihtiyacı var. Tabanı sunucudan indirmek "
-#~ "istiyor musunuz? Birkaç dakika alabilir."
+#~ msgid " You are trying to play a midi file. In order to play such files, Elten needs an  external base of instruments. Do you want to download the base from the server  now? It may take several minutes."
+#~ msgstr "Midi dosyası oynatmaya çalışıyorsunuz. Böyle dosyaları oynatmak için, Elten'ın dış enstruman tabanına ihtiyacı var. Tabanı sunucudan indirmek istiyor musunuz? Birkaç dakika alabilir."
 
 #~ msgctxt "EAPI_UI"
-#~ msgid ""
-#~ " An unexpected error of Elten agent occurred. Do you want to report this "
-#~ "event? It  may definitely help us solve the problem."
-#~ msgstr ""
-#~ "Elten aracısında beklenmedik hatayla karşılaşıldı. Bu olayı bildirmek "
-#~ "ister misiniz? Kesinlikle sorunu çözmemize yardımcı olabilir."
+#~ msgid " An unexpected error of Elten agent occurred. Do you want to report this event? It  may definitely help us solve the problem."
+#~ msgstr "Elten aracısında beklenmedik hatayla karşılaşıldı. Bu olayı bildirmek ister misiniz? Kesinlikle sorunu çözmemize yardımcı olabilir."
 
 #~ msgctxt "ForgotPassword"
-#~ msgid ""
-#~ " Password reset key has been sent to your specified E-mail address. To "
-#~ "continue,  select the option for entering key."
-#~ msgstr ""
-#~ "Şifre sıfırlama anahtarı belirtilen e-posta adresinize gönderildi. Devam "
-#~ "etmek için, anahtarı girmek için kullanılan seçeneği seçin."
+#~ msgid " Password reset key has been sent to your specified E-mail address. To continue,  select the option for entering key."
+#~ msgstr "Şifre sıfırlama anahtarı belirtilen e-posta adresinize gönderildi. Devam etmek için, anahtarı girmek için kullanılan seçeneği seçin."
 
 #~ msgctxt "ForgotPassword"
-#~ msgid ""
-#~ " The password has been changed. You can log in to your account using the "
-#~ "new data."
-#~ msgstr ""
-#~ "Şifre değiştirildi. Yeni bilgiyi kullanarak hesabınıza giriş "
-#~ "yapabilirsiniz."
+#~ msgid " The password has been changed. You can log in to your account using the new data."
+#~ msgstr "Şifre değiştirildi. Yeni bilgiyi kullanarak hesabınıza giriş yapabilirsiniz."
 
 #~ msgctxt "Forum"
-#~ msgid ""
-#~ " All posts in this group will be marked as read. Are you sure you want to "
-#~ "continue?"
-#~ msgstr ""
-#~ "Gruptaki tüm gönderiler okundu olarak işaretlenecek. Devam etmek "
-#~ "istediğinizden emin misiniz?"
+#~ msgid " All posts in this group will be marked as read. Are you sure you want to continue?"
+#~ msgstr "Gruptaki tüm gönderiler okundu olarak işaretlenecek. Devam etmek istediğinizden emin misiniz?"
 
 #~ msgctxt "Forum"
-#~ msgid ""
-#~ " All posts on this forum will be marked as read. Are you sure you want to "
-#~ "continue?"
-#~ msgstr ""
-#~ "Bu forumdaki tüm konular okundu olarak işaretlenecektir. Devam etmek "
-#~ "istediğinizden emin misiniz?"
+#~ msgid " All posts on this forum will be marked as read. Are you sure you want to continue?"
+#~ msgstr "Bu forumdaki tüm konular okundu olarak işaretlenecektir. Devam etmek istediğinizden emin misiniz?"
 
 #~ msgctxt "Login"
-#~ msgid ""
-#~ " The saved login data uses the old account authentication method in "
-#~ "which  susceptibility to hacker attacks has been detected. New, safer "
-#~ "automatic login  algorithms have been introduced in Elten 2.2. It is "
-#~ "recommended that you convert  the saved information into a new system in "
-#~ "order to improve the security of your  account. Do you want to update the "
-#~ "saved information now?"
-#~ msgstr ""
-#~ "Kayıtlı giriş bilgisi hacker saldırılarına karşı savunmasızlığın "
-#~ "algılandığı eski hesap izin yöntemini kullanıyor. Elten 2.2'de yeni, daha "
-#~ "güvenli otomatik giriş algoritmaları oluşturulmuştur. Hesabınızın "
-#~ "güvenliğini arttırmak için kayıtlı bilgiyi yeni sisteme dönüştürmeniz "
-#~ "önerilir. Kayıtlı bilgiyi şimdi güncellemek istiyor musunuz?"
+#~ msgid " The saved login data uses the old account authentication method in which  susceptibility to hacker attacks has been detected. New, safer automatic login  algorithms have been introduced in Elten 2.2. It is recommended that you convert  the saved information into a new system in order to improve the security of your  account. Do you want to update the saved information now?"
+#~ msgstr "Kayıtlı giriş bilgisi hacker saldırılarına karşı savunmasızlığın algılandığı eski hesap izin yöntemini kullanıyor. Elten 2.2'de yeni, daha güvenli otomatik giriş algoritmaları oluşturulmuştur. Hesabınızın güvenliğini arttırmak için kayıtlı bilgiyi yeni sisteme dönüştürmeniz önerilir. Kayıtlı bilgiyi şimdi güncellemek istiyor musunuz?"
 
 #~ msgctxt "Login"
-#~ msgid ""
-#~ " An error occurred while authenticating the identity. You might have "
-#~ "provided an  incorrect password."
-#~ msgstr ""
-#~ "Kimliğe izin verilirken hata oluştu. Yanlış şifre girmiş olabilirsiniz."
+#~ msgid " An error occurred while authenticating the identity. You might have provided an  incorrect password."
+#~ msgstr "Kimliğe izin verilirken hata oluştu. Yanlış şifre girmiş olabilirsiniz."
 
 #~ msgctxt "Login"
-#~ msgid ""
-#~ " Automatic login will be proceeding until you log out.Automatic login "
-#~ "keys can be  managed from the My Account tab in the Community menu."
-#~ msgstr ""
-#~ "Otomatik giriş siz çıkış yapana kadar devam edecek. Otomatik giriş "
-#~ "anahtarları topluluk menüsündeki hesabım sekmesinden yönetilebilir."
+#~ msgid " Automatic login will be proceeding until you log out.Automatic login keys can be  managed from the My Account tab in the Community menu."
+#~ msgstr "Otomatik giriş siz çıkış yapana kadar devam edecek. Otomatik giriş anahtarları topluluk menüsündeki hesabım sekmesinden yönetilebilir."
 
 #~ msgctxt "Login"
-#~ msgid ""
-#~ " Login data has been updated. Automatic login will be proceeding until "
-#~ "you log  out. Automatic login keys can be managed from the My Account tab "
-#~ "in the Community  menu."
-#~ msgstr ""
-#~ "Giriş verisi güncellendi. Otomatik giriş siz çıkış yapana kadar devam "
-#~ "edecek. Otomatik giriş anahtarları topluluk menüsündeki hesabım "
-#~ "sekmesinden yönetilebilir. "
+#~ msgid " Login data has been updated. Automatic login will be proceeding until you log  out. Automatic login keys can be managed from the My Account tab in the Community  menu."
+#~ msgstr "Giriş verisi güncellendi. Otomatik giriş siz çıkış yapana kadar devam edecek. Otomatik giriş anahtarları topluluk menüsündeki hesabım sekmesinden yönetilebilir. "
 
 #~ msgctxt "MainMenu"
 #~ msgid "WHo is &online?"
@@ -13242,33 +12490,17 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "&Kısayollar"
 
 #~ msgctxt "Portable"
-#~ msgid ""
-#~ " If you use a created copy of Elten on another computer, the voice "
-#~ "settings may  not work properly. This is especially noticeable in a "
-#~ "situation when another  computer has other voices installed. How do you "
-#~ "want to configure the generated  version?"
-#~ msgstr ""
-#~ "Elten'in oluşturulmuş kopyasını başka bir bilgisayarda kullanırsanız, ses "
-#~ "ayarları düzgün çalışmayabilir. Bu özellikle başka bilgisayarda başka "
-#~ "sesler kurulu olduğunda meydana gelir. Oluşturulan sürümü nasıl ayarlamak "
-#~ "istersiniz?"
+#~ msgid " If you use a created copy of Elten on another computer, the voice settings may  not work properly. This is especially noticeable in a situation when another  computer has other voices installed. How do you want to configure the generated  version?"
+#~ msgstr "Elten'in oluşturulmuş kopyasını başka bir bilgisayarda kullanırsanız, ses ayarları düzgün çalışmayabilir. Bu özellikle başka bilgisayarda başka sesler kurulu olduğunda meydana gelir. Oluşturulan sürümü nasıl ayarlamak istersiniz?"
 
 #~ msgctxt "Registration"
-#~ msgid ""
-#~ " Enter your username. It will be used for identification.The maximum "
-#~ "length of the  username is 64 characters"
-#~ msgstr ""
-#~ "Kullanıcı adınızı girin. Tanımlama için kullanılacak. Kullanıcı adı "
-#~ "uzunluğu en fazla 64 karakterdir"
+#~ msgid " Enter your username. It will be used for identification.The maximum length of the  username is 64 characters"
+#~ msgstr "Kullanıcı adınızı girin. Tanımlama için kullanılacak. Kullanıcı adı uzunluğu en fazla 64 karakterdir"
 
 #~ msgctxt "Registration"
-#~ msgid ""
-#~ " Enter your password. It is recommended to use a strong password, which "
-#~ "consists  of numbers and letters. Maximum length of the password is 256 "
-#~ "characters."
+#~ msgid " Enter your password. It is recommended to use a strong password, which consists  of numbers and letters. Maximum length of the password is 256 characters."
 #~ msgstr ""
-#~ "Şifrenizi girin. Sayılar ve harfler içeren güçlü şifreler kullanmanız "
-#~ "önerilir.\n"
+#~ "Şifrenizi girin. Sayılar ve harfler içeren güçlü şifreler kullanmanız önerilir.\n"
 #~ ". Şifre uzunluğu en fazla 256 karakterdir"
 
 #~ msgctxt "Registration"
@@ -13276,58 +12508,32 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "Şifrenizi yeniden girin"
 
 #~ msgctxt "Registration"
-#~ msgid ""
-#~ " Enter your e-mail address. It will be used in case you forget your "
-#~ "password and  to send important information."
-#~ msgstr ""
-#~ "E-posta adresinizi girin. Şifrenizi unutmanız durumunda ve önemli "
-#~ "bilgiler göndermek için kullanılacak."
+#~ msgid " Enter your e-mail address. It will be used in case you forget your password and  to send important information."
+#~ msgstr "E-posta adresinizi girin. Şifrenizi unutmanız durumunda ve önemli bilgiler göndermek için kullanılacak."
 
 #~ msgctxt "Registration"
-#~ msgid ""
-#~ " Registration is successful, thank you. You can log in using your "
-#~ "username and  password."
-#~ msgstr ""
-#~ "Kayıt başarılı, teşekkürler. Kullanıcı adınızı ve şifrenizi kullanarak "
-#~ "giriş yapabilirsiniz."
+#~ msgid " Registration is successful, thank you. You can log in using your username and  password."
+#~ msgstr "Kayıt başarılı, teşekkürler. Kullanıcı adınızı ve şifrenizi kullanarak giriş yapabilirsiniz."
 
 #~ msgctxt "ShortKeys"
 #~ msgid "List of keyboard shortcuts"
 #~ msgstr "Klavye kısayol listesi"
 
 #~ msgctxt "Update"
-#~ msgid ""
-#~ " A new version of this program is available. Do you want to download and "
-#~ "instal it?"
+#~ msgid " A new version of this program is available. Do you want to download and instal it?"
 #~ msgstr "Bu programın yeni sürümü mevcut. İndirmek ve kurmak ister misiniz?"
 
 #~ msgctxt "Update"
-#~ msgid ""
-#~ " The update has been downloaded. To install it, the program must be "
-#~ "restarted.  Press enter to continue or escape to cancel."
-#~ msgstr ""
-#~ "Güncelleme indirildi. Kurmak için, program yeniden başlatılmalıdır. Devam "
-#~ "etmek için enter'a veya iptal etmek için escape'e basın."
+#~ msgid " The update has been downloaded. To install it, the program must be restarted.  Press enter to continue or escape to cancel."
+#~ msgstr "Güncelleme indirildi. Kurmak için, program yeniden başlatılmalıdır. Devam etmek için enter'a veya iptal etmek için escape'e basın."
 
 #~ msgctxt "Update"
-#~ msgid ""
-#~ " The program will be now reverted to the latest stable version. Elten "
-#~ "will restart.  It may take several minutes."
-#~ msgstr ""
-#~ "Program en son kararlı sürümüne düşürülecek. Elten yeniden başlayacak. "
-#~ "Birkaç dakika sürebilir."
+#~ msgid " The program will be now reverted to the latest stable version. Elten will restart.  It may take several minutes."
+#~ msgstr "Program en son kararlı sürümüne düşürülecek. Elten yeniden başlayacak. Birkaç dakika sürebilir."
 
 #~ msgctxt "Login"
-#~ msgid ""
-#~ " Two-factor authentication is enabled on this account. Enter the code "
-#~ "sent to you  by text message to allow this device to login. If you do not "
-#~ "have access to the  phone number used, select the password reset option "
-#~ "to disable two-factor  authentication."
-#~ msgstr ""
-#~ "Bu hesapta iki öğeli kimlik doğrulaması etkin. Bu cihazın giriş yapmasına "
-#~ "izin vermek için size SMS ile gönderilen kodu girin. Kullanılan telefon "
-#~ "numarasına erişiminiz yoksa, iki öğeli kimlik doğrulamasını devredışı "
-#~ "bırakmak için şifreyi sıfırla seçeneğini seçin."
+#~ msgid " Two-factor authentication is enabled on this account. Enter the code sent to you  by text message to allow this device to login. If you do not have access to the  phone number used, select the password reset option to disable two-factor  authentication."
+#~ msgstr "Bu hesapta iki öğeli kimlik doğrulaması etkin. Bu cihazın giriş yapmasına izin vermek için size SMS ile gönderilen kodu girin. Kullanılan telefon numarasına erişiminiz yoksa, iki öğeli kimlik doğrulamasını devredışı bırakmak için şifreyi sıfırla seçeneğini seçin."
 
 #~ msgctxt "EAPI_Form"
 #~ msgid "Speech to file"
@@ -13522,13 +12728,8 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "Ses dosyası seç"
 
 #~ msgctxt "Blog"
-#~ msgid ""
-#~ "Do you wish to delete all comments on this post? You can disable "
-#~ "commenting on this post without deleting comments already posted."
-#~ msgstr ""
-#~ "Bu gönderideki bütün yorumları silmek istediğinizden emin misiniz? Bu "
-#~ "gönderiye yorum yapılmasını yapılmış olan yorumları silmeden devredışı "
-#~ "bırakabilirsiniz."
+#~ msgid "Do you wish to delete all comments on this post? You can disable commenting on this post without deleting comments already posted."
+#~ msgstr "Bu gönderideki bütün yorumları silmek istediğinizden emin misiniz? Bu gönderiye yorum yapılmasını yapılmış olan yorumları silmeden devredışı bırakabilirsiniz."
 
 #~ msgctxt "Blog"
 #~ msgid "File is being converted..."
@@ -13631,11 +12832,8 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "İptal"
 
 #~ msgctxt "Recorder"
-#~ msgid ""
-#~ "Are you sure you want to delete the previous recording and create a new "
-#~ "one?"
-#~ msgstr ""
-#~ "Önceki kaydı silip yeni kayıt oluşturmak istediğinizden emin misiniz?"
+#~ msgid "Are you sure you want to delete the previous recording and create a new one?"
+#~ msgstr "Önceki kaydı silip yeni kayıt oluşturmak istediğinizden emin misiniz?"
 
 #~ msgctxt "Record"
 #~ msgid "Record again"
@@ -13658,14 +12856,8 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "Kaydedilmiş sesi silmek istediğinizden emin misiniz?"
 
 #~ msgctxt "EAPI_External"
-#~ msgid ""
-#~ "The file you're trying to open was saved in format that Elten does not "
-#~ "support. Do you want to download and install Calibre Library that will "
-#~ "allow Elten to read Ebooks?"
-#~ msgstr ""
-#~ "Açmaya çalıştığınız dosya Elten'ın desteklemediği bir formatta "
-#~ "kaydedillmiş. Elten'ın elektronik kitap okumasına yarayan Calibre "
-#~ "kütüphanesini indirmek ve kurmak istiyor musunuz?"
+#~ msgid "The file you're trying to open was saved in format that Elten does not support. Do you want to download and install Calibre Library that will allow Elten to read Ebooks?"
+#~ msgstr "Açmaya çalıştığınız dosya Elten'ın desteklemediği bir formatta kaydedillmiş. Elten'ın elektronik kitap okumasına yarayan Calibre kütüphanesini indirmek ve kurmak istiyor musunuz?"
 
 #~ msgctxt "EAPI_External"
 #~ msgid "Please wait, downloading Calibre..."
@@ -13716,16 +12908,8 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "Oynatma listesine eklenen dosyalar: %{count}"
 
 #~ msgctxt "Files"
-#~ msgid ""
-#~ " Do you want to run this Elten API script? Scripts coming from unknown "
-#~ "sources can  harm your computer or give access to your account to "
-#~ "unauthorised persons.  Continue if you trust a source this script comes "
-#~ "from."
-#~ msgstr ""
-#~ "Bu Elten API skriptini çalıştırmak istiyor musunuz? Güvenilmeyen "
-#~ "kaynaklardan gelen skriptler bilgisayarınıza zarar verebilir veya izin "
-#~ "verilmeyen kişilerin hesabınıza erişmesine neden olabilir. Bu skriptin "
-#~ "geldiği kaynağa güveniyorsanız devam edin."
+#~ msgid " Do you want to run this Elten API script? Scripts coming from unknown sources can  harm your computer or give access to your account to unauthorised persons.  Continue if you trust a source this script comes from."
+#~ msgstr "Bu Elten API skriptini çalıştırmak istiyor musunuz? Güvenilmeyen kaynaklardan gelen skriptler bilgisayarınıza zarar verebilir veya izin verilmeyen kişilerin hesabınıza erişmesine neden olabilir. Bu skriptin geldiği kaynağa güveniyorsanız devam edin."
 
 #~ msgctxt "Files"
 #~ msgid "Unpacked."
@@ -13960,12 +13144,8 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "Kullanıcı bulunamadı"
 
 #~ msgctxt "EAPI_External"
-#~ msgid ""
-#~ "To play Youtube videos, Elten uses external Youtube-DL library. Do you "
-#~ "want to download it now?"
-#~ msgstr ""
-#~ "Youtube videolarını oynatmak için, Elten dış Youtube-DL kütüphanesini "
-#~ "kullanır. Onu şimdi indirmek istiyor musunuz?"
+#~ msgid "To play Youtube videos, Elten uses external Youtube-DL library. Do you want to download it now?"
+#~ msgstr "Youtube videolarını oynatmak için, Elten dış Youtube-DL kütüphanesini kullanır. Onu şimdi indirmek istiyor musunuz?"
 
 #~ msgctxt "EAPI_External"
 #~ msgid "Connecting to server, please wait..."
@@ -14028,20 +13208,12 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "Lütfen bekleyin, YoutubeDL indiriliyor..."
 
 #~ msgctxt "EAPI_External"
-#~ msgid ""
-#~ " An error occurred while audiotrack capturing. Do you want to send a bug "
-#~ "report?  It may help us solve the problem."
-#~ msgstr ""
-#~ "Ses yakalanırken hata oluştu. Hata raporu göndermek ister misiniz? Bize "
-#~ "sorunu çözmede yardımcı olabilir."
+#~ msgid " An error occurred while audiotrack capturing. Do you want to send a bug report?  It may help us solve the problem."
+#~ msgstr "Ses yakalanırken hata oluştu. Hata raporu göndermek ister misiniz? Bize sorunu çözmede yardımcı olabilir."
 
 #~ msgctxt "EAPI_External"
-#~ msgid ""
-#~ " The file cannot be played. Do you want to report this bug? It may help "
-#~ "us fix the  issue."
-#~ msgstr ""
-#~ "Dosya oynatılamadı. Bu hatayı raporlamak ister misiniz? Bu sorunu "
-#~ "düzeltmede bize yardımcı olabilir."
+#~ msgid " The file cannot be played. Do you want to report this bug? It may help us fix the  issue."
+#~ msgstr "Dosya oynatılamadı. Bu hatayı raporlamak ister misiniz? Bu sorunu düzeltmede bize yardımcı olabilir."
 
 #~ msgctxt "Forum"
 #~ msgid "Type user to invite"
@@ -14364,18 +13536,12 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "E-posta ile olay raporlama"
 
 #~ msgctxt "Advanced"
-#~ msgid ""
-#~ " Key state refresh time (ms) (Note: it is not recommended to change this "
-#~ "value!)"
-#~ msgstr ""
-#~ " Tuş durumu yenileme süresi (ms) (not: bu değeri değiştirmeniz önerilmez!)"
+#~ msgid " Key state refresh time (ms) (Note: it is not recommended to change this value!)"
+#~ msgstr " Tuş durumu yenileme süresi (ms) (not: bu değeri değiştirmeniz önerilmez!)"
 
 #~ msgctxt "Advanced"
-#~ msgid ""
-#~ " Session refresh time (s) (Attention! It is not recommended to change "
-#~ "this value!)"
-#~ msgstr ""
-#~ " Oturum yenileme süresi (s) (uyarı! Bu değeri değiştirmeniz önerilmez!)"
+#~ msgid " Session refresh time (s) (Attention! It is not recommended to change this value!)"
+#~ msgstr " Oturum yenileme süresi (s) (uyarı! Bu değeri değiştirmeniz önerilmez!)"
 
 #~ msgctxt "Advanced"
 #~ msgid "Synchronize time with server"
@@ -14479,20 +13645,15 @@ msgstr "Yeni bir şey yok."
 
 #~ msgctxt "General"
 #~ msgid "Are you sure you want to enable autostart of portable version?"
-#~ msgstr ""
-#~ "Taşınabilir sürümün otomatik başlamasını etkinleştirmek istiyor musunuz?"
+#~ msgstr "Taşınabilir sürümün otomatik başlamasını etkinleştirmek istiyor musunuz?"
 
 #~ msgctxt "Languages"
 #~ msgid "Manage languages"
 #~ msgstr "Dilleri yönet"
 
 #~ msgctxt "Loading"
-#~ msgid ""
-#~ " No speech output selected. Press enter to select the SAPI synthesiser or "
-#~ "escape  to use the installed screenreader."
-#~ msgstr ""
-#~ "Hiçbir konuşma çıkışı seçilmedi. Sapi sentezleyicisini seçmek için "
-#~ "enter'a veya kurulu ekran okuyucuyu kullanmak için escape'e basın."
+#~ msgid " No speech output selected. Press enter to select the SAPI synthesiser or escape  to use the installed screenreader."
+#~ msgstr "Hiçbir konuşma çıkışı seçilmedi. Sapi sentezleyicisini seçmek için enter'a veya kurulu ekran okuyucuyu kullanmak için escape'e basın."
 
 #~ msgctxt "Loading"
 #~ msgid "General settings"
@@ -14599,28 +13760,12 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "Şifre değiştirilirken lütfen bekleyin."
 
 #~ msgctxt "ForgotPassword"
-#~ msgid ""
-#~ " If you lose your password, you can still reset it via the E-mail address "
-#~ "provided  during the registration process. This way you shall generate "
-#~ "the password reset  code which will be used to verify your identity. The "
-#~ "code will be sent to your e- mail address. Warning! Two-factor "
-#~ "authentication will be disabled on your  account. To continue, enter your "
-#~ "username:"
-#~ msgstr ""
-#~ "Şifrenizi kaybederseniz, kayıt işlemi sırasında sağlanan e-posta "
-#~ "adresiyle sıfırlayabilirsiniz. Bu şekilde kimliğinizi doğrulamak için "
-#~ "kullanılacak olan şifre sıfırlama kodunu oluşturursunuz. Kod e-posta "
-#~ "adresinize gönderilecektir. Uyarı! hesabınızda iki öğeli kimlik "
-#~ "doğrulaması devredışı bırakılacak. Devam etmek için, kullanıcı adınızı "
-#~ "girin:"
+#~ msgid " If you lose your password, you can still reset it via the E-mail address provided  during the registration process. This way you shall generate the password reset  code which will be used to verify your identity. The code will be sent to your e- mail address. Warning! Two-factor authentication will be disabled on your  account. To continue, enter your username:"
+#~ msgstr "Şifrenizi kaybederseniz, kayıt işlemi sırasında sağlanan e-posta adresiyle sıfırlayabilirsiniz. Bu şekilde kimliğinizi doğrulamak için kullanılacak olan şifre sıfırlama kodunu oluşturursunuz. Kod e-posta adresinize gönderilecektir. Uyarı! hesabınızda iki öğeli kimlik doğrulaması devredışı bırakılacak. Devam etmek için, kullanıcı adınızı girin:"
 
 #~ msgctxt "Honors"
-#~ msgid ""
-#~ " Do you want to set this badge as your main badge? The main badge will "
-#~ "show in  your visiting card."
-#~ msgstr ""
-#~ "Bu rozeti ana rozetiniz olarak ayarlamak istiyor musunuz? Ana rozet "
-#~ "kartvizitinizde gösterilir."
+#~ msgid " Do you want to set this badge as your main badge? The main badge will show in  your visiting card."
+#~ msgstr "Bu rozeti ana rozetiniz olarak ayarlamak istiyor musunuz? Ana rozet kartvizitinizde gösterilir."
 
 #~ msgctxt "Honors"
 #~ msgid "Set as main badge"
@@ -14879,25 +14024,16 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "Konum"
 
 #~ msgctxt "Update"
-#~ msgid ""
-#~ " A new beta version of this program is available. Do you want to download "
-#~ "and  instal it?"
-#~ msgstr ""
-#~ "Bu programın yeni beta sürümü mevcut. İndirmek ve kurmak ister misiniz?"
+#~ msgid " A new beta version of this program is available. Do you want to download and  instal it?"
+#~ msgstr "Bu programın yeni beta sürümü mevcut. İndirmek ve kurmak ister misiniz?"
 
 #~ msgctxt "Update"
 #~ msgid "updating language packs"
 #~ msgstr "Dil paketleri güncelleniyor"
 
 #~ msgctxt "Update"
-#~ msgid ""
-#~ " Warning! You are about to install a beta version of elten. Such a "
-#~ "version can be  unstable or other errors can occur. Do you really wish to "
-#~ "continue?"
-#~ msgstr ""
-#~ "Uyarı! Elten'ın beta olan bir sürümünü kurmak üzeresiniz. Bu tür sürümler "
-#~ "kararsız olabilir veya başka hatalar oluşabilir. Gerçekten devam etmek "
-#~ "istiyor musunuz?"
+#~ msgid " Warning! You are about to install a beta version of elten. Such a version can be  unstable or other errors can occur. Do you really wish to continue?"
+#~ msgstr "Uyarı! Elten'ın beta olan bir sürümünü kurmak üzeresiniz. Bu tür sürümler kararsız olabilir veya başka hatalar oluşabilir. Gerçekten devam etmek istiyor musunuz?"
 
 #~ msgctxt "Update"
 #~ msgid "Downloading update"
@@ -14908,12 +14044,8 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "Yeniden kurulum için yönergelerin indirilmesi"
 
 #~ msgctxt "Update"
-#~ msgid ""
-#~ " You are not participating in Elten open insider program. Do you want to "
-#~ "join it  now, to download beta version?"
-#~ msgstr ""
-#~ "Elten açık insider programına katılmıyorsunuz. Beta sürümü indirmek için "
-#~ "şimdi katılmak ister misiniz?"
+#~ msgid " You are not participating in Elten open insider program. Do you want to join it  now, to download beta version?"
+#~ msgstr "Elten açık insider programına katılmıyorsunuz. Beta sürümü indirmek için şimdi katılmak ister misiniz?"
 
 #~ msgctxt "Voice"
 #~ msgid "Select"
@@ -14977,29 +14109,19 @@ msgstr "Yeni bir şey yok."
 
 #~ msgctxt "Messages"
 #~ msgid "Are you sure you want to delete %{user} from %{conversation}?"
-#~ msgstr ""
-#~ "%{user} kişisini %{conversation} konuşmasından silmek istediğinizden emin "
-#~ "misiniz?"
+#~ msgstr "%{user} kişisini %{conversation} konuşmasından silmek istediğinizden emin misiniz?"
 
 #~ msgctxt "Messages"
 #~ msgid "Users"
 #~ msgstr "Kullanıcılar"
 
 #~ msgctxt "MainMenu"
-#~ msgid ""
-#~ " Do you want to restore the last stable version of this program? All "
-#~ "settings stay  as they are."
-#~ msgstr ""
-#~ "Bu programın en son kararlı sürümünü geri yüklemek istiyor musunuz? Bütün "
-#~ "ayarlar olduğu gibi kalır."
+#~ msgid " Do you want to restore the last stable version of this program? All settings stay  as they are."
+#~ msgstr "Bu programın en son kararlı sürümünü geri yüklemek istiyor musunuz? Bütün ayarlar olduğu gibi kalır."
 
 #~ msgctxt "MainMenu"
-#~ msgid ""
-#~ " Are you sure you want to reset all settings to their factory defaults? "
-#~ "Elten will  restart."
-#~ msgstr ""
-#~ "Bütün ayarları fabrika ayarlarına sıfırlamak istediğinizden emin misiniz? "
-#~ "Elten yeniden başlayacak."
+#~ msgid " Are you sure you want to reset all settings to their factory defaults? Elten will  restart."
+#~ msgstr "Bütün ayarları fabrika ayarlarına sıfırlamak istediğinizden emin misiniz? Elten yeniden başlayacak."
 
 #~ msgctxt "MainMenu"
 #~ msgid "Report a &bug"
@@ -15198,14 +14320,8 @@ msgstr "Yeni bir şey yok."
 #~ msgstr "Ses teması adını girin"
 
 #~ msgctxt "EAPI_Common"
-#~ msgid ""
-#~ " Soundtheme files created in %{dir}. Replace files of the default "
-#~ "soundtheme in  the created folder with the appropriate files, which "
-#~ "constitute the soundtheme."
-#~ msgstr ""
-#~ "%{dir} klasöründe ses teması dosyaları oluşturuldu. Oluşturulan "
-#~ "klasördeki varsayılan tema dosyalarını ses temanıza denk gelen dosyalarla "
-#~ "değiştirin."
+#~ msgid " Soundtheme files created in %{dir}. Replace files of the default soundtheme in  the created folder with the appropriate files, which constitute the soundtheme."
+#~ msgstr "%{dir} klasöründe ses teması dosyaları oluşturuldu. Oluşturulan klasördeki varsayılan tema dosyalarını ses temanıza denk gelen dosyalarla değiştirin."
 
 #~ msgctxt "EAPI_Common"
 #~ msgid "What do you want to do?"
@@ -15385,8 +14501,7 @@ msgstr "Yeni bir şey yok."
 
 #~ msgctxt "Sounds"
 #~ msgid "New or updated item (IE. new message, thread) on a listbox"
-#~ msgstr ""
-#~ "Liste kutusunda yeni veya güncellenen öğe (örneğin yeni mesaj, konu)"
+#~ msgstr "Liste kutusunda yeni veya güncellenen öğe (örneğin yeni mesaj, konu)"
 
 #~ msgctxt "Sounds"
 #~ msgid "Pinned item (IE. thread) on a listbox"

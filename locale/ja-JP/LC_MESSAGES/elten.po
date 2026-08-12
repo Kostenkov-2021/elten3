@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Elten 3.0\n"
 "Report-Msgid-Bugs-To: dawidpieper@o2.pl\n"
 "POT-Creation-Date: 2026-08-07 12:56+0200\n"
-"PO-Revision-Date: 2024-09-27 00:43-0400\n"
+"PO-Revision-Date: 2026-08-12 22:55+0200\n"
 "Last-Translator: Garrett Brown\n"
 "Language-Team: dangero2000\n"
 "Language: ja_JP\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Poedit 3.9\n"
 
 #: src/eapi/common/console.rb:14
 msgctxt "EAPI_Common"
@@ -186,9 +186,7 @@ msgstr "エルテンのライセンス契約、利用規約、プライバシー
 #: src/eapi/common/media.rb:21
 msgctxt "EAPI_Common"
 msgid "You are trying to play a MIDI file. Elten needs an external instrument sound bank to play MIDI files. Do you want to download it from the server now? This may take several minutes."
-msgstr ""
-"MIDIファイルを再生しようとしています。これらのファイルを再生するには、エルテンは外部の楽器ベースが必要です。今サーバーからベースをダウンロードしますか？"
-"数分かかる場合があります。"
+msgstr "MIDIファイルを再生しようとしています。これらのファイルを再生するには、エルテンは外部の楽器ベースが必要です。今サーバーからベースをダウンロードしますか？数分かかる場合があります。"
 
 #: src/eapi/common/media.rb:22
 msgctxt "EAPI_Common"
@@ -507,39 +505,22 @@ msgstr ""
 
 #: src/eapi/core/configuration.rb:193
 msgctxt "EAPI_EltenAPI"
-msgid ""
-"Do you want to send reports on how Elten is used? This data does not contain a"
-"ny confidential information and is very helpful in program development. This s"
-"election can be changed at any time from the Settings."
+msgid "Do you want to send reports on how Elten is used? This data does not contain any confidential information and is very helpful in program development. This selection can be changed at any time from the Settings."
 msgstr "エルテンの使用状況レポートを送信しますか？このデータには機密情報は含まれず、プログラム開発に非常に役立ちます。この選択は、設定からいつでも変更できます。"
 
 #: src/eapi/core/configuration.rb:198
 msgctxt "EAPI_EltenAPI"
-msgid ""
-"You are currently using a beta version of Elten. In these versions, uploading "
-"usage statistics is always enabled. They contain information about the most fr"
-"equently used functions, configurations and problems with program operation. T"
-"hey do not contain any confidential or private information. If you do not want"
-" to send statistics, please use the stable version of Elten."
-msgstr ""
-"現在、エルテンのベータ版を使用しています。これらのバージョンでは、使用状況統計のアップロードが常に有効になっています。これらには、最も頻繁に使用される機能、"
-"設定、およびプログラムの動作に関する問題の情報が含まれます。機密情報や個人情報は含まれていません。統計を送信したくない場合は、エルテンの安定版をご利用くださ"
-"い。"
+msgid "You are currently using a beta version of Elten. In these versions, uploading usage statistics is always enabled. They contain information about the most frequently used functions, configurations and problems with program operation. They do not contain any confidential or private information. If you do not want to send statistics, please use the stable version of Elten."
+msgstr "現在、エルテンのベータ版を使用しています。これらのバージョンでは、使用状況統計のアップロードが常に有効になっています。これらには、最も頻繁に使用される機能、設定、およびプログラムの動作に関する問題の情報が含まれます。機密情報や個人情報は含まれていません。統計を送信したくない場合は、エルテンの安定版をご利用ください。"
 
 #: src/eapi/documents.rb:3
 msgctxt "License"
 msgid ""
-"Elten is free software: you can redistribute it and/or modify it under the ter"
-"ms of the GNU General Public License as published by the Free Software Foundat"
-"ion, version 3.\n"
-"Elten is distributed in the hope that it will be useful, but WITHOUT ANY WARRA"
-"NTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PAR"
-"TICULAR PURPOSE. See the GNU General Public License for more details."
+"Elten is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.\n"
+"Elten is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details."
 msgstr ""
-"エルテンはフリーソフトウェアです：あなたはGNU一般公衆利用許諾契約書バージョン3（フリーソフトウェア財団が発行）に基づいて再配布および/または改変すること"
-"ができます。\n"
-"エルテンは有用であることを願って配布されていますが、いかなる保証もありません；商品性や特定の目的への適合性の黙示的な保証も含みません。詳細についてはGNU一"
-"般公衆利用許諾契約書を参照してください。"
+"エルテンはフリーソフトウェアです：あなたはGNU一般公衆利用許諾契約書バージョン3（フリーソフトウェア財団が発行）に基づいて再配布および/または改変することができます。\n"
+"エルテンは有用であることを願って配布されていますが、いかなる保証もありません；商品性や特定の目的への適合性の黙示的な保証も含みません。詳細についてはGNU一般公衆利用許諾契約書を参照してください。"
 
 #: src/eapi/documents.rb:3
 msgctxt "License"
@@ -1787,9 +1768,7 @@ msgstr ""
 #: src/platforms/windows/invisibleinterface/service.rb:232
 msgctxt "EAPI_UI"
 msgid "Errors occurred while trying to register keyboard shortcuts for the Invisible Interface. Make sure that the specified shortcuts are not used by other applications. You can change the Invisible Interface modifier keys in the Settings window."
-msgstr ""
-"インビジブルインターフェースのキーを登録中にエラーが発生しました。 他のアプリが指定されたキーを使用していないことを確認してください。 設定ウィンドウでイン"
-"ビジブルインターフェースの修飾キーを変更できます。"
+msgstr "インビジブルインターフェースのキーを登録中にエラーが発生しました。 他のアプリが指定されたキーを使用していないことを確認してください。 設定ウィンドウでインビジブルインターフェースの修飾キーを変更できます。"
 
 #: src/platforms/windows/invisibleinterface/service.rb:301
 #: src/scenes/messages.rb:160
@@ -2473,9 +2452,7 @@ msgstr "ブラックリストに追加したいユーザー。"
 
 #: src/scenes/account.rb:543
 msgctxt "Account"
-msgid ""
-"The users added to your black list cannot send you private messages. Are you s"
-"ure  you want to continue?"
+msgid "The users added to your black list cannot send you private messages. Are you sure  you want to continue?"
 msgstr "ブラックリストに追加されたユーザーは、あなたにプライベートメッセージを送信できなくなります。続行してもよろしいですか？"
 
 #: src/scenes/account.rb:546
@@ -2525,9 +2502,7 @@ msgstr "最近のログイン"
 #: src/scenes/account.rb:634
 msgctxt "Account"
 msgid "You can configure Elten to notify you by email about changes to your account and logins from new devices. To do so, you must verify your email address. Do you want to verify it now?"
-msgstr ""
-"必要に応じて、新しいデバイスからのアカウントの変更やログインをメールで報告するようにEltenを設定できます。そのためには、メールアドレスを確認する必要があ"
-"ります。今すぐ行いますか？"
+msgstr "必要に応じて、新しいデバイスからのアカウントの変更やログインをメールで報告するようにEltenを設定できます。そのためには、メールアドレスを確認する必要があります。今すぐ行いますか？"
 
 #: src/scenes/account.rb:641 src/scenes/account.rb:668
 msgctxt "Account"
@@ -2547,9 +2522,7 @@ msgstr "メールイベント報告を無効にする"
 #: src/scenes/account.rb:655
 msgctxt "Account"
 msgid "Email event reporting is disabled. If you wish, you can enable it to receive information about changes to your account and logins from new devices by email."
-msgstr ""
-"メールイベント報告は無効になっています。ご希望の場合、メールを通じてアカウントの変更や新しいデバイスからのログイン情報を受け取るために有効にすることができま"
-"す。"
+msgstr "メールイベント報告は無効になっています。ご希望の場合、メールを通じてアカウントの変更や新しいデバイスからのログイン情報を受け取るために有効にすることができます。"
 
 #: src/scenes/account.rb:655
 msgctxt "Account"
@@ -2558,7 +2531,21 @@ msgstr "メールイベント報告は有効になっています。"
 
 #: src/scenes/account.rb:687
 msgctxt "Account"
-msgid "Archiving your account will have the following effects:\n* An indication that the account is archived will appear next to all of its forum posts.\n* The account will not appear in user lists.\n* The account will be removed from all contact lists.\n* Users will not be able to send private messages to this account.\n* The profile, including the status, bio and signature, will be removed from the server.\n* You will leave all groups that you do not moderate and from which you are not banned.\n* You will leave all message conversations.\n* All information about threads you follow, groups you have pinned and threads you have marked will be removed.\n\nWarning:\nArchiving an account does not delete or hide its blogs or notes. You must do this manually before archiving the account.\n\nThe account will be unarchived automatically the next time you log in, but the removed data will not be restored."
+msgid ""
+"Archiving your account will have the following effects:\n"
+"* An indication that the account is archived will appear next to all of its forum posts.\n"
+"* The account will not appear in user lists.\n"
+"* The account will be removed from all contact lists.\n"
+"* Users will not be able to send private messages to this account.\n"
+"* The profile, including the status, bio and signature, will be removed from the server.\n"
+"* You will leave all groups that you do not moderate and from which you are not banned.\n"
+"* You will leave all message conversations.\n"
+"* All information about threads you follow, groups you have pinned and threads you have marked will be removed.\n"
+"\n"
+"Warning:\n"
+"Archiving an account does not delete or hide its blogs or notes. You must do this manually before archiving the account.\n"
+"\n"
+"The account will be unarchived automatically the next time you log in, but the removed data will not be restored."
 msgstr ""
 "アカウントをアーカイブすると、以下の効果があります：\n"
 "* フォーラムのすべての投稿の横に、アカウントがアーカイブされたことを示す表示がされます。\n"
@@ -2602,9 +2589,7 @@ msgstr ""
 
 #: src/scenes/account.rb:745
 msgctxt "Account"
-msgid ""
-"The export of your account data is currently being prepared. This may take up "
-"to some hours. Please return here later."
+msgid "The export of your account data is currently being prepared. This may take up to some hours. Please return here later."
 msgstr ""
 
 #: src/scenes/account.rb:747
@@ -2711,14 +2696,8 @@ msgstr "有効にする"
 
 #: src/scenes/authentication.rb:24
 msgctxt "Authentication"
-msgid ""
-"Two-factor authentication enables better account security by requiring the  co"
-"nfirmation of each login with your phone. When activated, a text message with "
-"a  verification code will be sent to you each time you log in from a new devic"
-"e.  Entering this code will be required to sign in to the program."
-msgstr ""
-"二要素認証を有効にすると、ログインごとに電話での確認が必要になり、アカウントのセキュリティが向上します。有効化すると、新しいデバイスからログインするたびに認"
-"証コードが記載されたテキストメッセージが送信されます。このコードを入力することで、プログラムへのサインインが可能になります。"
+msgid "Two-factor authentication enables better account security by requiring the  confirmation of each login with your phone. When activated, a text message with a  verification code will be sent to you each time you log in from a new device.  Entering this code will be required to sign in to the program."
+msgstr "二要素認証を有効にすると、ログインごとに電話での確認が必要になり、アカウントのセキュリティが向上します。有効化すると、新しいデバイスからログインするたびに認証コードが記載されたテキストメッセージが送信されます。このコードを入力することで、プログラムへのサインインが可能になります。"
 
 #: src/scenes/authentication.rb:26
 msgid "Disable"
@@ -2742,9 +2721,7 @@ msgstr "パスワードを入力してください"
 
 #: src/scenes/authentication.rb:35
 msgctxt "Authentication"
-msgid ""
-"Type your phone number that will be used during verification. Remember to ente"
-"r  the country code, for example, +48 for Poland"
+msgid "Type your phone number that will be used during verification. Remember to enter  the country code, for example, +48 for Poland"
 msgstr "認証に使用する電話番号を入力してください。国コードを忘れずに入力してください（例：ポーランドの場合は+48）"
 
 #: src/scenes/authentication.rb:37
@@ -2764,16 +2741,12 @@ msgstr "お待ちください、サーバーに接続しています..."
 
 #: src/scenes/authentication.rb:54
 msgctxt "Authentication"
-msgid ""
-"A text message with a verification code can be requested only once per minute."
-" Please try again later."
+msgid "A text message with a verification code can be requested only once per minute. Please try again later."
 msgstr ""
 
 #: src/scenes/authentication.rb:56
 msgctxt "Authentication"
-msgid ""
-"The daily limit for text messages with verification codes has been reached. Pl"
-"ease try again later."
+msgid "The daily limit for text messages with verification codes has been reached. Please try again later."
 msgstr ""
 
 #: src/scenes/authentication.rb:58
@@ -2818,9 +2791,7 @@ msgstr "無効なパスワードです"
 
 #: src/scenes/authentication.rb:114
 msgctxt "Authentication"
-msgid ""
-"Do you want to generate backup codes? These can be used to sign in when you ha"
-"ve no access to your phone. All previously generated codes will be deleted."
+msgid "Do you want to generate backup codes? These can be used to sign in when you have no access to your phone. All previously generated codes will be deleted."
 msgstr "バックアップコードを生成しますか？これらは電話にアクセスできない場合にサインインするために使用できます。以前に生成されたコードはすべて削除されます。"
 
 #: src/scenes/authentication.rb:124
@@ -3242,9 +3213,7 @@ msgstr "新しい投稿"
 
 #: src/scenes/blog.rb:569
 msgctxt "Blog"
-msgid ""
-"The blog post is unavailable. It may have been deleted or you may not have acc"
-"ess to it."
+msgid "The blog post is unavailable. It may have been deleted or you may not have access to it."
 msgstr ""
 
 #: src/scenes/blog.rb:630
@@ -3404,9 +3373,7 @@ msgstr "ブログ %{name} を削除してもよろしいですか？"
 
 #: src/scenes/blog.rb:990
 msgctxt "Blog"
-msgid ""
-"All posts written on this blog will be lost. Are you sure you want to continue"
-"?"
+msgid "All posts written on this blog will be lost. Are you sure you want to continue?"
 msgstr "このブログに書かれたすべての投稿が失われます。続行してもよろしいですか？"
 
 #: src/scenes/blog.rb:997
@@ -3712,13 +3679,8 @@ msgstr "言語"
 
 #: src/scenes/blog.rb:1647
 msgctxt "Blog"
-msgid ""
-"Mark this blog as public. Blogs that are not marked public request search engi"
-"nes such as Google not to show them in search results (some search engines may"
-" not respect this setting)"
-msgstr ""
-"このブログを公開としてマークします。公開としてマークされていないブログは、Googleなどの検索エンジンに検索結果に表示しないよう要求します（ただし、一部の"
-"検索エンジンはこの設定を無視する場合があります）"
+msgid "Mark this blog as public. Blogs that are not marked public request search engines such as Google not to show them in search results (some search engines may not respect this setting)"
+msgstr "このブログを公開としてマークします。公開としてマークされていないブログは、Googleなどの検索エンジンに検索結果に表示しないよう要求します（ただし、一部の検索エンジンはこの設定を無視する場合があります）"
 
 #: src/scenes/blog.rb:1651
 msgctxt "Blog"
@@ -3952,9 +3914,7 @@ msgstr "設定しない"
 
 #: src/scenes/blog.rb:1774
 msgctxt "Blog"
-msgid ""
-"If you want to redirect all browsers visiting this blog to another site, selec"
-"t it here"
+msgid "If you want to redirect all browsers visiting this blog to another site, select it here"
 msgstr "このブログを訪問するすべてのブラウザを別のサイトにリダイレクトしたい場合は、ここで選択してください"
 
 #: src/scenes/blog.rb:1776
@@ -3980,9 +3940,7 @@ msgstr "ブログのドメインを管理"
 #: src/scenes/blog.rb:1792
 msgctxt "Blog"
 msgid "The blog settings have been changed. If you continue with the domain change, your changes will be lost. Do you want to continue anyway? To save the new settings, select No, then select Apply before changing the domain."
-msgstr ""
-"ブログの設定が変更されました。ドメインの変更を続行すると、行った変更は失われます。それでも続行しますか？新しい設定を保存したい場合は、「いいえ」を選択し、ド"
-"メインの変更を行う前に適用してください。"
+msgstr "ブログの設定が変更されました。ドメインの変更を続行すると、行った変更は失われます。それでも続行しますか？新しい設定を保存したい場合は、「いいえ」を選択し、ドメインの変更を行う前に適用してください。"
 
 #: src/scenes/blog.rb:1931
 msgctxt "Blog"
@@ -4217,8 +4175,7 @@ msgstr "独自ドメインの購入"
 msgctxt "Blog"
 msgid ""
 "To continue, you should point your domain to Elten Blogging server.\n"
-"You can buy your own domain from domain providers, such as ovh.com, domain.com"
-", godaddy.com or bluehost.com."
+"You can buy your own domain from domain providers, such as ovh.com, domain.com, godaddy.com or bluehost.com."
 msgstr ""
 "続行するには、あなたのドメインをEltenブログサーバーに向ける必要があります。\n"
 "独自のドメインは、ovh.com、domain.com、godaddy.com、bluehost.comなどのドメインプロバイダから購入できます。"
@@ -4250,9 +4207,7 @@ msgstr "新しいドメインが以前のものと同じです"
 
 #: src/scenes/blog.rb:2546
 msgctxt "Blog"
-msgid ""
-"You already have one blog associated with your Elten profile. Please change it"
-"s type and then proceed."
+msgid "You already have one blog associated with your Elten profile. Please change its type and then proceed."
 msgstr "あなたのEltenプロファイルにはすでに1つのブログが関連付けられています。そのタイプを変更してから続行してください。"
 
 #: src/scenes/blog.rb:2550
@@ -4278,9 +4233,7 @@ msgstr "入力されたドメインは有効ではありません"
 #: src/scenes/blog.rb:2569
 msgctxt "Blog"
 msgid "Warning! If you change your blog URL, some links may stop working. Direct links to posts or other resources on your blog will no longer work at their previous URLs. You will need to update them manually. Are you sure you want to continue?"
-msgstr ""
-"警告！ブログのURLを変更すると、一部のリンクが機能しなくなる可能性があります。ブログ内の投稿や他のリソースに直接リンクしている場合、以前のURLでは利用で"
-"きなくなります。その場合、それらを手動で修正する必要があります。続行してもよろしいですか？"
+msgstr "警告！ブログのURLを変更すると、一部のリンクが機能しなくなる可能性があります。ブログ内の投稿や他のリソースに直接リンクしている場合、以前のURLでは利用できなくなります。その場合、それらを手動で修正する必要があります。続行してもよろしいですか？"
 
 #: src/scenes/blog.rb:2584
 msgctxt "Blog"
@@ -4289,18 +4242,27 @@ msgstr "ブログのドメインが変更されました"
 
 #: src/scenes/blog.rb:2596
 msgctxt "Blog"
-msgid "Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n\nWhere possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n\nMany domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n%{ip}\n\nPointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n\nDetailed instructions are available from your domain provider, for example at:\nhttps://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n\nOnce you have finished, continue."
+msgid ""
+"Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n"
+"\n"
+"Where possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n"
+"\n"
+"Many domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n"
+"%{ip}\n"
+"\n"
+"Pointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n"
+"\n"
+"Detailed instructions are available from your domain provider, for example at:\n"
+"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
+"\n"
+"Once you have finished, continue."
 msgstr ""
-"購入したドメインをEltenブログサーバーにリダイレクトするように設定する必要があります。以下に必要な詳細を示します。問題がある場合は、フォーラムでお気軽に"
-"ご質問ください。\n"
+"購入したドメインをEltenブログサーバーにリダイレクトするように設定する必要があります。以下に必要な詳細を示します。問題がある場合は、フォーラムでお気軽にご質問ください。\n"
 "      \n"
-"      可能であれば、CNAMEレコードを使用することをお勧めします。これは、ブログをホストするサーバーのIPアドレスが変更された場合でも編集する必要が"
-"ないためです。例えば、Eltenブログサーバーの移行によりブログのIPアドレスが変更される可能性があります。ドメインのCNAMEレコードを設定することで、そ"
-"れ以上の作業は必要ありません。\n"
+"      可能であれば、CNAMEレコードを使用することをお勧めします。これは、ブログをホストするサーバーのIPアドレスが変更された場合でも編集する必要がないためです。例えば、Eltenブログサーバーの移行によりブログのIPアドレスが変更される可能性があります。ドメインのCNAMEレコードを設定することで、それ以上の作業は必要ありません。\n"
 "      これを行うには、CNAMEレコードを宛先「%{host}」に向けてください。\n"
 "      \n"
-"      残念ながら、多くのドメインレジストラはトップレベルドメインのCNAMEレコードをサポートしていないため、代わりにAレコードを使用することをお勧め"
-"します。\n"
+"      残念ながら、多くのドメインレジストラはトップレベルドメインのCNAMEレコードをサポートしていないため、代わりにAレコードを使用することをお勧めします。\n"
 "      その場合、AレコードをIPアドレスに向けてください：\n"
 "%{ip}\n"
 "。\n"
@@ -4308,8 +4270,7 @@ msgstr ""
 "ドメインのリダイレクトはエイリアシングではなく、エイリアスの設定やHTTP 301/3xxリダイレクトは機能しないことに注意してください。\n"
 "\n"
 "詳細な説明は、ドメインプロバイダから入手できます。例えば、以下のサイトをご覧ください：\n"
-"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familia"
-"r-with-DNS\n"
+"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
 "\n"
 "完了したら、続行してください。"
 
@@ -4326,9 +4287,7 @@ msgstr "準備完了、次へ進む"
 #: src/scenes/blog.rb:2631
 msgctxt "Blog"
 msgid "Your domain does not point to Elten Blogs. Try again, or wait for the DNS changes to propagate. Full DNS propagation may take up to 24 hours."
-msgstr ""
-"あなたのドメインがEltenブログを指していません。再試行するか、DNSが更新されるまでしばらくお待ちください。完全なDNS更新には最大24時間かかる場合が"
-"あります。"
+msgstr "あなたのドメインがEltenブログを指していません。再試行するか、DNSが更新されるまでしばらくお待ちください。完全なDNS更新には最大24時間かかる場合があります。"
 
 #: src/scenes/blog.rb:2633
 msgctxt "Blog"
@@ -4516,21 +4475,18 @@ msgctxt "Calendar"
 msgid "%{count} event"
 msgid_plural "%{count} events"
 msgstr[0] ""
-msgstr[1] ""
 
 #: src/scenes/calendar.rb:368
 msgctxt "Calendar"
 msgid "%{count} private event"
 msgid_plural "%{count} private events"
 msgstr[0] ""
-msgstr[1] ""
 
 #: src/scenes/calendar.rb:371
 msgctxt "Calendar"
 msgid "%{count} public event"
 msgid_plural "%{count} public events"
 msgstr[0] ""
-msgstr[1] ""
 
 #: src/scenes/calendar.rb:373
 msgctxt "Calendar"
@@ -5328,9 +5284,7 @@ msgstr "エンコード予測を無効にする"
 
 #: src/scenes/conference.rb:609
 msgctxt "Conference"
-msgid ""
-"Enable conference mode (only channel administrators and allowed users can spea"
-"k)"
+msgid "Enable conference mode (only channel administrators and allowed users can speak)"
 msgstr "会議モードを有効にする（チャンネル管理者と許可されたユーザーのみが発言可能）"
 
 #: src/scenes/conference.rb:610
@@ -6412,9 +6366,7 @@ msgstr "メッセージ"
 #: src/scenes/forgotpassword.rb:11
 msgctxt "ForgotPassword"
 msgid "If you forget your password, you can reset it using the email address you provided when registering. You can request a password reset code to verify your identity. The code will be sent to your email address. Warning: two-factor authentication will be disabled on your account. To continue, enter your username."
-msgstr ""
-"パスワードを忘れた場合でも、登録時に提供したメールアドレスを使用してリセットできます。この方法で、本人確認に使用されるパスワードリセットコードを生成します。"
-"コードはあなたのメールアドレスに送信されます。警告！二要素認証はあなたのアカウントで無効になります。続行するには、ユーザー名を入力してください"
+msgstr "パスワードを忘れた場合でも、登録時に提供したメールアドレスを使用してリセットできます。この方法で、本人確認に使用されるパスワードリセットコードを生成します。コードはあなたのメールアドレスに送信されます。警告！二要素認証はあなたのアカウントで無効になります。続行するには、ユーザー名を入力してください"
 
 #: src/scenes/forgotpassword.rb:18
 msgctxt "ForgotPassword"
@@ -6961,9 +6913,7 @@ msgstr "このグループを既読としてマーク"
 
 #: src/scenes/forum.rb:851
 msgctxt "Forum"
-msgid ""
-"All posts in this group will be marked as read. Are you sure you want to conti"
-"nue?"
+msgid "All posts in this group will be marked as read. Are you sure you want to continue?"
 msgstr "このグループのすべての投稿が既読としてマークされます。続行しますか？"
 
 #: src/scenes/forum.rb:864
@@ -7249,13 +7199,8 @@ msgstr "モデレーション権限を付与"
 
 #: src/scenes/forum.rb:1249
 msgctxt "Forum"
-msgid ""
-"You want to give the role of moderator to a user who is banned globally. Group"
-"s with banned moderators are not displayed in most lists. Are you sure you wan"
-"t to continue?"
-msgstr ""
-"グローバルに禁止されているユーザーにモデレーターの役割を与えようとしています。禁止されたモデレーターを持つグループはほとんどのリストに表示されません。それで"
-"も続行しますか？"
+msgid "You want to give the role of moderator to a user who is banned globally. Groups with banned moderators are not displayed in most lists. Are you sure you want to continue?"
+msgstr "グローバルに禁止されているユーザーにモデレーターの役割を与えようとしています。禁止されたモデレーターを持つグループはほとんどのリストに表示されません。それでも続行しますか？"
 
 #: src/scenes/forum.rb:1254
 msgctxt "Forum"
@@ -7535,9 +7480,7 @@ msgstr "このフォーラムを既読としてマーク"
 
 #: src/scenes/forum.rb:1698
 msgctxt "Forum"
-msgid ""
-"All posts on this forum will be marked as read. Are you sure you want to conti"
-"nue?"
+msgid "All posts on this forum will be marked as read. Are you sure you want to continue?"
 msgstr "このフォーラムのすべての投稿が既読としてマークされます。続行してもよろしいですか？"
 
 #: src/scenes/forum.rb:1710
@@ -7700,9 +7643,7 @@ msgstr "このスレッドをマーク"
 #: src/scenes/forum.rb:2126
 #, fuzzy
 msgctxt "Forum"
-msgid ""
-"All posts in this thread will be marked as read. Are you sure you want to cont"
-"inue?"
+msgid "All posts in this thread will be marked as read. Are you sure you want to continue?"
 msgstr "このグループのすべての投稿が既読としてマークされます。続行しますか？"
 
 #: src/scenes/forum.rb:2131
@@ -8125,9 +8066,7 @@ msgstr "スレッドが作成されました。"
 
 #: src/scenes/forum.rb:2884
 msgctxt "Forum"
-msgid ""
-"The thread is unavailable. It may have been deleted or you may not have access"
-" to it."
+msgid "The thread is unavailable. It may have been deleted or you may not have access to it."
 msgstr ""
 
 #: src/scenes/forum.rb:2918
@@ -8895,16 +8834,12 @@ msgstr ""
 #: src/scenes/loading.rb:230
 msgctxt "Loading"
 msgid "Elten has detected that you are using NVDA. To support some features of this screen reader, the Elten add-on for NVDA must be installed. Do you want to install it now?"
-msgstr ""
-"エルテンはNVDAを使用していることを検出しました。このスクリーンリーダーの一部の機能をサポートするために、Eltenアドオンをインストールする必要がありま"
-"す。今すぐインストールしますか？"
+msgstr "エルテンはNVDAを使用していることを検出しました。このスクリーンリーダーの一部の機能をサポートするために、Eltenアドオンをインストールする必要があります。今すぐインストールしますか？"
 
 #: src/scenes/loading.rb:232
 msgctxt "Loading"
 msgid "A new version of the Elten add-on for NVDA is available. The version you are using is no longer supported by this Elten release and may cause errors. Do you want to update it now?"
-msgstr ""
-"NVDA用エルテンアドオンの新しいバージョンが利用可能です。現在使用しているバージョンはこのEltenリリースではサポートされておらず、エラーが発生する可能"
-"性があります。今すぐ更新しますか？"
+msgstr "NVDA用エルテンアドオンの新しいバージョンが利用可能です。現在使用しているバージョンはこのEltenリリースではサポートされておらず、エラーが発生する可能性があります。今すぐ更新しますか？"
 
 #: src/scenes/loading.rb:252
 msgctxt "Loading"
@@ -8914,11 +8849,7 @@ msgstr ""
 #: src/scenes/loading.rb:269
 msgctxt "Loading"
 msgid "Warning! Elten failed to verify the server's encryption key. You may be connecting not to an Elten server, but to a server controlled by an attacker. The Elten server's key may also have changed. Details of any legitimate key change should be published on the Elten website or forum. If no such information has been published, this connection may be under attack. Any data you provide, including your password, could be stolen. Are you sure you want to continue with this connection? Select No to exit Elten."
-msgstr ""
-"警告！エルテンはサーバーの暗号化キーを検証できませんでした。あなたはEltenサーバーではなく、ハッカーによって準備されたサーバーに接続している可能性があり"
-"ます。また、Eltenサーバーキーが変更された可能性もあります。詳細はEltenウェブサイトのフォーラムで提供されるべきです。キーの変更に関する情報が提供さ"
-"れていない場合、ハッカー攻撃に対して脆弱である可能性が高いです。この場合、パスワードを含むあなたが提供するすべてのデータが盗まれる可能性があります。この接続"
-"を続行してもよろしいですか？「いいえ」を選択するとEltenを終了します。"
+msgstr "警告！エルテンはサーバーの暗号化キーを検証できませんでした。あなたはEltenサーバーではなく、ハッカーによって準備されたサーバーに接続している可能性があります。また、Eltenサーバーキーが変更された可能性もあります。詳細はEltenウェブサイトのフォーラムで提供されるべきです。キーの変更に関する情報が提供されていない場合、ハッカー攻撃に対して脆弱である可能性が高いです。この場合、パスワードを含むあなたが提供するすべてのデータが盗まれる可能性があります。この接続を続行してもよろしいですか？「いいえ」を選択するとEltenを終了します。"
 
 #: src/scenes/loading.rb:288
 msgctxt "Loading"
@@ -8929,24 +8860,17 @@ msgstr "新しいバージョンのプログラムが利用可能です。"
 msgctxt "Loading"
 msgid ""
 "Attention!\n"
-"Since the release of version 2.5.2.1, new restrictions have been introduced fo"
-"r globally banned users.\n"
-"By default, they are prevented from speaking in any groups and writing to othe"
-"r people.\n"
+"Since the release of version 2.5.2.1, new restrictions have been introduced for globally banned users.\n"
+"By default, they are prevented from speaking in any groups and writing to other people.\n"
 "\n"
-"To allow banned people to speak in a group, change this option from the group'"
-"s settings, General tab.\n"
-"Similarly, to allow these users to write private messages to you, you must all"
-"ow this from within your account settings, Privacy tab.\n"
+"To allow banned people to speak in a group, change this option from the group's settings, General tab.\n"
+"Similarly, to allow these users to write private messages to you, you must allow this from within your account settings, Privacy tab.\n"
 "\n"
-"Also, all groups moderated by banned users have been removed from most public "
-"lists.\n"
+"Also, all groups moderated by banned users have been removed from most public lists.\n"
 "\n"
-"At the same time, three changes have since been made to the premium packages a"
-"t the request of users:\n"
+"At the same time, three changes have since been made to the premium packages at the request of users:\n"
 "First of all, premium features are now visible in menus.\n"
-"It has also been made possible to buy premium packages for a period of one mon"
-"th.\n"
+"It has also been made possible to buy premium packages for a period of one month.\n"
 "Other billing currencies have also been added."
 msgstr ""
 "注意！\n"
@@ -9061,9 +8985,7 @@ msgstr "バックアップコードを使用して認証"
 #: src/scenes/login.rb:130
 msgctxt "Login"
 msgid "Enter the code sent to you by text message to allow this device to log in. If you cannot access the phone number used, select the password reset option to disable two-factor authentication."
-msgstr ""
-"このデバイスでログインできるように、テキストメッセージで送信されたコードを入力してください。使用した電話番号にアクセスできない場合は、パスワードリセットオプ"
-"ションを選択して二要素認証を無効にしてください。"
+msgstr "このデバイスでログインできるように、テキストメッセージで送信されたコードを入力してください。使用した電話番号にアクセスできない場合は、パスワードリセットオプションを選択して二要素認証を無効にしてください。"
 
 #: src/scenes/login.rb:132
 msgctxt "Login"
@@ -9100,16 +9022,8 @@ msgstr "アカウント %{user} に対して自動ログインを有効にしま
 
 #: src/scenes/login.rb:188
 msgctxt "Login"
-msgid ""
-"The saved login data uses the old account authentication method in which  susc"
-"eptibility to hacker attacks has been detected. New, safer automatic login  al"
-"gorithms have been introduced in Elten 2.2. It is recommended that you convert"
-"  the saved information into a new system in order to improve the security of "
-"your  account. Do you want to update the saved information now?"
-msgstr ""
-"保存されたログインデータは、ハッカー攻撃に対する脆弱性が検出された古いアカウント認証方法を使用しています。Elten 2.2では、新しいより安全な自動ログイ"
-"ンアルゴリズムが導入されました。アカウントのセキュリティを向上させるために、保存された情報を新しいシステムに変換することをお勧めします。今すぐ保存された情報"
-"を更新しますか？"
+msgid "The saved login data uses the old account authentication method in which  susceptibility to hacker attacks has been detected. New, safer automatic login  algorithms have been introduced in Elten 2.2. It is recommended that you convert  the saved information into a new system in order to improve the security of your  account. Do you want to update the saved information now?"
+msgstr "保存されたログインデータは、ハッカー攻撃に対する脆弱性が検出された古いアカウント認証方法を使用しています。Elten 2.2では、新しいより安全な自動ログインアルゴリズムが導入されました。アカウントのセキュリティを向上させるために、保存された情報を新しいシステムに変換することをお勧めします。今すぐ保存された情報を更新しますか？"
 
 #: src/scenes/login.rb:205
 msgctxt "Login"
@@ -9124,9 +9038,7 @@ msgstr "ログアウトするまで自動ログインが続行されます。自
 #: src/scenes/login.rb:223
 msgctxt "Login"
 msgid "Login data has been updated. Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
-msgstr ""
-"ログインデータが更新されました。ログアウトするまで自動ログインが続行されます。自動ログインキーはコミュニティメニューの「マイアカウント」タブから管理できます"
-"。"
+msgstr "ログインデータが更新されました。ログアウトするまで自動ログインが続行されます。自動ログインキーはコミュニティメニューの「マイアカウント」タブから管理できます。"
 
 #: src/scenes/login.rb:234
 msgctxt "Login"
@@ -9155,16 +9067,12 @@ msgstr ""
 
 #: src/scenes/login.rb:272
 msgctxt "Login"
-msgid ""
-"A text message with a verification code can be requested only once per minute."
-" Please try again later."
+msgid "A text message with a verification code can be requested only once per minute. Please try again later."
 msgstr ""
 
 #: src/scenes/login.rb:278
 msgctxt "Login"
-msgid ""
-"The daily limit for text messages with verification codes has been reached. Pl"
-"ease try again later."
+msgid "The daily limit for text messages with verification codes has been reached. Please try again later."
 msgstr ""
 
 #: src/scenes/login.rb:284
@@ -9179,9 +9087,7 @@ msgstr "ログインに失敗しました。"
 
 #: src/scenes/login.rb:303
 msgctxt "Login"
-msgid ""
-"This account has not been activated. Enter the activation code from the e-mail"
-" message or request the message again."
+msgid "This account has not been activated. Enter the activation code from the e-mail message or request the message again."
 msgstr ""
 
 #: src/scenes/login.rb:304
@@ -9206,9 +9112,7 @@ msgstr ""
 
 #: src/scenes/login.rb:315
 msgctxt "Login"
-msgid ""
-"The activation e-mail has already been sent. Please wait at least 10 minutes b"
-"efore requesting another one."
+msgid "The activation e-mail has already been sent. Please wait at least 10 minutes before requesting another one."
 msgstr ""
 
 #: src/scenes/login.rb:317
@@ -9236,9 +9140,7 @@ msgstr "入力したコードが間違っています。もう一度お試しく
 #: src/scenes/login.rb:353
 msgctxt "Login"
 msgid "Do you want to encrypt this key with a custom PIN? You will be prompted for this PIN every time you start Elten to unlock your account. It will not be saved on the server and will apply only to the auto-login key stored on this device."
-msgstr ""
-"このキーをカスタムPINコードで暗号化しますか？Eltenを起動するたびにこのコードを入力してアカウントのロックを解除する必要がありますが、このコードはサー"
-"バーに保存されず、このデバイスに保存された自動ログインキーにのみ有効です。"
+msgstr "このキーをカスタムPINコードで暗号化しますか？Eltenを起動するたびにこのコードを入力してアカウントのロックを解除する必要がありますが、このコードはサーバーに保存されず、このデバイスに保存された自動ログインキーにのみ有効です。"
 
 #: src/scenes/login.rb:358
 msgctxt "Login"
@@ -9350,9 +9252,7 @@ msgstr "本当にこのクイックアクションを削除しますか？"
 #, fuzzy
 msgctxt "Main"
 msgid "If you delete the action %{action}, you will also delete the keyboard shortcut assigned to it. If you want to keep the keyboard shortcut, you can hide this action. You can show or remove hidden actions at any time."
-msgstr ""
-"このアクションを削除すると、それに割り当てられたキーボードショートカットも削除されます。キーボードショートカットを保持したい場合は、このアクションを非表示に"
-"できます。非表示のアクションはいつでも表示または削除できます。"
+msgstr "このアクションを削除すると、それに割り当てられたキーボードショートカットも削除されます。キーボードショートカットを保持したい場合は、このアクションを非表示にできます。非表示のアクションはいつでも表示または削除できます。"
 
 #: src/scenes/main.rb:550
 msgctxt "Main"
@@ -10510,9 +10410,7 @@ msgstr "チャンネルに独自の風景を配置"
 
 #: src/scenes/premiumpackages.rb:76
 msgctxt "PremiumPackages"
-msgid ""
-"Creating conference-mode channels, where only administrators and allowed users"
-" can speak"
+msgid "Creating conference-mode channels, where only administrators and allowed users can speak"
 msgstr "管理者と許可されたユーザーのみが話せる会議モードのチャンネルを作成"
 
 #: src/scenes/premiumpackages.rb:77
@@ -10642,14 +10540,8 @@ msgstr "%{time}まで有効"
 
 #: src/scenes/premiumpackages.rb:252
 msgctxt "PremiumPackages"
-msgid ""
-"Regardless of the remaining duration of other packages, they will be replaced "
-"by the selected package. This package will be activated for a period of one ye"
-"ar. The remaining period for other packages will be deducted from the package "
-"price. Do you want to continue?"
-msgstr ""
-"他のパッケージの残り期間にかかわらず、選択したパッケージに置き換えられます。このパッケージは1年間有効になります。他のパッケージの残り期間はパッケージ価格か"
-"ら差し引かれます。続行しますか？"
+msgid "Regardless of the remaining duration of other packages, they will be replaced by the selected package. This package will be activated for a period of one year. The remaining period for other packages will be deducted from the package price. Do you want to continue?"
+msgstr "他のパッケージの残り期間にかかわらず、選択したパッケージに置き換えられます。このパッケージは1年間有効になります。他のパッケージの残り期間はパッケージ価格から差し引かれます。続行しますか？"
 
 #: src/scenes/premiumpackages.rb:254
 msgctxt "PremiumPackages"
@@ -10679,18 +10571,13 @@ msgstr "情報"
 #: src/scenes/premiumpackages.rb:264
 msgctxt "PremiumPackages"
 msgid ""
-"EltenLink's premium packages are given to users as a reward for supporting the"
-" portal.\n"
+"EltenLink's premium packages are given to users as a reward for supporting the portal.\n"
 "A project of this size cannot exist without the help of users.\n"
-"The granting of a premium package does not constitute a commitment or a commer"
-"cial contract. The user who supports the project is aware that if the necessar"
-"y amount is not raised for EltenLink to continue, the premium packages will be"
-"come unavailable."
+"The granting of a premium package does not constitute a commitment or a commercial contract. The user who supports the project is aware that if the necessary amount is not raised for EltenLink to continue, the premium packages will become unavailable."
 msgstr ""
 "エルテンリンクのプレミアムパッケージは、ポータルを支援していただいたユーザーへの報酬として提供されます。\n"
 "この規模のプロジェクトは、ユーザーの支援なしでは存在できません。\n"
-"プレミアムパッケージの付与は、契約や商業的な約束を構成するものではありません。プロジェクトを支援するユーザーは、EltenLinkを継続するために必要な資金"
-"が集まらない場合、プレミアムパッケージが利用できなくなることを理解しています。"
+"プレミアムパッケージの付与は、契約や商業的な約束を構成するものではありません。プロジェクトを支援するユーザーは、EltenLinkを継続するために必要な資金が集まらない場合、プレミアムパッケージが利用できなくなることを理解しています。"
 
 #: src/scenes/premiumpackages.rb:268 src/scenes/premiumpackages.rb:336
 msgctxt "PremiumPackages"
@@ -10739,33 +10626,25 @@ msgstr "同意しない"
 
 #: src/scenes/premiumpackages.rb:314
 msgctxt "PremiumPackages"
-msgid ""
-"Below are the transfer details.\n"
-msgstr ""
-"以下は振込詳細です。\n"
+msgid "Below are the transfer details.\n"
+msgstr "以下は振込詳細です。\n"
 
 #: src/scenes/premiumpackages.rb:316
 msgctxt "PremiumPackages"
-msgid ""
-"In the title of the transfer, please indicate your user name on the EltenLink "
-"portal and which package the payment concerns."
+msgid "In the title of the transfer, please indicate your user name on the EltenLink portal and which package the payment concerns."
 msgstr "振込のタイトルには、EltenLinkポータルでのユーザー名と、支払い対象のパッケージを記載してください。"
 
 #: src/scenes/premiumpackages.rb:318
 msgctxt "PremiumPackages"
-msgid ""
-"If you wish to receive a code that can be used to activate any of the packages"
-": %{packages} by any user, mark this information in the transfer title."
+msgid "If you wish to receive a code that can be used to activate any of the packages: %{packages} by any user, mark this information in the transfer title."
 msgstr "任意のユーザーがパッケージ%{packages}を有効化できるコードを受け取りたい場合は、その旨を振込のタイトルに記載してください。"
 
 #: src/scenes/premiumpackages.rb:320
 msgctxt "PremiumPackages"
 msgid ""
-"Please note that if you transfer a larger amount, the remainder will be treate"
-"d as a donation.\n"
+"Please note that if you transfer a larger amount, the remainder will be treated as a donation.\n"
 "\n"
-"In order to reduce the processing time of your payment, you can forward the tr"
-"ansfer confirmation to the Council of Elders."
+"In order to reduce the processing time of your payment, you can forward the transfer confirmation to the Council of Elders."
 msgstr ""
 "より大きな金額を振り込んだ場合、残額は寄付として扱われますのでご注意ください。\n"
 "\n"
@@ -10773,7 +10652,17 @@ msgstr ""
 
 #: src/scenes/premiumpackages.rb:324
 msgctxt "PremiumPackages"
-msgid "Domestic bank transfer details (from Poland):\n%{holder}\nAddress: %{address}\nAccount number: %{placcount}\n\nAdditional data for foreign transfers:\nIBAN: %{iban}\nBIC / SWIFT: %{swift}\nBank address: %{bankaddress}\nSort code: %{sortcode}"
+msgid ""
+"Domestic bank transfer details (from Poland):\n"
+"%{holder}\n"
+"Address: %{address}\n"
+"Account number: %{placcount}\n"
+"\n"
+"Additional data for foreign transfers:\n"
+"IBAN: %{iban}\n"
+"BIC / SWIFT: %{swift}\n"
+"Bank address: %{bankaddress}\n"
+"Sort code: %{sortcode}"
 msgstr ""
 "国内振込の詳細（ポーランドから）：\n"
 "%{holder}\n"
@@ -10788,9 +10677,7 @@ msgstr ""
 
 #: src/scenes/premiumpackages.rb:342
 msgctxt "PremiumPackages"
-msgid ""
-"This payment method requires a redirect to an external website. A web browser "
-"will open. Do you wish to continue?"
+msgid "This payment method requires a redirect to an external website. A web browser will open. Do you wish to continue?"
 msgstr "この支払い方法では外部ウェブサイトへのリダイレクトが必要です。ウェブブラウザが開きます。続行しますか？"
 
 #: src/scenes/premiumpackages.rb:362 src/scenes/premiumpackages.rb:399
@@ -11317,10 +11204,7 @@ msgstr ""
 
 #: src/scenes/registration.rb:23
 msgctxt "Registration"
-msgid ""
-"Enter your username. It must contain between 3 and 32 characters, including at"
-" least one letter. You may use letters, numbers, dots, hyphens, and underscore"
-"s."
+msgid "Enter your username. It must contain between 3 and 32 characters, including at least one letter. You may use letters, numbers, dots, hyphens, and underscores."
 msgstr ""
 
 #: src/scenes/registration.rb:26 src/scenes/registration.rb:39
@@ -11376,9 +11260,7 @@ msgstr "指定されたユーザー名のアカウントは既に存在します
 
 #: src/scenes/registration.rb:94
 msgctxt "Registration"
-msgid ""
-"Disposable e-mail addresses cannot be used for registration. Please use a perm"
-"anent e-mail address."
+msgid "Disposable e-mail addresses cannot be used for registration. Please use a permanent e-mail address."
 msgstr ""
 
 #: src/scenes/settings.rb:143
@@ -12636,9 +12518,7 @@ msgstr "スポンサー"
 #: src/scenes/update.rb:17
 #, fuzzy
 msgctxt "Update"
-msgid ""
-"A new version of Elten is available: %{version}. Do you want to download and i"
-"nstall it?"
+msgid "A new version of Elten is available: %{version}. Do you want to download and install it?"
 msgstr "このプログラムの新しいバージョンがあります。ダウンロードしてインストールしますか？"
 
 #: src/scenes/update.rb:19
@@ -12659,9 +12539,7 @@ msgstr ""
 #: src/scenes/update.rb:52
 msgctxt "Update"
 msgid "The update has been downloaded. To install it, the program must be restarted. Press Return to continue or Esc to cancel."
-msgstr ""
-"アップデートがダウンロードされました。インストールするにはプログラムを再起動する必要があります。続行するにはEnterキーを、キャンセルするにはEscape"
-"キーを押してください。"
+msgstr "アップデートがダウンロードされました。インストールするにはプログラムを再起動する必要があります。続行するにはEnterキーを、キャンセルするにはEscapeキーを押してください。"
 
 #: src/scenes/update.rb:66
 msgctxt "Update"
@@ -13711,835 +13589,633 @@ msgctxt "EAPI_UI"
 msgid "Alarm"
 msgstr "アラーム"
 
-#: ../agent/eprocessor.rb:150 ../src/EAPI/Conference.rb:47
 #~ msgctxt "Conference_cards"
 #~ msgid "hearts"
 #~ msgstr "ハート"
 
-#: ../agent/eprocessor.rb:152 ../src/EAPI/Conference.rb:49
 #~ msgctxt "Conference_cards"
 #~ msgid "spades"
 #~ msgstr "スペード"
 
-#: ../agent/eprocessor.rb:154 ../src/EAPI/Conference.rb:51
 #~ msgctxt "Conference_cards"
 #~ msgid "clubs"
 #~ msgstr "クラブ"
 
-#: ../agent/eprocessor.rb:156 ../src/EAPI/Conference.rb:53
 #~ msgctxt "Conference_cards"
 #~ msgid "diamonds"
 #~ msgstr "ダイヤ"
 
-#: ../agent/eprocessor.rb:158 ../src/EAPI/Conference.rb:55
 #~ msgctxt "Conference_cards"
 #~ msgid "red"
 #~ msgstr "赤"
 
-#: ../agent/eprocessor.rb:160 ../src/EAPI/Conference.rb:57
 #~ msgctxt "Conference_cards"
 #~ msgid "green"
 #~ msgstr "緑"
 
-#: ../agent/eprocessor.rb:162 ../src/EAPI/Conference.rb:59
 #~ msgctxt "Conference_cards"
 #~ msgid "blue"
 #~ msgstr "青"
 
-#: ../agent/eprocessor.rb:164 ../src/EAPI/Conference.rb:61
 #~ msgctxt "Conference_cards"
 #~ msgid "yellow"
 #~ msgstr "黄"
 
-#: ../agent/eprocessor.rb:171 ../src/EAPI/Conference.rb:71
 #~ msgctxt "Conference_cards"
 #~ msgid "two"
 #~ msgstr "２"
 
-#: ../agent/eprocessor.rb:173 ../src/EAPI/Conference.rb:73
 #~ msgctxt "Conference_cards"
 #~ msgid "three"
 #~ msgstr "３"
 
-#: ../agent/eprocessor.rb:175 ../src/EAPI/Conference.rb:75
 #~ msgctxt "Conference_cards"
 #~ msgid "four"
 #~ msgstr "４"
 
-#: ../agent/eprocessor.rb:177 ../src/EAPI/Conference.rb:77
 #~ msgctxt "Conference_cards"
 #~ msgid "five"
 #~ msgstr "５"
 
-#: ../agent/eprocessor.rb:179 ../src/EAPI/Conference.rb:79
 #~ msgctxt "Conference_cards"
 #~ msgid "six"
 #~ msgstr "6"
 
-#: ../agent/eprocessor.rb:181 ../src/EAPI/Conference.rb:81
 #~ msgctxt "Conference_cards"
 #~ msgid "seven"
 #~ msgstr "7"
 
-#: ../agent/eprocessor.rb:183 ../src/EAPI/Conference.rb:83
 #~ msgctxt "Conference_cards"
 #~ msgid "eight"
 #~ msgstr "8"
 
-#: ../agent/eprocessor.rb:185 ../src/EAPI/Conference.rb:85
 #~ msgctxt "Conference_cards"
 #~ msgid "nine"
 #~ msgstr "9"
 
-#: ../agent/eprocessor.rb:187 ../src/EAPI/Conference.rb:87
 #~ msgctxt "Conference_cards"
 #~ msgid "ten"
 #~ msgstr "10"
 
-#: ../agent/eprocessor.rb:189 ../src/EAPI/Conference.rb:89
 #~ msgctxt "Conference_cards"
 #~ msgid "jack"
 #~ msgstr "ジャック"
 
-#: ../agent/eprocessor.rb:191 ../src/EAPI/Conference.rb:91
 #~ msgctxt "Conference_cards"
 #~ msgid "queen"
 #~ msgstr "クイーン"
 
-#: ../agent/eprocessor.rb:193 ../src/EAPI/Conference.rb:93
 #~ msgctxt "Conference_cards"
 #~ msgid "king"
 #~ msgstr "キング"
 
-#: ../agent/eprocessor.rb:195 ../src/EAPI/Conference.rb:95
 #~ msgctxt "Conference_cards"
 #~ msgid "ace"
 #~ msgstr "エース"
 
-#: ../agent/eprocessor.rb:197 ../src/EAPI/Conference.rb:97
 #~ msgctxt "Conference_cards"
 #~ msgid "joker"
 #~ msgstr "ジョーカー"
 
-#: ../agent/eprocessor.rb:208 ../agent/eprocessor.rb:210
-#: ../src/EAPI/Conference.rb:108 ../src/EAPI/Conference.rb:110
 #~ msgctxt "Conference_cards"
 #~ msgid "Skip"
 #~ msgstr "スキップ"
 
-#: ../agent/eprocessor.rb:212 ../agent/eprocessor.rb:214
-#: ../src/EAPI/Conference.rb:112 ../src/EAPI/Conference.rb:114
 #~ msgctxt "Conference_cards"
 #~ msgid "Draw two"
 #~ msgstr "2枚引く"
 
-#: ../agent/eprocessor.rb:216 ../agent/eprocessor.rb:218
-#: ../src/EAPI/Conference.rb:116 ../src/EAPI/Conference.rb:118
 #~ msgctxt "Conference_cards"
 #~ msgid "Reverse"
 #~ msgstr "リバース"
 
-#: ../agent/eprocessor.rb:223 ../src/EAPI/Conference.rb:124
-#: ../src/EAPI/Conference.rb:126 ../src/EAPI/Conference.rb:128
-#: ../src/EAPI/Conference.rb:130
 #~ msgctxt "Conference_cards"
 #~ msgid "Wild"
 #~ msgstr "ワイルド"
 
-#: ../agent/eprocessor.rb:225 ../src/EAPI/Conference.rb:132
-#: ../src/EAPI/Conference.rb:134 ../src/EAPI/Conference.rb:136
-#: ../src/EAPI/Conference.rb:138
 #~ msgctxt "Conference_cards"
 #~ msgid "Wild draw four"
 #~ msgstr "ワイルド4枚引く"
 
-#: ../agent/eprocessor.rb:235 ../src/EAPI/Conference.rb:149
 #~ msgctxt "Conference_cards"
 #~ msgid "%{card} of %{colour}"
 #~ msgstr "%{colour}の%{card}"
 
-#: ../agent/eprocessor.rb:241 ../src/EAPI/Conference.rb:155
 #~ msgctxt "Conference_cards"
 #~ msgid "%{colour} %{card}"
 #~ msgstr "%{colour}%{card}"
 
-#: ../src/Scenes/Conference.rb:1278
 #~ msgctxt "Conference"
 #~ msgid "Cardboard"
 #~ msgstr "段ボール"
 
-#: ../src/Scenes/Conference.rb:1340
 #~ msgctxt "Conference"
 #~ msgid "Full deck"
 #~ msgstr "フルデッキ"
 
-#: ../src/Scenes/Conference.rb:1342
 #~ msgctxt "Conference"
 #~ msgid "Two colours"
 #~ msgstr "2色"
 
-#: ../src/Scenes/Conference.rb:1344
 #~ msgctxt "Conference"
 #~ msgid "Small deck"
 #~ msgstr "小さいデッキ"
 
-#: ../src/Scenes/Conference.rb:1346
 #~ msgctxt "Conference"
 #~ msgid "Two colours of a small deck"
 #~ msgstr "小さいデッキの2色"
 
-#: ../src/Scenes/Conference.rb:1348
 #~ msgctxt "Conference"
 #~ msgid "No jokers"
 #~ msgstr "ジョーカーなし"
 
-#: ../src/Scenes/Conference.rb:1350
 #~ msgctxt "Conference"
 #~ msgid "UNO"
 #~ msgstr "UNO"
 
-#: ../src/Scenes/Conference.rb:1357
 #~ msgctxt "Conference"
 #~ msgid "Decks"
 #~ msgstr "デッキ"
 
-#: ../src/Scenes/Conference.rb:1358
 #~ msgctxt "Conference"
 #~ msgid "My cards"
 #~ msgstr "自分のカード"
 
-#: ../src/Scenes/Conference.rb:1359
 #~ msgctxt "Conference"
 #~ msgid "Placed cards"
 #~ msgstr "置かれたカード"
 
-#: ../src/Scenes/Conference.rb:1379 ../src/Scenes/Conference.rb:1425
 #~ msgctxt "Conference"
 #~ msgid "Pick a card"
 #~ msgstr "カードを引く"
 
-#: ../src/Scenes/Conference.rb:1382
 #~ msgctxt "Conference"
 #~ msgid "Shuffle"
 #~ msgstr "シャッフル"
 
-#: ../src/Scenes/Conference.rb:1383
 #~ msgctxt "Conference"
-#~ msgid ""
-#~ "Are you sure you want to shuffle this deck? All placed cards will be returned "
-#~ "to this deck."
+#~ msgid "Are you sure you want to shuffle this deck? All placed cards will be returned to this deck."
 #~ msgstr "このデッキをシャッフルしてもよろしいですか？すべての置かれたカードはこのデッキに戻されます。"
 
-#: ../src/Scenes/Conference.rb:1389 ../src/Scenes/Conference.rb:1459
 #~ msgctxt "Conference"
 #~ msgid "Deck history"
 #~ msgstr "デッキの履歴"
 
-#: ../src/Scenes/Conference.rb:1390
 #~ msgctxt "Conference"
 #~ msgid "Delete a deck"
 #~ msgstr "デッキを削除"
 
-#: ../src/Scenes/Conference.rb:1391
 #~ msgctxt "Conference"
 #~ msgid "Are you sure you want to delete this deck?"
 #~ msgstr "このデッキを削除してもよろしいですか？"
 
-#: ../src/Scenes/Conference.rb:1399
 #~ msgctxt "Conference"
 #~ msgid "Add new deck"
 #~ msgstr "新しいデッキを追加"
 
-#: ../src/Scenes/Conference.rb:1402
 #~ msgctxt "Conference"
 #~ msgid "Deck type"
 #~ msgstr "デッキタイプ"
 
-#: ../src/Scenes/Conference.rb:1413
 #~ msgctxt "Conference"
 #~ msgid "Place a card"
 #~ msgstr "カードを置く"
 
-#: ../src/Scenes/Conference.rb:1416
 #~ msgctxt "Conference"
 #~ msgid "Replace a card"
 #~ msgstr "カードを交換"
 
-#: ../src/Scenes/Conference.rb:1449
 #~ msgctxt "Conference"
 #~ msgid "Picked a card"
 #~ msgstr "カードを引きました"
 
-#: ../src/Scenes/Conference.rb:1451
 #~ msgctxt "Conference"
 #~ msgid "Replaced a card"
 #~ msgstr "カードを交換しました"
 
-#: ../src/Scenes/Conference.rb:1453
 #~ msgctxt "Conference"
 #~ msgid "Shuffled a deck"
 #~ msgstr "デッキをシャッフルしました"
 
-#: ../src/Scenes/Conference.rb:1455
 #~ msgctxt "Conference"
 #~ msgid "Placed %{cardname}"
 #~ msgstr "%{cardname} を置きました"
 
-#: ../src/Scenes/PremiumPackages.rb:40
 #~ msgctxt "PremiumPackages"
 #~ msgid "Using MarkDown in forum posts"
 #~ msgstr "フォーラム投稿でMarkDownを使用する"
 
-#: ../src/eapi/Common.rb:216
 #~ msgctxt "EAPI_Common"
 #~ msgid "Open user's blog"
 #~ msgstr "ユーザーのブログを開く"
 
-#: ../src/eapi/Common.rb:439
 #~ msgctxt "EAPI_Common"
 #~ msgid "There is nothing new."
 #~ msgstr "新しいものはありません。"
 
-#: ../src/eapi/Common.rb:669
 #~ msgctxt "EAPI_Common"
 #~ msgid "Used version"
 #~ msgstr "使用バージョン"
 
-#: ../src/eapi/Common.rb:930
 #~ msgctxt "EAPI_Common"
-#~ msgid ""
-#~ "In order to use HRTF functionality, Elten needs to download Phonon library. Wo"
-#~ "uld you like to download it now?"
+#~ msgid "In order to use HRTF functionality, Elten needs to download Phonon library. Would you like to download it now?"
 #~ msgstr "HRTF機能を使用するには、エルテンはPhononライブラリをダウンロードする必要があります。今ダウンロードしますか？"
 
-#: ../src/eapi/Common.rb:1064
 #~ msgid "Function not supported on this platform"
 #~ msgstr "このプラットフォームではサポートされていない機能です"
 
-#: ../src/eapi/Common.rb:1091
 #~ msgctxt "EAPI_Common"
 #~ msgid "Compressing..."
 #~ msgstr "圧縮中..."
 
-#: ../src/eapi/Controls.rb:2151
-#~ msgctxt "EAPI_Form"
-#~ msgid "You can check only %{count} item"
-#~ msgid_plural "You can check only %{count} items"
-#~ msgstr[0] "チェックできる項目は %{count} 個のみです"
-
-#: ../src/eapi/Controls.rb:2407
 #~ msgctxt "EAPI_Form"
 #~ msgid "Tickbox"
 #~ msgstr "チェックボックス"
 
-#: ../src/eapi/Controls.rb:3050
 #~ msgctxt "EAPI_Form"
 #~ msgid "Choose a path"
 #~ msgstr "パスを選択"
 
-#: ../src/eapi/External.rb:37 ../src/eapi/External.rb:49
 #~ msgctxt "EAPI_External"
 #~ msgid "An error occurred while translating."
 #~ msgstr "翻訳中にエラーが発生しました。"
 
-#: ../src/eapi/MainMenu.rb:55
 #~ msgctxt "MainMenu"
 #~ msgid "What's &new?"
 #~ msgstr "新着情報&N"
 
-#: ../src/eapi/MainMenu.rb:84
 #~ msgctxt "MainMenu"
 #~ msgid "Programs installation"
 #~ msgstr "プログラムのインストール"
 
-#: ../src/eapi/MainMenu.rb:90
 #~ msgctxt "MainMenu"
 #~ msgid "Create &Portable version"
 #~ msgstr "ポータブル版を作成(&P)"
 
-#: ../src/eapi/MainMenu.rb:91
 #~ msgctxt "MainMenu"
 #~ msgid "&Reinstall"
 #~ msgstr "再インストール(&R)"
 
-#: ../src/eapi/MainMenu.rb:92
 #~ msgctxt "MainMenu"
 #~ msgid "&Install"
 #~ msgstr "インストール(&I)"
 
-#: ../src/eapi/MainMenu.rb:96
 #~ msgctxt "MainMenu"
 #~ msgid "Relo&ad all programs"
 #~ msgstr "すべてのプログラムを再読み込み(&A)"
 
-#: ../src/eapi/MainMenu.rb:99
 #~ msgctxt "MainMenu"
 #~ msgid "All programs reloaded"
 #~ msgstr "すべてのプログラムが再読み込みされました"
 
-#: ../src/eapi/Network.rb:68
 #~ msgctxt "EAPI_Network"
 #~ msgid "sending..."
 #~ msgstr "送信中..."
 
-#: ../src/eapi/Network.rb:291
 #~ msgctxt "EAPI_Network"
 #~ msgid "Do not report progress bar changes."
 #~ msgstr "進行状況バーの変化を報告しない"
 
-#: ../src/eapi/Network.rb:294
 #~ msgctxt "EAPI_Network"
 #~ msgid "Read progress bar changes."
 #~ msgstr "進行状況バーの変化を読み上げる"
 
-#: ../src/eapi/QuickActions.rb:187
 #~ msgctxt "EAPI_QuickActions"
 #~ msgid "What is new?"
 #~ msgstr "新着情報"
 
-#: ../src/eapi/Speech.rb:148
 #~ msgctxt "EAPI_Speech"
 #~ msgid "New"
 #~ msgstr "新規"
 
-#: ../src/eapi/UI.rb:509
 #~ msgctxt "EAPI_UI"
-#~ msgid ""
-#~ "An unexpected error of Elten agent occurred. Do you want to report this event?"
-#~ " It  may definitely help us solve the problem."
+#~ msgid "An unexpected error of Elten agent occurred. Do you want to report this event? It  may definitely help us solve the problem."
 #~ msgstr "エルテンエージェントの予期しないエラーが発生しました。この問題を報告しますか？問題解決の手助けとなります。"
 
-#: ../src/eapi/UI.rb:513
 #~ msgctxt "EAPI_UI"
 #~ msgid "The program is trying to recover from the frozen state."
 #~ msgstr "プログラムがフリーズ状態からの復旧を試みています。"
 
-#: ../src/scenes/Account.rb:260
 #~ msgctxt "Account"
 #~ msgid "What's new notifications"
 #~ msgstr "新着通知"
 
-#: ../src/scenes/Account.rb:261
 #~ msgctxt "Account"
 #~ msgid "Notice only"
 #~ msgstr "通知のみ"
 
-#: ../src/scenes/Account.rb:261
 #~ msgctxt "Account"
 #~ msgid "Notice and show in what's new"
 #~ msgstr "通知して「新着情報」に表示"
 
-#: ../src/scenes/Account.rb:261
 #~ msgctxt "Account"
 #~ msgid "Ignore"
 #~ msgstr "無視"
 
-#: ../src/scenes/Account.rb:262
 #~ msgctxt "Account"
 #~ msgid "New messages"
 #~ msgstr "新しいメッセージ"
 
-#: ../src/scenes/Account.rb:262
 #~ msgctxt "Account"
 #~ msgid "New posts in followed threads"
 #~ msgstr "フォロー中のスレッドの新しい投稿"
 
-#: ../src/scenes/Account.rb:262
 #~ msgctxt "Account"
 #~ msgid "New posts on the followed blogs"
 #~ msgstr "フォロー中のブログの新しい投稿"
 
-#: ../src/scenes/Account.rb:262
 #~ msgctxt "Account"
 #~ msgid "New comments on your blog"
 #~ msgstr "あなたのブログへの新しいコメント"
 
-#: ../src/scenes/Account.rb:262
 #~ msgctxt "Account"
 #~ msgid "New threads on followed forums"
 #~ msgstr "フォロー中のフォーラムの新しいスレッド"
 
-#: ../src/scenes/Account.rb:262
 #~ msgctxt "Account"
 #~ msgid "New posts on followed forums"
 #~ msgstr "フォロー中のフォーラムの新しい投稿"
 
-#: ../src/scenes/Blog.rb:201
 #~ msgctxt "Blog"
 #~ msgid "Are you sure you want to delete this category?"
 #~ msgstr "このカテゴリを削除してもよろしいですか？"
 
-#: ../src/scenes/Blog.rb:451
 #~ msgctxt "Blog"
 #~ msgid "Are you sure you want to delete this post?"
 #~ msgstr "この投稿を削除してもよろしいですか？"
 
-#: ../src/scenes/Blog.rb:513
 #~ msgctxt "Blog"
 #~ msgid "User to mention"
 #~ msgstr "メンションするユーザー"
 
-#: ../src/scenes/Blog.rb:1165
 #~ msgctxt "Blog"
 #~ msgid "Are you sure you want to delete this blog from Elten library?"
 #~ msgstr "このブログをEltenライブラリから削除してもよろしいですか？"
 
-#: ../src/scenes/Contacts.rb:75
 #~ msgctxt "Contacts"
 #~ msgid "Are you sure you want to delete this contact?"
 #~ msgstr "この連絡先を削除してもよろしいですか？"
 
-#: ../src/scenes/Forum.rb:1195
 #~ msgctxt "Forum"
 #~ msgid "This user does not exist"
 #~ msgstr "このユーザーは存在しません"
 
-#: ../src/scenes/Forum.rb:1197
 #~ msgctxt "Forum"
 #~ msgid "This user already belongs to this group"
 #~ msgstr "このユーザーはすでにこのグループに所属しています"
 
-#: ../src/scenes/Forum.rb:1436
 #~ msgctxt "Forum"
 #~ msgid "Are you sure you want to delete this tag?"
 #~ msgstr "このタグを削除してもよろしいですか？"
 
-#: ../src/scenes/Forum.rb:1685
 #~ msgctxt "Forum"
 #~ msgid "Are you sure you want to delete this forum?"
 #~ msgstr "本当にこのフォーラムを削除しますか？"
 
-#: ../src/scenes/Forum.rb:2465 ../src/scenes/Forum.rb:3162
-#: ../src/scenes/Forum.rb:3839
 #~ msgctxt "Forum"
 #~ msgid "Use MarkDown in this post"
 #~ msgstr "この投稿でMarkDownを使用"
 
-#: ../src/scenes/Forum.rb:3796
 #~ msgctxt "Forum"
 #~ msgid "Error"
 #~ msgstr "エラー"
 
-#: ../src/scenes/Install.rb:3
 #~ msgctxt "Install"
 #~ msgid "Download and install the newest version"
 #~ msgstr "最新バージョンをダウンロードしてインストール"
 
-#: ../src/scenes/Install.rb:3
 #~ msgctxt "Install"
 #~ msgid "Install current version"
 #~ msgstr "現在のバージョンをインストール"
 
-#: ../src/scenes/Install.rb:3
 #~ msgctxt "Install"
 #~ msgid "Which version would you like to use?"
 #~ msgstr "どのバージョンを使用しますか？"
 
-#: ../src/scenes/Login.rb:60 ../src/scenes/Login.rb:169
 #~ msgctxt "Login"
-#~ msgid ""
-#~ "Do you want to enable auto-Login-key encryption? When encrypted, the Auto-Logi"
-#~ "n Key will be readable only on this computer, and its copying or exporting wil"
-#~ "l not allow other devices to access your account. Note: If you encrypt your Au"
-#~ "to-Login Key, the created portable versions will not be able to automatically "
-#~ "log into your account from other devices, even if you copy your settings, and "
-#~ "you will be prompted to enter your password. You can create as many auto-login"
-#~ "-keys as you wish for all other computers you are using."
-#~ msgstr ""
-#~ "自動ログインキーの暗号化を有効にしますか？暗号化すると、自動ログインキーはこのコンピュータでのみ読み取ることができ、コピーやエクスポートしても他のデバイスか"
-#~ "らあなたのアカウントにアクセスすることはできません。注意：自動ログインキーを暗号化すると、設定をコピーしても作成されたポータブルバージョンは他のデバイスから"
-#~ "自動的にアカウントにログインすることはできず、パスワードの入力を求められます。使用しているすべてのコンピュータ用に必要なだけの自動ログインキーを作成できます"
-#~ "。"
+#~ msgid "Do you want to enable auto-Login-key encryption? When encrypted, the Auto-Login Key will be readable only on this computer, and its copying or exporting will not allow other devices to access your account. Note: If you encrypt your Auto-Login Key, the created portable versions will not be able to automatically log into your account from other devices, even if you copy your settings, and you will be prompted to enter your password. You can create as many auto-login-keys as you wish for all other computers you are using."
+#~ msgstr "自動ログインキーの暗号化を有効にしますか？暗号化すると、自動ログインキーはこのコンピュータでのみ読み取ることができ、コピーやエクスポートしても他のデバイスからあなたのアカウントにアクセスすることはできません。注意：自動ログインキーを暗号化すると、設定をコピーしても作成されたポータブルバージョンは他のデバイスから自動的にアカウントにログインすることはできず、パスワードの入力を求められます。使用しているすべてのコンピュータ用に必要なだけの自動ログインキーを作成できます。"
 
-#: ../src/scenes/Main.rb:45
 #~ msgctxt "Main"
 #~ msgid "A new beta version of the program is available."
 #~ msgstr "プログラムの新しいベータバージョンが利用可能です。"
 
-#: ../src/scenes/Main.rb:245
 #~ msgctxt "Main"
 #~ msgid "Are you sure you want to delete this quick action?"
 #~ msgstr "本当にこのクイックアクションを削除しますか？"
 
-#: ../src/scenes/Main.rb:247
 #~ msgctxt "Main"
-#~ msgid ""
-#~ "If you delete this action, you will also delete the keyboard shortcut assigned"
-#~ " to it. If you want to keep the keyboard shortcut, you can hide this action. Y"
-#~ "ou can show or remove hidden actions at any time."
-#~ msgstr ""
-#~ "このアクションを削除すると、それに割り当てられたキーボードショートカットも削除されます。キーボードショートカットを保持したい場合は、このアクションを非表示に"
-#~ "できます。非表示のアクションはいつでも表示または削除できます。"
+#~ msgid "If you delete this action, you will also delete the keyboard shortcut assigned to it. If you want to keep the keyboard shortcut, you can hide this action. You can show or remove hidden actions at any time."
+#~ msgstr "このアクションを削除すると、それに割り当てられたキーボードショートカットも削除されます。キーボードショートカットを保持したい場合は、このアクションを非表示にできます。非表示のアクションはいつでも表示または削除できます。"
 
-#: ../src/scenes/Portable.rb:9
 #~ msgctxt "Portable"
 #~ msgid "Copy current settings"
 #~ msgstr "現在の設定をコピー"
 
-#: ../src/scenes/Portable.rb:9
 #~ msgctxt "Portable"
 #~ msgid "Copy downloaded sound themes"
 #~ msgstr "ダウンロードしたサウンドテーマをコピー"
 
-#: ../src/scenes/Portable.rb:9
 #~ msgctxt "Portable"
 #~ msgid "continue"
 #~ msgstr "続行"
 
-#: ../src/scenes/Portable.rb:9
 #~ msgctxt "Portable"
 #~ msgid "Destination"
 #~ msgstr "保存先"
 
-#: ../src/scenes/Portable.rb:23
 #~ msgctxt "Portable"
 #~ msgid "Please wait while files are being prepared"
 #~ msgstr "ファイルの準備中です。しばらくお待ちください"
 
-#: ../src/scenes/Portable.rb:31
 #~ msgctxt "Portable"
 #~ msgid "Copying settings"
 #~ msgstr "設定をコピー中"
 
-#: ../src/scenes/Portable.rb:36
 #~ msgctxt "Portable"
-#~ msgid ""
-#~ "If you use a created copy of Elten on another computer, the voice settings may"
-#~ "  not work properly. This is especially noticeable in a situation when another"
-#~ "  computer has other voices installed. How do you want to configure the genera"
-#~ "ted  version?"
-#~ msgstr ""
-#~ "作成したエルテンのコピーを他のコンピュータで使用する場合、音声の設定が正しく動作しない可能性があります。特に、別のコンピュータに他の音声がインストールされて"
-#~ "いる場合に顕著です。生成されたバージョンをどのように設定しますか？"
+#~ msgid "If you use a created copy of Elten on another computer, the voice settings may  not work properly. This is especially noticeable in a situation when another  computer has other voices installed. How do you want to configure the generated  version?"
+#~ msgstr "作成したエルテンのコピーを他のコンピュータで使用する場合、音声の設定が正しく動作しない可能性があります。特に、別のコンピュータに他の音声がインストールされている場合に顕著です。生成されたバージョンをどのように設定しますか？"
 
-#: ../src/scenes/Portable.rb:36
 #~ msgctxt "Portable"
 #~ msgid "Use a screenreader or a system default voice"
 #~ msgstr "スクリーンリーダーまたはシステムのデフォルト音声を使用"
 
-#: ../src/scenes/Portable.rb:36
 #~ msgctxt "Portable"
 #~ msgid "Use current setting"
 #~ msgstr "現在の設定を使用"
 
-#: ../src/scenes/Portable.rb:36
 #~ msgctxt "Portable"
 #~ msgid "Reset synthesizer settings"
 #~ msgstr "音声合成の設定をリセット"
 
-#: ../src/scenes/Portable.rb:36
 #~ msgctxt "Portable"
 #~ msgid "Ask each time"
 #~ msgstr "毎回確認する"
 
-#: ../src/scenes/Portable.rb:47
 #~ msgctxt "Portable"
 #~ msgid "Copying sound themes"
 #~ msgstr "サウンドテーマをコピー中"
 
-#: ../src/scenes/Portable.rb:60
 #~ msgctxt "Portable"
 #~ msgid "Elten Portable version created successfully."
 #~ msgstr "エルテンのポータブル版が正常に作成されました。"
 
-#: ../src/scenes/Programs.rb:45
 #~ msgctxt "Programs"
 #~ msgid "Programs installation"
 #~ msgstr "プログラムのインストール"
 
-#: ../src/scenes/Programs.rb:59
 #~ msgctxt "Programs"
 #~ msgid "Install"
 #~ msgstr "インストール"
 
-#: ../src/scenes/Programs.rb:65
 #~ msgctxt "Programs"
 #~ msgid "Reinstall"
 #~ msgstr "再インストール"
 
-#: ../src/scenes/Programs.rb:67
 #~ msgctxt "Programs"
 #~ msgid "Update"
 #~ msgstr "更新"
 
-#: ../src/scenes/Programs.rb:83
 #~ msgctxt "Programs"
 #~ msgid "Do you want to install program %{name}? Need to download %{size} of data."
 #~ msgstr "プログラム %{name} をインストールしますか？%{size} のデータをダウンロードする必要があります。"
 
-#: ../src/scenes/Programs.rb:120
 #~ msgctxt "Programs"
 #~ msgid "Remove"
 #~ msgstr "削除"
 
-#: ../src/scenes/Programs.rb:121
 #~ msgctxt "Programs"
 #~ msgid "Are you sure you want to remove program %{name}?"
 #~ msgstr "本当にプログラム %{name} を削除しますか？"
 
-#: ../src/scenes/Programs.rb:124
 #~ msgctxt "Programs"
 #~ msgid "Program removed"
 #~ msgstr "プログラムが削除されました"
 
-#: ../src/scenes/Registration.rb:13
 #~ msgctxt "Registration"
-#~ msgid ""
-#~ "Enter your username. It will be used for identification.The maximum length of "
-#~ "the  username is 64 characters"
+#~ msgid "Enter your username. It will be used for identification.The maximum length of the  username is 64 characters"
 #~ msgstr "ユーザー名を入力してください。これは識別に使用されます。ユーザー名の最大長は64文字です。"
 
-#: ../src/scenes/Registration.rb:53
 #~ msgctxt "Registration"
 #~ msgid "An unknown error occurred while using database"
 #~ msgstr "データベース使用中に不明なエラーが発生しました"
 
-#: ../src/scenes/Registration.rb:57
 #~ msgctxt "Registration"
 #~ msgid "An error occurred while trying to write data."
 #~ msgstr "データの書き込み中にエラーが発生しました。"
 
-#: ../src/scenes/Settings.rb:142
 #~ msgctxt "Settings"
 #~ msgid "Use default"
 #~ msgstr "デフォルトを使用"
 
-#: ../src/scenes/Settings.rb:155
 #~ msgctxt "Settings"
 #~ msgid "Sound theme"
 #~ msgstr "サウンドテーマ"
 
-#: ../src/scenes/Settings.rb:188
 #~ msgctxt "Settings"
 #~ msgid "Use NVDA"
 #~ msgstr "NVDAを使用する"
 
-#: ../src/scenes/Settings.rb:194
 #~ msgctxt "Settings"
 #~ msgid "Enable braille output (requires NVDA addon)"
 #~ msgstr "点字出力を有効にする（NVDAアドオンが必要）"
 
-#: ../src/scenes/SoundThemes.rb:56
 #~ msgctxt "SoundThemes"
 #~ msgid "Are you sure you want to delete this soundtheme?"
 #~ msgstr "本当にこのサウンドテーマを削除しますか？"
 
-#: ../src/scenes/Sounds.rb:49
 #~ msgctxt "Sounds"
 #~ msgid "A piece of text in an editbox has been selected"
 #~ msgstr "編集ボックス内のテキストが選択されました"
 
-#: ../src/scenes/Sounds.rb:85
 #~ msgctxt "Sounds"
 #~ msgid "Card picked in conference"
 #~ msgstr "会議でカードが引かれました"
 
-#: ../src/scenes/Sounds.rb:86
 #~ msgctxt "Sounds"
 #~ msgid "Card replaced in conference"
 #~ msgstr "会議でカードが置き換えられました"
 
-#: ../src/scenes/Sounds.rb:87
 #~ msgctxt "Sounds"
 #~ msgid "Shuffled a deck in conference"
 #~ msgstr "会議でデッキがシャッフルされました"
 
-#: ../src/scenes/Sounds.rb:88
 #~ msgctxt "Sounds"
 #~ msgid "Card placed in conference"
 #~ msgstr "会議でカードが置かれました"
 
-#: ../src/scenes/SpeedTest.rb:9
 #~ msgctxt "SpeedTest"
 #~ msgid "Forum structure (uncompressed)"
 #~ msgstr "フォーラム構造（非圧縮）"
 
-#: ../src/scenes/SpeedTest.rb:9
 #~ msgctxt "SpeedTest"
 #~ msgid "What's new"
 #~ msgstr "新着情報"
 
-#: ../src/scenes/SpeedTest.rb:9
 #~ msgctxt "SpeedTest"
 #~ msgid "Forum structure (compressed)"
 #~ msgstr "フォーラム構造（圧縮）"
 
-#: ../src/scenes/WhatsNew.rb:43
 #~ msgctxt "WhatsNew"
 #~ msgid "What's new"
 #~ msgstr "新着情報"
 
-#: ../src/scenes/WhatsNew.rb:54
 #~ msgctxt "WhatsNew"
 #~ msgid "New messages"
 #~ msgstr "新しいメッセージ"
 
-#: ../src/scenes/WhatsNew.rb:55
 #~ msgctxt "WhatsNew"
 #~ msgid "New posts in followed threads"
 #~ msgstr "フォロー中のスレッドの新しい投稿"
 
-#: ../src/scenes/WhatsNew.rb:56
 #~ msgctxt "WhatsNew"
 #~ msgid "New posts on the followed blogs"
 #~ msgstr "フォロー中のブログの新しい投稿"
 
-#: ../src/scenes/WhatsNew.rb:57
 #~ msgctxt "WhatsNew"
 #~ msgid "New comments on your blog"
 #~ msgstr "あなたのブログへの新しいコメント"
 
-#: ../src/scenes/WhatsNew.rb:58
 #~ msgctxt "WhatsNew"
 #~ msgid "New threads on followed forums"
 #~ msgstr "フォロー中のフォーラムの新しいスレッド"
 
-#: ../src/scenes/WhatsNew.rb:59
 #~ msgctxt "WhatsNew"
 #~ msgid "New posts on followed forums"
 #~ msgstr "フォロー中のフォーラムの新しい投稿"
 
-#: ../src/scenes/WhatsNew.rb:60
 #~ msgctxt "WhatsNew"
 #~ msgid "New friends"
 #~ msgstr "新しい友達"
 
-#: ../src/scenes/WhatsNew.rb:61
 #~ msgctxt "WhatsNew"
 #~ msgid "Friends' birthday"
 #~ msgstr "友達の誕生日"
 
-#: ../src/scenes/WhatsNew.rb:62
 #~ msgctxt "WhatsNew"
 #~ msgid "Mentions"
 #~ msgstr "メンション"
 
-#: ../src/scenes/WhatsNew.rb:63
 #~ msgctxt "WhatsNew"
 #~ msgid "New comments to followed blog posts"
 #~ msgstr "フォロー中のブログ投稿への新しいコメント"
 
-#: ../src/scenes/WhatsNew.rb:64
 #~ msgctxt "WhatsNew"
 #~ msgid "New blog followers"
 #~ msgstr "ブログの新しいフォロワー"
 
-#: ../src/scenes/WhatsNew.rb:65
 #~ msgctxt "WhatsNew"
 #~ msgid "Blog mentions"
 #~ msgstr "ブログのメンション"
 
-#: ../src/scenes/WhatsNew.rb:66
 #~ msgctxt "WhatsNew"
 #~ msgid "Awaiting group invitations"
 #~ msgstr "保留中のグループ招待"
 
-#: ../src/scenes/WhatsNew.rb:67
 #~ msgctxt "WhatsNew"
 #~ msgid "Update available (%{version})"
 #~ msgstr "利用可能な更新があります（%{version}）"
 
-#: ../src/scenes/WhatsNew.rb:83
 #~ msgctxt "WhatsNew"
 #~ msgid "There is nothing new."
 #~ msgstr "新しいものはありません。"

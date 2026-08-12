@@ -3,16 +3,15 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: dawidpieper@o2.pl\n"
 "POT-Creation-Date: 2024-03-31 15:53+0200\n"
-"PO-Revision-Date: 2024-06-28 10:08+0200\n"
+"PO-Revision-Date: 2026-08-12 22:55+0200\n"
 "Last-Translator: Florian Ionașcu <florianionascu@hotmail.com>\n"
 "Language-Team: StormProductions\n"
 "Language: ro\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n"
-"%100<=19) ? 1 : 2);\n"
-"X-Generator: Poedit 1.6.10\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n==0 || (n!=1 && n%100>=1 && n%100<=19) ? 1 : 2);\n"
+"X-Generator: Poedit 3.9\n"
 "X-Poedit-Basepath: .\n"
 
 #: ../agent/eprocessor.rb:99
@@ -135,34 +134,27 @@ msgctxt "Conference_cards"
 msgid "joker"
 msgstr "joker"
 
-#: ../agent/eprocessor.rb:208 ../agent/eprocessor.rb:210
-#: ../src/EAPI/Conference.rb:108 ../src/EAPI/Conference.rb:110
+#: ../agent/eprocessor.rb:208 ../agent/eprocessor.rb:210 ../src/EAPI/Conference.rb:108 ../src/EAPI/Conference.rb:110
 msgctxt "Conference_cards"
 msgid "Skip"
 msgstr "Pas"
 
-#: ../agent/eprocessor.rb:212 ../agent/eprocessor.rb:214
-#: ../src/EAPI/Conference.rb:112 ../src/EAPI/Conference.rb:114
+#: ../agent/eprocessor.rb:212 ../agent/eprocessor.rb:214 ../src/EAPI/Conference.rb:112 ../src/EAPI/Conference.rb:114
 msgctxt "Conference_cards"
 msgid "Draw two"
 msgstr "Trage două"
 
-#: ../agent/eprocessor.rb:216 ../agent/eprocessor.rb:218
-#: ../src/EAPI/Conference.rb:116 ../src/EAPI/Conference.rb:118
+#: ../agent/eprocessor.rb:216 ../agent/eprocessor.rb:218 ../src/EAPI/Conference.rb:116 ../src/EAPI/Conference.rb:118
 msgctxt "Conference_cards"
 msgid "Reverse"
 msgstr "Invers"
 
-#: ../agent/eprocessor.rb:223 ../src/EAPI/Conference.rb:124
-#: ../src/EAPI/Conference.rb:126 ../src/EAPI/Conference.rb:128
-#: ../src/EAPI/Conference.rb:130
+#: ../agent/eprocessor.rb:223 ../src/EAPI/Conference.rb:124 ../src/EAPI/Conference.rb:126 ../src/EAPI/Conference.rb:128 ../src/EAPI/Conference.rb:130
 msgctxt "Conference_cards"
 msgid "Wild"
 msgstr "Wild"
 
-#: ../agent/eprocessor.rb:225 ../src/EAPI/Conference.rb:132
-#: ../src/EAPI/Conference.rb:134 ../src/EAPI/Conference.rb:136
-#: ../src/EAPI/Conference.rb:138
+#: ../agent/eprocessor.rb:225 ../src/EAPI/Conference.rb:132 ../src/EAPI/Conference.rb:134 ../src/EAPI/Conference.rb:136 ../src/EAPI/Conference.rb:138
 msgctxt "Conference_cards"
 msgid "Wild draw four"
 msgstr "Remiză sălbatică patru"
@@ -187,8 +179,7 @@ msgctxt "FeedViewer"
 msgid "Feed"
 msgstr "Flux"
 
-#: ../agent/quicknav.rb:101 ../src/Scenes/Conference.rb:176
-#: ../src/Scenes/Conference.rb:283
+#: ../agent/quicknav.rb:101 ../src/Scenes/Conference.rb:176 ../src/Scenes/Conference.rb:283
 msgctxt "Conference"
 msgid "Conference"
 msgstr "Conferință"
@@ -198,8 +189,7 @@ msgctxt "Messages"
 msgid "Send a new message"
 msgstr "Trimite un mesaj nou"
 
-#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465
-#: ../src/scenes/Messages.rb:693 ../src/scenes/Messages.rb:960
+#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465 ../src/scenes/Messages.rb:693 ../src/scenes/Messages.rb:960
 msgctxt "Messages"
 msgid "Send"
 msgstr "Trimite"
@@ -214,44 +204,9 @@ msgctxt "Messages"
 msgid "Subject:"
 msgstr "Subiect:"
 
-#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465
-#: ../src/Scenes/Conference.rb:799 ../src/Scenes/Conference.rb:857
-#: ../src/Scenes/Conference.rb:885 ../src/Scenes/Conference.rb:959
-#: ../src/Scenes/Conference.rb:1075 ../src/Scenes/Conference.rb:1148
-#: ../src/Scenes/Conference.rb:1288 ../src/Scenes/Conference.rb:1785
-#: ../src/Scenes/Conference.rb:1817 ../src/Scenes/Conference.rb:1854
-#: ../src/Scenes/Conference.rb:1956 ../src/Scenes/Conference.rb:1977
-#: ../src/Scenes/Conference.rb:2002 ../src/Scenes/Conference.rb:2258
-#: ../src/eapi/Common.rb:16 ../src/eapi/Common.rb:1230
-#: ../src/eapi/Controls.rb:965 ../src/eapi/Controls.rb:1066
-#: ../src/eapi/Controls.rb:3328 ../src/eapi/Controls.rb:3394
-#: ../src/eapi/Controls.rb:4347 ../src/eapi/Controls.rb:4425
-#: ../src/eapi/Controls.rb:4488 ../src/eapi/Controls.rb:4641
-#: ../src/eapi/External.rb:120 ../src/eapi/UI.rb:783
-#: ../src/scenes/Account.rb:117 ../src/scenes/Account.rb:702
-#: ../src/scenes/Ban.rb:26 ../src/scenes/Ban.rb:113 ../src/scenes/Blog.rb:513
-#: ../src/scenes/Blog.rb:1049 ../src/scenes/Blog.rb:1251
-#: ../src/scenes/Blog.rb:1389 ../src/scenes/Blog.rb:1443
-#: ../src/scenes/Blog.rb:1565 ../src/scenes/Blog.rb:1961
-#: ../src/scenes/Blog.rb:2413 ../src/scenes/Blog.rb:2542
-#: ../src/scenes/Clock.rb:12 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Forum.rb:738 ../src/scenes/Forum.rb:764
-#: ../src/scenes/Forum.rb:910 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:1305 ../src/scenes/Forum.rb:1465
-#: ../src/scenes/Forum.rb:1608 ../src/scenes/Forum.rb:1709
-#: ../src/scenes/Forum.rb:2308 ../src/scenes/Forum.rb:2373
-#: ../src/scenes/Forum.rb:2473 ../src/scenes/Forum.rb:3691
-#: ../src/scenes/Forum.rb:3742 ../src/scenes/Forum.rb:3859
-#: ../src/scenes/Forum.rb:3884 ../src/scenes/Forum.rb:4397
-#: ../src/scenes/Honors.rb:186 ../src/scenes/Honors.rb:222
-#: ../src/scenes/Honors.rb:303 ../src/scenes/Install.rb:3
-#: ../src/scenes/Login.rb:88 ../src/scenes/Main.rb:247
-#: ../src/scenes/Messages.rb:290 ../src/scenes/Messages.rb:871
-#: ../src/scenes/Notes.rb:118 ../src/scenes/Notes.rb:252
-#: ../src/scenes/Polls.rb:182 ../src/scenes/Polls.rb:240
-#: ../src/scenes/Polls.rb:416 ../src/scenes/Portable.rb:9
-#: ../src/scenes/Settings.rb:119 ../src/scenes/Sounds.rb:237
-#: ../src/scenes/SpeedTest.rb:9
+#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465 ../src/Scenes/Conference.rb:799 ../src/Scenes/Conference.rb:857 ../src/Scenes/Conference.rb:885 ../src/Scenes/Conference.rb:959 ../src/Scenes/Conference.rb:1075 ../src/Scenes/Conference.rb:1148 ../src/Scenes/Conference.rb:1288 ../src/Scenes/Conference.rb:1785 ../src/Scenes/Conference.rb:1817 ../src/Scenes/Conference.rb:1854 ../src/Scenes/Conference.rb:1956 ../src/Scenes/Conference.rb:1977 ../src/Scenes/Conference.rb:2002 ../src/Scenes/Conference.rb:2258 ../src/eapi/Common.rb:16 ../src/eapi/Common.rb:1230 ../src/eapi/Controls.rb:965 ../src/eapi/Controls.rb:1066 ../src/eapi/Controls.rb:3328 ../src/eapi/Controls.rb:3394 ../src/eapi/Controls.rb:4347 ../src/eapi/Controls.rb:4425 ../src/eapi/Controls.rb:4488 ../src/eapi/Controls.rb:4641 ../src/eapi/External.rb:120 ../src/eapi/UI.rb:783 ../src/scenes/Account.rb:117
+#: ../src/scenes/Account.rb:702 ../src/scenes/Ban.rb:26 ../src/scenes/Ban.rb:113 ../src/scenes/Blog.rb:513 ../src/scenes/Blog.rb:1049 ../src/scenes/Blog.rb:1251 ../src/scenes/Blog.rb:1389 ../src/scenes/Blog.rb:1443 ../src/scenes/Blog.rb:1565 ../src/scenes/Blog.rb:1961 ../src/scenes/Blog.rb:2413 ../src/scenes/Blog.rb:2542 ../src/scenes/Clock.rb:12 ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:738 ../src/scenes/Forum.rb:764 ../src/scenes/Forum.rb:910 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:1305 ../src/scenes/Forum.rb:1465 ../src/scenes/Forum.rb:1608 ../src/scenes/Forum.rb:1709 ../src/scenes/Forum.rb:2308 ../src/scenes/Forum.rb:2373 ../src/scenes/Forum.rb:2473 ../src/scenes/Forum.rb:3691 ../src/scenes/Forum.rb:3742 ../src/scenes/Forum.rb:3859 ../src/scenes/Forum.rb:3884 ../src/scenes/Forum.rb:4397 ../src/scenes/Honors.rb:186 ../src/scenes/Honors.rb:222 ../src/scenes/Honors.rb:303
+#: ../src/scenes/Install.rb:3 ../src/scenes/Login.rb:88 ../src/scenes/Main.rb:247 ../src/scenes/Messages.rb:290 ../src/scenes/Messages.rb:871 ../src/scenes/Notes.rb:118 ../src/scenes/Notes.rb:252 ../src/scenes/Polls.rb:182 ../src/scenes/Polls.rb:240 ../src/scenes/Polls.rb:416 ../src/scenes/Portable.rb:9 ../src/scenes/Settings.rb:119 ../src/scenes/Sounds.rb:237 ../src/scenes/SpeedTest.rb:9
 msgid "Cancel"
 msgstr "Anulează"
 
@@ -260,14 +215,12 @@ msgctxt "Messages"
 msgid "Recipient"
 msgstr "Destinatar"
 
-#: ../agent/quicknav.rb:162 ../agent/quicknav.rb:166 ../agent/quicknav.rb:302
-#: ../agent/quicknav.rb:306 ../src/scenes/Messages.rb:705
+#: ../agent/quicknav.rb:162 ../agent/quicknav.rb:166 ../agent/quicknav.rb:302 ../agent/quicknav.rb:306 ../src/scenes/Messages.rb:705
 msgctxt "Messages"
 msgid "Failed to send message"
 msgstr "Mesajul nu poate fi trimis"
 
-#: ../agent/quicknav.rb:220 ../agent/quicknav.rb:222
-#: ../src/scenes/Messages.rb:803
+#: ../agent/quicknav.rb:220 ../agent/quicknav.rb:222 ../src/scenes/Messages.rb:803
 msgctxt "Messages"
 msgid "To"
 msgstr "Către"
@@ -327,8 +280,7 @@ msgctxt "Conference"
 msgid "Stream audio file"
 msgstr "Transmite fișier audio"
 
-#: ../agent/quicknav.rb:348 ../src/Scenes/Conference.rb:806
-#: ../src/Scenes/Conference.rb:1120
+#: ../agent/quicknav.rb:348 ../src/Scenes/Conference.rb:806 ../src/Scenes/Conference.rb:1120
 msgctxt "Conference"
 msgid "Select audio file"
 msgstr "Selectează fișier audio"
@@ -393,8 +345,7 @@ msgctxt "Conference"
 msgid "Chat message"
 msgstr "Mesaj pe chat"
 
-#: ../agent/quicknav.rb:509 ../src/scenes/Messages.rb:165
-#: ../src/scenes/Messages.rb:720
+#: ../agent/quicknav.rb:509 ../src/scenes/Messages.rb:165 ../src/scenes/Messages.rb:720
 msgctxt "Messages"
 msgid "Reply"
 msgstr "Răspunde"
@@ -417,20 +368,11 @@ msgstr "Răspunde"
 #: ../src/EAPI/Documents.rb:3
 msgctxt "License"
 msgid ""
-"Elten is free software: you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation, version 3.\n"
-"Elten is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details."
+"Elten is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.\n"
+"Elten is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details."
 msgstr ""
-"Elten este un software gratuit: îl puteți redistribui și / sau modifica în "
-"condițiile licenței publice generale GNU publicate de Free Software "
-"Foundation, versiunea 3.\n"
-"Elten este distribuit în speranța că va fi util, dar FĂRĂ NICI O GARANȚIE; "
-"fără măcar garanția implicită de VANZABILITATE sau ADECVARE PENTRU UN SCOP "
-"PARTICULAR. Consultați Licența publică generală GNU pentru mai multe detalii."
+"Elten este un software gratuit: îl puteți redistribui și / sau modifica în condițiile licenței publice generale GNU publicate de Free Software Foundation, versiunea 3.\n"
+"Elten este distribuit în speranța că va fi util, dar FĂRĂ NICI O GARANȚIE; fără măcar garanția implicită de VANZABILITATE sau ADECVARE PENTRU UN SCOP PARTICULAR. Consultați Licența publică generală GNU pentru mai multe detalii."
 
 #: ../src/EAPI/Documents.rb:3
 msgctxt "License"
@@ -439,115 +381,24 @@ msgstr "Codul sursă Elten poate fi găsit la GitHub:"
 
 #: ../src/EAPI/Documents.rb:3
 msgctxt "License"
-msgid ""
-"The original content of the GNU General Public License V3 can be found below."
-msgstr ""
-"Conținutul original al GNU General Public License V3 poate fi găsit mai jos."
+msgid "The original content of the GNU General Public License V3 can be found below."
+msgstr "Conținutul original al GNU General Public License V3 poate fi găsit mai jos."
 
 #: ../src/EAPI/Documents.rb:689
 msgctxt "Documentation"
 msgid "Current Invisible Interface modifier key"
 msgstr "Modificatorul curent Elten"
 
-#: ../src/Scenes/Auctions.rb:25 ../src/Scenes/CallHistory.rb:16
-#: ../src/Scenes/Conference.rb:826 ../src/Scenes/FeedViewer.rb:20
-#: ../src/Scenes/FeedViewer.rb:145 ../src/Scenes/PremiumPackages.rb:370
-#: ../src/Scenes/PremiumPackages.rb:408 ../src/Scenes/PremiumPackages.rb:425
-#: ../src/Scenes/PremiumPackages.rb:435 ../src/eapi/Common.rb:327
-#: ../src/eapi/Common.rb:355 ../src/eapi/Common.rb:363
-#: ../src/eapi/Common.rb:515 ../src/eapi/Common.rb:1222
-#: ../src/eapi/EltenSRV.rb:224 ../src/eapi/EltenSRV.rb:242
-#: ../src/eapi/EltenSRV.rb:313 ../src/eapi/EltenSRV.rb:340
-#: ../src/eapi/EltenSRV.rb:379 ../src/eapi/EltenSRV.rb:394
-#: ../src/eapi/EltenSRV.rb:432 ../src/scenes/Account.rb:497
-#: ../src/scenes/Account.rb:560 ../src/scenes/Account.rb:632
-#: ../src/scenes/Account.rb:640 ../src/scenes/Account.rb:646
-#: ../src/scenes/Authentication.rb:16 ../src/scenes/Authentication.rb:43
-#: ../src/scenes/Authentication.rb:78 ../src/scenes/Authentication.rb:91
-#: ../src/scenes/Ban.rb:72 ../src/scenes/Ban.rb:104 ../src/scenes/Ban.rb:127
-#: ../src/scenes/Blog.rb:94 ../src/scenes/Blog.rb:113
-#: ../src/scenes/Blog.rb:168 ../src/scenes/Blog.rb:189
-#: ../src/scenes/Blog.rb:204 ../src/scenes/Blog.rb:266
-#: ../src/scenes/Blog.rb:378 ../src/scenes/Blog.rb:454
-#: ../src/scenes/Blog.rb:503 ../src/scenes/Blog.rb:525
-#: ../src/scenes/Blog.rb:557 ../src/scenes/Blog.rb:590
-#: ../src/scenes/Blog.rb:724 ../src/scenes/Blog.rb:814
-#: ../src/scenes/Blog.rb:995 ../src/scenes/Blog.rb:1061
-#: ../src/scenes/Blog.rb:1107 ../src/scenes/Blog.rb:1134
-#: ../src/scenes/Blog.rb:1142 ../src/scenes/Blog.rb:1150
-#: ../src/scenes/Blog.rb:1187 ../src/scenes/Blog.rb:1197
-#: ../src/scenes/Blog.rb:1237 ../src/scenes/Blog.rb:1267
-#: ../src/scenes/Blog.rb:1300 ../src/scenes/Blog.rb:1328
-#: ../src/scenes/Blog.rb:1348 ../src/scenes/Blog.rb:1407
-#: ../src/scenes/Blog.rb:1432 ../src/scenes/Blog.rb:1450
-#: ../src/scenes/Blog.rb:1712 ../src/scenes/Blog.rb:1853
-#: ../src/scenes/Blog.rb:1868 ../src/scenes/Blog.rb:1924
-#: ../src/scenes/Blog.rb:1937 ../src/scenes/Blog.rb:2020
-#: ../src/scenes/Blog.rb:2169 ../src/scenes/Blog.rb:2176
-#: ../src/scenes/Blog.rb:2384 ../src/scenes/Blog.rb:2405
-#: ../src/scenes/Blog.rb:2511 ../src/scenes/ForgotPassword.rb:24
-#: ../src/scenes/Forum.rb:626 ../src/scenes/Forum.rb:650
-#: ../src/scenes/Forum.rb:670 ../src/scenes/Forum.rb:690
-#: ../src/scenes/Forum.rb:753 ../src/scenes/Forum.rb:778
-#: ../src/scenes/Forum.rb:791 ../src/scenes/Forum.rb:932
-#: ../src/scenes/Forum.rb:1051 ../src/scenes/Forum.rb:1084
-#: ../src/scenes/Forum.rb:1094 ../src/scenes/Forum.rb:1141
-#: ../src/scenes/Forum.rb:1285 ../src/scenes/Forum.rb:1426
-#: ../src/scenes/Forum.rb:1438 ../src/scenes/Forum.rb:1520
-#: ../src/scenes/Forum.rb:1545 ../src/scenes/Forum.rb:1552
-#: ../src/scenes/Forum.rb:1588 ../src/scenes/Forum.rb:1625
-#: ../src/scenes/Forum.rb:1648 ../src/scenes/Forum.rb:1673
-#: ../src/scenes/Forum.rb:1688 ../src/scenes/Forum.rb:1729
-#: ../src/scenes/Forum.rb:2049 ../src/scenes/Forum.rb:2068
-#: ../src/scenes/Forum.rb:2075 ../src/scenes/Forum.rb:2126
-#: ../src/scenes/Forum.rb:2139 ../src/scenes/Forum.rb:2151
-#: ../src/scenes/Forum.rb:2166 ../src/scenes/Forum.rb:2186
-#: ../src/scenes/Forum.rb:2219 ../src/scenes/Forum.rb:2231
-#: ../src/scenes/Forum.rb:2266 ../src/scenes/Forum.rb:2282
-#: ../src/scenes/Forum.rb:2550 ../src/scenes/Forum.rb:2660
-#: ../src/scenes/Forum.rb:2665 ../src/scenes/Forum.rb:2704
-#: ../src/scenes/Forum.rb:2740 ../src/scenes/Forum.rb:2923
-#: ../src/scenes/Forum.rb:2940 ../src/scenes/Forum.rb:2958
-#: ../src/scenes/Forum.rb:3272 ../src/scenes/Forum.rb:3293
-#: ../src/scenes/Forum.rb:3352 ../src/scenes/Forum.rb:3520
-#: ../src/scenes/Forum.rb:3536 ../src/scenes/Forum.rb:3543
-#: ../src/scenes/Forum.rb:3604 ../src/scenes/Forum.rb:3629
-#: ../src/scenes/Forum.rb:3642 ../src/scenes/Forum.rb:3669
-#: ../src/scenes/Forum.rb:3806 ../src/scenes/Forum.rb:3867
-#: ../src/scenes/Forum.rb:3931 ../src/scenes/Forum.rb:4007
-#: ../src/scenes/Forum.rb:4019 ../src/scenes/Forum.rb:4435
-#: ../src/scenes/Honors.rb:20 ../src/scenes/Honors.rb:138
-#: ../src/scenes/Honors.rb:149 ../src/scenes/Honors.rb:165
-#: ../src/scenes/Honors.rb:210 ../src/scenes/Honors.rb:315
-#: ../src/scenes/Loading.rb:329 ../src/scenes/Main.rb:393
-#: ../src/scenes/Messages.rb:101 ../src/scenes/Messages.rb:182
-#: ../src/scenes/Messages.rb:252 ../src/scenes/Messages.rb:337
-#: ../src/scenes/Messages.rb:373 ../src/scenes/Messages.rb:380
-#: ../src/scenes/Messages.rb:405 ../src/scenes/Messages.rb:495
-#: ../src/scenes/Messages.rb:528 ../src/scenes/Messages.rb:736
-#: ../src/scenes/Messages.rb:743 ../src/scenes/Messages.rb:759
-#: ../src/scenes/Messages.rb:766 ../src/scenes/Messages.rb:817
-#: ../src/scenes/Messages.rb:934 ../src/scenes/Messages.rb:1041
-#: ../src/scenes/Notes.rb:16 ../src/scenes/Notes.rb:107
-#: ../src/scenes/Notes.rb:141 ../src/scenes/Notes.rb:181
-#: ../src/scenes/Notes.rb:194 ../src/scenes/Notes.rb:228
-#: ../src/scenes/Notes.rb:241 ../src/scenes/Notes.rb:271
-#: ../src/scenes/Polls.rb:28 ../src/scenes/Polls.rb:56
-#: ../src/scenes/Polls.rb:137 ../src/scenes/Polls.rb:342
-#: ../src/scenes/Polls.rb:359 ../src/scenes/Polls.rb:374
-#: ../src/scenes/Polls.rb:456 ../src/scenes/Polls.rb:489
-#: ../src/scenes/Polls.rb:499 ../src/scenes/Polls.rb:510
-#: ../src/scenes/Polls.rb:566 ../src/scenes/Polls.rb:580
-#: ../src/scenes/Polls.rb:597 ../src/scenes/SoundThemes.rb:82
-#: ../src/scenes/Sounds.rb:285 ../src/scenes/Sounds.rb:323
-#: ../src/scenes/UserSearch.rb:19
+#: ../src/Scenes/Auctions.rb:25 ../src/Scenes/CallHistory.rb:16 ../src/Scenes/Conference.rb:826 ../src/Scenes/FeedViewer.rb:20 ../src/Scenes/FeedViewer.rb:145 ../src/Scenes/PremiumPackages.rb:370 ../src/Scenes/PremiumPackages.rb:408 ../src/Scenes/PremiumPackages.rb:425 ../src/Scenes/PremiumPackages.rb:435 ../src/eapi/Common.rb:327 ../src/eapi/Common.rb:355 ../src/eapi/Common.rb:363 ../src/eapi/Common.rb:515 ../src/eapi/Common.rb:1222 ../src/eapi/EltenSRV.rb:224 ../src/eapi/EltenSRV.rb:242 ../src/eapi/EltenSRV.rb:313 ../src/eapi/EltenSRV.rb:340 ../src/eapi/EltenSRV.rb:379 ../src/eapi/EltenSRV.rb:394 ../src/eapi/EltenSRV.rb:432 ../src/scenes/Account.rb:497 ../src/scenes/Account.rb:560 ../src/scenes/Account.rb:632 ../src/scenes/Account.rb:640 ../src/scenes/Account.rb:646 ../src/scenes/Authentication.rb:16 ../src/scenes/Authentication.rb:43 ../src/scenes/Authentication.rb:78
+#: ../src/scenes/Authentication.rb:91 ../src/scenes/Ban.rb:72 ../src/scenes/Ban.rb:104 ../src/scenes/Ban.rb:127 ../src/scenes/Blog.rb:94 ../src/scenes/Blog.rb:113 ../src/scenes/Blog.rb:168 ../src/scenes/Blog.rb:189 ../src/scenes/Blog.rb:204 ../src/scenes/Blog.rb:266 ../src/scenes/Blog.rb:378 ../src/scenes/Blog.rb:454 ../src/scenes/Blog.rb:503 ../src/scenes/Blog.rb:525 ../src/scenes/Blog.rb:557 ../src/scenes/Blog.rb:590 ../src/scenes/Blog.rb:724 ../src/scenes/Blog.rb:814 ../src/scenes/Blog.rb:995 ../src/scenes/Blog.rb:1061 ../src/scenes/Blog.rb:1107 ../src/scenes/Blog.rb:1134 ../src/scenes/Blog.rb:1142 ../src/scenes/Blog.rb:1150 ../src/scenes/Blog.rb:1187 ../src/scenes/Blog.rb:1197 ../src/scenes/Blog.rb:1237 ../src/scenes/Blog.rb:1267 ../src/scenes/Blog.rb:1300 ../src/scenes/Blog.rb:1328 ../src/scenes/Blog.rb:1348 ../src/scenes/Blog.rb:1407 ../src/scenes/Blog.rb:1432 ../src/scenes/Blog.rb:1450
+#: ../src/scenes/Blog.rb:1712 ../src/scenes/Blog.rb:1853 ../src/scenes/Blog.rb:1868 ../src/scenes/Blog.rb:1924 ../src/scenes/Blog.rb:1937 ../src/scenes/Blog.rb:2020 ../src/scenes/Blog.rb:2169 ../src/scenes/Blog.rb:2176 ../src/scenes/Blog.rb:2384 ../src/scenes/Blog.rb:2405 ../src/scenes/Blog.rb:2511 ../src/scenes/ForgotPassword.rb:24 ../src/scenes/Forum.rb:626 ../src/scenes/Forum.rb:650 ../src/scenes/Forum.rb:670 ../src/scenes/Forum.rb:690 ../src/scenes/Forum.rb:753 ../src/scenes/Forum.rb:778 ../src/scenes/Forum.rb:791 ../src/scenes/Forum.rb:932 ../src/scenes/Forum.rb:1051 ../src/scenes/Forum.rb:1084 ../src/scenes/Forum.rb:1094 ../src/scenes/Forum.rb:1141 ../src/scenes/Forum.rb:1285 ../src/scenes/Forum.rb:1426 ../src/scenes/Forum.rb:1438 ../src/scenes/Forum.rb:1520 ../src/scenes/Forum.rb:1545 ../src/scenes/Forum.rb:1552 ../src/scenes/Forum.rb:1588 ../src/scenes/Forum.rb:1625
+#: ../src/scenes/Forum.rb:1648 ../src/scenes/Forum.rb:1673 ../src/scenes/Forum.rb:1688 ../src/scenes/Forum.rb:1729 ../src/scenes/Forum.rb:2049 ../src/scenes/Forum.rb:2068 ../src/scenes/Forum.rb:2075 ../src/scenes/Forum.rb:2126 ../src/scenes/Forum.rb:2139 ../src/scenes/Forum.rb:2151 ../src/scenes/Forum.rb:2166 ../src/scenes/Forum.rb:2186 ../src/scenes/Forum.rb:2219 ../src/scenes/Forum.rb:2231 ../src/scenes/Forum.rb:2266 ../src/scenes/Forum.rb:2282 ../src/scenes/Forum.rb:2550 ../src/scenes/Forum.rb:2660 ../src/scenes/Forum.rb:2665 ../src/scenes/Forum.rb:2704 ../src/scenes/Forum.rb:2740 ../src/scenes/Forum.rb:2923 ../src/scenes/Forum.rb:2940 ../src/scenes/Forum.rb:2958 ../src/scenes/Forum.rb:3272 ../src/scenes/Forum.rb:3293 ../src/scenes/Forum.rb:3352 ../src/scenes/Forum.rb:3520 ../src/scenes/Forum.rb:3536 ../src/scenes/Forum.rb:3543 ../src/scenes/Forum.rb:3604 ../src/scenes/Forum.rb:3629
+#: ../src/scenes/Forum.rb:3642 ../src/scenes/Forum.rb:3669 ../src/scenes/Forum.rb:3806 ../src/scenes/Forum.rb:3867 ../src/scenes/Forum.rb:3931 ../src/scenes/Forum.rb:4007 ../src/scenes/Forum.rb:4019 ../src/scenes/Forum.rb:4435 ../src/scenes/Honors.rb:20 ../src/scenes/Honors.rb:138 ../src/scenes/Honors.rb:149 ../src/scenes/Honors.rb:165 ../src/scenes/Honors.rb:210 ../src/scenes/Honors.rb:315 ../src/scenes/Loading.rb:329 ../src/scenes/Main.rb:393 ../src/scenes/Messages.rb:101 ../src/scenes/Messages.rb:182 ../src/scenes/Messages.rb:252 ../src/scenes/Messages.rb:337 ../src/scenes/Messages.rb:373 ../src/scenes/Messages.rb:380 ../src/scenes/Messages.rb:405 ../src/scenes/Messages.rb:495 ../src/scenes/Messages.rb:528 ../src/scenes/Messages.rb:736 ../src/scenes/Messages.rb:743 ../src/scenes/Messages.rb:759 ../src/scenes/Messages.rb:766 ../src/scenes/Messages.rb:817 ../src/scenes/Messages.rb:934
+#: ../src/scenes/Messages.rb:1041 ../src/scenes/Notes.rb:16 ../src/scenes/Notes.rb:107 ../src/scenes/Notes.rb:141 ../src/scenes/Notes.rb:181 ../src/scenes/Notes.rb:194 ../src/scenes/Notes.rb:228 ../src/scenes/Notes.rb:241 ../src/scenes/Notes.rb:271 ../src/scenes/Polls.rb:28 ../src/scenes/Polls.rb:56 ../src/scenes/Polls.rb:137 ../src/scenes/Polls.rb:342 ../src/scenes/Polls.rb:359 ../src/scenes/Polls.rb:374 ../src/scenes/Polls.rb:456 ../src/scenes/Polls.rb:489 ../src/scenes/Polls.rb:499 ../src/scenes/Polls.rb:510 ../src/scenes/Polls.rb:566 ../src/scenes/Polls.rb:580 ../src/scenes/Polls.rb:597 ../src/scenes/SoundThemes.rb:82 ../src/scenes/Sounds.rb:285 ../src/scenes/Sounds.rb:323 ../src/scenes/UserSearch.rb:19
 msgid "Error"
 msgstr "Eroare"
 
-#: ../src/Scenes/CallHistory.rb:10 ../src/Scenes/PremiumPackages.rb:4
-#: ../src/scenes/Authentication.rb:10 ../src/scenes/Contacts.rb:13
-#: ../src/scenes/Messages.rb:26 ../src/scenes/Notes.rb:10
-#: ../src/scenes/WhatsNew.rb:15
+#: ../src/Scenes/CallHistory.rb:10 ../src/Scenes/PremiumPackages.rb:4 ../src/scenes/Authentication.rb:10 ../src/scenes/Contacts.rb:13 ../src/scenes/Messages.rb:26 ../src/scenes/Notes.rb:10 ../src/scenes/WhatsNew.rb:15
 msgid "This section is unavailable for guests"
 msgstr "Această secțiune nu este disponibilă pentru oaspeți"
 
@@ -591,23 +442,8 @@ msgctxt "CallHistory"
 msgid "Call History"
 msgstr "Istoricul apelurilor"
 
-#: ../src/Scenes/CallHistory.rb:61 ../src/Scenes/Conference.rb:1408
-#: ../src/Scenes/Conference.rb:1420 ../src/Scenes/Conference.rb:1429
-#: ../src/Scenes/Conference.rb:1490 ../src/Scenes/Conference.rb:1539
-#: ../src/Scenes/Conference.rb:1587 ../src/Scenes/Conference.rb:1674
-#: ../src/Scenes/Conference.rb:2250 ../src/Scenes/PremiumPackages.rb:133
-#: ../src/Scenes/Sponsors.rb:30 ../src/scenes/Account.rb:454
-#: ../src/scenes/Account.rb:572 ../src/scenes/Blog.rb:1223
-#: ../src/scenes/Forum.rb:717 ../src/scenes/Forum.rb:1025
-#: ../src/scenes/Forum.rb:1701 ../src/scenes/Forum.rb:2293
-#: ../src/scenes/Forum.rb:3680 ../src/scenes/Honors.rb:174
-#: ../src/scenes/Honors.rb:295 ../src/scenes/Messages.rb:272
-#: ../src/scenes/Messages.rb:486 ../src/scenes/Messages.rb:792
-#: ../src/scenes/Notes.rb:97 ../src/scenes/Online.rb:37
-#: ../src/scenes/Polls.rb:165 ../src/scenes/Users.rb:56
-#: ../src/scenes/UsersAddedMeToContacts.rb:60
-#: ../src/scenes/Users_RecentlyActived.rb:40
-#: ../src/scenes/Users_RecentlyRegistered.rb:40
+#: ../src/Scenes/CallHistory.rb:61 ../src/Scenes/Conference.rb:1408 ../src/Scenes/Conference.rb:1420 ../src/Scenes/Conference.rb:1429 ../src/Scenes/Conference.rb:1490 ../src/Scenes/Conference.rb:1539 ../src/Scenes/Conference.rb:1587 ../src/Scenes/Conference.rb:1674 ../src/Scenes/Conference.rb:2250 ../src/Scenes/PremiumPackages.rb:133 ../src/Scenes/Sponsors.rb:30 ../src/scenes/Account.rb:454 ../src/scenes/Account.rb:572 ../src/scenes/Blog.rb:1223 ../src/scenes/Forum.rb:717 ../src/scenes/Forum.rb:1025 ../src/scenes/Forum.rb:1701 ../src/scenes/Forum.rb:2293 ../src/scenes/Forum.rb:3680 ../src/scenes/Honors.rb:174 ../src/scenes/Honors.rb:295 ../src/scenes/Messages.rb:272 ../src/scenes/Messages.rb:486 ../src/scenes/Messages.rb:792 ../src/scenes/Notes.rb:97 ../src/scenes/Online.rb:37 ../src/scenes/Polls.rb:165 ../src/scenes/Users.rb:56 ../src/scenes/UsersAddedMeToContacts.rb:60
+#: ../src/scenes/Users_RecentlyActived.rb:40 ../src/scenes/Users_RecentlyRegistered.rb:40
 msgid "Refresh"
 msgstr "Reîmprospătează"
 
@@ -824,8 +660,7 @@ msgctxt "Conference"
 msgid "Would you like to disconnect?"
 msgstr "Vrei să te deconectezi?"
 
-#: ../src/Scenes/Conference.rb:331 ../src/Scenes/Conference.rb:404
-#: ../src/Scenes/Conference.rb:557
+#: ../src/Scenes/Conference.rb:331 ../src/Scenes/Conference.rb:404 ../src/Scenes/Conference.rb:557
 msgctxt "Conference"
 msgid "Channels"
 msgstr "Canale"
@@ -1067,12 +902,8 @@ msgstr "Dezactivează predicția encoderului"
 
 #: ../src/Scenes/Conference.rb:559
 msgctxt "Conference"
-msgid ""
-"Enable conference mode (only channel administrators and allowed users can "
-"speak)"
-msgstr ""
-"Activează modul în care doar administratorii și utilizatorii permiși pot "
-"vorbi"
+msgid "Enable conference mode (only channel administrators and allowed users can speak)"
+msgstr "Activează modul în care doar administratorii și utilizatorii permiși pot vorbi"
 
 #: ../src/Scenes/Conference.rb:560
 msgctxt "Conference"
@@ -1106,10 +937,8 @@ msgstr "Înălțimea canalului"
 
 #: ../src/Scenes/Conference.rb:566
 msgctxt "Conference"
-msgid ""
-"Channel password (leave this field blank to set a channel without a password)"
-msgstr ""
-"Parola camerei. Lasă acest câmp gol pentru a crea o cameră fără parolă."
+msgid "Channel password (leave this field blank to set a channel without a password)"
+msgstr "Parola camerei. Lasă acest câmp gol pentru a crea o cameră fără parolă."
 
 #: ../src/Scenes/Conference.rb:567
 msgctxt "Conference"
@@ -1144,8 +973,7 @@ msgstr "Lățimea și înălțimea canalului trebuie să fie cel puțin 1"
 #: ../src/Scenes/Conference.rb:674
 msgctxt "Conference"
 msgid "%{value} is the maximum allowed channel width and height"
-msgstr ""
-"Lățimea și înălțimea maximă a canalului nu trebuie să depășească %{value}"
+msgstr "Lățimea și înălțimea maximă a canalului nu trebuie să depășească %{value}"
 
 #: ../src/Scenes/Conference.rb:745 ../src/Scenes/Conference.rb:760
 msgctxt "Conference"
@@ -1182,15 +1010,12 @@ msgctxt "Conference"
 msgid "Available objects"
 msgstr "Obiecte disponibile"
 
-#: ../src/Scenes/Conference.rb:797 ../src/Scenes/Conference.rb:1783
-#: ../src/Scenes/Conference.rb:1815 ../src/Scenes/Conference.rb:1852
+#: ../src/Scenes/Conference.rb:797 ../src/Scenes/Conference.rb:1783 ../src/Scenes/Conference.rb:1815 ../src/Scenes/Conference.rb:1852
 msgctxt "Conference"
 msgid "Here"
 msgstr "Aici"
 
-#: ../src/Scenes/Conference.rb:797 ../src/Scenes/Conference.rb:1624
-#: ../src/Scenes/Conference.rb:1696 ../src/Scenes/Conference.rb:1783
-#: ../src/Scenes/Conference.rb:1815 ../src/Scenes/Conference.rb:1852
+#: ../src/Scenes/Conference.rb:797 ../src/Scenes/Conference.rb:1624 ../src/Scenes/Conference.rb:1696 ../src/Scenes/Conference.rb:1783 ../src/Scenes/Conference.rb:1815 ../src/Scenes/Conference.rb:1852
 msgctxt "Conference"
 msgid "Everywhere"
 msgstr "Peste tot"
@@ -1215,8 +1040,7 @@ msgctxt "Conference"
 msgid "This file is too large"
 msgstr "Acest fișier este prea mare"
 
-#: ../src/Scenes/Conference.rb:824 ../src/Scenes/Conference.rb:1529
-#: ../src/Scenes/Conference.rb:1578
+#: ../src/Scenes/Conference.rb:824 ../src/Scenes/Conference.rb:1529 ../src/Scenes/Conference.rb:1578
 msgctxt "Conference"
 msgid "Delete"
 msgstr "Șterge"
@@ -1226,8 +1050,7 @@ msgctxt "Conference"
 msgid "Object deleted"
 msgstr "Obiect șters"
 
-#: ../src/Scenes/Conference.rb:854 ../src/Scenes/Conference.rb:882
-#: ../src/Scenes/Conference.rb:2254
+#: ../src/Scenes/Conference.rb:854 ../src/Scenes/Conference.rb:882 ../src/Scenes/Conference.rb:2254
 msgctxt "Conference"
 msgid "Destination"
 msgstr "Destinație"
@@ -1237,19 +1060,7 @@ msgctxt "Conference"
 msgid "File name"
 msgstr "Nume fișier"
 
-#: ../src/Scenes/Conference.rb:856 ../src/Scenes/Conference.rb:884
-#: ../src/Scenes/Conference.rb:958 ../src/eapi/Controls.rb:3393
-#: ../src/eapi/Controls.rb:4346 ../src/eapi/Controls.rb:4424
-#: ../src/eapi/Controls.rb:4487 ../src/scenes/Account.rb:116
-#: ../src/scenes/Blog.rb:1250 ../src/scenes/Blog.rb:1389
-#: ../src/scenes/Blog.rb:1564 ../src/scenes/Clock.rb:11
-#: ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:737
-#: ../src/scenes/Forum.rb:763 ../src/scenes/Forum.rb:1464
-#: ../src/scenes/Forum.rb:1613 ../src/scenes/Forum.rb:3884
-#: ../src/scenes/Forum.rb:4396 ../src/scenes/Honors.rb:186
-#: ../src/scenes/Honors.rb:221 ../src/scenes/Notes.rb:158
-#: ../src/scenes/Notes.rb:175 ../src/scenes/Polls.rb:239
-#: ../src/scenes/Settings.rb:118
+#: ../src/Scenes/Conference.rb:856 ../src/Scenes/Conference.rb:884 ../src/Scenes/Conference.rb:958 ../src/eapi/Controls.rb:3393 ../src/eapi/Controls.rb:4346 ../src/eapi/Controls.rb:4424 ../src/eapi/Controls.rb:4487 ../src/scenes/Account.rb:116 ../src/scenes/Blog.rb:1250 ../src/scenes/Blog.rb:1389 ../src/scenes/Blog.rb:1564 ../src/scenes/Clock.rb:11 ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:737 ../src/scenes/Forum.rb:763 ../src/scenes/Forum.rb:1464 ../src/scenes/Forum.rb:1613 ../src/scenes/Forum.rb:3884 ../src/scenes/Forum.rb:4396 ../src/scenes/Honors.rb:186 ../src/scenes/Honors.rb:221 ../src/scenes/Notes.rb:158 ../src/scenes/Notes.rb:175 ../src/scenes/Polls.rb:239 ../src/scenes/Settings.rb:118
 msgid "Save"
 msgstr "Salvează"
 
@@ -1268,14 +1079,12 @@ msgctxt "Conference"
 msgid "Directory name"
 msgstr "Numele folderului"
 
-#: ../src/Scenes/Conference.rb:915 ../src/Scenes/Conference.rb:917
-#: ../src/Scenes/Conference.rb:919 ../src/Scenes/Conference.rb:956
+#: ../src/Scenes/Conference.rb:915 ../src/Scenes/Conference.rb:917 ../src/Scenes/Conference.rb:919 ../src/Scenes/Conference.rb:956
 msgctxt "Conference"
 msgid "Left"
 msgstr "Stânga"
 
-#: ../src/Scenes/Conference.rb:921 ../src/Scenes/Conference.rb:923
-#: ../src/Scenes/Conference.rb:925 ../src/Scenes/Conference.rb:956
+#: ../src/Scenes/Conference.rb:921 ../src/Scenes/Conference.rb:923 ../src/Scenes/Conference.rb:925 ../src/Scenes/Conference.rb:956
 msgctxt "Conference"
 msgid "Right"
 msgstr "Dreapta"
@@ -1330,8 +1139,7 @@ msgctxt "Conference"
 msgid "Master volume"
 msgstr "Volumul principal"
 
-#: ../src/Scenes/Conference.rb:1010 ../src/Scenes/Conference.rb:1652
-#: ../src/Scenes/Conference.rb:1735
+#: ../src/Scenes/Conference.rb:1010 ../src/Scenes/Conference.rb:1652 ../src/Scenes/Conference.rb:1735
 msgctxt "Conference"
 msgid "Stream volume"
 msgstr "Volumul stream-ului"
@@ -1351,14 +1159,12 @@ msgctxt "Conference"
 msgid "Stream from sound card"
 msgstr "Transmite placa de sunet"
 
-#: ../src/Scenes/Conference.rb:1072 ../src/Scenes/Conference.rb:1850
-#: ../src/Scenes/Conference.rb:2000
+#: ../src/Scenes/Conference.rb:1072 ../src/Scenes/Conference.rb:1850 ../src/Scenes/Conference.rb:2000
 msgctxt "Conference"
 msgid "Loopback device"
 msgstr "Dispozitiv loopback"
 
-#: ../src/Scenes/Conference.rb:1072 ../src/Scenes/Conference.rb:1850
-#: ../src/Scenes/Conference.rb:2000
+#: ../src/Scenes/Conference.rb:1072 ../src/Scenes/Conference.rb:1850 ../src/Scenes/Conference.rb:2000
 msgctxt "Conference"
 msgid "Select sound card to stream"
 msgstr "Selectează placa de sunet pe care vrei să o transmiți"
@@ -1373,14 +1179,12 @@ msgctxt "Conference"
 msgid "Stream"
 msgstr "Transmite"
 
-#: ../src/Scenes/Conference.rb:1113 ../src/Scenes/Conference.rb:1760
-#: ../src/Scenes/Conference.rb:1937
+#: ../src/Scenes/Conference.rb:1113 ../src/Scenes/Conference.rb:1760 ../src/Scenes/Conference.rb:1937
 msgctxt "Conference"
 msgid "Scroll backward"
 msgstr "Derulează înapoi"
 
-#: ../src/Scenes/Conference.rb:1114 ../src/Scenes/Conference.rb:1765
-#: ../src/Scenes/Conference.rb:1940
+#: ../src/Scenes/Conference.rb:1114 ../src/Scenes/Conference.rb:1765 ../src/Scenes/Conference.rb:1940
 msgctxt "Conference"
 msgid "Scroll forward"
 msgstr "Derulează înainte"
@@ -1610,9 +1414,7 @@ msgctxt "Conference"
 msgid "Placed cards"
 msgstr "Cărți amplasate"
 
-#: ../src/Scenes/Conference.rb:1360 ../src/eapi/Controls.rb:4518
-#: ../src/scenes/Loading.rb:367 ../src/scenes/Log.rb:14
-#: ../src/scenes/Polls.rb:624
+#: ../src/Scenes/Conference.rb:1360 ../src/eapi/Controls.rb:4518 ../src/scenes/Loading.rb:367 ../src/scenes/Log.rb:14 ../src/scenes/Polls.rb:624
 msgid "Close"
 msgstr "Închide"
 
@@ -1628,12 +1430,8 @@ msgstr "Amestecă"
 
 #: ../src/Scenes/Conference.rb:1383
 msgctxt "Conference"
-msgid ""
-"Are you sure you want to shuffle this deck? All placed cards will be "
-"returned to this deck."
-msgstr ""
-"Sigur vrei să amesteci acest pachet? Toate cărțile plasate vor fi returnate "
-"acestui pachet."
+msgid "Are you sure you want to shuffle this deck? All placed cards will be returned to this deck."
+msgstr "Sigur vrei să amesteci acest pachet? Toate cărțile plasate vor fi returnate acestui pachet."
 
 #: ../src/Scenes/Conference.rb:1389 ../src/Scenes/Conference.rb:1459
 msgctxt "Conference"
@@ -1723,8 +1521,7 @@ msgstr "Adaugă administrator"
 #: ../src/Scenes/Conference.rb:1519
 msgctxt "Conference"
 msgid "User to grant administration privileges to"
-msgstr ""
-"Introdu numele utilizatorului căruia vrei să-i oferi drepturi administrative"
+msgstr "Introdu numele utilizatorului căruia vrei să-i oferi drepturi administrative"
 
 #: ../src/Scenes/Conference.rb:1555
 msgctxt "Conference"
@@ -1741,9 +1538,7 @@ msgctxt "Conference"
 msgid "User to add to channel whitelist"
 msgstr "Utilizatorul pe care dorești să îl adaugi pe lista albă a canalului."
 
-#: ../src/Scenes/Conference.rb:1618 ../src/Scenes/Conference.rb:1691
-#: ../src/Scenes/Conference.rb:1783 ../src/Scenes/Conference.rb:1815
-#: ../src/Scenes/Conference.rb:1852
+#: ../src/Scenes/Conference.rb:1618 ../src/Scenes/Conference.rb:1691 ../src/Scenes/Conference.rb:1783 ../src/Scenes/Conference.rb:1815 ../src/Scenes/Conference.rb:1852
 msgctxt "Conference"
 msgid "Location"
 msgstr "Locație"
@@ -1753,9 +1548,7 @@ msgctxt "Conference"
 msgid "User"
 msgstr "Utilizator"
 
-#: ../src/Scenes/Conference.rb:1626 ../src/Scenes/Conference.rb:1698
-#: ../src/Scenes/Conference.rb:1783 ../src/Scenes/Conference.rb:1815
-#: ../src/Scenes/Conference.rb:1852
+#: ../src/Scenes/Conference.rb:1626 ../src/Scenes/Conference.rb:1698 ../src/Scenes/Conference.rb:1783 ../src/Scenes/Conference.rb:1815 ../src/Scenes/Conference.rb:1852
 msgctxt "Conference"
 msgid "Right next to me"
 msgstr "În fața mea"
@@ -1780,8 +1573,7 @@ msgctxt "Conference"
 msgid "Stream muted"
 msgstr "Transmisiune pusă pe mut"
 
-#: ../src/Scenes/Conference.rb:1648 ../src/Scenes/Conference.rb:1733
-#: ../src/Scenes/Conference.rb:1913
+#: ../src/Scenes/Conference.rb:1648 ../src/Scenes/Conference.rb:1733 ../src/Scenes/Conference.rb:1913
 msgctxt "Conference"
 msgid "Change volume"
 msgstr "Modifică volumul"
@@ -1836,15 +1628,12 @@ msgctxt "Conference"
 msgid "New file stream"
 msgstr "Fișier nou de transmisiune"
 
-#: ../src/Scenes/Conference.rb:1782 ../src/Scenes/Conference.rb:1954
-#: ../src/Scenes/Conference.rb:2036
+#: ../src/Scenes/Conference.rb:1782 ../src/Scenes/Conference.rb:1954 ../src/Scenes/Conference.rb:2036
 msgctxt "Conference"
 msgid "File"
 msgstr "Fișier"
 
-#: ../src/Scenes/Conference.rb:1784 ../src/Scenes/Conference.rb:1816
-#: ../src/Scenes/Conference.rb:1853 ../src/Scenes/Conference.rb:1955
-#: ../src/Scenes/Conference.rb:1976 ../src/Scenes/Conference.rb:2001
+#: ../src/Scenes/Conference.rb:1784 ../src/Scenes/Conference.rb:1816 ../src/Scenes/Conference.rb:1853 ../src/Scenes/Conference.rb:1955 ../src/Scenes/Conference.rb:1976 ../src/Scenes/Conference.rb:2001
 msgctxt "Conference"
 msgid "Place"
 msgstr "Loc"
@@ -2029,19 +1818,7 @@ msgctxt "Conference"
 msgid "Name for this chain"
 msgstr "Numele acestui lanț"
 
-#: ../src/Scenes/Conference.rb:2234 ../src/Scenes/Conference.rb:2292
-#: ../src/Scenes/Conference.rb:2340 ../src/eapi/Controls.rb:3425
-#: ../src/eapi/Controls.rb:4557 ../src/scenes/Account.rb:300
-#: ../src/scenes/Account.rb:304 ../src/scenes/Blog.rb:1269
-#: ../src/scenes/Blog.rb:1302 ../src/scenes/Blog.rb:1767
-#: ../src/scenes/Blog.rb:1771 ../src/scenes/Clock.rb:35
-#: ../src/scenes/Clock.rb:80 ../src/scenes/Forum.rb:1135
-#: ../src/scenes/Forum.rb:1627 ../src/scenes/Forum.rb:1675
-#: ../src/scenes/Forum.rb:4498 ../src/scenes/Forum.rb:4502
-#: ../src/scenes/Honors.rb:212 ../src/scenes/Messages.rb:239
-#: ../src/scenes/Messages.rb:371 ../src/scenes/Settings.rb:343
-#: ../src/scenes/Settings.rb:347 ../src/scenes/SoundThemes.rb:73
-#: ../src/scenes/SoundThemes.rb:207 ../src/scenes/Sounds.rb:246
+#: ../src/Scenes/Conference.rb:2234 ../src/Scenes/Conference.rb:2292 ../src/Scenes/Conference.rb:2340 ../src/eapi/Controls.rb:3425 ../src/eapi/Controls.rb:4557 ../src/scenes/Account.rb:300 ../src/scenes/Account.rb:304 ../src/scenes/Blog.rb:1269 ../src/scenes/Blog.rb:1302 ../src/scenes/Blog.rb:1767 ../src/scenes/Blog.rb:1771 ../src/scenes/Clock.rb:35 ../src/scenes/Clock.rb:80 ../src/scenes/Forum.rb:1135 ../src/scenes/Forum.rb:1627 ../src/scenes/Forum.rb:1675 ../src/scenes/Forum.rb:4498 ../src/scenes/Forum.rb:4502 ../src/scenes/Honors.rb:212 ../src/scenes/Messages.rb:239 ../src/scenes/Messages.rb:371 ../src/scenes/Settings.rb:343 ../src/scenes/Settings.rb:347 ../src/scenes/SoundThemes.rb:73 ../src/scenes/SoundThemes.rb:207 ../src/scenes/Sounds.rb:246
 msgid "Saved"
 msgstr "Salvat"
 
@@ -2085,13 +1862,7 @@ msgctxt "Conference"
 msgid "Saved chains"
 msgstr "Lanțuri salvate"
 
-#: ../src/Scenes/Conference.rb:2384 ../src/Scenes/FeedViewer.rb:153
-#: ../src/eapi/Controls.rb:2608 ../src/eapi/Controls.rb:4550
-#: ../src/scenes/Account.rb:557 ../src/scenes/Blog.rb:222
-#: ../src/scenes/Blog.rb:477 ../src/scenes/Main.rb:401
-#: ../src/scenes/Messages.rb:777 ../src/scenes/Notes.rb:82
-#: ../src/scenes/Notes.rb:160 ../src/scenes/Polls.rb:133
-#: ../src/scenes/Polls.rb:664
+#: ../src/Scenes/Conference.rb:2384 ../src/Scenes/FeedViewer.rb:153 ../src/eapi/Controls.rb:2608 ../src/eapi/Controls.rb:4550 ../src/scenes/Account.rb:557 ../src/scenes/Blog.rb:222 ../src/scenes/Blog.rb:477 ../src/scenes/Main.rb:401 ../src/scenes/Messages.rb:777 ../src/scenes/Notes.rb:82 ../src/scenes/Notes.rb:160 ../src/scenes/Polls.rb:133 ../src/scenes/Polls.rb:664
 msgid "Delete"
 msgstr "Șterge"
 
@@ -2356,8 +2127,7 @@ msgstr "Utilizarea MarkDown-ului în postările de pe forum"
 #: ../src/Scenes/PremiumPackages.rb:41
 msgctxt "PremiumPackages"
 msgid "Reading transcriptions of audio posts in recommended groups"
-msgstr ""
-"Citirea transcrierilor postărilor mesajelor vocale din grupurile recomandate"
+msgstr "Citirea transcrierilor postărilor mesajelor vocale din grupurile recomandate"
 
 #: ../src/Scenes/PremiumPackages.rb:45
 msgctxt "PremiumPackages"
@@ -2476,19 +2246,13 @@ msgstr "Amplasarea scenariilor proprii în canale"
 
 #: ../src/Scenes/PremiumPackages.rb:75
 msgctxt "PremiumPackages"
-msgid ""
-"Creating conference-mode channels, where only administrators and allowed "
-"users can speak"
-msgstr ""
-"Crearea conferințelor în care doar administratorii și persoanele permise pot "
-"vorbi"
+msgid "Creating conference-mode channels, where only administrators and allowed users can speak"
+msgstr "Crearea conferințelor în care doar administratorii și persoanele permise pot vorbi"
 
 #: ../src/Scenes/PremiumPackages.rb:76
 msgctxt "PremiumPackages"
 msgid "Selecting a separate output sound card for conferences"
-msgstr ""
-"Setarea unei plăci de sunet de ieșire diferite pentru conferințe decât cea "
-"selectată în Elten"
+msgstr "Setarea unei plăci de sunet de ieșire diferite pentru conferințe decât cea selectată în Elten"
 
 #: ../src/Scenes/PremiumPackages.rb:77
 msgctxt "PremiumPackages"
@@ -2612,23 +2376,13 @@ msgstr "Activ până pe %{time}"
 
 #: ../src/Scenes/PremiumPackages.rb:250
 msgctxt "PremiumPackages"
-msgid ""
-"Regardless of the remaining duration of other packages, they will be "
-"replaced by the selected package. This package will be activated for a "
-"period of one year. The remaining period for other packages will be deducted "
-"from the package price. Do you want to continue?"
-msgstr ""
-"Indiferent de durata rămasă a altor pachete, acestea vor fi înlocuite cu "
-"pachetul selectat. Acest pachet va fi activat pentru o perioadă de un an. "
-"Perioada rămasă pentru alte pachete va fi dedusă din prețul pachetului. "
-"Dorești să continui?"
+msgid "Regardless of the remaining duration of other packages, they will be replaced by the selected package. This package will be activated for a period of one year. The remaining period for other packages will be deducted from the package price. Do you want to continue?"
+msgstr "Indiferent de durata rămasă a altor pachete, acestea vor fi înlocuite cu pachetul selectat. Acest pachet va fi activat pentru o perioadă de un an. Perioada rămasă pentru alte pachete va fi dedusă din prețul pachetului. Dorești să continui?"
 
 #: ../src/Scenes/PremiumPackages.rb:252
 msgctxt "PremiumPackages"
 msgid "This package is currently unavailable. Try to buy it next month."
-msgstr ""
-"Acest pachet nu este disponibil momentan. Încearcă să-l cumperi în luna "
-"următoare."
+msgstr "Acest pachet nu este disponibil momentan. Încearcă să-l cumperi în luna următoare."
 
 #: ../src/Scenes/PremiumPackages.rb:257
 msgctxt "PremiumPackages"
@@ -2648,22 +2402,13 @@ msgstr "Pentru cât timp dorești să cumperi pachetul?"
 #: ../src/Scenes/PremiumPackages.rb:262
 msgctxt "PremiumPackages"
 msgid ""
-"EltenLink's premium packages are given to users as a reward for supporting "
-"the portal.\n"
+"EltenLink's premium packages are given to users as a reward for supporting the portal.\n"
 "A project of this size cannot exist without the help of users.\n"
-"The granting of a premium package does not constitute a commitment or a "
-"commercial contract. The user who supports the project is aware that if the "
-"necessary amount is not raised for EltenLink to continue, the premium "
-"packages will become unavailable."
+"The granting of a premium package does not constitute a commitment or a commercial contract. The user who supports the project is aware that if the necessary amount is not raised for EltenLink to continue, the premium packages will become unavailable."
 msgstr ""
-"Pachetele premium EltenLink sunt oferite utilizatorilor ca recompensă pentru "
-"sprijinirea platformei.\n"
-"Un proiect de această dimensiune nu poate exista fără ajutorul "
-"utilizatorilor.\n"
-"Cumpărarea unui pachet premium nu constituie un angajament sau un contract "
-"comercial. Utilizatorul care susține proiectul este conștient de faptul că, "
-"dacă nu se adună suma necesară pentru ca EltenLink să continue, pachetele "
-"premium vor deveni indisponibile."
+"Pachetele premium EltenLink sunt oferite utilizatorilor ca recompensă pentru sprijinirea platformei.\n"
+"Un proiect de această dimensiune nu poate exista fără ajutorul utilizatorilor.\n"
+"Cumpărarea unui pachet premium nu constituie un angajament sau un contract comercial. Utilizatorul care susține proiectul este conștient de faptul că, dacă nu se adună suma necesară pentru ca EltenLink să continue, pachetele premium vor deveni indisponibile."
 
 #: ../src/Scenes/PremiumPackages.rb:262 ../src/Scenes/PremiumPackages.rb:331
 msgctxt "PremiumPackages"
@@ -2722,42 +2467,38 @@ msgstr "Mai jos sunt detaliile transferului.\n"
 
 #: ../src/Scenes/PremiumPackages.rb:312
 msgctxt "PremiumPackages"
-msgid ""
-"In the title of the transfer, please indicate your user name on the "
-"EltenLink portal and which package the payment concerns."
-msgstr ""
-"În titlul transferului, te rugăm să indici numele tău de utilizator pe "
-"portalul EltenLink și ce pachet privește plata."
+msgid "In the title of the transfer, please indicate your user name on the EltenLink portal and which package the payment concerns."
+msgstr "În titlul transferului, te rugăm să indici numele tău de utilizator pe portalul EltenLink și ce pachet privește plata."
 
 #: ../src/Scenes/PremiumPackages.rb:314
 msgctxt "PremiumPackages"
-msgid ""
-"If you wish to receive a code that can be used to activate any of the "
-"packages: %{packages} by any user, mark this information in the transfer "
-"title."
-msgstr ""
-"Dacă dorești să primești un cod care poate fi utilizat pentru a activa "
-"oricare dintre pachete %{packages} de către orice utilizator, marchează "
-"aceste informații în titlul de transfer."
+msgid "If you wish to receive a code that can be used to activate any of the packages: %{packages} by any user, mark this information in the transfer title."
+msgstr "Dacă dorești să primești un cod care poate fi utilizat pentru a activa oricare dintre pachete %{packages} de către orice utilizator, marchează aceste informații în titlul de transfer."
 
 #: ../src/Scenes/PremiumPackages.rb:316
 msgctxt "PremiumPackages"
 msgid ""
-"Please note that if you transfer a larger amount, the remainder will be "
-"treated as a donation.\n"
+"Please note that if you transfer a larger amount, the remainder will be treated as a donation.\n"
 "\n"
-"In order to reduce the processing time of your payment, you can forward the "
-"transfer confirmation to the Council of Elders."
+"In order to reduce the processing time of your payment, you can forward the transfer confirmation to the Council of Elders."
 msgstr ""
-"Te rugăm să reții că, dacă transferi o sumă mai mare, restul va fi tratat ca "
-"o donație.\n"
+"Te rugăm să reții că, dacă transferi o sumă mai mare, restul va fi tratat ca o donație.\n"
 "\n"
-"Pentru a reduce timpul de procesare a plății tale, poți transmite "
-"confirmarea transferului către Administratori."
+"Pentru a reduce timpul de procesare a plății tale, poți transmite confirmarea transferului către Administratori."
 
 #: ../src/Scenes/PremiumPackages.rb:320
 msgctxt "PremiumPackages"
-msgid "Domestic bank transfer details (from Poland):\n%{holder}\nAddress: %{address}\nAccount number: %{placcount}\n\nAdditional data for foreign transfers:\nIBAN: %{iban}\nBIC / SWIFT: %{swift}\nBank address: %{bankaddress}\nSort code: %{sortcode}"
+msgid ""
+"Domestic bank transfer details (from Poland):\n"
+"%{holder}\n"
+"Address: %{address}\n"
+"Account number: %{placcount}\n"
+"\n"
+"Additional data for foreign transfers:\n"
+"IBAN: %{iban}\n"
+"BIC / SWIFT: %{swift}\n"
+"Bank address: %{bankaddress}\n"
+"Sort code: %{sortcode}"
 msgstr ""
 "Detalii despre transferul național (din Polonia):\n"
 "%{holder}\n"
@@ -2773,12 +2514,8 @@ msgstr ""
 
 #: ../src/Scenes/PremiumPackages.rb:338
 msgctxt "PremiumPackages"
-msgid ""
-"This payment method requires a redirect to an external website. A web "
-"browser will open. Do you wish to continue?"
-msgstr ""
-"Această metodă de plată necesită o redirecționare către un site web extern. "
-"Se va deschide un browser web. Vrei să continui?"
+msgid "This payment method requires a redirect to an external website. A web browser will open. Do you wish to continue?"
+msgstr "Această metodă de plată necesită o redirecționare către un site web extern. Se va deschide un browser web. Vrei să continui?"
 
 #: ../src/Scenes/PremiumPackages.rb:359 ../src/Scenes/PremiumPackages.rb:394
 msgctxt "PremiumPackages"
@@ -2788,9 +2525,7 @@ msgstr "Câte coduri premium ai dori să cumperi?"
 #: ../src/Scenes/PremiumPackages.rb:367 ../src/Scenes/PremiumPackages.rb:402
 msgctxt "PremiumPackages"
 msgid "You will be charged a processing fee of %{amount} for the selected payment method."
-msgstr ""
-"Vei plăti un comision de %{amount} pentru metoda de plată selectată. Vrei să "
-"continui?"
+msgstr "Vei plăti un comision de %{amount} pentru metoda de plată selectată. Vrei să continui?"
 
 #: ../src/Scenes/PremiumPackages.rb:403
 msgctxt "PremiumPackages"
@@ -2800,9 +2535,7 @@ msgstr "Introdu codul blik"
 #: ../src/Scenes/PremiumPackages.rb:410
 msgctxt "PremiumPackages"
 msgid "The payment has been initiated. Additional confirmation may be required. The order will be processed once the payment is complete."
-msgstr ""
-"Plata a fost comandată. Este posibil să fie necesară o confirmare "
-"suplimentară. Comanda va fi procesată odată ce plata este completă."
+msgstr "Plata a fost comandată. Este posibil să fie necesară o confirmare suplimentară. Comanda va fi procesată odată ce plata este completă."
 
 #: ../src/Scenes/PremiumPackages.rb:415
 msgctxt "PremiumPackages"
@@ -2822,9 +2555,7 @@ msgstr "Acest cod a fost deja utilizat."
 #: ../src/Scenes/PremiumPackages.rb:432
 msgctxt "PremiumPackages"
 msgid "The package %{name} will be active until %{time}. This code will be redeemed and you will not be able to use it again. Do you want to continue?"
-msgstr ""
-"Pachetul %{name} va fi disponibil până pe %{time}. Acest cod va fi epuizat "
-"și nu îl vei mai putea folosi din nou. Dorești să continui?"
+msgstr "Pachetul %{name} va fi disponibil până pe %{time}. Acest cod va fi epuizat și nu îl vei mai putea folosi din nou. Dorești să continui?"
 
 #: ../src/Scenes/PremiumPackages.rb:437
 msgctxt "PremiumPackages"
@@ -2846,9 +2577,7 @@ msgctxt "EAPI_Common"
 msgid "Hide program in Tray"
 msgstr "Ascunde programul în tray"
 
-#: ../src/eapi/Common.rb:16 ../src/scenes/Account.rb:657
-#: ../src/scenes/Authentication.rb:23 ../src/scenes/Authentication.rb:25
-#: ../src/scenes/ForgotPassword.rb:31 ../src/scenes/Loading.rb:383
+#: ../src/eapi/Common.rb:16 ../src/scenes/Account.rb:657 ../src/scenes/Authentication.rb:23 ../src/scenes/Authentication.rb:25 ../src/scenes/ForgotPassword.rb:31 ../src/scenes/Loading.rb:383
 msgid "Exit"
 msgstr "Ieșire"
 
@@ -2877,14 +2606,12 @@ msgctxt "EAPI_Common"
 msgid "Enable auto clear input"
 msgstr "Activează intrarea de ștergere automată"
 
-#: ../src/eapi/Common.rb:102 ../src/eapi/Common.rb:116
-#: ../src/eapi/Common.rb:134
+#: ../src/eapi/Common.rb:102 ../src/eapi/Common.rb:116 ../src/eapi/Common.rb:134
 msgctxt "EAPI_Common"
 msgid "Disabled"
 msgstr "Dezactivat"
 
-#: ../src/eapi/Common.rb:105 ../src/eapi/Common.rb:119
-#: ../src/eapi/Common.rb:131
+#: ../src/eapi/Common.rb:105 ../src/eapi/Common.rb:119 ../src/eapi/Common.rb:131
 msgctxt "EAPI_Common"
 msgid "Enabled"
 msgstr "Activat"
@@ -3084,22 +2811,11 @@ msgctxt "EAPI_Common"
 msgid "Sent."
 msgstr "Trimis."
 
-#: ../src/eapi/Common.rb:535 ../src/eapi/Common.rb:583
-#: ../src/scenes/Account.rb:355 ../src/scenes/Account.rb:392
-#: ../src/scenes/Account.rb:540 ../src/scenes/Blog.rb:735
-#: ../src/scenes/Contacts.rb:27 ../src/scenes/Contacts.rb:127
-#: ../src/scenes/Contacts.rb:160 ../src/scenes/Forum.rb:1189
-#: ../src/scenes/Login.rb:212 ../src/scenes/Messages.rb:1062
-#: ../src/scenes/Users.rb:13
+#: ../src/eapi/Common.rb:535 ../src/eapi/Common.rb:583 ../src/scenes/Account.rb:355 ../src/scenes/Account.rb:392 ../src/scenes/Account.rb:540 ../src/scenes/Blog.rb:735 ../src/scenes/Contacts.rb:27 ../src/scenes/Contacts.rb:127 ../src/scenes/Contacts.rb:160 ../src/scenes/Forum.rb:1189 ../src/scenes/Login.rb:212 ../src/scenes/Messages.rb:1062 ../src/scenes/Users.rb:13
 msgid "Database Error"
 msgstr "Eroare bază de date"
 
-#: ../src/eapi/Common.rb:539 ../src/scenes/Account.rb:358
-#: ../src/scenes/Account.rb:395 ../src/scenes/Account.rb:542
-#: ../src/scenes/Blog.rb:737 ../src/scenes/Contacts.rb:31
-#: ../src/scenes/Contacts.rb:130 ../src/scenes/Contacts.rb:163
-#: ../src/scenes/Forum.rb:1191 ../src/scenes/Messages.rb:1066
-#: ../src/scenes/Users.rb:17
+#: ../src/eapi/Common.rb:539 ../src/scenes/Account.rb:358 ../src/scenes/Account.rb:395 ../src/scenes/Account.rb:542 ../src/scenes/Blog.rb:737 ../src/scenes/Contacts.rb:31 ../src/scenes/Contacts.rb:130 ../src/scenes/Contacts.rb:163 ../src/scenes/Forum.rb:1191 ../src/scenes/Messages.rb:1066 ../src/scenes/Users.rb:17
 msgid "Token expired"
 msgstr "Token expirat"
 
@@ -3241,30 +2957,22 @@ msgstr "Nu accept, vreau să închid programul"
 #: ../src/eapi/Common.rb:695
 msgctxt "EAPI_Common"
 msgid "I accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy"
-msgstr ""
-"Accept acordul de licență Elten, termenii și condițiile și politica de "
-"confidențialitate"
+msgstr "Accept acordul de licență Elten, termenii și condițiile și politica de confidențialitate"
 
 #: ../src/eapi/Common.rb:713
 msgctxt "EAPI_Common"
 msgid "Do you accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy?"
-msgstr ""
-"Accepți acordul de licență Elten, termenii și condițiile și politica de "
-"confidențialitate?"
+msgstr "Accepți acordul de licență Elten, termenii și condițiile și politica de confidențialitate?"
 
 #: ../src/eapi/Common.rb:734
 msgctxt "EAPI_Common"
 msgid "You are trying to play a MIDI file. Elten needs an external instrument sound bank to play MIDI files. Do you want to download it from the server now? This may take several minutes."
-msgstr ""
-"Încerci să redai un fișier midi. Pentru a reda astfel de fișiere, Elten are "
-"nevoie de o bază externă de instrumente. Vrei să descarci baza de pe server "
-"acum? Poate dura câteva minute."
+msgstr "Încerci să redai un fișier midi. Pentru a reda astfel de fișiere, Elten are nevoie de o bază externă de instrumente. Vrei să descarci baza de pe server acum? Poate dura câteva minute."
 
 #: ../src/eapi/Common.rb:735
 msgctxt "EAPI_Common"
 msgid "Please wait, the soundfont is being downloaded. It may take a while."
-msgstr ""
-"Te rugăm să aștepți, fontul sonor este în descărcare. Poate dura ceva timp."
+msgstr "Te rugăm să aștepți, fontul sonor este în descărcare. Poate dura ceva timp."
 
 #: ../src/eapi/Common.rb:737
 msgctxt "EAPI_Common"
@@ -3273,12 +2981,8 @@ msgstr "Fontul sonor a fost descărcat cu succes."
 
 #: ../src/eapi/Common.rb:930
 msgctxt "EAPI_Common"
-msgid ""
-"In order to use HRTF functionality, Elten needs to download Phonon library. "
-"Would you like to download it now?"
-msgstr ""
-"Pentru a utiliza funcționalitatea HRTF, Elten trebuie să descarce biblioteca "
-"Phonon. Vrei să o descarci acum?"
+msgid "In order to use HRTF functionality, Elten needs to download Phonon library. Would you like to download it now?"
+msgstr "Pentru a utiliza funcționalitatea HRTF, Elten trebuie să descarce biblioteca Phonon. Vrei să o descarci acum?"
 
 #: ../src/eapi/Common.rb:954
 msgctxt "EAPI_Common"
@@ -3303,9 +3007,7 @@ msgstr "Director"
 #: ../src/eapi/Common.rb:962
 msgctxt "EAPI_Common"
 msgid "This feature requires the %{package} premium package. Would you like to see the available premium packages?"
-msgstr ""
-"Această funcție necesită ca pachetul premium %{package} să fie activ. Vrei "
-"să deschizi o listă cu toate pachetele premium?"
+msgstr "Această funcție necesită ca pachetul premium %{package} să fie activ. Vrei să deschizi o listă cu toate pachetele premium?"
 
 #: ../src/eapi/Common.rb:1064
 msgid "Function not supported on this platform"
@@ -3351,8 +3053,7 @@ msgctxt "EAPI_Common"
 msgid "Close"
 msgstr "Închide"
 
-#: ../src/eapi/Controls.rb:105 ../src/eapi/Controls.rb:107
-#: ../src/eapi/Controls.rb:1044 ../src/eapi/Controls.rb:2643
+#: ../src/eapi/Controls.rb:105 ../src/eapi/Controls.rb:107 ../src/eapi/Controls.rb:1044 ../src/eapi/Controls.rb:2643
 msgid "Context menu"
 msgstr "Meniu contextual"
 
@@ -3376,8 +3077,7 @@ msgctxt "EAPI_Form"
 msgid "Opening a link..."
 msgstr "Se deschide un link..."
 
-#: ../src/eapi/Controls.rb:649 ../src/eapi/Controls.rb:656
-#: ../src/eapi/Controls.rb:680
+#: ../src/eapi/Controls.rb:649 ../src/eapi/Controls.rb:656 ../src/eapi/Controls.rb:680
 msgctxt "EAPI_Form"
 msgid "End of line"
 msgstr "Sfârșit de rând"
@@ -3598,8 +3298,7 @@ msgstr "Cadru"
 #: ../src/eapi/Controls.rb:1833
 msgctxt "EAPI_Form"
 msgid "Use H or the number keys 1 to 6 to navigate to the next heading"
-msgstr ""
-"Folosește h sau numere de la 1 la 6 pentru a naviga la următoarea rubrică"
+msgstr "Folosește h sau numere de la 1 la 6 pentru a naviga la următoarea rubrică"
 
 #: ../src/eapi/Controls.rb:1834
 msgctxt "EAPI_Form"
@@ -3614,9 +3313,7 @@ msgstr "Folosește i pentru a naviga la următorul element dintr-o listă"
 #: ../src/eapi/Controls.rb:1836
 msgctxt "EAPI_Form"
 msgid "Use the above shortcuts with shift to navigate to the previous items"
-msgstr ""
-"Folosește scurtăturile de mai sus în combinație cu Shift pentru a naviga "
-"înapoi"
+msgstr "Folosește scurtăturile de mai sus în combinație cu Shift pentru a naviga înapoi"
 
 #: ../src/eapi/Controls.rb:1997
 msgctxt "EAPI_Form"
@@ -3679,8 +3376,7 @@ msgstr "Folosește spațiu pentru a bifa sau debifa elemente"
 #: ../src/eapi/Controls.rb:2309
 msgctxt "EAPI_Form"
 msgid "Press Shift+Up/Down Arrow to filter content by tags"
-msgstr ""
-"Folosește shift cu săgețile sus jos pentru a filtra elemente după etichetă"
+msgstr "Folosește shift cu săgețile sus jos pentru a filtra elemente după etichetă"
 
 #: ../src/eapi/Controls.rb:2311
 msgctxt "EAPI_Form"
@@ -3805,9 +3501,7 @@ msgstr "Selectează o cale."
 #: ../src/eapi/Controls.rb:3176
 msgctxt "EAPI_Form"
 msgid "Use Shift+Left/Right Arrow to select the column you want to navigate by"
-msgstr ""
-"Folosește SHIFT cu săgețile stânga / dreapta pentru a selecta coloana prin "
-"care vrei să navighezi"
+msgstr "Folosește SHIFT cu săgețile stânga / dreapta pentru a selecta coloana prin care vrei să navighezi"
 
 #: ../src/eapi/Controls.rb:3214 ../src/eapi/Controls.rb:3224
 msgctxt "EAPI_Common"
@@ -3962,24 +3656,19 @@ msgstr "Folosește backspace pentru a reveni la setările implicite"
 #: ../src/eapi/Controls.rb:3608
 msgctxt "EAPI_Form"
 msgid "Press Home or End to move to the beginning or end of the track"
-msgstr ""
-"Folosește tasta home pentru a te poziționa la începutul unei piese, "
-"respectiv end pentru a te poziționa la sfârșitul acesteia"
+msgstr "Folosește tasta home pentru a te poziționa la începutul unei piese, respectiv end pentru a te poziționa la sfârșitul acesteia"
 
 #: ../src/eapi/Controls.rb:3609
 msgctxt "EAPI_Form"
 msgid "Press Page Up or Page Down to move to the previous or next chapter"
-msgstr ""
-"Folosește page up pentru a naviga la capitolul următor, respectiv page down "
-"pentru a naviga la capitolul anterior"
+msgstr "Folosește page up pentru a naviga la capitolul următor, respectiv page down pentru a naviga la capitolul anterior"
 
 #: ../src/eapi/Controls.rb:4190
 msgctxt "EAPI_Form"
 msgid "record"
 msgstr "înregistrează"
 
-#: ../src/eapi/Controls.rb:4191 ../src/eapi/Controls.rb:4251
-#: ../src/eapi/Controls.rb:4280
+#: ../src/eapi/Controls.rb:4191 ../src/eapi/Controls.rb:4251 ../src/eapi/Controls.rb:4280
 msgctxt "EAPI_Form"
 msgid "Pause recording"
 msgstr "Pune înregistrarea pe pauză"
@@ -4026,8 +3715,7 @@ msgstr "Gata"
 
 #: ../src/eapi/Controls.rb:4208 ../src/eapi/Controls.rb:4256
 msgctxt "EAPI_Form"
-msgid ""
-"Are you sure you want to delete the previous recording and create a new one?"
+msgid "Are you sure you want to delete the previous recording and create a new one?"
 msgstr "Sigur vrei să ștergi înregistrarea și să începi alta?"
 
 #: ../src/eapi/Controls.rb:4250
@@ -4058,9 +3746,7 @@ msgstr "Continuă înregistrarea"
 #: ../src/eapi/Controls.rb:4290
 msgctxt "EAPI_Form"
 msgid "The encoder settings will not apply to the current recording. Are you sure you want to continue?"
-msgstr ""
-"Setările encoderului nu se vor aplica pe înregistrarea curentă. Sigur vrei "
-"să continui?"
+msgstr "Setările encoderului nu se vor aplica pe înregistrarea curentă. Sigur vrei să continui?"
 
 #: ../src/eapi/Controls.rb:4308
 msgctxt "EAPI_Form"
@@ -4160,10 +3846,7 @@ msgstr "Timpul capitolului (hh:mm:ss.uuu)"
 #: ../src/eapi/Controls.rb:4497
 msgctxt "EAPI_Form"
 msgid "Invalid time format. Use hh:mm:ss.uuu: two digits each for hours, minutes and seconds, optionally followed by a full stop and three digits for milliseconds."
-msgstr ""
-"Formatul de timp este greșit, cel corespunzător este ora din două cifre, "
-"două puncte, minutele din două cifre, două puncte, secundele din două cifre "
-"și, opțional, milisecundele din trei cifre precedate de punct"
+msgstr "Formatul de timp este greșit, cel corespunzător este ora din două cifre, două puncte, minutele din două cifre, două puncte, secundele din două cifre și, opțional, milisecundele din trei cifre precedate de punct"
 
 #: ../src/eapi/Controls.rb:4514
 msgctxt "EAPI_Form"
@@ -4178,8 +3861,7 @@ msgstr "Adaugă capitole cu redare"
 #: ../src/eapi/Controls.rb:4517
 msgctxt "EAPI_Form"
 msgid "Chapter editor; use the context menu to add chapters"
-msgstr ""
-"Editorul de capitole, utilizează meniul contextual pentru a adăuga capitole"
+msgstr "Editorul de capitole, utilizează meniul contextual pentru a adăuga capitole"
 
 #: ../src/eapi/Controls.rb:4521
 msgctxt "EAPI_Form"
@@ -4251,15 +3933,7 @@ msgctxt "EAPI_Form"
 msgid "March"
 msgstr "Martie"
 
-#: ../src/eapi/Controls.rb:4634 ../src/eapi/Controls.rb:4635
-#: ../src/eapi/Controls.rb:4636 ../src/eapi/Controls.rb:4637
-#: ../src/eapi/Controls.rb:4638 ../src/eapi/Controls.rb:4639
-#: ../src/eapi/Controls.rb:4681 ../src/eapi/Controls.rb:4683
-#: ../src/eapi/Controls.rb:4690 ../src/eapi/Controls.rb:4701
-#: ../src/eapi/Controls.rb:4708 ../src/eapi/Controls.rb:4710
-#: ../src/eapi/Controls.rb:4717 ../src/eapi/Controls.rb:4719
-#: ../src/eapi/Controls.rb:4726 ../src/eapi/Controls.rb:4728
-#: ../src/eapi/Controls.rb:4737
+#: ../src/eapi/Controls.rb:4634 ../src/eapi/Controls.rb:4635 ../src/eapi/Controls.rb:4636 ../src/eapi/Controls.rb:4637 ../src/eapi/Controls.rb:4638 ../src/eapi/Controls.rb:4639 ../src/eapi/Controls.rb:4681 ../src/eapi/Controls.rb:4683 ../src/eapi/Controls.rb:4690 ../src/eapi/Controls.rb:4701 ../src/eapi/Controls.rb:4708 ../src/eapi/Controls.rb:4710 ../src/eapi/Controls.rb:4717 ../src/eapi/Controls.rb:4719 ../src/eapi/Controls.rb:4726 ../src/eapi/Controls.rb:4728 ../src/eapi/Controls.rb:4737
 msgctxt "EAPI_Form"
 msgid "Not selected"
 msgstr "Neselectat"
@@ -5071,12 +4745,8 @@ msgstr "Nu poți suna acest utilizator"
 
 #: ../src/eapi/UI.rb:509
 msgctxt "EAPI_UI"
-msgid ""
-"An unexpected error of Elten agent occurred. Do you want to report this "
-"event? It  may definitely help us solve the problem."
-msgstr ""
-"A apărut o eroare neașteptată a agentului Elten. Vrei să raportezi acest "
-"eveniment? Cu siguranță ne poate ajuta să rezolvăm problema."
+msgid "An unexpected error of Elten agent occurred. Do you want to report this event? It  may definitely help us solve the problem."
+msgstr "A apărut o eroare neașteptată a agentului Elten. Vrei să raportezi acest eveniment? Cu siguranță ne poate ajuta să rezolvăm problema."
 
 #: ../src/eapi/UI.rb:513
 msgctxt "EAPI_UI"
@@ -5086,11 +4756,7 @@ msgstr "Programul încearcă să-și recupereze funcționarea."
 #: ../src/eapi/UI.rb:588
 msgctxt "EAPI_UI"
 msgid "Errors occurred while trying to register keyboard shortcuts for the Invisible Interface. Make sure that the specified shortcuts are not used by other applications. You can change the Invisible Interface modifier keys in the Settings window."
-msgstr ""
-"A apărut o eroare la înregistrarea tastelor pentru interfața invizibilă. "
-"Asigură-te că tastele specificate nu sunt folosite de alte aplicații. Poți "
-"schimba tastele modificatoare ale interfeței invizibile utilizând fereastra "
-"de setări."
+msgstr "A apărut o eroare la înregistrarea tastelor pentru interfața invizibilă. Asigură-te că tastele specificate nu sunt folosite de alte aplicații. Poți schimba tastele modificatoare ale interfeței invizibile utilizând fereastra de setări."
 
 #: ../src/eapi/UI.rb:672
 msgctxt "EAPI_UI"
@@ -5107,38 +4773,20 @@ msgstr "Da"
 
 #: ../src/eapi/__eapi.rb:853
 msgctxt "EAPI_EltenAPI"
-msgid ""
-"Do you want to send reports on how Elten is used? This data does not contain "
-"any confidential information and is very helpful in program development. "
-"This selection can be changed at any time from the Settings."
-msgstr ""
-"Vrei să trimiți rapoarte despre modul în care este utilizat Elten? Aceste "
-"date nu conțin informații confidențiale și sunt foarte utile în dezvoltarea "
-"programului. Această selecție poate fi modificată oricând din Setări."
+msgid "Do you want to send reports on how Elten is used? This data does not contain any confidential information and is very helpful in program development. This selection can be changed at any time from the Settings."
+msgstr "Vrei să trimiți rapoarte despre modul în care este utilizat Elten? Aceste date nu conțin informații confidențiale și sunt foarte utile în dezvoltarea programului. Această selecție poate fi modificată oricând din Setări."
 
 #: ../src/eapi/__eapi.rb:858
 msgctxt "EAPI_EltenAPI"
-msgid ""
-"You are currently using a beta version of Elten. In these versions, "
-"uploading usage statistics is always enabled. They contain information about "
-"the most frequently used functions, configurations and problems with program "
-"operation. They do not contain any confidential or private information. If "
-"you do not want to send statistics, please use the stable version of Elten."
-msgstr ""
-"Folosești o versiune de test a Elten. În aceste versiuni beta, încărcarea "
-"statisticilor de utilizare este activă în permanență. Acestea conțin "
-"informații cu privire la caracteristicile utilizate frecvent, la configurări "
-"și la problemele legate de funcționarea programului. Nu conțin informații "
-"private sau confidențiale. Dacă nu vrei să trimiți statistici, utilizează "
-"versiunea oficială a Elten."
+msgid "You are currently using a beta version of Elten. In these versions, uploading usage statistics is always enabled. They contain information about the most frequently used functions, configurations and problems with program operation. They do not contain any confidential or private information. If you do not want to send statistics, please use the stable version of Elten."
+msgstr "Folosești o versiune de test a Elten. În aceste versiuni beta, încărcarea statisticilor de utilizare este activă în permanență. Acestea conțin informații cu privire la caracteristicile utilizate frecvent, la configurări și la problemele legate de funcționarea programului. Nu conțin informații private sau confidențiale. Dacă nu vrei să trimiți statistici, utilizează versiunea oficială a Elten."
 
 #: ../src/scenes/Account.rb:114
 msgctxt "Account"
 msgid "Category"
 msgstr "Categorie"
 
-#: ../src/scenes/Account.rb:115 ../src/scenes/Blog.rb:1563
-#: ../src/scenes/Forum.rb:4395 ../src/scenes/Settings.rb:117
+#: ../src/scenes/Account.rb:115 ../src/scenes/Blog.rb:1563 ../src/scenes/Forum.rb:4395 ../src/scenes/Settings.rb:117
 msgid "Apply"
 msgstr "Aplică"
 
@@ -5489,9 +5137,7 @@ msgctxt "Account"
 msgid "The old password is incorrect."
 msgstr "Parola veche este incorectă."
 
-#: ../src/scenes/Account.rb:372 ../src/scenes/Account.rb:412
-#: ../src/scenes/Account.rb:469 ../src/scenes/Account.rb:582
-#: ../src/scenes/Account.rb:628 ../src/scenes/Account.rb:706
+#: ../src/scenes/Account.rb:372 ../src/scenes/Account.rb:412 ../src/scenes/Account.rb:469 ../src/scenes/Account.rb:582 ../src/scenes/Account.rb:628 ../src/scenes/Account.rb:706
 msgctxt "Account"
 msgid "Enter your password."
 msgstr "Introdu parola."
@@ -5509,17 +5155,12 @@ msgstr "Adresa de E-Mail a fost modificată."
 #: ../src/scenes/Account.rb:401
 msgctxt "Account"
 msgid "Error: you must disable email event reporting first."
-msgstr ""
-"Eroare, trebuie mai întâi să dezactivezi raportarea evenimentelor prin e-"
-"mail."
+msgstr "Eroare, trebuie mai întâi să dezactivezi raportarea evenimentelor prin e-mail."
 
-#: ../src/scenes/Account.rb:419 ../src/scenes/Account.rb:477
-#: ../src/scenes/Account.rb:589
+#: ../src/scenes/Account.rb:419 ../src/scenes/Account.rb:477 ../src/scenes/Account.rb:589
 msgctxt "Account"
 msgid "An error occurred while verifying your account. You may have entered an incorrect password."
-msgstr ""
-"A apărut o eroare la autentificarea contului. Este posibil să fi furnizat o "
-"parolă incorectă."
+msgstr "A apărut o eroare la autentificarea contului. Este posibil să fi furnizat o parolă incorectă."
 
 #: ../src/scenes/Account.rb:444
 msgctxt "Account"
@@ -5549,9 +5190,7 @@ msgstr "Deloghează toate sesiunile"
 #: ../src/scenes/Account.rb:467
 msgctxt "Account"
 msgid "Are you sure you want to remove all auto-login tokens and log out of all sessions? You will be logged out immediately."
-msgstr ""
-"Sigur vrei să elimini toate tokenurile de autentificare automată și să "
-"deconectezi toate sesiunile? Vei fi deconectat imediat."
+msgstr "Sigur vrei să elimini toate tokenurile de autentificare automată și să deconectezi toate sesiunile? Vei fi deconectat imediat."
 
 #: ../src/scenes/Account.rb:529
 msgctxt "Account"
@@ -5565,12 +5204,8 @@ msgstr "Utilizatorul pe care dorești să îl adaugi pe lista neagră."
 
 #: ../src/scenes/Account.rb:532
 msgctxt "Account"
-msgid ""
-"The users added to your black list cannot send you private messages. Are you "
-"sure  you want to continue?"
-msgstr ""
-"Utilizatorii adăugați la lista ta neagră nu îți pot trimite mesaje private. "
-"Sigur vrei să continui?"
+msgid "The users added to your black list cannot send you private messages. Are you sure  you want to continue?"
+msgstr "Utilizatorii adăugați la lista ta neagră nu îți pot trimite mesaje private. Sigur vrei să continui?"
 
 #: ../src/scenes/Account.rb:536
 msgctxt "Account"
@@ -5610,18 +5245,12 @@ msgstr "Ultimele autentificări"
 #: ../src/scenes/Account.rb:637
 msgctxt "Account"
 msgid "You can configure Elten to notify you by email about changes to your account and logins from new devices. To do so, you must verify your email address. Do you want to verify it now?"
-msgstr ""
-"Dacă dorești, poți configura Elten să-ți raporteze prin e-mail orice "
-"modificări și conectări la contul tău de pe dispozitive noi. Pentru a face "
-"acest lucru, trebuie să îți verifici adresa de e-mail. Vrei să o faci acum?"
+msgstr "Dacă dorești, poți configura Elten să-ți raporteze prin e-mail orice modificări și conectări la contul tău de pe dispozitive noi. Pentru a face acest lucru, trebuie să îți verifici adresa de e-mail. Vrei să o faci acum?"
 
 #: ../src/scenes/Account.rb:643 ../src/scenes/Account.rb:668
 msgctxt "Account"
-msgid ""
-"The verification code has been sent to you via E-mail. Please type it here."
-msgstr ""
-"Codul de verificare ți-a fost trimis prin e-mail. Te rugăm să îl tastezi "
-"aici."
+msgid "The verification code has been sent to you via E-mail. Please type it here."
+msgstr "Codul de verificare ți-a fost trimis prin e-mail. Te rugăm să îl tastezi aici."
 
 #: ../src/scenes/Account.rb:655
 msgctxt "Account"
@@ -5636,10 +5265,7 @@ msgstr "Dezactivează raportarea evenimentelor prin e-mail"
 #: ../src/scenes/Account.rb:656
 msgctxt "Account"
 msgid "Email event reporting is disabled. If you wish, you can enable it to receive information about changes to your account and logins from new devices by email."
-msgstr ""
-"Raportarea evenimentelor prin e-mail este dezactivată. Dacă dorești, o poți "
-"activa pentru a primi informații despre modificările făcute în contul tău și "
-"conectările de pe dispozitive noi prin e-mail"
+msgstr "Raportarea evenimentelor prin e-mail este dezactivată. Dacă dorești, o poți activa pentru a primi informații despre modificările făcute în contul tău și conectările de pe dispozitive noi prin e-mail"
 
 #: ../src/scenes/Account.rb:656
 msgctxt "Account"
@@ -5648,29 +5274,36 @@ msgstr "Raportarea evenimentelor prin e-mail este activată."
 
 #: ../src/scenes/Account.rb:684
 msgctxt "Account"
-msgid "Archiving your account will have the following effects:\n* An indication that the account is archived will appear next to all of its forum posts.\n* The account will not appear in user lists.\n* The account will be removed from all contact lists.\n* Users will not be able to send private messages to this account.\n* The profile, including the status, bio and signature, will be removed from the server.\n* You will leave all groups that you do not moderate and from which you are not banned.\n* You will leave all message conversations.\n* All information about threads you follow, groups you have pinned and threads you have marked will be removed.\n\nWarning:\nArchiving an account does not delete or hide its blogs or notes. You must do this manually before archiving the account.\n\nThe account will be unarchived automatically the next time you log in, but the removed data will not be restored."
+msgid ""
+"Archiving your account will have the following effects:\n"
+"* An indication that the account is archived will appear next to all of its forum posts.\n"
+"* The account will not appear in user lists.\n"
+"* The account will be removed from all contact lists.\n"
+"* Users will not be able to send private messages to this account.\n"
+"* The profile, including the status, bio and signature, will be removed from the server.\n"
+"* You will leave all groups that you do not moderate and from which you are not banned.\n"
+"* You will leave all message conversations.\n"
+"* All information about threads you follow, groups you have pinned and threads you have marked will be removed.\n"
+"\n"
+"Warning:\n"
+"Archiving an account does not delete or hide its blogs or notes. You must do this manually before archiving the account.\n"
+"\n"
+"The account will be unarchived automatically the next time you log in, but the removed data will not be restored."
 msgstr ""
 "Arhivarea contului va avea următoarele efecte:\n"
-"* Lângă toate postările de pe forum va fi precizat faptul că a fost arhivat "
-"contul.\n"
+"* Lângă toate postările de pe forum va fi precizat faptul că a fost arhivat contul.\n"
 "* Contul nu va fi afișat în lista de utilizatori.\n"
 "* Contul va fi șters din toate listele de contacte.\n"
 "* Utilizatorii nu vor putea să îți trimită mesaje private.\n"
-"* Profilul, inclusiv mesajul de stare, cartea de vizită și semnătura, vor fi "
-"șterse de pe server.\n"
-"* Vei fi eliminat din toate grupurile pe care nu le moderezi sau în care ai "
-"fost banat.\n"
+"* Profilul, inclusiv mesajul de stare, cartea de vizită și semnătura, vor fi șterse de pe server.\n"
+"* Vei fi eliminat din toate grupurile pe care nu le moderezi sau în care ai fost banat.\n"
 "* Vei fi eliminat din toate conversațiile purtate cu alți utilizatori.\n"
-"* Toate informațiile despre subiectele pe care le urmărești, grupurile "
-"fixate și subiectele marcate vor fi șterse.\n"
+"* Toate informațiile despre subiectele pe care le urmărești, grupurile fixate și subiectele marcate vor fi șterse.\n"
 "\n"
 "Atenție!\n"
-"Arhivarea unui cont nu înseamnă și ștergerea sau ascunderea blogurilor ori a "
-"notelor asociate, este necesară inițierea acestor proceduri înainte de "
-"arhivare.\n"
+"Arhivarea unui cont nu înseamnă și ștergerea sau ascunderea blogurilor ori a notelor asociate, este necesară inițierea acestor proceduri înainte de arhivare.\n"
 "\n"
-"Contul va fi dezarhivat la următoarea autentificare, însă datele șterse nu "
-"vor fi restaurate."
+"Contul va fi dezarhivat la următoarea autentificare, însă datele șterse nu vor fi restaurate."
 
 #: ../src/scenes/Account.rb:700
 msgctxt "Account"
@@ -5733,17 +5366,8 @@ msgstr "Activează"
 
 #: ../src/scenes/Authentication.rb:23
 msgctxt "Authentication"
-msgid ""
-"Two-factor authentication enables better account security by requiring the  "
-"confirmation of each login with your phone. When activated, a text message "
-"with a  verification code will be sent to you each time you log in from a "
-"new device.  Entering this code will be required to sign in to the program."
-msgstr ""
-"Autentificarea în doi pași permite o securitate mai bună a contului, "
-"necesitând confirmarea fiecărei autentificări cu telefonul tău. Când este "
-"activat, un mesaj text cu un cod de verificare îți va fi trimis de fiecare "
-"dată când te conectezi de pe un dispozitiv nou. Introducerea acestui cod va "
-"fi necesară pentru a te conecta la program."
+msgid "Two-factor authentication enables better account security by requiring the  confirmation of each login with your phone. When activated, a text message with a  verification code will be sent to you each time you log in from a new device.  Entering this code will be required to sign in to the program."
+msgstr "Autentificarea în doi pași permite o securitate mai bună a contului, necesitând confirmarea fiecărei autentificări cu telefonul tău. Când este activat, un mesaj text cu un cod de verificare îți va fi trimis de fiecare dată când te conectezi de pe un dispozitiv nou. Introducerea acestui cod va fi necesară pentru a te conecta la program."
 
 #: ../src/scenes/Authentication.rb:25
 msgctxt "Authentication"
@@ -5759,50 +5383,35 @@ msgctxt "Authentication"
 msgid "Generate backup codes"
 msgstr "Generează coduri de rezervă"
 
-#: ../src/scenes/Authentication.rb:32 ../src/scenes/Authentication.rb:70
-#: ../src/scenes/Authentication.rb:87
+#: ../src/scenes/Authentication.rb:32 ../src/scenes/Authentication.rb:70 ../src/scenes/Authentication.rb:87
 msgctxt "Authentication"
 msgid "Type your password"
 msgstr "Introdu parola"
 
 #: ../src/scenes/Authentication.rb:34
 msgctxt "Authentication"
-msgid ""
-"Type your phone number that will be used during verification. Remember to "
-"enter  the country code, for example, +48 for Poland"
-msgstr ""
-"Tastează numărul de telefon care va fi utilizat în timpul verificării. Nu "
-"uita să introduci codul țării, de exemplu, +40 pentru România."
+msgid "Type your phone number that will be used during verification. Remember to enter  the country code, for example, +48 for Poland"
+msgstr "Tastează numărul de telefon care va fi utilizat în timpul verificării. Nu uita să introduci codul țării, de exemplu, +40 pentru România."
 
 #: ../src/scenes/Authentication.rb:36
 msgctxt "Authentication"
 msgid "Two-factor authentication was introduced in Elten 2.28. After activating it, you will not be able to log in using older versions of the program. Do you wish to continue anyway?"
-msgstr ""
-"Autentificarea în doi pași a fost introdusă în Elten 2.28. După activare, nu "
-"va fi posibil să te conectezi din versiunile mai vechi ale programului. "
-"Dorești să continui oricum?"
+msgstr "Autentificarea în doi pași a fost introdusă în Elten 2.28. După activare, nu va fi posibil să te conectezi din versiunile mai vechi ale programului. Dorești să continui oricum?"
 
 #: ../src/scenes/Authentication.rb:37
 msgctxt "Authentication"
-msgid ""
-"Is this phone number correct? Press enter to continue or escape to cancel."
-msgstr ""
-"Acest număr este corect? Apasă enter pentru a continua sau escape pentru a "
-"anula."
+msgid "Is this phone number correct? Press enter to continue or escape to cancel."
+msgstr "Acest număr este corect? Apasă enter pentru a continua sau escape pentru a anula."
 
 #: ../src/scenes/Authentication.rb:39
 msgctxt "Authentication"
 msgid "Please wait, connecting to the server ..."
-msgstr ""
-"Te rugăm să aștepți cât timp ne conectăm la server și verificăm informațiile "
-"introduse."
+msgstr "Te rugăm să aștepți cât timp ne conectăm la server și verificăm informațiile introduse."
 
 #: ../src/scenes/Authentication.rb:47
 msgctxt "Authentication"
 msgid "A text message containing the code to activate two-factor authentication will be sent to the phone number you provided. Enter the code."
-msgstr ""
-"Pe numărul de telefon indicat, vei primi un mesaj text cu codul care "
-"activează autentificarea în doi pași. Introdu acest cod"
+msgstr "Pe numărul de telefon indicat, vei primi un mesaj text cu codul care activează autentificarea în doi pași. Introdu acest cod"
 
 #: ../src/scenes/Authentication.rb:55
 msgctxt "Authentication"
@@ -5836,13 +5445,8 @@ msgstr "Parolă incorectă"
 
 #: ../src/scenes/Authentication.rb:85
 msgctxt "Authentication"
-msgid ""
-"Do you want to generate backup codes? These can be used to sign in when you "
-"have no access to your phone. All previously generated codes will be deleted."
-msgstr ""
-"Dorești să generezi coduri de rezervă? Acestea pot fi folosite pentru a te "
-"conecta atunci când nu ai acces la telefon. Toate codurile generate anterior "
-"vor fi șterse."
+msgid "Do you want to generate backup codes? These can be used to sign in when you have no access to your phone. All previously generated codes will be deleted."
+msgstr "Dorești să generezi coduri de rezervă? Acestea pot fi folosite pentru a te conecta atunci când nu ai acces la telefon. Toate codurile generate anterior vor fi șterse."
 
 #: ../src/scenes/Authentication.rb:97
 msgctxt "Authentication"
@@ -6029,8 +5633,7 @@ msgctxt "Blog"
 msgid "All posts"
 msgstr "Toate postările"
 
-#: ../src/scenes/Blog.rb:138 ../src/scenes/Blog.rb:863
-#: ../src/scenes/Blog.rb:1651
+#: ../src/scenes/Blog.rb:138 ../src/scenes/Blog.rb:863 ../src/scenes/Blog.rb:1651
 msgctxt "Blog"
 msgid "Posts"
 msgstr "Postări"
@@ -6110,8 +5713,7 @@ msgctxt "Blog"
 msgid "Author"
 msgstr "Autor"
 
-#: ../src/scenes/Blog.rb:311 ../src/scenes/Blog.rb:863
-#: ../src/scenes/Blog.rb:1583 ../src/scenes/Blog.rb:2233
+#: ../src/scenes/Blog.rb:311 ../src/scenes/Blog.rb:863 ../src/scenes/Blog.rb:1583 ../src/scenes/Blog.rb:2233
 msgctxt "Blog"
 msgid "Comments"
 msgstr "Comentarii"
@@ -6383,11 +5985,8 @@ msgstr "Sigur vrei să ștergi blogul %{name}?"
 
 #: ../src/scenes/Blog.rb:936
 msgctxt "Blog"
-msgid ""
-"All posts written on this blog will be lost. Are you sure you want to "
-"continue?"
-msgstr ""
-"Toate postările scrise pe acest blog vor fi șterse. Sigur vrei să continui?"
+msgid "All posts written on this blog will be lost. Are you sure you want to continue?"
+msgstr "Toate postările scrise pe acest blog vor fi șterse. Sigur vrei să continui?"
 
 #: ../src/scenes/Blog.rb:938
 msgctxt "Blog"
@@ -6487,10 +6086,7 @@ msgstr "Adaugă la lista blogurilor urmărite"
 #: ../src/scenes/Blog.rb:1137
 msgctxt "Blog"
 msgid "You are now following this blog. Do you want to mark all of its existing posts as read so that they do not appear in What's New?"
-msgstr ""
-"Acest blog a fost adăugat la blogurile urmărite. Dorești să marchezi toate "
-"postările publicate până acum ca citite, astfel încât să nu le vezi în „Ce "
-"este nou”?"
+msgstr "Acest blog a fost adăugat la blogurile urmărite. Dorești să marchezi toate postările publicate până acum ca citite, astfel încât să nu le vezi în „Ce este nou”?"
 
 #: ../src/scenes/Blog.rb:1140 ../src/scenes/Blog.rb:1185
 msgctxt "Blog"
@@ -6550,8 +6146,7 @@ msgstr "Marchează blogul ca citit"
 #: ../src/scenes/Blog.rb:1182
 msgctxt "Blog"
 msgid "All posts on this blog will be marked as read. Do you want to continue?"
-msgstr ""
-"Toate postările de pe acest blog vor fi marcate ca citite. Vrei să continui?"
+msgstr "Toate postările de pe acest blog vor fi marcate ca citite. Vrei să continui?"
 
 #: ../src/scenes/Blog.rb:1193
 msgctxt "Blog"
@@ -6695,10 +6290,7 @@ msgstr "Limbă"
 
 #: ../src/scenes/Blog.rb:1580
 msgctxt "Blog"
-msgid ""
-"Mark this blog as public. Blogs that are not marked public request search "
-"engines such as Google not to show them in search results (some search "
-"engines may not respect this setting)"
+msgid "Mark this blog as public. Blogs that are not marked public request search engines such as Google not to show them in search results (some search engines may not respect this setting)"
 msgstr "Marchează acest blog ca public"
 
 #: ../src/scenes/Blog.rb:1584
@@ -6714,8 +6306,7 @@ msgstr "De toți vizitatorii"
 #: ../src/scenes/Blog.rb:1584
 msgctxt "Blog"
 msgid "By all visitors, but I must approve each person's first comment"
-msgstr ""
-"By all visitors, but I must commit first comment of the specific person"
+msgstr "By all visitors, but I must commit first comment of the specific person"
 
 #: ../src/scenes/Blog.rb:1584
 msgctxt "Blog"
@@ -6735,9 +6326,7 @@ msgstr "Dezactivează comentarea postărilor vechi"
 #: ../src/scenes/Blog.rb:1586
 msgctxt "Blog"
 msgid "Number of days after which commenting on a post will be disabled"
-msgstr ""
-"Zile după care comentariile postărilor vor fi dezactivate dacă nu sunt "
-"comentarii"
+msgstr "Zile după care comentariile postărilor vor fi dezactivate dacă nu sunt comentarii"
 
 #: ../src/scenes/Blog.rb:1587
 msgctxt "Blog"
@@ -6807,9 +6396,7 @@ msgstr "Folosește emoticoane"
 #: ../src/scenes/Blog.rb:1654
 msgctxt "Blog"
 msgid "Full date and post name (https://example.com/2020/01/01/example-post)"
-msgstr ""
-"Data completă și numele postării (https://example.com/2020/01/01/example-"
-"post)"
+msgstr "Data completă și numele postării (https://example.com/2020/01/01/example-post)"
 
 #: ../src/scenes/Blog.rb:1654
 msgctxt "Blog"
@@ -6933,12 +6520,8 @@ msgstr "Nu seta"
 
 #: ../src/scenes/Blog.rb:1706
 msgctxt "Blog"
-msgid ""
-"If you want to redirect all browsers visiting this blog to another site, "
-"select it here"
-msgstr ""
-"Dacă vrei să redirecționezi toate browserele care vizitează acest blog către "
-"un alt site, selectează-l aici"
+msgid "If you want to redirect all browsers visiting this blog to another site, select it here"
+msgstr "Dacă vrei să redirecționezi toate browserele care vizitează acest blog către un alt site, selectează-l aici"
 
 #: ../src/scenes/Blog.rb:1708
 msgctxt "Blog"
@@ -6963,11 +6546,7 @@ msgstr "Administrează domeniul blogului"
 #: ../src/scenes/Blog.rb:1723
 msgctxt "Blog"
 msgid "The blog settings have been changed. If you continue with the domain change, your changes will be lost. Do you want to continue anyway? To save the new settings, select No, then select Apply before changing the domain."
-msgstr ""
-"Setările blogului au fost modificate. Dacă continui cu modificarea "
-"domeniului, toate modificările efectuate vor fi șterse. Dorești să continui "
-"oricum? Dacă vrei să păstrezi noile setări, apasă Nu și salvează-le înainte "
-"de a continua cu schimbarea domeniului."
+msgstr "Setările blogului au fost modificate. Dacă continui cu modificarea domeniului, toate modificările efectuate vor fi șterse. Dorești să continui oricum? Dacă vrei să păstrezi noile setări, apasă Nu și salvează-le înainte de a continua cu schimbarea domeniului."
 
 #: ../src/scenes/Blog.rb:1861
 msgctxt "Blog"
@@ -7116,8 +6695,7 @@ msgstr "Postarea a fost adăugată."
 #: ../src/scenes/Blog.rb:2189
 msgctxt "Blog"
 msgid "No tags have been created yet. Please add a new one."
-msgstr ""
-"În momentul de față nu sunt etichete create, te rugăm să adaugi una nouă."
+msgstr "În momentul de față nu sunt etichete create, te rugăm să adaugi una nouă."
 
 #: ../src/scenes/Blog.rb:2192
 msgctxt "Blog"
@@ -7203,13 +6781,10 @@ msgstr "Cumpărarea domeniului propriu"
 msgctxt "Blog"
 msgid ""
 "To continue, you should point your domain to Elten Blogging server.\n"
-"You can buy your own domain from domain providers, such as ovh.com, domain."
-"com, godaddy.com or bluehost.com."
+"You can buy your own domain from domain providers, such as ovh.com, domain.com, godaddy.com or bluehost.com."
 msgstr ""
-"Pentru a continua, ar trebui să îți setezi domeniul către serverul Elten "
-"Blogging.\n"
-"Poți cumpăra propriul domeniu de la furnizorii de domenii, cum ar fi ovh."
-"com, domain.com, godaddy.com sau bluehost.com."
+"Pentru a continua, ar trebui să îți setezi domeniul către serverul Elten Blogging.\n"
+"Poți cumpăra propriul domeniu de la furnizorii de domenii, cum ar fi ovh.com, domain.com, godaddy.com sau bluehost.com."
 
 #: ../src/scenes/Blog.rb:2437
 msgctxt "Blog"
@@ -7238,12 +6813,8 @@ msgstr "Noul domeniu este același cu cel anterior"
 
 #: ../src/scenes/Blog.rb:2477
 msgctxt "Blog"
-msgid ""
-"You already have one blog associated with your Elten profile. Please change "
-"its type and then proceed."
-msgstr ""
-"Ai deja un blog asociat cu profilul tău Elten. Te rugăm să schimbi tipul "
-"acestuia și apoi continuă."
+msgid "You already have one blog associated with your Elten profile. Please change its type and then proceed."
+msgstr "Ai deja un blog asociat cu profilul tău Elten. Te rugăm să schimbi tipul acestuia și apoi continuă."
 
 #: ../src/scenes/Blog.rb:2481
 msgctxt "Blog"
@@ -7268,11 +6839,7 @@ msgstr "Domeniul introdus nu este valid"
 #: ../src/scenes/Blog.rb:2500
 msgctxt "Blog"
 msgid "Warning! If you change your blog URL, some links may stop working. Direct links to posts or other resources on your blog will no longer work at their previous URLs. You will need to update them manually. Are you sure you want to continue?"
-msgstr ""
-"Atenție! Dacă schimbi URL-ul blogului, unele linkuri pot înceta să "
-"funcționeze. Dacă ai legat direct postări sau alte resurse pe blog, acestea "
-"nu vor mai fi disponibile la URL-urile anterioare. În acest caz, va trebui "
-"să le corectezi manual. Ești sigur că vrei să continui?"
+msgstr "Atenție! Dacă schimbi URL-ul blogului, unele linkuri pot înceta să funcționeze. Dacă ai legat direct postări sau alte resurse pe blog, acestea nu vor mai fi disponibile la URL-urile anterioare. În acest caz, va trebui să le corectezi manual. Ești sigur că vrei să continui?"
 
 #: ../src/scenes/Blog.rb:2514
 msgctxt "Blog"
@@ -7281,36 +6848,35 @@ msgstr "Domeniul blogului a fost modificat"
 
 #: ../src/scenes/Blog.rb:2523
 msgctxt "Blog"
-msgid "Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n\nWhere possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n\nMany domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n%{ip}\n\nPointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n\nDetailed instructions are available from your domain provider, for example at:\nhttps://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n\nOnce you have finished, continue."
+msgid ""
+"Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n"
+"\n"
+"Where possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n"
+"\n"
+"Many domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n"
+"%{ip}\n"
+"\n"
+"Pointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n"
+"\n"
+"Detailed instructions are available from your domain provider, for example at:\n"
+"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
+"\n"
+"Once you have finished, continue."
 msgstr ""
-"Acum ar trebui să configurezi domeniul achiziționat pentru a redirecționa "
-"către serverul de blog Elten. Mai jos sunt detaliile necesare. Dacă ai "
-"probleme, te rugăm să nu eziți să pui întrebări pe forum.\n"
+"Acum ar trebui să configurezi domeniul achiziționat pentru a redirecționa către serverul de blog Elten. Mai jos sunt detaliile necesare. Dacă ai probleme, te rugăm să nu eziți să pui întrebări pe forum.\n"
 "      \n"
-"      Ori de câte ori este posibil, îți recomandăm să utilizezi "
-"înregistrarea CNAME, deoarece nu este nevoie să fie editată dacă se schimbă "
-"adresa IP a serverului care găzduiește blogul tău. Adresa IP a blogului tău "
-"se poate schimba, de exemplu, datorită migrării serverului Elten Blogging. "
-"Configurând înregistrarea CNAME a domeniului tău, nu este nevoie să faci "
-"altceva.\n"
-"      Pentru a face acest lucru, te rugăm să indici înregistrarea numelui "
-"tău c către destinația „%{host}”.\n"
+"      Ori de câte ori este posibil, îți recomandăm să utilizezi înregistrarea CNAME, deoarece nu este nevoie să fie editată dacă se schimbă adresa IP a serverului care găzduiește blogul tău. Adresa IP a blogului tău se poate schimba, de exemplu, datorită migrării serverului Elten Blogging. Configurând înregistrarea CNAME a domeniului tău, nu este nevoie să faci altceva.\n"
+"      Pentru a face acest lucru, te rugăm să indici înregistrarea numelui tău c către destinația „%{host}”.\n"
 "      \n"
-"      Din păcate, mulți registratori de domenii nu acceptă înregistrarea "
-"CNAME pentru domeniile de nivel superior, deci este posibil să vrei să "
-"folosești în schimb înregistrarea A.\n"
-"      Într-un astfel de caz, te rugăm să indici înregistrarea A către adresa "
-"IP:\n"
+"      Din păcate, mulți registratori de domenii nu acceptă înregistrarea CNAME pentru domeniile de nivel superior, deci este posibil să vrei să folosești în schimb înregistrarea A.\n"
+"      Într-un astfel de caz, te rugăm să indici înregistrarea A către adresa IP:\n"
 "%{ip}\n"
 ".\n"
 "\n"
-"Reține că redirecționarea domeniului tău nu este aliasing și setarea "
-"aliasurilor sau redirecționările HTTP 301 / 3xx nu vor funcționa.\n"
+"Reține că redirecționarea domeniului tău nu este aliasing și setarea aliasurilor sau redirecționările HTTP 301 / 3xx nu vor funcționa.\n"
 "\n"
-"Poți obține o descriere detaliată de la furnizorul tău de domeniu, de "
-"exemplu la:\n"
-"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-"
-"Familiar-with-DNS\n"
+"Poți obține o descriere detaliată de la furnizorul tău de domeniu, de exemplu la:\n"
+"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
 "\n"
 "Odată finalizat, te rugăm să continui."
 
@@ -7327,17 +6893,12 @@ msgstr "Gata, mergi mai departe"
 #: ../src/scenes/Blog.rb:2553
 msgctxt "Blog"
 msgid "Your domain does not point to Elten Blogs. Try again, or wait for the DNS changes to propagate. Full DNS propagation may take up to 24 hours."
-msgstr ""
-"Domeniul tău nu este redirecționat către Elten Blogging, te rugăm să încerci "
-"din nou sau să aștepți puțin pentru a actualiza DNS-ul. Poate dura până la "
-"24 de ore pentru a efectua actualizarea DNS-ului completă."
+msgstr "Domeniul tău nu este redirecționat către Elten Blogging, te rugăm să încerci din nou sau să aștepți puțin pentru a actualiza DNS-ul. Poate dura până la 24 de ore pentru a efectua actualizarea DNS-ului completă."
 
 #: ../src/scenes/Blog.rb:2555
 msgctxt "Blog"
 msgid "Your domain points to Elten Blogs, but the www subdomain does not. Please fix it."
-msgstr ""
-"Domeniul tău redirecționează către Elten Blogging, dar prefixul www nu o "
-"face. Te rugăm să îl remediezi."
+msgstr "Domeniul tău redirecționează către Elten Blogging, dar prefixul www nu o face. Te rugăm să îl remediezi."
 
 #: ../src/scenes/Changes.rb:144
 msgctxt "Changes"
@@ -7349,20 +6910,17 @@ msgctxt "Clock"
 msgid "Alarms"
 msgstr "Alarme"
 
-#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Clock.rb:97
+#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70 ../src/scenes/Clock.rb:97
 msgctxt "Clock"
 msgid "Hour"
 msgstr "Ora"
 
-#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Clock.rb:97
+#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70 ../src/scenes/Clock.rb:97
 msgctxt "Clock"
 msgid "Type"
 msgstr "Tip"
 
-#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Clock.rb:97
+#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70 ../src/scenes/Clock.rb:97
 msgctxt "Clock"
 msgid "One time"
 msgstr "O dată"
@@ -7425,8 +6983,7 @@ msgstr "Contact nou"
 #: ../src/scenes/Contacts.rb:108
 msgctxt "Contacts"
 msgid "Enter the name of the user you want to add to your contact list."
-msgstr ""
-"Introdu numele utilizatorului pe care vrei să-l adaugi în lista de contacte."
+msgstr "Introdu numele utilizatorului pe care vrei să-l adaugi în lista de contacte."
 
 #: ../src/scenes/Contacts.rb:124
 msgctxt "Contacts"
@@ -7476,25 +7033,17 @@ msgstr "Un report"
 #: ../src/scenes/ForgotPassword.rb:11
 msgctxt "ForgotPassword"
 msgid "If you forget your password, you can reset it using the email address you provided when registering. You can request a password reset code to verify your identity. The code will be sent to your email address. Warning: two-factor authentication will be disabled on your account. To continue, enter your username."
-msgstr ""
-"Dacă îți pierzi parola, o poți reseta oricând prin adresa de e-mail "
-"furnizată în timpul procesului de înregistrare. În acest fel, vei genera "
-"codul de resetare a parolei care va fi utilizat pentru a îți verifica "
-"identitatea. Codul va fi trimis la adresa ta de e-mail. Avertizare! "
-"Autentificarea în doi pași va fi dezactivată! Pentru a continua, introdu "
-"numele de utilizator"
+msgstr "Dacă îți pierzi parola, o poți reseta oricând prin adresa de e-mail furnizată în timpul procesului de înregistrare. În acest fel, vei genera codul de resetare a parolei care va fi utilizat pentru a îți verifica identitatea. Codul va fi trimis la adresa ta de e-mail. Avertizare! Autentificarea în doi pași va fi dezactivată! Pentru a continua, introdu numele de utilizator"
 
 #: ../src/scenes/ForgotPassword.rb:18
 msgctxt "ForgotPassword"
 msgid "Enter the E-mail address used during the registration process"
-msgstr ""
-"Introdu adresa de e-mail utilizată în timpul procesului de înregistrare"
+msgstr "Introdu adresa de e-mail utilizată în timpul procesului de înregistrare"
 
 #: ../src/scenes/ForgotPassword.rb:28
 msgctxt "ForgotPassword"
 msgid "The typed E-mail address is not associated with the entered username."
-msgstr ""
-"Adresa de e-mail tastată nu este asociată cu numele de utilizator introdus."
+msgstr "Adresa de e-mail tastată nu este asociată cu numele de utilizator introdus."
 
 #: ../src/scenes/ForgotPassword.rb:31
 msgctxt "ForgotPassword"
@@ -7524,9 +7073,7 @@ msgstr "Eroare neprevăzută"
 #: ../src/scenes/ForgotPassword.rb:57
 msgctxt "ForgotPassword"
 msgid "The password reset code has been sent to the email address you provided. To continue, select the option to enter the code."
-msgstr ""
-"Cheia de resetare a parolei a fost trimisă la adresa de e-mail specificată. "
-"Pentru a continua, selectează opțiunea pentru introducerea acesteia."
+msgstr "Cheia de resetare a parolei a fost trimisă la adresa de e-mail specificată. Pentru a continua, selectează opțiunea pentru introducerea acesteia."
 
 #: ../src/scenes/ForgotPassword.rb:64
 msgctxt "ForgotPassword"
@@ -7561,15 +7108,12 @@ msgstr "Parolă goală furnizată."
 #: ../src/scenes/ForgotPassword.rb:87
 msgctxt "ForgotPassword"
 msgid "Please wait while the password is being changed"
-msgstr ""
-"Te rugăm să aștepți cât timp ne conectăm la server și îți modificăm parola"
+msgstr "Te rugăm să aștepți cât timp ne conectăm la server și îți modificăm parola"
 
 #: ../src/scenes/ForgotPassword.rb:93
 msgctxt "ForgotPassword"
 msgid "You can log in to your account using your new credentials."
-msgstr ""
-"Parola a fost schimbată. Acum te poți conecta la contul tău folosind noile "
-"date."
+msgstr "Parola a fost schimbată. Acum te poți conecta la contul tău folosind noile date."
 
 #: ../src/scenes/Forum.rb:93
 msgctxt "Forum"
@@ -7684,8 +7228,7 @@ msgctxt "Forum"
 msgid "Threads popular with my friends"
 msgstr "Subiecte populare cu prietenii mei"
 
-#: ../src/scenes/Forum.rb:212 ../src/scenes/Forum.rb:497
-#: ../src/scenes/Forum.rb:1304 ../src/scenes/Forum.rb:1566
+#: ../src/scenes/Forum.rb:212 ../src/scenes/Forum.rb:497 ../src/scenes/Forum.rb:1304 ../src/scenes/Forum.rb:1566
 msgctxt "Forum"
 msgid "Search"
 msgstr "Caută"
@@ -7700,63 +7243,37 @@ msgctxt "Forum"
 msgid "Recently created groups"
 msgstr "Grupuri creeate recent"
 
-#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245
-#: ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288
-#: ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328
-#: ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365
-#: ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1391
-#: ../src/scenes/Forum.rb:1988
+#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245 ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288 ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328 ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365 ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1391 ../src/scenes/Forum.rb:1988
 msgctxt "Forum"
 msgid "posts"
 msgstr "postări"
 
-#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245
-#: ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288
-#: ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328
-#: ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365
-#: ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1391
-#: ../src/scenes/Forum.rb:1988
+#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245 ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288 ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328 ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365 ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1391 ../src/scenes/Forum.rb:1988
 msgctxt "Forum"
 msgid "Unread"
 msgstr "Necitite"
 
-#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245
-#: ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288
-#: ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328
-#: ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365
-#: ../src/scenes/Forum.rb:385
+#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245 ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288 ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328 ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365 ../src/scenes/Forum.rb:385
 msgctxt "Forum"
 msgid "Forums"
 msgstr "Forumuri"
 
-#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245
-#: ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288
-#: ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328
-#: ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365
-#: ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1391
-#: ../src/scenes/Forum.rb:2304
+#: ../src/scenes/Forum.rb:220 ../src/scenes/Forum.rb:245 ../src/scenes/Forum.rb:266 ../src/scenes/Forum.rb:288 ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328 ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365 ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1391 ../src/scenes/Forum.rb:2304
 msgctxt "Forum"
 msgid "Threads"
 msgstr "Subiecte"
 
-#: ../src/scenes/Forum.rb:245 ../src/scenes/Forum.rb:288
-#: ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328
-#: ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365
-#: ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1063
+#: ../src/scenes/Forum.rb:245 ../src/scenes/Forum.rb:288 ../src/scenes/Forum.rb:308 ../src/scenes/Forum.rb:328 ../src/scenes/Forum.rb:349 ../src/scenes/Forum.rb:365 ../src/scenes/Forum.rb:385 ../src/scenes/Forum.rb:1063
 msgctxt "Forum"
 msgid "Administrator"
 msgstr "Administrator"
 
-#: ../src/scenes/Forum.rb:393 ../src/scenes/Forum.rb:396
-#: ../src/scenes/Forum.rb:939 ../src/scenes/Forum.rb:1395
-#: ../src/scenes/Forum.rb:1593 ../src/scenes/Forum.rb:1992
-#: ../src/scenes/Forum.rb:2473 ../src/scenes/Forum.rb:3227
+#: ../src/scenes/Forum.rb:393 ../src/scenes/Forum.rb:396 ../src/scenes/Forum.rb:939 ../src/scenes/Forum.rb:1395 ../src/scenes/Forum.rb:1593 ../src/scenes/Forum.rb:1992 ../src/scenes/Forum.rb:2473 ../src/scenes/Forum.rb:3227
 msgctxt "Forum"
 msgid "Forum"
 msgstr "Forum"
 
-#: ../src/scenes/Forum.rb:471 ../src/scenes/Forum.rb:1535
-#: ../src/scenes/Forum.rb:2039
+#: ../src/scenes/Forum.rb:471 ../src/scenes/Forum.rb:1535 ../src/scenes/Forum.rb:2039
 msgctxt "Forum"
 msgid "Open"
 msgstr "Deschis"
@@ -7796,40 +7313,32 @@ msgctxt "Forum"
 msgid "Group summary"
 msgstr "Rezumatul grupului"
 
-#: ../src/scenes/Forum.rb:514 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:4411
+#: ../src/scenes/Forum.rb:514 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:4411
 msgctxt "Forum"
 msgid "Language"
 msgstr "Limbă"
 
-#: ../src/scenes/Forum.rb:515 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:4413
+#: ../src/scenes/Forum.rb:515 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:4413
 msgctxt "Forum"
 msgid "Hidden"
 msgstr "Ascuns"
 
-#: ../src/scenes/Forum.rb:516 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:4413
+#: ../src/scenes/Forum.rb:516 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:4413
 msgctxt "Forum"
 msgid "Public"
 msgstr "Public"
 
-#: ../src/scenes/Forum.rb:520 ../src/scenes/Forum.rb:1278
-#: ../src/scenes/Forum.rb:4462
+#: ../src/scenes/Forum.rb:520 ../src/scenes/Forum.rb:1278 ../src/scenes/Forum.rb:4462
 msgctxt "Forum"
 msgid "closed (only invited users can join)"
 msgstr "închis (doar utilizatorii invitați se pot alătura)"
 
-#: ../src/scenes/Forum.rb:522 ../src/scenes/Forum.rb:526
-#: ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:1278
-#: ../src/scenes/Forum.rb:1280 ../src/scenes/Forum.rb:4462
-#: ../src/scenes/Forum.rb:4464
+#: ../src/scenes/Forum.rb:522 ../src/scenes/Forum.rb:526 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:1278 ../src/scenes/Forum.rb:1280 ../src/scenes/Forum.rb:4462 ../src/scenes/Forum.rb:4464
 msgctxt "Forum"
 msgid "Moderated (everyone can request)"
 msgstr "Moderat (oricine poate cere)"
 
-#: ../src/scenes/Forum.rb:528 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:1280 ../src/scenes/Forum.rb:4464
+#: ../src/scenes/Forum.rb:528 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:1280 ../src/scenes/Forum.rb:4464
 msgctxt "Forum"
 msgid "open (everyone can join)"
 msgstr "deschis (toată lumea se poate alătura)"
@@ -7839,14 +7348,12 @@ msgctxt "Forum"
 msgid "Recommended"
 msgstr "Recomandat"
 
-#: ../src/scenes/Forum.rb:534 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:4413
+#: ../src/scenes/Forum.rb:534 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:4413
 msgctxt "Forum"
 msgid "Group type"
 msgstr "Tipul grupului"
 
-#: ../src/scenes/Forum.rb:535 ../src/scenes/Forum.rb:1266
-#: ../src/scenes/Forum.rb:4414
+#: ../src/scenes/Forum.rb:535 ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:4414
 msgctxt "Forum"
 msgid "Group join type"
 msgstr "Modul de alăturare al grupului"
@@ -7881,9 +7388,7 @@ msgctxt "Forum"
 msgid "Audio posts"
 msgstr "Postări audio"
 
-#: ../src/scenes/Forum.rb:559 ../src/scenes/Forum.rb:2577
-#: ../src/scenes/Forum.rb:3087 ../src/scenes/Forum.rb:3177
-#: ../src/scenes/Forum.rb:3884
+#: ../src/scenes/Forum.rb:559 ../src/scenes/Forum.rb:2577 ../src/scenes/Forum.rb:3087 ../src/scenes/Forum.rb:3177 ../src/scenes/Forum.rb:3884
 msgctxt "Forum"
 msgid "Attachments"
 msgstr "Atașamente"
@@ -8005,9 +7510,7 @@ msgstr "Marchează acest grup ca citit"
 
 #: ../src/scenes/Forum.rb:657
 msgctxt "Forum"
-msgid ""
-"All posts in this group will be marked as read. Are you sure you want to "
-"continue?"
+msgid "All posts in this group will be marked as read. Are you sure you want to continue?"
 msgstr "Toate postările din acest grup vor fi marcate ca citite. Continui?"
 
 #: ../src/scenes/Forum.rb:668
@@ -8065,8 +7568,7 @@ msgctxt "Forum"
 msgid "Message of the day updated"
 msgstr "Mesajul zilei a fost actualizat"
 
-#: ../src/scenes/Forum.rb:762 ../src/scenes/Forum.rb:1239
-#: ../src/scenes/Forum.rb:3127
+#: ../src/scenes/Forum.rb:762 ../src/scenes/Forum.rb:1239 ../src/scenes/Forum.rb:3127
 msgctxt "Forum"
 msgid "Rules of group %{groupname}"
 msgstr "Regulile grupului %{groupname}"
@@ -8164,8 +7666,7 @@ msgstr "Motiv"
 #: ../src/scenes/Forum.rb:918
 msgctxt "Forum"
 msgid "Do you want to send information about the status of this report to its author?"
-msgstr ""
-"Dorești să trimiți informații despre starea acestui raport către autor?"
+msgstr "Dorești să trimiți informații despre starea acestui raport către autor?"
 
 #: ../src/scenes/Forum.rb:929
 msgctxt "Forum"
@@ -8274,14 +7775,8 @@ msgstr "Acordă privilegii de moderator"
 
 #: ../src/scenes/Forum.rb:1109
 msgctxt "Forum"
-msgid ""
-"You want to give the role of moderator to a user who is banned globally. "
-"Groups with banned moderators are not displayed in most lists. Are you sure "
-"you want to continue?"
-msgstr ""
-"Vrei să-i oferi rolul de moderator unui utilizator care este cu totul banat? "
-"Grupurile cu moderatori banați nu sunt afișate în majoritatea listelor. "
-"Sigur vrei să continui?"
+msgid "You want to give the role of moderator to a user who is banned globally. Groups with banned moderators are not displayed in most lists. Are you sure you want to continue?"
+msgstr "Vrei să-i oferi rolul de moderator unui utilizator care este cu totul banat? Grupurile cu moderatori banați nu sunt afișate în majoritatea listelor. Sigur vrei să continui?"
 
 #: ../src/scenes/Forum.rb:1114
 msgctxt "Forum"
@@ -8296,9 +7791,7 @@ msgstr "Trece privilegiile tale de administrator altui utilizator"
 #: ../src/scenes/Forum.rb:1116
 msgctxt "Forum"
 msgid "Are you sure you want to give up your administrator privileges in %{groupname} and transfer them to %{user}?"
-msgstr ""
-"Sigur vrei să-ți elimini privilegiile de administrator din %{groupname} și "
-"să i le dai lui %{user}?"
+msgstr "Sigur vrei să-ți elimini privilegiile de administrator din %{groupname} și să i le dai lui %{user}?"
 
 #: ../src/scenes/Forum.rb:1124
 msgctxt "Forum"
@@ -8390,8 +7883,7 @@ msgctxt "Forum"
 msgid "The user has been invited"
 msgstr "Utilizatorul a fost invitat"
 
-#: ../src/scenes/Forum.rb:1193 ../src/scenes/Messages.rb:1070
-#: ../src/scenes/Users.rb:21
+#: ../src/scenes/Forum.rb:1193 ../src/scenes/Messages.rb:1070 ../src/scenes/Users.rb:21
 msgid "You do not have permission to do this"
 msgstr "Nu ai permisiunile necesare să faci asta"
 
@@ -8577,11 +8069,8 @@ msgstr "Marchează forumul ca citit"
 
 #: ../src/scenes/Forum.rb:1576
 msgctxt "Forum"
-msgid ""
-"All posts on this forum will be marked as read. Are you sure you want to "
-"continue?"
-msgstr ""
-"Toate postările din acest forum vor fi marcate ca citite. Vrei să continui?"
+msgid "All posts on this forum will be marked as read. Are you sure you want to continue?"
+msgstr "Toate postările din acest forum vor fi marcate ca citite. Vrei să continui?"
 
 #: ../src/scenes/Forum.rb:1586
 msgctxt "Forum"
@@ -8598,8 +8087,7 @@ msgctxt "Forum"
 msgid "Forum added to quick actions"
 msgstr "Forum adăugat la acțiunile rapide"
 
-#: ../src/scenes/Forum.rb:1600 ../src/scenes/Forum.rb:2111
-#: ../src/scenes/Forum.rb:3564
+#: ../src/scenes/Forum.rb:1600 ../src/scenes/Forum.rb:2111 ../src/scenes/Forum.rb:3564
 msgctxt "Forum"
 msgid "Moderation"
 msgstr "Moderare"
@@ -8764,8 +8252,7 @@ msgctxt "Forum"
 msgid "Thread marked"
 msgstr "Subiect marcat"
 
-#: ../src/scenes/Forum.rb:2063 ../src/scenes/Forum.rb:2473
-#: ../src/scenes/Forum.rb:3531
+#: ../src/scenes/Forum.rb:2063 ../src/scenes/Forum.rb:2473 ../src/scenes/Forum.rb:3531
 msgctxt "Forum"
 msgid "Follow this thread"
 msgstr "Urmărește subiectul"
@@ -8813,8 +8300,7 @@ msgstr "Cititori: %{count_readers}"
 #: ../src/scenes/Forum.rb:2093
 msgctxt "Forum"
 msgid "Users that have read less than 50 percent of posts: %{count_readers}"
-msgstr ""
-"Cititori care au citit mai puțin de 50 la sută din postări: %{count_readers}"
+msgstr "Cititori care au citit mai puțin de 50 la sută din postări: %{count_readers}"
 
 #: ../src/scenes/Forum.rb:2094
 msgctxt "Forum"
@@ -8981,8 +8467,7 @@ msgctxt "Forum"
 msgid "Offer refused"
 msgstr "Ofertă refuzată"
 
-#: ../src/scenes/Forum.rb:2305 ../src/scenes/Forum.rb:2362
-#: ../src/scenes/Forum.rb:3689 ../src/scenes/Forum.rb:3733
+#: ../src/scenes/Forum.rb:2305 ../src/scenes/Forum.rb:2362 ../src/scenes/Forum.rb:3689 ../src/scenes/Forum.rb:3733
 msgctxt "Forum"
 msgid "Move"
 msgstr "Mută"
@@ -8992,8 +8477,7 @@ msgctxt "Forum"
 msgid "Offer"
 msgstr "Ofertă"
 
-#: ../src/scenes/Forum.rb:2307 ../src/scenes/Forum.rb:2365
-#: ../src/scenes/Forum.rb:3690 ../src/scenes/Forum.rb:3736
+#: ../src/scenes/Forum.rb:2307 ../src/scenes/Forum.rb:2365 ../src/scenes/Forum.rb:3690 ../src/scenes/Forum.rb:3736
 msgctxt "Forum"
 msgid "Delete"
 msgstr "Șterge"
@@ -9039,8 +8523,7 @@ msgctxt "Forum"
 msgid "Which group do you want to offer these threads to?"
 msgstr "Cărui grup ai vrea să-i oferi subiectele?"
 
-#: ../src/scenes/Forum.rb:2444 ../src/scenes/Forum.rb:2471
-#: ../src/scenes/Forum.rb:3195 ../src/scenes/Forum.rb:3211
+#: ../src/scenes/Forum.rb:2444 ../src/scenes/Forum.rb:2471 ../src/scenes/Forum.rb:3195 ../src/scenes/Forum.rb:3211
 msgctxt "Forum"
 msgid "Audio post"
 msgstr "Postare audio"
@@ -9060,8 +8543,7 @@ msgctxt "Forum"
 msgid "Thread name"
 msgstr "Numele subiectului"
 
-#: ../src/scenes/Forum.rb:2466 ../src/scenes/Forum.rb:3207
-#: ../src/scenes/Forum.rb:3884
+#: ../src/scenes/Forum.rb:2466 ../src/scenes/Forum.rb:3207 ../src/scenes/Forum.rb:3884
 msgctxt "Forum"
 msgid "Use Markdown in this post"
 msgstr "Folosește markdown-ul în această postare"
@@ -9076,8 +8558,7 @@ msgctxt "Forum"
 msgid "Attach a file"
 msgstr "Atașează un fișier"
 
-#: ../src/scenes/Forum.rb:2466 ../src/scenes/Forum.rb:3688
-#: ../src/scenes/Forum.rb:3740
+#: ../src/scenes/Forum.rb:2466 ../src/scenes/Forum.rb:3688 ../src/scenes/Forum.rb:3740
 msgctxt "Forum"
 msgid "Post content"
 msgstr "Conținutul postării"
@@ -9087,8 +8568,7 @@ msgctxt "Forum"
 msgid "No tag value"
 msgstr "Nicio valoare etichetă"
 
-#: ../src/scenes/Forum.rb:2509 ../src/scenes/Forum.rb:2517
-#: ../src/scenes/Forum.rb:3247 ../src/scenes/Forum.rb:3285
+#: ../src/scenes/Forum.rb:2509 ../src/scenes/Forum.rb:2517 ../src/scenes/Forum.rb:3247 ../src/scenes/Forum.rb:3285
 msgctxt "Forum"
 msgid "Send"
 msgstr "Trimite"
@@ -9118,8 +8598,7 @@ msgctxt "Forum"
 msgid "You haven't created any polls yet."
 msgstr "Încă nu ai creeat niciun sondaj."
 
-#: ../src/scenes/Forum.rb:2568 ../src/scenes/Forum.rb:3078
-#: ../src/scenes/Forum.rb:3893
+#: ../src/scenes/Forum.rb:2568 ../src/scenes/Forum.rb:3078 ../src/scenes/Forum.rb:3893
 msgctxt "Forum"
 msgid "Select file to attach"
 msgstr "Selectează fișierul care urmează a fi atașat"
@@ -9129,8 +8608,7 @@ msgctxt "Forum"
 msgid "This file has already been attached"
 msgstr "Fișierul a fost deja atașat"
 
-#: ../src/scenes/Forum.rb:2574 ../src/scenes/Forum.rb:3084
-#: ../src/scenes/Forum.rb:3899
+#: ../src/scenes/Forum.rb:2574 ../src/scenes/Forum.rb:3084 ../src/scenes/Forum.rb:3899
 msgctxt "Forum"
 msgid "This file is too large"
 msgstr "Fișierul este prea mare"
@@ -9160,21 +8638,17 @@ msgctxt "Forum"
 msgid "Are you sure you want to cancel creating this post?"
 msgstr "Sigur anulezi creearea postării?"
 
-#: ../src/scenes/Forum.rb:3058 ../src/scenes/Messages.rb:638
-#: ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:126
+#: ../src/scenes/Forum.rb:3058 ../src/scenes/Messages.rb:638 ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:126
 msgctxt "Polls"
 msgid "Show results"
 msgstr "Arată rezultatele"
 
-#: ../src/scenes/Forum.rb:3058 ../src/scenes/Messages.rb:638
-#: ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:129
+#: ../src/scenes/Forum.rb:3058 ../src/scenes/Messages.rb:638 ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:129
 msgctxt "Polls"
 msgid "Show report"
 msgstr "Arată raportul"
 
-#: ../src/scenes/Forum.rb:3058 ../src/scenes/Messages.rb:638
-#: ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:121
-#: ../src/scenes/Polls.rb:416
+#: ../src/scenes/Forum.rb:3058 ../src/scenes/Messages.rb:638 ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:121 ../src/scenes/Polls.rb:416
 msgctxt "Polls"
 msgid "Vote"
 msgstr "Votează"
@@ -9718,8 +9192,7 @@ msgctxt "Honors"
 msgid "The user has not been awarded any honors."
 msgstr "Utilizatorul nu are insigne."
 
-#: ../src/scenes/Honors.rb:107 ../src/scenes/Honors.rb:122
-#: ../src/scenes/Honors.rb:219
+#: ../src/scenes/Honors.rb:107 ../src/scenes/Honors.rb:122 ../src/scenes/Honors.rb:219
 msgctxt "Honors"
 msgid "Level"
 msgstr "Nivel"
@@ -9762,17 +9235,14 @@ msgstr "Șterge"
 #: ../src/scenes/Honors.rb:162
 msgctxt "Honors"
 msgid "Are you sure you want to delete this badge? All users who have been granted this badge will lose it."
-msgstr ""
-"Sigur vrei să ștergi această insignă? Toți utilizatorii care au deja insigna "
-"o vor pierde."
+msgstr "Sigur vrei să ștergi această insignă? Toți utilizatorii care au deja insigna o vor pierde."
 
 #: ../src/scenes/Honors.rb:167
 msgctxt "Honors"
 msgid "Honor deleted"
 msgstr "Insignă ștearsă"
 
-#: ../src/scenes/Honors.rb:185 ../src/scenes/Honors.rb:198
-#: ../src/scenes/Honors.rb:237
+#: ../src/scenes/Honors.rb:185 ../src/scenes/Honors.rb:198 ../src/scenes/Honors.rb:237
 msgctxt "Honors"
 msgid "Add challenge"
 msgstr "Adaugă provocare"
@@ -9840,31 +9310,17 @@ msgstr "Ce versiune vrei să folosești?"
 #: ../src/scenes/Loading.rb:262
 msgctxt "Loading"
 msgid "Elten has detected that you are using NVDA. To support some features of this screen reader, the Elten add-on for NVDA must be installed. Do you want to install it now?"
-msgstr ""
-"Elten a detectat că utilizezi NVDA. Pentru ca unele caracteristici ale "
-"acestui cititor de ecran să funcționeze corect cu Elten, este necesar să "
-"instalezi suplimentul Elten. Vrei să o faci acum?"
+msgstr "Elten a detectat că utilizezi NVDA. Pentru ca unele caracteristici ale acestui cititor de ecran să funcționeze corect cu Elten, este necesar să instalezi suplimentul Elten. Vrei să o faci acum?"
 
 #: ../src/scenes/Loading.rb:264
 msgctxt "Loading"
 msgid "A new version of the Elten add-on for NVDA is available. The version you are using is no longer supported by this Elten release and may cause errors. Do you want to update it now?"
-msgstr ""
-"Este disponibilă o nouă versiune a suplimentului Elten pentru NVDA. "
-"Versiunea pe care o utilizezi nu mai este acceptată în această versiune "
-"Elten și poate cauza unele erori. Dorești să îl actualizezi acum?"
+msgstr "Este disponibilă o nouă versiune a suplimentului Elten pentru NVDA. Versiunea pe care o utilizezi nu mai este acceptată în această versiune Elten și poate cauza unele erori. Dorești să îl actualizezi acum?"
 
 #: ../src/scenes/Loading.rb:303
 msgctxt "Loading"
 msgid "Warning! Elten failed to verify the server's encryption key. You may be connecting not to an Elten server, but to a server controlled by an attacker. The Elten server's key may also have changed. Details of any legitimate key change should be published on the Elten website or forum. If no such information has been published, this connection may be under attack. Any data you provide, including your password, could be stolen. Are you sure you want to continue with this connection? Select No to exit Elten."
-msgstr ""
-"Avertizare! Elten nu a reușit să verifice cheia de criptare a serverului. "
-"Este posibil să nu te conectezi la serverul Elten, ci la unul făcut de "
-"hackeri. De asemenea, este posibil ca cheia Elten Server să se fi schimbat. "
-"Orice detalii trebuie furnizate pe Forumul site-ului web Elten. Dacă nu au "
-"fost furnizate informații despre modificarea cheii, este foarte probabil să "
-"fii vulnerabil la atacul hackerilor. În această cauză, orice date pe care le "
-"vei furniza, inclusiv parola, pot fi furate. Sigur vrei să continui cu "
-"această conexiune? Selectează Nu pentru a ieși din Elten."
+msgstr "Avertizare! Elten nu a reușit să verifice cheia de criptare a serverului. Este posibil să nu te conectezi la serverul Elten, ci la unul făcut de hackeri. De asemenea, este posibil ca cheia Elten Server să se fi schimbat. Orice detalii trebuie furnizate pe Forumul site-ului web Elten. Dacă nu au fost furnizate informații despre modificarea cheii, este foarte probabil să fii vulnerabil la atacul hackerilor. În această cauză, orice date pe care le vei furniza, inclusiv parola, pot fi furate. Sigur vrei să continui cu această conexiune? Selectează Nu pentru a ieși din Elten."
 
 #: ../src/scenes/Loading.rb:320
 msgctxt "Loading"
@@ -9875,44 +9331,30 @@ msgstr "O nouă versiune a programului este disponibilă."
 msgctxt "Loading"
 msgid ""
 "Attention!\n"
-"Since the release of version 2.5.2.1, new restrictions have been introduced "
-"for globally banned users.\n"
-"By default, they are prevented from speaking in any groups and writing to "
-"other people.\n"
+"Since the release of version 2.5.2.1, new restrictions have been introduced for globally banned users.\n"
+"By default, they are prevented from speaking in any groups and writing to other people.\n"
 "\n"
-"To allow banned people to speak in a group, change this option from the "
-"group's settings, General tab.\n"
-"Similarly, to allow these users to write private messages to you, you must "
-"allow this from within your account settings, Privacy tab.\n"
+"To allow banned people to speak in a group, change this option from the group's settings, General tab.\n"
+"Similarly, to allow these users to write private messages to you, you must allow this from within your account settings, Privacy tab.\n"
 "\n"
-"Also, all groups moderated by banned users have been removed from most "
-"public lists.\n"
+"Also, all groups moderated by banned users have been removed from most public lists.\n"
 "\n"
-"At the same time, three changes have since been made to the premium packages "
-"at the request of users:\n"
+"At the same time, three changes have since been made to the premium packages at the request of users:\n"
 "First of all, premium features are now visible in menus.\n"
-"It has also been made possible to buy premium packages for a period of one "
-"month.\n"
+"It has also been made possible to buy premium packages for a period of one month.\n"
 "Other billing currencies have also been added."
 msgstr ""
 "Atenție!\n"
-"Începând cu lansarea versiunii 2.5.2.1, au fost introduse restricții noi "
-"pentru utilizatorii banați cu totul.\n"
-"În mod implicit, sunt împiedicați să vorbească în orice grup și să le scrie "
-"altora.\n"
+"Începând cu lansarea versiunii 2.5.2.1, au fost introduse restricții noi pentru utilizatorii banați cu totul.\n"
+"În mod implicit, sunt împiedicați să vorbească în orice grup și să le scrie altora.\n"
 "\n"
-"Pentru a le permite celor banați să vorbească într-un grup, modifică această "
-"opțiune din setările grupului, secțiunea General.\n"
-"Pentru a le permite să îți scrie, trebuie să o faci din setările contului, "
-"secțiunea Confidențialitate.\n"
-"De asemenea, toate grupurile moderate de utilizatori banați au fost șterse "
-"din majoritatea listelor publice.\n"
+"Pentru a le permite celor banați să vorbească într-un grup, modifică această opțiune din setările grupului, secțiunea General.\n"
+"Pentru a le permite să îți scrie, trebuie să o faci din setările contului, secțiunea Confidențialitate.\n"
+"De asemenea, toate grupurile moderate de utilizatori banați au fost șterse din majoritatea listelor publice.\n"
 "\n"
-"Totodată, la cererea utilizatorilor, au fost făcute trei schimbări la "
-"pachetele premium:\n"
+"Totodată, la cererea utilizatorilor, au fost făcute trei schimbări la pachetele premium:\n"
 "În primul rând, funcționalitățile premium sunt afișate acum în meniuri.\n"
-"În al doilea rând, există posibilitatea de a achiziționa pachete premium "
-"pentru o lună.\n"
+"În al doilea rând, există posibilitatea de a achiziționa pachete premium pentru o lună.\n"
 "În fine, au fost adăugate și alte monede de facturare."
 
 #: ../src/scenes/Loading.rb:366
@@ -9987,31 +9429,13 @@ msgstr "Introdu codul PIN"
 
 #: ../src/scenes/Login.rb:60 ../src/scenes/Login.rb:169
 msgctxt "Login"
-msgid ""
-"Do you want to enable auto-Login-key encryption? When encrypted, the Auto-"
-"Login Key will be readable only on this computer, and its copying or "
-"exporting will not allow other devices to access your account. Note: If you "
-"encrypt your Auto-Login Key, the created portable versions will not be able "
-"to automatically log into your account from other devices, even if you copy "
-"your settings, and you will be prompted to enter your password. You can "
-"create as many auto-login-keys as you wish for all other computers you are "
-"using."
-msgstr ""
-"Vrei să activezi criptarea cheii de autentificare? Când este criptată, cheia "
-"de autentificare automată va fi citibilă numai pe acest computer, iar "
-"copierea sau exportarea acesteia nu va permite altor dispozitive să îți "
-"acceseze contul. Notă: Dacă îți criptezi cheia de autentificare automată, "
-"versiunile portabile creeate de tine nu vor putea să se conecteze automat la "
-"contul tău de pe alte dispozitive, chiar dacă copiezi setările. Ți se va "
-"solicita să introduci parola. Poți crea oricâte chei de autentificare "
-"automată vrei pentru toate celelalte computere pe care le utilizezi."
+msgid "Do you want to enable auto-Login-key encryption? When encrypted, the Auto-Login Key will be readable only on this computer, and its copying or exporting will not allow other devices to access your account. Note: If you encrypt your Auto-Login Key, the created portable versions will not be able to automatically log into your account from other devices, even if you copy your settings, and you will be prompted to enter your password. You can create as many auto-login-keys as you wish for all other computers you are using."
+msgstr "Vrei să activezi criptarea cheii de autentificare? Când este criptată, cheia de autentificare automată va fi citibilă numai pe acest computer, iar copierea sau exportarea acesteia nu va permite altor dispozitive să îți acceseze contul. Notă: Dacă îți criptezi cheia de autentificare automată, versiunile portabile creeate de tine nu vor putea să se conecteze automat la contul tău de pe alte dispozitive, chiar dacă copiezi setările. Ți se va solicita să introduci parola. Poți crea oricâte chei de autentificare automată vrei pentru toate celelalte computere pe care le utilizezi."
 
 #: ../src/scenes/Login.rb:88
 msgctxt "Login"
 msgid "Two-factor authentication is enabled on this account. Select an authentication method."
-msgstr ""
-"Autentificarea în doi pași este activată pe acest cont. Selectează modul "
-"prin care vrei să te autentifici."
+msgstr "Autentificarea în doi pași este activată pe acest cont. Selectează modul prin care vrei să te autentifici."
 
 #: ../src/scenes/Login.rb:88
 msgctxt "Login"
@@ -10026,10 +9450,7 @@ msgstr "Autentifică-te utilizând un mesaj SMS"
 #: ../src/scenes/Login.rb:104
 msgctxt "Login"
 msgid "Enter the code sent to you by text message to allow this device to log in. If you cannot access the phone number used, select the password reset option to disable two-factor authentication."
-msgstr ""
-"Introdu codul trimis prin mesaj text pentru a permite acestui dispozitiv să "
-"se conecteze. Dacă nu ai acces la numărul de telefon utilizat, selectează "
-"opțiunea de resetare a parolei pentru a dezactiva autentificarea în doi pași."
+msgstr "Introdu codul trimis prin mesaj text pentru a permite acestui dispozitiv să se conecteze. Dacă nu ai acces la numărul de telefon utilizat, selectează opțiunea de resetare a parolei pentru a dezactiva autentificarea în doi pași."
 
 #: ../src/scenes/Login.rb:106
 msgctxt "Login"
@@ -10058,49 +9479,28 @@ msgstr "Nu mai întreba din nou"
 
 #: ../src/scenes/Login.rb:148
 msgctxt "Login"
-msgid ""
-"The saved login data uses the old account authentication method in which  "
-"susceptibility to hacker attacks has been detected. New, safer automatic "
-"login  algorithms have been introduced in Elten 2.2. It is recommended that "
-"you convert  the saved information into a new system in order to improve the "
-"security of your  account. Do you want to update the saved information now?"
-msgstr ""
-"Datele de conectare salvate utilizează vechea metodă de autentificare a "
-"contului în care a fost detectată susceptibilitatea la atacurile hackerilor. "
-"În Elten 2.2 au fost introduși algoritmi de autentificare noi și mai siguri. "
-"Este recomandat să convertești informațiile salvate într-un sistem nou "
-"pentru a îmbunătăți securitatea contului tău. Vrei să actualizezi acum "
-"informațiile salvate?"
+msgid "The saved login data uses the old account authentication method in which  susceptibility to hacker attacks has been detected. New, safer automatic login  algorithms have been introduced in Elten 2.2. It is recommended that you convert  the saved information into a new system in order to improve the security of your  account. Do you want to update the saved information now?"
+msgstr "Datele de conectare salvate utilizează vechea metodă de autentificare a contului în care a fost detectată susceptibilitatea la atacurile hackerilor. În Elten 2.2 au fost introduși algoritmi de autentificare noi și mai siguri. Este recomandat să convertești informațiile salvate într-un sistem nou pentru a îmbunătăți securitatea contului tău. Vrei să actualizezi acum informațiile salvate?"
 
 #: ../src/scenes/Login.rb:164
 msgctxt "Login"
 msgid "An error occurred while verifying your identity. You may have entered an incorrect password."
-msgstr ""
-"A apărut o eroare la verificarea identității. Este posibil să fi furnizat o "
-"parolă incorectă."
+msgstr "A apărut o eroare la verificarea identității. Este posibil să fi furnizat o parolă incorectă."
 
 #: ../src/scenes/Login.rb:179
 msgctxt "Login"
 msgid "Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
-msgstr ""
-"Conectarea automată va continua până când te deconectezi. Cheile de "
-"conectare automate pot fi gestionate din fila Contul meu din meniul "
-"Comunitate."
+msgstr "Conectarea automată va continua până când te deconectezi. Cheile de conectare automate pot fi gestionate din fila Contul meu din meniul Comunitate."
 
 #: ../src/scenes/Login.rb:181
 msgctxt "Login"
 msgid "Login data has been updated. Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
-msgstr ""
-"Datele de autentificare au fost actualizate. Conectarea automată va continua "
-"până când te deconectezi. Cheile de autentificare automate pot fi gestionate "
-"din fila Contul meu din meniul Comunitate."
+msgstr "Datele de autentificare au fost actualizate. Conectarea automată va continua până când te deconectezi. Cheile de autentificare automate pot fi gestionate din fila Contul meu din meniul Comunitate."
 
 #: ../src/scenes/Login.rb:192
 msgctxt "Login"
 msgid "To re-enable auto-login, go to General settings."
-msgstr ""
-"Pentru a reactiva funcția de autentificare automată, treci la setările "
-"generale."
+msgstr "Pentru a reactiva funcția de autentificare automată, treci la setările generale."
 
 #: ../src/scenes/Login.rb:206
 msgctxt "Login"
@@ -10125,11 +9525,7 @@ msgstr "Conexiune eșuată."
 #: ../src/scenes/Login.rb:242
 msgctxt "Login"
 msgid "Do you want to encrypt this key with a custom PIN? You will be prompted for this PIN every time you start Elten to unlock your account. It will not be saved on the server and will apply only to the auto-login key stored on this device."
-msgstr ""
-"Vrei să criptezi această cheie cu un cod PIN personalizat? Ți se va solicita "
-"acest cod de fiecare dată când pornești Elten pentru a îți debloca contul, "
-"dar acesta nu va fi salvat pe server și va fi valabil numai pentru cheia de "
-"autentificare automată stocată pe acest dispozitiv."
+msgstr "Vrei să criptezi această cheie cu un cod PIN personalizat? Ți se va solicita acest cod de fiecare dată când pornești Elten pentru a îți debloca contul, dar acesta nu va fi salvat pe server și va fi valabil numai pentru cheia de autentificare automată stocată pe acest dispozitiv."
 
 #: ../src/scenes/Login.rb:247
 msgctxt "Login"
@@ -10218,14 +9614,8 @@ msgstr "Sigur vrei să ștergi această acțiune rapidă?"
 
 #: ../src/scenes/Main.rb:247
 msgctxt "Main"
-msgid ""
-"If you delete this action, you will also delete the keyboard shortcut "
-"assigned to it. If you want to keep the keyboard shortcut, you can hide this "
-"action. You can show or remove hidden actions at any time."
-msgstr ""
-"Dacă ștergi această acțiune, vei șterge și scurtătura atribuită acesteia. "
-"Dacă dorești să păstrezi scurtătura, poți ascunde această acțiune. Poți "
-"afișa sau elimina acțiuni ascunse în orice moment."
+msgid "If you delete this action, you will also delete the keyboard shortcut assigned to it. If you want to keep the keyboard shortcut, you can hide this action. You can show or remove hidden actions at any time."
+msgstr "Dacă ștergi această acțiune, vei șterge și scurtătura atribuită acesteia. Dacă dorești să păstrezi scurtătura, poți ascunde această acțiune. Poți afișa sau elimina acțiuni ascunse în orice moment."
 
 #: ../src/scenes/Main.rb:259
 msgctxt "Main"
@@ -10320,14 +9710,12 @@ msgctxt "Messages"
 msgid "Last message"
 msgstr "Ultimul mesaj"
 
-#: ../src/scenes/Messages.rb:135 ../src/scenes/Messages.rb:439
-#: ../src/scenes/Messages.rb:589
+#: ../src/scenes/Messages.rb:135 ../src/scenes/Messages.rb:439 ../src/scenes/Messages.rb:589
 msgctxt "Messages"
 msgid "New"
 msgstr "Nou"
 
-#: ../src/scenes/Messages.rb:138 ../src/scenes/Messages.rb:442
-#: ../src/scenes/Messages.rb:592
+#: ../src/scenes/Messages.rb:138 ../src/scenes/Messages.rb:442 ../src/scenes/Messages.rb:592
 msgctxt "Messages"
 msgid "Show older"
 msgstr "Arată mai vechi"
@@ -10464,8 +9852,7 @@ msgstr "Marchează toate mesajele ca citite"
 
 #: ../src/scenes/Messages.rb:249
 msgctxt "messages"
-msgid ""
-"Are you sure you want to mark all messages in all conversations as read?"
+msgid "Are you sure you want to mark all messages in all conversations as read?"
 msgstr "Sigur marchezi toate mesajele din toate conversațiile ca citite?"
 
 #: ../src/scenes/Messages.rb:255
@@ -10861,9 +10248,7 @@ msgstr "Sigur vrei să ștergi %{name}?"
 #: ../src/scenes/Notes.rb:221
 msgctxt "Notes"
 msgid "Do you really want to stop sharing %{name}? It will be deleted from your list of notes."
-msgstr ""
-"Sigur vrei să nu mai partajezi %{name}? Aceasta va fi ștearsă din lista ta "
-"de notițe."
+msgstr "Sigur vrei să nu mai partajezi %{name}? Aceasta va fi ștearsă din lista ta de notițe."
 
 #: ../src/scenes/Notes.rb:231
 msgctxt "Notes"
@@ -10918,8 +10303,7 @@ msgctxt "Polls"
 msgid "Polls"
 msgstr "Sondaje"
 
-#: ../src/scenes/Polls.rb:12 ../src/scenes/Polls.rb:387
-#: ../src/scenes/Polls.rb:507
+#: ../src/scenes/Polls.rb:12 ../src/scenes/Polls.rb:387 ../src/scenes/Polls.rb:507
 msgctxt "Polls"
 msgid "Author"
 msgstr "Autor"
@@ -11204,16 +10588,8 @@ msgstr "Se copiază setările"
 
 #: ../src/scenes/Portable.rb:36
 msgctxt "Portable"
-msgid ""
-"If you use a created copy of Elten on another computer, the voice settings "
-"may  not work properly. This is especially noticeable in a situation when "
-"another  computer has other voices installed. How do you want to configure "
-"the generated  version?"
-msgstr ""
-"Dacă utilizezi o copie creată a Elten pe alt computer, este posibil ca "
-"setările vocale să nu funcționeze corect. Acest lucru se observă mai ales "
-"într-o situație în care un alt computer are instalate alte voci. Cum vrei să "
-"configurezi versiunea generată?"
+msgid "If you use a created copy of Elten on another computer, the voice settings may  not work properly. This is especially noticeable in a situation when another  computer has other voices installed. How do you want to configure the generated  version?"
+msgstr "Dacă utilizezi o copie creată a Elten pe alt computer, este posibil ca setările vocale să nu funcționeze corect. Acest lucru se observă mai ales într-o situație în care un alt computer are instalate alte voci. Cum vrei să configurezi versiunea generată?"
 
 #: ../src/scenes/Portable.rb:36
 msgctxt "Portable"
@@ -11272,11 +10648,8 @@ msgstr "Actualizează"
 
 #: ../src/scenes/Programs.rb:83
 msgctxt "Programs"
-msgid ""
-"Do you want to install program %{name}? Need to download %{size} of data."
-msgstr ""
-"Sigur vrei să instalezi programul %{name}? Trebuie descărcate %{size} de "
-"date."
+msgid "Do you want to install program %{name}? Need to download %{size} of data."
+msgstr "Sigur vrei să instalezi programul %{name}? Trebuie descărcate %{size} de date."
 
 #: ../src/scenes/Programs.rb:104
 msgctxt "Programs"
@@ -11305,12 +10678,8 @@ msgstr "Program șters"
 
 #: ../src/scenes/Registration.rb:13
 msgctxt "Registration"
-msgid ""
-"Enter your username. It will be used for identification.The maximum length "
-"of the  username is 64 characters"
-msgstr ""
-"Introdu numele de utilizator. Acesta va fi folosit pentru identificare. "
-"Lungimea maximă a numelui de utilizator este de 64 de caractere"
+msgid "Enter your username. It will be used for identification.The maximum length of the  username is 64 characters"
+msgstr "Introdu numele de utilizator. Acesta va fi folosit pentru identificare. Lungimea maximă a numelui de utilizator este de 64 de caractere"
 
 #: ../src/scenes/Registration.rb:16
 msgctxt "Registration"
@@ -11320,9 +10689,7 @@ msgstr "Contul cu numele de utilizator specificat există deja."
 #: ../src/scenes/Registration.rb:27
 msgctxt "Registration"
 msgid "Enter your password. We recommend using a strong password consisting of letters and numbers. The maximum password length is 256 characters."
-msgstr ""
-"Introdu parola. Se recomandă utilizarea unei parole puternice, care constă "
-"din cifre și litere. Lungimea maximă a parolei este de 256 de caractere."
+msgstr "Introdu parola. Se recomandă utilizarea unei parole puternice, care constă din cifre și litere. Lungimea maximă a parolei este de 256 de caractere."
 
 #: ../src/scenes/Registration.rb:29
 msgctxt "Registration"
@@ -11337,16 +10704,12 @@ msgstr "Parolele introduse sunt diferite"
 #: ../src/scenes/Registration.rb:40
 msgctxt "Registration"
 msgid "Enter your email address. It will be used to reset a forgotten password and to send you important information."
-msgstr ""
-"Introdu adresa de e-mail. Aceasta va fi utilizată în cazul în care îți uiți "
-"parola și pentru a primi informații importante."
+msgstr "Introdu adresa de e-mail. Aceasta va fi utilizată în cazul în care îți uiți parola și pentru a primi informații importante."
 
 #: ../src/scenes/Registration.rb:51
 msgctxt "Registration"
 msgid "Registration was successful. Thank you. You can log in using your username and password."
-msgstr ""
-"Înregistrarea este reușită, îți mulțumim. Acum te poți conecta folosind "
-"numele de utilizator și parola."
+msgstr "Înregistrarea este reușită, îți mulțumim. Acum te poți conecta folosind numele de utilizator și parola."
 
 #: ../src/scenes/Registration.rb:53
 msgctxt "Registration"
@@ -11581,9 +10944,7 @@ msgstr "Activează ieșirea braille (necesită supliment NVDA)"
 #: ../src/scenes/Settings.rb:195
 msgctxt "Settings"
 msgid "Use a voice dictionary when processing characters (requires the NVDA add-on when using NVDA for speech output)"
-msgstr ""
-"Utilizează un dicționar vocal atunci când se prelucrează caractere (necesită "
-"supliment NVDA când utilizezi NVDA ca ieșire vocală)"
+msgstr "Utilizează un dicționar vocal atunci când se prelucrează caractere (necesită supliment NVDA când utilizezi NVDA ca ieșire vocală)"
 
 #: ../src/scenes/Settings.rb:196
 msgctxt "Settings"
@@ -11673,8 +11034,7 @@ msgstr "Dispozitiv de intrare"
 #: ../src/scenes/Settings.rb:298
 msgctxt "Settings"
 msgid "Mute the microphone in conferences while recording other content"
-msgstr ""
-"Oprește microfonul în conferințe pe durata înregistrării altui conținut"
+msgstr "Oprește microfonul în conferințe pe durata înregistrării altui conținut"
 
 #: ../src/scenes/Settings.rb:299
 msgctxt "Settings"
@@ -12423,19 +11783,13 @@ msgstr "Destinație"
 
 #: ../src/scenes/Sounds.rb:271
 msgctxt "Sounds"
-msgid ""
-"This sound theme contains unsaved changes. Do you want to upload it anyway?"
-msgstr ""
-"Această temă de sunete conține modificări nesalvate. Vrei să o încarci "
-"oricum?"
+msgid "This sound theme contains unsaved changes. Do you want to upload it anyway?"
+msgstr "Această temă de sunete conține modificări nesalvate. Vrei să o încarci oricum?"
 
 #: ../src/scenes/Sounds.rb:276
 msgctxt "Sounds"
 msgid "Sound theme ID. This ID will be used to track updates to this sound theme. Keep the current ID if you want to update the existing sound theme."
-msgstr ""
-"ID-ul temei de sunete. Va fi utilizat la urmărirea actualizărilor acestei "
-"teme de sunete. Păstrează-l dacă vrei să actualizezi tema existentă de "
-"sunete."
+msgstr "ID-ul temei de sunete. Va fi utilizat la urmărirea actualizărilor acestei teme de sunete. Păstrează-l dacă vrei să actualizezi tema existentă de sunete."
 
 #: ../src/scenes/Sounds.rb:300 ../src/scenes/Sounds.rb:308
 msgctxt "Sounds"
@@ -12525,11 +11879,9 @@ msgstr "Rezultatele testului"
 #: ../src/scenes/Update.rb:13
 msgctxt "Update"
 msgid "A new version of this program is available. Do you want to download and install it?"
-msgstr ""
-"O nouă versiune este disponibilă. Vrei să o descarci și să o instalezi?"
+msgstr "O nouă versiune este disponibilă. Vrei să o descarci și să o instalezi?"
 
-#: ../src/scenes/Update.rb:36 ../src/scenes/Update.rb:66
-#: ../src/scenes/Update.rb:68
+#: ../src/scenes/Update.rb:36 ../src/scenes/Update.rb:66 ../src/scenes/Update.rb:68
 msgctxt "Update"
 msgid "Please wait while files are downloaded."
 msgstr "Te rugăm să aștepți cât timp se descarcă fișierele."
@@ -12537,9 +11889,7 @@ msgstr "Te rugăm să aștepți cât timp se descarcă fișierele."
 #: ../src/scenes/Update.rb:40
 msgctxt "Update"
 msgid "The update has been downloaded. To install it, the program must be restarted. Press Return to continue or Esc to cancel."
-msgstr ""
-"Descărcare finalizată. Pentru actualizare, programul trebuie să repornească. "
-"Apasă enter pentru a reporni sau escape pentru a anula."
+msgstr "Descărcare finalizată. Pentru actualizare, programul trebuie să repornească. Apasă enter pentru a reporni sau escape pentru a anula."
 
 #: ../src/scenes/Update.rb:53
 msgctxt "Update"
@@ -12549,9 +11899,7 @@ msgstr "Acum se va instala actualizarea. Programul va reporni."
 #: ../src/scenes/Update.rb:71
 msgctxt "Update"
 msgid "The program will now be reverted to the latest stable version. Elten will restart. This may take several minutes."
-msgstr ""
-"Programul va fi acum repornit și readus la ultima versiune stabilă. Poate "
-"dura câteva minute."
+msgstr "Programul va fi acum repornit și readus la ultima versiune stabilă. Poate dura câteva minute."
 
 #: ../src/scenes/UserSearch.rb:11
 msgctxt "UserSearch"
@@ -12785,13 +12133,11 @@ msgstr "Nimic nou acum."
 
 #~ msgctxt "Registration"
 #~ msgid "A username cannot contain an at. The character will be ignored."
-#~ msgstr ""
-#~ "Un nume de utilizator nu poate conține un arond. Caracterul va fi ignorat."
+#~ msgstr "Un nume de utilizator nu poate conține un arond. Caracterul va fi ignorat."
 
 #~ msgctxt "Registration"
 #~ msgid "User name can not contain slashes. Sign will be Omitted."
-#~ msgstr ""
-#~ "Numele utilizatorului nu poate conține bare oblice. Semnul va fi omis."
+#~ msgstr "Numele utilizatorului nu poate conține bare oblice. Semnul va fi omis."
 
 #~ msgctxt "Registration"
 #~ msgid "User name can not contain spaces. Sign will be Omitted"

@@ -10,8 +10,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 "
-"|| n%100>14) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.9\n"
 
 #: src/eapi/common/console.rb:14
@@ -19,43 +18,9 @@ msgctxt "EAPI_Common"
 msgid "Exit..."
 msgstr "Zamykanie programu..."
 
-#: src/eapi/common/console.rb:16 src/eapi/eltensrv/attachments.rb:35
-#: src/eapi/external.rb:63 src/eapi/speechtofile.rb:146
-#: src/eapi/speechtofile.rb:174
-#: src/platforms/windows/invisibleinterface/service.rb:679
-#: src/platforms/windows/invisibleinterface/service.rb:695
-#: src/platforms/windows/invisibleinterface/service.rb:711
-#: src/scenes/account.rb:129 src/scenes/account.rb:705
-#: src/scenes/account.rb:806 src/scenes/ban.rb:26 src/scenes/ban.rb:119
-#: src/scenes/blog.rb:484 src/scenes/blog.rb:822 src/scenes/blog.rb:1064
-#: src/scenes/blog.rb:1274 src/scenes/blog.rb:1393 src/scenes/blog.rb:1451
-#: src/scenes/blog.rb:1583 src/scenes/blog.rb:1986 src/scenes/blog.rb:2433
-#: src/scenes/blog.rb:2566 src/scenes/calendar.rb:80 src/scenes/calendar.rb:607
-#: src/scenes/calendar.rb:692 src/scenes/clock.rb:12 src/scenes/clock.rb:68
-#: src/scenes/conference.rb:828 src/scenes/conference.rb:894
-#: src/scenes/conference.rb:922 src/scenes/conference.rb:996
-#: src/scenes/conference.rb:1112 src/scenes/conference.rb:1185
-#: src/scenes/conference.rb:1329 src/scenes/conference.rb:1702
-#: src/scenes/conference.rb:1734 src/scenes/conference.rb:1771
-#: src/scenes/conference.rb:1873 src/scenes/conference.rb:1894
-#: src/scenes/conference.rb:1919 src/scenes/conference.rb:2176
-#: src/scenes/forum.rb:877 src/scenes/forum.rb:902 src/scenes/forum.rb:1015
-#: src/scenes/forum.rb:1337 src/scenes/forum.rb:1375 src/scenes/forum.rb:1552
-#: src/scenes/forum.rb:1685 src/scenes/forum.rb:1781 src/scenes/forum.rb:2341
-#: src/scenes/forum.rb:2406 src/scenes/forum.rb:2507 src/scenes/forum.rb:3464
-#: src/scenes/forum.rb:3524 src/scenes/forum.rb:3643 src/scenes/forum.rb:3667
-#: src/scenes/forum.rb:4222 src/scenes/honors.rb:150 src/scenes/honors.rb:185
-#: src/scenes/honors.rb:273 src/scenes/login.rb:106 src/scenes/login.rb:307
-#: src/scenes/main.rb:490 src/scenes/messages.rb:330 src/scenes/messages.rb:899
-#: src/scenes/notes.rb:87 src/scenes/notes.rb:231 src/scenes/polls.rb:146
-#: src/scenes/polls.rb:204 src/scenes/polls.rb:375 src/scenes/programs.rb:55
-#: src/scenes/programs.rb:75 src/scenes/settings.rb:121
-#: src/scenes/sounds.rb:270 src/scenes/speedtest.rb:9
-#: src/ui/controls/date_button.rb:34 src/ui/controls/edit_box.rb:528
-#: src/ui/controls/edit_box.rb:637 src/ui/controls/opus_record_button.rb:189
-#: src/ui/controls/opus_record_button.rb:267
-#: src/ui/controls/opus_record_button.rb:330 src/ui/controls/player.rb:158
-#: src/ui/controls/player.rb:224 src/ui/dialogs.rb:51
+#: src/eapi/common/console.rb:16 src/eapi/eltensrv/attachments.rb:35 src/eapi/external.rb:63 src/eapi/speechtofile.rb:146 src/eapi/speechtofile.rb:174 src/platforms/windows/invisibleinterface/service.rb:679 src/platforms/windows/invisibleinterface/service.rb:695 src/platforms/windows/invisibleinterface/service.rb:711 src/scenes/account.rb:129 src/scenes/account.rb:705 src/scenes/account.rb:806 src/scenes/ban.rb:26 src/scenes/ban.rb:119 src/scenes/blog.rb:484 src/scenes/blog.rb:822 src/scenes/blog.rb:1064 src/scenes/blog.rb:1274 src/scenes/blog.rb:1393 src/scenes/blog.rb:1451 src/scenes/blog.rb:1583 src/scenes/blog.rb:1986 src/scenes/blog.rb:2433 src/scenes/blog.rb:2566 src/scenes/calendar.rb:80 src/scenes/calendar.rb:607 src/scenes/calendar.rb:692 src/scenes/clock.rb:12 src/scenes/clock.rb:68 src/scenes/conference.rb:828 src/scenes/conference.rb:894 src/scenes/conference.rb:922
+#: src/scenes/conference.rb:996 src/scenes/conference.rb:1112 src/scenes/conference.rb:1185 src/scenes/conference.rb:1329 src/scenes/conference.rb:1702 src/scenes/conference.rb:1734 src/scenes/conference.rb:1771 src/scenes/conference.rb:1873 src/scenes/conference.rb:1894 src/scenes/conference.rb:1919 src/scenes/conference.rb:2176 src/scenes/forum.rb:877 src/scenes/forum.rb:902 src/scenes/forum.rb:1015 src/scenes/forum.rb:1337 src/scenes/forum.rb:1375 src/scenes/forum.rb:1552 src/scenes/forum.rb:1685 src/scenes/forum.rb:1781 src/scenes/forum.rb:2341 src/scenes/forum.rb:2406 src/scenes/forum.rb:2507 src/scenes/forum.rb:3464 src/scenes/forum.rb:3524 src/scenes/forum.rb:3643 src/scenes/forum.rb:3667 src/scenes/forum.rb:4222 src/scenes/honors.rb:150 src/scenes/honors.rb:185 src/scenes/honors.rb:273 src/scenes/login.rb:106 src/scenes/login.rb:307 src/scenes/main.rb:490 src/scenes/messages.rb:330
+#: src/scenes/messages.rb:899 src/scenes/notes.rb:87 src/scenes/notes.rb:231 src/scenes/polls.rb:146 src/scenes/polls.rb:204 src/scenes/polls.rb:375 src/scenes/programs.rb:55 src/scenes/programs.rb:75 src/scenes/settings.rb:121 src/scenes/sounds.rb:270 src/scenes/speedtest.rb:9 src/ui/controls/date_button.rb:34 src/ui/controls/edit_box.rb:528 src/ui/controls/edit_box.rb:637 src/ui/controls/opus_record_button.rb:189 src/ui/controls/opus_record_button.rb:267 src/ui/controls/opus_record_button.rb:330 src/ui/controls/player.rb:158 src/ui/controls/player.rb:224 src/ui/dialogs.rb:51
 msgid "Cancel"
 msgstr "Anuluj"
 
@@ -64,9 +29,7 @@ msgctxt "EAPI_Common"
 msgid "Hide program in Tray"
 msgstr "Ukryj program w zasobniku systemowym"
 
-#: src/eapi/common/console.rb:18 src/scenes/account.rb:656
-#: src/scenes/authentication.rb:24 src/scenes/authentication.rb:26
-#: src/scenes/forgotpassword.rb:30 src/scenes/loading.rb:349
+#: src/eapi/common/console.rb:18 src/scenes/account.rb:656 src/scenes/authentication.rb:24 src/scenes/authentication.rb:26 src/scenes/forgotpassword.rb:30 src/scenes/loading.rb:349
 msgid "Exit"
 msgstr "Wyjście"
 
@@ -100,14 +63,12 @@ msgctxt "EAPI_Common"
 msgid "Enable auto clear input"
 msgstr "Włącz automatyczne czyszczenie wejścia"
 
-#: src/eapi/common/console.rb:117 src/eapi/common/console.rb:131
-#: src/eapi/common/console.rb:149
+#: src/eapi/common/console.rb:117 src/eapi/common/console.rb:131 src/eapi/common/console.rb:149
 msgctxt "EAPI_Common"
 msgid "Disabled"
 msgstr "Wyłączono"
 
-#: src/eapi/common/console.rb:120 src/eapi/common/console.rb:134
-#: src/eapi/common/console.rb:146
+#: src/eapi/common/console.rb:120 src/eapi/common/console.rb:134 src/eapi/common/console.rb:146
 msgctxt "EAPI_Common"
 msgid "Enabled"
 msgstr "Włączono"
@@ -170,31 +131,22 @@ msgstr "Nie akceptuję, zamknij program"
 #: src/eapi/common/license.rb:21
 msgctxt "EAPI_Common"
 msgid "I accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy"
-msgstr ""
-"Akceptuję Umowę Licencyjną programu Elten, jego Regulamin oraz Politykę "
-"Prywatności"
+msgstr "Akceptuję Umowę Licencyjną programu Elten, jego Regulamin oraz Politykę Prywatności"
 
 #: src/eapi/common/license.rb:39
 msgctxt "EAPI_Common"
 msgid "Do you accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy?"
-msgstr ""
-"Czy akceptujesz Umowę Licencyjną programu Elten, jego Regulamin oraz "
-"Politykę Prywatności?"
+msgstr "Czy akceptujesz Umowę Licencyjną programu Elten, jego Regulamin oraz Politykę Prywatności?"
 
 #: src/eapi/common/media.rb:21
 msgctxt "EAPI_Common"
 msgid "You are trying to play a MIDI file. Elten needs an external instrument sound bank to play MIDI files. Do you want to download it from the server now? This may take several minutes."
-msgstr ""
-"Próbujesz odtworzyć plik typu midi. Aby poprawnie odtwarzać pliki tego typu, "
-"program Elten wymaga zewnętrznej bazy brzmień instrumentów. Czy chcesz ją "
-"teraz pobrać z serwera? To może potrwać kilka minut."
+msgstr "Próbujesz odtworzyć plik typu midi. Aby poprawnie odtwarzać pliki tego typu, program Elten wymaga zewnętrznej bazy brzmień instrumentów. Czy chcesz ją teraz pobrać z serwera? To może potrwać kilka minut."
 
 #: src/eapi/common/media.rb:22
 msgctxt "EAPI_Common"
 msgid "Please wait, the soundfont is being downloaded. It may take a while."
-msgstr ""
-"Proszę czekać, trwa pobieranie bazy brzmień midi. To może potrwać kilka "
-"minut."
+msgstr "Proszę czekać, trwa pobieranie bazy brzmień midi. To może potrwać kilka minut."
 
 #: src/eapi/common/media.rb:24
 msgctxt "EAPI_Common"
@@ -224,9 +176,7 @@ msgstr "Reżyser"
 #: src/eapi/common/premium.rb:32
 msgctxt "EAPI_Common"
 msgid "This feature requires the %{package} premium package. Would you like to see the available premium packages?"
-msgstr ""
-"Ta funkcja wymaga pakietu premium %{package}. Czy chcesz zobaczyć dostępne "
-"pakiety premium?"
+msgstr "Ta funkcja wymaga pakietu premium %{package}. Czy chcesz zobaczyć dostępne pakiety premium?"
 
 #: src/eapi/common/user_menu.rb:17
 msgctxt "EAPI_Common"
@@ -513,31 +463,13 @@ msgstr "%{day}"
 
 #: src/eapi/core/configuration.rb:190
 msgctxt "EAPI_EltenAPI"
-msgid ""
-"Do you want to send reports on how Elten is used? This data does not contain "
-"any confidential information and is very helpful in program development. "
-"This selection can be changed at any time from the Settings."
-msgstr ""
-"Czy chcesz wysyłać raporty o użytkowaniu programu Elten? Raporty te nie "
-"zawierają żadnych prywatnych informacji i są niezwykle pomocne w określaniu "
-"dalszej ścieżki rozwoju aplikacji. Wybór ten można w każdej chwili zmienić z "
-"poziomu Ustawień."
+msgid "Do you want to send reports on how Elten is used? This data does not contain any confidential information and is very helpful in program development. This selection can be changed at any time from the Settings."
+msgstr "Czy chcesz wysyłać raporty o użytkowaniu programu Elten? Raporty te nie zawierają żadnych prywatnych informacji i są niezwykle pomocne w określaniu dalszej ścieżki rozwoju aplikacji. Wybór ten można w każdej chwili zmienić z poziomu Ustawień."
 
 #: src/eapi/core/configuration.rb:195
 msgctxt "EAPI_EltenAPI"
-msgid ""
-"You are currently using a beta version of Elten. In these versions, "
-"uploading usage statistics is always enabled. They contain information about "
-"the most frequently used functions, configurations and problems with program "
-"operation. They do not contain any confidential or private information. If "
-"you do not want to send statistics, please use the stable version of Elten."
-msgstr ""
-"Używasz obecnie wersji beta programu Elten. W wersjach beta zawsze włączone "
-"jest przesyłanie statystyk użytkowania. Zawierają one informacje o "
-"najczęściej używanych funkcjach, konfiguracji i problemach z działaniem "
-"programu. Nie zawierają one żadnych poufnych lub prywatnych informacji. "
-"Jeśli nie chcesz przesyłać tych danych, skorzystaj z wersji stabilnej "
-"programu."
+msgid "You are currently using a beta version of Elten. In these versions, uploading usage statistics is always enabled. They contain information about the most frequently used functions, configurations and problems with program operation. They do not contain any confidential or private information. If you do not want to send statistics, please use the stable version of Elten."
+msgstr "Używasz obecnie wersji beta programu Elten. W wersjach beta zawsze włączone jest przesyłanie statystyk użytkowania. Zawierają one informacje o najczęściej używanych funkcjach, konfiguracji i problemach z działaniem programu. Nie zawierają one żadnych poufnych lub prywatnych informacji. Jeśli nie chcesz przesyłać tych danych, skorzystaj z wersji stabilnej programu."
 
 #: src/eapi/documents.rb:3
 msgctxt "License"
@@ -546,115 +478,29 @@ msgstr "Kod źródłowy Eltena można znaleźć w serwisie GitHub:"
 
 #: src/eapi/documents.rb:3
 msgctxt "License"
-msgid ""
-"The original content of the GNU General Public License V3 can be found below."
-msgstr ""
-"Oryginalna treść Powszechnej Licencji Publicznej GNU w wersji 3 znajduje się "
-"poniżej."
+msgid "The original content of the GNU General Public License V3 can be found below."
+msgstr "Oryginalna treść Powszechnej Licencji Publicznej GNU w wersji 3 znajduje się poniżej."
 
 #: src/eapi/documents.rb:3
 msgctxt "License"
 msgid ""
-"Elten is free software: you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation, version 3.\n"
-"Elten is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details."
+"Elten is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.\n"
+"Elten is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details."
 msgstr ""
-"Elten jest wolnym oprogramowaniem; możesz go rozprowadzać dalej i/lub "
-"modyfikować na warunkach Powszechnej Licencji Publicznej (General Public "
-"License) GNU, wydanej przez Fundację Wolnego Oprogramowania (Free Software "
-"Foundation) - według wersji 3 tej Licencji.\n"
-"Niniejszy program rozpowszechniany jest z nadzieją, iż będzie on użyteczny - "
-"jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet domyślnej gwarancji PRZYDATNOŚCI "
-"HANDLOWEJ albo PRZYDATNOŚCI DO OKREŚLONYCH ZASTOSOWAŃ. W celu uzyskania "
-"bliższych informacji sięgnij do     Powszechnej Licencji Publicznej GNU."
+"Elten jest wolnym oprogramowaniem; możesz go rozprowadzać dalej i/lub modyfikować na warunkach Powszechnej Licencji Publicznej (General Public License) GNU, wydanej przez Fundację Wolnego Oprogramowania (Free Software Foundation) - według wersji 3 tej Licencji.\n"
+"Niniejszy program rozpowszechniany jest z nadzieją, iż będzie on użyteczny - jednak BEZ JAKIEJKOLWIEK GWARANCJI, nawet domyślnej gwarancji PRZYDATNOŚCI HANDLOWEJ albo PRZYDATNOŚCI DO OKREŚLONYCH ZASTOSOWAŃ. W celu uzyskania bliższych informacji sięgnij do     Powszechnej Licencji Publicznej GNU."
 
 #: src/eapi/documents.rb:684
 msgctxt "Documentation"
 msgid "Current Invisible Interface modifier key"
 msgstr "Obecny modyfikator Eltena"
 
-#: src/eapi/eltensrv/attachments.rb:21 src/eapi/eltensrv/attachments.rb:28
-#: src/eapi/eltensrv/bugs.rb:29 src/eapi/eltensrv/feeds.rb:26
-#: src/eapi/eltensrv/monitors.rb:15 src/eapi/eltensrv/monitors.rb:24
-#: src/eapi/eltensrv/users.rb:17 src/eapi/eltensrv/users.rb:67
-#: src/eapi/eltensrv/users.rb:75 src/eapi/eltensrv/users.rb:83
-#: src/eapi/eltensrv/users.rb:103 src/eapi/notificationgroups.rb:516
-#: src/eapi/notificationgroups.rb:534 src/eapi/quickactions.rb:36
-#: src/eapi/quickactions.rb:43 src/eapi/quickactions.rb:172
-#: src/scenes/account.rb:513 src/scenes/account.rb:571
-#: src/scenes/account.rb:630 src/scenes/account.rb:638
-#: src/scenes/account.rb:645 src/scenes/account.rb:672
-#: src/scenes/account.rb:717 src/scenes/account.rb:739
-#: src/scenes/account.rb:766 src/scenes/account.rb:783 src/scenes/admins.rb:67
-#: src/scenes/auctions.rb:29 src/scenes/authentication.rb:18
-#: src/scenes/authentication.rb:60 src/scenes/authentication.rb:107
-#: src/scenes/authentication.rb:122 src/scenes/ban.rb:76 src/scenes/ban.rb:110
-#: src/scenes/ban.rb:137 src/scenes/blog.rb:94 src/scenes/blog.rb:112
-#: src/scenes/blog.rb:152 src/scenes/blog.rb:173 src/scenes/blog.rb:189
-#: src/scenes/blog.rb:249 src/scenes/blog.rb:359 src/scenes/blog.rb:427
-#: src/scenes/blog.rb:477 src/scenes/blog.rb:508 src/scenes/blog.rb:529
-#: src/scenes/blog.rb:569 src/scenes/blog.rb:688 src/scenes/blog.rb:694
-#: src/scenes/blog.rb:767 src/scenes/blog.rb:815 src/scenes/blog.rb:846
-#: src/scenes/blog.rb:945 src/scenes/blog.rb:1012 src/scenes/blog.rb:1074
-#: src/scenes/blog.rb:1123 src/scenes/blog.rb:1153 src/scenes/blog.rb:1160
-#: src/scenes/blog.rb:1170 src/scenes/blog.rb:1196 src/scenes/blog.rb:1209
-#: src/scenes/blog.rb:1222 src/scenes/blog.rb:1261 src/scenes/blog.rb:1291
-#: src/scenes/blog.rb:1326 src/scenes/blog.rb:1354 src/scenes/blog.rb:1367
-#: src/scenes/blog.rb:1417 src/scenes/blog.rb:1443 src/scenes/blog.rb:1459
-#: src/scenes/blog.rb:1575 src/scenes/blog.rb:1732 src/scenes/blog.rb:1874
-#: src/scenes/blog.rb:1890 src/scenes/blog.rb:1948 src/scenes/blog.rb:1962
-#: src/scenes/blog.rb:2047 src/scenes/blog.rb:2172 src/scenes/blog.rb:2179
-#: src/scenes/blog.rb:2185 src/scenes/blog.rb:2196 src/scenes/blog.rb:2306
-#: src/scenes/blog.rb:2315 src/scenes/blog.rb:2325 src/scenes/blog.rb:2369
-#: src/scenes/blog.rb:2425 src/scenes/blog.rb:2532 src/scenes/blog.rb:2578
-#: src/scenes/calendar.rb:201 src/scenes/calendar.rb:214
-#: src/scenes/calendar.rb:314 src/scenes/calendar.rb:327
-#: src/scenes/calendar.rb:557 src/scenes/calendar.rb:632
-#: src/scenes/calendar.rb:643 src/scenes/calendar.rb:654
-#: src/scenes/calendar.rb:665 src/scenes/calendar.rb:687
-#: src/scenes/calendar.rb:706 src/scenes/calendar.rb:742
-#: src/scenes/calendar.rb:802 src/scenes/calendar.rb:872
-#: src/scenes/callhistory.rb:18 src/scenes/conference.rb:822
-#: src/scenes/conference.rb:844 src/scenes/conference.rb:863
-#: src/scenes/feedviewer.rb:22 src/scenes/feedviewer.rb:129
-#: src/scenes/forgotpassword.rb:24 src/scenes/forum.rb:8 src/scenes/forum.rb:15
-#: src/scenes/forum.rb:782 src/scenes/forum.rb:1670 src/scenes/forum.rb:2559
-#: src/scenes/forum.rb:2676 src/scenes/forum.rb:2720 src/scenes/forum.rb:3089
-#: src/scenes/forum.rb:3595 src/scenes/honors.rb:17 src/scenes/honors.rb:100
-#: src/scenes/honors.rb:112 src/scenes/honors.rb:129 src/scenes/honors.rb:173
-#: src/scenes/honors.rb:219 src/scenes/honors.rb:286 src/scenes/loading.rb:295
-#: src/scenes/main.rb:540 src/scenes/main.rb:648 src/scenes/messages.rb:144
-#: src/scenes/messages.rb:205 src/scenes/messages.rb:222
-#: src/scenes/messages.rb:229 src/scenes/messages.rb:257
-#: src/scenes/messages.rb:287 src/scenes/messages.rb:321
-#: src/scenes/messages.rb:375 src/scenes/messages.rb:398
-#: src/scenes/messages.rb:414 src/scenes/messages.rb:434
-#: src/scenes/messages.rb:443 src/scenes/messages.rb:522
-#: src/scenes/messages.rb:541 src/scenes/messages.rb:554
-#: src/scenes/messages.rb:561 src/scenes/messages.rb:754
-#: src/scenes/messages.rb:763 src/scenes/messages.rb:781
-#: src/scenes/messages.rb:790 src/scenes/messages.rb:848
-#: src/scenes/messages.rb:938 src/scenes/messages.rb:1051
-#: src/scenes/notes.rb:18 src/scenes/notes.rb:82 src/scenes/notes.rb:112
-#: src/scenes/notes.rb:153 src/scenes/notes.rb:168 src/scenes/notes.rb:204
-#: src/scenes/notes.rb:220 src/scenes/notes.rb:251
-#: src/scenes/notifications.rb:56 src/scenes/online.rb:14
-#: src/scenes/polls.rb:29 src/scenes/polls.rb:58 src/scenes/polls.rb:103
-#: src/scenes/polls.rb:315 src/scenes/polls.rb:333 src/scenes/polls.rb:416
-#: src/scenes/polls.rb:450 src/scenes/polls.rb:463 src/scenes/polls.rb:518
-#: src/scenes/polls.rb:541 src/scenes/premiumpackages.rb:287
-#: src/scenes/premiumpackages.rb:374 src/scenes/premiumpackages.rb:413
-#: src/scenes/premiumpackages.rb:431 src/scenes/premiumpackages.rb:442
-#: src/scenes/registration.rb:45 src/scenes/sounds.rb:296
-#: src/scenes/sounds.rb:329 src/scenes/sounds.rb:355
-#: src/scenes/soundthemes.rb:83 src/scenes/soundthemes.rb:162
-#: src/scenes/sponsors.rb:14 src/scenes/users_recentlyactived.rb:14
-#: src/scenes/users_recentlyregistered.rb:14
-#: src/scenes/usersaddedmetocontacts.rb:22 src/scenes/usersearch.rb:21
+#: src/eapi/eltensrv/attachments.rb:21 src/eapi/eltensrv/attachments.rb:28 src/eapi/eltensrv/bugs.rb:29 src/eapi/eltensrv/feeds.rb:26 src/eapi/eltensrv/monitors.rb:15 src/eapi/eltensrv/monitors.rb:24 src/eapi/eltensrv/users.rb:17 src/eapi/eltensrv/users.rb:67 src/eapi/eltensrv/users.rb:75 src/eapi/eltensrv/users.rb:83 src/eapi/eltensrv/users.rb:103 src/eapi/notificationgroups.rb:516 src/eapi/notificationgroups.rb:534 src/eapi/quickactions.rb:36 src/eapi/quickactions.rb:43 src/eapi/quickactions.rb:172 src/scenes/account.rb:513 src/scenes/account.rb:571 src/scenes/account.rb:630 src/scenes/account.rb:638 src/scenes/account.rb:645 src/scenes/account.rb:672 src/scenes/account.rb:717 src/scenes/account.rb:739 src/scenes/account.rb:766 src/scenes/account.rb:783 src/scenes/admins.rb:67 src/scenes/auctions.rb:29 src/scenes/authentication.rb:18 src/scenes/authentication.rb:60
+#: src/scenes/authentication.rb:107 src/scenes/authentication.rb:122 src/scenes/ban.rb:76 src/scenes/ban.rb:110 src/scenes/ban.rb:137 src/scenes/blog.rb:94 src/scenes/blog.rb:112 src/scenes/blog.rb:152 src/scenes/blog.rb:173 src/scenes/blog.rb:189 src/scenes/blog.rb:249 src/scenes/blog.rb:359 src/scenes/blog.rb:427 src/scenes/blog.rb:477 src/scenes/blog.rb:508 src/scenes/blog.rb:529 src/scenes/blog.rb:569 src/scenes/blog.rb:688 src/scenes/blog.rb:694 src/scenes/blog.rb:767 src/scenes/blog.rb:815 src/scenes/blog.rb:846 src/scenes/blog.rb:945 src/scenes/blog.rb:1012 src/scenes/blog.rb:1074 src/scenes/blog.rb:1123 src/scenes/blog.rb:1153 src/scenes/blog.rb:1160 src/scenes/blog.rb:1170 src/scenes/blog.rb:1196 src/scenes/blog.rb:1209 src/scenes/blog.rb:1222 src/scenes/blog.rb:1261 src/scenes/blog.rb:1291 src/scenes/blog.rb:1326 src/scenes/blog.rb:1354 src/scenes/blog.rb:1367 src/scenes/blog.rb:1417
+#: src/scenes/blog.rb:1443 src/scenes/blog.rb:1459 src/scenes/blog.rb:1575 src/scenes/blog.rb:1732 src/scenes/blog.rb:1874 src/scenes/blog.rb:1890 src/scenes/blog.rb:1948 src/scenes/blog.rb:1962 src/scenes/blog.rb:2047 src/scenes/blog.rb:2172 src/scenes/blog.rb:2179 src/scenes/blog.rb:2185 src/scenes/blog.rb:2196 src/scenes/blog.rb:2306 src/scenes/blog.rb:2315 src/scenes/blog.rb:2325 src/scenes/blog.rb:2369 src/scenes/blog.rb:2425 src/scenes/blog.rb:2532 src/scenes/blog.rb:2578 src/scenes/calendar.rb:201 src/scenes/calendar.rb:214 src/scenes/calendar.rb:314 src/scenes/calendar.rb:327 src/scenes/calendar.rb:557 src/scenes/calendar.rb:632 src/scenes/calendar.rb:643 src/scenes/calendar.rb:654 src/scenes/calendar.rb:665 src/scenes/calendar.rb:687 src/scenes/calendar.rb:706 src/scenes/calendar.rb:742 src/scenes/calendar.rb:802 src/scenes/calendar.rb:872 src/scenes/callhistory.rb:18
+#: src/scenes/conference.rb:822 src/scenes/conference.rb:844 src/scenes/conference.rb:863 src/scenes/feedviewer.rb:22 src/scenes/feedviewer.rb:129 src/scenes/forgotpassword.rb:24 src/scenes/forum.rb:8 src/scenes/forum.rb:15 src/scenes/forum.rb:782 src/scenes/forum.rb:1670 src/scenes/forum.rb:2559 src/scenes/forum.rb:2676 src/scenes/forum.rb:2720 src/scenes/forum.rb:3089 src/scenes/forum.rb:3595 src/scenes/honors.rb:17 src/scenes/honors.rb:100 src/scenes/honors.rb:112 src/scenes/honors.rb:129 src/scenes/honors.rb:173 src/scenes/honors.rb:219 src/scenes/honors.rb:286 src/scenes/loading.rb:295 src/scenes/main.rb:540 src/scenes/main.rb:648 src/scenes/messages.rb:144 src/scenes/messages.rb:205 src/scenes/messages.rb:222 src/scenes/messages.rb:229 src/scenes/messages.rb:257 src/scenes/messages.rb:287 src/scenes/messages.rb:321 src/scenes/messages.rb:375 src/scenes/messages.rb:398
+#: src/scenes/messages.rb:414 src/scenes/messages.rb:434 src/scenes/messages.rb:443 src/scenes/messages.rb:522 src/scenes/messages.rb:541 src/scenes/messages.rb:554 src/scenes/messages.rb:561 src/scenes/messages.rb:754 src/scenes/messages.rb:763 src/scenes/messages.rb:781 src/scenes/messages.rb:790 src/scenes/messages.rb:848 src/scenes/messages.rb:938 src/scenes/messages.rb:1051 src/scenes/notes.rb:18 src/scenes/notes.rb:82 src/scenes/notes.rb:112 src/scenes/notes.rb:153 src/scenes/notes.rb:168 src/scenes/notes.rb:204 src/scenes/notes.rb:220 src/scenes/notes.rb:251 src/scenes/notifications.rb:56 src/scenes/online.rb:14 src/scenes/polls.rb:29 src/scenes/polls.rb:58 src/scenes/polls.rb:103 src/scenes/polls.rb:315 src/scenes/polls.rb:333 src/scenes/polls.rb:416 src/scenes/polls.rb:450 src/scenes/polls.rb:463 src/scenes/polls.rb:518 src/scenes/polls.rb:541 src/scenes/premiumpackages.rb:287
+#: src/scenes/premiumpackages.rb:374 src/scenes/premiumpackages.rb:413 src/scenes/premiumpackages.rb:431 src/scenes/premiumpackages.rb:442 src/scenes/registration.rb:45 src/scenes/sounds.rb:296 src/scenes/sounds.rb:329 src/scenes/sounds.rb:355 src/scenes/soundthemes.rb:83 src/scenes/soundthemes.rb:162 src/scenes/sponsors.rb:14 src/scenes/users_recentlyactived.rb:14 src/scenes/users_recentlyregistered.rb:14 src/scenes/usersaddedmetocontacts.rb:22 src/scenes/usersearch.rb:21
 msgid "Error"
 msgstr "Błąd"
 
@@ -693,14 +539,11 @@ msgctxt "EAPI_Common"
 msgid "Sent."
 msgstr "Wysłano."
 
-#: src/eapi/eltensrv/contacts.rb:21 src/eapi/eltensrv/profiles.rb:16
-#: src/scenes/contacts.rb:27 src/scenes/contacts.rb:128
-#: src/scenes/contacts.rb:166 src/scenes/users.rb:19
+#: src/eapi/eltensrv/contacts.rb:21 src/eapi/eltensrv/profiles.rb:16 src/scenes/contacts.rb:27 src/scenes/contacts.rb:128 src/scenes/contacts.rb:166 src/scenes/users.rb:19
 msgid "Database Error"
 msgstr "Błąd bazy danych"
 
-#: src/eapi/eltensrv/contacts.rb:25 src/scenes/contacts.rb:31
-#: src/scenes/contacts.rb:131 src/scenes/contacts.rb:169 src/scenes/users.rb:23
+#: src/eapi/eltensrv/contacts.rb:25 src/scenes/contacts.rb:31 src/scenes/contacts.rb:131 src/scenes/contacts.rb:169 src/scenes/users.rb:23
 msgid "Token expired"
 msgstr "Klucz sesji wygasł"
 
@@ -1724,18 +1567,7 @@ msgctxt "EAPI_SpeechToFile"
 msgid "Bitrate"
 msgstr "Szybkość transmisji"
 
-#: src/eapi/speechtofile.rb:145 src/scenes/account.rb:128
-#: src/scenes/account.rb:805 src/scenes/blog.rb:1273 src/scenes/blog.rb:1393
-#: src/scenes/blog.rb:1582 src/scenes/calendar.rb:79 src/scenes/clock.rb:11
-#: src/scenes/clock.rb:68 src/scenes/conference.rb:893
-#: src/scenes/conference.rb:921 src/scenes/conference.rb:995
-#: src/scenes/forum.rb:876 src/scenes/forum.rb:901 src/scenes/forum.rb:1551
-#: src/scenes/forum.rb:1690 src/scenes/forum.rb:3667 src/scenes/forum.rb:4221
-#: src/scenes/honors.rb:150 src/scenes/honors.rb:184 src/scenes/notes.rb:129
-#: src/scenes/notes.rb:146 src/scenes/polls.rb:203 src/scenes/settings.rb:120
-#: src/ui/controls/opus_record_button.rb:188
-#: src/ui/controls/opus_record_button.rb:266
-#: src/ui/controls/opus_record_button.rb:329 src/ui/controls/player.rb:223
+#: src/eapi/speechtofile.rb:145 src/scenes/account.rb:128 src/scenes/account.rb:805 src/scenes/blog.rb:1273 src/scenes/blog.rb:1393 src/scenes/blog.rb:1582 src/scenes/calendar.rb:79 src/scenes/clock.rb:11 src/scenes/clock.rb:68 src/scenes/conference.rb:893 src/scenes/conference.rb:921 src/scenes/conference.rb:995 src/scenes/forum.rb:876 src/scenes/forum.rb:901 src/scenes/forum.rb:1551 src/scenes/forum.rb:1690 src/scenes/forum.rb:3667 src/scenes/forum.rb:4221 src/scenes/honors.rb:150 src/scenes/honors.rb:184 src/scenes/notes.rb:129 src/scenes/notes.rb:146 src/scenes/polls.rb:203 src/scenes/settings.rb:120 src/ui/controls/opus_record_button.rb:188 src/ui/controls/opus_record_button.rb:266 src/ui/controls/opus_record_button.rb:329 src/ui/controls/player.rb:223
 msgid "Save"
 msgstr "Zapisz"
 
@@ -1749,18 +1581,7 @@ msgctxt "EAPI_SpeechToFile"
 msgid "Select file location"
 msgstr "Wybierz folder docelowy"
 
-#: src/eapi/speechtofile.rb:164 src/scenes/account.rb:339
-#: src/scenes/account.rb:343 src/scenes/blog.rb:1293 src/scenes/blog.rb:1328
-#: src/scenes/blog.rb:1787 src/scenes/blog.rb:1791 src/scenes/clock.rb:34
-#: src/scenes/clock.rb:78 src/scenes/conference.rb:2152
-#: src/scenes/conference.rb:2210 src/scenes/conference.rb:2258
-#: src/scenes/forum.rb:1223 src/scenes/forum.rb:1702 src/scenes/forum.rb:1748
-#: src/scenes/forum.rb:4316 src/scenes/forum.rb:4320 src/scenes/honors.rb:175
-#: src/scenes/messages.rb:273 src/scenes/messages.rb:405
-#: src/scenes/settings.rb:336 src/scenes/settings.rb:340
-#: src/scenes/sounds.rb:279 src/scenes/soundthemes.rb:73
-#: src/scenes/soundthemes.rb:202 src/ui/controls/opus_record_button.rb:399
-#: src/ui/controls/player.rb:255
+#: src/eapi/speechtofile.rb:164 src/scenes/account.rb:339 src/scenes/account.rb:343 src/scenes/blog.rb:1293 src/scenes/blog.rb:1328 src/scenes/blog.rb:1787 src/scenes/blog.rb:1791 src/scenes/clock.rb:34 src/scenes/clock.rb:78 src/scenes/conference.rb:2152 src/scenes/conference.rb:2210 src/scenes/conference.rb:2258 src/scenes/forum.rb:1223 src/scenes/forum.rb:1702 src/scenes/forum.rb:1748 src/scenes/forum.rb:4316 src/scenes/forum.rb:4320 src/scenes/honors.rb:175 src/scenes/messages.rb:273 src/scenes/messages.rb:405 src/scenes/settings.rb:336 src/scenes/settings.rb:340 src/scenes/sounds.rb:279 src/scenes/soundthemes.rb:73 src/scenes/soundthemes.rb:202 src/ui/controls/opus_record_button.rb:399 src/ui/controls/player.rb:255
 msgid "Saved"
 msgstr "Zapisano"
 
@@ -1774,8 +1595,7 @@ msgctxt "EAPI_SpeechToFile"
 msgid "Reading to file failed"
 msgstr "Nie udało się zapisać mowy do pliku"
 
-#: src/platforms/windows/invisibleinterface/nativedialogs.rb:540
-#: src/ui/form.rb:401
+#: src/platforms/windows/invisibleinterface/nativedialogs.rb:540 src/ui/form.rb:401
 msgctxt "EAPI_Form"
 msgid "%{count} of %{maximum} characters"
 msgstr "%{count} z %{maximum} znaków"
@@ -1783,123 +1603,99 @@ msgstr "%{count} z %{maximum} znaków"
 #: src/platforms/windows/invisibleinterface/service.rb:232
 msgctxt "EAPI_UI"
 msgid "Errors occurred while trying to register keyboard shortcuts for the Invisible Interface. Make sure that the specified shortcuts are not used by other applications. You can change the Invisible Interface modifier keys in the Settings window."
-msgstr ""
-"Wystąpił błąd podczas próby zarejestrowania skrótów klawiszowych dla "
-"niewidzialnego interfejsu. Upewnij się, że inne aplikacje nie używają "
-"wybranych klawiszy. Możesz zmienić klawisze modyfikatorów niewidzialnego "
-"interfejsu za pomocą okna ustawień."
+msgstr "Wystąpił błąd podczas próby zarejestrowania skrótów klawiszowych dla niewidzialnego interfejsu. Upewnij się, że inne aplikacje nie używają wybranych klawiszy. Możesz zmienić klawisze modyfikatorów niewidzialnego interfejsu za pomocą okna ustawień."
 
-#: src/platforms/windows/invisibleinterface/service.rb:301
-#: src/scenes/messages.rb:160
+#: src/platforms/windows/invisibleinterface/service.rb:301 src/scenes/messages.rb:160
 msgctxt "Messages"
 msgid "Messages"
 msgstr "Wiadomości"
 
-#: src/platforms/windows/invisibleinterface/service.rb:303
-#: src/scenes/feedviewer.rb:41
+#: src/platforms/windows/invisibleinterface/service.rb:303 src/scenes/feedviewer.rb:41
 msgctxt "FeedViewer"
 msgid "Feed"
 msgstr "Tablica"
 
-#: src/platforms/windows/invisibleinterface/service.rb:305
-#: src/scenes/conference.rb:186 src/scenes/conference.rb:306
+#: src/platforms/windows/invisibleinterface/service.rb:305 src/scenes/conference.rb:186 src/scenes/conference.rb:306
 msgctxt "Conference"
 msgid "Conference"
 msgstr "Konferencja"
 
-#: src/platforms/windows/invisibleinterface/service.rb:342
-#: src/scenes/messages.rb:187 src/scenes/messages.rb:736
+#: src/platforms/windows/invisibleinterface/service.rb:342 src/scenes/messages.rb:187 src/scenes/messages.rb:736
 msgctxt "Messages"
 msgid "Reply"
 msgstr "Odpowiedz"
 
-#: src/platforms/windows/invisibleinterface/service.rb:441
-#: src/platforms/windows/invisibleinterface/service.rb:442
-#: src/scenes/messages.rb:830
+#: src/platforms/windows/invisibleinterface/service.rb:441 src/platforms/windows/invisibleinterface/service.rb:442 src/scenes/messages.rb:830
 msgctxt "Messages"
 msgid "To"
 msgstr "Do"
 
-#: src/platforms/windows/invisibleinterface/service.rb:504
-#: src/scenes/feedviewer.rb:131
+#: src/platforms/windows/invisibleinterface/service.rb:504 src/scenes/feedviewer.rb:131
 msgctxt "FeedViewer"
 msgid "Message liked"
 msgstr "Wpis polubiony"
 
-#: src/platforms/windows/invisibleinterface/service.rb:504
-#: src/scenes/feedviewer.rb:131
+#: src/platforms/windows/invisibleinterface/service.rb:504 src/scenes/feedviewer.rb:131
 msgctxt "FeedViewer"
 msgid "Message disliked"
 msgstr "Wpis nie jest już polubiony"
 
-#: src/platforms/windows/invisibleinterface/service.rb:522
-#: src/scenes/main.rb:626
+#: src/platforms/windows/invisibleinterface/service.rb:522 src/scenes/main.rb:626
 msgctxt "Main"
 msgid "Reply"
 msgstr "Odpowiedz"
 
-#: src/platforms/windows/invisibleinterface/service.rb:562
-#: src/scenes/conference.rb:1261
+#: src/platforms/windows/invisibleinterface/service.rb:562 src/scenes/conference.rb:1261
 msgctxt "Conference"
 msgid "Mute microphone"
 msgstr "Wycisz mikrofon"
 
-#: src/platforms/windows/invisibleinterface/service.rb:562
-#: src/scenes/conference.rb:1262
+#: src/platforms/windows/invisibleinterface/service.rb:562 src/scenes/conference.rb:1262
 msgctxt "Conference"
 msgid "Unmute microphone"
 msgstr "Wyłącz wyciszenie mikrofonu"
 
-#: src/platforms/windows/invisibleinterface/service.rb:564
-#: src/scenes/conference.rb:1268
+#: src/platforms/windows/invisibleinterface/service.rb:564 src/scenes/conference.rb:1268
 msgctxt "Conference"
 msgid "Microphone unmuted"
 msgstr "Mikrofon nie jest już wyciszony"
 
-#: src/platforms/windows/invisibleinterface/service.rb:564
-#: src/scenes/conference.rb:1266
+#: src/platforms/windows/invisibleinterface/service.rb:564 src/scenes/conference.rb:1266
 msgctxt "Conference"
 msgid "Microphone muted"
 msgstr "Mikrofon wyciszony"
 
-#: src/platforms/windows/invisibleinterface/service.rb:566
-#: src/scenes/conference.rb:1316
+#: src/platforms/windows/invisibleinterface/service.rb:566 src/scenes/conference.rb:1316
 msgctxt "Conference"
 msgid "Roll a 6-sided die"
 msgstr "Rzuć 6-ścienną kostką do gry"
 
-#: src/platforms/windows/invisibleinterface/service.rb:567
-#: src/scenes/conference.rb:1317
+#: src/platforms/windows/invisibleinterface/service.rb:567 src/scenes/conference.rb:1317
 msgctxt "Conference"
 msgid "Roll a custom die"
 msgstr "Rzuć niestandardową kostką"
 
-#: src/platforms/windows/invisibleinterface/service.rb:570
-#: src/scenes/conference.rb:1154
+#: src/platforms/windows/invisibleinterface/service.rb:570 src/scenes/conference.rb:1154
 msgctxt "Conference"
 msgid "Stream audio file"
 msgstr "Strumieniuj plik audio"
 
-#: src/platforms/windows/invisibleinterface/service.rb:572
-#: src/scenes/conference.rb:835 src/scenes/conference.rb:1157
+#: src/platforms/windows/invisibleinterface/service.rb:572 src/scenes/conference.rb:835 src/scenes/conference.rb:1157
 msgctxt "Conference"
 msgid "Select audio file"
 msgstr "Wybierz plik audio"
 
-#: src/platforms/windows/invisibleinterface/service.rb:579
-#: src/scenes/conference.rb:1138
+#: src/platforms/windows/invisibleinterface/service.rb:579 src/scenes/conference.rb:1138
 msgctxt "Conference"
 msgid "Remove audio stream"
 msgstr "Usuń strumień"
 
-#: src/platforms/windows/invisibleinterface/service.rb:581
-#: src/scenes/conference.rb:1292
+#: src/platforms/windows/invisibleinterface/service.rb:581 src/scenes/conference.rb:1292
 msgctxt "Conference"
 msgid "Enable push-to-talk"
 msgstr "Włącz funkcję Naciśnij i Mów"
 
-#: src/platforms/windows/invisibleinterface/service.rb:581
-#: src/scenes/conference.rb:1293
+#: src/platforms/windows/invisibleinterface/service.rb:581 src/scenes/conference.rb:1293
 msgctxt "Conference"
 msgid "Disable push-to-talk"
 msgstr "Wyłącz funkcję Naciśnij i Mów"
@@ -1914,14 +1710,12 @@ msgctxt "Conference"
 msgid "Post in chat"
 msgstr "Napisz na chacie"
 
-#: src/platforms/windows/invisibleinterface/service.rb:629
-#: src/scenes/conference.rb:1525
+#: src/platforms/windows/invisibleinterface/service.rb:629 src/scenes/conference.rb:1525
 msgctxt "Conference"
 msgid "Which dice do you want to roll?"
 msgstr "Którą kostką chcesz rzucić?"
 
-#: src/platforms/windows/invisibleinterface/service.rb:632
-#: src/scenes/conference.rb:1525
+#: src/platforms/windows/invisibleinterface/service.rb:632 src/scenes/conference.rb:1525
 msgctxt "Conference"
 msgid "%{count}-sided"
 msgstr "%{count}-ścienną"
@@ -1931,8 +1725,7 @@ msgctxt "Conference"
 msgid "Chat"
 msgstr "Chat"
 
-#: src/platforms/windows/invisibleinterface/service.rb:655
-#: src/scenes/conference.rb:140
+#: src/platforms/windows/invisibleinterface/service.rb:655 src/scenes/conference.rb:140
 msgctxt "Conference"
 msgid "Whisper"
 msgstr "Szepnij użytkownikowi"
@@ -1942,79 +1735,62 @@ msgctxt "Conference"
 msgid "End whispering"
 msgstr "Koniec szeptów"
 
-#: src/platforms/windows/invisibleinterface/service.rb:658
-#: src/scenes/conference.rb:87
+#: src/platforms/windows/invisibleinterface/service.rb:658 src/scenes/conference.rb:87
 msgctxt "Conference"
 msgid "Unmute user"
 msgstr "Wyłącz wyciszenie użytkownika"
 
-#: src/platforms/windows/invisibleinterface/service.rb:658
-#: src/scenes/conference.rb:86
+#: src/platforms/windows/invisibleinterface/service.rb:658 src/scenes/conference.rb:86
 msgctxt "Conference"
 msgid "Mute user"
 msgstr "Wycisz użytkownika"
 
-#: src/platforms/windows/invisibleinterface/service.rb:665
-#: src/scenes/conference.rb:136
+#: src/platforms/windows/invisibleinterface/service.rb:665 src/scenes/conference.rb:136
 msgctxt "Conference"
 msgid "Go to user"
 msgstr "Podejdź"
 
-#: src/platforms/windows/invisibleinterface/service.rb:674
-#: src/scenes/messages.rb:279
+#: src/platforms/windows/invisibleinterface/service.rb:674 src/scenes/messages.rb:279
 msgctxt "Messages"
 msgid "Send a new message"
 msgstr "Wyślij nową wiadomość"
 
-#: src/platforms/windows/invisibleinterface/service.rb:675
-#: src/scenes/messages.rb:891
+#: src/platforms/windows/invisibleinterface/service.rb:675 src/scenes/messages.rb:891
 msgctxt "Messages"
 msgid "Recipient"
 msgstr "Odbiorca"
 
-#: src/platforms/windows/invisibleinterface/service.rb:676
-#: src/scenes/messages.rb:893
+#: src/platforms/windows/invisibleinterface/service.rb:676 src/scenes/messages.rb:893
 msgctxt "Messages"
 msgid "Subject:"
 msgstr "Temat:"
 
-#: src/platforms/windows/invisibleinterface/service.rb:677
-#: src/scenes/messages.rb:894
+#: src/platforms/windows/invisibleinterface/service.rb:677 src/scenes/messages.rb:894
 msgctxt "Messages"
 msgid "Message:"
 msgstr "Treść:"
 
-#: src/platforms/windows/invisibleinterface/service.rb:678
-#: src/platforms/windows/invisibleinterface/service.rb:694
-#: src/platforms/windows/invisibleinterface/service.rb:710
-#: src/scenes/messages.rb:714 src/scenes/messages.rb:984
+#: src/platforms/windows/invisibleinterface/service.rb:678 src/platforms/windows/invisibleinterface/service.rb:694 src/platforms/windows/invisibleinterface/service.rb:710 src/scenes/messages.rb:714 src/scenes/messages.rb:984
 msgctxt "Messages"
 msgid "Send"
 msgstr "Wyślij"
 
-#: src/platforms/windows/invisibleinterface/service.rb:692
-#: src/scenes/main.rb:664
+#: src/platforms/windows/invisibleinterface/service.rb:692 src/scenes/main.rb:664
 msgctxt "Main"
 msgid "Publish to a feed"
 msgstr "Napisz na tablicy"
 
-#: src/platforms/windows/invisibleinterface/service.rb:693
-#: src/platforms/windows/invisibleinterface/service.rb:709
-#: src/scenes/main.rb:669
+#: src/platforms/windows/invisibleinterface/service.rb:693 src/platforms/windows/invisibleinterface/service.rb:709 src/scenes/main.rb:669
 msgctxt "Main"
 msgid "Message"
 msgstr "Wiadomość"
 
-#: src/platforms/windows/invisibleinterface/service.rb:708
-#: src/scenes/conference.rb:41
+#: src/platforms/windows/invisibleinterface/service.rb:708 src/scenes/conference.rb:41
 msgctxt "Conference"
 msgid "Chat message"
 msgstr "Wiadomość na chacie"
 
-#: src/platforms/windows/invisibleinterface/service.rb:730
-#: src/platforms/windows/invisibleinterface/service.rb:735
-#: src/platforms/windows/invisibleinterface/service.rb:738
-#: src/scenes/messages.rb:721
+#: src/platforms/windows/invisibleinterface/service.rb:730 src/platforms/windows/invisibleinterface/service.rb:735 src/platforms/windows/invisibleinterface/service.rb:738 src/scenes/messages.rb:721
 msgctxt "Messages"
 msgid "Failed to send message"
 msgstr "Nie udało się wysłać wiadomości"
@@ -2024,8 +1800,7 @@ msgctxt "Account"
 msgid "Category"
 msgstr "Kategoria"
 
-#: src/scenes/account.rb:127 src/scenes/blog.rb:1581 src/scenes/forum.rb:4220
-#: src/scenes/settings.rb:119
+#: src/scenes/account.rb:127 src/scenes/blog.rb:1581 src/scenes/forum.rb:4220 src/scenes/settings.rb:119
 msgid "Apply"
 msgstr "Zastosuj"
 
@@ -2174,8 +1949,7 @@ msgstr "Ukryj mój profil przed osobami z poza mojej listy kontaktów"
 #: src/scenes/account.rb:288
 msgctxt "Account"
 msgid "Prevent banned users from sending me private messages"
-msgstr ""
-"Nie pozwalaj zbanowanym użytkownikom na wysyłanie mi prywatnych wiadomości"
+msgstr "Nie pozwalaj zbanowanym użytkownikom na wysyłanie mi prywatnych wiadomości"
 
 #: src/scenes/account.rb:289
 msgctxt "Account"
@@ -2382,10 +2156,7 @@ msgctxt "Account"
 msgid "The old password is incorrect."
 msgstr "Podano błędne stare hasło."
 
-#: src/scenes/account.rb:407 src/scenes/account.rb:442
-#: src/scenes/account.rb:482 src/scenes/account.rb:593
-#: src/scenes/account.rb:625 src/scenes/account.rb:709
-#: src/scenes/account.rb:761 src/scenes/account.rb:778
+#: src/scenes/account.rb:407 src/scenes/account.rb:442 src/scenes/account.rb:482 src/scenes/account.rb:593 src/scenes/account.rb:625 src/scenes/account.rb:709 src/scenes/account.rb:761 src/scenes/account.rb:778
 msgctxt "Account"
 msgid "Enter your password."
 msgstr "Podaj hasło."
@@ -2405,13 +2176,10 @@ msgctxt "Account"
 msgid "Error: you must disable email event reporting first."
 msgstr "Błąd, musisz najpierw wyłączyć raportowanie zdarzeń."
 
-#: src/scenes/account.rb:450 src/scenes/account.rb:492
-#: src/scenes/account.rb:601
+#: src/scenes/account.rb:450 src/scenes/account.rb:492 src/scenes/account.rb:601
 msgctxt "Account"
 msgid "An error occurred while verifying your account. You may have entered an incorrect password."
-msgstr ""
-"Wystąpił błąd podczas próby uwierzytelnienia konta. Prawdopodobnie podano "
-"błędne hasło."
+msgstr "Wystąpił błąd podczas próby uwierzytelnienia konta. Prawdopodobnie podano błędne hasło."
 
 #: src/scenes/account.rb:457
 msgctxt "Account"
@@ -2438,21 +2206,7 @@ msgctxt "Account"
 msgid "Log out all sessions"
 msgstr "Wyloguj wszystkie sesje"
 
-#: src/scenes/account.rb:467 src/scenes/account.rb:583 src/scenes/blog.rb:1246
-#: src/scenes/calendar.rb:293 src/scenes/calendar.rb:548
-#: src/scenes/calendar.rb:781 src/scenes/calendar.rb:853
-#: src/scenes/callhistory.rb:53 src/scenes/conference.rb:1407
-#: src/scenes/conference.rb:1456 src/scenes/conference.rb:1504
-#: src/scenes/conference.rb:1591 src/scenes/conference.rb:2168
-#: src/scenes/forum.rb:860 src/scenes/forum.rb:1108 src/scenes/forum.rb:1773
-#: src/scenes/forum.rb:2326 src/scenes/forum.rb:3453 src/scenes/honors.rb:138
-#: src/scenes/honors.rb:265 src/scenes/main.rb:310 src/scenes/messages.rb:308
-#: src/scenes/messages.rb:511 src/scenes/messages.rb:816 src/scenes/notes.rb:70
-#: src/scenes/notifications.rb:70 src/scenes/online.rb:39
-#: src/scenes/polls.rb:129 src/scenes/premiumpackages.rb:134
-#: src/scenes/sponsors.rb:35 src/scenes/users.rb:54
-#: src/scenes/users_recentlyactived.rb:39
-#: src/scenes/users_recentlyregistered.rb:39
+#: src/scenes/account.rb:467 src/scenes/account.rb:583 src/scenes/blog.rb:1246 src/scenes/calendar.rb:293 src/scenes/calendar.rb:548 src/scenes/calendar.rb:781 src/scenes/calendar.rb:853 src/scenes/callhistory.rb:53 src/scenes/conference.rb:1407 src/scenes/conference.rb:1456 src/scenes/conference.rb:1504 src/scenes/conference.rb:1591 src/scenes/conference.rb:2168 src/scenes/forum.rb:860 src/scenes/forum.rb:1108 src/scenes/forum.rb:1773 src/scenes/forum.rb:2326 src/scenes/forum.rb:3453 src/scenes/honors.rb:138 src/scenes/honors.rb:265 src/scenes/main.rb:310 src/scenes/messages.rb:308 src/scenes/messages.rb:511 src/scenes/messages.rb:816 src/scenes/notes.rb:70 src/scenes/notifications.rb:70 src/scenes/online.rb:39 src/scenes/polls.rb:129 src/scenes/premiumpackages.rb:134 src/scenes/sponsors.rb:35 src/scenes/users.rb:54 src/scenes/users_recentlyactived.rb:39 src/scenes/users_recentlyregistered.rb:39
 #: src/scenes/usersaddedmetocontacts.rb:58
 msgid "Refresh"
 msgstr "Odśwież"
@@ -2460,10 +2214,7 @@ msgstr "Odśwież"
 #: src/scenes/account.rb:480
 msgctxt "Account"
 msgid "Are you sure you want to remove all auto-login tokens and log out of all sessions? You will be logged out immediately."
-msgstr ""
-"Czy jesteś pewien, że chcesz usunąć wszystkie klucze automatycznego "
-"logowania i wylogować wszystkie sesje? To konto zostanie natychmiast "
-"wylogowane."
+msgstr "Czy jesteś pewien, że chcesz usunąć wszystkie klucze automatycznego logowania i wylogować wszystkie sesje? To konto zostanie natychmiast wylogowane."
 
 #: src/scenes/account.rb:540
 msgctxt "Account"
@@ -2477,12 +2228,8 @@ msgstr "Użytkownik, którego chcesz dodać do czarnej listy."
 
 #: src/scenes/account.rb:543
 msgctxt "Account"
-msgid ""
-"The users added to your black list cannot send you private messages. Are you "
-"sure  you want to continue?"
-msgstr ""
-"Użytkownik po dodaniu do twojej czarnej listy nie będzie mógł wysyłać do "
-"ciebie wiadomości prywatnych. Czy jesteś pewien, że chcesz kontynuować?"
+msgid "The users added to your black list cannot send you private messages. Are you sure  you want to continue?"
+msgstr "Użytkownik po dodaniu do twojej czarnej listy nie będzie mógł wysyłać do ciebie wiadomości prywatnych. Czy jesteś pewien, że chcesz kontynuować?"
 
 #: src/scenes/account.rb:546
 msgctxt "Account"
@@ -2504,12 +2251,7 @@ msgctxt "Account"
 msgid "The user cannot be found."
 msgstr "Użytkownik nie istnieje."
 
-#: src/scenes/account.rb:566 src/scenes/blog.rb:207 src/scenes/blog.rb:450
-#: src/scenes/calendar.rb:433 src/scenes/calendar.rb:848
-#: src/scenes/conference.rb:2302 src/scenes/feedviewer.rb:137
-#: src/scenes/main.rb:656 src/scenes/messages.rb:801 src/scenes/notes.rb:55
-#: src/scenes/notes.rb:131 src/scenes/polls.rb:98 src/scenes/polls.rb:606
-#: src/ui/controls/files_tree.rb:201 src/ui/controls/opus_record_button.rb:392
+#: src/scenes/account.rb:566 src/scenes/blog.rb:207 src/scenes/blog.rb:450 src/scenes/calendar.rb:433 src/scenes/calendar.rb:848 src/scenes/conference.rb:2302 src/scenes/feedviewer.rb:137 src/scenes/main.rb:656 src/scenes/messages.rb:801 src/scenes/notes.rb:55 src/scenes/notes.rb:131 src/scenes/polls.rb:98 src/scenes/polls.rb:606 src/ui/controls/files_tree.rb:201 src/ui/controls/opus_record_button.rb:392
 msgid "Delete"
 msgstr "Usuń"
 
@@ -2531,19 +2273,12 @@ msgstr "Ostatnie logowania"
 #: src/scenes/account.rb:634
 msgctxt "Account"
 msgid "You can configure Elten to notify you by email about changes to your account and logins from new devices. To do so, you must verify your email address. Do you want to verify it now?"
-msgstr ""
-"Jeśli chcesz, możesz skonfigurować Eltena tak, aby otrzymywać powiadomienia "
-"o wszystkich zmianach wprowadzanych na twoim koncie oraz nowych logowaniach "
-"z niezidentyfikowanych urządzeń na swój adres E-mail. Aby to zrobić, musisz "
-"zweryfikować swój adres E-mail. Czy chcesz to zrobić teraz?"
+msgstr "Jeśli chcesz, możesz skonfigurować Eltena tak, aby otrzymywać powiadomienia o wszystkich zmianach wprowadzanych na twoim koncie oraz nowych logowaniach z niezidentyfikowanych urządzeń na swój adres E-mail. Aby to zrobić, musisz zweryfikować swój adres E-mail. Czy chcesz to zrobić teraz?"
 
 #: src/scenes/account.rb:641 src/scenes/account.rb:668
 msgctxt "Account"
-msgid ""
-"The verification code has been sent to you via E-mail. Please type it here."
-msgstr ""
-"Na twój adres E-mail został wysłany kod weryfikacyjny. Wprowadź go w tym "
-"polu."
+msgid "The verification code has been sent to you via E-mail. Please type it here."
+msgstr "Na twój adres E-mail został wysłany kod weryfikacyjny. Wprowadź go w tym polu."
 
 #: src/scenes/account.rb:654
 msgctxt "Account"
@@ -2558,10 +2293,7 @@ msgstr "Włącz raportowanie zdarzeń"
 #: src/scenes/account.rb:655
 msgctxt "Account"
 msgid "Email event reporting is disabled. If you wish, you can enable it to receive information about changes to your account and logins from new devices by email."
-msgstr ""
-"Raportowanie zdarzeń jest wyłączone. Włącz je, aby otrzymywać powiadomienia "
-"o zmianach na twoim koncie oraz logowaniach z nowych urządzeń na swój adres "
-"E-mail"
+msgstr "Raportowanie zdarzeń jest wyłączone. Włącz je, aby otrzymywać powiadomienia o zmianach na twoim koncie oraz logowaniach z nowych urządzeń na swój adres E-mail"
 
 #: src/scenes/account.rb:655
 msgctxt "Account"
@@ -2570,28 +2302,36 @@ msgstr "Raportowanie zdarzeń jest włączone."
 
 #: src/scenes/account.rb:687
 msgctxt "Account"
-msgid "Archiving your account will have the following effects:\n* An indication that the account is archived will appear next to all of its forum posts.\n* The account will not appear in user lists.\n* The account will be removed from all contact lists.\n* Users will not be able to send private messages to this account.\n* The profile, including the status, bio and signature, will be removed from the server.\n* You will leave all groups that you do not moderate and from which you are not banned.\n* You will leave all message conversations.\n* All information about threads you follow, groups you have pinned and threads you have marked will be removed.\n\nWarning:\nArchiving an account does not delete or hide its blogs or notes. You must do this manually before archiving the account.\n\nThe account will be unarchived automatically the next time you log in, but the removed data will not be restored."
+msgid ""
+"Archiving your account will have the following effects:\n"
+"* An indication that the account is archived will appear next to all of its forum posts.\n"
+"* The account will not appear in user lists.\n"
+"* The account will be removed from all contact lists.\n"
+"* Users will not be able to send private messages to this account.\n"
+"* The profile, including the status, bio and signature, will be removed from the server.\n"
+"* You will leave all groups that you do not moderate and from which you are not banned.\n"
+"* You will leave all message conversations.\n"
+"* All information about threads you follow, groups you have pinned and threads you have marked will be removed.\n"
+"\n"
+"Warning:\n"
+"Archiving an account does not delete or hide its blogs or notes. You must do this manually before archiving the account.\n"
+"\n"
+"The account will be unarchived automatically the next time you log in, but the removed data will not be restored."
 msgstr ""
 "Zarchiwizowanie konta będzie miało następujące skutki:\n"
-"* Informacja, że konto jest zarchiwizowane zostanie umieszczona przy "
-"wszystkich wpisach na forum.\n"
+"* Informacja, że konto jest zarchiwizowane zostanie umieszczona przy wszystkich wpisach na forum.\n"
 "* Konto nie będzie wyświetlane na listach użytkowników.\n"
 "* Konto zostanie usunięte ze wszystkich list kontaktów.\n"
 "* Użytkownicy nie będą mogli wysyłać prywatnych wiadomości do tego konta.\n"
 "* Profil (w tym status, wizytówka i podpis) zostanie usunięty z serwera.\n"
-"* Użytkownik zostanie usunięty ze wszystkich grup, których nie moderuje lub "
-"w których nie został zbanowany.\n"
-"* Użytkownik zostanie usunięty ze wszystkich grupowych konwersacji w "
-"wiadomościach.\n"
-"* Wszystkie informacje o wątkach śledzonych przez użytkownika, przypiętych "
-"grupach lub oznaczonych wątkach zostaną usunięte.\n"
+"* Użytkownik zostanie usunięty ze wszystkich grup, których nie moderuje lub w których nie został zbanowany.\n"
+"* Użytkownik zostanie usunięty ze wszystkich grupowych konwersacji w wiadomościach.\n"
+"* Wszystkie informacje o wątkach śledzonych przez użytkownika, przypiętych grupach lub oznaczonych wątkach zostaną usunięte.\n"
 "\n"
 "Uwaga.\n"
-"Archiwizacja konta nie oznacza usunięcia lub ukrycia powiązanych blogów lub "
-"notatek, należy to zrobić ręcznie przed archiwizacją.\n"
+"Archiwizacja konta nie oznacza usunięcia lub ukrycia powiązanych blogów lub notatek, należy to zrobić ręcznie przed archiwizacją.\n"
 "\n"
-"Konto zostanie automatycznie odarchiwizowane przy następnym logowaniu, ale "
-"usunięte dane nie zostaną przywrócone."
+"Konto zostanie automatycznie odarchiwizowane przy następnym logowaniu, ale usunięte dane nie zostaną przywrócone."
 
 #: src/scenes/account.rb:703
 msgctxt "Account"
@@ -2620,12 +2360,8 @@ msgstr "Żaden eksport nie został zlecony"
 
 #: src/scenes/account.rb:745
 msgctxt "Account"
-msgid ""
-"The export of your account data is currently being prepared. This may take "
-"up to some hours. Please return here later."
-msgstr ""
-"Eksport danych jest obecnie przygotowywany. To może potrwać do kilku godzin. "
-"Po zakończeniu eksport dostępny będzie do pobrania w tym miejscu."
+msgid "The export of your account data is currently being prepared. This may take up to some hours. Please return here later."
+msgstr "Eksport danych jest obecnie przygotowywany. To może potrwać do kilku godzin. Po zakończeniu eksport dostępny będzie do pobrania w tym miejscu."
 
 #: src/scenes/account.rb:747
 msgctxt "Account"
@@ -2717,26 +2453,14 @@ msgctxt "Admins"
 msgid "Administrators and authors"
 msgstr "Administratorzy i autorzy"
 
-#: src/scenes/authentication.rb:10 src/scenes/calendar.rb:240
-#: src/scenes/callhistory.rb:10 src/scenes/contacts.rb:13
-#: src/scenes/messages.rb:35 src/scenes/notes.rb:10
-#: src/scenes/notifications.rb:14 src/scenes/premiumpackages.rb:6
+#: src/scenes/authentication.rb:10 src/scenes/calendar.rb:240 src/scenes/callhistory.rb:10 src/scenes/contacts.rb:13 src/scenes/messages.rb:35 src/scenes/notes.rb:10 src/scenes/notifications.rb:14 src/scenes/premiumpackages.rb:6
 msgid "This section is unavailable for guests"
 msgstr "Ta sekcja nie jest dostępna z poziomu konta gościa"
 
 #: src/scenes/authentication.rb:24
 msgctxt "Authentication"
-msgid ""
-"Two-factor authentication enables better account security by requiring the  "
-"confirmation of each login with your phone. When activated, a text message "
-"with a  verification code will be sent to you each time you log in from a "
-"new device.  Entering this code will be required to sign in to the program."
-msgstr ""
-"Dwuetapowe uwierzytelnianie pozwala na lepsze zabezpieczenie konta poprzez "
-"potwierdzanie każdego logowania numerem telefonu. Gdy ta opcja jest "
-"włączona, przy każdorazowym logowaniu do portalu Elten z nowego urządzenia "
-"wysyłana będzie wiadomość SMS z kodem weryfikującym. Wpisanie tego kodu "
-"będzie wymagane, aby zalogować się do programu."
+msgid "Two-factor authentication enables better account security by requiring the  confirmation of each login with your phone. When activated, a text message with a  verification code will be sent to you each time you log in from a new device.  Entering this code will be required to sign in to the program."
+msgstr "Dwuetapowe uwierzytelnianie pozwala na lepsze zabezpieczenie konta poprzez potwierdzanie każdego logowania numerem telefonu. Gdy ta opcja jest włączona, przy każdorazowym logowaniu do portalu Elten z nowego urządzenia wysyłana będzie wiadomość SMS z kodem weryfikującym. Wpisanie tego kodu będzie wymagane, aby zalogować się do programu."
 
 #: src/scenes/authentication.rb:24
 msgid "Enable"
@@ -2756,36 +2480,25 @@ msgctxt "Authentication"
 msgid "Two-factor authentication is enabled on this account."
 msgstr "Dwuetapowe uwierzytelnianie jest włączone dla tego konta."
 
-#: src/scenes/authentication.rb:33 src/scenes/authentication.rb:93
-#: src/scenes/authentication.rb:116
+#: src/scenes/authentication.rb:33 src/scenes/authentication.rb:93 src/scenes/authentication.rb:116
 msgctxt "Authentication"
 msgid "Type your password"
 msgstr "Podaj swoje hasło"
 
 #: src/scenes/authentication.rb:35
 msgctxt "Authentication"
-msgid ""
-"Type your phone number that will be used during verification. Remember to "
-"enter  the country code, for example, +48 for Poland"
-msgstr ""
-"Podaj swój numer telefonu, który będzie używany podczas weryfikacji. "
-"Pamiętaj o wpisaniu numeru kierunkowego, na przykład +48 dla polski"
+msgid "Type your phone number that will be used during verification. Remember to enter  the country code, for example, +48 for Poland"
+msgstr "Podaj swój numer telefonu, który będzie używany podczas weryfikacji. Pamiętaj o wpisaniu numeru kierunkowego, na przykład +48 dla polski"
 
 #: src/scenes/authentication.rb:37
 msgctxt "Authentication"
 msgid "Two-factor authentication was introduced in Elten 2.28. After activating it, you will not be able to log in using older versions of the program. Do you wish to continue anyway?"
-msgstr ""
-"Uwierzytelnianie dwuetapowe zostało wprowadzone w Eltenie 2.28. Po "
-"aktywowaniu go, zalogowanie się ze starszych wersji programu nie będzie "
-"możliwe. Czy kontynuować mimo to?"
+msgstr "Uwierzytelnianie dwuetapowe zostało wprowadzone w Eltenie 2.28. Po aktywowaniu go, zalogowanie się ze starszych wersji programu nie będzie możliwe. Czy kontynuować mimo to?"
 
 #: src/scenes/authentication.rb:38
 msgctxt "Authentication"
-msgid ""
-"Is this phone number correct? Press enter to continue or escape to cancel."
-msgstr ""
-"Czy ten numer telefonu jest poprawny? Wciśnij enter aby kontynuować lub "
-"escape aby anulować."
+msgid "Is this phone number correct? Press enter to continue or escape to cancel."
+msgstr "Czy ten numer telefonu jest poprawny? Wciśnij enter aby kontynuować lub escape aby anulować."
 
 #: src/scenes/authentication.rb:40
 msgctxt "Authentication"
@@ -2794,32 +2507,23 @@ msgstr "Proszę czekać, trwa łączenie z serwerem..."
 
 #: src/scenes/authentication.rb:54
 msgctxt "Authentication"
-msgid ""
-"A text message with a verification code can be requested only once per "
-"minute. Please try again later."
-msgstr ""
-"Wiadomość SMS może zostać wysłana jedynie raz na minutę. Spróbuj ponownie "
-"później."
+msgid "A text message with a verification code can be requested only once per minute. Please try again later."
+msgstr "Wiadomość SMS może zostać wysłana jedynie raz na minutę. Spróbuj ponownie później."
 
 #: src/scenes/authentication.rb:56
 msgctxt "Authentication"
-msgid ""
-"The daily limit for text messages with verification codes has been reached. "
-"Please try again later."
+msgid "The daily limit for text messages with verification codes has been reached. Please try again later."
 msgstr "Dzienny limit wiadomości SMS został osiągnięty."
 
 #: src/scenes/authentication.rb:58
 msgctxt "Authentication"
-msgid ""
-"Text message verification is temporarily unavailable. Please try again later."
+msgid "Text message verification is temporarily unavailable. Please try again later."
 msgstr "Usługa SMS jest tymczasowo niedostępna. Spróbuj ponownie później."
 
 #: src/scenes/authentication.rb:65
 msgctxt "Authentication"
 msgid "A text message containing the code to activate two-factor authentication will be sent to the phone number you provided. Enter the code."
-msgstr ""
-"Na wskazany numer telefonu otrzymasz wiadomość SMS z kodem aktywującym "
-"uwierzytelnianie dwuetapowe. Wprowadź ten kod"
+msgstr "Na wskazany numer telefonu otrzymasz wiadomość SMS z kodem aktywującym uwierzytelnianie dwuetapowe. Wprowadź ten kod"
 
 #: src/scenes/authentication.rb:78
 msgctxt "Authentication"
@@ -2853,13 +2557,8 @@ msgstr "Podano nieprawidłowe hasło"
 
 #: src/scenes/authentication.rb:114
 msgctxt "Authentication"
-msgid ""
-"Do you want to generate backup codes? These can be used to sign in when you "
-"have no access to your phone. All previously generated codes will be deleted."
-msgstr ""
-"Czy chcesz wygenerować alternatywne kody logowania? Mogą one być "
-"wykorzystane podczas logowania, gdy nie posiadasz dostępu do swojego "
-"telefonu. Wszystkie poprzednio wygenerowane kody zostaną usunięte."
+msgid "Do you want to generate backup codes? These can be used to sign in when you have no access to your phone. All previously generated codes will be deleted."
+msgstr "Czy chcesz wygenerować alternatywne kody logowania? Mogą one być wykorzystane podczas logowania, gdy nie posiadasz dostępu do swojego telefonu. Wszystkie poprzednio wygenerowane kody zostaną usunięte."
 
 #: src/scenes/authentication.rb:124
 msgctxt "Authentication"
@@ -3121,8 +2820,7 @@ msgctxt "Blog"
 msgid "The blog has been created."
 msgstr "Blog został utworzony."
 
-#: src/scenes/blog.rb:294 src/scenes/blog.rb:868 src/scenes/blog.rb:1601
-#: src/scenes/blog.rb:2254
+#: src/scenes/blog.rb:294 src/scenes/blog.rb:868 src/scenes/blog.rb:1601 src/scenes/blog.rb:2254
 msgctxt "Blog"
 msgid "Comments"
 msgstr "Komentarze"
@@ -3212,8 +2910,7 @@ msgctxt "Blog"
 msgid "Posts sorted by blog."
 msgstr "Wpisy posortowane według bloga."
 
-#: src/scenes/blog.rb:472 src/scenes/blog.rb:484 src/scenes/blog.rb:752
-#: src/scenes/blog.rb:822
+#: src/scenes/blog.rb:472 src/scenes/blog.rb:484 src/scenes/blog.rb:752 src/scenes/blog.rb:822
 msgctxt "Blog"
 msgid "Mention post"
 msgstr "Wzmiankuj wpis"
@@ -3418,12 +3115,8 @@ msgstr "Czy na pewno chcesz usunąć blog %{name}?"
 
 #: src/scenes/blog.rb:941
 msgctxt "Blog"
-msgid ""
-"All posts written on this blog will be lost. Are you sure you want to "
-"continue?"
-msgstr ""
-"Wszystkie wpisy na tym blogu zostaną usunięte. Czy jesteś pewien, że chcesz "
-"kontynuować?"
+msgid "All posts written on this blog will be lost. Are you sure you want to continue?"
+msgstr "Wszystkie wpisy na tym blogu zostaną usunięte. Czy jesteś pewien, że chcesz kontynuować?"
 
 #: src/scenes/blog.rb:948
 msgctxt "Blog"
@@ -3523,10 +3216,7 @@ msgstr "Dodaj do śledzonych blogów"
 #: src/scenes/blog.rb:1156
 msgctxt "Blog"
 msgid "You are now following this blog. Do you want to mark all of its existing posts as read so that they do not appear in What's New?"
-msgstr ""
-"Ten blog został dodany do śledzonych blogów. Czy chcesz oznaczyć wszystkie "
-"dotychczas opublikowane na nim wpisy jako przeczytane, aby nie pokazywały "
-"się w \"Co nowego\"?"
+msgstr "Ten blog został dodany do śledzonych blogów. Czy chcesz oznaczyć wszystkie dotychczas opublikowane na nim wpisy jako przeczytane, aby nie pokazywały się w \"Co nowego\"?"
 
 #: src/scenes/blog.rb:1162 src/scenes/blog.rb:1211
 msgctxt "Blog"
@@ -3586,9 +3276,7 @@ msgstr "Oznacz wszystkie wpisy na tym blogu jako przeczytane"
 #: src/scenes/blog.rb:1205
 msgctxt "Blog"
 msgid "All posts on this blog will be marked as read. Do you want to continue?"
-msgstr ""
-"Wszystkie wpisy na tym blogu zostaną oznaczone jako przeczytane. Czy jesteś "
-"pewien, że chcesz kontynuować?"
+msgstr "Wszystkie wpisy na tym blogu zostaną oznaczone jako przeczytane. Czy jesteś pewien, że chcesz kontynuować?"
 
 #: src/scenes/blog.rb:1217
 msgctxt "Blog"
@@ -3598,9 +3286,7 @@ msgstr "Załóż nowego bloga"
 #: src/scenes/blog.rb:1232
 msgctxt "Blog"
 msgid "You cannot create more blogs"
-msgstr ""
-"Nie możesz stworzyć większej ilości blogów. Najprawdopodobniej nie posiadasz "
-"odpowiedniego pakietu, aby to zrobić"
+msgstr "Nie możesz stworzyć większej ilości blogów. Najprawdopodobniej nie posiadasz odpowiedniego pakietu, aby to zrobić"
 
 #: src/scenes/blog.rb:1237
 msgctxt "Blog"
@@ -3734,14 +3420,8 @@ msgstr "Język"
 
 #: src/scenes/blog.rb:1598
 msgctxt "Blog"
-msgid ""
-"Mark this blog as public. Blogs that are not marked public request search "
-"engines such as Google not to show them in search results (some search "
-"engines may not respect this setting)"
-msgstr ""
-"Oznacz ten blog jako publiczny (blogi, które nie są oznaczone jako "
-"publiczne, proszą wyszukiwarki Internetowe jak Google, by pomijały je w "
-"wynikach wyszukiwania. Niektóre wyszukiwarki ignorują to ustawienie.)"
+msgid "Mark this blog as public. Blogs that are not marked public request search engines such as Google not to show them in search results (some search engines may not respect this setting)"
+msgstr "Oznacz ten blog jako publiczny (blogi, które nie są oznaczone jako publiczne, proszą wyszukiwarki Internetowe jak Google, by pomijały je w wynikach wyszukiwania. Niektóre wyszukiwarki ignorują to ustawienie.)"
 
 #: src/scenes/blog.rb:1602
 msgctxt "Blog"
@@ -3756,9 +3436,7 @@ msgstr "Przez wszystkich odwiedzających"
 #: src/scenes/blog.rb:1602
 msgctxt "Blog"
 msgid "By all visitors, but I must approve each person's first comment"
-msgstr ""
-"Przez wszystkich odwiedzających, ale muszę zatwierdzić pierwszy komentarz "
-"każdej osoby"
+msgstr "Przez wszystkich odwiedzających, ale muszę zatwierdzić pierwszy komentarz każdej osoby"
 
 #: src/scenes/blog.rb:1602
 msgctxt "Blog"
@@ -3858,8 +3536,7 @@ msgstr "Prosty (https://mojblog.pl/?p=123)"
 #: src/scenes/blog.rb:1673
 msgctxt "Blog"
 msgid "Full date and post name (https://example.com/2020/01/01/example-post)"
-msgstr ""
-"Pełna data i nazwa wpisu (https://mojblog.pl/2020/01/01/przykladowy-wpis)"
+msgstr "Pełna data i nazwa wpisu (https://mojblog.pl/2020/01/01/przykladowy-wpis)"
 
 #: src/scenes/blog.rb:1673
 msgctxt "Blog"
@@ -3978,12 +3655,8 @@ msgstr "Nie ustawiaj"
 
 #: src/scenes/blog.rb:1725
 msgctxt "Blog"
-msgid ""
-"If you want to redirect all browsers visiting this blog to another site, "
-"select it here"
-msgstr ""
-"Jeśli chcesz przekierować wszystkie przeglądarki odwiedzające tego bloga na "
-"inną stronę, wybierz ją tutaj"
+msgid "If you want to redirect all browsers visiting this blog to another site, select it here"
+msgstr "Jeśli chcesz przekierować wszystkie przeglądarki odwiedzające tego bloga na inną stronę, wybierz ją tutaj"
 
 #: src/scenes/blog.rb:1727
 msgctxt "Blog"
@@ -4008,11 +3681,7 @@ msgstr "Zarządzaj domeną bloga"
 #: src/scenes/blog.rb:1743
 msgctxt "Blog"
 msgid "The blog settings have been changed. If you continue with the domain change, your changes will be lost. Do you want to continue anyway? To save the new settings, select No, then select Apply before changing the domain."
-msgstr ""
-"Ustawienia bloga zostały zmienione. Jeśli będziesz kontynuować zmianę "
-"domeny, wprowadzone zmiany zostaną utracone. Czy mimo to chcesz kontynuować? "
-"Jeśli chcesz zapisać nowe ustawienia, wybierz Nie, a następnie Zastosuj je "
-"przed kontynuowaniem zmiany domeny."
+msgstr "Ustawienia bloga zostały zmienione. Jeśli będziesz kontynuować zmianę domeny, wprowadzone zmiany zostaną utracone. Czy mimo to chcesz kontynuować? Jeśli chcesz zapisać nowe ustawienia, wybierz Nie, a następnie Zastosuj je przed kontynuowaniem zmiany domeny."
 
 #: src/scenes/blog.rb:1882
 msgctxt "Blog"
@@ -4242,12 +3911,10 @@ msgstr "Typ domeny"
 msgctxt "Blog"
 msgid ""
 "To continue, you should point your domain to Elten Blogging server.\n"
-"You can buy your own domain from domain providers, such as ovh.com, "
-"domain.com, godaddy.com or bluehost.com."
+"You can buy your own domain from domain providers, such as ovh.com, domain.com, godaddy.com or bluehost.com."
 msgstr ""
 "Aby kontynuować, należy przekierować swoją domenę na blogowy serwer Eltena.\n"
-"Możesz kupić własną domenę od dostawców domen, takich jak ovh.com, "
-"domain.com, godaddy.com lub bluehost.com."
+"Możesz kupić własną domenę od dostawców domen, takich jak ovh.com, domain.com, godaddy.com lub bluehost.com."
 
 #: src/scenes/blog.rb:2455
 msgctxt "Blog"
@@ -4281,12 +3948,8 @@ msgstr "Nowa domena jest taka sama, jak poprzednia"
 
 #: src/scenes/blog.rb:2497
 msgctxt "Blog"
-msgid ""
-"You already have one blog associated with your Elten profile. Please change "
-"its type and then proceed."
-msgstr ""
-"Posiadasz już bloga powiązanego ze swoim profilem, należy najpierw to "
-"zmienić."
+msgid "You already have one blog associated with your Elten profile. Please change its type and then proceed."
+msgstr "Posiadasz już bloga powiązanego ze swoim profilem, należy najpierw to zmienić."
 
 #: src/scenes/blog.rb:2501
 msgctxt "Blog"
@@ -4311,11 +3974,7 @@ msgstr "Wprowadzona domena jest niepoprawna"
 #: src/scenes/blog.rb:2520
 msgctxt "Blog"
 msgid "Warning! If you change your blog URL, some links may stop working. Direct links to posts or other resources on your blog will no longer work at their previous URLs. You will need to update them manually. Are you sure you want to continue?"
-msgstr ""
-"Uwaga! Jeśli zmienisz adres URL swojego bloga, niektóre linki mogą przestać "
-"działać. Jeśli bezpośrednio wskazano w odnośnikach posty lub inne zasoby na "
-"tym blogu, nie będą one już dostępne pod poprzednimi adresami URL. W takim "
-"przypadku należy je zaktualizować ręcznie. Czy na pewno chcesz kontynuować?"
+msgstr "Uwaga! Jeśli zmienisz adres URL swojego bloga, niektóre linki mogą przestać działać. Jeśli bezpośrednio wskazano w odnośnikach posty lub inne zasoby na tym blogu, nie będą one już dostępne pod poprzednimi adresami URL. W takim przypadku należy je zaktualizować ręcznie. Czy na pewno chcesz kontynuować?"
 
 #: src/scenes/blog.rb:2535
 msgctxt "Blog"
@@ -4324,30 +3983,33 @@ msgstr "Domena bloga została zmieniona"
 
 #: src/scenes/blog.rb:2547
 msgctxt "Blog"
-msgid "Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n\nWhere possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n\nMany domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n%{ip}\n\nPointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n\nDetailed instructions are available from your domain provider, for example at:\nhttps://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n\nOnce you have finished, continue."
-msgstr ""
-"Powinieneś teraz skonfigurować zakupioną domenę, aby przekierować ją na "
-"serwer blogowy Eltena. Poniżej znajdują się niezbędne szczegóły. Jeśli masz "
-"jakieś problemy, prosimy o zadawanie pytań na forum.\n"
-"      \n"
-"Gdy tylko jest to możliwe, zalecamy używanie rekordu CNAME, ponieważ nie "
-"musi być on edytowany jeśli zmianie ulegnie adres IP serwera hostującego "
-"Twojego bloga. Adres IP Twojej witryny może ulec zmianie np. z powodu "
-"migracji Eltena. Konfigurując rekord CNAME swojej domeny, nie musisz nic "
-"więcej robić.\n"
+msgid ""
+"Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n"
 "\n"
-"      Aby to zrobić, należy skierować rekord cname domeny na adres \"%{host}"
-"\"\n"
+"Where possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n"
+"\n"
+"Many domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n"
+"%{ip}\n"
+"\n"
+"Pointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n"
+"\n"
+"Detailed instructions are available from your domain provider, for example at:\n"
+"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
+"\n"
+"Once you have finished, continue."
+msgstr ""
+"Powinieneś teraz skonfigurować zakupioną domenę, aby przekierować ją na serwer blogowy Eltena. Poniżej znajdują się niezbędne szczegóły. Jeśli masz jakieś problemy, prosimy o zadawanie pytań na forum.\n"
 "      \n"
-"      Niestety, wielu rejestratorów domen nie obsługuje rekordu CNAME dla "
-"domen najwyższego poziomu, więc niezbędne może okazać się użycie rekordu A "
-"zamiast tego.\n"
+"Gdy tylko jest to możliwe, zalecamy używanie rekordu CNAME, ponieważ nie musi być on edytowany jeśli zmianie ulegnie adres IP serwera hostującego Twojego bloga. Adres IP Twojej witryny może ulec zmianie np. z powodu migracji Eltena. Konfigurując rekord CNAME swojej domeny, nie musisz nic więcej robić.\n"
+"\n"
+"      Aby to zrobić, należy skierować rekord cname domeny na adres \"%{host}\"\n"
+"      \n"
+"      Niestety, wielu rejestratorów domen nie obsługuje rekordu CNAME dla domen najwyższego poziomu, więc niezbędne może okazać się użycie rekordu A zamiast tego.\n"
 "      W takim przypadku należy skierować rekord A na adres IP:\n"
 "%{ip}\n"
 ".\n"
 "\n"
-"Należy pamiętać, że przekierowanie domeny nie jest aliasingiem i ustawienie "
-"aliasów lub przekierowanie HTTP 301/ 3xx nie będzie działać.\n"
+"Należy pamiętać, że przekierowanie domeny nie jest aliasingiem i ustawienie aliasów lub przekierowanie HTTP 301/ 3xx nie będzie działać.\n"
 "\n"
 "Szczegółowy opis można uzyskać od dostawcy domeny, na przykład na stronie:\n"
 "https://www.ovh.pl/jednostki/strefa_dns.xml\n"
@@ -4367,10 +4029,7 @@ msgstr "Gotowe, idźmy dalej"
 #: src/scenes/blog.rb:2582
 msgctxt "Blog"
 msgid "Your domain does not point to Elten Blogs. Try again, or wait for the DNS changes to propagate. Full DNS propagation may take up to 24 hours."
-msgstr ""
-"Twoja domena nie wskazuje na serwer blogowy Eltena, spróbuj ponownie lub "
-"poczekaj chwilę, aby odświeżyć DNS. Wykonanie pełnej aktualizacji DNS może "
-"zająć do 24 godzin."
+msgstr "Twoja domena nie wskazuje na serwer blogowy Eltena, spróbuj ponownie lub poczekaj chwilę, aby odświeżyć DNS. Wykonanie pełnej aktualizacji DNS może zająć do 24 godzin."
 
 #: src/scenes/blog.rb:2584
 msgctxt "Blog"
@@ -4472,8 +4131,7 @@ msgctxt "Calendar"
 msgid "End date and time"
 msgstr "Data i godzina zakończenia"
 
-#: src/scenes/calendar.rb:79 src/scenes/calendar.rb:279
-#: src/scenes/calendar.rb:440
+#: src/scenes/calendar.rb:79 src/scenes/calendar.rb:279 src/scenes/calendar.rb:440
 msgctxt "Calendar"
 msgid "Add event"
 msgstr "Dodaj wydarzenie"
@@ -4680,9 +4338,7 @@ msgstr "Wpisz nazwę kalendarza"
 #: src/scenes/calendar.rb:636
 msgctxt "Calendar"
 msgid "Do you really want to delete the calendar %{name} and all its events?"
-msgstr ""
-"Czy na pewno chcesz usunąć kalendarz %{name} wraz ze wszystkimi jego "
-"wydarzeniami?"
+msgstr "Czy na pewno chcesz usunąć kalendarz %{name} wraz ze wszystkimi jego wydarzeniami?"
 
 #: src/scenes/calendar.rb:647
 #, fuzzy
@@ -4930,8 +4586,7 @@ msgstr "Wycisz wiadomości na chacie i rzuty kostką od tego użytkownika"
 #: src/scenes/conference.rb:97
 msgctxt "Conference"
 msgid "Unmute user's chat messages and dice rolls"
-msgstr ""
-"Wyłącz wyciszenie wiadomości na chacie i rzutów kostką od tego użytkownika"
+msgstr "Wyłącz wyciszenie wiadomości na chacie i rzutów kostką od tego użytkownika"
 
 #: src/scenes/conference.rb:101
 msgctxt "Conference"
@@ -5110,8 +4765,7 @@ msgctxt "EAPI_Speech"
 msgid "Restricted"
 msgstr "Ograniczony"
 
-#: src/scenes/conference.rb:359 src/scenes/conference.rb:433
-#: src/scenes/conference.rb:584
+#: src/scenes/conference.rb:359 src/scenes/conference.rb:433 src/scenes/conference.rb:584
 msgctxt "Conference"
 msgid "Channels"
 msgstr "Kanały"
@@ -5292,8 +4946,7 @@ msgstr "Jakość dla mobilnych lub ograniczonych połączeń"
 #: src/scenes/conference.rb:540
 msgctxt "Conference"
 msgid "Quality for mobile or limited connections with surround sound"
-msgstr ""
-"Jakość dla mobilnych lub ograniczonych połączeń z dźwiękiem przestrzennym"
+msgstr "Jakość dla mobilnych lub ograniczonych połączeń z dźwiękiem przestrzennym"
 
 #: src/scenes/conference.rb:541
 msgctxt "Conference"
@@ -5362,12 +5015,8 @@ msgstr "Wyłącz predykcję podczas kodowania"
 
 #: src/scenes/conference.rb:586
 msgctxt "Conference"
-msgid ""
-"Enable conference mode (only channel administrators and allowed users can "
-"speak)"
-msgstr ""
-"Włącz tryb konferencyjny (tylko administratorzy kanałów i uprawnieni "
-"użytkownicy mogą się wypowiadać)"
+msgid "Enable conference mode (only channel administrators and allowed users can speak)"
+msgstr "Włącz tryb konferencyjny (tylko administratorzy kanałów i uprawnieni użytkownicy mogą się wypowiadać)"
 
 #: src/scenes/conference.rb:587
 msgctxt "Conference"
@@ -5427,8 +5076,7 @@ msgstr "Wysokość kanału"
 
 #: src/scenes/conference.rb:598
 msgctxt "Conference"
-msgid ""
-"Channel password (leave this field blank to set a channel without a password)"
+msgid "Channel password (leave this field blank to set a channel without a password)"
 msgstr "Hasło kanału (pozostaw to pole puste, aby ustawić kanał bez hasła)"
 
 #: src/scenes/conference.rb:599
@@ -5501,9 +5149,7 @@ msgctxt "Conference"
 msgid "Available objects"
 msgstr "Dostępne obiekty"
 
-#: src/scenes/conference.rb:826 src/scenes/conference.rb:1541
-#: src/scenes/conference.rb:1613 src/scenes/conference.rb:1700
-#: src/scenes/conference.rb:1732 src/scenes/conference.rb:1769
+#: src/scenes/conference.rb:826 src/scenes/conference.rb:1541 src/scenes/conference.rb:1613 src/scenes/conference.rb:1700 src/scenes/conference.rb:1732 src/scenes/conference.rb:1769
 msgctxt "Conference"
 msgid "Everywhere"
 msgstr "Wszędzie"
@@ -5513,8 +5159,7 @@ msgctxt "Conference"
 msgid "Object position"
 msgstr "Lokalizacja obiektu"
 
-#: src/scenes/conference.rb:826 src/scenes/conference.rb:1700
-#: src/scenes/conference.rb:1732 src/scenes/conference.rb:1769
+#: src/scenes/conference.rb:826 src/scenes/conference.rb:1700 src/scenes/conference.rb:1732 src/scenes/conference.rb:1769
 msgctxt "Conference"
 msgid "Here"
 msgstr "Tutaj"
@@ -5534,8 +5179,7 @@ msgctxt "Conference"
 msgid "This file is too large"
 msgstr "Plik jest zbyt duży"
 
-#: src/scenes/conference.rb:858 src/scenes/conference.rb:1446
-#: src/scenes/conference.rb:1495
+#: src/scenes/conference.rb:858 src/scenes/conference.rb:1446 src/scenes/conference.rb:1495
 msgctxt "Conference"
 msgid "Delete"
 msgstr "Usuń"
@@ -5545,8 +5189,7 @@ msgctxt "Conference"
 msgid "Object deleted"
 msgstr "Obiekt usunięty"
 
-#: src/scenes/conference.rb:891 src/scenes/conference.rb:919
-#: src/scenes/conference.rb:2172
+#: src/scenes/conference.rb:891 src/scenes/conference.rb:919 src/scenes/conference.rb:2172
 msgctxt "Conference"
 msgid "Destination"
 msgstr "Miejsce docelowe"
@@ -5571,14 +5214,12 @@ msgctxt "Conference"
 msgid "Directory name"
 msgstr "Nazwa katalogu"
 
-#: src/scenes/conference.rb:952 src/scenes/conference.rb:954
-#: src/scenes/conference.rb:956 src/scenes/conference.rb:993
+#: src/scenes/conference.rb:952 src/scenes/conference.rb:954 src/scenes/conference.rb:956 src/scenes/conference.rb:993
 msgctxt "Conference"
 msgid "Left"
 msgstr "Lewy"
 
-#: src/scenes/conference.rb:958 src/scenes/conference.rb:960
-#: src/scenes/conference.rb:962 src/scenes/conference.rb:993
+#: src/scenes/conference.rb:958 src/scenes/conference.rb:960 src/scenes/conference.rb:962 src/scenes/conference.rb:993
 msgctxt "Conference"
 msgid "Right"
 msgstr "Prawy"
@@ -5633,8 +5274,7 @@ msgctxt "Conference"
 msgid "Master volume"
 msgstr "Głośność główna"
 
-#: src/scenes/conference.rb:1047 src/scenes/conference.rb:1569
-#: src/scenes/conference.rb:1652
+#: src/scenes/conference.rb:1047 src/scenes/conference.rb:1569 src/scenes/conference.rb:1652
 msgctxt "Conference"
 msgid "Stream volume"
 msgstr "Głośność strumienia"
@@ -5654,14 +5294,12 @@ msgctxt "Conference"
 msgid "Stream from sound card"
 msgstr "Strumieniuj kartę dźwiękową"
 
-#: src/scenes/conference.rb:1109 src/scenes/conference.rb:1767
-#: src/scenes/conference.rb:1917
+#: src/scenes/conference.rb:1109 src/scenes/conference.rb:1767 src/scenes/conference.rb:1917
 msgctxt "Conference"
 msgid "Select sound card to stream"
 msgstr "Wybierz kartę dźwiękową do strumieniowania"
 
-#: src/scenes/conference.rb:1109 src/scenes/conference.rb:1767
-#: src/scenes/conference.rb:1917
+#: src/scenes/conference.rb:1109 src/scenes/conference.rb:1767 src/scenes/conference.rb:1917
 msgctxt "Conference"
 msgid "Loopback device"
 msgstr "Urządzenie loopback"
@@ -5676,14 +5314,12 @@ msgctxt "Conference"
 msgid "Stream"
 msgstr "Strumieniuj"
 
-#: src/scenes/conference.rb:1150 src/scenes/conference.rb:1677
-#: src/scenes/conference.rb:1854
+#: src/scenes/conference.rb:1150 src/scenes/conference.rb:1677 src/scenes/conference.rb:1854
 msgctxt "Conference"
 msgid "Scroll backward"
 msgstr "Przewiń do tyłu"
 
-#: src/scenes/conference.rb:1151 src/scenes/conference.rb:1682
-#: src/scenes/conference.rb:1857
+#: src/scenes/conference.rb:1151 src/scenes/conference.rb:1682 src/scenes/conference.rb:1857
 msgctxt "Conference"
 msgid "Scroll forward"
 msgstr "Przewiń do przodu"
@@ -5928,16 +5564,12 @@ msgctxt "Conference"
 msgid "User"
 msgstr "Użytkownik"
 
-#: src/scenes/conference.rb:1535 src/scenes/conference.rb:1608
-#: src/scenes/conference.rb:1700 src/scenes/conference.rb:1732
-#: src/scenes/conference.rb:1769
+#: src/scenes/conference.rb:1535 src/scenes/conference.rb:1608 src/scenes/conference.rb:1700 src/scenes/conference.rb:1732 src/scenes/conference.rb:1769
 msgctxt "Conference"
 msgid "Location"
 msgstr "Lokalizacja"
 
-#: src/scenes/conference.rb:1543 src/scenes/conference.rb:1615
-#: src/scenes/conference.rb:1700 src/scenes/conference.rb:1732
-#: src/scenes/conference.rb:1769
+#: src/scenes/conference.rb:1543 src/scenes/conference.rb:1615 src/scenes/conference.rb:1700 src/scenes/conference.rb:1732 src/scenes/conference.rb:1769
 msgctxt "Conference"
 msgid "Right next to me"
 msgstr "Tuż obok mnie"
@@ -5962,8 +5594,7 @@ msgctxt "Conference"
 msgid "Stream muted"
 msgstr "Strumień wyciszony"
 
-#: src/scenes/conference.rb:1565 src/scenes/conference.rb:1650
-#: src/scenes/conference.rb:1830
+#: src/scenes/conference.rb:1565 src/scenes/conference.rb:1650 src/scenes/conference.rb:1830
 msgctxt "Conference"
 msgid "Change volume"
 msgstr "Zmień głośność"
@@ -6018,15 +5649,12 @@ msgctxt "Conference"
 msgid "New file stream"
 msgstr "Nowy strumień z pliku"
 
-#: src/scenes/conference.rb:1699 src/scenes/conference.rb:1871
-#: src/scenes/conference.rb:1953
+#: src/scenes/conference.rb:1699 src/scenes/conference.rb:1871 src/scenes/conference.rb:1953
 msgctxt "Conference"
 msgid "File"
 msgstr "Plik"
 
-#: src/scenes/conference.rb:1701 src/scenes/conference.rb:1733
-#: src/scenes/conference.rb:1770 src/scenes/conference.rb:1872
-#: src/scenes/conference.rb:1893 src/scenes/conference.rb:1918
+#: src/scenes/conference.rb:1701 src/scenes/conference.rb:1733 src/scenes/conference.rb:1770 src/scenes/conference.rb:1872 src/scenes/conference.rb:1893 src/scenes/conference.rb:1918
 msgctxt "Conference"
 msgid "Place"
 msgstr "Umieść"
@@ -6449,15 +6077,60 @@ msgctxt "FeedViewer"
 msgid "Message"
 msgstr "Wiadomość"
 
+#: src/eapi/eltensrv/feeds.rb:20 src/platforms/windows/invisibleinterface/service.rb:562
+msgctxt "FeedViewer"
+msgid "Audio content"
+msgstr "Treść audio"
+
+#: src/eapi/eltensrv/feeds.rb:43
+msgctxt "FeedViewer"
+msgid "Attach audio"
+msgstr "Dołącz audio"
+
+#: src/eapi/eltensrv/feeds.rb:53
+msgctxt "FeedViewer"
+msgid "A feed entry must contain text."
+msgstr "Wpis na feedzie musi zawierać treść."
+
+#: src/eapi/eltensrv/feeds.rb:77
+msgctxt "FeedViewer"
+msgid "The audio recording could not be prepared."
+msgstr "Nie udało się przygotować nagrania audio."
+
+#: src/eapi/eltensrv/feeds.rb:81
+msgctxt "FeedViewer"
+msgid "The server did not accept the feed entry."
+msgstr "Serwer nie zaakceptował wpisu na feedzie."
+
+#: src/eapi/eltensrv/feeds.rb:99
+msgctxt "FeedViewer"
+msgid "Shorten the audio to %{limit} seconds"
+msgstr "Skróć audio do %{limit} sekund"
+
+#: src/eapi/eltensrv/feeds.rb
+msgctxt "FeedViewer"
+msgid "Return to the editor"
+msgstr "Wróć do edytora"
+
+#: src/eapi/eltensrv/feeds.rb
+msgctxt "FeedViewer"
+msgid "The attached audio is %{duration} seconds long. The maximum is %{limit} seconds."
+msgstr "Dołączone audio ma %{duration} sekund. Maksymalna długość to %{limit} sekund."
+
+#: src/eapi/eltensrv/feeds.rb
+msgctxt "FeedViewer"
+msgid "The audio recording cannot be longer than %{limit} seconds."
+msgstr "Nagranie audio nie może być dłuższe niż %{limit} sekund."
+
+#: src/eapi/eltensrv/feeds.rb
+msgctxt "FeedViewer"
+msgid "The Audiophile package is required to attach audio to a feed entry."
+msgstr "Dołączenie audio do wpisu na feedzie wymaga pakietu Audiofil."
+
 #: src/scenes/forgotpassword.rb:11
 msgctxt "ForgotPassword"
 msgid "If you forget your password, you can reset it using the email address you provided when registering. You can request a password reset code to verify your identity. The code will be sent to your email address. Warning: two-factor authentication will be disabled on your account. To continue, enter your username."
-msgstr ""
-"W wypadku utraty hasła nadal istnieje możliwość jego zresetowania poprzez "
-"weryfikację konta za pośrednictwem podanego adresu E-mail. Możesz "
-"wygenerować w ten sposób kod, dzięki któremu możliwa będzie zmiana hasła. "
-"Kod zostanie wysłany na twój adres E-mail. Uwaga! Jeśli używane, dwuetapowe "
-"uwierzytelnianie zostanie wyłączone. Aby kontynuować, wprowadź swój login"
+msgstr "W wypadku utraty hasła nadal istnieje możliwość jego zresetowania poprzez weryfikację konta za pośrednictwem podanego adresu E-mail. Możesz wygenerować w ten sposób kod, dzięki któremu możliwa będzie zmiana hasła. Kod zostanie wysłany na twój adres E-mail. Uwaga! Jeśli używane, dwuetapowe uwierzytelnianie zostanie wyłączone. Aby kontynuować, wprowadź swój login"
 
 #: src/scenes/forgotpassword.rb:18
 msgctxt "ForgotPassword"
@@ -6497,9 +6170,7 @@ msgstr "Wystąpił nieoczekiwany błąd"
 #: src/scenes/forgotpassword.rb:62
 msgctxt "ForgotPassword"
 msgid "The password reset code has been sent to the email address you provided. To continue, select the option to enter the code."
-msgstr ""
-"Klucz resetowania hasła został wysłany na podany adres E-mail. Wybierz opcję "
-"wprowadzenia klucza, aby kontynuować."
+msgstr "Klucz resetowania hasła został wysłany na podany adres E-mail. Wybierz opcję wprowadzenia klucza, aby kontynuować."
 
 #: src/scenes/forgotpassword.rb:69
 msgctxt "ForgotPassword"
@@ -6539,9 +6210,7 @@ msgstr "Proszę czekać, trwa zmiana hasła"
 #: src/scenes/forgotpassword.rb:109
 msgctxt "ForgotPassword"
 msgid "You can log in to your account using your new credentials."
-msgstr ""
-"Hasło zostało zmienione. Możesz się teraz zalogować przy użyciu nowych "
-"danych."
+msgstr "Hasło zostało zmienione. Możesz się teraz zalogować przy użyciu nowych danych."
 
 #: src/scenes/forum.rb:84
 msgctxt "Forum"
@@ -6686,53 +6355,37 @@ msgctxt "Forum"
 msgid "My threads"
 msgstr "Moje wątki"
 
-#: src/scenes/forum.rb:358 src/scenes/forum.rb:642 src/scenes/forum.rb:1374
-#: src/scenes/forum.rb:1640
+#: src/scenes/forum.rb:358 src/scenes/forum.rb:642 src/scenes/forum.rb:1374 src/scenes/forum.rb:1640
 msgctxt "Forum"
 msgid "Search"
 msgstr "Szukaj"
 
-#: src/scenes/forum.rb:366 src/scenes/forum.rb:391 src/scenes/forum.rb:412
-#: src/scenes/forum.rb:434 src/scenes/forum.rb:454 src/scenes/forum.rb:474
-#: src/scenes/forum.rb:495 src/scenes/forum.rb:511 src/scenes/forum.rb:529
-#: src/scenes/forum.rb:1475 src/scenes/forum.rb:2337
+#: src/scenes/forum.rb:366 src/scenes/forum.rb:391 src/scenes/forum.rb:412 src/scenes/forum.rb:434 src/scenes/forum.rb:454 src/scenes/forum.rb:474 src/scenes/forum.rb:495 src/scenes/forum.rb:511 src/scenes/forum.rb:529 src/scenes/forum.rb:1475 src/scenes/forum.rb:2337
 msgctxt "Forum"
 msgid "Threads"
 msgstr "Wątki"
 
-#: src/scenes/forum.rb:366 src/scenes/forum.rb:391 src/scenes/forum.rb:412
-#: src/scenes/forum.rb:434 src/scenes/forum.rb:454 src/scenes/forum.rb:474
-#: src/scenes/forum.rb:495 src/scenes/forum.rb:511 src/scenes/forum.rb:529
-#: src/scenes/forum.rb:1475 src/scenes/forum.rb:1993
+#: src/scenes/forum.rb:366 src/scenes/forum.rb:391 src/scenes/forum.rb:412 src/scenes/forum.rb:434 src/scenes/forum.rb:454 src/scenes/forum.rb:474 src/scenes/forum.rb:495 src/scenes/forum.rb:511 src/scenes/forum.rb:529 src/scenes/forum.rb:1475 src/scenes/forum.rb:1993
 msgctxt "Forum"
 msgid "posts"
 msgstr "wpisy"
 
-#: src/scenes/forum.rb:366 src/scenes/forum.rb:391 src/scenes/forum.rb:412
-#: src/scenes/forum.rb:434 src/scenes/forum.rb:454 src/scenes/forum.rb:474
-#: src/scenes/forum.rb:495 src/scenes/forum.rb:511 src/scenes/forum.rb:529
-#: src/scenes/forum.rb:1475 src/scenes/forum.rb:1993
+#: src/scenes/forum.rb:366 src/scenes/forum.rb:391 src/scenes/forum.rb:412 src/scenes/forum.rb:434 src/scenes/forum.rb:454 src/scenes/forum.rb:474 src/scenes/forum.rb:495 src/scenes/forum.rb:511 src/scenes/forum.rb:529 src/scenes/forum.rb:1475 src/scenes/forum.rb:1993
 msgctxt "Forum"
 msgid "Unread"
 msgstr "Nowe"
 
-#: src/scenes/forum.rb:366 src/scenes/forum.rb:391 src/scenes/forum.rb:412
-#: src/scenes/forum.rb:434 src/scenes/forum.rb:454 src/scenes/forum.rb:474
-#: src/scenes/forum.rb:495 src/scenes/forum.rb:511 src/scenes/forum.rb:529
+#: src/scenes/forum.rb:366 src/scenes/forum.rb:391 src/scenes/forum.rb:412 src/scenes/forum.rb:434 src/scenes/forum.rb:454 src/scenes/forum.rb:474 src/scenes/forum.rb:495 src/scenes/forum.rb:511 src/scenes/forum.rb:529
 msgctxt "Forum"
 msgid "Forums"
 msgstr "Fora"
 
-#: src/scenes/forum.rb:391 src/scenes/forum.rb:434 src/scenes/forum.rb:454
-#: src/scenes/forum.rb:474 src/scenes/forum.rb:495 src/scenes/forum.rb:511
-#: src/scenes/forum.rb:529 src/scenes/forum.rb:1142
+#: src/scenes/forum.rb:391 src/scenes/forum.rb:434 src/scenes/forum.rb:454 src/scenes/forum.rb:474 src/scenes/forum.rb:495 src/scenes/forum.rb:511 src/scenes/forum.rb:529 src/scenes/forum.rb:1142
 msgctxt "Forum"
 msgid "Administrator"
 msgstr "Administrator"
 
-#: src/scenes/forum.rb:537 src/scenes/forum.rb:540 src/scenes/forum.rb:1043
-#: src/scenes/forum.rb:1482 src/scenes/forum.rb:1667 src/scenes/forum.rb:2001
-#: src/scenes/forum.rb:2507 src/scenes/forum.rb:3015
+#: src/scenes/forum.rb:537 src/scenes/forum.rb:540 src/scenes/forum.rb:1043 src/scenes/forum.rb:1482 src/scenes/forum.rb:1667 src/scenes/forum.rb:2001 src/scenes/forum.rb:2507 src/scenes/forum.rb:3015
 msgctxt "Forum"
 msgid "Forum"
 msgstr "Forum"
@@ -6797,15 +6450,12 @@ msgctxt "Forum"
 msgid "closed (only invited users can join)"
 msgstr "grupa zamknięta (użytkownicy dołączać mogą tylko na zaproszenie)"
 
-#: src/scenes/forum.rb:667 src/scenes/forum.rb:671 src/scenes/forum.rb:1337
-#: src/scenes/forum.rb:1349 src/scenes/forum.rb:1351 src/scenes/forum.rb:4280
-#: src/scenes/forum.rb:4282
+#: src/scenes/forum.rb:667 src/scenes/forum.rb:671 src/scenes/forum.rb:1337 src/scenes/forum.rb:1349 src/scenes/forum.rb:1351 src/scenes/forum.rb:4280 src/scenes/forum.rb:4282
 msgctxt "Forum"
 msgid "Moderated (everyone can request)"
 msgstr "Grupa moderowana (Administracja zatwierdza kandydatury użytkowników)"
 
-#: src/scenes/forum.rb:673 src/scenes/forum.rb:1337 src/scenes/forum.rb:1351
-#: src/scenes/forum.rb:4282
+#: src/scenes/forum.rb:673 src/scenes/forum.rb:1337 src/scenes/forum.rb:1351 src/scenes/forum.rb:4282
 msgctxt "Forum"
 msgid "open (everyone can join)"
 msgstr "grupa otwarta (każdy może dołączyć)"
@@ -6855,8 +6505,7 @@ msgctxt "Forum"
 msgid "Audio posts"
 msgstr "Wpisy audio"
 
-#: src/scenes/forum.rb:704 src/scenes/forum.rb:2606 src/scenes/forum.rb:2874
-#: src/scenes/forum.rb:2961 src/scenes/forum.rb:3667
+#: src/scenes/forum.rb:704 src/scenes/forum.rb:2606 src/scenes/forum.rb:2874 src/scenes/forum.rb:2961 src/scenes/forum.rb:3667
 msgctxt "Forum"
 msgid "Attachments"
 msgstr "Załączniki"
@@ -6978,12 +6627,8 @@ msgstr "Oznacz tę grupę jako przeczytaną"
 
 #: src/scenes/forum.rb:803
 msgctxt "Forum"
-msgid ""
-"All posts in this group will be marked as read. Are you sure you want to "
-"continue?"
-msgstr ""
-"Wszystkie wpisy w tej grupie zostaną oznaczone jako przeczytane. Czy jesteś "
-"pewien, że chcesz kontynuować?"
+msgid "All posts in this group will be marked as read. Are you sure you want to continue?"
+msgstr "Wszystkie wpisy w tej grupie zostaną oznaczone jako przeczytane. Czy jesteś pewien, że chcesz kontynuować?"
 
 #: src/scenes/forum.rb:816
 msgctxt "Forum"
@@ -7253,8 +6898,7 @@ msgstr "Zrezygnuj z funkcji moderatora"
 #: src/scenes/forum.rb:1183
 msgctxt "Forum"
 msgid "Are you sure you want to give up your moderator privileges in %{groupname}?"
-msgstr ""
-"Czy na pewno chcesz zrezygnować z funkcji moderatora grupy %{groupname}?"
+msgstr "Czy na pewno chcesz zrezygnować z funkcji moderatora grupy %{groupname}?"
 
 #: src/scenes/forum.rb:1190
 msgctxt "Forum"
@@ -7268,14 +6912,8 @@ msgstr "Mianuj tego użytkownika na stanowisko moderatora grupy"
 
 #: src/scenes/forum.rb:1201
 msgctxt "Forum"
-msgid ""
-"You want to give the role of moderator to a user who is banned globally. "
-"Groups with banned moderators are not displayed in most lists. Are you sure "
-"you want to continue?"
-msgstr ""
-"Chcesz nadać rolę moderatora użytkownikowi, który został zbanowany "
-"globalnie. Grupy ze zbanowanymi moderatorami nie są wyświetlane na "
-"większości list. Czy na pewno chcesz kontynuować?"
+msgid "You want to give the role of moderator to a user who is banned globally. Groups with banned moderators are not displayed in most lists. Are you sure you want to continue?"
+msgstr "Chcesz nadać rolę moderatora użytkownikowi, który został zbanowany globalnie. Grupy ze zbanowanymi moderatorami nie są wyświetlane na większości list. Czy na pewno chcesz kontynuować?"
 
 #: src/scenes/forum.rb:1206
 msgctxt "Forum"
@@ -7290,9 +6928,7 @@ msgstr "Przekaż swoje uprawnienia administracyjne temu użytkownikowi"
 #: src/scenes/forum.rb:1208
 msgctxt "Forum"
 msgid "Are you sure you want to give up your administrator privileges in %{groupname} and transfer them to %{user}?"
-msgstr ""
-"Czy jesteś pewien, że chcesz się zrzec funkcji administratora grupy %"
-"{groupname} i przekazać ją użytkownikowi %{user}?"
+msgstr "Czy jesteś pewien, że chcesz się zrzec funkcji administratora grupy %{groupname} i przekazać ją użytkownikowi %{user}?"
 
 #: src/scenes/forum.rb:1216
 msgctxt "Forum"
@@ -7312,8 +6948,7 @@ msgstr "Zbanuj tego użytkownika w tej grupie"
 #: src/scenes/forum.rb:1238
 msgctxt "Forum"
 msgid "Are you sure you want to ban %{user} from %{groupname}?"
-msgstr ""
-"Czy na pewno chcesz zbanować użytkownika %{user} w grupie %{groupname}?"
+msgstr "Czy na pewno chcesz zbanować użytkownika %{user} w grupie %{groupname}?"
 
 #: src/scenes/forum.rb:1241
 msgctxt "Forum"
@@ -7333,8 +6968,7 @@ msgstr "Odbanuj tego użytkownika w tej grupie"
 #: src/scenes/forum.rb:1247
 msgctxt "Forum"
 msgid "Are you sure you want to unban %{user} from %{groupname}?"
-msgstr ""
-"Czy na pewno chcesz odbanować użytkownika %{user} w grupie %{groupname}?"
+msgstr "Czy na pewno chcesz odbanować użytkownika %{user} w grupie %{groupname}?"
 
 #: src/scenes/forum.rb:1250
 msgctxt "Forum"
@@ -7354,8 +6988,7 @@ msgstr "Odrzuć"
 #: src/scenes/forum.rb:1254
 msgctxt "Forum"
 msgid "Do you want to reject the request from %{user}?"
-msgstr ""
-"Czy na pewno chcesz odmówić użytkownikowi %{user} dołączenia do tej grupy?"
+msgstr "Czy na pewno chcesz odmówić użytkownikowi %{user} dołączenia do tej grupy?"
 
 #: src/scenes/forum.rb:1257
 msgctxt "Forum"
@@ -7365,9 +6998,7 @@ msgstr "Anuluj zaproszenie"
 #: src/scenes/forum.rb:1258
 msgctxt "Forum"
 msgid "Are you sure you want to cancel %{user}'s invitation to %{groupname}?"
-msgstr ""
-"Czy na pewno chcesz anulować zaproszenie użytkownika %{user} do grupy %"
-"{groupname}?"
+msgstr "Czy na pewno chcesz anulować zaproszenie użytkownika %{user} do grupy %{groupname}?"
 
 #: src/scenes/forum.rb:1265
 msgctxt "Forum"
@@ -7561,12 +7192,8 @@ msgstr "Oznacz to forum jako przeczytane"
 
 #: src/scenes/forum.rb:1650
 msgctxt "Forum"
-msgid ""
-"All posts on this forum will be marked as read. Are you sure you want to "
-"continue?"
-msgstr ""
-"Wszystkie wpisy na tym forum zostaną oznaczone jako przeczytane. Czy jesteś "
-"pewien, że chcesz kontynuować?"
+msgid "All posts on this forum will be marked as read. Are you sure you want to continue?"
+msgstr "Wszystkie wpisy na tym forum zostaną oznaczone jako przeczytane. Czy jesteś pewien, że chcesz kontynuować?"
 
 #: src/scenes/forum.rb:1662
 msgctxt "Forum"
@@ -7725,12 +7352,8 @@ msgstr "Oznacz ten wątek jako przeczytany"
 
 #: src/scenes/forum.rb:2078
 msgctxt "Forum"
-msgid ""
-"All posts in this thread will be marked as read. Are you sure you want to "
-"continue?"
-msgstr ""
-"Wszystkie wpisy w tym wątku zostaną oznaczone jako przeczytane. Czy jesteś "
-"pewien, że chcesz kontynuować?"
+msgid "All posts in this thread will be marked as read. Are you sure you want to continue?"
+msgstr "Wszystkie wpisy w tym wątku zostaną oznaczone jako przeczytane. Czy jesteś pewien, że chcesz kontynuować?"
 
 #: src/scenes/forum.rb:2083
 msgctxt "Forum"
@@ -7805,14 +7428,12 @@ msgstr "Czytelnicy: %{count_readers}"
 #: src/scenes/forum.rb:2140
 msgctxt "Forum"
 msgid "Users that have read less than 50 percent of posts: %{count_readers}"
-msgstr ""
-"Użytkownicy, którzy przeczytali mniej niż połowę wpisów: %{count_readers}"
+msgstr "Użytkownicy, którzy przeczytali mniej niż połowę wpisów: %{count_readers}"
 
 #: src/scenes/forum.rb:2141
 msgctxt "Forum"
 msgid "Users that have read over 90 percent of posts: %{count_readers}"
-msgstr ""
-"Użytkownicy, którzy przeczytali ponad 90 procent wpisów: %{count_readers}"
+msgstr "Użytkownicy, którzy przeczytali ponad 90 procent wpisów: %{count_readers}"
 
 #: src/scenes/forum.rb:2142
 msgctxt "Forum"
@@ -7974,8 +7595,7 @@ msgctxt "Forum"
 msgid "Offer refused"
 msgstr "Oferta odrzucona"
 
-#: src/scenes/forum.rb:2338 src/scenes/forum.rb:2395 src/scenes/forum.rb:3462
-#: src/scenes/forum.rb:3515
+#: src/scenes/forum.rb:2338 src/scenes/forum.rb:2395 src/scenes/forum.rb:3462 src/scenes/forum.rb:3515
 msgctxt "Forum"
 msgid "Move"
 msgstr "Przenieś"
@@ -7985,8 +7605,7 @@ msgctxt "Forum"
 msgid "Offer"
 msgstr "Zaoferuj"
 
-#: src/scenes/forum.rb:2340 src/scenes/forum.rb:2398 src/scenes/forum.rb:3463
-#: src/scenes/forum.rb:3518
+#: src/scenes/forum.rb:2340 src/scenes/forum.rb:2398 src/scenes/forum.rb:3463 src/scenes/forum.rb:3518
 msgctxt "Forum"
 msgid "Delete"
 msgstr "Usuń"
@@ -8032,8 +7651,7 @@ msgctxt "Forum"
 msgid "Which group do you want to offer these threads to?"
 msgstr "Której grupie chcesz zaoferować te wątki?"
 
-#: src/scenes/forum.rb:2478 src/scenes/forum.rb:2505 src/scenes/forum.rb:2983
-#: src/scenes/forum.rb:2999 src/scenes/forum.rb:3911
+#: src/scenes/forum.rb:2478 src/scenes/forum.rb:2505 src/scenes/forum.rb:2983 src/scenes/forum.rb:2999 src/scenes/forum.rb:3911
 msgctxt "Forum"
 msgid "Audio post"
 msgstr "Wpis audio"
@@ -8083,8 +7701,7 @@ msgctxt "Forum"
 msgid "You haven't selected all tags. Do you want to select the missing tags?"
 msgstr "Nie wybrano wszystkich tagów. Czy chcesz uzupełnić brakujące tagi?"
 
-#: src/scenes/forum.rb:2543 src/scenes/forum.rb:2551 src/scenes/forum.rb:3049
-#: src/scenes/forum.rb:3081
+#: src/scenes/forum.rb:2543 src/scenes/forum.rb:2551 src/scenes/forum.rb:3049 src/scenes/forum.rb:3081
 msgctxt "Forum"
 msgid "Send"
 msgstr "Wyślij"
@@ -8154,20 +7771,17 @@ msgctxt "Forum"
 msgid "Are you sure you want to cancel creating this post?"
 msgstr "Czy jesteś pewien, że chcesz przerwać tworzenie tego wpisu?"
 
-#: src/scenes/forum.rb:2845 src/scenes/messages.rb:653 src/scenes/polls.rb:24
-#: src/scenes/polls.rb:86 src/scenes/polls.rb:375
+#: src/scenes/forum.rb:2845 src/scenes/messages.rb:653 src/scenes/polls.rb:24 src/scenes/polls.rb:86 src/scenes/polls.rb:375
 msgctxt "Polls"
 msgid "Vote"
 msgstr "Głosuj"
 
-#: src/scenes/forum.rb:2845 src/scenes/messages.rb:653 src/scenes/polls.rb:24
-#: src/scenes/polls.rb:91
+#: src/scenes/forum.rb:2845 src/scenes/messages.rb:653 src/scenes/polls.rb:24 src/scenes/polls.rb:91
 msgctxt "Polls"
 msgid "Show results"
 msgstr "Pokaż wyniki"
 
-#: src/scenes/forum.rb:2845 src/scenes/messages.rb:653 src/scenes/polls.rb:24
-#: src/scenes/polls.rb:94
+#: src/scenes/forum.rb:2845 src/scenes/messages.rb:653 src/scenes/polls.rb:24 src/scenes/polls.rb:94
 msgctxt "Polls"
 msgid "Show report"
 msgstr "Pokaż raport"
@@ -8629,9 +8243,7 @@ msgstr "Brak"
 #: src/scenes/forum.rb:4252
 msgctxt "Forum"
 msgid "Prevent globally banned users from posting in this group"
-msgstr ""
-"Zapobiegaj umieszczaniu postów w tej grupie przez użytkowników zbanowanych "
-"globalnie"
+msgstr "Zapobiegaj umieszczaniu postów w tej grupie przez użytkowników zbanowanych globalnie"
 
 #: src/scenes/forum.rb:4255
 msgctxt "Forum"
@@ -8776,9 +8388,7 @@ msgstr "Usuń"
 #: src/scenes/honors.rb:125
 msgctxt "Honors"
 msgid "Are you sure you want to delete this badge? All users who have been granted this badge will lose it."
-msgstr ""
-"Czy jesteś pewien, że chcesz usunąć to odznaczenie? Wszyscy użytkownicy nim "
-"odznaczeni, utracą je."
+msgstr "Czy jesteś pewien, że chcesz usunąć to odznaczenie? Wszyscy użytkownicy nim odznaczeni, utracą je."
 
 #: src/scenes/honors.rb:131
 msgctxt "Honors"
@@ -8898,9 +8508,7 @@ msgstr "Skróty klawiszowe niewidzialnego interfejsu"
 #: src/scenes/install.rb:3
 msgctxt "Install"
 msgid "The Elten installer will be downloaded from the server and launched after Elten closes. Continue?"
-msgstr ""
-"Instalator Eltena zostanie pobrany z serwera i uruchomiony po zamknięciu "
-"programu. Kontynuować?"
+msgstr "Instalator Eltena zostanie pobrany z serwera i uruchomiony po zamknięciu programu. Kontynuować?"
 
 #: src/scenes/install.rb:6 src/scenes/install.rb:17
 msgctxt "Install"
@@ -8910,46 +8518,27 @@ msgstr "Nie udało się pobrać instalatora."
 #: src/scenes/install.rb:10
 msgctxt "Install"
 msgid "The installer has been downloaded. Elten will close and launch the installer."
-msgstr ""
-"Instalator został pobrany. Elten zostanie zamknięty, a następnie uruchomi "
-"się instalator."
+msgstr "Instalator został pobrany. Elten zostanie zamknięty, a następnie uruchomi się instalator."
 
 #: src/scenes/loading.rb:229
 msgctxt "Loading"
 msgid "Elten has detected that you are using NVDA. To support some features of this screen reader, the Elten add-on for NVDA must be installed. Do you want to install it now?"
-msgstr ""
-"Elten wykrył, że używasz czytnika ekranowego NVDA. By obsłużyć niektóre "
-"funkcje tego czytnika, w tym monitory brajlowskie, wymagana jest instalacja "
-"dodatku zapewniającego lepsze wsparcie Eltena dla NVDA. Czy chcesz to zrobić "
-"teraz?"
+msgstr "Elten wykrył, że używasz czytnika ekranowego NVDA. By obsłużyć niektóre funkcje tego czytnika, w tym monitory brajlowskie, wymagana jest instalacja dodatku zapewniającego lepsze wsparcie Eltena dla NVDA. Czy chcesz to zrobić teraz?"
 
 #: src/scenes/loading.rb:231
 msgctxt "Loading"
 msgid "A new version of the Elten add-on for NVDA is available. The version you are using is no longer supported by this Elten release and may cause errors. Do you want to update it now?"
-msgstr ""
-"Dostępna jest nowa wersja dodatku Eltena dla NVDA. Obecna wersja dodatku nie "
-"jest wspierana w tym wydaniu Eltena i może powodować błędy. Czy chcesz "
-"zaktualizować dodatek teraz?"
+msgstr "Dostępna jest nowa wersja dodatku Eltena dla NVDA. Obecna wersja dodatku nie jest wspierana w tym wydaniu Eltena i może powodować błędy. Czy chcesz zaktualizować dodatek teraz?"
 
 #: src/scenes/loading.rb:251
 msgctxt "Loading"
 msgid "The Elten add-on for NVDA is not available in this build. Install or update it manually to enable full NVDA integration."
-msgstr ""
-"Pakiet dodatku Elten dla NVDA nie jest dostępny w tej kompilacji. Aby "
-"włączyć pełną integrację z NVDA, zainstaluj lub zaktualizuj dodatek ręcznie."
+msgstr "Pakiet dodatku Elten dla NVDA nie jest dostępny w tej kompilacji. Aby włączyć pełną integrację z NVDA, zainstaluj lub zaktualizuj dodatek ręcznie."
 
 #: src/scenes/loading.rb:268
 msgctxt "Loading"
 msgid "Warning! Elten failed to verify the server's encryption key. You may be connecting not to an Elten server, but to a server controlled by an attacker. The Elten server's key may also have changed. Details of any legitimate key change should be published on the Elten website or forum. If no such information has been published, this connection may be under attack. Any data you provide, including your password, could be stolen. Are you sure you want to continue with this connection? Select No to exit Elten."
-msgstr ""
-"Uwaga! Elten nie zweryfikował klucza szyfrowania serwera. Możliwe, że nie "
-"łączysz się z serwerem Eltena, ale z serwerem przygotowanym przez hakerów. "
-"Możliwe jest również, że klucz serwera Eltena został zmieniony. Wszelkie "
-"szczegóły powinny być podane na stronie internetowej projektu. Jeśli nie "
-"podano informacji o zmianie klucza, jest bardzo prawdopodobne, że jesteś "
-"poddany atakowi hakerów. W związku z tym wszelkie dane, które zostaną "
-"podane, w tym hasło, mogą zostać skradzione. Czy na pewno chcesz kontynuować "
-"to połączenie? Wybierz Nie, aby zamknąć program."
+msgstr "Uwaga! Elten nie zweryfikował klucza szyfrowania serwera. Możliwe, że nie łączysz się z serwerem Eltena, ale z serwerem przygotowanym przez hakerów. Możliwe jest również, że klucz serwera Eltena został zmieniony. Wszelkie szczegóły powinny być podane na stronie internetowej projektu. Jeśli nie podano informacji o zmianie klucza, jest bardzo prawdopodobne, że jesteś poddany atakowi hakerów. W związku z tym wszelkie dane, które zostaną podane, w tym hasło, mogą zostać skradzione. Czy na pewno chcesz kontynuować to połączenie? Wybierz Nie, aby zamknąć program."
 
 #: src/scenes/loading.rb:287
 msgctxt "Loading"
@@ -8960,41 +8549,29 @@ msgstr "Dostępna jest nowa wersja programu."
 msgctxt "Loading"
 msgid ""
 "Attention!\n"
-"Since the release of version 2.5.2.1, new restrictions have been introduced "
-"for globally banned users.\n"
-"By default, they are prevented from speaking in any groups and writing to "
-"other people.\n"
+"Since the release of version 2.5.2.1, new restrictions have been introduced for globally banned users.\n"
+"By default, they are prevented from speaking in any groups and writing to other people.\n"
 "\n"
-"To allow banned people to speak in a group, change this option from the "
-"group's settings, General tab.\n"
-"Similarly, to allow these users to write private messages to you, you must "
-"allow this from within your account settings, Privacy tab.\n"
+"To allow banned people to speak in a group, change this option from the group's settings, General tab.\n"
+"Similarly, to allow these users to write private messages to you, you must allow this from within your account settings, Privacy tab.\n"
 "\n"
-"Also, all groups moderated by banned users have been removed from most "
-"public lists.\n"
+"Also, all groups moderated by banned users have been removed from most public lists.\n"
 "\n"
-"At the same time, three changes have since been made to the premium packages "
-"at the request of users:\n"
+"At the same time, three changes have since been made to the premium packages at the request of users:\n"
 "First of all, premium features are now visible in menus.\n"
-"It has also been made possible to buy premium packages for a period of one "
-"month.\n"
+"It has also been made possible to buy premium packages for a period of one month.\n"
 "Other billing currencies have also been added."
 msgstr ""
 "Uwaga!\n"
-"Od wydania wersji 2.5.2.1 wprowadzono nowe ograniczenia dla użytkowników "
-"zbanowanych globalnie.\n"
+"Od wydania wersji 2.5.2.1 wprowadzono nowe ograniczenia dla użytkowników zbanowanych globalnie.\n"
 "Domyślnie nie mogą oni rozmawiać w żadnych grupach i pisać do innych osób.\n"
 "\n"
-"Aby zezwolić zbanowanym osobom na wypowiadanie się w grupie, należy zmienić "
-"tę opcję w ustawieniach grupy, w zakładce Ogólne.\n"
-"Podobnie, aby zezwolić tym użytkownikom na pisanie prywatnych wiadomości do "
-"ciebie, musisz zezwolić na to w ustawieniach konta, zakładka Prywatność.\n"
+"Aby zezwolić zbanowanym osobom na wypowiadanie się w grupie, należy zmienić tę opcję w ustawieniach grupy, w zakładce Ogólne.\n"
+"Podobnie, aby zezwolić tym użytkownikom na pisanie prywatnych wiadomości do ciebie, musisz zezwolić na to w ustawieniach konta, zakładka Prywatność.\n"
 "\n"
-"Ponadto wszystkie grupy moderowane przez zbanowanych użytkowników zostały "
-"usunięte z większości list publicznych.\n"
+"Ponadto wszystkie grupy moderowane przez zbanowanych użytkowników zostały usunięte z większości list publicznych.\n"
 "\n"
-"Jednocześnie na prośbę użytkowników wprowadzono trzy zmiany w pakietach "
-"premium:\n"
+"Jednocześnie na prośbę użytkowników wprowadzono trzy zmiany w pakietach premium:\n"
 "Po pierwsze, funkcje premium są teraz widoczne w menu.\n"
 "Umożliwiono również zakup pakietów premium na okres jednego miesiąca.\n"
 "Dodano również możliwość opłacania funkcji premium w innych walutach."
@@ -9004,8 +8581,7 @@ msgctxt "Loading"
 msgid "Information about important changes"
 msgstr "Informacje o ważnych zmianach"
 
-#: src/scenes/loading.rb:333 src/scenes/log.rb:14 src/scenes/polls.rb:566
-#: src/ui/controls/opus_record_button.rb:360
+#: src/scenes/loading.rb:333 src/scenes/log.rb:14 src/scenes/polls.rb:566 src/ui/controls/opus_record_button.rb:360
 msgid "Close"
 msgstr "Zamknij"
 
@@ -9077,12 +8653,7 @@ msgstr "Wprowadź kod pin"
 #: src/scenes/login.rb:70 src/scenes/login.rb:210
 msgctxt "Login"
 msgid "Do you want to enable auto-login key encryption? Once encrypted, the auto-login key can be read only on this computer. Copying or exporting it will not allow another device to access your account. You can create separate auto-login keys for any other computers you use."
-msgstr ""
-"Czy chcesz włączyć szyfrowanie klucza automatycznego logowania? Po "
-"zaszyfrowaniu klucz będzie można odczytać tylko na tym komputerze, a jego "
-"skopiowanie lub wyeksportowanie nie umożliwi innym urządzeniom dostępu do "
-"twojego konta. Możesz utworzyć dowolną liczbę kluczy automatycznego "
-"logowania dla pozostałych używanych komputerów."
+msgstr "Czy chcesz włączyć szyfrowanie klucza automatycznego logowania? Po zaszyfrowaniu klucz będzie można odczytać tylko na tym komputerze, a jego skopiowanie lub wyeksportowanie nie umożliwi innym urządzeniom dostępu do twojego konta. Możesz utworzyć dowolną liczbę kluczy automatycznego logowania dla pozostałych używanych komputerów."
 
 #: src/scenes/login.rb:106
 msgctxt "Login"
@@ -9097,18 +8668,12 @@ msgstr "Użyj kodu alternatywnego"
 #: src/scenes/login.rb:106
 msgctxt "Login"
 msgid "Two-factor authentication is enabled on this account. Select an authentication method."
-msgstr ""
-"Dwuetapowe uwierzytelnianie jest włączone dla tego konta. Wybierz metodę "
-"weryfikacji."
+msgstr "Dwuetapowe uwierzytelnianie jest włączone dla tego konta. Wybierz metodę weryfikacji."
 
 #: src/scenes/login.rb:130
 msgctxt "Login"
 msgid "Enter the code sent to you by text message to allow this device to log in. If you cannot access the phone number used, select the password reset option to disable two-factor authentication."
-msgstr ""
-"Wprowadź kod wysłany na twój numer wiadomością SMS, aby zezwolić temu "
-"urządzeniu na zalogowanie. Jeśli nie masz dostępu do użytego numeru "
-"telefonu, wybierz opcję resetowania hasła w celu wyłączenia logowania "
-"dwuetapowego."
+msgstr "Wprowadź kod wysłany na twój numer wiadomością SMS, aby zezwolić temu urządzeniu na zalogowanie. Jeśli nie masz dostępu do użytego numeru telefonu, wybierz opcję resetowania hasła w celu wyłączenia logowania dwuetapowego."
 
 #: src/scenes/login.rb:132
 msgctxt "Login"
@@ -9145,49 +8710,28 @@ msgstr "Czy chcesz włączyć automatyczne logowanie dla konta %{user}?"
 
 #: src/scenes/login.rb:188
 msgctxt "Login"
-msgid ""
-"The saved login data uses the old account authentication method in which  "
-"susceptibility to hacker attacks has been detected. New, safer automatic "
-"login  algorithms have been introduced in Elten 2.2. It is recommended that "
-"you convert  the saved information into a new system in order to improve the "
-"security of your  account. Do you want to update the saved information now?"
-msgstr ""
-"Zapisane informacje logowania wykorzystują starą metodę uwierzytelniania "
-"konta, w której wykryte zostały podatności na ataki hakerskie. W Eltenie 2.2 "
-"wprowadzone zostały nowe, bezpieczniejsze algorytmy automatycznego "
-"logowania. Zalecana jest konwersja zapisanych informacji do nowego systemu w "
-"celu poprawienia bezpieczeństwa konta. Czy chcesz zaktualizować zapisane "
-"informacje?"
+msgid "The saved login data uses the old account authentication method in which  susceptibility to hacker attacks has been detected. New, safer automatic login  algorithms have been introduced in Elten 2.2. It is recommended that you convert  the saved information into a new system in order to improve the security of your  account. Do you want to update the saved information now?"
+msgstr "Zapisane informacje logowania wykorzystują starą metodę uwierzytelniania konta, w której wykryte zostały podatności na ataki hakerskie. W Eltenie 2.2 wprowadzone zostały nowe, bezpieczniejsze algorytmy automatycznego logowania. Zalecana jest konwersja zapisanych informacji do nowego systemu w celu poprawienia bezpieczeństwa konta. Czy chcesz zaktualizować zapisane informacje?"
 
 #: src/scenes/login.rb:205
 msgctxt "Login"
 msgid "An error occurred while verifying your identity. You may have entered an incorrect password."
-msgstr ""
-"Wystąpił błąd podczas uwierzytelniania tożsamości. Możliwe, że podane "
-"zostało błędne hasło."
+msgstr "Wystąpił błąd podczas uwierzytelniania tożsamości. Możliwe, że podane zostało błędne hasło."
 
 #: src/scenes/login.rb:221
 msgctxt "Login"
 msgid "Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
-msgstr ""
-"Automatyczne logowanie będzie ważne do momentu wylogowania się. Kluczami "
-"automatycznego logowania można zarządzać z poziomu zakładki Moje Konto w "
-"menu Społeczność."
+msgstr "Automatyczne logowanie będzie ważne do momentu wylogowania się. Kluczami automatycznego logowania można zarządzać z poziomu zakładki Moje Konto w menu Społeczność."
 
 #: src/scenes/login.rb:223
 msgctxt "Login"
 msgid "Login data has been updated. Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
-msgstr ""
-"Dane logowania zostały zaktualizowane. Automatyczne logowanie będzie ważne "
-"do momentu wylogowania się. Kluczami automatycznego logowania można "
-"zarządzać z poziomu zakładki Moje Konto w menu Społeczność."
+msgstr "Dane logowania zostały zaktualizowane. Automatyczne logowanie będzie ważne do momentu wylogowania się. Kluczami automatycznego logowania można zarządzać z poziomu zakładki Moje Konto w menu Społeczność."
 
 #: src/scenes/login.rb:234
 msgctxt "Login"
 msgid "To re-enable auto-login, go to General settings."
-msgstr ""
-"Aby włączyć ponownie możliwość automatycznego logowania, przejdź do ogólnych "
-"ustawień."
+msgstr "Aby włączyć ponownie możliwość automatycznego logowania, przejdź do ogólnych ustawień."
 
 #: src/scenes/login.rb:248
 msgctxt "Login"
@@ -9211,24 +8755,17 @@ msgstr "To konto nie zostało jeszcze aktywowane."
 
 #: src/scenes/login.rb:272
 msgctxt "Login"
-msgid ""
-"A text message with a verification code can be requested only once per "
-"minute. Please try again later."
-msgstr ""
-"Wiadomość SMS może zostać wysłana jedynie raz na minutę. Spróbuj ponownie "
-"później."
+msgid "A text message with a verification code can be requested only once per minute. Please try again later."
+msgstr "Wiadomość SMS może zostać wysłana jedynie raz na minutę. Spróbuj ponownie później."
 
 #: src/scenes/login.rb:278
 msgctxt "Login"
-msgid ""
-"The daily limit for text messages with verification codes has been reached. "
-"Please try again later."
+msgid "The daily limit for text messages with verification codes has been reached. Please try again later."
 msgstr "Dzienny limit wiadomości SMS został osiągnięty."
 
 #: src/scenes/login.rb:284
 msgctxt "Login"
-msgid ""
-"Text message verification is temporarily unavailable. Please try again later."
+msgid "Text message verification is temporarily unavailable. Please try again later."
 msgstr "Usługa SMS jest tymczasowo niedostępna. Spróbuj ponownie później."
 
 #: src/scenes/login.rb:290
@@ -9238,12 +8775,8 @@ msgstr "Błąd logowania."
 
 #: src/scenes/login.rb:303
 msgctxt "Login"
-msgid ""
-"This account has not been activated. Enter the activation code from the e-"
-"mail message or request the message again."
-msgstr ""
-"To konto nie zostało aktywowane. Wprowadź kod aktywacyjny z wiadomości e-"
-"mail lub poproś o jej ponowne wysłanie."
+msgid "This account has not been activated. Enter the activation code from the e-mail message or request the message again."
+msgstr "To konto nie zostało aktywowane. Wprowadź kod aktywacyjny z wiadomości e-mail lub poproś o jej ponowne wysłanie."
 
 #: src/scenes/login.rb:304
 msgctxt "Login"
@@ -9267,17 +8800,12 @@ msgstr "Wiadomość aktywacyjna została wysłana ponownie."
 
 #: src/scenes/login.rb:315
 msgctxt "Login"
-msgid ""
-"The activation e-mail has already been sent. Please wait at least 10 minutes "
-"before requesting another one."
-msgstr ""
-"Wiadomość aktywacyjna została już wysłana. Zaczekaj co najmniej 10 minut "
-"przed poproszeniem o kolejną."
+msgid "The activation e-mail has already been sent. Please wait at least 10 minutes before requesting another one."
+msgstr "Wiadomość aktywacyjna została już wysłana. Zaczekaj co najmniej 10 minut przed poproszeniem o kolejną."
 
 #: src/scenes/login.rb:317
 msgctxt "Login"
-msgid ""
-"Activation could not be started for this account. It may already be active."
+msgid "Activation could not be started for this account. It may already be active."
 msgstr "Nie można rozpocząć aktywacji tego konta. Być może jest już aktywne."
 
 #: src/scenes/login.rb:330
@@ -9298,11 +8826,7 @@ msgstr "Wprowadzony kod aktywacyjny jest nieprawidłowy. Spróbuj ponownie."
 #: src/scenes/login.rb:353
 msgctxt "Login"
 msgid "Do you want to encrypt this key with a custom PIN? You will be prompted for this PIN every time you start Elten to unlock your account. It will not be saved on the server and will apply only to the auto-login key stored on this device."
-msgstr ""
-"Czy chcesz zaszyfrować klucz z użyciem kodu pin? Będziesz proszony o ten kod "
-"przy każdorazowym uruchomieniu tej kopii programu. Kod ten nie zostanie "
-"zapisany na serwerze i będzie ważny tylko przy odczycie klucza "
-"automatycznego logowania zapisanego na tym urządzeniu."
+msgstr "Czy chcesz zaszyfrować klucz z użyciem kodu pin? Będziesz proszony o ten kod przy każdorazowym uruchomieniu tej kopii programu. Kod ten nie zostanie zapisany na serwerze i będzie ważny tylko przy odczycie klucza automatycznego logowania zapisanego na tym urządzeniu."
 
 #: src/scenes/login.rb:358
 msgctxt "Login"
@@ -9342,8 +8866,7 @@ msgstr "Szybkie akcje"
 #: src/scenes/main.rb:408
 msgctxt "Main"
 msgid "Use Shift with up/down arrows to move quick actions"
-msgstr ""
-"Użyj klawisza Shift oraz strzałek góra/dół, aby przesuwać Szybkie Akcje"
+msgstr "Użyj klawisza Shift oraz strzałek góra/dół, aby przesuwać Szybkie Akcje"
 
 #: src/scenes/main.rb:427
 msgctxt "Main"
@@ -9407,14 +8930,8 @@ msgstr "Czy na pewno chcesz usunąć tę akcję?"
 
 #: src/scenes/main.rb:490
 msgctxt "Main"
-msgid ""
-"If you delete this action, you will also delete the keyboard shortcut "
-"assigned to it. If you want to keep the keyboard shortcut, you can hide this "
-"action. You can show or remove hidden actions at any time."
-msgstr ""
-"Jeśli usuniesz tę akcję, usuniesz również przypisany do niej skrót "
-"klawiszowy. Jeśli chcesz zachować skrót, możesz ukryć tę akcję. Ukrytą akcję "
-"możesz pokazać lub usunąć w dowolnym momencie."
+msgid "If you delete this action, you will also delete the keyboard shortcut assigned to it. If you want to keep the keyboard shortcut, you can hide this action. You can show or remove hidden actions at any time."
+msgstr "Jeśli usuniesz tę akcję, usuniesz również przypisany do niej skrót klawiszowy. Jeśli chcesz zachować skrót, możesz ukryć tę akcję. Ukrytą akcję możesz pokazać lub usunąć w dowolnym momencie."
 
 #: src/scenes/main.rb:502
 msgctxt "Main"
@@ -9524,8 +9041,7 @@ msgctxt "Messages"
 msgid "Last message"
 msgstr "Ostatnia"
 
-#: src/scenes/messages.rb:159 src/scenes/messages.rb:466
-#: src/scenes/messages.rb:601
+#: src/scenes/messages.rb:159 src/scenes/messages.rb:466 src/scenes/messages.rb:601
 msgctxt "Messages"
 msgid "Show older"
 msgstr "Pokaż starsze (Shift+Enter dla załadowania większej liczby elementów)"
@@ -9548,8 +9064,7 @@ msgstr "Oznacz wszystkie wiadomości w tej konwersacji jako przeczytane"
 #: src/scenes/messages.rb:209
 msgctxt "Messages"
 msgid "All messages in this conversation have been marked as read."
-msgstr ""
-"Wszystkie wiadomości w tej konwersacji zostały oznaczone jako przeczytane."
+msgstr "Wszystkie wiadomości w tej konwersacji zostały oznaczone jako przeczytane."
 
 #: src/scenes/messages.rb:217
 msgctxt "Messages"
@@ -9574,8 +9089,7 @@ msgstr "Konwersacje zostały dodane do szybkich akcji"
 #: src/scenes/messages.rb:225
 msgctxt "Messages"
 msgid "Add all messages in this conversation to quick actions"
-msgstr ""
-"Dodaj przegląd wszystkich wiadomości w tej konwersacji do szybkich akcji"
+msgstr "Dodaj przegląd wszystkich wiadomości w tej konwersacji do szybkich akcji"
 
 #: src/scenes/messages.rb:226
 msgctxt "Messages"
@@ -9664,11 +9178,8 @@ msgstr "Oznacz wszystkie wiadomości jako przeczytane"
 
 #: src/scenes/messages.rb:283
 msgctxt "messages"
-msgid ""
-"Are you sure you want to mark all messages in all conversations as read?"
-msgstr ""
-"Czy na pewno chcesz oznaczyć wszystkie wiadomości we wszystkich "
-"konwersacjach jako przeczytane?"
+msgid "Are you sure you want to mark all messages in all conversations as read?"
+msgstr "Czy na pewno chcesz oznaczyć wszystkie wiadomości we wszystkich konwersacjach jako przeczytane?"
 
 #: src/scenes/messages.rb:291
 msgctxt "Messages"
@@ -9733,9 +9244,7 @@ msgstr "Konwersacja została zmodyfikowana"
 #: src/scenes/messages.rb:410
 msgctxt "Messages"
 msgid "Are you sure you want to delete all messages exchanged with %{user}?"
-msgstr ""
-"Czy jesteś pewien, że chcesz usunąć wszystkie wiadomości wymienione z "
-"użytkownikiem %{user}?"
+msgstr "Czy jesteś pewien, że chcesz usunąć wszystkie wiadomości wymienione z użytkownikiem %{user}?"
 
 #: src/scenes/messages.rb:417
 msgctxt "Messages"
@@ -9775,9 +9284,7 @@ msgstr "Wyślij nową wiadomość w tej konwersacji"
 #: src/scenes/messages.rb:518
 msgctxt "Messages"
 msgid "Are you sure you want to delete the conversation %{conversationname} with %{user}?"
-msgstr ""
-"Czy na pewno chcesz usunąć konwersację %{conversationname} z użytkownikiem %"
-"{user}?"
+msgstr "Czy na pewno chcesz usunąć konwersację %{conversationname} z użytkownikiem %{user}?"
 
 #: src/scenes/messages.rb:525
 msgctxt "Messages"
@@ -10071,9 +9578,7 @@ msgstr "Czy jesteś pewien, że chcesz usunąć %{name}?"
 #: src/scenes/notes.rb:195
 msgctxt "Notes"
 msgid "Do you really want to stop sharing %{name}? It will be deleted from your list of notes."
-msgstr ""
-"Czy na pewno chcesz wypisać się z notatki %{name}? Zostanie ona usunięta z "
-"Twojej listy notatek."
+msgstr "Czy na pewno chcesz wypisać się z notatki %{name}? Zostanie ona usunięta z Twojej listy notatek."
 
 #: src/scenes/notes.rb:207
 msgctxt "Notes"
@@ -10454,8 +9959,7 @@ msgstr "Śledzenie wpisów na blogach"
 #: src/scenes/premiumpackages.rb:39
 msgctxt "PremiumPackages"
 msgid "Larger private-message attachments, up to 32 MB"
-msgstr ""
-"Rozszerzony limit wielkości załącznika w wiadomościach prywatnych do 32MB"
+msgstr "Rozszerzony limit wielkości załącznika w wiadomościach prywatnych do 32MB"
 
 #: src/scenes/premiumpackages.rb:40
 msgctxt "PremiumPackages"
@@ -10480,8 +9984,7 @@ msgstr "Audiofil"
 #: src/scenes/premiumpackages.rb:47
 msgctxt "PremiumPackages"
 msgid "Removal of the two-minute limit for private voice messages"
-msgstr ""
-"Zniesienie 2-minutowego limitu długości prywatnych wiadomości głosowych"
+msgstr "Zniesienie 2-minutowego limitu długości prywatnych wiadomości głosowych"
 
 #: src/scenes/premiumpackages.rb:48
 msgctxt "PremiumPackages"
@@ -10512,6 +10015,11 @@ msgstr "Używanie wtyczek VST w konferencjach"
 msgctxt "PremiumPackages"
 msgid "Setting specific ringtones for users"
 msgstr "Ustawianie określonych dźwięków dzwonka dla użytkowników"
+
+#: src/scenes/premiumpackages.rb:54
+msgctxt "PremiumPackages"
+msgid "Attaching audio to feed entries"
+msgstr "Dołączanie audio do wpisów na feedzie"
 
 #: src/scenes/premiumpackages.rb:55
 msgctxt "PremiumPackages"
@@ -10590,19 +10098,13 @@ msgstr "Umieszczanie własnych scenerii w kanałach"
 
 #: src/scenes/premiumpackages.rb:76
 msgctxt "PremiumPackages"
-msgid ""
-"Creating conference-mode channels, where only administrators and allowed "
-"users can speak"
-msgstr ""
-"Tworzenie kanałów w trybie konferencyjnym, w których mogą wypowiadać się "
-"tylko administratorzy i uprawnieni użytkownicy"
+msgid "Creating conference-mode channels, where only administrators and allowed users can speak"
+msgstr "Tworzenie kanałów w trybie konferencyjnym, w których mogą wypowiadać się tylko administratorzy i uprawnieni użytkownicy"
 
 #: src/scenes/premiumpackages.rb:77
 msgctxt "PremiumPackages"
 msgid "Selecting a separate output sound card for conferences"
-msgstr ""
-"Ustawienie innej wyjściowej karty dźwiękowej dla konferencji niż ta wybrana "
-"w Eltenie"
+msgstr "Ustawienie innej wyjściowej karty dźwiękowej dla konferencji niż ta wybrana w Eltenie"
 
 #: src/scenes/premiumpackages.rb:78
 msgctxt "PremiumPackages"
@@ -10627,9 +10129,7 @@ msgstr "Pakiet sponsorski"
 #: src/scenes/premiumpackages.rb:88
 msgctxt "PremiumPackages"
 msgid "Includes the benefits of all other packages, including future packages"
-msgstr ""
-"Obejmuje zawartość wszystkich innych pakietów, w tym przyszłych pakietów "
-"wprowadzonych w czasie trwania subskrypcji"
+msgstr "Obejmuje zawartość wszystkich innych pakietów, w tym przyszłych pakietów wprowadzonych w czasie trwania subskrypcji"
 
 #: src/scenes/premiumpackages.rb:89
 msgctxt "PremiumPackages"
@@ -10728,22 +10228,13 @@ msgstr "Aktywny do %{time}}"
 
 #: src/scenes/premiumpackages.rb:252
 msgctxt "PremiumPackages"
-msgid ""
-"Regardless of the remaining duration of other packages, they will be "
-"replaced by the selected package. This package will be activated for a "
-"period of one year. The remaining period for other packages will be deducted "
-"from the package price. Do you want to continue?"
-msgstr ""
-"Niezależnie od pozostałego czasu trwania innych pakietów, zostaną one "
-"zastąpione przez wybrany pakiet. Pakiet ten zostanie aktywowany na okres "
-"jednego roku. Okres pozostały dla innych pakietów zostanie odliczony od ceny "
-"pakietu. Czy chcesz kontynuować?"
+msgid "Regardless of the remaining duration of other packages, they will be replaced by the selected package. This package will be activated for a period of one year. The remaining period for other packages will be deducted from the package price. Do you want to continue?"
+msgstr "Niezależnie od pozostałego czasu trwania innych pakietów, zostaną one zastąpione przez wybrany pakiet. Pakiet ten zostanie aktywowany na okres jednego roku. Okres pozostały dla innych pakietów zostanie odliczony od ceny pakietu. Czy chcesz kontynuować?"
 
 #: src/scenes/premiumpackages.rb:254
 msgctxt "PremiumPackages"
 msgid "This package is currently unavailable. Try to buy it next month."
-msgstr ""
-"Ten pakiet jest obecnie niedostępny. Spróbuj go kupić w przyszłym miesiącu."
+msgstr "Ten pakiet jest obecnie niedostępny. Spróbuj go kupić w przyszłym miesiącu."
 
 #: src/scenes/premiumpackages.rb:259
 msgctxt "PremiumPackages"
@@ -10763,21 +10254,13 @@ msgstr "Na jaki okres chcesz zakupić ten pakiet?"
 #: src/scenes/premiumpackages.rb:264
 msgctxt "PremiumPackages"
 msgid ""
-"EltenLink's premium packages are given to users as a reward for supporting "
-"the portal.\n"
+"EltenLink's premium packages are given to users as a reward for supporting the portal.\n"
 "A project of this size cannot exist without the help of users.\n"
-"The granting of a premium package does not constitute a commitment or a "
-"commercial contract. The user who supports the project is aware that if the "
-"necessary amount is not raised for EltenLink to continue, the premium "
-"packages will become unavailable."
+"The granting of a premium package does not constitute a commitment or a commercial contract. The user who supports the project is aware that if the necessary amount is not raised for EltenLink to continue, the premium packages will become unavailable."
 msgstr ""
-"Pakiety Premium EltenLink są przyznawane użytkownikom jako podziękowanie za "
-"wspieranie portalu.\n"
+"Pakiety Premium EltenLink są przyznawane użytkownikom jako podziękowanie za wspieranie portalu.\n"
 "Projekt tej wielkości nie może istnieć bez pomocy użytkowników.\n"
-"Przyznanie pakietu premium nie stanowi zobowiązania ani umowy handlowej. "
-"Użytkownik, który wspiera projekt jest świadomy, że jeżeli nie uda się "
-"zebrać niezbędnej kwoty, aby EltenLink mógł kontynuować działalność, pakiety "
-"premium staną się niedostępne."
+"Przyznanie pakietu premium nie stanowi zobowiązania ani umowy handlowej. Użytkownik, który wspiera projekt jest świadomy, że jeżeli nie uda się zebrać niezbędnej kwoty, aby EltenLink mógł kontynuować działalność, pakiety premium staną się niedostępne."
 
 #: src/scenes/premiumpackages.rb:264 src/scenes/premiumpackages.rb:335
 msgctxt "PremiumPackages"
@@ -10836,42 +10319,38 @@ msgstr "Poniżej znajdują się dane do przelewu.\n"
 
 #: src/scenes/premiumpackages.rb:316
 msgctxt "PremiumPackages"
-msgid ""
-"In the title of the transfer, please indicate your user name on the "
-"EltenLink portal and which package the payment concerns."
-msgstr ""
-"W tytule przelewu proszę podać swoją nazwę użytkownika na portalu EltenLink "
-"oraz którego pakietu dotyczy płatność."
+msgid "In the title of the transfer, please indicate your user name on the EltenLink portal and which package the payment concerns."
+msgstr "W tytule przelewu proszę podać swoją nazwę użytkownika na portalu EltenLink oraz którego pakietu dotyczy płatność."
 
 #: src/scenes/premiumpackages.rb:318
 msgctxt "PremiumPackages"
-msgid ""
-"If you wish to receive a code that can be used to activate any of the "
-"packages: %{packages} by any user, mark this information in the transfer "
-"title."
-msgstr ""
-"Jeśli chcesz otrzymać kod, który może być wykorzystany do aktywacji "
-"dowolnego pakietu: %{packages} przez dowolnego użytkownika, zaznacz taką "
-"informację w tytule przelewu."
+msgid "If you wish to receive a code that can be used to activate any of the packages: %{packages} by any user, mark this information in the transfer title."
+msgstr "Jeśli chcesz otrzymać kod, który może być wykorzystany do aktywacji dowolnego pakietu: %{packages} przez dowolnego użytkownika, zaznacz taką informację w tytule przelewu."
 
 #: src/scenes/premiumpackages.rb:320
 msgctxt "PremiumPackages"
 msgid ""
-"Please note that if you transfer a larger amount, the remainder will be "
-"treated as a donation.\n"
+"Please note that if you transfer a larger amount, the remainder will be treated as a donation.\n"
 "\n"
-"In order to reduce the processing time of your payment, you can forward the "
-"transfer confirmation to the Council of Elders."
+"In order to reduce the processing time of your payment, you can forward the transfer confirmation to the Council of Elders."
 msgstr ""
-"Należy pamiętać, że w przypadku przekazania większej kwoty, pozostała część "
-"będzie traktowana jako darowizna.\n"
+"Należy pamiętać, że w przypadku przekazania większej kwoty, pozostała część będzie traktowana jako darowizna.\n"
 "\n"
-"Aby skrócić czas przetwarzania płatności, możesz przesłać potwierdzenie "
-"przelewu do Rady Starszych."
+"Aby skrócić czas przetwarzania płatności, możesz przesłać potwierdzenie przelewu do Rady Starszych."
 
 #: src/scenes/premiumpackages.rb:324
 msgctxt "PremiumPackages"
-msgid "Domestic bank transfer details (from Poland):\n%{holder}\nAddress: %{address}\nAccount number: %{placcount}\n\nAdditional data for foreign transfers:\nIBAN: %{iban}\nBIC / SWIFT: %{swift}\nBank address: %{bankaddress}\nSort code: %{sortcode}"
+msgid ""
+"Domestic bank transfer details (from Poland):\n"
+"%{holder}\n"
+"Address: %{address}\n"
+"Account number: %{placcount}\n"
+"\n"
+"Additional data for foreign transfers:\n"
+"IBAN: %{iban}\n"
+"BIC / SWIFT: %{swift}\n"
+"Bank address: %{bankaddress}\n"
+"Sort code: %{sortcode}"
 msgstr ""
 "Dane do przelewu krajowego (z Polski):\n"
 "%{holder}\n"
@@ -10886,12 +10365,8 @@ msgstr ""
 
 #: src/scenes/premiumpackages.rb:342
 msgctxt "PremiumPackages"
-msgid ""
-"This payment method requires a redirect to an external website. A web "
-"browser will open. Do you wish to continue?"
-msgstr ""
-"Ta metoda płatności wymaga przekierowania na zewnętrzną stronę internetową. "
-"Otworzy się przeglądarka internetowa. Czy chcesz kontynuować?"
+msgid "This payment method requires a redirect to an external website. A web browser will open. Do you wish to continue?"
+msgstr "Ta metoda płatności wymaga przekierowania na zewnętrzną stronę internetową. Otworzy się przeglądarka internetowa. Czy chcesz kontynuować?"
 
 #: src/scenes/premiumpackages.rb:362 src/scenes/premiumpackages.rb:399
 msgctxt "PremiumPackages"
@@ -10901,9 +10376,7 @@ msgstr "Ile kodów premium chciałbyś kupić?"
 #: src/scenes/premiumpackages.rb:370 src/scenes/premiumpackages.rb:407
 msgctxt "PremiumPackages"
 msgid "You will be charged a processing fee of %{amount} for the selected payment method."
-msgstr ""
-"Naliczona zostanie prowizja w kwocie  %{amount} za wybraną metodę płatności. "
-"Czy chcesz kontynuować?"
+msgstr "Naliczona zostanie prowizja w kwocie  %{amount} za wybraną metodę płatności. Czy chcesz kontynuować?"
 
 #: src/scenes/premiumpackages.rb:408
 msgctxt "PremiumPackages"
@@ -10913,9 +10386,7 @@ msgstr "Wprowadź kod blik"
 #: src/scenes/premiumpackages.rb:415
 msgctxt "PremiumPackages"
 msgid "The payment has been initiated. Additional confirmation may be required. The order will be processed once the payment is complete."
-msgstr ""
-"Płatność została zlecona. Może być wymagane dodatkowe potwierdzenie. "
-"Zamówienie zostanie zrealizowane po zakończeniu płatności."
+msgstr "Płatność została zlecona. Może być wymagane dodatkowe potwierdzenie. Zamówienie zostanie zrealizowane po zakończeniu płatności."
 
 #: src/scenes/premiumpackages.rb:420
 msgctxt "PremiumPackages"
@@ -10935,9 +10406,7 @@ msgstr "Ten kod został już wykorzystany."
 #: src/scenes/premiumpackages.rb:438
 msgctxt "PremiumPackages"
 msgid "The package %{name} will be active until %{time}. This code will be redeemed and you will not be able to use it again. Do you want to continue?"
-msgstr ""
-"Pakiet %{name} będzie aktywny do %{time}. Ten kod zostanie wykorzystany i "
-"nie będzie można go ponownie użyć. Czy chcesz kontynuować?"
+msgstr "Pakiet %{name} będzie aktywny do %{time}. Ten kod zostanie wykorzystany i nie będzie można go ponownie użyć. Czy chcesz kontynuować?"
 
 #: src/scenes/premiumpackages.rb:444
 msgctxt "PremiumPackages"
@@ -11369,8 +10838,7 @@ msgctxt "Programs"
 msgid "The list of programs could not be loaded."
 msgstr "Nie udało się załadować listy programów."
 
-#: src/scenes/programs.rb:419 src/scenes/programs.rb:439
-#: src/scenes/programs.rb:494
+#: src/scenes/programs.rb:419 src/scenes/programs.rb:439 src/scenes/programs.rb:494
 msgctxt "Programs"
 msgid "Installation cancelled."
 msgstr "Instalacja anulowana."
@@ -11403,22 +10871,14 @@ msgstr "Plik pakietu: %{file}"
 #: src/scenes/registration.rb:15
 msgctxt "Registration"
 msgid "Account registration is not available when running the code directly. Please use an official Elten launcher."
-msgstr ""
-"Rejestrowanie kont nie jest możliwe podczas bezpośredniego wykonywania kodu. "
-"Użyj oficjalnego launchera."
+msgstr "Rejestrowanie kont nie jest możliwe podczas bezpośredniego wykonywania kodu. Użyj oficjalnego launchera."
 
 #: src/scenes/registration.rb:23
 msgctxt "Registration"
-msgid ""
-"Enter your username. It must contain between 3 and 32 characters, including "
-"at least one letter. You may use letters, numbers, dots, hyphens, and "
-"underscores."
-msgstr ""
-"Wybierz swoją nazwę użytkownika. Powinna zawierać między 3 a 32 znakami. "
-"Dozwolone znaki: litery, cyfry, kropka, myślnik i podkreślnik."
+msgid "Enter your username. It must contain between 3 and 32 characters, including at least one letter. You may use letters, numbers, dots, hyphens, and underscores."
+msgstr "Wybierz swoją nazwę użytkownika. Powinna zawierać między 3 a 32 znakami. Dozwolone znaki: litery, cyfry, kropka, myślnik i podkreślnik."
 
-#: src/scenes/registration.rb:26 src/scenes/registration.rb:39
-#: src/scenes/registration.rb:90
+#: src/scenes/registration.rb:26 src/scenes/registration.rb:39 src/scenes/registration.rb:90
 #, fuzzy
 #| msgctxt "EAPI_Common"
 #| msgid "This user is now monitored"
@@ -11439,10 +10899,7 @@ msgstr "Konto o podanym loginie już istnieje."
 #: src/scenes/registration.rb:56
 msgctxt "Registration"
 msgid "Enter your password. We recommend using a strong password consisting of letters and numbers. The maximum password length is 256 characters."
-msgstr ""
-"Podaj swoje hasło. Zalecane jest silne hasło. Hasło takie składa się z liter "
-"i cyfr. Długość hasła powinna być krótsza niż dwieście pięćdziesiąt sześć "
-"znaków."
+msgstr "Podaj swoje hasło. Zalecane jest silne hasło. Hasło takie składa się z liter i cyfr. Długość hasła powinna być krótsza niż dwieście pięćdziesiąt sześć znaków."
 
 #: src/scenes/registration.rb:58
 msgctxt "Registration"
@@ -11457,23 +10914,17 @@ msgstr "Podane hasła są różne"
 #: src/scenes/registration.rb:69
 msgctxt "Registration"
 msgid "Enter your email address. It will be used to reset a forgotten password and to send you important information."
-msgstr ""
-"Podaj swój adres mailowy. Będzie on używany w przypadku zapomnienia hasła i "
-"do wysyłania najważniejszych informacji."
+msgstr "Podaj swój adres mailowy. Będzie on używany w przypadku zapomnienia hasła i do wysyłania najważniejszych informacji."
 
 #: src/scenes/registration.rb:84
 msgctxt "Registration"
 msgid "Registration was successful. Thank you. You can log in using your username and password."
-msgstr ""
-"Rejestracja powiodła się, dziękujemy. Możesz teraz się zalogować, używając "
-"podanych danych."
+msgstr "Rejestracja powiodła się, dziękujemy. Możesz teraz się zalogować, używając podanych danych."
 
 #: src/scenes/registration.rb:86
 msgctxt "Registration"
 msgid "Registration was successful. Thank you. An activation code has been sent to your email address. You will need to enter it when logging in."
-msgstr ""
-"Rejestracja zakończyła się pomyślnie, dziękujemy. Kod aktywacyjny został "
-"wysłany na twój adres e-mail. Trzeba będzie go wprowadzić podczas logowania."
+msgstr "Rejestracja zakończyła się pomyślnie, dziękujemy. Kod aktywacyjny został wysłany na twój adres e-mail. Trzeba będzie go wprowadzić podczas logowania."
 
 #: src/scenes/registration.rb:92
 msgctxt "Registration"
@@ -11482,12 +10933,8 @@ msgstr "Konto o podanym loginie już istnieje."
 
 #: src/scenes/registration.rb:94
 msgctxt "Registration"
-msgid ""
-"Disposable e-mail addresses cannot be used for registration. Please use a "
-"permanent e-mail address."
-msgstr ""
-"Tymczasowe adresy e-mail nie mogą zostać użyte do rejestracji. Proszę użyć "
-"stałego adresu e-mail."
+msgid "Disposable e-mail addresses cannot be used for registration. Please use a permanent e-mail address."
+msgstr "Tymczasowe adresy e-mail nie mogą zostać użyte do rejestracji. Proszę użyć stałego adresu e-mail."
 
 #: src/scenes/settings.rb:118
 msgctxt "Settings"
@@ -11697,8 +11144,7 @@ msgstr "Włącz"
 #: src/scenes/settings.rb:155
 msgctxt "Settings"
 msgid "Use macOS-style character navigation in text fields"
-msgstr ""
-"Używaj stylu systemu MacOS do nawigowania po znakach w polach tekstowych"
+msgstr "Używaj stylu systemu MacOS do nawigowania po znakach w polach tekstowych"
 
 #: src/scenes/settings.rb:174 src/scenes/settings.rb:178
 msgctxt "Settings"
@@ -11731,9 +11177,7 @@ msgstr "Włącz automatyczne czyszczenie wyjścia"
 #: src/scenes/settings.rb:183
 msgctxt "Settings"
 msgid "Use a voice dictionary when processing characters (requires the NVDA add-on when using NVDA for speech output)"
-msgstr ""
-"Używaj słownika głosu podczas przetwarzania znaków (wymaga dodatku dla NVDA, "
-"jeśli używane jest NVDA jako wyjście mowy)"
+msgstr "Używaj słownika głosu podczas przetwarzania znaków (wymaga dodatku dla NVDA, jeśli używane jest NVDA jako wyjście mowy)"
 
 #: src/scenes/settings.rb:184
 msgctxt "Settings"
@@ -11903,8 +11347,7 @@ msgstr "Wyłącz współbieżne zapytania (HTTP2)"
 #: src/scenes/settings.rb:314
 msgctxt "Settings"
 msgid "Recover responses after request timeout"
-msgstr ""
-"Podejmuj próbę odzyskiwania stanu zapytań po przekroczeniu czasu połączenia"
+msgstr "Podejmuj próbę odzyskiwania stanu zapytań po przekroczeniu czasu połączenia"
 
 #: src/scenes/settings.rb:314
 msgctxt "Settings"
@@ -12269,8 +11712,7 @@ msgstr "Powiadomienie: monitor online"
 #: src/scenes/sounds.rb:81
 msgctxt "Sounds"
 msgid "Notification: a new user joined a conference channel you follow"
-msgstr ""
-"Powiadomienie: nowy użytkownik dołączył do śledzonego kanału konferencyjnego"
+msgstr "Powiadomienie: nowy użytkownik dołączył do śledzonego kanału konferencyjnego"
 
 #: src/scenes/sounds.rb:82
 msgctxt "Sounds"
@@ -12479,19 +11921,13 @@ msgstr "Miejsce docelowe"
 
 #: src/scenes/sounds.rb:314
 msgctxt "Sounds"
-msgid ""
-"This sound theme contains unsaved changes. Do you want to upload it anyway?"
-msgstr ""
-"Ten temat dźwiękowy zawiera niezapisane zmiany. Czy mimo to chcesz go "
-"przesłać?"
+msgid "This sound theme contains unsaved changes. Do you want to upload it anyway?"
+msgstr "Ten temat dźwiękowy zawiera niezapisane zmiany. Czy mimo to chcesz go przesłać?"
 
 #: src/scenes/sounds.rb:319
 msgctxt "Sounds"
 msgid "Sound theme ID. This ID will be used to track updates to this sound theme. Keep the current ID if you want to update the existing sound theme."
-msgstr ""
-"Identyfikator tematu dźwiękowego. Ten identyfikator będzie używany do "
-"śledzenia aktualizacji tego tematu. Zachowaj bieżący identyfikator, jeśli "
-"chcesz zaktualizować istniejący temat."
+msgstr "Identyfikator tematu dźwiękowego. Ten identyfikator będzie używany do śledzenia aktualizacji tego tematu. Zachowaj bieżący identyfikator, jeśli chcesz zaktualizować istniejący temat."
 
 #: src/scenes/sounds.rb:335 src/scenes/sounds.rb:342
 msgctxt "Sounds"
@@ -12685,18 +12121,13 @@ msgstr "Sponsorzy"
 
 #: src/scenes/update.rb:17
 msgctxt "Update"
-msgid ""
-"A new version of Elten is available: %{version}. Do you want to download and "
-"install it?"
-msgstr ""
-"Dostępna jest nowa wersja Eltena: %{version}. Czy chcesz ją pobrać i "
-"zainstalować?"
+msgid "A new version of Elten is available: %{version}. Do you want to download and install it?"
+msgstr "Dostępna jest nowa wersja Eltena: %{version}. Czy chcesz ją pobrać i zainstalować?"
 
 #: src/scenes/update.rb:19
 msgctxt "Update"
 msgid "A new version of this program is available. Do you want to download and install it?"
-msgstr ""
-"Dostępna jest nowa wersja programu. Czy chcesz ją pobrać i zainstalować?"
+msgstr "Dostępna jest nowa wersja programu. Czy chcesz ją pobrać i zainstalować?"
 
 #: src/scenes/update.rb:42 src/scenes/update.rb:79 src/scenes/update.rb:81
 msgctxt "Update"
@@ -12714,24 +12145,17 @@ msgstr "Nie udało się zainstalować niektórych aktualizacji: %{names}"
 #: src/scenes/update.rb:52
 msgctxt "Update"
 msgid "The update has been downloaded. To install it, the program must be restarted. Press Return to continue or Esc to cancel."
-msgstr ""
-"Aktualizacja została pobrana. Aby ją zainstalować, program musi zostać "
-"uruchomiony ponownie. Naciśnij enter, aby kontynuować lub escape, aby "
-"anulować."
+msgstr "Aktualizacja została pobrana. Aby ją zainstalować, program musi zostać uruchomiony ponownie. Naciśnij enter, aby kontynuować lub escape, aby anulować."
 
 #: src/scenes/update.rb:66
 msgctxt "Update"
 msgid "The update will now be installed. The program will restart."
-msgstr ""
-"Aktualizacja zostanie teraz zainstalowana. Program zostanie uruchomiony "
-"ponownie."
+msgstr "Aktualizacja zostanie teraz zainstalowana. Program zostanie uruchomiony ponownie."
 
 #: src/scenes/update.rb:90
 msgctxt "Update"
 msgid "The program will now be reverted to the latest stable version. Elten will restart. This may take several minutes."
-msgstr ""
-"Program zostanie przywrócony do ostatniej wersji stabilnej. Elten zostanie "
-"uruchomiony ponownie. To może potrwać kilka minut."
+msgstr "Program zostanie przywrócony do ostatniej wersji stabilnej. Elten zostanie uruchomiony ponownie. To może potrwać kilka minut."
 
 #: src/scenes/users.rb:35
 msgctxt "Users"
@@ -12927,15 +12351,7 @@ msgctxt "EAPI_Form"
 msgid "Year"
 msgstr "Rok"
 
-#: src/ui/controls/date_button.rb:27 src/ui/controls/date_button.rb:28
-#: src/ui/controls/date_button.rb:29 src/ui/controls/date_button.rb:30
-#: src/ui/controls/date_button.rb:31 src/ui/controls/date_button.rb:32
-#: src/ui/controls/date_button.rb:74 src/ui/controls/date_button.rb:76
-#: src/ui/controls/date_button.rb:83 src/ui/controls/date_button.rb:94
-#: src/ui/controls/date_button.rb:101 src/ui/controls/date_button.rb:103
-#: src/ui/controls/date_button.rb:110 src/ui/controls/date_button.rb:112
-#: src/ui/controls/date_button.rb:119 src/ui/controls/date_button.rb:121
-#: src/ui/controls/date_button.rb:130
+#: src/ui/controls/date_button.rb:27 src/ui/controls/date_button.rb:28 src/ui/controls/date_button.rb:29 src/ui/controls/date_button.rb:30 src/ui/controls/date_button.rb:31 src/ui/controls/date_button.rb:32 src/ui/controls/date_button.rb:74 src/ui/controls/date_button.rb:76 src/ui/controls/date_button.rb:83 src/ui/controls/date_button.rb:94 src/ui/controls/date_button.rb:101 src/ui/controls/date_button.rb:103 src/ui/controls/date_button.rb:110 src/ui/controls/date_button.rb:112 src/ui/controls/date_button.rb:119 src/ui/controls/date_button.rb:121 src/ui/controls/date_button.rb:130
 msgctxt "EAPI_Form"
 msgid "Not selected"
 msgstr "Nie wybrano"
@@ -12975,9 +12391,7 @@ msgctxt "EAPI_Form"
 msgid "Opening a link..."
 msgstr "Otwieranie łącza..."
 
-#: src/ui/controls/edit_box.rb:265 src/ui/controls/edit_box.rb:272
-#: src/ui/controls/edit_box.rb:290 src/ui/controls/edit_box.rb:892
-#: src/ui/controls/edit_box.rb:978 src/ui/controls/edit_box.rb:993
+#: src/ui/controls/edit_box.rb:265 src/ui/controls/edit_box.rb:272 src/ui/controls/edit_box.rb:290 src/ui/controls/edit_box.rb:892 src/ui/controls/edit_box.rb:978 src/ui/controls/edit_box.rb:993
 msgctxt "EAPI_Form"
 msgid "End of line"
 msgstr "Koniec linii"
@@ -13102,8 +12516,7 @@ msgctxt "EAPI_Form"
 msgid "Translate"
 msgstr "Tłumacz"
 
-#: src/ui/controls/edit_box.rb:614 src/ui/controls/files_tree.rb:236
-#: src/ui/form.rb:106 src/ui/form.rb:108
+#: src/ui/controls/edit_box.rb:614 src/ui/controls/files_tree.rb:236 src/ui/form.rb:106 src/ui/form.rb:108
 msgid "Context menu"
 msgstr "Menu kontekstowe"
 
@@ -13218,9 +12631,7 @@ msgstr "Użyj i, aby przejść do następnego elementu listy"
 #: src/ui/controls/edit_box.rb:1759
 msgctxt "EAPI_Form"
 msgid "Use the above shortcuts with shift to navigate to the previous items"
-msgstr ""
-"Użyj powyższych skrótów z klawiszem shift, aby przejść do poprzednich "
-"obiektów"
+msgstr "Użyj powyższych skrótów z klawiszem shift, aby przejść do poprzednich obiektów"
 
 #: src/ui/controls/files_tree.rb:84
 msgctxt "EAPI_Form"
@@ -13358,9 +12769,7 @@ msgstr "Użyj spacji, aby zaznaczyć lub odznaczyć elementy"
 #: src/ui/controls/list_box.rb:874
 msgctxt "EAPI_Form"
 msgid "Press Shift+Up/Down Arrow to filter content by tags"
-msgstr ""
-"Użyj klawisza Shift ze strzałkami w górę / w dół, aby filtrować zawartość "
-"według tagów"
+msgstr "Użyj klawisza Shift ze strzałkami w górę / w dół, aby filtrować zawartość według tagów"
 
 #: src/ui/controls/list_box.rb:876
 msgctxt "EAPI_Form"
@@ -13377,9 +12786,7 @@ msgctxt "EAPI_Form"
 msgid "record"
 msgstr "nagraj"
 
-#: src/ui/controls/opus_record_button.rb:33
-#: src/ui/controls/opus_record_button.rb:93
-#: src/ui/controls/opus_record_button.rb:122
+#: src/ui/controls/opus_record_button.rb:33 src/ui/controls/opus_record_button.rb:93 src/ui/controls/opus_record_button.rb:122
 msgctxt "EAPI_Form"
 msgid "Pause recording"
 msgstr "Wstrzymaj nagrywanie"
@@ -13419,11 +12826,9 @@ msgctxt "EAPI_Form"
 msgid "Delete recording"
 msgstr "Usuń nagranie"
 
-#: src/ui/controls/opus_record_button.rb:50
-#: src/ui/controls/opus_record_button.rb:98
+#: src/ui/controls/opus_record_button.rb:50 src/ui/controls/opus_record_button.rb:98
 msgctxt "EAPI_Form"
-msgid ""
-"Are you sure you want to delete the previous recording and create a new one?"
+msgid "Are you sure you want to delete the previous recording and create a new one?"
 msgstr "Czy na pewno chcesz usunąć to nagranie?"
 
 #: src/ui/controls/opus_record_button.rb:92
@@ -13454,9 +12859,7 @@ msgstr "Wznów nagrywanie"
 #: src/ui/controls/opus_record_button.rb:132
 msgctxt "EAPI_Form"
 msgid "The encoder settings will not apply to the current recording. Are you sure you want to continue?"
-msgstr ""
-"Nowe ustawienia kodeka nie wpłyną na bieżące nagranie. Czy chcesz "
-"kontynuować?"
+msgstr "Nowe ustawienia kodeka nie wpłyną na bieżące nagranie. Czy chcesz kontynuować?"
 
 #: src/ui/controls/opus_record_button.rb:150
 msgctxt "EAPI_Form"
@@ -13573,8 +12976,7 @@ msgctxt "EAPI_Form"
 msgid "Copyright"
 msgstr "Informacja o prawach autorskich"
 
-#: src/ui/controls/opus_record_button.rb:327
-#: src/ui/controls/opus_record_button.rb:368
+#: src/ui/controls/opus_record_button.rb:327 src/ui/controls/opus_record_button.rb:368
 msgctxt "EAPI_Form"
 msgid "Chapter name"
 msgstr "Nazwa rozdziału"
@@ -13587,10 +12989,7 @@ msgstr "Czas rozdziału (hh:mm:ss.uuu)"
 #: src/ui/controls/opus_record_button.rb:339
 msgctxt "EAPI_Form"
 msgid "Invalid time format. Use hh:mm:ss.uuu: two digits each for hours, minutes and seconds, optionally followed by a full stop and three digits for milliseconds."
-msgstr ""
-"Nieprawidłowy format czasu, prawidłowy format to dwie cyfry godzin, "
-"dwukropek, dwie cyfry minut, dwukropek, dwie cyfry sekund i opcjonalnie trzy "
-"cyfry milisekund poprzedzone kropką"
+msgstr "Nieprawidłowy format czasu, prawidłowy format to dwie cyfry godzin, dwukropek, dwie cyfry minut, dwukropek, dwie cyfry sekund i opcjonalnie trzy cyfry milisekund poprzedzone kropką"
 
 #: src/ui/controls/opus_record_button.rb:356
 msgctxt "EAPI_Form"
@@ -13605,9 +13004,7 @@ msgstr "Dodawanie rozdziałów podczas odtwarzania"
 #: src/ui/controls/opus_record_button.rb:359
 msgctxt "EAPI_Form"
 msgid "Chapter editor; use the context menu to add chapters"
-msgstr ""
-"Edytor rozdziałów, użyj menu kontekstowego w celu dodawania rozdziałów w "
-"trakcie odtwarzania"
+msgstr "Edytor rozdziałów, użyj menu kontekstowego w celu dodawania rozdziałów w trakcie odtwarzania"
 
 #: src/ui/controls/opus_record_button.rb:363
 msgctxt "EAPI_Form"
@@ -13732,16 +13129,12 @@ msgstr "Użyj home lub end, aby przejść do początku lub końca ścieżki"
 #: src/ui/controls/player.rb:433
 msgctxt "EAPI_Form"
 msgid "Press Page Up or Page Down to move to the previous or next chapter"
-msgstr ""
-"Użyj przycisków page up lub page down, aby przejść do poprzedniego lub "
-"następnego rozdziału"
+msgstr "Użyj przycisków page up lub page down, aby przejść do poprzedniego lub następnego rozdziału"
 
 #: src/ui/controls/table_box.rb:205
 msgctxt "EAPI_Form"
 msgid "Use Shift+Left/Right Arrow to select the column you want to navigate by"
-msgstr ""
-"Użyj SHIFT oraz strzałek w lewo/w prawo, aby wybrać kolumnę, po której "
-"chcesz nawigować"
+msgstr "Użyj SHIFT oraz strzałek w lewo/w prawo, aby wybrać kolumnę, po której chcesz nawigować"
 
 #: src/ui/controls/tree.rb:238
 msgctxt "EAPI_Form"
@@ -13778,12 +13171,8 @@ msgstr "Alarm"
 #~ msgstr "Zaproszenia do kalendarzy"
 
 #~ msgctxt "Registration"
-#~ msgid ""
-#~ "Enter your username. It will be used for identification.The maximum "
-#~ "length of the  username is 64 characters"
-#~ msgstr ""
-#~ "Podaj swój login. Będzie on używany w celu identyfikacji. Maksymalna "
-#~ "długość loginu to 64 znaki"
+#~ msgid "Enter your username. It will be used for identification.The maximum length of the  username is 64 characters"
+#~ msgstr "Podaj swój login. Będzie on używany w celu identyfikacji. Maksymalna długość loginu to 64 znaki"
 
 #~ msgctxt "Settings"
 #~ msgid "Enable braille output (requires NVDA addon)"
@@ -13798,12 +13187,8 @@ msgstr "Alarm"
 #~ msgstr "Nie ma nic nowego."
 
 #~ msgctxt "EAPI_Common"
-#~ msgid ""
-#~ "In order to use HRTF functionality, Elten needs to download Phonon "
-#~ "library. Would you like to download it now?"
-#~ msgstr ""
-#~ "Aby korzystać z funkcjonalności HRTF, Elten musi pobrać bibliotekę "
-#~ "Phonon. Czy chcesz to zrobić teraz?"
+#~ msgid "In order to use HRTF functionality, Elten needs to download Phonon library. Would you like to download it now?"
+#~ msgstr "Aby korzystać z funkcjonalności HRTF, Elten musi pobrać bibliotekę Phonon. Czy chcesz to zrobić teraz?"
 
 #~ msgid "Function not supported on this platform"
 #~ msgstr "Ta funkcja nie jest wspierana na tej platformie"
@@ -13865,13 +13250,8 @@ msgstr "Alarm"
 #~ msgstr "Nowy"
 
 #~ msgctxt "EAPI_UI"
-#~ msgid ""
-#~ "An unexpected error of Elten agent occurred. Do you want to report this "
-#~ "event? It  may definitely help us solve the problem."
-#~ msgstr ""
-#~ "Wystąpił nieoczekiwany błąd agenta programu Elten. Czy chcesz przesłać "
-#~ "raport o tym zdarzeniu? Przesłanie raportu może zdecydowanie ułatwić "
-#~ "rozwiązanie problemu."
+#~ msgid "An unexpected error of Elten agent occurred. Do you want to report this event? It  may definitely help us solve the problem."
+#~ msgstr "Wystąpił nieoczekiwany błąd agenta programu Elten. Czy chcesz przesłać raport o tym zdarzeniu? Przesłanie raportu może zdecydowanie ułatwić rozwiązanie problemu."
 
 #~ msgctxt "EAPI_UI"
 #~ msgid "The program is trying to recover from the frozen state."
@@ -13918,24 +13298,8 @@ msgstr "Alarm"
 #~ msgstr "Zainstaluj obecną wersję"
 
 #~ msgctxt "Login"
-#~ msgid ""
-#~ "Do you want to enable auto-Login-key encryption? When encrypted, the Auto-"
-#~ "Login Key will be readable only on this computer, and its copying or "
-#~ "exporting will not allow other devices to access your account. Note: If "
-#~ "you encrypt your Auto-Login Key, the created portable versions will not "
-#~ "be able to automatically log into your account from other devices, even "
-#~ "if you copy your settings, and you will be prompted to enter your "
-#~ "password. You can create as many auto-login-keys as you wish for all "
-#~ "other computers you are using."
-#~ msgstr ""
-#~ "Czy chcesz włączyć szyfrowanie klucza automatycznego logowania? Gdy to "
-#~ "szyfrowanie jest włączone, dane automatycznego logowania będą mogły być "
-#~ "odczytane tylko na tym komputerze, a ich kopiowanie nie umożliwi innym "
-#~ "urządzeniom dostępu do tego konta. Uwaga: jeśli zaszyfrujesz swój klucz "
-#~ "automatycznego logowania, tworzone wersje przenośne nie będą mogły "
-#~ "logować się automatycznie z innych urządzeń i będzie wymagane w nich "
-#~ "podanie hasła. Możesz generować dowolną ilość kluczy automatycznego "
-#~ "logowania."
+#~ msgid "Do you want to enable auto-Login-key encryption? When encrypted, the Auto-Login Key will be readable only on this computer, and its copying or exporting will not allow other devices to access your account. Note: If you encrypt your Auto-Login Key, the created portable versions will not be able to automatically log into your account from other devices, even if you copy your settings, and you will be prompted to enter your password. You can create as many auto-login-keys as you wish for all other computers you are using."
+#~ msgstr "Czy chcesz włączyć szyfrowanie klucza automatycznego logowania? Gdy to szyfrowanie jest włączone, dane automatycznego logowania będą mogły być odczytane tylko na tym komputerze, a ich kopiowanie nie umożliwi innym urządzeniom dostępu do tego konta. Uwaga: jeśli zaszyfrujesz swój klucz automatycznego logowania, tworzone wersje przenośne nie będą mogły logować się automatycznie z innych urządzeń i będzie wymagane w nich podanie hasła. Możesz generować dowolną ilość kluczy automatycznego logowania."
 
 #~ msgctxt "Main"
 #~ msgid "A new beta version of the program is available."
@@ -13970,16 +13334,8 @@ msgstr "Alarm"
 #~ msgstr "Zachowaj obecne ustawienie"
 
 #~ msgctxt "Portable"
-#~ msgid ""
-#~ "If you use a created copy of Elten on another computer, the voice "
-#~ "settings may  not work properly. This is especially noticeable in a "
-#~ "situation when another  computer has other voices installed. How do you "
-#~ "want to configure the generated  version?"
-#~ msgstr ""
-#~ "Jeśli będziesz używał tworzonej kopii programu Elten na innym komputerze, "
-#~ "wybrane ustawienia syntezy mowy mogą nie działać poprawnie. Zauważalne "
-#~ "może to być szczególnie w sytuacji, gdy dany komputer będzie miał "
-#~ "zainstalowane inne głosy. Jak chcesz skonfigurować tworzoną wersję?"
+#~ msgid "If you use a created copy of Elten on another computer, the voice settings may  not work properly. This is especially noticeable in a situation when another  computer has other voices installed. How do you want to configure the generated  version?"
+#~ msgstr "Jeśli będziesz używał tworzonej kopii programu Elten na innym komputerze, wybrane ustawienia syntezy mowy mogą nie działać poprawnie. Zauważalne może to być szczególnie w sytuacji, gdy dany komputer będzie miał zainstalowane inne głosy. Jak chcesz skonfigurować tworzoną wersję?"
 
 #~ msgctxt "Portable"
 #~ msgid "Reset synthesizer settings"
@@ -13987,8 +13343,7 @@ msgstr "Alarm"
 
 #~ msgctxt "Portable"
 #~ msgid "Use a screenreader or a system default voice"
-#~ msgstr ""
-#~ "Używaj głosu aktywnego czytnika ekranowego lub domyślnego głosu systemu"
+#~ msgstr "Używaj głosu aktywnego czytnika ekranowego lub domyślnego głosu systemu"
 
 #~ msgctxt "Portable"
 #~ msgid "Ask each time"
@@ -14019,10 +13374,8 @@ msgstr "Alarm"
 #~ msgstr "Zaktualizuj"
 
 #~ msgctxt "Programs"
-#~ msgid ""
-#~ "Do you want to install program %{name}? Need to download %{size} of data."
-#~ msgstr ""
-#~ "Czy chcesz zainstalować program %{name}? Pobrane zostanie %{size} danych."
+#~ msgid "Do you want to install program %{name}? Need to download %{size} of data."
+#~ msgstr "Czy chcesz zainstalować program %{name}? Pobrane zostanie %{size} danych."
 
 #~ msgctxt "Programs"
 #~ msgid "Remove"
@@ -14297,12 +13650,8 @@ msgstr "Alarm"
 #~ msgstr "Tasuj"
 
 #~ msgctxt "Conference"
-#~ msgid ""
-#~ "Are you sure you want to shuffle this deck? All placed cards will be "
-#~ "returned to this deck."
-#~ msgstr ""
-#~ "Czy jesteś pewien, że chcesz przetasować tę talię? Wszystkie wyłożone "
-#~ "karty powrócą do talii."
+#~ msgid "Are you sure you want to shuffle this deck? All placed cards will be returned to this deck."
+#~ msgstr "Czy jesteś pewien, że chcesz przetasować tę talię? Wszystkie wyłożone karty powrócą do talii."
 
 #~ msgctxt "Conference"
 #~ msgid "Deck history"
@@ -14538,8 +13887,7 @@ msgstr "Alarm"
 
 #~ msgctxt "Registration"
 #~ msgid "User name can not contain slashes. Sign will be Omitted."
-#~ msgstr ""
-#~ "Nazwa użytkownika nie może zawierać ukośników. Znak zostanie pominięty."
+#~ msgstr "Nazwa użytkownika nie może zawierać ukośników. Znak zostanie pominięty."
 
 #~ msgctxt "Registration"
 #~ msgid "User name can not contain spaces. Sign will be Omitted"
@@ -14560,27 +13908,20 @@ msgstr "Alarm"
 #~ msgctxt "Blog"
 #~ msgid ""
 #~ "To continue, you should point your domain to Elten Blogging server.\n"
-#~ "You can buy your own domain from domain providers, such as ovh.com, "
-#~ "domain.com, godaddy.com or bluehost.com.\n"
+#~ "You can buy your own domain from domain providers, such as ovh.com, domain.com, godaddy.com or bluehost.com.\n"
 #~ "Once bought, you should point your domain's A DNS record to IP address:\n"
 #~ "%{ip}\n"
-#~ ". Please note that redirecting your domain is not aliasing and setting "
-#~ "aliases or HTTP 300 / 301 redirections will not work.\n"
-#~ "You can get detailed description from your domain provider, for example "
-#~ "at:\n"
-#~ "https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-"
-#~ "Familiar-with-DNS\n"
+#~ ". Please note that redirecting your domain is not aliasing and setting aliases or HTTP 300 / 301 redirections will not work.\n"
+#~ "You can get detailed description from your domain provider, for example at:\n"
+#~ "https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
 #~ "Once completed, please continue."
 #~ msgstr ""
 #~ "Aby kontynuować, należy wskazać swoją domenę na serwer blogów Eltena.\n"
-#~ "Możesz kupić własną domenę od dostawców domen, takich jak ovh.pl, "
-#~ "nazwa.pl, domeny.pl czy home.pl.\n"
+#~ "Możesz kupić własną domenę od dostawców domen, takich jak ovh.pl, nazwa.pl, domeny.pl czy home.pl.\n"
 #~ "Po zakupie, należy ustawić rekord A DNS domeny na adres IP:\n"
 #~ "%{ip}\n"
-#~ ". Należy pamiętać, że przekierowanie domeny nie jest aliasingiem i "
-#~ "ustawienie aliasów lub przekierowanie HTTP 300 / 301 nie będzie działać.\n"
-#~ "Szczegółowy opis można uzyskać od dostawcy domeny, na przykład na "
-#~ "stronie:\n"
+#~ ". Należy pamiętać, że przekierowanie domeny nie jest aliasingiem i ustawienie aliasów lub przekierowanie HTTP 300 / 301 nie będzie działać.\n"
+#~ "Szczegółowy opis można uzyskać od dostawcy domeny, na przykład na stronie:\n"
 #~ "https://www.ovh.pl/jednostki/strefa_dns.xml\n"
 #~ "Po zakończeniu, wybierz przycisk \"Gotowe, idźmy dalej\"."
 
@@ -14605,18 +13946,12 @@ msgstr "Alarm"
 #~ msgstr "Rozpatrz"
 
 #~ msgctxt "Forum"
-#~ msgid ""
-#~ "Are you sure you want to grant moderation privileges in %{groupname} to "
-#~ "user %{user}?"
-#~ msgstr ""
-#~ "Czy na pewno chcesz mianować użytkownika %{user} na stanowisko moderatora "
-#~ "grupy %{groupname}?"
+#~ msgid "Are you sure you want to grant moderation privileges in %{groupname} to user %{user}?"
+#~ msgstr "Czy na pewno chcesz mianować użytkownika %{user} na stanowisko moderatora grupy %{groupname}?"
 
 #~ msgctxt "Forum"
 #~ msgid "Are you sure you want to deny %{user}'s moderation privileges?"
-#~ msgstr ""
-#~ "Czy na pewno chcesz odebrać użytkownikowi %{user} uprawnienia moderatora "
-#~ "w grupie %{groupname}?"
+#~ msgstr "Czy na pewno chcesz odebrać użytkownikowi %{user} uprawnienia moderatora w grupie %{groupname}?"
 
 #~ msgctxt "Blog"
 #~ msgid "My blog"
@@ -14625,13 +13960,10 @@ msgstr "Alarm"
 #~ msgctxt "PremiumPackages"
 #~ msgid ""
 #~ "Below are the transfer details.\n"
-#~ "In the title of the transfer, please indicate your user name on the "
-#~ "EltenLink portal and which package the payment concerns.\n"
-#~ "Please note that if you transfer a larger amount, the remainder will be "
-#~ "treated as a donation.\n"
+#~ "In the title of the transfer, please indicate your user name on the EltenLink portal and which package the payment concerns.\n"
+#~ "Please note that if you transfer a larger amount, the remainder will be treated as a donation.\n"
 #~ "\n"
-#~ "In order to reduce the processing time of your payment, you can forward "
-#~ "the transfer confirmation to the Council of Elders.\n"
+#~ "In order to reduce the processing time of your payment, you can forward the transfer confirmation to the Council of Elders.\n"
 #~ "\n"
 #~ "National transfer details (from Poland):\n"
 #~ "%{holder}\n"
@@ -14645,13 +13977,10 @@ msgstr "Alarm"
 #~ "Sort code: %{sortcode}"
 #~ msgstr ""
 #~ "Poniżej znajdują się dane do przelewu.\n"
-#~ "W tytule przelewu proszę podać swoją nazwę użytkownika na portalu "
-#~ "EltenLink oraz którego pakietu dotyczy płatność.\n"
-#~ "Należy pamiętać, że w przypadku przelewu większej kwoty, pozostała kwota "
-#~ "będzie traktowana jako darowizna.\n"
+#~ "W tytule przelewu proszę podać swoją nazwę użytkownika na portalu EltenLink oraz którego pakietu dotyczy płatność.\n"
+#~ "Należy pamiętać, że w przypadku przelewu większej kwoty, pozostała kwota będzie traktowana jako darowizna.\n"
 #~ "\n"
-#~ "Aby skrócić czas przetwarzania płatności, możesz przesłać potwierdzenie "
-#~ "przelewu do Rady Starszych.\n"
+#~ "Aby skrócić czas przetwarzania płatności, możesz przesłać potwierdzenie przelewu do Rady Starszych.\n"
 #~ "\n"
 #~ "Dane dotyczące transferu krajowego (z Polski):\n"
 #~ "%{holder}\n"
@@ -14766,9 +14095,7 @@ msgstr "Alarm"
 
 #~ msgctxt "Portable"
 #~ msgid "Create as a single exe file. (No settings will be saved."
-#~ msgstr ""
-#~ "Utwórz jako jeden plik exe (Uwaga! Żadne ustawienia nie będą "
-#~ "zapamiętywane.)"
+#~ msgstr "Utwórz jako jeden plik exe (Uwaga! Żadne ustawienia nie będą zapamiętywane.)"
 
 #~ msgctxt "Portable"
 #~ msgid "Preparing SFX"
@@ -14935,13 +14262,8 @@ msgstr "Alarm"
 #~ msgstr "Użyj innego pliku"
 
 #~ msgctxt "Blog"
-#~ msgid ""
-#~ "Do you wish to delete all comments on this post? You can disable "
-#~ "commenting on this post without deleting comments already posted."
-#~ msgstr ""
-#~ "Czy chcesz usunąć wszystkie komentarze do tego wpisu? Możliwe jest "
-#~ "wyłączenie komentowania wpisu bez usuwania uprzednio utworzonych "
-#~ "komentarzy."
+#~ msgid "Do you wish to delete all comments on this post? You can disable commenting on this post without deleting comments already posted."
+#~ msgstr "Czy chcesz usunąć wszystkie komentarze do tego wpisu? Możliwe jest wyłączenie komentowania wpisu bez usuwania uprzednio utworzonych komentarzy."
 
 #~ msgctxt "Blog"
 #~ msgid "File is being converted..."
@@ -14976,14 +14298,8 @@ msgstr "Alarm"
 #~ msgstr "Odtwórz"
 
 #~ msgctxt "EAPI_External"
-#~ msgid ""
-#~ "The file you're trying to open was saved in format that Elten does not "
-#~ "support. Do you want to download and install Calibre Library that will "
-#~ "allow Elten to read Ebooks?"
-#~ msgstr ""
-#~ "Plik, który próbujesz utworzyć, został zapisany w formacie, którego Elten "
-#~ "nie umie odczytać. Czy chcesz pobrać i zainstalować bibliotekę Calibre, "
-#~ "która umożliwi Eltenowi odczyt książek?"
+#~ msgid "The file you're trying to open was saved in format that Elten does not support. Do you want to download and install Calibre Library that will allow Elten to read Ebooks?"
+#~ msgstr "Plik, który próbujesz utworzyć, został zapisany w formacie, którego Elten nie umie odczytać. Czy chcesz pobrać i zainstalować bibliotekę Calibre, która umożliwi Eltenowi odczyt książek?"
 
 #~ msgctxt "EAPI_External"
 #~ msgid "Please wait, downloading Calibre..."
@@ -15026,16 +14342,8 @@ msgstr "Alarm"
 #~ msgstr "Pliki dodane do playlisty: %{count}."
 
 #~ msgctxt "Files"
-#~ msgid ""
-#~ " Do you want to run this Elten API script? Scripts coming from unknown "
-#~ "sources can  harm your computer or give access to your account to "
-#~ "unauthorised persons.  Continue if you trust a source this script comes "
-#~ "from."
-#~ msgstr ""
-#~ "Czy chcesz uruchomić ten plik skryptu Elten API? Skrypty pochodzące z "
-#~ "niezaufanych źródeł mogą być niebezpieczne i spowodować uszkodzenie "
-#~ "komputera lub uzyskanie dostępu do konta przez osoby niepowołane. "
-#~ "Kontynuuj tylko wtedy, gdy ufasz pochodzeniu tego pliku."
+#~ msgid " Do you want to run this Elten API script? Scripts coming from unknown sources can  harm your computer or give access to your account to unauthorised persons.  Continue if you trust a source this script comes from."
+#~ msgstr "Czy chcesz uruchomić ten plik skryptu Elten API? Skrypty pochodzące z niezaufanych źródeł mogą być niebezpieczne i spowodować uszkodzenie komputera lub uzyskanie dostępu do konta przez osoby niepowołane. Kontynuuj tylko wtedy, gdy ufasz pochodzeniu tego pliku."
 
 #~ msgctxt "Files"
 #~ msgid "Unpacked."
@@ -15186,12 +14494,8 @@ msgstr "Alarm"
 #~ msgstr "Wklej"
 
 #~ msgctxt "EAPI_External"
-#~ msgid ""
-#~ "To play Youtube videos, Elten uses external Youtube-DL library. Do you "
-#~ "want to download it now?"
-#~ msgstr ""
-#~ "Do odtwarzania filmów umieszczanych w serwisie Youtube, Elten używa "
-#~ "zewnętrznej biblioteki Youtube-DL. Czy chcesz ją pobrać teraz?"
+#~ msgid "To play Youtube videos, Elten uses external Youtube-DL library. Do you want to download it now?"
+#~ msgstr "Do odtwarzania filmów umieszczanych w serwisie Youtube, Elten używa zewnętrznej biblioteki Youtube-DL. Czy chcesz ją pobrać teraz?"
 
 #~ msgctxt "EAPI_External"
 #~ msgid "Connecting to server, please wait..."
@@ -15242,20 +14546,12 @@ msgstr "Alarm"
 #~ msgstr "Proszę czekać, trwa pobieranie YoutubeDL..."
 
 #~ msgctxt "EAPI_External"
-#~ msgid ""
-#~ " An error occurred while audiotrack capturing. Do you want to send a bug "
-#~ "report?  It may help us solve the problem."
-#~ msgstr ""
-#~ "Wystąpił błąd podczas przechwytywania ścieżki audio. Czy chcesz wysłać "
-#~ "raport o błędzie? Może on pomóc rozwiązać problem "
+#~ msgid " An error occurred while audiotrack capturing. Do you want to send a bug report?  It may help us solve the problem."
+#~ msgstr "Wystąpił błąd podczas przechwytywania ścieżki audio. Czy chcesz wysłać raport o błędzie? Może on pomóc rozwiązać problem "
 
 #~ msgctxt "EAPI_External"
-#~ msgid ""
-#~ " The file cannot be played. Do you want to report this bug? It may help "
-#~ "us fix the  issue."
-#~ msgstr ""
-#~ "Nie można odtworzyć tego pliku. Czy chcesz wysłać raport o tym błędzie? "
-#~ "Może to pomóc naprawić napotkany problem."
+#~ msgid " The file cannot be played. Do you want to report this bug? It may help us fix the  issue."
+#~ msgstr "Nie można odtworzyć tego pliku. Czy chcesz wysłać raport o tym błędzie? Może to pomóc naprawić napotkany problem."
 
 #~ msgctxt "MainMenu"
 #~ msgid "&YouTube"
@@ -15394,31 +14690,20 @@ msgstr "Alarm"
 #~ msgstr "Raportowanie &zdarzeń"
 
 #~ msgctxt "Loading"
-#~ msgid ""
-#~ " No speech output selected. Press enter to select the SAPI synthesiser or "
-#~ "escape  to use the installed screenreader."
-#~ msgstr ""
-#~ "Nie wybrano głosu programu. Naciśnij enter, aby wybrać głos SAPI lub "
-#~ "escape, aby użyć głosu domyślnego lub aktywnego czytnika ekranu."
+#~ msgid " No speech output selected. Press enter to select the SAPI synthesiser or escape  to use the installed screenreader."
+#~ msgstr "Nie wybrano głosu programu. Naciśnij enter, aby wybrać głos SAPI lub escape, aby użyć głosu domyślnego lub aktywnego czytnika ekranu."
 
 #~ msgctxt "Loading"
 #~ msgid "Change speech synthesizer"
 #~ msgstr "Zmień syntezator mowy"
 
 #~ msgctxt "Advanced"
-#~ msgid ""
-#~ " Key state refresh time (ms) (Note: it is not recommended to change this "
-#~ "value!)"
-#~ msgstr ""
-#~ "Czas odświerzania stanu klawiszy (ms) (Uwaga! Nie zaleca się zmiany tej "
-#~ "wartości!)"
+#~ msgid " Key state refresh time (ms) (Note: it is not recommended to change this value!)"
+#~ msgstr "Czas odświerzania stanu klawiszy (ms) (Uwaga! Nie zaleca się zmiany tej wartości!)"
 
 #~ msgctxt "Advanced"
-#~ msgid ""
-#~ " Session refresh time (s) (Attention! It is not recommended to change "
-#~ "this value!)"
-#~ msgstr ""
-#~ "Czas odświerzania sesji (s) (Uwaga! Nie zaleca się zmiany tej wartości!)"
+#~ msgid " Session refresh time (s) (Attention! It is not recommended to change this value!)"
+#~ msgstr "Czas odświerzania sesji (s) (Uwaga! Nie zaleca się zmiany tej wartości!)"
 
 #~ msgctxt "Advanced"
 #~ msgid "Synchronize time with server"
@@ -15438,9 +14723,7 @@ msgstr "Alarm"
 
 #~ msgctxt "General"
 #~ msgid "Auto log in is required to use auto start"
-#~ msgstr ""
-#~ "Automatyczne logowanie jest wymagane, jeśli chcesz używać autostartu "
-#~ "Eltena"
+#~ msgstr "Automatyczne logowanie jest wymagane, jeśli chcesz używać autostartu Eltena"
 
 #~ msgctxt "General"
 #~ msgid "Are you sure you want to enable autostart of portable version?"
@@ -15468,8 +14751,7 @@ msgstr "Alarm"
 
 #~ msgctxt "Voice"
 #~ msgid "Use screenreader or system default voice"
-#~ msgstr ""
-#~ "Używaj głosu aktywnego czytnika ekranowego lub domyślnego głosu systemu"
+#~ msgstr "Używaj głosu aktywnego czytnika ekranowego lub domyślnego głosu systemu"
 
 #~ msgctxt "Voice"
 #~ msgid "Change synthesizer"
@@ -15547,12 +14829,8 @@ msgstr "Alarm"
 #~ msgstr "Wykorzystuj streaming audio, jeśli obsługiwany"
 
 #~ msgctxt "Honors"
-#~ msgid ""
-#~ " Do you want to set this badge as your main badge? The main badge will "
-#~ "show in  your visiting card."
-#~ msgstr ""
-#~ "Czy chcesz ustawić to odznaczenie jako główne? Główne odznaczenie pokaże "
-#~ "się w twojej wizytówce."
+#~ msgid " Do you want to set this badge as your main badge? The main badge will show in  your visiting card."
+#~ msgstr "Czy chcesz ustawić to odznaczenie jako główne? Główne odznaczenie pokaże się w twojej wizytówce."
 
 #~ msgctxt "Honors"
 #~ msgid "Delete this badge"
@@ -15571,18 +14849,12 @@ msgstr "Alarm"
 #~ msgstr "Ten program jest już zainstalowany."
 
 #~ msgctxt "Programs"
-#~ msgid ""
-#~ "Are you sure you want to download and install program %{name}? %{size} of "
-#~ "additional disk space will be used."
-#~ msgstr ""
-#~ "Czy jesteś pewien, że chcesz pobrać i zainstalować program %{name}? "
-#~ "Wymagane miejsce: %{size}."
+#~ msgid "Are you sure you want to download and install program %{name}? %{size} of additional disk space will be used."
+#~ msgstr "Czy jesteś pewien, że chcesz pobrać i zainstalować program %{name}? Wymagane miejsce: %{size}."
 
 #~ msgctxt "Programs"
 #~ msgid "Elten must be restarted to apply changes. Do you want to do it now?"
-#~ msgstr ""
-#~ "Elten musi zostać uruchomiony ponownie, aby zastosować zmiany. Czy chcesz "
-#~ "to zrobić teraz?"
+#~ msgstr "Elten musi zostać uruchomiony ponownie, aby zastosować zmiany. Czy chcesz to zrobić teraz?"
 
 #~ msgctxt "Portable"
 #~ msgid "Include another languages"
@@ -15705,12 +14977,8 @@ msgstr "Alarm"
 #~ msgstr "Lokalizacja"
 
 #~ msgctxt "Update"
-#~ msgid ""
-#~ " A new beta version of this program is available. Do you want to download "
-#~ "and  instal it?"
-#~ msgstr ""
-#~ "Dostępna jest nowa wersja beta programu. Czy chcesz ją pobrać i "
-#~ "zainstalować?"
+#~ msgid " A new beta version of this program is available. Do you want to download and  instal it?"
+#~ msgstr "Dostępna jest nowa wersja beta programu. Czy chcesz ją pobrać i zainstalować?"
 
 #~ msgctxt "Update"
 #~ msgid "updating language packs"
@@ -15718,14 +14986,8 @@ msgstr "Alarm"
 
 #, fuzzy
 #~ msgctxt "Update"
-#~ msgid ""
-#~ " Warning! You are about to install a beta version of elten. Such a "
-#~ "version can be  unstable or other errors can occur. Do you really wish to "
-#~ "continue?"
-#~ msgstr ""
-#~ " Warning! You are about to install a beta version of elten. Such a "
-#~ "version can be  unstable or other errors can occur. Do you really wish to "
-#~ "continue?"
+#~ msgid " Warning! You are about to install a beta version of elten. Such a version can be  unstable or other errors can occur. Do you really wish to continue?"
+#~ msgstr " Warning! You are about to install a beta version of elten. Such a version can be  unstable or other errors can occur. Do you really wish to continue?"
 
 #~ msgctxt "Update"
 #~ msgid "Downloading update"
@@ -15736,12 +14998,8 @@ msgstr "Alarm"
 #~ msgstr "Pobieranie instrukcji reinstalacji"
 
 #~ msgctxt "Update"
-#~ msgid ""
-#~ " You are not participating in Elten open insider program. Do you want to "
-#~ "join it  now, to download beta version?"
-#~ msgstr ""
-#~ "Nie należysz do otwartego programu testów Elten. Czy chcesz do niego "
-#~ "przystąpić teraz, by pobrać wersję beta?"
+#~ msgid " You are not participating in Elten open insider program. Do you want to join it  now, to download beta version?"
+#~ msgstr "Nie należysz do otwartego programu testów Elten. Czy chcesz do niego przystąpić teraz, by pobrać wersję beta?"
 
 #~ msgctxt "Voice"
 #~ msgid "Select"
@@ -15769,20 +15027,12 @@ msgstr "Alarm"
 
 #, fuzzy
 #~ msgctxt "MainMenu"
-#~ msgid ""
-#~ " Do you want to restore the last stable version of this program? All "
-#~ "settings stay  as they are."
-#~ msgstr ""
-#~ " Do you want to restore the last stable version of this program? All "
-#~ "settings stay  as they are."
+#~ msgid " Do you want to restore the last stable version of this program? All settings stay  as they are."
+#~ msgstr " Do you want to restore the last stable version of this program? All settings stay  as they are."
 
 #~ msgctxt "MainMenu"
-#~ msgid ""
-#~ " Are you sure you want to reset all settings to their factory defaults? "
-#~ "Elten will  restart."
-#~ msgstr ""
-#~ "Czy jesteś pewien, że chcesz usunąć wszystkie ustawienia programu i "
-#~ "przywrócić wartości domyślne? Elten zostanie uruchomiony ponownie."
+#~ msgid " Are you sure you want to reset all settings to their factory defaults? Elten will  restart."
+#~ msgstr "Czy jesteś pewien, że chcesz usunąć wszystkie ustawienia programu i przywrócić wartości domyślne? Elten zostanie uruchomiony ponownie."
 
 #~ msgctxt "MainMenu"
 #~ msgid "Report a &bug"
@@ -15885,14 +15135,8 @@ msgstr "Alarm"
 #~ msgstr "Podaj nazwę tematu dźwiękowego."
 
 #~ msgctxt "EAPI_Common"
-#~ msgid ""
-#~ " Soundtheme files created in %{dir}. Replace files of the default "
-#~ "soundtheme in  the created folder with the appropriate files, which "
-#~ "constitute the soundtheme."
-#~ msgstr ""
-#~ "Pliki tematu dźwiękowego utworzone w %{dir}. Podmień pliki domyślnego "
-#~ "tematu dźwiękowego w utworzonym katalogu plikami, które mają wchodzić w "
-#~ "jego skład."
+#~ msgid " Soundtheme files created in %{dir}. Replace files of the default soundtheme in  the created folder with the appropriate files, which constitute the soundtheme."
+#~ msgstr "Pliki tematu dźwiękowego utworzone w %{dir}. Podmień pliki domyślnego tematu dźwiękowego w utworzonym katalogu plikami, które mają wchodzić w jego skład."
 
 #~ msgctxt "EAPI_Common"
 #~ msgid "Open the soundtheme's folder"

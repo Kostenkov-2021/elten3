@@ -10,9 +10,8 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.4.3\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Poedit 3.9\n"
 
 #: ../agent/agent.rb:813 ../src/EAPI/Conference.rb:47
 #, fuzzy
@@ -141,37 +140,30 @@ msgctxt "Conference_cards"
 msgid "joker"
 msgstr "Joker"
 
-#: ../agent/agent.rb:871 ../agent/agent.rb:873 ../src/EAPI/Conference.rb:108
-#: ../src/EAPI/Conference.rb:110
+#: ../agent/agent.rb:871 ../agent/agent.rb:873 ../src/EAPI/Conference.rb:108 ../src/EAPI/Conference.rb:110
 msgctxt "Conference_cards"
 msgid "Skip"
 msgstr "Preskoči"
 
-#: ../agent/agent.rb:875 ../agent/agent.rb:877 ../src/EAPI/Conference.rb:112
-#: ../src/EAPI/Conference.rb:114
+#: ../agent/agent.rb:875 ../agent/agent.rb:877 ../src/EAPI/Conference.rb:112 ../src/EAPI/Conference.rb:114
 #, fuzzy
 msgctxt "Conference_cards"
 msgid "Draw two"
 msgstr "Nacrtati dva"
 
-#: ../agent/agent.rb:879 ../agent/agent.rb:881 ../src/EAPI/Conference.rb:116
-#: ../src/EAPI/Conference.rb:118
+#: ../agent/agent.rb:879 ../agent/agent.rb:881 ../src/EAPI/Conference.rb:116 ../src/EAPI/Conference.rb:118
 #, fuzzy
 msgctxt "Conference_cards"
 msgid "Reverse"
 msgstr "&zamjeni mjesta tipkama za čitanje napred /nazad"
 
-#: ../agent/agent.rb:886 ../src/EAPI/Conference.rb:124
-#: ../src/EAPI/Conference.rb:126 ../src/EAPI/Conference.rb:128
-#: ../src/EAPI/Conference.rb:130
+#: ../agent/agent.rb:886 ../src/EAPI/Conference.rb:124 ../src/EAPI/Conference.rb:126 ../src/EAPI/Conference.rb:128 ../src/EAPI/Conference.rb:130
 #, fuzzy
 msgctxt "Conference_cards"
 msgid "Wild"
 msgstr "Divlje"
 
-#: ../agent/agent.rb:888 ../src/EAPI/Conference.rb:132
-#: ../src/EAPI/Conference.rb:134 ../src/EAPI/Conference.rb:136
-#: ../src/EAPI/Conference.rb:138
+#: ../agent/agent.rb:888 ../src/EAPI/Conference.rb:132 ../src/EAPI/Conference.rb:134 ../src/EAPI/Conference.rb:136 ../src/EAPI/Conference.rb:138
 #, fuzzy
 msgctxt "Conference_cards"
 msgid "Wild draw four"
@@ -199,8 +191,7 @@ msgctxt "FeedViewer"
 msgid "Feed"
 msgstr "Stočna hrana"
 
-#: ../agent/quicknav.rb:101 ../src/Scenes/Conference.rb:108
-#: ../src/Scenes/Conference.rb:202
+#: ../agent/quicknav.rb:101 ../src/Scenes/Conference.rb:108 ../src/Scenes/Conference.rb:202
 #, fuzzy
 msgctxt "Conference"
 msgid "Conference"
@@ -211,41 +202,12 @@ msgctxt "Messages"
 msgid "Send a new message"
 msgstr "Pošalji novu poruku"
 
-#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465
-#: ../src/Scenes/Conference.rb:633 ../src/Scenes/Conference.rb:691
-#: ../src/Scenes/Conference.rb:719 ../src/Scenes/Conference.rb:793
-#: ../src/Scenes/Conference.rb:893 ../src/Scenes/Conference.rb:989
-#: ../src/eapi/Common.rb:16 ../src/eapi/Common.rb:1024
-#: ../src/eapi/Controls.rb:941 ../src/eapi/Controls.rb:1040
-#: ../src/eapi/Controls.rb:3162 ../src/eapi/Controls.rb:3228
-#: ../src/eapi/Controls.rb:4101 ../src/eapi/Controls.rb:4216
-#: ../src/eapi/External.rb:120 ../src/eapi/UI.rb:719
-#: ../src/scenes/Account.rb:118 ../src/scenes/Ban.rb:26
-#: ../src/scenes/Ban.rb:108 ../src/scenes/Blog.rb:479
-#: ../src/scenes/Blog.rb:1072 ../src/scenes/Blog.rb:1210
-#: ../src/scenes/Blog.rb:1264 ../src/scenes/Blog.rb:1381
-#: ../src/scenes/Blog.rb:1711 ../src/scenes/Blog.rb:2113
-#: ../src/scenes/Blog.rb:2242 ../src/scenes/Clock.rb:12
-#: ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:725
-#: ../src/scenes/Forum.rb:751 ../src/scenes/Forum.rb:887
-#: ../src/scenes/Forum.rb:1089 ../src/scenes/Forum.rb:1127
-#: ../src/scenes/Forum.rb:1283 ../src/scenes/Forum.rb:1426
-#: ../src/scenes/Forum.rb:1526 ../src/scenes/Forum.rb:2135
-#: ../src/scenes/Forum.rb:3047 ../src/scenes/Forum.rb:3288
-#: ../src/scenes/Forum.rb:3313 ../src/scenes/Forum.rb:3790
-#: ../src/scenes/Honors.rb:186 ../src/scenes/Honors.rb:222
-#: ../src/scenes/Honors.rb:303 ../src/scenes/Install.rb:3
-#: ../src/scenes/Login.rb:88 ../src/scenes/Main.rb:222
-#: ../src/scenes/Messages.rb:255 ../src/scenes/Messages.rb:816
-#: ../src/scenes/Notes.rb:118 ../src/scenes/Notes.rb:252
-#: ../src/scenes/Polls.rb:178 ../src/scenes/Polls.rb:228
-#: ../src/scenes/Polls.rb:372 ../src/scenes/Portable.rb:9
-#: ../src/scenes/Settings.rb:119 ../src/scenes/SpeedTest.rb:9
+#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465 ../src/Scenes/Conference.rb:633 ../src/Scenes/Conference.rb:691 ../src/Scenes/Conference.rb:719 ../src/Scenes/Conference.rb:793 ../src/Scenes/Conference.rb:893 ../src/Scenes/Conference.rb:989 ../src/eapi/Common.rb:16 ../src/eapi/Common.rb:1024 ../src/eapi/Controls.rb:941 ../src/eapi/Controls.rb:1040 ../src/eapi/Controls.rb:3162 ../src/eapi/Controls.rb:3228 ../src/eapi/Controls.rb:4101 ../src/eapi/Controls.rb:4216 ../src/eapi/External.rb:120 ../src/eapi/UI.rb:719 ../src/scenes/Account.rb:118 ../src/scenes/Ban.rb:26 ../src/scenes/Ban.rb:108 ../src/scenes/Blog.rb:479 ../src/scenes/Blog.rb:1072 ../src/scenes/Blog.rb:1210 ../src/scenes/Blog.rb:1264 ../src/scenes/Blog.rb:1381 ../src/scenes/Blog.rb:1711 ../src/scenes/Blog.rb:2113 ../src/scenes/Blog.rb:2242 ../src/scenes/Clock.rb:12
+#: ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:725 ../src/scenes/Forum.rb:751 ../src/scenes/Forum.rb:887 ../src/scenes/Forum.rb:1089 ../src/scenes/Forum.rb:1127 ../src/scenes/Forum.rb:1283 ../src/scenes/Forum.rb:1426 ../src/scenes/Forum.rb:1526 ../src/scenes/Forum.rb:2135 ../src/scenes/Forum.rb:3047 ../src/scenes/Forum.rb:3288 ../src/scenes/Forum.rb:3313 ../src/scenes/Forum.rb:3790 ../src/scenes/Honors.rb:186 ../src/scenes/Honors.rb:222 ../src/scenes/Honors.rb:303 ../src/scenes/Install.rb:3 ../src/scenes/Login.rb:88 ../src/scenes/Main.rb:222 ../src/scenes/Messages.rb:255 ../src/scenes/Messages.rb:816 ../src/scenes/Notes.rb:118 ../src/scenes/Notes.rb:252 ../src/scenes/Polls.rb:178 ../src/scenes/Polls.rb:228 ../src/scenes/Polls.rb:372 ../src/scenes/Portable.rb:9 ../src/scenes/Settings.rb:119 ../src/scenes/SpeedTest.rb:9
 msgid "Cancel"
 msgstr "Odustani"
 
-#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465
-#: ../src/scenes/Messages.rb:645 ../src/scenes/Messages.rb:904
+#: ../agent/quicknav.rb:137 ../agent/quicknav.rb:278 ../agent/quicknav.rb:465 ../src/scenes/Messages.rb:645 ../src/scenes/Messages.rb:904
 msgctxt "Messages"
 msgid "Send"
 msgstr "pošalji"
@@ -265,8 +227,7 @@ msgctxt "Messages"
 msgid "Subject:"
 msgstr "tema:"
 
-#: ../agent/quicknav.rb:162 ../agent/quicknav.rb:166 ../agent/quicknav.rb:302
-#: ../agent/quicknav.rb:306 ../src/scenes/Messages.rb:651
+#: ../agent/quicknav.rb:162 ../agent/quicknav.rb:166 ../agent/quicknav.rb:302 ../agent/quicknav.rb:306 ../src/scenes/Messages.rb:651
 #, fuzzy
 #| msgctxt "Messages"
 #| msgid "Send a new message"
@@ -274,8 +235,7 @@ msgctxt "Messages"
 msgid "Failed to send message"
 msgstr "Pošalji novu poruku"
 
-#: ../agent/quicknav.rb:220 ../agent/quicknav.rb:222
-#: ../src/scenes/Messages.rb:748
+#: ../agent/quicknav.rb:220 ../agent/quicknav.rb:222 ../src/scenes/Messages.rb:748
 msgctxt "Messages"
 msgid "To"
 msgstr "Do"
@@ -351,8 +311,7 @@ msgctxt "Conference"
 msgid "Stream audio file"
 msgstr "Izaberi audiozapis"
 
-#: ../agent/quicknav.rb:348 ../src/Scenes/Conference.rb:640
-#: ../src/Scenes/Conference.rb:919
+#: ../agent/quicknav.rb:348 ../src/Scenes/Conference.rb:640 ../src/Scenes/Conference.rb:919
 msgctxt "Conference"
 msgid "Select audio file"
 msgstr "Izaberi audiozapis"
@@ -444,100 +403,16 @@ msgctxt "Main"
 msgid "Reply"
 msgstr "odgovori"
 
-#: ../src/CallHistory[Scenes].rb:10 ../src/Scenes/Conference.rb:17
-#: ../src/Scenes/PremiumPackages.rb:4 ../src/scenes/Authentication.rb:10
-#: ../src/scenes/Contacts.rb:13 ../src/scenes/Messages.rb:26
-#: ../src/scenes/Notes.rb:10 ../src/scenes/WhatsNew.rb:15
+#: ../src/CallHistory[Scenes].rb:10 ../src/Scenes/Conference.rb:17 ../src/Scenes/PremiumPackages.rb:4 ../src/scenes/Authentication.rb:10 ../src/scenes/Contacts.rb:13 ../src/scenes/Messages.rb:26 ../src/scenes/Notes.rb:10 ../src/scenes/WhatsNew.rb:15
 msgid "This section is unavailable for guests"
 msgstr "Ovaj odjeljak je nedostupan za goste"
 
-#: ../src/CallHistory[Scenes].rb:16 ../src/FeedViewer[Scenes].rb:20
-#: ../src/FeedViewer[Scenes].rb:145 ../src/Scenes/Conference.rb:660
-#: ../src/Scenes/PremiumPackages.rb:302 ../src/Scenes/PremiumPackages.rb:321
-#: ../src/Scenes/PremiumPackages.rb:331 ../src/eapi/Common.rb:346
-#: ../src/eapi/Common.rb:1016 ../src/eapi/EltenSRV.rb:224
-#: ../src/eapi/EltenSRV.rb:242 ../src/eapi/EltenSRV.rb:313
-#: ../src/eapi/EltenSRV.rb:340 ../src/eapi/EltenSRV.rb:376
-#: ../src/eapi/EltenSRV.rb:391 ../src/eapi/EltenSRV.rb:430
-#: ../src/scenes/Account.rb:485 ../src/scenes/Account.rb:548
-#: ../src/scenes/Account.rb:620 ../src/scenes/Account.rb:628
-#: ../src/scenes/Account.rb:634 ../src/scenes/Authentication.rb:16
-#: ../src/scenes/Authentication.rb:43 ../src/scenes/Authentication.rb:78
-#: ../src/scenes/Authentication.rb:91 ../src/scenes/Ban.rb:67
-#: ../src/scenes/Ban.rb:99 ../src/scenes/Ban.rb:122 ../src/scenes/Blog.rb:87
-#: ../src/scenes/Blog.rb:106 ../src/scenes/Blog.rb:161
-#: ../src/scenes/Blog.rb:182 ../src/scenes/Blog.rb:197
-#: ../src/scenes/Blog.rb:259 ../src/scenes/Blog.rb:366
-#: ../src/scenes/Blog.rb:438 ../src/scenes/Blog.rb:469
-#: ../src/scenes/Blog.rb:491 ../src/scenes/Blog.rb:523
-#: ../src/scenes/Blog.rb:555 ../src/scenes/Blog.rb:663
-#: ../src/scenes/Blog.rb:740 ../src/scenes/Blog.rb:877
-#: ../src/scenes/Blog.rb:945 ../src/scenes/Blog.rb:972
-#: ../src/scenes/Blog.rb:980 ../src/scenes/Blog.rb:988
-#: ../src/scenes/Blog.rb:1009 ../src/scenes/Blog.rb:1018
-#: ../src/scenes/Blog.rb:1058 ../src/scenes/Blog.rb:1088
-#: ../src/scenes/Blog.rb:1121 ../src/scenes/Blog.rb:1149
-#: ../src/scenes/Blog.rb:1169 ../src/scenes/Blog.rb:1228
-#: ../src/scenes/Blog.rb:1253 ../src/scenes/Blog.rb:1271
-#: ../src/scenes/Blog.rb:1604 ../src/scenes/Blog.rb:1619
-#: ../src/scenes/Blog.rb:1675 ../src/scenes/Blog.rb:1688
-#: ../src/scenes/Blog.rb:1754 ../src/scenes/Blog.rb:1889
-#: ../src/scenes/Blog.rb:1896 ../src/scenes/Blog.rb:2084
-#: ../src/scenes/Blog.rb:2105 ../src/scenes/Blog.rb:2211
-#: ../src/scenes/ForgotPassword.rb:24 ../src/scenes/Forum.rb:621
-#: ../src/scenes/Forum.rb:645 ../src/scenes/Forum.rb:665
-#: ../src/scenes/Forum.rb:679 ../src/scenes/Forum.rb:740
-#: ../src/scenes/Forum.rb:765 ../src/scenes/Forum.rb:778
-#: ../src/scenes/Forum.rb:898 ../src/scenes/Forum.rb:911
-#: ../src/scenes/Forum.rb:942 ../src/scenes/Forum.rb:952
-#: ../src/scenes/Forum.rb:1108 ../src/scenes/Forum.rb:1244
-#: ../src/scenes/Forum.rb:1256 ../src/scenes/Forum.rb:1338
-#: ../src/scenes/Forum.rb:1363 ../src/scenes/Forum.rb:1370
-#: ../src/scenes/Forum.rb:1406 ../src/scenes/Forum.rb:1443
-#: ../src/scenes/Forum.rb:1466 ../src/scenes/Forum.rb:1491
-#: ../src/scenes/Forum.rb:1506 ../src/scenes/Forum.rb:1546
-#: ../src/scenes/Forum.rb:1858 ../src/scenes/Forum.rb:1877
-#: ../src/scenes/Forum.rb:1884 ../src/scenes/Forum.rb:1935
-#: ../src/scenes/Forum.rb:1948 ../src/scenes/Forum.rb:1960
-#: ../src/scenes/Forum.rb:1975 ../src/scenes/Forum.rb:1995
-#: ../src/scenes/Forum.rb:2028 ../src/scenes/Forum.rb:2040
-#: ../src/scenes/Forum.rb:2072 ../src/scenes/Forum.rb:2088
-#: ../src/scenes/Forum.rb:2212 ../src/scenes/Forum.rb:2315
-#: ../src/scenes/Forum.rb:2320 ../src/scenes/Forum.rb:2350
-#: ../src/scenes/Forum.rb:2382 ../src/scenes/Forum.rb:2526
-#: ../src/scenes/Forum.rb:2543 ../src/scenes/Forum.rb:2561
-#: ../src/scenes/Forum.rb:2845 ../src/scenes/Forum.rb:2865
-#: ../src/scenes/Forum.rb:2923 ../src/scenes/Forum.rb:3037
-#: ../src/scenes/Forum.rb:3059 ../src/scenes/Forum.rb:3122
-#: ../src/scenes/Forum.rb:3138 ../src/scenes/Forum.rb:3145
-#: ../src/scenes/Forum.rb:3206 ../src/scenes/Forum.rb:3231
-#: ../src/scenes/Forum.rb:3243 ../src/scenes/Forum.rb:3270
-#: ../src/scenes/Forum.rb:3296 ../src/scenes/Forum.rb:3355
-#: ../src/scenes/Forum.rb:3431 ../src/scenes/Forum.rb:3443
-#: ../src/scenes/Forum.rb:3815 ../src/scenes/Honors.rb:20
-#: ../src/scenes/Honors.rb:138 ../src/scenes/Honors.rb:149
-#: ../src/scenes/Honors.rb:165 ../src/scenes/Honors.rb:210
-#: ../src/scenes/Honors.rb:315 ../src/scenes/Loading.rb:324
-#: ../src/scenes/Main.rb:368 ../src/scenes/Messages.rb:93
-#: ../src/scenes/Messages.rb:160 ../src/scenes/Messages.rb:218
-#: ../src/scenes/Messages.rb:300 ../src/scenes/Messages.rb:332
-#: ../src/scenes/Messages.rb:339 ../src/scenes/Messages.rb:364
-#: ../src/scenes/Messages.rb:451 ../src/scenes/Messages.rb:484
-#: ../src/scenes/Messages.rb:681 ../src/scenes/Messages.rb:688
-#: ../src/scenes/Messages.rb:704 ../src/scenes/Messages.rb:711
-#: ../src/scenes/Messages.rb:762 ../src/scenes/Messages.rb:878
-#: ../src/scenes/Messages.rb:978 ../src/scenes/Notes.rb:16
-#: ../src/scenes/Notes.rb:107 ../src/scenes/Notes.rb:141
-#: ../src/scenes/Notes.rb:181 ../src/scenes/Notes.rb:194
-#: ../src/scenes/Notes.rb:228 ../src/scenes/Notes.rb:241
-#: ../src/scenes/Notes.rb:271 ../src/scenes/Polls.rb:28
-#: ../src/scenes/Polls.rb:54 ../src/scenes/Polls.rb:135
-#: ../src/scenes/Polls.rb:306 ../src/scenes/Polls.rb:323
-#: ../src/scenes/Polls.rb:338 ../src/scenes/Polls.rb:407
-#: ../src/scenes/Polls.rb:441 ../src/scenes/Polls.rb:451
-#: ../src/scenes/Polls.rb:462 ../src/scenes/Polls.rb:517
-#: ../src/scenes/Polls.rb:531 ../src/scenes/Polls.rb:548
-#: ../src/scenes/SoundThemes.rb:84 ../src/scenes/UserSearch.rb:19
+#: ../src/CallHistory[Scenes].rb:16 ../src/FeedViewer[Scenes].rb:20 ../src/FeedViewer[Scenes].rb:145 ../src/Scenes/Conference.rb:660 ../src/Scenes/PremiumPackages.rb:302 ../src/Scenes/PremiumPackages.rb:321 ../src/Scenes/PremiumPackages.rb:331 ../src/eapi/Common.rb:346 ../src/eapi/Common.rb:1016 ../src/eapi/EltenSRV.rb:224 ../src/eapi/EltenSRV.rb:242 ../src/eapi/EltenSRV.rb:313 ../src/eapi/EltenSRV.rb:340 ../src/eapi/EltenSRV.rb:376 ../src/eapi/EltenSRV.rb:391 ../src/eapi/EltenSRV.rb:430 ../src/scenes/Account.rb:485 ../src/scenes/Account.rb:548 ../src/scenes/Account.rb:620 ../src/scenes/Account.rb:628 ../src/scenes/Account.rb:634 ../src/scenes/Authentication.rb:16 ../src/scenes/Authentication.rb:43 ../src/scenes/Authentication.rb:78 ../src/scenes/Authentication.rb:91 ../src/scenes/Ban.rb:67 ../src/scenes/Ban.rb:99 ../src/scenes/Ban.rb:122 ../src/scenes/Blog.rb:87
+#: ../src/scenes/Blog.rb:106 ../src/scenes/Blog.rb:161 ../src/scenes/Blog.rb:182 ../src/scenes/Blog.rb:197 ../src/scenes/Blog.rb:259 ../src/scenes/Blog.rb:366 ../src/scenes/Blog.rb:438 ../src/scenes/Blog.rb:469 ../src/scenes/Blog.rb:491 ../src/scenes/Blog.rb:523 ../src/scenes/Blog.rb:555 ../src/scenes/Blog.rb:663 ../src/scenes/Blog.rb:740 ../src/scenes/Blog.rb:877 ../src/scenes/Blog.rb:945 ../src/scenes/Blog.rb:972 ../src/scenes/Blog.rb:980 ../src/scenes/Blog.rb:988 ../src/scenes/Blog.rb:1009 ../src/scenes/Blog.rb:1018 ../src/scenes/Blog.rb:1058 ../src/scenes/Blog.rb:1088 ../src/scenes/Blog.rb:1121 ../src/scenes/Blog.rb:1149 ../src/scenes/Blog.rb:1169 ../src/scenes/Blog.rb:1228 ../src/scenes/Blog.rb:1253 ../src/scenes/Blog.rb:1271 ../src/scenes/Blog.rb:1604 ../src/scenes/Blog.rb:1619 ../src/scenes/Blog.rb:1675 ../src/scenes/Blog.rb:1688 ../src/scenes/Blog.rb:1754
+#: ../src/scenes/Blog.rb:1889 ../src/scenes/Blog.rb:1896 ../src/scenes/Blog.rb:2084 ../src/scenes/Blog.rb:2105 ../src/scenes/Blog.rb:2211 ../src/scenes/ForgotPassword.rb:24 ../src/scenes/Forum.rb:621 ../src/scenes/Forum.rb:645 ../src/scenes/Forum.rb:665 ../src/scenes/Forum.rb:679 ../src/scenes/Forum.rb:740 ../src/scenes/Forum.rb:765 ../src/scenes/Forum.rb:778 ../src/scenes/Forum.rb:898 ../src/scenes/Forum.rb:911 ../src/scenes/Forum.rb:942 ../src/scenes/Forum.rb:952 ../src/scenes/Forum.rb:1108 ../src/scenes/Forum.rb:1244 ../src/scenes/Forum.rb:1256 ../src/scenes/Forum.rb:1338 ../src/scenes/Forum.rb:1363 ../src/scenes/Forum.rb:1370 ../src/scenes/Forum.rb:1406 ../src/scenes/Forum.rb:1443 ../src/scenes/Forum.rb:1466 ../src/scenes/Forum.rb:1491 ../src/scenes/Forum.rb:1506 ../src/scenes/Forum.rb:1546 ../src/scenes/Forum.rb:1858 ../src/scenes/Forum.rb:1877
+#: ../src/scenes/Forum.rb:1884 ../src/scenes/Forum.rb:1935 ../src/scenes/Forum.rb:1948 ../src/scenes/Forum.rb:1960 ../src/scenes/Forum.rb:1975 ../src/scenes/Forum.rb:1995 ../src/scenes/Forum.rb:2028 ../src/scenes/Forum.rb:2040 ../src/scenes/Forum.rb:2072 ../src/scenes/Forum.rb:2088 ../src/scenes/Forum.rb:2212 ../src/scenes/Forum.rb:2315 ../src/scenes/Forum.rb:2320 ../src/scenes/Forum.rb:2350 ../src/scenes/Forum.rb:2382 ../src/scenes/Forum.rb:2526 ../src/scenes/Forum.rb:2543 ../src/scenes/Forum.rb:2561 ../src/scenes/Forum.rb:2845 ../src/scenes/Forum.rb:2865 ../src/scenes/Forum.rb:2923 ../src/scenes/Forum.rb:3037 ../src/scenes/Forum.rb:3059 ../src/scenes/Forum.rb:3122 ../src/scenes/Forum.rb:3138 ../src/scenes/Forum.rb:3145 ../src/scenes/Forum.rb:3206 ../src/scenes/Forum.rb:3231 ../src/scenes/Forum.rb:3243 ../src/scenes/Forum.rb:3270 ../src/scenes/Forum.rb:3296
+#: ../src/scenes/Forum.rb:3355 ../src/scenes/Forum.rb:3431 ../src/scenes/Forum.rb:3443 ../src/scenes/Forum.rb:3815 ../src/scenes/Honors.rb:20 ../src/scenes/Honors.rb:138 ../src/scenes/Honors.rb:149 ../src/scenes/Honors.rb:165 ../src/scenes/Honors.rb:210 ../src/scenes/Honors.rb:315 ../src/scenes/Loading.rb:324 ../src/scenes/Main.rb:368 ../src/scenes/Messages.rb:93 ../src/scenes/Messages.rb:160 ../src/scenes/Messages.rb:218 ../src/scenes/Messages.rb:300 ../src/scenes/Messages.rb:332 ../src/scenes/Messages.rb:339 ../src/scenes/Messages.rb:364 ../src/scenes/Messages.rb:451 ../src/scenes/Messages.rb:484 ../src/scenes/Messages.rb:681 ../src/scenes/Messages.rb:688 ../src/scenes/Messages.rb:704 ../src/scenes/Messages.rb:711 ../src/scenes/Messages.rb:762 ../src/scenes/Messages.rb:878 ../src/scenes/Messages.rb:978 ../src/scenes/Notes.rb:16 ../src/scenes/Notes.rb:107
+#: ../src/scenes/Notes.rb:141 ../src/scenes/Notes.rb:181 ../src/scenes/Notes.rb:194 ../src/scenes/Notes.rb:228 ../src/scenes/Notes.rb:241 ../src/scenes/Notes.rb:271 ../src/scenes/Polls.rb:28 ../src/scenes/Polls.rb:54 ../src/scenes/Polls.rb:135 ../src/scenes/Polls.rb:306 ../src/scenes/Polls.rb:323 ../src/scenes/Polls.rb:338 ../src/scenes/Polls.rb:407 ../src/scenes/Polls.rb:441 ../src/scenes/Polls.rb:451 ../src/scenes/Polls.rb:462 ../src/scenes/Polls.rb:517 ../src/scenes/Polls.rb:531 ../src/scenes/Polls.rb:548 ../src/scenes/SoundThemes.rb:84 ../src/scenes/UserSearch.rb:19
 msgid "Error"
 msgstr "Greška"
 
@@ -582,48 +457,25 @@ msgctxt "CallHistory"
 msgid "Call History"
 msgstr "Povijest poziva"
 
-#: ../src/CallHistory[Scenes].rb:61 ../src/Scenes/Conference.rb:1103
-#: ../src/Scenes/Conference.rb:1115 ../src/Scenes/Conference.rb:1124
-#: ../src/Scenes/Conference.rb:1185 ../src/Scenes/Conference.rb:1225
-#: ../src/Scenes/PremiumPackages.rb:107 ../src/scenes/Account.rb:442
-#: ../src/scenes/Account.rb:560 ../src/scenes/Blog.rb:1044
-#: ../src/scenes/Forum.rb:704 ../src/scenes/Forum.rb:1519
-#: ../src/scenes/Forum.rb:2099 ../src/scenes/Forum.rb:3278
-#: ../src/scenes/Honors.rb:174 ../src/scenes/Honors.rb:295
-#: ../src/scenes/Messages.rb:238 ../src/scenes/Messages.rb:443
-#: ../src/scenes/Messages.rb:737 ../src/scenes/Notes.rb:97
-#: ../src/scenes/Online.rb:37 ../src/scenes/Polls.rb:161
-#: ../src/scenes/Users.rb:56 ../src/scenes/UsersAddedMeToContacts.rb:60
-#: ../src/scenes/Users_RecentlyActived.rb:40
-#: ../src/scenes/Users_RecentlyRegistered.rb:40
+#: ../src/CallHistory[Scenes].rb:61 ../src/Scenes/Conference.rb:1103 ../src/Scenes/Conference.rb:1115 ../src/Scenes/Conference.rb:1124 ../src/Scenes/Conference.rb:1185 ../src/Scenes/Conference.rb:1225 ../src/Scenes/PremiumPackages.rb:107 ../src/scenes/Account.rb:442 ../src/scenes/Account.rb:560 ../src/scenes/Blog.rb:1044 ../src/scenes/Forum.rb:704 ../src/scenes/Forum.rb:1519 ../src/scenes/Forum.rb:2099 ../src/scenes/Forum.rb:3278 ../src/scenes/Honors.rb:174 ../src/scenes/Honors.rb:295 ../src/scenes/Messages.rb:238 ../src/scenes/Messages.rb:443 ../src/scenes/Messages.rb:737 ../src/scenes/Notes.rb:97 ../src/scenes/Online.rb:37 ../src/scenes/Polls.rb:161 ../src/scenes/Users.rb:56 ../src/scenes/UsersAddedMeToContacts.rb:60 ../src/scenes/Users_RecentlyActived.rb:40 ../src/scenes/Users_RecentlyRegistered.rb:40
 msgid "Refresh"
 msgstr "Osvježi"
 
 #: ../src/EAPI/Documents.rb:3
 #, fuzzy
 msgctxt "License"
-msgid ""
-"The original content of the GNU General Public License V3 can be found below."
+msgid "The original content of the GNU General Public License V3 can be found below."
 msgstr "Izvorni sadržaj GNU Opće javne licence V3 možete pronaći u nastavku."
 
 #: ../src/EAPI/Documents.rb:3
 #, fuzzy
 msgctxt "License"
 msgid ""
-"Elten is free software: you can redistribute it and/or modify it under the "
-"terms of the GNU General Public License as published by the Free Software "
-"Foundation, version 3.\n"
-"Elten is distributed in the hope that it will be useful, but WITHOUT ANY "
-"WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS "
-"FOR A PARTICULAR PURPOSE. See the GNU General Public License for more "
-"details."
+"Elten is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3.\n"
+"Elten is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details."
 msgstr ""
-"Elten je slobodan softver: možete ga preraspodijeliti i / ili izmijeniti pod "
-"uvjetima opće javne licence GNU-a kako je objavila Zaklada za slobodni "
-"softver, verzija 3.\n"
-"Elten je distribuiran u nadi da će biti koristan, ali bez ikakvog jamstva; "
-"čak i bez impliciranog jamstva ZA MERCHANTABILITY ili FITNESS ZA ODREĐENU "
-"SVRHU. Pogledajte GNU Opću javnu licencu za više detalja."
+"Elten je slobodan softver: možete ga preraspodijeliti i / ili izmijeniti pod uvjetima opće javne licence GNU-a kako je objavila Zaklada za slobodni softver, verzija 3.\n"
+"Elten je distribuiran u nadi da će biti koristan, ali bez ikakvog jamstva; čak i bez impliciranog jamstva ZA MERCHANTABILITY ili FITNESS ZA ODREĐENU SVRHU. Pogledajte GNU Opću javnu licencu za više detalja."
 
 #: ../src/EAPI/Documents.rb:3
 #, fuzzy
@@ -713,12 +565,7 @@ msgctxt "FeedViewer"
 msgid "Message disliked"
 msgstr "Poruke"
 
-#: ../src/FeedViewer[Scenes].rb:153 ../src/eapi/Controls.rb:2488
-#: ../src/scenes/Account.rb:545 ../src/scenes/Blog.rb:215
-#: ../src/scenes/Blog.rb:461 ../src/scenes/Main.rb:376
-#: ../src/scenes/Messages.rb:722 ../src/scenes/Notes.rb:82
-#: ../src/scenes/Notes.rb:160 ../src/scenes/Polls.rb:131
-#: ../src/scenes/Polls.rb:614
+#: ../src/FeedViewer[Scenes].rb:153 ../src/eapi/Controls.rb:2488 ../src/scenes/Account.rb:545 ../src/scenes/Blog.rb:215 ../src/scenes/Blog.rb:461 ../src/scenes/Main.rb:376 ../src/scenes/Messages.rb:722 ../src/scenes/Notes.rb:82 ../src/scenes/Notes.rb:160 ../src/scenes/Polls.rb:131 ../src/scenes/Polls.rb:614
 msgid "Delete"
 msgstr "Izbriši"
 
@@ -971,8 +818,7 @@ msgctxt "Conference"
 msgid "Would you like to disconnect?"
 msgstr "Želite li se isključiti?"
 
-#: ../src/Scenes/Conference.rb:250 ../src/Scenes/Conference.rb:299
-#: ../src/Scenes/Conference.rb:433
+#: ../src/Scenes/Conference.rb:250 ../src/Scenes/Conference.rb:299 ../src/Scenes/Conference.rb:433
 #, fuzzy
 #| msgctxt "Blog"
 #| msgid "Change"
@@ -1244,11 +1090,8 @@ msgstr "Popis izmjena"
 #: ../src/Scenes/Conference.rb:439
 #, fuzzy
 msgctxt "Conference"
-msgid ""
-"Channel password (leave this field blank to set a channel without a password)"
-msgstr ""
-"Lozinka kanala (ostavite ovo polje praznim za postavljanje kanala bez "
-"lozinke)"
+msgid "Channel password (leave this field blank to set a channel without a password)"
+msgstr "Lozinka kanala (ostavite ovo polje praznim za postavljanje kanala bez lozinke)"
 
 #: ../src/Scenes/Conference.rb:440
 msgctxt "Conference"
@@ -1381,18 +1224,7 @@ msgctxt "Conference"
 msgid "File name"
 msgstr "Ime datoteke"
 
-#: ../src/Scenes/Conference.rb:690 ../src/Scenes/Conference.rb:718
-#: ../src/Scenes/Conference.rb:792 ../src/eapi/Controls.rb:3227
-#: ../src/eapi/Controls.rb:4100 ../src/scenes/Account.rb:117
-#: ../src/scenes/Blog.rb:1071 ../src/scenes/Blog.rb:1210
-#: ../src/scenes/Blog.rb:1380 ../src/scenes/Clock.rb:11
-#: ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:724
-#: ../src/scenes/Forum.rb:750 ../src/scenes/Forum.rb:1282
-#: ../src/scenes/Forum.rb:1431 ../src/scenes/Forum.rb:3313
-#: ../src/scenes/Forum.rb:3789 ../src/scenes/Honors.rb:186
-#: ../src/scenes/Honors.rb:221 ../src/scenes/Notes.rb:158
-#: ../src/scenes/Notes.rb:175 ../src/scenes/Polls.rb:228
-#: ../src/scenes/Settings.rb:118
+#: ../src/Scenes/Conference.rb:690 ../src/Scenes/Conference.rb:718 ../src/Scenes/Conference.rb:792 ../src/eapi/Controls.rb:3227 ../src/eapi/Controls.rb:4100 ../src/scenes/Account.rb:117 ../src/scenes/Blog.rb:1071 ../src/scenes/Blog.rb:1210 ../src/scenes/Blog.rb:1380 ../src/scenes/Clock.rb:11 ../src/scenes/Clock.rb:70 ../src/scenes/Forum.rb:724 ../src/scenes/Forum.rb:750 ../src/scenes/Forum.rb:1282 ../src/scenes/Forum.rb:1431 ../src/scenes/Forum.rb:3313 ../src/scenes/Forum.rb:3789 ../src/scenes/Honors.rb:186 ../src/scenes/Honors.rb:221 ../src/scenes/Notes.rb:158 ../src/scenes/Notes.rb:175 ../src/scenes/Polls.rb:228 ../src/scenes/Settings.rb:118
 msgid "Save"
 msgstr "Spremi"
 
@@ -1416,14 +1248,12 @@ msgctxt "Conference"
 msgid "Directory name"
 msgstr "Mapa u listi datoteka"
 
-#: ../src/Scenes/Conference.rb:749 ../src/Scenes/Conference.rb:751
-#: ../src/Scenes/Conference.rb:753 ../src/Scenes/Conference.rb:790
+#: ../src/Scenes/Conference.rb:749 ../src/Scenes/Conference.rb:751 ../src/Scenes/Conference.rb:753 ../src/Scenes/Conference.rb:790
 msgctxt "Conference"
 msgid "Left"
 msgstr "Lijevo"
 
-#: ../src/Scenes/Conference.rb:755 ../src/Scenes/Conference.rb:757
-#: ../src/Scenes/Conference.rb:759 ../src/Scenes/Conference.rb:790
+#: ../src/Scenes/Conference.rb:755 ../src/Scenes/Conference.rb:757 ../src/Scenes/Conference.rb:759 ../src/Scenes/Conference.rb:790
 msgctxt "Conference"
 msgid "Right"
 msgstr "Desno"
@@ -1736,8 +1566,7 @@ msgctxt "Conference"
 msgid "Placed cards"
 msgstr "Postavljene kartice"
 
-#: ../src/Scenes/Conference.rb:1055 ../src/scenes/Loading.rb:349
-#: ../src/scenes/Log.rb:14 ../src/scenes/Polls.rb:574
+#: ../src/Scenes/Conference.rb:1055 ../src/scenes/Loading.rb:349 ../src/scenes/Log.rb:14 ../src/scenes/Polls.rb:574
 msgid "Close"
 msgstr "Close"
 
@@ -1755,16 +1584,10 @@ msgstr "mješaj"
 #: ../src/Scenes/Conference.rb:1078
 #, fuzzy
 #| msgctxt "Honors"
-#| msgid ""
-#| "Are you sure you want to delete this badge? All users granted with this "
-#| "badge will loose it."
+#| msgid "Are you sure you want to delete this badge? All users granted with this badge will loose it."
 msgctxt "Conference"
-msgid ""
-"Are you sure you want to shuffle this deck? All placed cards will be "
-"returned to this deck."
-msgstr ""
-"Žeste li sigurni da želite izbrisati ovu značku? Svi korisnici koji su je "
-"dobili izgubit će je."
+msgid "Are you sure you want to shuffle this deck? All placed cards will be returned to this deck."
+msgstr "Žeste li sigurni da želite izbrisati ovu značku? Svi korisnici koji su je dobili izgubit će je."
 
 #: ../src/Scenes/Conference.rb:1084 ../src/Scenes/Conference.rb:1154
 #, fuzzy
@@ -2060,8 +1883,7 @@ msgstr "Ukidanje ograničenja od 2 minute za privatne glasovne poruke"
 #, fuzzy
 msgctxt "PremiumPackages"
 msgid "Removal of the 32 kbps quality limit for private voice messages"
-msgstr ""
-"Ukidanje ograničenja kvalitete od 32 kbps u privatnim glasovnim porukama"
+msgstr "Ukidanje ograničenja kvalitete od 32 kbps u privatnim glasovnim porukama"
 
 #: ../src/Scenes/PremiumPackages.rb:42
 #, fuzzy
@@ -2099,9 +1921,7 @@ msgstr "Promjena DIMENZIJA HRTF-a"
 #, fuzzy
 msgctxt "PremiumPackages"
 msgid "Selecting a separate output sound card for conferences"
-msgstr ""
-"Postavljanje različite izlazne zvučne kartice za konferencije od one "
-"odabrane u Eltenu"
+msgstr "Postavljanje različite izlazne zvučne kartice za konferencije od one odabrane u Eltenu"
 
 #: ../src/Scenes/PremiumPackages.rb:52
 #, fuzzy
@@ -2259,24 +2079,14 @@ msgstr "Aktivan do %{time}"
 #: ../src/Scenes/PremiumPackages.rb:204
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid ""
-"Regardless of the remaining duration of other packages, they will be "
-"replaced by the selected package. This package will be activated for a "
-"period of one year. The remaining period for other packages will be deducted "
-"from the package price. Do you want to continue?"
-msgstr ""
-"Bez obzira na preostalo trajanje ostalih paketa, oni će biti zamijenjeni "
-"odabranim paketom. Ovaj paket će se aktivirati na razdoblje od godinu dana. "
-"Preostalo razdoblje za ostale pakete odbit će se od cijene paketa. Želiš li "
-"nastaviti?"
+msgid "Regardless of the remaining duration of other packages, they will be replaced by the selected package. This package will be activated for a period of one year. The remaining period for other packages will be deducted from the package price. Do you want to continue?"
+msgstr "Bez obzira na preostalo trajanje ostalih paketa, oni će biti zamijenjeni odabranim paketom. Ovaj paket će se aktivirati na razdoblje od godinu dana. Preostalo razdoblje za ostale pakete odbit će se od cijene paketa. Želiš li nastaviti?"
 
 #: ../src/Scenes/PremiumPackages.rb:206
 #, fuzzy
 msgctxt "PremiumPackages"
 msgid "This package is currently unavailable. Try to buy it next month."
-msgstr ""
-"Ovaj paket trenutno nije dostupan. Pokušajte ga kupiti u sljedećih mjesec "
-"dana."
+msgstr "Ovaj paket trenutno nije dostupan. Pokušajte ga kupiti u sljedećih mjesec dana."
 
 #: ../src/Scenes/PremiumPackages.rb:211 ../src/Scenes/PremiumPackages.rb:266
 msgctxt "PremiumPackages"
@@ -2287,20 +2097,13 @@ msgstr "Informacija"
 #, fuzzy
 msgctxt "PremiumPackages"
 msgid ""
-"EltenLink's premium packages are given to users as a reward for supporting "
-"the portal.\n"
+"EltenLink's premium packages are given to users as a reward for supporting the portal.\n"
 "A project of this size cannot exist without the help of users.\n"
-"The granting of a premium package does not constitute a commitment or a "
-"commercial contract. The user who supports the project is aware that if the "
-"necessary amount is not raised for EltenLink to continue, the premium "
-"packages will become unavailable."
+"The granting of a premium package does not constitute a commitment or a commercial contract. The user who supports the project is aware that if the necessary amount is not raised for EltenLink to continue, the premium packages will become unavailable."
 msgstr ""
-"EltenLink premium paketi daju se korisnicima kao nagrada za podršku "
-"portalu.\n"
+"EltenLink premium paketi daju se korisnicima kao nagrada za podršku portalu.\n"
 "Projekt ove veličine ne može postojati bez pomoći korisnika.\n"
-"Odobravanje premium paketa ne predstavlja obvezu ili komercijalni ugovor. "
-"Korisnik koji podržava projekt svjestan je da će, ako se ne prikupi potreban "
-"iznos za nastavak EltenLinka, premium paketi postati nedostupni."
+"Odobravanje premium paketa ne predstavlja obvezu ili komercijalni ugovor. Korisnik koji podržava projekt svjestan je da će, ako se ne prikupi potreban iznos za nastavak EltenLinka, premium paketi postati nedostupni."
 
 #: ../src/Scenes/PremiumPackages.rb:215 ../src/Scenes/PremiumPackages.rb:267
 #, fuzzy
@@ -2341,45 +2144,41 @@ msgstr "U nastavku se nalaze detalji prijenosa.\n"
 #: ../src/Scenes/PremiumPackages.rb:247
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid ""
-"In the title of the transfer, please indicate your user name on the "
-"EltenLink portal and which package the payment concerns."
-msgstr ""
-"U naslovu prijenosa navedi svoje korisničko ime na portalu EltenLink i koji "
-"paket se odnosi na plaćanje."
+msgid "In the title of the transfer, please indicate your user name on the EltenLink portal and which package the payment concerns."
+msgstr "U naslovu prijenosa navedi svoje korisničko ime na portalu EltenLink i koji paket se odnosi na plaćanje."
 
 #: ../src/Scenes/PremiumPackages.rb:249
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid ""
-"If you wish to receive a code that can be used to activate any of the "
-"packages: %{packages} by any user, mark this information in the transfer "
-"title."
-msgstr ""
-"Ako želite primiti kôd koji se može koristiti za aktivaciju bilo kojeg od "
-"paketa: %{packages} bilo kojeg korisnika, označite te podatke u naslovu "
-"prijenosa."
+msgid "If you wish to receive a code that can be used to activate any of the packages: %{packages} by any user, mark this information in the transfer title."
+msgstr "Ako želite primiti kôd koji se može koristiti za aktivaciju bilo kojeg od paketa: %{packages} bilo kojeg korisnika, označite te podatke u naslovu prijenosa."
 
 #: ../src/Scenes/PremiumPackages.rb:251
 #, fuzzy
 msgctxt "PremiumPackages"
 msgid ""
-"Please note that if you transfer a larger amount, the remainder will be "
-"treated as a donation.\n"
+"Please note that if you transfer a larger amount, the remainder will be treated as a donation.\n"
 "\n"
-"In order to reduce the processing time of your payment, you can forward the "
-"transfer confirmation to the Council of Elders."
+"In order to reduce the processing time of your payment, you can forward the transfer confirmation to the Council of Elders."
 msgstr ""
-"Molimo, imajte natječite da će se, ako prebacite veći iznos, ostatak "
-"tretirati kao donacija.\n"
+"Molimo, imajte natječite da će se, ako prebacite veći iznos, ostatak tretirati kao donacija.\n"
 "\n"
-"Kako biste smanjili vrijeme obrade plaćanja, potvrdu o prijenosu možete "
-"proslijediti Vijeću starješina."
+"Kako biste smanjili vrijeme obrade plaćanja, potvrdu o prijenosu možete proslijediti Vijeću starješina."
 
 #: ../src/Scenes/PremiumPackages.rb:255
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Domestic bank transfer details (from Poland):\n%{holder}\nAddress: %{address}\nAccount number: %{placcount}\n\nAdditional data for foreign transfers:\nIBAN: %{iban}\nBIC / SWIFT: %{swift}\nBank address: %{bankaddress}\nSort code: %{sortcode}"
+msgid ""
+"Domestic bank transfer details (from Poland):\n"
+"%{holder}\n"
+"Address: %{address}\n"
+"Account number: %{placcount}\n"
+"\n"
+"Additional data for foreign transfers:\n"
+"IBAN: %{iban}\n"
+"BIC / SWIFT: %{swift}\n"
+"Bank address: %{bankaddress}\n"
+"Sort code: %{sortcode}"
 msgstr ""
 "Pojedinosti o nacionalnom transferu (iz Poljske):\n"
 "%{holder}\n"
@@ -2395,12 +2194,8 @@ msgstr ""
 #: ../src/Scenes/PremiumPackages.rb:273
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid ""
-"This payment method requires a redirect to an external website. A web "
-"browser will open. Do you wish to continue?"
-msgstr ""
-"Ovaj način plaćanja zahtijeva preusmjeravanje na vanjsku web stranicu. "
-"Otvorit će se web preglednik. Želite li nastaviti?"
+msgid "This payment method requires a redirect to an external website. A web browser will open. Do you wish to continue?"
+msgstr "Ovaj način plaćanja zahtijeva preusmjeravanje na vanjsku web stranicu. Otvorit će se web preglednik. Želite li nastaviti?"
 
 #: ../src/Scenes/PremiumPackages.rb:291
 #, fuzzy
@@ -2411,12 +2206,8 @@ msgstr "Koliko premium kodova želite kupiti?"
 #: ../src/Scenes/PremiumPackages.rb:299
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid ""
-"You will be charged a %{amount} pln commission for the selected payment "
-"method. Do you want to continue?"
-msgstr ""
-"Bit će vam naplaćena %{amount} pln provizije za odabrani način plaćanja. "
-"Želiš li nastaviti?"
+msgid "You will be charged a %{amount} pln commission for the selected payment method. Do you want to continue?"
+msgstr "Bit će vam naplaćena %{amount} pln provizije za odabrani način plaćanja. Želiš li nastaviti?"
 
 #: ../src/Scenes/PremiumPackages.rb:311
 #, fuzzy
@@ -2444,9 +2235,7 @@ msgstr "Ova datoteka je već dodana"
 #, fuzzy
 msgctxt "PremiumPackages"
 msgid "The package %{name} will be active until %{time}. This code will be redeemed and you will not be able to use it again. Do you want to continue?"
-msgstr ""
-"Paket će %{name} biti aktivan do %{time}. Ovaj kôd će se koristiti i nećete "
-"ga moći ponovno koristiti. Želiš li nastaviti?"
+msgstr "Paket će %{name} biti aktivan do %{time}. Ovaj kôd će se koristiti i nećete ga moći ponovno koristiti. Želiš li nastaviti?"
 
 #: ../src/Scenes/PremiumPackages.rb:333
 #, fuzzy
@@ -2459,9 +2248,7 @@ msgctxt "EAPI_Common"
 msgid "Exit..."
 msgstr "zatvaram program..."
 
-#: ../src/eapi/Common.rb:16 ../src/scenes/Account.rb:645
-#: ../src/scenes/Authentication.rb:23 ../src/scenes/Authentication.rb:25
-#: ../src/scenes/ForgotPassword.rb:31 ../src/scenes/Loading.rb:369
+#: ../src/eapi/Common.rb:16 ../src/scenes/Account.rb:645 ../src/scenes/Authentication.rb:23 ../src/scenes/Authentication.rb:25 ../src/scenes/ForgotPassword.rb:31 ../src/scenes/Loading.rb:369
 msgid "Exit"
 msgstr "Izlaz"
 
@@ -2561,22 +2348,11 @@ msgctxt "EAPI_Common"
 msgid "Sent."
 msgstr "Poslano"
 
-#: ../src/eapi/Common.rb:366 ../src/eapi/Common.rb:414
-#: ../src/scenes/Account.rb:343 ../src/scenes/Account.rb:380
-#: ../src/scenes/Account.rb:528 ../src/scenes/Blog.rb:674
-#: ../src/scenes/Contacts.rb:27 ../src/scenes/Contacts.rb:123
-#: ../src/scenes/Contacts.rb:156 ../src/scenes/Forum.rb:1017
-#: ../src/scenes/Login.rb:212 ../src/scenes/Messages.rb:998
-#: ../src/scenes/Users.rb:13
+#: ../src/eapi/Common.rb:366 ../src/eapi/Common.rb:414 ../src/scenes/Account.rb:343 ../src/scenes/Account.rb:380 ../src/scenes/Account.rb:528 ../src/scenes/Blog.rb:674 ../src/scenes/Contacts.rb:27 ../src/scenes/Contacts.rb:123 ../src/scenes/Contacts.rb:156 ../src/scenes/Forum.rb:1017 ../src/scenes/Login.rb:212 ../src/scenes/Messages.rb:998 ../src/scenes/Users.rb:13
 msgid "Database Error"
 msgstr "Greška u bazi podataka"
 
-#: ../src/eapi/Common.rb:370 ../src/scenes/Account.rb:346
-#: ../src/scenes/Account.rb:383 ../src/scenes/Account.rb:530
-#: ../src/scenes/Blog.rb:676 ../src/scenes/Contacts.rb:31
-#: ../src/scenes/Contacts.rb:126 ../src/scenes/Contacts.rb:159
-#: ../src/scenes/Forum.rb:1019 ../src/scenes/Messages.rb:1002
-#: ../src/scenes/Users.rb:17
+#: ../src/eapi/Common.rb:370 ../src/scenes/Account.rb:346 ../src/scenes/Account.rb:383 ../src/scenes/Account.rb:530 ../src/scenes/Blog.rb:676 ../src/scenes/Contacts.rb:31 ../src/scenes/Contacts.rb:126 ../src/scenes/Contacts.rb:159 ../src/scenes/Forum.rb:1019 ../src/scenes/Messages.rb:1002 ../src/scenes/Users.rb:17
 msgid "Token expired"
 msgstr "Token je istekao"
 
@@ -2717,8 +2493,7 @@ msgstr "Politika privatnosti"
 #: ../src/eapi/Common.rb:526
 msgctxt "EAPI_Common"
 msgid "I accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy"
-msgstr ""
-"Prihvaćam Elten ugovor licence, uvjete korištenja i pravila privatnosti"
+msgstr "Prihvaćam Elten ugovor licence, uvjete korištenja i pravila privatnosti"
 
 #: ../src/eapi/Common.rb:526
 msgctxt "EAPI_Common"
@@ -2728,29 +2503,20 @@ msgstr "Ne prihvaćam, Zatvori program"
 #: ../src/eapi/Common.rb:544
 msgctxt "EAPI_Common"
 msgid "Do you accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy?"
-msgstr ""
-"Prihvaćate li Elten licenčni ugovor, uvjete korištenja i pravila privatnosti?"
+msgstr "Prihvaćate li Elten licenčni ugovor, uvjete korištenja i pravila privatnosti?"
 
 #: ../src/eapi/Common.rb:565
 #, fuzzy
 #| msgctxt "EAPI_Common"
-#| msgid ""
-#| " You are trying to play a midi file. In order to play such files, Elten "
-#| "needs an  external base of instruments. Do you want to download the base "
-#| "from the server  now? It may take several minutes."
+#| msgid " You are trying to play a midi file. In order to play such files, Elten needs an  external base of instruments. Do you want to download the base from the server  now? It may take several minutes."
 msgctxt "EAPI_Common"
 msgid "You are trying to play a MIDI file. Elten needs an external instrument sound bank to play MIDI files. Do you want to download it from the server now? This may take several minutes."
-msgstr ""
-" Pokušavate reproducirati Midi datoteku. Kako biste reproducirali takve "
-"datoteke, Elten treba vanjsku bazu instrumenata. Želite li sada preuzeti "
-"bazu? To može potrajati nekoliko minuta."
+msgstr " Pokušavate reproducirati Midi datoteku. Kako biste reproducirali takve datoteke, Elten treba vanjsku bazu instrumenata. Želite li sada preuzeti bazu? To može potrajati nekoliko minuta."
 
 #: ../src/eapi/Common.rb:566
 msgctxt "EAPI_Common"
 msgid "Please wait, the soundfont is being downloaded. It may take a while."
-msgstr ""
-"       Molimo pričekajte, zvučna tema se preuzima. Ovo može Potrajati     "
-"nekoliko    minuta."
+msgstr "       Molimo pričekajte, zvučna tema se preuzima. Ovo može Potrajati     nekoliko    minuta."
 
 #: ../src/eapi/Common.rb:568
 msgctxt "EAPI_Common"
@@ -2760,12 +2526,8 @@ msgstr "Zvučna tema je uspješno preuzeta.."
 #: ../src/eapi/Common.rb:758
 #, fuzzy
 msgctxt "EAPI_Common"
-msgid ""
-"In order to use HRTF functionality, Elten needs to download Phonon library. "
-"Would you like to download it now?"
-msgstr ""
-"Da bi koristio HRTF funkcionalnost, Elten mora preuzeti Fononovu biblioteku. "
-"Želite li ga preuzeti sada?"
+msgid "In order to use HRTF functionality, Elten needs to download Phonon library. Would you like to download it now?"
+msgstr "Da bi koristio HRTF funkcionalnost, Elten mora preuzeti Fononovu biblioteku. Želite li ga preuzeti sada?"
 
 #: ../src/eapi/Common.rb:874
 msgid "Function not supported on this platform"
@@ -2812,8 +2574,7 @@ msgctxt "EAPI_Common"
 msgid "Close"
 msgstr "Close"
 
-#: ../src/eapi/Controls.rb:103 ../src/eapi/Controls.rb:105
-#: ../src/eapi/Controls.rb:1018 ../src/eapi/Controls.rb:2523
+#: ../src/eapi/Controls.rb:103 ../src/eapi/Controls.rb:105 ../src/eapi/Controls.rb:1018 ../src/eapi/Controls.rb:2523
 #, fuzzy
 msgid "Context menu"
 msgstr "Kontekstni izbornik"
@@ -3084,8 +2845,7 @@ msgstr "Koristite i za navigaciju do sljedeće stavke popisa"
 #, fuzzy
 msgctxt "EAPI_Form"
 msgid "Use the above shortcuts with shift to navigate to the previous items"
-msgstr ""
-"Koristite gore navedene prečace s pomakom za navigaciju do prethodnih stavki"
+msgstr "Koristite gore navedene prečace s pomakom za navigaciju do prethodnih stavki"
 
 #: ../src/eapi/Controls.rb:1897
 msgctxt "EAPI_Form"
@@ -3102,8 +2862,7 @@ msgctxt "EAPI_Common"
 msgid "Unchecked"
 msgstr "nije odabrano"
 
-#: ../src/eapi/Controls.rb:2044 ../src/eapi/Controls.rb:2269
-#: ../src/eapi/Controls.rb:2288
+#: ../src/eapi/Controls.rb:2044 ../src/eapi/Controls.rb:2269 ../src/eapi/Controls.rb:2288
 msgctxt "EAPI_Form"
 msgid "Checked"
 msgstr "označeno"
@@ -3136,9 +2895,7 @@ msgstr "Koristite prostor za odabir ili odabir stavki"
 #, fuzzy
 msgctxt "EAPI_Form"
 msgid "Press Shift+Up/Down Arrow to filter content by tags"
-msgstr ""
-"Koristite pomak sa strelicama prema gore/dolje za filtriranje sadržaja prema "
-"oznakama"
+msgstr "Koristite pomak sa strelicama prema gore/dolje za filtriranje sadržaja prema oznakama"
 
 #: ../src/eapi/Controls.rb:2190
 #, fuzzy
@@ -3268,9 +3025,7 @@ msgstr "Upiši stazu"
 #, fuzzy
 msgctxt "EAPI_Form"
 msgid "Use Shift+Left/Right Arrow to select the column you want to navigate by"
-msgstr ""
-"Upotrijebite SHIFT sa strelicama lijevo/desno da biste odabrali stupac po "
-"koji želite upravljati"
+msgstr "Upotrijebite SHIFT sa strelicama lijevo/desno da biste odabrali stupac po koji želite upravljati"
 
 #: ../src/eapi/Controls.rb:3083 ../src/eapi/Controls.rb:3093
 msgctxt "EAPI_Common"
@@ -3321,16 +3076,7 @@ msgctxt "EAPI_Form"
 msgid "File name"
 msgstr "Ime datoteke"
 
-#: ../src/eapi/Controls.rb:3259 ../src/scenes/Account.rb:288
-#: ../src/scenes/Account.rb:292 ../src/scenes/Blog.rb:1090
-#: ../src/scenes/Blog.rb:1123 ../src/scenes/Blog.rb:1525
-#: ../src/scenes/Blog.rb:1529 ../src/scenes/Clock.rb:35
-#: ../src/scenes/Clock.rb:80 ../src/scenes/Forum.rb:1445
-#: ../src/scenes/Forum.rb:1493 ../src/scenes/Forum.rb:3878
-#: ../src/scenes/Forum.rb:3882 ../src/scenes/Honors.rb:212
-#: ../src/scenes/Messages.rb:330 ../src/scenes/Settings.rb:311
-#: ../src/scenes/Settings.rb:315 ../src/scenes/SoundThemes.rb:75
-#: ../src/scenes/SoundThemes.rb:138
+#: ../src/eapi/Controls.rb:3259 ../src/scenes/Account.rb:288 ../src/scenes/Account.rb:292 ../src/scenes/Blog.rb:1090 ../src/scenes/Blog.rb:1123 ../src/scenes/Blog.rb:1525 ../src/scenes/Blog.rb:1529 ../src/scenes/Clock.rb:35 ../src/scenes/Clock.rb:80 ../src/scenes/Forum.rb:1445 ../src/scenes/Forum.rb:1493 ../src/scenes/Forum.rb:3878 ../src/scenes/Forum.rb:3882 ../src/scenes/Honors.rb:212 ../src/scenes/Messages.rb:330 ../src/scenes/Settings.rb:311 ../src/scenes/Settings.rb:315 ../src/scenes/SoundThemes.rb:75 ../src/scenes/SoundThemes.rb:138
 msgid "Saved"
 msgstr "Spremljeno"
 
@@ -3385,9 +3131,7 @@ msgstr "Upotrijebite lijeve/desne strelice za klizanje"
 #, fuzzy
 msgctxt "EAPI_Form"
 msgid "Use up/down arrows to change playback volume"
-msgstr ""
-"Upotrijebite strelice prema gore/dolje da biste promijenili glasnoću "
-"reprodukcije"
+msgstr "Upotrijebite strelice prema gore/dolje da biste promijenili glasnoću reprodukcije"
 
 #: ../src/eapi/Controls.rb:3373
 #, fuzzy
@@ -3418,8 +3162,7 @@ msgctxt "EAPI_Form"
 msgid "record"
 msgstr "zapis"
 
-#: ../src/eapi/Controls.rb:3954 ../src/eapi/Controls.rb:4010
-#: ../src/eapi/Controls.rb:4035
+#: ../src/eapi/Controls.rb:3954 ../src/eapi/Controls.rb:4010 ../src/eapi/Controls.rb:4035
 #, fuzzy
 #| msgctxt "Messages"
 #| msgid "Cancel recording"
@@ -3477,8 +3220,7 @@ msgstr "Spremno"
 #| msgctxt "Contacts"
 #| msgid "Are you sure you want to delete this contact?"
 msgctxt "EAPI_Form"
-msgid ""
-"Are you sure you want to delete the previous recording and create a new one?"
+msgid "Are you sure you want to delete the previous recording and create a new one?"
 msgstr "Želiš li sigurno izbrisati ovaj kontakt?"
 
 #: ../src/eapi/Controls.rb:4009
@@ -3521,14 +3263,10 @@ msgstr "Poništi snimanje"
 #: ../src/eapi/Controls.rb:4045
 #, fuzzy
 #| msgctxt "Forum"
-#| msgid ""
-#| " All posts on this forum will be marked as read. Are you sure you want to "
-#| "continue?"
+#| msgid " All posts on this forum will be marked as read. Are you sure you want to continue?"
 msgctxt "EAPI_Form"
 msgid "The encoder settings will not apply to the current recording. Are you sure you want to continue?"
-msgstr ""
-" Svi će postovi na ovom forumu biti označeni kao pročitani. Jeste li sigurni "
-"da želite nastaviti?"
+msgstr " Svi će postovi na ovom forumu biti označeni kao pročitani. Jeste li sigurni da želite nastaviti?"
 
 #: ../src/eapi/Controls.rb:4063
 #, fuzzy
@@ -3681,15 +3419,7 @@ msgctxt "EAPI_Form"
 msgid "November"
 msgstr "studeni"
 
-#: ../src/eapi/Controls.rb:4209 ../src/eapi/Controls.rb:4210
-#: ../src/eapi/Controls.rb:4211 ../src/eapi/Controls.rb:4212
-#: ../src/eapi/Controls.rb:4213 ../src/eapi/Controls.rb:4214
-#: ../src/eapi/Controls.rb:4256 ../src/eapi/Controls.rb:4258
-#: ../src/eapi/Controls.rb:4265 ../src/eapi/Controls.rb:4276
-#: ../src/eapi/Controls.rb:4283 ../src/eapi/Controls.rb:4285
-#: ../src/eapi/Controls.rb:4292 ../src/eapi/Controls.rb:4294
-#: ../src/eapi/Controls.rb:4301 ../src/eapi/Controls.rb:4303
-#: ../src/eapi/Controls.rb:4312
+#: ../src/eapi/Controls.rb:4209 ../src/eapi/Controls.rb:4210 ../src/eapi/Controls.rb:4211 ../src/eapi/Controls.rb:4212 ../src/eapi/Controls.rb:4213 ../src/eapi/Controls.rb:4214 ../src/eapi/Controls.rb:4256 ../src/eapi/Controls.rb:4258 ../src/eapi/Controls.rb:4265 ../src/eapi/Controls.rb:4276 ../src/eapi/Controls.rb:4283 ../src/eapi/Controls.rb:4285 ../src/eapi/Controls.rb:4292 ../src/eapi/Controls.rb:4294 ../src/eapi/Controls.rb:4301 ../src/eapi/Controls.rb:4303 ../src/eapi/Controls.rb:4312
 #, fuzzy
 #| msgctxt "Sounds"
 #| msgid "Item selected"
@@ -4073,11 +3803,7 @@ msgstr "Nema dostupnih savjeta"
 #, fuzzy
 msgctxt "EAPI_Common"
 msgid "Using NVDA"
-msgstr ""
-"Ova vam funkcija omogućuje upis znakova u nekoliko koraka. Opa opcija može "
-"biti aktivirana u općim postavkama dodatka ili s pomoću podrazumjevanog "
-"prečaca NVDA+Windows+h  (⡂+razmaknica na podržanim brajičnim retcima). Tri "
-"metode unosa su dostupne."
+msgstr "Ova vam funkcija omogućuje upis znakova u nekoliko koraka. Opa opcija može biti aktivirana u općim postavkama dodatka ili s pomoću podrazumjevanog prečaca NVDA+Windows+h  (⡂+razmaknica na podržanim brajičnim retcima). Tri metode unosa su dostupne."
 
 #: ../src/eapi/QuickActions.rb:87
 msgctxt "EAPI_Common"
@@ -4542,16 +4268,10 @@ msgstr "Ne možete nazvati ovog korisnika"
 #: ../src/eapi/UI.rb:472
 #, fuzzy
 #| msgctxt "EAPI_UI"
-#| msgid ""
-#| " An unexpected error of Elten agent occurred. Do you want to report this "
-#| "event? It  may definitely help us solve the problem."
+#| msgid " An unexpected error of Elten agent occurred. Do you want to report this event? It  may definitely help us solve the problem."
 msgctxt "EAPI_UI"
-msgid ""
-"An unexpected error of Elten agent occurred. Do you want to report this "
-"event? It  may definitely help us solve the problem."
-msgstr ""
-" Dogodila se neočekivana pogreška Elten agenta. Želite li nam poslati "
-"izvještaj o grešci? To nam može pomoći u rješavanju problema."
+msgid "An unexpected error of Elten agent occurred. Do you want to report this event? It  may definitely help us solve the problem."
+msgstr " Dogodila se neočekivana pogreška Elten agenta. Želite li nam poslati izvještaj o grešci? To nam može pomoći u rješavanju problema."
 
 #: ../src/eapi/UI.rb:476
 msgctxt "EAPI_UI"
@@ -4581,8 +4301,7 @@ msgctxt "Account"
 msgid "Category"
 msgstr "Kategorija"
 
-#: ../src/scenes/Account.rb:116 ../src/scenes/Blog.rb:1379
-#: ../src/scenes/Forum.rb:3788 ../src/scenes/Settings.rb:117
+#: ../src/scenes/Account.rb:116 ../src/scenes/Blog.rb:1379 ../src/scenes/Forum.rb:3788 ../src/scenes/Settings.rb:117
 msgid "Apply"
 msgstr "Primjeni"
 
@@ -4944,9 +4663,7 @@ msgctxt "Account"
 msgid "The old password is incorrect."
 msgstr "Stara Lozinka je netočna."
 
-#: ../src/scenes/Account.rb:360 ../src/scenes/Account.rb:400
-#: ../src/scenes/Account.rb:457 ../src/scenes/Account.rb:570
-#: ../src/scenes/Account.rb:616
+#: ../src/scenes/Account.rb:360 ../src/scenes/Account.rb:400 ../src/scenes/Account.rb:457 ../src/scenes/Account.rb:570 ../src/scenes/Account.rb:616
 msgctxt "Account"
 msgid "Enter your password."
 msgstr "Upiši lozinku"
@@ -4966,18 +4683,13 @@ msgctxt "Account"
 msgid "Error: you must disable email event reporting first."
 msgstr "Greška, prvo morate isključiti izvještavanje o događajima e-mailom."
 
-#: ../src/scenes/Account.rb:407 ../src/scenes/Account.rb:465
-#: ../src/scenes/Account.rb:577
+#: ../src/scenes/Account.rb:407 ../src/scenes/Account.rb:465 ../src/scenes/Account.rb:577
 #, fuzzy
 #| msgctxt "Account"
-#| msgid ""
-#| " An error occurred while authenticating the account. You might have "
-#| "provided an  incorrect password."
+#| msgid " An error occurred while authenticating the account. You might have provided an  incorrect password."
 msgctxt "Account"
 msgid "An error occurred while verifying your account. You may have entered an incorrect password."
-msgstr ""
-" Dogodila se greška prilikom autentifikacije naloga. Možda ste upisali krivu "
-"lozinku."
+msgstr " Dogodila se greška prilikom autentifikacije naloga. Možda ste upisali krivu lozinku."
 
 #: ../src/scenes/Account.rb:432
 msgctxt "Account"
@@ -5007,14 +4719,10 @@ msgstr "Odjavi sve sesije"
 #: ../src/scenes/Account.rb:455
 #, fuzzy
 #| msgctxt "Account"
-#| msgid ""
-#| " Are you sure you want to remove all auto log in tokens and log out all "
-#| "sessions?  You will be logged off immediately."
+#| msgid " Are you sure you want to remove all auto log in tokens and log out all sessions?  You will be logged off immediately."
 msgctxt "Account"
 msgid "Are you sure you want to remove all auto-login tokens and log out of all sessions? You will be logged out immediately."
-msgstr ""
-" Jeste li sigurni da želite ukloniti sve tokene i odjaviti sve sesije?  Biti "
-"ćete odma odjavljeni."
+msgstr " Jeste li sigurni da želite ukloniti sve tokene i odjaviti sve sesije?  Biti ćete odma odjavljeni."
 
 #: ../src/scenes/Account.rb:517
 msgctxt "Account"
@@ -5032,16 +4740,10 @@ msgstr "Upiši korisničko ime korisnika, kojeg želiš dodati na crnu listu"
 #: ../src/scenes/Account.rb:520
 #, fuzzy
 #| msgctxt "Account"
-#| msgid ""
-#| " The users added to your black list cannot send you private messages. Are "
-#| "you sure  you want to continue?"
+#| msgid " The users added to your black list cannot send you private messages. Are you sure  you want to continue?"
 msgctxt "Account"
-msgid ""
-"The users added to your black list cannot send you private messages. Are you "
-"sure  you want to continue?"
-msgstr ""
-" Korisnici koji su vas dodalli u crnu listu ne mogu vam slati privatne "
-"poruke. Želite li nastaviti?"
+msgid "The users added to your black list cannot send you private messages. Are you sure  you want to continue?"
+msgstr " Korisnici koji su vas dodalli u crnu listu ne mogu vam slati privatne poruke. Želite li nastaviti?"
 
 #: ../src/scenes/Account.rb:524
 msgctxt "Account"
@@ -5081,15 +4783,11 @@ msgstr "Posljednje prijave"
 #: ../src/scenes/Account.rb:625
 msgctxt "Account"
 msgid "You can configure Elten to notify you by email about changes to your account and logins from new devices. To do so, you must verify your email address. Do you want to verify it now?"
-msgstr ""
-"Ako želite, mžete uključiti obavještavanje o novim prijavama na vaš nalog e-"
-"mail. Kako biste to učinili, Morate potvrditi vaš e-mail. Želite li to "
-"učiniti sada?"
+msgstr "Ako želite, mžete uključiti obavještavanje o novim prijavama na vaš nalog e-mail. Kako biste to učinili, Morate potvrditi vaš e-mail. Želite li to učiniti sada?"
 
 #: ../src/scenes/Account.rb:631 ../src/scenes/Account.rb:656
 msgctxt "Account"
-msgid ""
-"The verification code has been sent to you via E-mail. Please type it here."
+msgid "The verification code has been sent to you via E-mail. Please type it here."
 msgstr "Verifikacijski kod vam je poslat e-mailom. Upišite ga ovdje."
 
 #: ../src/scenes/Account.rb:643
@@ -5110,9 +4808,7 @@ msgstr "Izvještavanje o događajima e-mailom je uključeno."
 #: ../src/scenes/Account.rb:644
 msgctxt "Account"
 msgid "Email event reporting is disabled. If you wish, you can enable it to receive information about changes to your account and logins from new devices by email."
-msgstr ""
-"Izvještavanje o događajima e-mailom je isključeno. Ako želite, možete ga "
-"uključiti ako želite doznati o promjenama na vašim nalozima i novim prijavama"
+msgstr "Izvještavanje o događajima e-mailom je isključeno. Ako želite, možete ga uključiti ako želite doznati o promjenama na vašim nalozima i novim prijavama"
 
 #: ../src/scenes/Admins.rb:15
 #, fuzzy
@@ -5156,23 +4852,10 @@ msgstr "Vijeće starijih"
 #: ../src/scenes/Authentication.rb:23
 #, fuzzy
 #| msgctxt "Authentication"
-#| msgid ""
-#| " Two-factor authentication enables better account security by requiring "
-#| "the  confirmation of each login with your phone. When activated, a text "
-#| "message with a  verification code will be sent to you each time you log "
-#| "in from a new device.  Entering this code will be required to sign in to "
-#| "the program."
+#| msgid " Two-factor authentication enables better account security by requiring the  confirmation of each login with your phone. When activated, a text message with a  verification code will be sent to you each time you log in from a new device.  Entering this code will be required to sign in to the program."
 msgctxt "Authentication"
-msgid ""
-"Two-factor authentication enables better account security by requiring the  "
-"confirmation of each login with your phone. When activated, a text message "
-"with a  verification code will be sent to you each time you log in from a "
-"new device.  Entering this code will be required to sign in to the program."
-msgstr ""
-" Dvofaktorna autentifikacija omogućava bolju sigurnost potvrđujući svaku "
-"prijavu telefonom. Kada je aktivna, testna poruka sa verifikacijskim kodom "
-"bit će poslana svaki put prilikom prijave na novi uređaj.  Upisivanej koda "
-"bit će potrebno za prijavu u program."
+msgid "Two-factor authentication enables better account security by requiring the  confirmation of each login with your phone. When activated, a text message with a  verification code will be sent to you each time you log in from a new device.  Entering this code will be required to sign in to the program."
+msgstr " Dvofaktorna autentifikacija omogućava bolju sigurnost potvrđujući svaku prijavu telefonom. Kada je aktivna, testna poruka sa verifikacijskim kodom bit će poslana svaki put prilikom prijave na novi uređaj.  Upisivanej koda bit će potrebno za prijavu u program."
 
 #: ../src/scenes/Authentication.rb:23
 msgid "Enable"
@@ -5195,8 +4878,7 @@ msgctxt "Authentication"
 msgid "Generate backup codes"
 msgstr "Generiraj ključ povrata lozinke"
 
-#: ../src/scenes/Authentication.rb:32 ../src/scenes/Authentication.rb:70
-#: ../src/scenes/Authentication.rb:87
+#: ../src/scenes/Authentication.rb:32 ../src/scenes/Authentication.rb:70 ../src/scenes/Authentication.rb:87
 msgctxt "Authentication"
 msgid "Type your password"
 msgstr "Upiši svoju lozinku"
@@ -5204,38 +4886,23 @@ msgstr "Upiši svoju lozinku"
 #: ../src/scenes/Authentication.rb:34
 #, fuzzy
 #| msgctxt "Authentication"
-#| msgid ""
-#| " Type your phone number that will be used during verification. Remember "
-#| "to enter  the country code, for example, +48 for Poland"
+#| msgid " Type your phone number that will be used during verification. Remember to enter  the country code, for example, +48 for Poland"
 msgctxt "Authentication"
-msgid ""
-"Type your phone number that will be used during verification. Remember to "
-"enter  the country code, for example, +48 for Poland"
-msgstr ""
-" Upišite vaš telefonski broj koji će se koristiti tijekom verifikacije Ne "
-"zaboravite upisati predbroj države, na primjer +48 za poljsku"
+msgid "Type your phone number that will be used during verification. Remember to enter  the country code, for example, +48 for Poland"
+msgstr " Upišite vaš telefonski broj koji će se koristiti tijekom verifikacije Ne zaboravite upisati predbroj države, na primjer +48 za poljsku"
 
 #: ../src/scenes/Authentication.rb:36
 #, fuzzy
 #| msgctxt "Authentication"
-#| msgid ""
-#| " Two-factor authentication was introduced in Elten 2.28. After activating "
-#| "it, it  will not be possible to log in from the older versions of the "
-#| "program. DO you  wish to continue anyway?"
+#| msgid " Two-factor authentication was introduced in Elten 2.28. After activating it, it  will not be possible to log in from the older versions of the program. DO you  wish to continue anyway?"
 msgctxt "Authentication"
 msgid "Two-factor authentication was introduced in Elten 2.28. After activating it, you will not be able to log in using older versions of the program. Do you wish to continue anyway?"
-msgstr ""
-" Dvofaktorna autentifikacija je uvedena u Verziji eltena 2.28. Poslije "
-"aktivacije, neće biti moguća prijava iz starije verzije programa. Želite li "
-"svejedno nastaviti?"
+msgstr " Dvofaktorna autentifikacija je uvedena u Verziji eltena 2.28. Poslije aktivacije, neće biti moguća prijava iz starije verzije programa. Želite li svejedno nastaviti?"
 
 #: ../src/scenes/Authentication.rb:37
 msgctxt "Authentication"
-msgid ""
-"Is this phone number correct? Press enter to continue or escape to cancel."
-msgstr ""
-"Je li telefonski broj ispravan? Pritisnite enter za nastavak ili escape za "
-"izlaz."
+msgid "Is this phone number correct? Press enter to continue or escape to cancel."
+msgstr "Je li telefonski broj ispravan? Pritisnite enter za nastavak ili escape za izlaz."
 
 #: ../src/scenes/Authentication.rb:39
 msgctxt "Authentication"
@@ -5245,14 +4912,10 @@ msgstr "Pričekaj, traje povezivanje na poslužitelj..."
 #: ../src/scenes/Authentication.rb:47
 #, fuzzy
 #| msgctxt "Authentication"
-#| msgid ""
-#| " On the phone number indicated, you will receive a text message with the "
-#| "code  activating two-factor authentication. Enter this code"
+#| msgid " On the phone number indicated, you will receive a text message with the code  activating two-factor authentication. Enter this code"
 msgctxt "Authentication"
 msgid "A text message containing the code to activate two-factor authentication will be sent to the phone number you provided. Enter the code."
-msgstr ""
-" Na telefonski broj koji ste upisali, dobit ćete kod sa dvofaktornom "
-"autentifikacijom. Upišite ovaj kod"
+msgstr " Na telefonski broj koji ste upisali, dobit ćete kod sa dvofaktornom autentifikacijom. Upišite ovaj kod"
 
 #: ../src/scenes/Authentication.rb:55
 msgctxt "Authentication"
@@ -5287,13 +4950,8 @@ msgstr "Upisana je nepravilna lozinka."
 #: ../src/scenes/Authentication.rb:85
 #, fuzzy
 msgctxt "Authentication"
-msgid ""
-"Do you want to generate backup codes? These can be used to sign in when you "
-"have no access to your phone. All previously generated codes will be deleted."
-msgstr ""
-"Želite li generirati sigurnosne kodove? Oni se mogu koristiti za prijavu "
-"kada nemate pristup telefonu. Svi prethodno generirani kodovi bit će "
-"izbrisani."
+msgid "Do you want to generate backup codes? These can be used to sign in when you have no access to your phone. All previously generated codes will be deleted."
+msgstr "Želite li generirati sigurnosne kodove? Oni se mogu koristiti za prijavu kada nemate pristup telefonu. Svi prethodno generirani kodovi bit će izbrisani."
 
 #: ../src/scenes/Authentication.rb:97
 #, fuzzy
@@ -5469,8 +5127,7 @@ msgctxt "Blog"
 msgid "All posts"
 msgstr "svi zapisi"
 
-#: ../src/scenes/Blog.rb:131 ../src/scenes/Blog.rb:788
-#: ../src/scenes/Blog.rb:1466
+#: ../src/scenes/Blog.rb:131 ../src/scenes/Blog.rb:788 ../src/scenes/Blog.rb:1466
 msgctxt "Blog"
 msgid "Posts"
 msgstr "Objave"
@@ -5551,8 +5208,7 @@ msgctxt "Blog"
 msgid "The blog has been created."
 msgstr "Blog je stvoren."
 
-#: ../src/scenes/Blog.rb:301 ../src/scenes/Blog.rb:788
-#: ../src/scenes/Blog.rb:1399 ../src/scenes/Blog.rb:1933
+#: ../src/scenes/Blog.rb:301 ../src/scenes/Blog.rb:788 ../src/scenes/Blog.rb:1399 ../src/scenes/Blog.rb:1933
 msgctxt "Blog"
 msgid "Comments"
 msgstr "Komentari"
@@ -5854,12 +5510,8 @@ msgstr "Jeste li sigurni da želite izbrisati grupu %{groupname}?"
 #: ../src/scenes/Blog.rb:861
 #, fuzzy
 msgctxt "Blog"
-msgid ""
-"All posts written on this blog will be lost. Are you sure you want to "
-"continue?"
-msgstr ""
-" Svi će postovi na ovom forumu biti označeni kao pročitani. Jeste li sigurni "
-"da želite nastaviti?"
+msgid "All posts written on this blog will be lost. Are you sure you want to continue?"
+msgstr " Svi će postovi na ovom forumu biti označeni kao pročitani. Jeste li sigurni da želite nastaviti?"
 
 #: ../src/scenes/Blog.rb:863
 #, fuzzy
@@ -5942,9 +5594,7 @@ msgstr "Dodaj u sljeđene blogove"
 #, fuzzy
 msgctxt "Blog"
 msgid "You are now following this blog. Do you want to mark all of its existing posts as read so that they do not appear in What's New?"
-msgstr ""
-"Ovaj blog je dodan na praćene blogove. Želite li sve dosad objavljene objave "
-"na njemu označiti kao pročitane kako ih ne biste vidjeli u \"Što je novo\"?"
+msgstr "Ovaj blog je dodan na praćene blogove. Želite li sve dosad objavljene objave na njemu označiti kao pročitane kako ih ne biste vidjeli u \"Što je novo\"?"
 
 #: ../src/scenes/Blog.rb:978 ../src/scenes/Blog.rb:1007
 msgctxt "Blog"
@@ -5991,9 +5641,7 @@ msgstr "Označi sve zapise na ovom blogu kao pročitane"
 #: ../src/scenes/Blog.rb:1004
 msgctxt "Blog"
 msgid "All posts on this blog will be marked as read. Do you want to continue?"
-msgstr ""
-"       Svi će zapisi na ovom blogu biti označeni kao pročitani. Jesi li     "
-"siguran   da  želiš nastaviti?"
+msgstr "       Svi će zapisi na ovom blogu biti označeni kao pročitani. Jesi li     siguran   da  želiš nastaviti?"
 
 #: ../src/scenes/Blog.rb:1014
 msgctxt "Blog"
@@ -6155,14 +5803,8 @@ msgstr "Jezik"
 #: ../src/scenes/Blog.rb:1396
 #, fuzzy
 msgctxt "Blog"
-msgid ""
-"Mark this blog as public. Blogs that are not marked public request search "
-"engines such as Google not to show them in search results (some search "
-"engines may not respect this setting)"
-msgstr ""
-"Označite ovaj blog kao javni. Blogovi koji nisu označeni tražilicama javnog "
-"zahtjeva kao što je Google da ih ne prikazuju u rezultatima pretraživanja "
-"(neke tražilice možda ne poštuju ovu postavku)"
+msgid "Mark this blog as public. Blogs that are not marked public request search engines such as Google not to show them in search results (some search engines may not respect this setting)"
+msgstr "Označite ovaj blog kao javni. Blogovi koji nisu označeni tražilicama javnog zahtjeva kao što je Google da ih ne prikazuju u rezultatima pretraživanja (neke tražilice možda ne poštuju ovu postavku)"
 
 #: ../src/scenes/Blog.rb:1400
 #, fuzzy
@@ -6174,8 +5816,7 @@ msgstr "Pokaži samo eltenovim korisnicima"
 #, fuzzy
 msgctxt "Blog"
 msgid "By all visitors, but I must approve each person's first comment"
-msgstr ""
-"Od strane svih posjetitelja, ali moram počiniti prvi komentar određene osobe"
+msgstr "Od strane svih posjetitelja, ali moram počiniti prvi komentar određene osobe"
 
 #: ../src/scenes/Blog.rb:1400
 #, fuzzy
@@ -6287,8 +5928,7 @@ msgstr "Jednostavno (https://example.com/?p=123)"
 #, fuzzy
 msgctxt "Blog"
 msgid "Full date and post name (https://example.com/2020/01/01/example-post)"
-msgstr ""
-"Puni datum i naziv objave (https://example.com/2020/01/01/example-post)"
+msgstr "Puni datum i naziv objave (https://example.com/2020/01/01/example-post)"
 
 #: ../src/scenes/Blog.rb:1469
 #, fuzzy
@@ -6669,13 +6309,10 @@ msgstr "Kupnja vlastite domene"
 msgctxt "Blog"
 msgid ""
 "To continue, you should point your domain to Elten Blogging server.\n"
-"You can buy your own domain from domain providers, such as ovh.com, domain."
-"com, godaddy.com or bluehost.com."
+"You can buy your own domain from domain providers, such as ovh.com, domain.com, godaddy.com or bluehost.com."
 msgstr ""
-"Da biste nastavili, trebali biste svoju domenu ukazati na poslužitelj Elten "
-"Blogging.\n"
-"Možete kupiti vlastitu domenu od davatelja domena, kao što su ovh.com, "
-"domain.com, godaddy.com ili bluehost.com."
+"Da biste nastavili, trebali biste svoju domenu ukazati na poslužitelj Elten Blogging.\n"
+"Možete kupiti vlastitu domenu od davatelja domena, kao što su ovh.com, domain.com, godaddy.com ili bluehost.com."
 
 #: ../src/scenes/Blog.rb:2137
 #, fuzzy
@@ -6710,12 +6347,8 @@ msgstr "Nova domena je ista kao i prethodna"
 #: ../src/scenes/Blog.rb:2177
 #, fuzzy
 msgctxt "Blog"
-msgid ""
-"You already have one blog associated with your Elten profile. Please change "
-"its type and then proceed."
-msgstr ""
-"Već imate jedan blog povezan s vašim Elten profilom. Promijenite njegov tip "
-"i nastavite."
+msgid "You already have one blog associated with your Elten profile. Please change its type and then proceed."
+msgstr "Već imate jedan blog povezan s vašim Elten profilom. Promijenite njegov tip i nastavite."
 
 #: ../src/scenes/Blog.rb:2181
 #, fuzzy
@@ -6742,16 +6375,8 @@ msgstr "Upisana domena je neispravna"
 #: ../src/scenes/Blog.rb:2200
 #, fuzzy
 msgctxt "Blog"
-msgid ""
-"Warning! If you change your blog URL, some links may stop working. If you "
-"directly linked posts or other resources on your blog, they would no longer "
-"be available at previous URLs. In such case you will be required to fix them "
-"manualy. Are you sure you want to continue?"
-msgstr ""
-"Upozorenje! Ako promijenite URL na blogu, neke veze mogu prestati "
-"funkcionirati. Ako ste izravno povezali postove ili druge resurse na svom "
-"blogu, oni više ne bi bili dostupni na prethodnim URL-ovima. U tom slučaju "
-"morat ćete ih ručno popraviti. Jeste li sigurni da želite nastaviti?"
+msgid "Warning! If you change your blog URL, some links may stop working. If you directly linked posts or other resources on your blog, they would no longer be available at previous URLs. In such case you will be required to fix them manualy. Are you sure you want to continue?"
+msgstr "Upozorenje! Ako promijenite URL na blogu, neke veze mogu prestati funkcionirati. Ako ste izravno povezali postove ili druge resurse na svom blogu, oni više ne bi bili dostupni na prethodnim URL-ovima. U tom slučaju morat ćete ih ručno popraviti. Jeste li sigurni da želite nastaviti?"
 
 #: ../src/scenes/Blog.rb:2214
 #, fuzzy
@@ -6762,32 +6387,35 @@ msgstr "Promijenjena domena bloga"
 #: ../src/scenes/Blog.rb:2223
 #, fuzzy
 msgctxt "Blog"
-msgid "Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n\nWhere possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n\nMany domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n%{ip}\n\nPointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n\nDetailed instructions are available from your domain provider, for example at:\nhttps://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n\nOnce you have finished, continue."
+msgid ""
+"Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n"
+"\n"
+"Where possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n"
+"\n"
+"Many domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n"
+"%{ip}\n"
+"\n"
+"Pointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n"
+"\n"
+"Detailed instructions are available from your domain provider, for example at:\n"
+"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
+"\n"
+"Once you have finished, continue."
 msgstr ""
-"Sada biste trebali konfigurirati kupljenu domenu kako biste je preusmjerili "
-"na Elten bloganje poslužitelja. U nastavku su potrebni detalji. Ako imate "
-"bilo kakvih problema, slobodno postavljajte pitanja na forumu.\n"
+"Sada biste trebali konfigurirati kupljenu domenu kako biste je preusmjerili na Elten bloganje poslužitelja. U nastavku su potrebni detalji. Ako imate bilo kakvih problema, slobodno postavljajte pitanja na forumu.\n"
 "      \n"
-"Gdje god je to moguće, preporučujemo da koristite CNAME zapis jer ga nije "
-"potrebno uređivati ako se promijeni IP adresa poslužitelja koji hostinga vaš "
-"blog. IP adresa vašeg bloga može se promijeniti, na primjer, zbog migracije "
-"poslužitelja Elten Blogging. Konfiguriranjem CNAME zapisa vaše domene ne "
-"morate raditi ništa drugo.\n"
-"      Da biste to učinili, pošaljite svoj cname rekord na odredište "
-"\"%{host}\".\n"
+"Gdje god je to moguće, preporučujemo da koristite CNAME zapis jer ga nije potrebno uređivati ako se promijeni IP adresa poslužitelja koji hostinga vaš blog. IP adresa vašeg bloga može se promijeniti, na primjer, zbog migracije poslužitelja Elten Blogging. Konfiguriranjem CNAME zapisa vaše domene ne morate raditi ništa drugo.\n"
+"      Da biste to učinili, pošaljite svoj cname rekord na odredište \"%{host}\".\n"
 "      \n"
-"Nažalost, mnogi registratori domena ne podržavaju CNAME zapis za domene "
-"najviše razine, pa ćete umjesto toga možda htjeti koristiti A zapis.\n"
+"Nažalost, mnogi registratori domena ne podržavaju CNAME zapis za domene najviše razine, pa ćete umjesto toga možda htjeti koristiti A zapis.\n"
 "      U tom slučaju, molimo pošaljite A zapis na IP adresu:\n"
 "%{ip}\n"
 ".\n"
 "\n"
-"Imajte na imajte na primjer da preusmjeravanje vaše domene nije pseudonim i "
-"postavljanje pseudonima ili http 301/ 3xx preusmjeravanja neće raditi.\n"
+"Imajte na imajte na primjer da preusmjeravanje vaše domene nije pseudonim i postavljanje pseudonima ili http 301/ 3xx preusmjeravanja neće raditi.\n"
 "\n"
 "Detaljan opis možete dobiti od davatelja domena, na primjer:\n"
-"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-"
-"Familiar-with-DNS\n"
+"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n"
 "\n"
 "Nakon što završite, nastavite."
 
@@ -6806,18 +6434,13 @@ msgstr "Spremni, uzmite me sljedeći"
 #, fuzzy
 msgctxt "Blog"
 msgid "Your domain does not point to Elten Blogs. Try again, or wait for the DNS changes to propagate. Full DNS propagation may take up to 24 hours."
-msgstr ""
-"Vaša domena ne pokazuje na Elten blogove, pokušajte ponovno ili pričekajte "
-"neko vrijeme da osvježite DNS. To može potrajati i do 24 sata za obavljanje "
-"punog DNS ažuriranja."
+msgstr "Vaša domena ne pokazuje na Elten blogove, pokušajte ponovno ili pričekajte neko vrijeme da osvježite DNS. To može potrajati i do 24 sata za obavljanje punog DNS ažuriranja."
 
 #: ../src/scenes/Blog.rb:2255
 #, fuzzy
 msgctxt "Blog"
 msgid "Your domain points to Elten Blogs, but the www subdomain does not. Please fix it."
-msgstr ""
-"Vaša domena pokazuje na Elten blogove, ali www prefix nije. Molim te, "
-"popravi to."
+msgstr "Vaša domena pokazuje na Elten blogove, ali www prefix nije. Molim te, popravi to."
 
 #: ../src/scenes/Changes.rb:132
 msgctxt "Changes"
@@ -6829,14 +6452,12 @@ msgctxt "Clock"
 msgid "Alarms"
 msgstr "Alarmi"
 
-#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Clock.rb:97
+#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70 ../src/scenes/Clock.rb:97
 msgctxt "Clock"
 msgid "Hour"
 msgstr "sat"
 
-#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Clock.rb:97
+#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70 ../src/scenes/Clock.rb:97
 msgctxt "Clock"
 msgid "One time"
 msgstr "jednokratan"
@@ -6846,8 +6467,7 @@ msgctxt "Clock"
 msgid "repeated"
 msgstr "Ponovljeno"
 
-#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70
-#: ../src/scenes/Clock.rb:97
+#: ../src/scenes/Clock.rb:17 ../src/scenes/Clock.rb:70 ../src/scenes/Clock.rb:97
 msgctxt "Clock"
 msgid "Type"
 msgstr "tip"
@@ -6955,13 +6575,7 @@ msgstr "U redu"
 #: ../src/scenes/ForgotPassword.rb:11
 msgctxt "ForgotPassword"
 msgid "If you forget your password, you can reset it using the email address you provided when registering. You can request a password reset code to verify your identity. The code will be sent to your email address. Warning: two-factor authentication will be disabled on your account. To continue, enter your username."
-msgstr ""
-"Ako izgubite svoju lozinku, možete ju resetirati uz pomoć e-maila kojeg ste "
-"upisali pri registraciji. Na taj ćete način generirati kod resetiranja "
-"lozinke koji će se koristiti za vraćanje lozinke i verificiranje vašeg "
-"identiteta. Kod će biti poslan na vašu e-mail adresu. Dvofaktorna "
-"autentifikacija bit će isključena. Kako biste potvrdili upišite korisničko "
-"ime"
+msgstr "Ako izgubite svoju lozinku, možete ju resetirati uz pomoć e-maila kojeg ste upisali pri registraciji. Na taj ćete način generirati kod resetiranja lozinke koji će se koristiti za vraćanje lozinke i verificiranje vašeg identiteta. Kod će biti poslan na vašu e-mail adresu. Dvofaktorna autentifikacija bit će isključena. Kako biste potvrdili upišite korisničko ime"
 
 #: ../src/scenes/ForgotPassword.rb:18
 msgctxt "ForgotPassword"
@@ -7001,14 +6615,10 @@ msgstr "Dogodila se neočekivana greška."
 #: ../src/scenes/ForgotPassword.rb:57
 #, fuzzy
 #| msgctxt "ForgotPassword"
-#| msgid ""
-#| " Password reset key has been sent to your specified E-mail address. To "
-#| "continue,  select the option for entering key."
+#| msgid " Password reset key has been sent to your specified E-mail address. To continue,  select the option for entering key."
 msgctxt "ForgotPassword"
 msgid "The password reset code has been sent to the email address you provided. To continue, select the option to enter the code."
-msgstr ""
-" Ključ za resetiranj lozinke je poslan na vašu e-mail adresu. Kako bste "
-"nastavili, označite opciju unos koda."
+msgstr " Ključ za resetiranj lozinke je poslan na vašu e-mail adresu. Kako bste nastavili, označite opciju unos koda."
 
 #: ../src/scenes/ForgotPassword.rb:64
 msgctxt "ForgotPassword"
@@ -7048,14 +6658,10 @@ msgstr "Pričekaj sve dok lozinka budet izmjenjena"
 #: ../src/scenes/ForgotPassword.rb:93
 #, fuzzy
 #| msgctxt "ForgotPassword"
-#| msgid ""
-#| " The password has been changed. You can log in to your account using the "
-#| "new data."
+#| msgid " The password has been changed. You can log in to your account using the new data."
 msgctxt "ForgotPassword"
 msgid "You can log in to your account using your new credentials."
-msgstr ""
-" Lozinka je izmjenjena. Možete se prijaviti na vaš nalog koristeći nove "
-"podatke."
+msgstr " Lozinka je izmjenjena. Možete se prijaviti na vaš nalog koristeći nove podatke."
 
 #: ../src/scenes/Forum.rb:92
 msgctxt "Forum"
@@ -7181,8 +6787,7 @@ msgctxt "Forum"
 msgid "My threads"
 msgstr "Moje teme"
 
-#: ../src/scenes/Forum.rb:211 ../src/scenes/Forum.rb:492
-#: ../src/scenes/Forum.rb:1126 ../src/scenes/Forum.rb:1384
+#: ../src/scenes/Forum.rb:211 ../src/scenes/Forum.rb:492 ../src/scenes/Forum.rb:1126 ../src/scenes/Forum.rb:1384
 msgctxt "Forum"
 msgid "Search"
 msgstr "Traži"
@@ -7195,62 +6800,37 @@ msgstr[0] "Sljeđeni forumi"
 msgstr[1] "Sljeđeni forumi"
 msgstr[2] "Sljeđeni forumi"
 
-#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243
-#: ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285
-#: ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325
-#: ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361
-#: ../src/scenes/Forum.rb:380
+#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243 ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285 ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325 ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361 ../src/scenes/Forum.rb:380
 msgctxt "Forum"
 msgid "Forums"
 msgstr "forumi"
 
-#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243
-#: ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285
-#: ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325
-#: ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361
-#: ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:1209
-#: ../src/scenes/Forum.rb:1803
+#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243 ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285 ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325 ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361 ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:1209 ../src/scenes/Forum.rb:1803
 msgctxt "Forum"
 msgid "posts"
 msgstr "zapisi"
 
-#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243
-#: ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285
-#: ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325
-#: ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361
-#: ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:1209
-#: ../src/scenes/Forum.rb:1803
+#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243 ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285 ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325 ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361 ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:1209 ../src/scenes/Forum.rb:1803
 msgctxt "Forum"
 msgid "Unread"
 msgstr "Novo"
 
-#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243
-#: ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285
-#: ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325
-#: ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361
-#: ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:1209
+#: ../src/scenes/Forum.rb:219 ../src/scenes/Forum.rb:243 ../src/scenes/Forum.rb:264 ../src/scenes/Forum.rb:285 ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325 ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361 ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:1209
 msgctxt "Forum"
 msgid "Threads"
 msgstr "teme"
 
-#: ../src/scenes/Forum.rb:243 ../src/scenes/Forum.rb:285
-#: ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325
-#: ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361
-#: ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:921
+#: ../src/scenes/Forum.rb:243 ../src/scenes/Forum.rb:285 ../src/scenes/Forum.rb:305 ../src/scenes/Forum.rb:325 ../src/scenes/Forum.rb:346 ../src/scenes/Forum.rb:361 ../src/scenes/Forum.rb:380 ../src/scenes/Forum.rb:921
 msgctxt "Forum"
 msgid "Administrator"
 msgstr "Administrator"
 
-#: ../src/scenes/Forum.rb:388 ../src/scenes/Forum.rb:391
-#: ../src/scenes/Forum.rb:1213 ../src/scenes/Forum.rb:1411
-#: ../src/scenes/Forum.rb:1807 ../src/scenes/Forum.rb:2135
-#: ../src/scenes/Forum.rb:2813
+#: ../src/scenes/Forum.rb:388 ../src/scenes/Forum.rb:391 ../src/scenes/Forum.rb:1213 ../src/scenes/Forum.rb:1411 ../src/scenes/Forum.rb:1807 ../src/scenes/Forum.rb:2135 ../src/scenes/Forum.rb:2813
 msgctxt "Forum"
 msgid "Forum"
 msgstr "Forum"
 
-#: ../src/scenes/Forum.rb:466 ../src/scenes/Forum.rb:1353
-#: ../src/scenes/Forum.rb:1848
+#: ../src/scenes/Forum.rb:466 ../src/scenes/Forum.rb:1353 ../src/scenes/Forum.rb:1848
 msgctxt "Forum"
 msgid "Open"
 msgstr "Otvori"
@@ -7309,40 +6889,32 @@ msgctxt "Forum"
 msgid "Group summary"
 msgstr "Opis grupe"
 
-#: ../src/scenes/Forum.rb:509 ../src/scenes/Forum.rb:1089
-#: ../src/scenes/Forum.rb:3804
+#: ../src/scenes/Forum.rb:509 ../src/scenes/Forum.rb:1089 ../src/scenes/Forum.rb:3804
 msgctxt "Forum"
 msgid "Language"
 msgstr "Language"
 
-#: ../src/scenes/Forum.rb:510 ../src/scenes/Forum.rb:1089
-#: ../src/scenes/Forum.rb:3806
+#: ../src/scenes/Forum.rb:510 ../src/scenes/Forum.rb:1089 ../src/scenes/Forum.rb:3806
 msgctxt "Forum"
 msgid "Hidden"
 msgstr "Hidden"
 
-#: ../src/scenes/Forum.rb:511 ../src/scenes/Forum.rb:1089
-#: ../src/scenes/Forum.rb:3806
+#: ../src/scenes/Forum.rb:511 ../src/scenes/Forum.rb:1089 ../src/scenes/Forum.rb:3806
 msgctxt "Forum"
 msgid "Public"
 msgstr "Public"
 
-#: ../src/scenes/Forum.rb:515 ../src/scenes/Forum.rb:1101
-#: ../src/scenes/Forum.rb:3842
+#: ../src/scenes/Forum.rb:515 ../src/scenes/Forum.rb:1101 ../src/scenes/Forum.rb:3842
 msgctxt "Forum"
 msgid "closed (only invited users can join)"
 msgstr "Zatvoreno (samo pozvani korisnici se mogu pridružiti)"
 
-#: ../src/scenes/Forum.rb:517 ../src/scenes/Forum.rb:521
-#: ../src/scenes/Forum.rb:1089 ../src/scenes/Forum.rb:1101
-#: ../src/scenes/Forum.rb:1103 ../src/scenes/Forum.rb:3842
-#: ../src/scenes/Forum.rb:3844
+#: ../src/scenes/Forum.rb:517 ../src/scenes/Forum.rb:521 ../src/scenes/Forum.rb:1089 ../src/scenes/Forum.rb:1101 ../src/scenes/Forum.rb:1103 ../src/scenes/Forum.rb:3842 ../src/scenes/Forum.rb:3844
 msgctxt "Forum"
 msgid "Moderated (everyone can request)"
 msgstr "Moderirano (svatko može zatražiti zahtjev za prijavu)"
 
-#: ../src/scenes/Forum.rb:523 ../src/scenes/Forum.rb:1089
-#: ../src/scenes/Forum.rb:1103 ../src/scenes/Forum.rb:3844
+#: ../src/scenes/Forum.rb:523 ../src/scenes/Forum.rb:1089 ../src/scenes/Forum.rb:1103 ../src/scenes/Forum.rb:3844
 msgctxt "Forum"
 msgid "open (everyone can join)"
 msgstr "Otvorena (svatko se može prijaviti)"
@@ -7352,14 +6924,12 @@ msgctxt "Forum"
 msgid "Recommended"
 msgstr "Preporučeno"
 
-#: ../src/scenes/Forum.rb:529 ../src/scenes/Forum.rb:1089
-#: ../src/scenes/Forum.rb:3806
+#: ../src/scenes/Forum.rb:529 ../src/scenes/Forum.rb:1089 ../src/scenes/Forum.rb:3806
 msgctxt "Forum"
 msgid "Group type"
 msgstr "Tip grupe"
 
-#: ../src/scenes/Forum.rb:530 ../src/scenes/Forum.rb:1089
-#: ../src/scenes/Forum.rb:3807
+#: ../src/scenes/Forum.rb:530 ../src/scenes/Forum.rb:1089 ../src/scenes/Forum.rb:3807
 msgctxt "Forum"
 msgid "Group join type"
 msgstr "Tip grupe koje se želite priključiti"
@@ -7394,9 +6964,7 @@ msgctxt "Forum"
 msgid "Audio posts"
 msgstr "Audio postovi"
 
-#: ../src/scenes/Forum.rb:554 ../src/scenes/Forum.rb:2239
-#: ../src/scenes/Forum.rb:2689 ../src/scenes/Forum.rb:2769
-#: ../src/scenes/Forum.rb:3313
+#: ../src/scenes/Forum.rb:554 ../src/scenes/Forum.rb:2239 ../src/scenes/Forum.rb:2689 ../src/scenes/Forum.rb:2769 ../src/scenes/Forum.rb:3313
 msgctxt "Forum"
 msgid "Attachments"
 msgstr "Attachments"
@@ -7533,16 +7101,10 @@ msgstr "Označi ovaj forum kao pročitan"
 #: ../src/scenes/Forum.rb:652
 #, fuzzy
 #| msgctxt "Forum"
-#| msgid ""
-#| " All posts on this forum will be marked as read. Are you sure you want to "
-#| "continue?"
+#| msgid " All posts on this forum will be marked as read. Are you sure you want to continue?"
 msgctxt "Forum"
-msgid ""
-"All posts in this group will be marked as read. Are you sure you want to "
-"continue?"
-msgstr ""
-" Svi će postovi na ovom forumu biti označeni kao pročitani. Jeste li sigurni "
-"da želite nastaviti?"
+msgid "All posts in this group will be marked as read. Are you sure you want to continue?"
+msgstr " Svi će postovi na ovom forumu biti označeni kao pročitani. Jeste li sigurni da želite nastaviti?"
 
 #: ../src/scenes/Forum.rb:663
 #, fuzzy
@@ -7605,8 +7167,7 @@ msgctxt "Forum"
 msgid "Message of the day updated"
 msgstr "Prozor poruka je osvježen"
 
-#: ../src/scenes/Forum.rb:749 ../src/scenes/Forum.rb:1062
-#: ../src/scenes/Forum.rb:2729
+#: ../src/scenes/Forum.rb:749 ../src/scenes/Forum.rb:1062 ../src/scenes/Forum.rb:2729
 #, fuzzy
 msgctxt "Forum"
 msgid "Rules of group %{groupname}"
@@ -7687,8 +7248,7 @@ msgctxt "Forum"
 msgid "Show reported post"
 msgstr "Prikazate prijavljenu objavu"
 
-#: ../src/scenes/Forum.rb:850 ../src/scenes/Forum.rb:873
-#: ../src/scenes/Forum.rb:2131
+#: ../src/scenes/Forum.rb:850 ../src/scenes/Forum.rb:873 ../src/scenes/Forum.rb:2131
 msgctxt "Forum"
 msgid "Post"
 msgstr "Sadržaj zapisa"
@@ -7758,9 +7318,7 @@ msgstr "Prenesi administratorska prava"
 #: ../src/scenes/Forum.rb:970
 msgctxt "Forum"
 msgid "Are you sure you want to give up your administrator privileges in %{groupname} and transfer them to %{user}?"
-msgstr ""
-"Jeste li sigurni da se želite odreći administratorskih prava u %{groupname} "
-"i predati ih korisniku %{user}?"
+msgstr "Jeste li sigurni da se želite odreći administratorskih prava u %{groupname} i predati ih korisniku %{user}?"
 
 #: ../src/scenes/Forum.rb:981
 msgctxt "Forum"
@@ -7770,8 +7328,7 @@ msgstr "Baniraj u ovoj grupi"
 #: ../src/scenes/Forum.rb:982
 msgctxt "Forum"
 msgid "Are you sure you want to ban %{user} from %{groupname}?"
-msgstr ""
-"      Jeste li sugurni da želite banirati korisnika u %{user} u %{groupname}?"
+msgstr "      Jeste li sugurni da želite banirati korisnika u %{user} u %{groupname}?"
 
 #: ../src/scenes/Forum.rb:985
 msgctxt "Forum"
@@ -7784,9 +7341,7 @@ msgstr "Kick"
 #| msgid "Are you sure you want to kick %{user} of %{groupname}?"
 msgctxt "Forum"
 msgid "Are you sure you want to kick %{user} out of %{groupname}?"
-msgstr ""
-"      Jeste li sigurni da želite izbaciti korisnika %{user} iz grupe     "
-"%{groupname}?"
+msgstr "      Jeste li sigurni da želite izbaciti korisnika %{user} iz grupe     %{groupname}?"
 
 #: ../src/scenes/Forum.rb:990
 msgctxt "Forum"
@@ -7796,9 +7351,7 @@ msgstr "Unban"
 #: ../src/scenes/Forum.rb:991
 msgctxt "Forum"
 msgid "Are you sure you want to unban %{user} from %{groupname}?"
-msgstr ""
-"      Jeste li sigurni da želite odbanirati korisnika %{user} u grupi      "
-"%{groupname}?"
+msgstr "      Jeste li sigurni da želite odbanirati korisnika %{user} u grupi      %{groupname}?"
 
 #: ../src/scenes/Forum.rb:994
 msgctxt "Forum"
@@ -7835,9 +7388,7 @@ msgstr "Prihvati pozivnicu"
 #| msgid "Are you sure you want to unban %{user} in %{groupname}?"
 msgctxt "Forum"
 msgid "Are you sure you want to cancel %{user}'s invitation to %{groupname}?"
-msgstr ""
-"      Jeste li sigurni da želite odbanirati korisnika %{user} u grupi      "
-"%{groupname}?"
+msgstr "      Jeste li sigurni da želite odbanirati korisnika %{user} u grupi      %{groupname}?"
 
 #: ../src/scenes/Forum.rb:1009
 msgctxt "Forum"
@@ -7857,8 +7408,7 @@ msgctxt "Forum"
 msgid "The user has been invited"
 msgstr "Korisnik je pozvan"
 
-#: ../src/scenes/Forum.rb:1021 ../src/scenes/Messages.rb:1006
-#: ../src/scenes/Users.rb:21
+#: ../src/scenes/Forum.rb:1021 ../src/scenes/Messages.rb:1006 ../src/scenes/Users.rb:21
 msgid "You do not have permission to do this"
 msgstr "Nemaš odgovarajuća prava za izvršavanje ove operacije"
 
@@ -8070,16 +7620,10 @@ msgstr "Označi ovaj forum kao pročitan"
 #: ../src/scenes/Forum.rb:1394
 #, fuzzy
 #| msgctxt "Forum"
-#| msgid ""
-#| " All posts on this forum will be marked as read. Are you sure you want to "
-#| "continue?"
+#| msgid " All posts on this forum will be marked as read. Are you sure you want to continue?"
 msgctxt "Forum"
-msgid ""
-"All posts on this forum will be marked as read. Are you sure you want to "
-"continue?"
-msgstr ""
-" Svi će postovi na ovom forumu biti označeni kao pročitani. Jeste li sigurni "
-"da želite nastaviti?"
+msgid "All posts on this forum will be marked as read. Are you sure you want to continue?"
+msgstr " Svi će postovi na ovom forumu biti označeni kao pročitani. Jeste li sigurni da želite nastaviti?"
 
 #: ../src/scenes/Forum.rb:1404
 msgctxt "Forum"
@@ -8098,8 +7642,7 @@ msgctxt "Forum"
 msgid "Forum added to quick actions"
 msgstr "Forum dodan brzim akcijama"
 
-#: ../src/scenes/Forum.rb:1418 ../src/scenes/Forum.rb:1920
-#: ../src/scenes/Forum.rb:3166
+#: ../src/scenes/Forum.rb:1418 ../src/scenes/Forum.rb:1920 ../src/scenes/Forum.rb:3166
 msgctxt "Forum"
 msgid "Moderation"
 msgstr "Moderacija"
@@ -8272,8 +7815,7 @@ msgctxt "Forum"
 msgid "Thread marked"
 msgstr "Tema je označena"
 
-#: ../src/scenes/Forum.rb:1872 ../src/scenes/Forum.rb:2135
-#: ../src/scenes/Forum.rb:3133
+#: ../src/scenes/Forum.rb:1872 ../src/scenes/Forum.rb:2135 ../src/scenes/Forum.rb:3133
 msgctxt "Forum"
 msgid "Follow this thread"
 msgstr "Dodaj u sljeđene postove"
@@ -8508,8 +8050,7 @@ msgctxt "Forum"
 msgid "Offer refused"
 msgstr "Ponuda odbijena"
 
-#: ../src/scenes/Forum.rb:2109 ../src/scenes/Forum.rb:2133
-#: ../src/scenes/Forum.rb:2787 ../src/scenes/Forum.rb:2797
+#: ../src/scenes/Forum.rb:2109 ../src/scenes/Forum.rb:2133 ../src/scenes/Forum.rb:2787 ../src/scenes/Forum.rb:2797
 msgctxt "Forum"
 msgid "Audio post"
 msgstr "Glasovni post"
@@ -8545,8 +8086,7 @@ msgctxt "Forum"
 msgid "No tag value"
 msgstr "Izbriši vrijednost oznake"
 
-#: ../src/scenes/Forum.rb:2171 ../src/scenes/Forum.rb:2179
-#: ../src/scenes/Forum.rb:2829 ../src/scenes/Forum.rb:2857
+#: ../src/scenes/Forum.rb:2171 ../src/scenes/Forum.rb:2179 ../src/scenes/Forum.rb:2829 ../src/scenes/Forum.rb:2857
 msgctxt "Forum"
 msgid "Send"
 msgstr "Pošalji"
@@ -8576,8 +8116,7 @@ msgctxt "Forum"
 msgid "You haven't created any polls yet."
 msgstr "Još niste stvorili niti jednu anketu."
 
-#: ../src/scenes/Forum.rb:2230 ../src/scenes/Forum.rb:2680
-#: ../src/scenes/Forum.rb:3318
+#: ../src/scenes/Forum.rb:2230 ../src/scenes/Forum.rb:2680 ../src/scenes/Forum.rb:3318
 msgctxt "Forum"
 msgid "Select file to attach"
 msgstr "Odaberite datoteku koju želote priložiti"
@@ -8587,8 +8126,7 @@ msgctxt "Forum"
 msgid "This file has already been attached"
 msgstr "Ova datoteka je već dodana"
 
-#: ../src/scenes/Forum.rb:2236 ../src/scenes/Forum.rb:2686
-#: ../src/scenes/Forum.rb:3324
+#: ../src/scenes/Forum.rb:2236 ../src/scenes/Forum.rb:2686 ../src/scenes/Forum.rb:3324
 msgctxt "Forum"
 msgid "This file is too large"
 msgstr "Ova datoteka je prevelika"
@@ -8618,14 +8156,12 @@ msgctxt "Forum"
 msgid "Are you sure you want to cancel creating this post?"
 msgstr "Jesi li siguran da želiš odustati od pisanja ovog posta?"
 
-#: ../src/scenes/Forum.rb:2660 ../src/scenes/Messages.rb:590
-#: ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:124
+#: ../src/scenes/Forum.rb:2660 ../src/scenes/Messages.rb:590 ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:124
 msgctxt "Polls"
 msgid "Show results"
 msgstr "Pokaži rezultate"
 
-#: ../src/scenes/Forum.rb:2660 ../src/scenes/Messages.rb:590
-#: ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:127
+#: ../src/scenes/Forum.rb:2660 ../src/scenes/Messages.rb:590 ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:127
 #, fuzzy
 #| msgctxt "Debug"
 #| msgid "A report"
@@ -8633,9 +8169,7 @@ msgctxt "Polls"
 msgid "Show report"
 msgstr "Raport"
 
-#: ../src/scenes/Forum.rb:2660 ../src/scenes/Messages.rb:590
-#: ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:119
-#: ../src/scenes/Polls.rb:372
+#: ../src/scenes/Forum.rb:2660 ../src/scenes/Messages.rb:590 ../src/scenes/Polls.rb:24 ../src/scenes/Polls.rb:119 ../src/scenes/Polls.rb:372
 msgctxt "Polls"
 msgid "Vote"
 msgstr "Glasaj"
@@ -9201,8 +8735,7 @@ msgctxt "Honors"
 msgid "The user has not been awarded any honors."
 msgstr "Korisnik nije dobio niti jednu zaslugu."
 
-#: ../src/scenes/Honors.rb:107 ../src/scenes/Honors.rb:122
-#: ../src/scenes/Honors.rb:219
+#: ../src/scenes/Honors.rb:107 ../src/scenes/Honors.rb:122 ../src/scenes/Honors.rb:219
 msgctxt "Honors"
 msgid "Level"
 msgstr "Level"
@@ -9245,17 +8778,14 @@ msgstr "Izbriši"
 #: ../src/scenes/Honors.rb:162
 msgctxt "Honors"
 msgid "Are you sure you want to delete this badge? All users who have been granted this badge will lose it."
-msgstr ""
-"Žeste li sigurni da želite izbrisati ovu značku? Svi korisnici koji su je "
-"dobili izgubit će je."
+msgstr "Žeste li sigurni da želite izbrisati ovu značku? Svi korisnici koji su je dobili izgubit će je."
 
 #: ../src/scenes/Honors.rb:167
 msgctxt "Honors"
 msgid "Honor deleted"
 msgstr "Oznaka je izbrisana"
 
-#: ../src/scenes/Honors.rb:185 ../src/scenes/Honors.rb:198
-#: ../src/scenes/Honors.rb:237
+#: ../src/scenes/Honors.rb:185 ../src/scenes/Honors.rb:198 ../src/scenes/Honors.rb:237
 msgctxt "Honors"
 msgid "Add challenge"
 msgstr "dodaj izazov"
@@ -9328,31 +8858,18 @@ msgstr "Koju verziju želite koristiti?"
 #: ../src/scenes/Loading.rb:257
 msgctxt "Loading"
 msgid "Elten has detected that you are using NVDA. To support some features of this screen reader, the Elten add-on for NVDA must be installed. Do you want to install it now?"
-msgstr ""
-"Elten je otkrio da koristite NVDA. Kako bi se poržavale neke značajke, "
-"Potrebno je instalirati dodatak za Elten. Želite li to učiniti sada?"
+msgstr "Elten je otkrio da koristite NVDA. Kako bi se poržavale neke značajke, Potrebno je instalirati dodatak za Elten. Želite li to učiniti sada?"
 
 #: ../src/scenes/Loading.rb:259
 msgctxt "Loading"
 msgid "A new version of the Elten add-on for NVDA is available. The version you are using is no longer supported by this Elten release and may cause errors. Do you want to update it now?"
-msgstr ""
-"Nova inačica Elten doddatka za Elten je dostupna. Verziju koju koristite "
-"više nećemo podržavati i ista može prouzrokovati neke greške. Želite li uju "
-"ažurirati sada?"
+msgstr "Nova inačica Elten doddatka za Elten je dostupna. Verziju koju koristite više nećemo podržavati i ista može prouzrokovati neke greške. Želite li uju ažurirati sada?"
 
 #: ../src/scenes/Loading.rb:298
 #, fuzzy
 msgctxt "Loading"
 msgid "Warning! Elten failed to verify the server's encryption key. You may be connecting not to an Elten server, but to a server controlled by an attacker. The Elten server's key may also have changed. Details of any legitimate key change should be published on the Elten website or forum. If no such information has been published, this connection may be under attack. Any data you provide, including your password, could be stolen. Are you sure you want to continue with this connection? Select No to exit Elten."
-msgstr ""
-"Upozorenje! Elten nije uspio potvrditi ključ za šifriranje poslužitelja. "
-"Moguće je da se ne povezujete s Elten poslužiteljem, već s poslužiteljem "
-"koji su pripremili hakeri. Također je moguće da se ključ Elten Servera "
-"promijenio. Sve pojedinosti trebaju biti dostavljene na Elten Web Forumu. "
-"Ako nisu pružene informacije o promjeni ključa, vrlo je vjerojatno da ste "
-"ranjivi na hakerski napad. U tom slučaju svi podaci koje ćete pružiti, "
-"uključujući lozinku, mogu biti ukradeni. Jeste li sigurni da želite "
-"nastaviti s ovom vezom? Odaberite Ne za izlazak iz Eltena."
+msgstr "Upozorenje! Elten nije uspio potvrditi ključ za šifriranje poslužitelja. Moguće je da se ne povezujete s Elten poslužiteljem, već s poslužiteljem koji su pripremili hakeri. Također je moguće da se ključ Elten Servera promijenio. Sve pojedinosti trebaju biti dostavljene na Elten Web Forumu. Ako nisu pružene informacije o promjeni ključa, vrlo je vjerojatno da ste ranjivi na hakerski napad. U tom slučaju svi podaci koje ćete pružiti, uključujući lozinku, mogu biti ukradeni. Jeste li sigurni da želite nastaviti s ovom vezom? Odaberite Ne za izlazak iz Eltena."
 
 #: ../src/scenes/Loading.rb:315
 msgctxt "Loading"
@@ -9370,14 +8887,8 @@ msgstr "Sučelje"
 #: ../src/scenes/Loading.rb:361
 #, fuzzy
 msgctxt "EAPI_EltenAPI"
-msgid ""
-"Do you want to send reports on how Elten is used? This data does not contain "
-"any confidential information and is very helpful in program development. "
-"This selection can be changed at any time from the Settings."
-msgstr ""
-"Želite li poslati izvješća o tome kako se Elten koristi? Ti podaci ne sadrže "
-"povjerljive informacije i vrlo su korisni u razvoju programa. Taj se odabir "
-"može promijeniti u bilo kojem trenutku iz Postavki."
+msgid "Do you want to send reports on how Elten is used? This data does not contain any confidential information and is very helpful in program development. This selection can be changed at any time from the Settings."
+msgstr "Želite li poslati izvješća o tome kako se Elten koristi? Ti podaci ne sadrže povjerljive informacije i vrlo su korisni u razvoju programa. Taj se odabir može promijeniti u bilo kojem trenutku iz Postavki."
 
 #: ../src/scenes/Loading.rb:369
 msgctxt "Loading"
@@ -9446,22 +8957,8 @@ msgstr "Upiši pin"
 
 #: ../src/scenes/Login.rb:60 ../src/scenes/Login.rb:169
 msgctxt "Login"
-msgid ""
-"Do you want to enable auto-Login-key encryption? When encrypted, the Auto-"
-"Login Key will be readable only on this computer, and its copying or "
-"exporting will not allow other devices to access your account. Note: If you "
-"encrypt your Auto-Login Key, the created portable versions will not be able "
-"to automatically log into your account from other devices, even if you copy "
-"your settings, and you will be prompted to enter your password. You can "
-"create as many auto-login-keys as you wish for all other computers you are "
-"using."
-msgstr ""
-"Želite li uključiti šifriranje ključeva automatske prijave? Kad je šifriran, "
-"ključ automatske prijave bit će šifriran, njegovo kopiranje neće omogućiti "
-"automstsku prijavu na drugim uređajima. Upozorenje: čak niti prijenosna "
-"verzija se neće moći prijaviti na vaš nalog, čak i poslije kopranja "
-"postavki, te ćete biti zamoljeni da upišete lozinku. Možete stvoriti toloko "
-"ključeva koliko želite za sva vaša računala."
+msgid "Do you want to enable auto-Login-key encryption? When encrypted, the Auto-Login Key will be readable only on this computer, and its copying or exporting will not allow other devices to access your account. Note: If you encrypt your Auto-Login Key, the created portable versions will not be able to automatically log into your account from other devices, even if you copy your settings, and you will be prompted to enter your password. You can create as many auto-login-keys as you wish for all other computers you are using."
+msgstr "Želite li uključiti šifriranje ključeva automatske prijave? Kad je šifriran, ključ automatske prijave bit će šifriran, njegovo kopiranje neće omogućiti automstsku prijavu na drugim uređajima. Upozorenje: čak niti prijenosna verzija se neće moći prijaviti na vaš nalog, čak i poslije kopranja postavki, te ćete biti zamoljeni da upišete lozinku. Možete stvoriti toloko ključeva koliko želite za sva vaša računala."
 
 #: ../src/scenes/Login.rb:88
 #, fuzzy
@@ -9486,18 +8983,10 @@ msgstr "Provjera autentičnosti pomoću sigurnosnog koda"
 #: ../src/scenes/Login.rb:104
 #, fuzzy
 #| msgctxt "Login"
-#| msgid ""
-#| " Two-factor authentication is enabled on this account. Enter the code "
-#| "sent to you  by text message to allow this device to login. If you do not "
-#| "have access to the  phone number used, select the password reset option "
-#| "to disable two-factor  authentication."
+#| msgid " Two-factor authentication is enabled on this account. Enter the code sent to you  by text message to allow this device to login. If you do not have access to the  phone number used, select the password reset option to disable two-factor  authentication."
 msgctxt "Login"
 msgid "Enter the code sent to you by text message to allow this device to log in. If you cannot access the phone number used, select the password reset option to disable two-factor authentication."
-msgstr ""
-" Dvofaktorna autentifikacija je omogućena za ovaj nalog. upišite kod kojeg "
-"ste dobili u tekstualnoj poruci kako biste se prijavili u ovaj nalog. Ako "
-"nemate pristup telefonskom broju, ozpačite opciju resetiranje lozinke za "
-"onemogućavanje dvofaktorne autentifikacije."
+msgstr " Dvofaktorna autentifikacija je omogućena za ovaj nalog. upišite kod kojeg ste dobili u tekstualnoj poruci kako biste se prijavili u ovaj nalog. Ako nemate pristup telefonskom broju, ozpačite opciju resetiranje lozinke za onemogućavanje dvofaktorne autentifikacije."
 
 #: ../src/scenes/Login.rb:106
 #, fuzzy
@@ -9520,9 +9009,7 @@ msgstr "Upisani kod je netočan, Molimo pokušajte ponovno"
 #: ../src/scenes/Login.rb:146
 msgctxt "Login"
 msgid "Do you want to enable auto log in for account %{user}?"
-msgstr ""
-"      Jeste li sigurni da želite uključiti automatsku prijavu za nalog     "
-"korisnika   %{user}?"
+msgstr "      Jeste li sigurni da želite uključiti automatsku prijavu za nalog     korisnika   %{user}?"
 
 #: ../src/scenes/Login.rb:146
 msgctxt "Login"
@@ -9532,70 +9019,39 @@ msgstr "Ne pitaj me ponovno"
 #: ../src/scenes/Login.rb:148
 #, fuzzy
 #| msgctxt "Login"
-#| msgid ""
-#| " The saved login data uses the old account authentication method in "
-#| "which  susceptibility to hacker attacks has been detected. New, safer "
-#| "automatic login  algorithms have been introduced in Elten 2.2. It is "
-#| "recommended that you convert  the saved information into a new system in "
-#| "order to improve the security of your  account. Do you want to update the "
-#| "saved information now?"
+#| msgid " The saved login data uses the old account authentication method in which  susceptibility to hacker attacks has been detected. New, safer automatic login  algorithms have been introduced in Elten 2.2. It is recommended that you convert  the saved information into a new system in order to improve the security of your  account. Do you want to update the saved information now?"
 msgctxt "Login"
-msgid ""
-"The saved login data uses the old account authentication method in which  "
-"susceptibility to hacker attacks has been detected. New, safer automatic "
-"login  algorithms have been introduced in Elten 2.2. It is recommended that "
-"you convert  the saved information into a new system in order to improve the "
-"security of your  account. Do you want to update the saved information now?"
-msgstr ""
-" Stari podaci su spremljeni metodom koja je podatna na hakerske napade. "
-"Noviji i sigurniji algoritmi su ugrađeni od elten 2.2. Preporućuje se "
-"konvertiranje tih informacija u novi sustav kako bi se unaprjedila sigurnost "
-"vašeg naloga. Želite li nadograditi spremljenu informaciju?"
+msgid "The saved login data uses the old account authentication method in which  susceptibility to hacker attacks has been detected. New, safer automatic login  algorithms have been introduced in Elten 2.2. It is recommended that you convert  the saved information into a new system in order to improve the security of your  account. Do you want to update the saved information now?"
+msgstr " Stari podaci su spremljeni metodom koja je podatna na hakerske napade. Noviji i sigurniji algoritmi su ugrađeni od elten 2.2. Preporućuje se konvertiranje tih informacija u novi sustav kako bi se unaprjedila sigurnost vašeg naloga. Želite li nadograditi spremljenu informaciju?"
 
 #: ../src/scenes/Login.rb:164
 #, fuzzy
 #| msgctxt "Login"
-#| msgid ""
-#| " An error occurred while authenticating the identity. You might have "
-#| "provided an  incorrect password."
+#| msgid " An error occurred while authenticating the identity. You might have provided an  incorrect password."
 msgctxt "Login"
 msgid "An error occurred while verifying your identity. You may have entered an incorrect password."
-msgstr ""
-" Dogodila se pogreška prilikom autentifikacije identiteta. Unijeli ste krivu "
-"lozinku."
+msgstr " Dogodila se pogreška prilikom autentifikacije identiteta. Unijeli ste krivu lozinku."
 
 #: ../src/scenes/Login.rb:179
 #, fuzzy
 #| msgctxt "Login"
-#| msgid ""
-#| " Automatic login will be proceeding until you log out.Automatic login "
-#| "keys can be  managed from the My Account tab in the Community menu."
+#| msgid " Automatic login will be proceeding until you log out.Automatic login keys can be  managed from the My Account tab in the Community menu."
 msgctxt "Login"
 msgid "Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
-msgstr ""
-" Automatska prijava bit će aktivna sve dok se ne odjavite.Njome možete "
-"upravljati iz izbornika zajednica u podizborniku moj nalog."
+msgstr " Automatska prijava bit će aktivna sve dok se ne odjavite.Njome možete upravljati iz izbornika zajednica u podizborniku moj nalog."
 
 #: ../src/scenes/Login.rb:181
 #, fuzzy
 #| msgctxt "Login"
-#| msgid ""
-#| " Login data has been updated. Automatic login will be proceeding until "
-#| "you log  out. Automatic login keys can be managed from the My Account tab "
-#| "in the Community  menu."
+#| msgid " Login data has been updated. Automatic login will be proceeding until you log  out. Automatic login keys can be managed from the My Account tab in the Community  menu."
 msgctxt "Login"
 msgid "Login data has been updated. Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
-msgstr ""
-" Podaci za prijavu su uspješno ažurirani. Automatska prijava djeluje sve dok "
-"se ne odjavite. Njome možete upravljati iz izbornika zajednica u "
-"podizborniku moj nalog. "
+msgstr " Podaci za prijavu su uspješno ažurirani. Automatska prijava djeluje sve dok se ne odjavite. Njome možete upravljati iz izbornika zajednica u podizborniku moj nalog. "
 
 #: ../src/scenes/Login.rb:192
 msgctxt "Login"
 msgid "To re-enable auto-login, go to General settings."
-msgstr ""
-"  Kako biste ponovno uključili automatsku prijavu, molimo uđite u općenite   "
-"postavke."
+msgstr "  Kako biste ponovno uključili automatsku prijavu, molimo uđite u općenite   postavke."
 
 #: ../src/scenes/Login.rb:206
 msgctxt "Login"
@@ -9620,10 +9076,7 @@ msgstr "Greška veze sa serverom."
 #: ../src/scenes/Login.rb:242
 msgctxt "Login"
 msgid "Do you want to encrypt this key with a custom PIN? You will be prompted for this PIN every time you start Elten to unlock your account. It will not be saved on the server and will apply only to the auto-login key stored on this device."
-msgstr ""
-"Žeelite li šifrirati ovaj ključ sa prilagođenim pin kodom? Svaki puta kada "
-"otvorite elten, biti ćete pitani da unesete pin, ali će isti pin biti valjan "
-"samo za ovaj nalog i neće se spremati na poslužitelj."
+msgstr "Žeelite li šifrirati ovaj ključ sa prilagođenim pin kodom? Svaki puta kada otvorite elten, biti ćete pitani da unesete pin, ali će isti pin biti valjan samo za ovaj nalog i neće se spremati na poslužitelj."
 
 #: ../src/scenes/Login.rb:247
 msgctxt "Login"
@@ -9649,8 +9102,7 @@ msgstr "Brze radnje"
 #, fuzzy
 msgctxt "Main"
 msgid "Use Shift with up/down arrows to move quick actions"
-msgstr ""
-"Koristite Shift sa strelicama prema gore/dolje za brzo pomicanje radnji"
+msgstr "Koristite Shift sa strelicama prema gore/dolje za brzo pomicanje radnji"
 
 #: ../src/scenes/Main.rb:159
 msgctxt "Main"
@@ -9718,14 +9170,8 @@ msgstr "Jesi li siguran da želiš izbrisati ovu brzu radnju?"
 #: ../src/scenes/Main.rb:222
 #, fuzzy
 msgctxt "Main"
-msgid ""
-"If you delete this action, you will also delete the keyboard shortcut "
-"assigned to it. If you want to keep the keyboard shortcut, you can hide this "
-"action. You can show or remove hidden actions at any time."
-msgstr ""
-"Ako izbrišete ovu radnju, izbrisat ćete i prečac tipkovnice koji mu je "
-"dodijeljen. Ako želite zadržati prečac tipkovnice, možete sakriti ovu "
-"akciju. Skrivene radnje možete prikazati ili ukloniti u bilo kojem trenutku."
+msgid "If you delete this action, you will also delete the keyboard shortcut assigned to it. If you want to keep the keyboard shortcut, you can hide this action. You can show or remove hidden actions at any time."
+msgstr "Ako izbrišete ovu radnju, izbrisat ćete i prečac tipkovnice koji mu je dodijeljen. Ako želite zadržati prečac tipkovnice, možete sakriti ovu akciju. Skrivene radnje možete prikazati ili ukloniti u bilo kojem trenutku."
 
 #: ../src/scenes/Main.rb:234
 #, fuzzy
@@ -9845,14 +9291,12 @@ msgctxt "Messages"
 msgid "Last message"
 msgstr "Posljednja poruka"
 
-#: ../src/scenes/Messages.rb:125 ../src/scenes/Messages.rb:396
-#: ../src/scenes/Messages.rb:544
+#: ../src/scenes/Messages.rb:125 ../src/scenes/Messages.rb:396 ../src/scenes/Messages.rb:544
 msgctxt "Messages"
 msgid "New"
 msgstr "Nova"
 
-#: ../src/scenes/Messages.rb:128 ../src/scenes/Messages.rb:399
-#: ../src/scenes/Messages.rb:547
+#: ../src/scenes/Messages.rb:128 ../src/scenes/Messages.rb:399 ../src/scenes/Messages.rb:547
 msgctxt "Messages"
 msgid "Show older"
 msgstr "Pokaži starije"
@@ -9987,8 +9431,7 @@ msgstr "Označi sve poruke kao pročitane"
 #| msgctxt "Forum"
 #| msgid "Are you sure you want to cancel creating this thread?"
 msgctxt "messages"
-msgid ""
-"Are you sure you want to mark all messages in all conversations as read?"
+msgid "Are you sure you want to mark all messages in all conversations as read?"
 msgstr "Jesi li siguran da želiš odustati od stvaranja ove teme?"
 
 #: ../src/scenes/Messages.rb:221
@@ -10116,14 +9559,10 @@ msgstr "Dodaj korisnika u ovaj razgovor"
 #: ../src/scenes/Messages.rb:449
 #, fuzzy
 #| msgctxt "Forum"
-#| msgid ""
-#| "Are you sure you want to grant moderation privileges in %{groupname} to "
-#| "user %{user}?"
+#| msgid "Are you sure you want to grant moderation privileges in %{groupname} to user %{user}?"
 msgctxt "Messages"
 msgid "Are you sure you want to delete the conversation %{conversationname} with %{user}?"
-msgstr ""
-"Jeste li sigurni da želite dati moderatorska prava u grupi %{groupname} "
-"korisniku %{user}?"
+msgstr "Jeste li sigurni da želite dati moderatorska prava u grupi %{groupname} korisniku %{user}?"
 
 #: ../src/scenes/Messages.rb:454
 #, fuzzy
@@ -10445,9 +9884,7 @@ msgstr "Jesi li siguran da  želiš ukloniti %{name}?"
 #, fuzzy
 msgctxt "Notes"
 msgid "Do you really want to stop sharing %{name}? It will be deleted from your list of notes."
-msgstr ""
-"Da li stvarno želiš prekinuti dijeljenje %{name}? Izbrisat će se s popisa "
-"bilješki."
+msgstr "Da li stvarno želiš prekinuti dijeljenje %{name}? Izbrisat će se s popisa bilješki."
 
 #: ../src/scenes/Notes.rb:231
 msgctxt "Notes"
@@ -10499,8 +9936,7 @@ msgstr[0] "zna %{count} korisnika"
 msgstr[1] "zna %{count} korisnika"
 msgstr[2] ""
 
-#: ../src/scenes/Polls.rb:12 ../src/scenes/Polls.rb:351
-#: ../src/scenes/Polls.rb:459
+#: ../src/scenes/Polls.rb:12 ../src/scenes/Polls.rb:351 ../src/scenes/Polls.rb:459
 msgctxt "Polls"
 msgid "Author"
 msgstr "Autor"
@@ -10824,21 +10260,10 @@ msgstr "Svaki put pitaj"
 #: ../src/scenes/Portable.rb:36
 #, fuzzy
 #| msgctxt "Portable"
-#| msgid ""
-#| " If you use a created copy of Elten on another computer, the voice "
-#| "settings may  not work properly. This is especially noticeable in a "
-#| "situation when another  computer has other voices installed. How do you "
-#| "want to configure the generated  version?"
+#| msgid " If you use a created copy of Elten on another computer, the voice settings may  not work properly. This is especially noticeable in a situation when another  computer has other voices installed. How do you want to configure the generated  version?"
 msgctxt "Portable"
-msgid ""
-"If you use a created copy of Elten on another computer, the voice settings "
-"may  not work properly. This is especially noticeable in a situation when "
-"another  computer has other voices installed. How do you want to configure "
-"the generated  version?"
-msgstr ""
-" Ako koristite prijenosnu kopiju eltena na drugom računalu, glasovne "
-"postavke neće raditi ispravno. To je zamjetno kada se na kompjuteru koriste "
-"drugi glasovi. Kako želite konfigurirati generiranu verziju?"
+msgid "If you use a created copy of Elten on another computer, the voice settings may  not work properly. This is especially noticeable in a situation when another  computer has other voices installed. How do you want to configure the generated  version?"
+msgstr " Ako koristite prijenosnu kopiju eltena na drugom računalu, glasovne postavke neće raditi ispravno. To je zamjetno kada se na kompjuteru koriste drugi glasovi. Kako želite konfigurirati generiranu verziju?"
 
 #: ../src/scenes/Portable.rb:47
 msgctxt "Portable"
@@ -10880,8 +10305,7 @@ msgstr "Nadogradi"
 #| msgctxt "Programs"
 #| msgid "Do you want to install the program %{name}?"
 msgctxt "Programs"
-msgid ""
-"Do you want to install program %{name}? Need to download %{size} of data."
+msgid "Do you want to install program %{name}? Need to download %{size} of data."
 msgstr "Želiš li instalirati program %{name}?"
 
 #: ../src/scenes/Programs.rb:124
@@ -10907,16 +10331,10 @@ msgstr "Program je uklonjen"
 #: ../src/scenes/Registration.rb:13
 #, fuzzy
 #| msgctxt "Registration"
-#| msgid ""
-#| " Enter your username. It will be used for identification.The maximum "
-#| "length of the  username is 64 characters"
+#| msgid " Enter your username. It will be used for identification.The maximum length of the  username is 64 characters"
 msgctxt "Registration"
-msgid ""
-"Enter your username. It will be used for identification.The maximum length "
-"of the  username is 64 characters"
-msgstr ""
-" Upišite svoje korisničko ime. biti će korišteno za identifikaciju."
-"Maksimalna dužina je 64 znaka"
+msgid "Enter your username. It will be used for identification.The maximum length of the  username is 64 characters"
+msgstr " Upišite svoje korisničko ime. biti će korišteno za identifikaciju.Maksimalna dužina je 64 znaka"
 
 #: ../src/scenes/Registration.rb:16
 #, fuzzy
@@ -10929,15 +10347,10 @@ msgstr "Korisničko ime već postoji."
 #: ../src/scenes/Registration.rb:27
 #, fuzzy
 #| msgctxt "Registration"
-#| msgid ""
-#| " Enter your password. It is recommended to use a strong password, which "
-#| "consists  of numbers and letters. Maximum length of the password is 256 "
-#| "characters."
+#| msgid " Enter your password. It is recommended to use a strong password, which consists  of numbers and letters. Maximum length of the password is 256 characters."
 msgctxt "Registration"
 msgid "Enter your password. We recommend using a strong password consisting of letters and numbers. The maximum password length is 256 characters."
-msgstr ""
-" Upišite vašu lozinku. preporučuje se korištenje jake lozinke, koja se "
-"sastoji od brojeva i slova. maksimalna dužina lozinke je 256 znakova."
+msgstr " Upišite vašu lozinku. preporučuje se korištenje jake lozinke, koja se sastoji od brojeva i slova. maksimalna dužina lozinke je 256 znakova."
 
 #: ../src/scenes/Registration.rb:29
 #, fuzzy
@@ -10955,26 +10368,18 @@ msgstr "Upisane lozinke se razlikuju."
 #: ../src/scenes/Registration.rb:40
 #, fuzzy
 #| msgctxt "Registration"
-#| msgid ""
-#| " Enter your e-mail address. It will be used in case you forget your "
-#| "password and  to send important information."
+#| msgid " Enter your e-mail address. It will be used in case you forget your password and  to send important information."
 msgctxt "Registration"
 msgid "Enter your email address. It will be used to reset a forgotten password and to send you important information."
-msgstr ""
-" Upišite svoju e-mail adresu. Ona će se koristiti za slanje važnih "
-"informacija, te u slučaju ako zaboravite lozinku."
+msgstr " Upišite svoju e-mail adresu. Ona će se koristiti za slanje važnih informacija, te u slučaju ako zaboravite lozinku."
 
 #: ../src/scenes/Registration.rb:51
 #, fuzzy
 #| msgctxt "Registration"
-#| msgid ""
-#| " Registration is successful, thank you. You can log in using your "
-#| "username and  password."
+#| msgid " Registration is successful, thank you. You can log in using your username and  password."
 msgctxt "Registration"
 msgid "Registration was successful. Thank you. You can log in using your username and password."
-msgstr ""
-" Registracija je uspjela, Hvala. Sada se možete prijaviti s vašim novim "
-"korisničkim imenom i lozinkom."
+msgstr " Registracija je uspjela, Hvala. Sada se možete prijaviti s vašim novim korisničkim imenom i lozinkom."
 
 #: ../src/scenes/Registration.rb:53
 msgctxt "Registration"
@@ -11182,9 +10587,7 @@ msgstr "Omogućite izlaz brajice (zahtijeva NVDA addon)"
 #, fuzzy
 msgctxt "Settings"
 msgid "Use a voice dictionary when processing characters (requires the NVDA add-on when using NVDA for speech output)"
-msgstr ""
-"Koristite glasovni rječnik prilikom obrade znakova (zahtijeva NVDA dodatak "
-"pri korištenju NVDA kao izlaza govora)"
+msgstr "Koristite glasovni rječnik prilikom obrade znakova (zahtijeva NVDA dodatak pri korištenju NVDA kao izlaza govora)"
 
 #: ../src/scenes/Settings.rb:193
 msgctxt "Settings"
@@ -12045,16 +11448,12 @@ msgstr "Rezultati testiranja"
 #: ../src/scenes/Update.rb:13
 #, fuzzy
 #| msgctxt "Update"
-#| msgid ""
-#| " A new version of this program is available. Do you want to download and "
-#| "instal it?"
+#| msgid " A new version of this program is available. Do you want to download and instal it?"
 msgctxt "Update"
 msgid "A new version of this program is available. Do you want to download and install it?"
-msgstr ""
-" Nov verzja ovog programa je dostupna. Želite li ju preuzeti i instalirati?"
+msgstr " Nov verzja ovog programa je dostupna. Želite li ju preuzeti i instalirati?"
 
-#: ../src/scenes/Update.rb:36 ../src/scenes/Update.rb:66
-#: ../src/scenes/Update.rb:68
+#: ../src/scenes/Update.rb:36 ../src/scenes/Update.rb:66 ../src/scenes/Update.rb:68
 msgctxt "Update"
 msgid "Please wait while files are downloaded."
 msgstr "Molim pričekati... traje preuzimanje datoteka"
@@ -12062,33 +11461,23 @@ msgstr "Molim pričekati... traje preuzimanje datoteka"
 #: ../src/scenes/Update.rb:40
 #, fuzzy
 #| msgctxt "Update"
-#| msgid ""
-#| " The update has been downloaded. To install it, the program must be "
-#| "restarted.  Press enter to continue or escape to cancel."
+#| msgid " The update has been downloaded. To install it, the program must be restarted.  Press enter to continue or escape to cancel."
 msgctxt "Update"
 msgid "The update has been downloaded. To install it, the program must be restarted. Press Return to continue or Esc to cancel."
-msgstr ""
-" Nadogradnja je preuzeta. Kako biste ju instalirali, program mora biti "
-"ponovno pokrenut.  Pritisnite enter za nastavak ili escape za odustajanje."
+msgstr " Nadogradnja je preuzeta. Kako biste ju instalirali, program mora biti ponovno pokrenut.  Pritisnite enter za nastavak ili escape za odustajanje."
 
 #: ../src/scenes/Update.rb:53
 msgctxt "Update"
 msgid "The update will now be installed. The program will restart."
-msgstr ""
-"       Nadogradnja će sada biti instalirana. Program će ponovno biti "
-"pokrenut."
+msgstr "       Nadogradnja će sada biti instalirana. Program će ponovno biti pokrenut."
 
 #: ../src/scenes/Update.rb:71
 #, fuzzy
 #| msgctxt "Update"
-#| msgid ""
-#| " The program will be now reverted to the latest stable version. Elten "
-#| "will restart.  It may take several minutes."
+#| msgid " The program will be now reverted to the latest stable version. Elten will restart.  It may take several minutes."
 msgctxt "Update"
 msgid "The program will now be reverted to the latest stable version. Elten will restart. This may take several minutes."
-msgstr ""
-" Program će se vratiti na zadnju stabilnu verziju. Elten će se ponovno "
-"pokrenuti.  To može potrajati nekoliko minuta."
+msgstr " Program će se vratiti na zadnju stabilnu verziju. Elten će se ponovno pokrenuti.  To može potrajati nekoliko minuta."
 
 #: ../src/scenes/UserSearch.rb:11
 msgctxt "UserSearch"
@@ -12262,12 +11651,8 @@ msgstr "Nema ničeg novog"
 #~ msgstr "Koristi drugu datoteku"
 
 #~ msgctxt "Blog"
-#~ msgid ""
-#~ "Do you wish to delete all comments on this post? You can disable "
-#~ "commenting on this post without deleting comments already posted."
-#~ msgstr ""
-#~ "Želite li izbrisati sve komentare u ovom postu? Možete onemogućiti "
-#~ "komentiranje postova bez brisanja posojećik komentara."
+#~ msgid "Do you wish to delete all comments on this post? You can disable commenting on this post without deleting comments already posted."
+#~ msgstr "Želite li izbrisati sve komentare u ovom postu? Možete onemogućiti komentiranje postova bez brisanja posojećik komentara."
 
 #~ msgctxt "Blog"
 #~ msgid "File is being converted..."
@@ -12426,12 +11811,8 @@ msgstr "Nema ničeg novog"
 #~ msgstr "slanje: %{file}"
 
 #~ msgctxt "EAPI_External"
-#~ msgid ""
-#~ "To play Youtube videos, Elten uses external Youtube-DL library. Do you "
-#~ "want to download it now?"
-#~ msgstr ""
-#~ "Kako biste reproducirali Youtube video, Elten koristi vanjsku biblioteku "
-#~ "Youtube-DL. Želite li ju sada preuzeti?"
+#~ msgid "To play Youtube videos, Elten uses external Youtube-DL library. Do you want to download it now?"
+#~ msgstr "Kako biste reproducirali Youtube video, Elten koristi vanjsku biblioteku Youtube-DL. Želite li ju sada preuzeti?"
 
 #~ msgctxt "EAPI_External"
 #~ msgid "Connecting to server, please wait..."
@@ -12498,30 +11879,16 @@ msgstr "Nema ničeg novog"
 #~ msgstr "Molim pričekajte, downloadingYoutubeDL..."
 
 #~ msgctxt "EAPI_External"
-#~ msgid ""
-#~ " An error occurred while audiotrack capturing. Do you want to send a bug "
-#~ "report?  It may help us solve the problem."
-#~ msgstr ""
-#~ " Dogodila se pogreška prilikom snimanja zvuka. Želite li poslati "
-#~ "izvještaj o grešci?  Ovo nam pomaže riješiti problemu."
+#~ msgid " An error occurred while audiotrack capturing. Do you want to send a bug report?  It may help us solve the problem."
+#~ msgstr " Dogodila se pogreška prilikom snimanja zvuka. Želite li poslati izvještaj o grešci?  Ovo nam pomaže riješiti problemu."
 
 #~ msgctxt "EAPI_External"
-#~ msgid ""
-#~ " The file cannot be played. Do you want to report this bug? It may help "
-#~ "us fix the  issue."
-#~ msgstr ""
-#~ " Datoteka ne može biti reproducirana. Želite li poslati izvještaj o "
-#~ "grešci? To nam može pomoći pri rješavanju problema."
+#~ msgid " The file cannot be played. Do you want to report this bug? It may help us fix the  issue."
+#~ msgstr " Datoteka ne može biti reproducirana. Želite li poslati izvještaj o grešci? To nam može pomoći pri rješavanju problema."
 
 #~ msgctxt "EAPI_External"
-#~ msgid ""
-#~ "The file you're trying to open was saved in format that Elten does not "
-#~ "support. Do you want to download and install Calibre Library that will "
-#~ "allow Elten to read Ebooks?"
-#~ msgstr ""
-#~ "Datoteka je spremljena u formatu kojeg elten ne podržava. Želte li "
-#~ "preuzeti i instalirati Calibre biblioteku koja omogućuje eltenu čitanje "
-#~ "elektroničkih knjiga?"
+#~ msgid "The file you're trying to open was saved in format that Elten does not support. Do you want to download and install Calibre Library that will allow Elten to read Ebooks?"
+#~ msgstr "Datoteka je spremljena u formatu kojeg elten ne podržava. Želte li preuzeti i instalirati Calibre biblioteku koja omogućuje eltenu čitanje elektroničkih knjiga?"
 
 #~ msgctxt "EAPI_External"
 #~ msgid "Please wait, downloading Calibre..."
@@ -12568,16 +11935,8 @@ msgstr "Nema ničeg novog"
 #~ msgstr "%{count} datoteka dodano na popis za reprodukciju-"
 
 #~ msgctxt "Files"
-#~ msgid ""
-#~ " Do you want to run this Elten API script? Scripts coming from unknown "
-#~ "sources can  harm your computer or give access to your account to "
-#~ "unauthorised persons.  Continue if you trust a source this script comes "
-#~ "from."
-#~ msgstr ""
-#~ " Želite li pokrenuti ovu Elten API skriptu? Skripte koje dolaze iz "
-#~ "nepoznatih izvora mogu oštetiti vaš kompjuter ili dati dostup "
-#~ "neovlaštenim osobama vašem nalogu.  Nastavite ako vjerujete ozvoru iz "
-#~ "kojeg dolaze skripte."
+#~ msgid " Do you want to run this Elten API script? Scripts coming from unknown sources can  harm your computer or give access to your account to unauthorised persons.  Continue if you trust a source this script comes from."
+#~ msgstr " Želite li pokrenuti ovu Elten API skriptu? Skripte koje dolaze iz nepoznatih izvora mogu oštetiti vaš kompjuter ili dati dostup neovlaštenim osobama vašem nalogu.  Nastavite ako vjerujete ozvoru iz kojeg dolaze skripte."
 
 #~ msgctxt "Files"
 #~ msgid "Extract"
@@ -12705,9 +12064,7 @@ msgstr "Nema ničeg novog"
 
 #~ msgctxt "Forum"
 #~ msgid "Are you sure you want to deny %{user}'s moderation privileges?"
-#~ msgstr ""
-#~ "      Jeste li sigurni da želite oduzeti moderatorska prava korisniku "
-#~ "%{user}?"
+#~ msgstr "      Jeste li sigurni da želite oduzeti moderatorska prava korisniku %{user}?"
 
 #~ msgctxt "Forum"
 #~ msgid "Stop recording"
@@ -12807,9 +12164,7 @@ msgstr "Nema ničeg novog"
 
 #~ msgctxt "Portable"
 #~ msgid "Create as a single exe file. (No settings will be saved."
-#~ msgstr ""
-#~ "       Stvori kao jednu datoteku .exe (Pozor! nikakve postavke neće "
-#~ "biti       zapamćene.)"
+#~ msgstr "       Stvori kao jednu datoteku .exe (Pozor! nikakve postavke neće biti       zapamćene.)"
 
 #~ msgctxt "Portable"
 #~ msgid "Preparing SFX"
@@ -12825,9 +12180,7 @@ msgstr "Nema ničeg novog"
 
 #~ msgctxt "Registration"
 #~ msgid "User name can not contain slashes. Sign will be Omitted."
-#~ msgstr ""
-#~ "       Korisničko ime ne može sadržavati znak kosa crta. Znak će biti  "
-#~ "zaobiđen."
+#~ msgstr "       Korisničko ime ne može sadržavati znak kosa crta. Znak će biti  zaobiđen."
 
 #~ msgctxt "Registration"
 #~ msgid "User name can not contain spaces. Sign will be Omitted"
@@ -12875,8 +12228,7 @@ msgstr "Nema ničeg novog"
 
 #~ msgctxt "*Main"
 #~ msgid "Your playlist has been changed. Save current changes?"
-#~ msgstr ""
-#~ "Tvoj popis za reprodukciju je izmijenjen. Želite li spremiti promjene?"
+#~ msgstr "Tvoj popis za reprodukciju je izmijenjen. Želite li spremiti promjene?"
 
 #~ msgctxt "*Main"
 #~ msgid "Do you want to delete the saved playlist?"
