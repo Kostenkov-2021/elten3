@@ -416,6 +416,18 @@ form.resume
       def empty?
         @status==0
       end
+      def source_duration
+        return nil if @status!=2
+        sound=nil
+        begin
+          sound=Sound.new(@current_filename)
+          sound.length.to_f
+        rescue StandardError
+          nil
+        ensure
+          sound.close rescue nil if sound!=nil
+        end
+      end
       def set_source(file)
         @btn_stop.press if @recorder!=nil
                 @status=2

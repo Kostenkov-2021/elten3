@@ -558,16 +558,7 @@ module EltenAPI
         response_data = payload["data"].is_a?(Hash) ? payload["data"] : {}
         rows = response_data["messages"].is_a?(Array) ? response_data["messages"] : []
         feeds = rows.each_with_object({}) do |row, result|
-          feed = feed_message_class.new(
-            row["id"].to_i,
-            row["user"].to_s,
-            row["time"].to_i,
-            row["message"].to_s,
-            row["response"].to_i,
-            row["responses"].to_i,
-            row["liked"] == true || row["liked"].to_s == "1",
-            row["likes"].to_i
-          )
+          feed = EltenLink::Feeds.message_from_row(row, feed_message_class)
           result[feed.id] = feed if feed.id > 0
         end
         current_feeds = @lastfeeds == nil ? feeds : @lastfeeds.dup
@@ -575,7 +566,7 @@ module EltenAPI
         played = false
         feeds.each do |id, current|
           previous = @lastfeeds == nil ? nil : @lastfeeds[id]
-          next if previous != nil && previous.message == current.message && previous.responses == current.responses && previous.likes == current.likes && previous.liked == current.liked
+          next if previous != nil && previous.message == current.message && previous.responses == current.responses && previous.likes == current.likes && previous.liked == current.liked && previous.audio_url == current.audio_url
           if previous == nil && @lastfeeds != nil && current.message != "" && mention?(current.message)
             enqueue_event("func" => "notif", "sound" => "feed_mention") if $donotdisturb != true
           end

@@ -463,7 +463,9 @@ module EltenAPI
         when :first
           read_feed(:first)
         when :say
-          say(feed_lasttext) if feed_lasttext != nil
+          announce_feed(current_feed)
+        when :select
+          play_current_feed_audio
         when :like
           like_current_feed
         when :reply
@@ -489,11 +491,12 @@ module EltenAPI
           feeds.select { |f| f.message.to_s != "" }.max_by { |f| f.id }
         end
         if feed != nil
+          quick_audio_stop
           @feed_id = feed.id
           Scene_Main.feed_id = feed.id if defined?(Scene_Main)
           @feed_lasttext = feed.user.to_s + ": " + feed.message.to_s
           play_move
-          say(@feed_lasttext)
+          announce_feed(feed)
         else
           play_border
           say(feed_lasttext) if feed_lasttext != nil
@@ -541,6 +544,37 @@ module EltenAPI
         return @feed_lasttext if @feed_id == nil
         feed = current_feed
         feed == nil ? nil : feed.user.to_s + ": " + feed.message.to_s
+      end
+
+      def feed_audio_url(feed)
+        return "" if feed == nil || !feed.respond_to?(:audio_url)
+        feed.audio_url.to_s
+      end
+
+      def announce_feed(feed)
+        if feed == nil
+          say(feed_lasttext) if feed_lasttext != nil
+          return
+        end
+        text = feed.user.to_s + ": " + feed.message.to_s
+        if feed_audio_url(feed) != ""
+          if Configuration.soundthemeactivation == true
+            play_sound("file_audio")
+          else
+            text = p_("FeedViewer", "Audio content") + ": " + text
+          end
+        end
+        say(text)
+      end
+
+      def play_current_feed_audio
+        feed = current_feed
+        url = feed_audio_url(feed)
+        if url == ""
+          play_border
+          return
+        end
+        quick_audio_play(url)
       end
 
       def navigate_conference(action)

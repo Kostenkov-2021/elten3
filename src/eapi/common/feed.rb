@@ -8,11 +8,12 @@ module EltenAPI
   module Common
     private
 class FeedMessage
-attr_accessor :id, :user, :time, :message, :response, :responses, :liked, :likes
-def initialize(id=0, user="", time=0, message="", response=0, responses=0, liked=false, likes=0)
-@id, @user, @time, @message, @response, @responses, @liked, @likes = id, user, time, message, response, responses, liked, likes
+attr_accessor :id, :user, :time, :message, :response, :responses, :liked, :likes, :audio_url
+def initialize(id=0, user="", time=0, message="", response=0, responses=0, liked=false, likes=0, audio_url="")
+@id, @user, @time, @message, @response, @responses, @liked, @likes, @audio_url = id, user, time, message, response, responses, liked, likes, audio_url
 @user=self.class.utf8(@user)
 @message=self.class.utf8(@message)
+@audio_url=self.class.utf8(@audio_url)
 @time=0 if !@time.is_a?(Integer) || @time<0
 end
 def self.utf8(value)
@@ -21,7 +22,7 @@ str.force_encoding(Encoding::UTF_8) if str.encoding!=Encoding::UTF_8
 str.encode(Encoding::UTF_8, invalid: :replace, undef: :replace)
 end
 def to_h
-return {'id'=>@id, 'message'=>@message, 'time'=>@time, 'user'=>@user, 'response'=>@response, 'responses'=>@responses, 'liked'=>@liked, 'likes'=>@likes}
+return {'id'=>@id, 'message'=>@message, 'time'=>@time, 'user'=>@user, 'response'=>@response, 'responses'=>@responses, 'liked'=>@liked, 'likes'=>@likes, 'audio_url'=>@audio_url}
 end
 end
   end

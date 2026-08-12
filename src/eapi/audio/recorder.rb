@@ -69,6 +69,39 @@ module EltenRecorderStructs
 end
 
 module EltenRecorderRuntime
+  class DurationLimitedSession
+    def initialize(session, frequency, channels, duration_seconds)
+      @session = session
+      @block_align = [channels.to_i, 1].max * 2
+      @max_bytes = (frequency.to_i * @block_align * duration_seconds.to_f).floor
+      @max_bytes -= @max_bytes % @block_align
+      @processed_bytes = 0
+      @finished = false
+    end
+
+    def process_pcm(data)
+      return 0 if completed?
+      data = data.to_s.b
+      bytes = [data.bytesize, @max_bytes - @processed_bytes].min
+      bytes -= bytes % @block_align
+      return 0 if bytes <= 0
+
+      @session.process_pcm(data.byteslice(0, bytes))
+      @processed_bytes += bytes
+      bytes
+    end
+
+    def completed?
+      @processed_bytes >= @max_bytes
+    end
+
+    def finish
+      return if @finished
+      @finished = true
+      @session.finish
+    end
+  end
+
   class InputRecording
     def initialize(session_factory, read_buffer_bytes = 384000, record_flags = 0)
       session = nil
@@ -286,6 +319,7 @@ module EltenRecorderRuntime
         if size != nil && size > 0
           session.process_pcm(buffer.byteslice(0, size))
           total += size
+          break if session.respond_to?(:completed?) && session.completed?
         else
           sleep(0.01)
         end
@@ -351,9 +385,9 @@ class Recorder
       new(file, WaveAudioEncoder.new)
     end
 
-    def encode_file(source, output, encoder = nil)
+    def encode_file(source, output, encoder = nil, max_duration_seconds: 0)
       sink = FileRecorderOutput.new(output)
-      encode_to_output(source, sink, encoder || WaveAudioEncoder.new)
+      encode_to_output(source, sink, encoder || WaveAudioEncoder.new, :max_duration_seconds => max_duration_seconds)
     ensure
       sink.close if sink != nil
     end
@@ -394,7 +428,12 @@ class Recorder
     end
 
     def encode_opus_file(source, output, bitrate = 64, framesize = 60, application = 2048, usevbr = 1, timelimit = 0, tags = nil)
-      encode_file(source, output, opus_encoder(bitrate, framesize, application, usevbr, :tags => tags))
+      encode_file(
+        source,
+        output,
+        opus_encoder(bitrate, framesize, application, usevbr, :tags => tags),
+        :max_duration_seconds => timelimit
+      )
     end
 
     def copy_opus_file(source, output, tags)
@@ -474,7 +513,7 @@ class Recorder
       data + pcm
     end
 
-    def encode_to_output(source, output, encoder)
+    def encode_to_output(source, output, encoder, max_duration_seconds: 0)
       session = nil
       total = EltenRecorderRuntime.pump_source(
         source,
@@ -482,6 +521,10 @@ class Recorder
           source_frequency = encoder.normalize_source? ? encoder.source_frequency : frequency
           source_channels = encoder.source_channels(channel)
           session = encoder.start(output, :frequency => source_frequency, :channels => source_channels, :source_channel => channel)
+          if max_duration_seconds.to_f > 0
+            session = EltenRecorderRuntime::DurationLimitedSession.new(session, source_frequency, source_channels, max_duration_seconds)
+          end
+          session
         end,
         :normalize => encoder.normalize_source?,
         :frequency => encoder.source_frequency,

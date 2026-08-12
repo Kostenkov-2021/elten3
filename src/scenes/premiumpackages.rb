@@ -51,6 +51,7 @@ show(package)
     p_("PremiumPackages", "Creation of group channels in conferences"),
     p_("PremiumPackages", "Using VST plugins in conferences"),
     p_("PremiumPackages", "Setting specific ringtones for users"),
+    p_("PremiumPackages", "Attaching audio to feed entries"),
     #p_("PremiumPackages", "Placing beacons in HRTF channels"),
     p_("PremiumPackages", "Splitting audio into chapters"),
     p_("PremiumPackages", "Creating hidden channels in conferences"),

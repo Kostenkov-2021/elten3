@@ -134,7 +134,7 @@ end
            elsif d['func']=="feeds"
              changed_feeds = d['changed'].is_a?(String) ? JSON.parse(d['changed']) : Array(d['changed'])
              for f in changed_feeds
-               feed = FeedMessage.new(f['id'], f['user'], f['time'], f['message'], f['response'], f['responses'], f['liked'], f['likes'])
+               feed = FeedMessage.new(f['id'], f['user'], f['time'], f['message'], f['response'], f['responses'], f['liked'], f['likes'], f['audio_url'])
                Session.feeds[feed.id]=feed
              end
              Session.feeds_update

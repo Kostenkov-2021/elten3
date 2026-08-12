@@ -20,6 +20,8 @@ attr_accessor :silent
 attr_accessor :header
 attr_accessor :autosayoption
 attr_accessor :limit
+attr_accessor :item_audio_autoplay
+attr_accessor :item_audio_space_mode
 # Creates a listbox
 #
 class Flags
@@ -88,6 +90,8 @@ def initialize(options, header: "", index: 0, flags: 0, quiet: true)
 @item_states=[]
 @item_audio_urls=[]
 @item_audio_entries={}
+@item_audio_autoplay=true
+@item_audio_space_mode=:pause
 @late_state_focus_until=0.0
 @late_state_focus_index=nil
 @late_state_focus_pos=50
@@ -434,7 +438,7 @@ def speak_item_option(id=self.index, base=nil, prefix="", include_selection=true
   text=speech_value_prepend(prefix, text)
   text=speech_value_gsub(text, /\[#{Regexp.escape(text_utf8(@tag))}\]/i, "") if @tag!=nil
   lspeak(text)
-  play_item_audio(id)
+  play_item_audio(id) if @item_audio_autoplay!=false
 end
 
 def option_speech_text(id=self.index, base=nil)
@@ -484,6 +488,36 @@ def idle_update
   end
   @selected_now=false
   mark_item_audio_active(self.index) if item_audio?(self.index)
+  true
+end
+
+def toggle_existing_item_audio(id=self.index)
+  return false if id==nil || id<0 || @item_audio_entries==nil
+  entry=@item_audio_entries[id]
+  return false if entry==nil
+  if entry[:player]==nil || entry[:player].completed
+    play_item_audio(id)
+    return true
+  end
+  mark_item_audio_active(id)
+  if entry[:player].paused?
+    close_other_item_audio(id)
+    entry[:player].play
+  else
+    entry[:player].pause if entry[:player].respond_to?(:pause)
+  end
+  true
+end
+
+def toggle_item_audio_stop(id=self.index)
+  return false if id==nil || id<0 || hidden?(id) || item_audio_url(id)==""
+  entry=@item_audio_entries[id] if @item_audio_entries!=nil
+  if entry!=nil && entry[:player]!=nil && !entry[:player].completed
+    close_item_audio(id)
+  else
+    close_item_audio(id) if entry!=nil && entry[:player]!=nil
+    play_item_audio(id)
+  end
   true
 end
 
@@ -781,8 +815,14 @@ elsif oldindex == self.index and @run == true and (k.chrsize<=1 or (@options[sel
     trigger(:border, self.index)
     @run = false
   end
-  if key_pressed?(:key_space) && @multi != true && item_audio?(self.index)
-    toggle_item_audio(self.index)
+  if key_first_pressed?(:key_space) && @multi != true && item_audio?(self.index)
+    if raw_key_held?(:key_shift)
+      toggle_existing_item_audio(self.index)
+    elsif @item_audio_space_mode==:stop
+      toggle_item_audio_stop(self.index)
+    else
+      toggle_item_audio(self.index)
+    end
   elsif key_pressed?(:key_space) and @multi == true and @index>=0 and @index<@options.size
     if @selected[@index] == false
       if select_multiselection_indices([@index])!=:limit

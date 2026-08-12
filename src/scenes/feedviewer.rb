@@ -38,7 +38,9 @@ EltenAPI::SpeechSequence.new(parts)
 ind=0
 ind=selt.size-1 if selt.size>0 && @n.is_a?(FeedMessage)
 ind=@ind if @ind!=-1
-@sel = ListBox.new(selt, header: p_("FeedViewer", "Feed"), index: ind, flags: 0, quiet: false)
+@sel = ListBox.new(selt, header: p_("FeedViewer", "Feed"), index: ind, flags: 0, quiet: true)
+configure_feed_list_audio(@sel, @feeds)
+@sel.focus
 @sel.bind_context{|menu|context(menu)}
 loop do
   loop_update
@@ -148,9 +150,6 @@ dialog_close
     end
 end
 def feed_new(users=[], response=0)
-  text=users.map{|u|"@"+u}.join(" ")
-  text<<" " if text!=""
-    inp = input_text(p_("FeedViewer", "Message"), flags: 0, text: text, escapable: true, permitted_characters: [], denied_characters: [], max_length: 300, move_to_end: true, character_counter: true)
-  feed(inp, response) if inp!=nil
+  compose_feed(users, response)
   end
   end
