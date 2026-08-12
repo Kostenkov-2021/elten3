@@ -21,6 +21,30 @@ module EltenLink
     end
   end
 
+  class AnnualStatistic
+    attr_reader :year, :generated_at, :data
+
+    def initialize(data)
+      @data = data.is_a?(Hash) ? data : {}
+      @year = @data["year"].to_i
+      @generated_at = @data["generated_at"].to_i
+    end
+
+    def value(*path)
+      current = @data
+      path.each do |key|
+        return nil unless current.is_a?(Hash)
+
+        current = current[key.to_s]
+      end
+      current
+    end
+
+    def integer(*path)
+      value(*path).to_i
+    end
+  end
+
   class ExportStatus
     attr_accessor :ready, :pending, :export_time, :next_time
 
@@ -132,6 +156,11 @@ module EltenLink
       def change_password_with_reset(client, user:, mail:, key:, new_password:)
         client.api_data("POST", "/api/v1/accounts/password-reset/change", { "name" => user, "mail" => mail, "key" => key, "new_password" => new_password })
         true
+      end
+
+      def statistics(client)
+        data = client.api_data("GET", "/api/v1/accounts/me/statistics")
+        data["statistics"].to_a.map { |entry| AnnualStatistic.new(entry) }.sort_by(&:year).reverse
       end
 
       def config(client)

@@ -316,6 +316,7 @@ def load_notifications_settings
   def load_others
     setting_category(p_("Account", "Others"))
     make_setting(p_("Account", "Premium packages"), :custom, Proc.new{insert_scene(Scene_PremiumPackages.new)})
+    make_setting(p_("Account", "Activity statistics"), :custom, Proc.new{insert_scene(Scene_Account_Statistics.new)})
     make_setting(p_("Account", "Export user data"), :custom, Proc.new{insert_scene(Scene_Account_Export.new)})
     make_setting(p_("Account", "Archive this account"), :custom, Proc.new{insert_scene(Scene_Account_Archive.new)})
     end
@@ -617,6 +618,215 @@ loop do
   break if key_pressed?(:key_escape)
   end
 $scene=Scene_Main.new
+  end
+end
+
+class Scene_Account_Statistics
+  def main
+    begin
+      @statistics = EltenLink::Accounts.statistics(elten_link)
+    rescue EltenLink::Error
+      alert(p_("AccountStatistics", "The activity statistics could not be downloaded."))
+      return $scene = Scene_Main.new
+    end
+
+    if @statistics.empty?
+      alert(p_("AccountStatistics", "Your activity statistics are being prepared. They should be available within an hour."))
+      return $scene = Scene_Main.new
+    end
+
+    rows = @statistics.map do |statistic|
+      [
+        statistic.year.to_s,
+        statistic_value_text(statistic.integer("summary", "forum_posts"), :number),
+        statistic_value_text(statistic.integer("summary", "messages"), :number),
+        statistic_value_text(statistic.integer("summary", "blog_posts"), :number),
+        statistic_value_text(statistic.integer("summary", "blog_comments"), :number),
+        statistic_value_text(statistic.integer("summary", "conference_seconds"), :duration),
+        statistic_value_text(statistic.integer("summary", "logins"), :number)
+      ]
+    end
+    @table = TableBox.new(
+      [
+        p_("AccountStatistics", "Year"),
+        p_("AccountStatistics", "Forum posts"),
+        p_("AccountStatistics", "Messages"),
+        p_("AccountStatistics", "Blog posts"),
+        p_("AccountStatistics", "Blog comments"),
+        p_("AccountStatistics", "Conferences"),
+        p_("AccountStatistics", "Logins")
+      ],
+      rows,
+      index: 0,
+      header: p_("AccountStatistics", "Activity statistics"),
+      quiet: false
+    )
+    loop do
+      loop_update
+      @table.update
+      break if key_pressed?(:key_escape)
+      show_details(@statistics[@table.index]) if @table.selected? || @table.expanded?
+    end
+    $scene = Scene_Main.new
+  end
+
+  def show_details(statistic)
+    previous = @statistics.find { |entry| entry.year == statistic.year - 1 }
+    metrics = [
+      [p_("AccountStatistics", "Forum posts"), ["forum", "posts"], :number],
+      [p_("AccountStatistics", "Forum threads"), ["forum", "threads"], :number],
+      [p_("AccountStatistics", "Messages sent"), ["messages", "sent"], :number],
+      [p_("AccountStatistics", "Messages received"), ["messages", "received"], :number],
+      [p_("AccountStatistics", "Blog posts"), ["blogs", "posts"], :number],
+      [p_("AccountStatistics", "Blog comments received"), ["blogs", "comments_received"], :number],
+      [p_("AccountStatistics", "Comments written on other blogs"), ["blogs", "comments_written"], :number],
+      [p_("AccountStatistics", "Time in conferences"), ["conferences", "seconds"], :duration],
+      [p_("AccountStatistics", "Time in private calls"), ["conferences", "private_seconds"], :duration],
+      [p_("AccountStatistics", "Logins"), ["logins", "count"], :number],
+      [p_("AccountStatistics", "Feed posts"), ["feed", "posts"], :number],
+      [p_("AccountStatistics", "Feed responses"), ["feed", "responses"], :number],
+      [p_("AccountStatistics", "Mentions on the feed"), ["feed", "mentions_received"], :number],
+      [p_("AccountStatistics", "Forum mentions sent"), ["mentions", "sent"], :number],
+      [p_("AccountStatistics", "Forum mentions received"), ["mentions", "received"], :number]
+    ]
+    rows = metrics.map do |label, path, kind|
+      current_value = statistic.integer(*path)
+      previous_value = previous == nil ? nil : previous.integer(*path)
+      [
+        label,
+        statistic_value_text(current_value, kind),
+        previous_value == nil ? p_("AccountStatistics", "No data") : statistic_value_text(previous_value, kind),
+        change_text(current_value, previous_value)
+      ]
+    end
+    comparison = TableBox.new(
+      [
+        p_("AccountStatistics", "Statistic"),
+        statistic.year.to_s,
+        (statistic.year - 1).to_s,
+        p_("AccountStatistics", "Year-to-year change")
+      ],
+      rows,
+      index: 0,
+      header: p_("AccountStatistics", "Statistics for %{year}") % { year: statistic.year },
+      quiet: false
+    )
+    details = ranking_controls(statistic)
+    close = Button.new(p_("AccountStatistics", "Close"))
+    form = Form.new([comparison] + details + [close])
+    form.cancel_button = close
+    close.on(:press) { form.resume }
+    form.wait
+    @table.focus
+  end
+
+  def ranking_controls(statistic)
+    controls = []
+    forum_rows = statistic.value("forum", "top_forums").to_a.filter_map do |entry|
+      next unless entry.is_a?(Hash)
+
+      posts = entry["posts"].to_i
+      name = entry["name"].to_s
+      group = entry["group"].to_s
+      name += " (#{group})" unless group.empty?
+      next if name.empty? || posts == 0
+
+      [name, statistic_value_text(posts, :number)]
+    end
+    unless forum_rows.empty?
+      controls << TableBox.new(
+        [nil, p_("AccountStatistics", "Forum posts")],
+        forum_rows,
+        index: 0,
+        header: p_("AccountStatistics", "Most frequently used forums")
+      )
+    end
+
+    correspondent_rows = statistic.value("messages", "top_correspondents").to_a.filter_map do |entry|
+      next unless entry.is_a?(Hash)
+
+      name = entry["name"].to_s
+      sent = entry["sent"].to_i
+      received = entry["received"].to_i
+      next if name.empty? || (sent == 0 && received == 0)
+
+      [
+        name,
+        statistic_value_text(sent, :number),
+        statistic_value_text(received, :number)
+      ]
+    end
+    unless correspondent_rows.empty?
+      controls << TableBox.new(
+        [
+          nil,
+          p_("AccountStatistics", "Messages sent"),
+          p_("AccountStatistics", "Messages received")
+        ],
+        correspondent_rows,
+        index: 0,
+        header: p_("AccountStatistics", "Most frequent correspondents")
+      )
+    end
+
+    commenters = ranking_list(statistic.value("blogs", "top_commenters"))
+    unless commenters.empty?
+      controls << ListBox.new(
+        commenters,
+        header: p_("AccountStatistics", "Most frequent commenters")
+      )
+    end
+
+    commented_blogs = ranking_list(statistic.value("blogs", "top_commented_blogs"))
+    unless commented_blogs.empty?
+      controls << ListBox.new(
+        commented_blogs,
+        header: p_("AccountStatistics", "Most frequently commented blogs")
+      )
+    end
+
+    if controls.empty?
+      controls << ListBox.new(
+        [p_("AccountStatistics", "No additional details are available for this year.")],
+        header: p_("AccountStatistics", "Details")
+      )
+    end
+    controls
+  end
+
+  def ranking_list(entries)
+    entries.to_a.filter_map do |entry|
+      next unless entry.is_a?(Hash)
+
+      name = entry["name"].to_s
+      comments = entry["comments"].to_i
+      next if name.empty? || comments == 0
+
+      "#{name}: #{comments}"
+    end
+  end
+
+  def statistic_value_text(value, kind)
+    value = value.to_i
+    return nil if value == 0
+
+    kind == :duration ? duration_text(value) : value.to_s
+  end
+
+  def change_text(current, previous)
+    return p_("AccountStatistics", "No data") if previous == nil
+    return nil if current.to_i == 0 && previous.to_i == 0
+    return "0%" if current.to_i == previous.to_i
+    return p_("AccountStatistics", "New activity") if previous.to_i == 0
+
+    format("%+.1f%%", (current.to_f - previous.to_f) * 100.0 / previous.to_f)
+  end
+
+  def duration_text(seconds)
+    seconds = seconds.to_i
+    hours = seconds / 3600
+    minutes = (seconds % 3600) / 60
+    p_("AccountStatistics", "%{hours} h %{minutes} min") % { hours: hours, minutes: minutes }
   end
 end
 
