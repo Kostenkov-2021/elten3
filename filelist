@@ -47,8 +47,8 @@ src/eltenlink/feeds.rb
 src/eltenlink/system.rb
 src/eltenlink/notifications.rb
 src/eltenlink/monitors.rb
-src/eltenlink/profiles.rb
 src/eltenlink/honors.rb
+src/eltenlink/profiles.rb
 src/eltenlink/soundthemes.rb
 src/eltenlink/auctions.rb
 src/eltenlink/authentication.rb

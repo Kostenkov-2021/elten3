@@ -17,10 +17,7 @@ module EltenLink
     :public_mail,
     keyword_init: true
   )
-  UserCardHonor = Struct.new(:name, :enname, keyword_init: true) do
-    def name_for(language)
-      language == "pl-PL" ? name : enname
-    end
+  class UserCardHonor < Honor
   end
   UserCard = Struct.new(
     :name,
@@ -52,10 +49,7 @@ module EltenLink
             online: Client.truthy?(status["online"]),
             sponsor: Client.truthy?(status["sponsor"])
           ),
-          main_honor: main_honor.is_a?(Hash) ? UserCardHonor.new(
-            name: main_honor["name"].to_s,
-            enname: main_honor["enname"].to_s
-          ) : nil
+          main_honor: Honors.parse(main_honor, klass: UserCardHonor)
         )
       end
 
