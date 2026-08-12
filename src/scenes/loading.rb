@@ -311,35 +311,7 @@ license
                 insert_scene(Scene_Documentation.new("migration24"))
                 File.binwrite(EltenPath.join(Dirs.eltendata, "license_agreed.dat"),"\002")
               end
-              if FileTest.exists?(EltenPath.join(Dirs.eltendata, "update.last"))
-                        last_update_version=Zlib::Inflate.inflate(File.binread(EltenPath.join(Dirs.eltendata, "update.last"))).to_s
-        last_numeric_version=last_update_version.split(" ")[0].to_f
-        if last_numeric_version>0 && last_numeric_version<=2.52
-          delay(1)
-                  infotext=p_("Loading","Attention!
-Since the release of version 2.5.2.1, new restrictions have been introduced for globally banned users.
-By default, they are prevented from speaking in any groups and writing to other people.
-
-To allow banned people to speak in a group, change this option from the group's settings, General tab.
-Similarly, to allow these users to write private messages to you, you must allow this from within your account settings, Privacy tab.
-
-Also, all groups moderated by banned users have been removed from most public lists.
-
-At the same time, three changes have since been made to the premium packages at the request of users:
-First of all, premium features are now visible in menus.
-It has also been made possible to buy premium packages for a period of one month.
-Other billing currencies have also been added.")
-                  form=Form.new([
-                  edt_info = EditBox.new(p_("Loading", "Information about important changes"), type: EditBox::Flags::MarkDown|EditBox::Flags::ReadOnly|EditBox::Flags::MultiLine, text: infotext, quiet: true),
-                  btn_close = Button.new(_("Close"))
-                  ], index: 0, silent: false, quiet: true)
-                  btn_close.on(:press) {form.resume}
-                  form.cancel_button=btn_close
-                  form.wait
-          end
-        Log.info("Update completed from version #{last_update_version}")
-        File.delete(EltenPath.join(Dirs.eltendata, "update.last"))
-      end
+              File.delete(EltenPath.join(Dirs.eltendata, "update.last")) if FileTest.exists?(EltenPath.join(Dirs.eltendata, "update.last"))
       Programs.load_all
       QuickActions.load_actions
   if FileTest.exists?(EltenPath.join(Dirs.eltendata, "login.dat")) and $offline!=true and @skiplogin==false

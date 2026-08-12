@@ -72,7 +72,6 @@ $toscene = false
       $exitupdate=false
       $exit_runproc=nil
     elsif $exitupdate_donotsilent!=true
-      File.binwrite(EltenPath.join(Dirs.eltendata, "update.last"),Zlib::Deflate.deflate(Elten.version.to_s))
       $exit_runproc=platform_update_install_command(installer, silent: true)
     else
       $exit_runproc=platform_update_install_command(installer, silent: false)
