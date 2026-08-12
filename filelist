@@ -61,6 +61,7 @@ src/eltenlink/messages.rb
 src/eltenlink/blog.rb
 src/eltenlink/notes.rb
 src/eltenlink/calendars.rb
+src/eltenlink/tasks.rb
 src/eltenlink/forum.rb
 src/scenes/faq.rb
 src/scenes/sponsors.rb
@@ -109,6 +110,7 @@ src/scenes/users_recentlyactived.rb
 src/scenes/usersearch.rb
 src/scenes/notes.rb
 src/scenes/calendar.rb
+src/scenes/tasks.rb
 src/scenes/forgotpassword.rb
 src/scenes/honors.rb
 src/scenes/console.rb
