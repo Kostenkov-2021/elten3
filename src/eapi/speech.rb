@@ -251,7 +251,7 @@ def get_character_name(text, abs=false)
                     when "="
                       r=p_("EAPI_Speech", "equals")
                       when "`"
-                        r=p_("EAPI_Speech", "graav")
+                        r=p_("EAPI_Speech", "grave")
                         when "<"
                           r=p_("EAPI_Speech", "less")
                           when ">"

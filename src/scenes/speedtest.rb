@@ -6,7 +6,7 @@
 
 class Scene_SpeedTest
   def main
-    @form=Form.new([ListBox.new([p_("SpeedTest", "Session refresh"),p_("SpeedTest", "Forum structure"),p_("SpeedTest", "Messages recipients"),p_("SpeedTest", "Blogs list")],header: p_("SpeedTest", "Unit to test")),EditBox.new(p_("SpeedTest", "Number of attempts to perform"),type: EditBox::Flags::Numbers,text: "10",quiet: true),Button.new(p_("SpeedTest", "Start")),Button.new(_("Cancel"))])
+    @form=Form.new([ListBox.new([p_("SpeedTest", "Session refresh"),p_("SpeedTest", "Forum structure"),p_("SpeedTest", "Messages recipients"),p_("SpeedTest", "Blogs list")],header: p_("SpeedTest", "Component to test")),EditBox.new(p_("SpeedTest", "Number of test runs"),type: EditBox::Flags::Numbers,text: "10",quiet: true),Button.new(p_("SpeedTest", "Start")),Button.new(_("Cancel"))])
     loop do
       loop_update
       @form.update
@@ -27,7 +27,7 @@ class Scene_SpeedTest
                 when 3
                   measure = proc { EltenLink::System.measure_blog_list(elten_link) }
                 end
-                speak(p_("SpeedTest", "Performing test, please wait"))
+                speak(p_("SpeedTest", "Test in progress. Please wait."))
                 times=[]
                 errors=0
                 waiting {
@@ -44,7 +44,7 @@ class Scene_SpeedTest
 result = "#{p_("SpeedTest", "Average time")}: #{((times.sum).to_f / (n-errors.to_f) * 1000).round}ms           
 #{p_("SpeedTest", "Minimum time")}: #{((times.min)*1000).round}ms
 #{p_("SpeedTest", "Maximum time")}: #{((times.max)*1000).round}ms
-#{p_("SpeedTest", "Errors count")}: #{errors}
+#{p_("SpeedTest", "Number of errors")}: #{errors}
 
 "
       for i in 0...n

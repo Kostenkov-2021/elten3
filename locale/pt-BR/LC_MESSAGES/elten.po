@@ -266,7 +266,7 @@ msgstr "A nota foi modificada."
 
 #: Notes.rb:176
 msgctxt "Notes"
-msgid "User cannot be found"
+msgid "The user cannot be found"
 msgstr "O usuário não foi encontrado"
 
 #: Notes.rb:233
@@ -301,12 +301,12 @@ msgstr "Você realmente deseja excluir %{name}?"
 
 #: Notes.rb:182
 msgctxt "Notes"
-msgid "From now on you share this note with %{user}"
+msgid "You are now sharing this note with %{user}"
 msgstr "De agora em diante, você compartilha esta anotação com %{user}"
 
 #: Notes.rb:202
 msgctxt "Notes"
-msgid "You no longer share this note with %{user}"
+msgid "You are no longer sharing this note with %{user}"
 msgstr "Você não compartilha mais esta nota com %{user}"
 
 #: Notes.rb:196
@@ -341,7 +341,7 @@ msgstr "Digite o código de redefinição da senha"
 
 #: ForgotPassword.rb:88
 msgctxt "ForgotPassword"
-msgid "Please wait while the password reset key is being generated."
+msgid "Please wait while the password reset code is being generated."
 msgstr "Aguarde enquanto a chave de redefinição de senha está sendo gerada."
 
 #: ForgotPassword.rb:65
@@ -391,7 +391,7 @@ msgstr " Se você perder sua senha, ainda poderá redefini-la por meio do endere
 
 #: ForgotPassword.rb:92
 msgctxt "ForgotPassword"
-msgid "An unexpected error"
+msgid "Unexpected error"
 msgstr "Um erro inesperado"
 
 #: ForgotPassword.rb:58
@@ -406,12 +406,12 @@ msgstr "Adicionar"
 
 #: Honors.rb:65
 msgctxt "Honors"
-msgid "The user has been given no badges."
+msgid "The user has not been awarded any honors."
 msgstr "O usuário não recebeu nenhum crachá."
 
 #: Honors.rb:82
 msgctxt "Honors"
-msgid "The badge has been set as default."
+msgid "The honor has been set as the primary honor."
 msgstr "O emblema foi definido como padrão."
 
 #: Honors.rb:115
@@ -456,7 +456,7 @@ msgstr "Descrição do crachá em inglês"
 
 #: Honors.rb:112
 msgctxt "Honors"
-msgid "Who should be granted this badge?"
+msgid "Who should receive this honor?"
 msgstr "Quem deve receber este distintivo?"
 
 #: Honors.rb:62
@@ -491,7 +491,7 @@ msgstr "Delete this badge"
 
 #, fuzzy
 msgctxt "Honors"
-msgid "Are you sure you want to delete this badge? All users granted with this badge will loose it."
+msgid "Are you sure you want to delete this badge? All users who have been granted this badge will lose it."
 msgstr "Are you sure you want to delete this badge? All users granted with this badge will loose it."
 
 msgctxt "Honors"
@@ -758,7 +758,7 @@ msgstr "Múltipla escolha"
 
 #: Polls.rb:177
 msgctxt "Polls"
-msgid "Edit box"
+msgid "Text field"
 msgstr "Caixa de edição"
 
 #: Polls.rb:177
@@ -908,7 +908,7 @@ msgstr "Community Administrators"
 #: Admins.rb:16
 #, fuzzy
 msgctxt "Admins"
-msgid "Recommended groups Moderators"
+msgid "Moderators of recommended groups"
 msgstr "Recommended groups Moderators"
 
 #: Admins.rb:16
@@ -973,7 +973,7 @@ msgstr "Novos amigos"
 
 #: WhatsNew.rb:50
 msgctxt "WhatsNew"
-msgid "Friends' birthday"
+msgid "Friends' birthdays"
 msgstr "Aniversário dos amigos"
 
 #: WhatsNew.rb:50
@@ -1005,7 +1005,7 @@ msgstr "Circular"
 #: General.rb:11
 #, fuzzy
 msgctxt "General"
-msgid "The display method of selection lists"
+msgid "Selection-list navigation mode"
 msgstr "The display method of selection lists"
 
 #: General.rb:12
@@ -1044,7 +1044,7 @@ msgstr "Typing echo"
 #: General.rb:16
 #, fuzzy
 msgctxt "General"
-msgid "Enable auto log in"
+msgid "Enable auto-login"
 msgstr "Enable auto log in"
 
 #: General.rb:15
@@ -1163,7 +1163,7 @@ msgstr "Este recurso não está disponível nesta plataforma."
 
 #: UsersAddedMeToContacts.rb:36
 msgctxt "UsersAddedMeToContacts"
-msgid "Users who added me to their contacts list"
+msgid "Users who added me to their contact list"
 msgstr "Usuários que me adicionaram ao seus contatos"
 
 #: ReadMe.rb:11
@@ -1388,7 +1388,7 @@ msgstr "Seu blog foi renomeado"
 
 #: Blog.rb:346
 msgctxt "Blog"
-msgid "You do not have any blog. Do you want to create one?"
+msgid "You do not have a blog. Do you want to create one?"
 msgstr "Você não tem nenhum blog. Deseja criar um?"
 
 #: Blog.rb:819
@@ -1495,12 +1495,12 @@ msgstr "Create new blog"
 #: Blog.rb:198
 #, fuzzy
 msgctxt "Blog"
-msgid "Add coworker"
+msgid "Add contributor"
 msgstr "Add coworker"
 
 #: Blog.rb:126
 msgctxt "Blog"
-msgid "Coworkers"
+msgid "Contributors"
 msgstr "Coworkers"
 
 #, fuzzy
@@ -1511,7 +1511,7 @@ msgstr "Release this coworker"
 #: Blog.rb:179
 #, fuzzy
 msgctxt "Blog"
-msgid "What user you want to add to this blog?"
+msgid "Which user do you want to add to this blog?"
 msgstr "What user you want to add to this blog?"
 
 #: Blog.rb:1031
@@ -1534,7 +1534,7 @@ msgstr "Blogs popular with my friends"
 #: Blog.rb:756
 #, fuzzy
 msgctxt "Blog"
-msgid "Allow users to comment this post"
+msgid "Allow users to comment on this post"
 msgstr "Allow users to comment this post"
 
 #: Blog.rb:802
@@ -1590,7 +1590,7 @@ msgstr "Coworkers"
 #: Blog.rb:194
 #, fuzzy
 msgctxt "Blog"
-msgid "Are you sure you want to release this coworker?"
+msgid "Are you sure you want to remove this contributor?"
 msgstr "Are you sure you want to release this coworker?"
 
 #: Blog.rb:189
@@ -1740,7 +1740,7 @@ msgstr "Banimento válido até"
 
 #: Ban.rb:109
 msgctxt "Ban"
-msgid "The ban cancel reason"
+msgid "Reason for lifting the ban"
 msgstr "Motivo do cancelamento da proibição"
 
 #: Ban.rb:26
@@ -2167,7 +2167,7 @@ msgstr "Repita a nova senha."
 
 #: Account.rb:35
 msgctxt "Account"
-msgid "Fields: New Password and Repeat New Password have different values."
+msgid "The passwords do not match."
 msgstr "Os campos: Nova Senha e Repetir Nova Senha possuem valores diferentes."
 
 #: Account.rb:42
@@ -2247,7 +2247,7 @@ msgstr "Definir avatar"
 #: Account.rb:570
 #, fuzzy
 msgctxt "Account"
-msgid "Auto log in tokens"
+msgid "Auto-login tokens"
 msgstr "Auto log in tokens"
 
 #: Account.rb:578
@@ -2292,7 +2292,7 @@ msgstr "Novos amigos"
 
 #: Account.rb:498
 msgctxt "Account"
-msgid "Friends' birthday"
+msgid "Friends' birthdays"
 msgstr "Aniversário dos amigos"
 
 #: Account.rb:498
@@ -2327,7 +2327,7 @@ msgstr "Tem certeza de que deseja remover este usuário da lista negra?"
 
 #: Account.rb:725
 msgctxt "Account"
-msgid "A user has been removed from the black list."
+msgid "The user has been removed from the blacklist."
 msgstr "Um usuário foi removido da lista negra."
 
 #: Account.rb:695
@@ -2500,7 +2500,7 @@ msgstr "Last logins"
 #: Account.rb:831
 #, fuzzy
 msgctxt "Account"
-msgid "If you wish, you can configure Elten to report any changes and logins  on your account from new devices to you by E-mail. To do this, you must verify your E-mail address. Do you want to do it now?"
+msgid "You can configure Elten to notify you by email about changes to your account and logins from new devices. To do so, you must verify your email address. Do you want to verify it now?"
 msgstr "If you wish, you can configure Elten to report any changes and logins  on your account from new devices to you by E-mail. To do this, you must verify your E-mail address. Do you want to do it now?"
 
 #: Account.rb:862
@@ -2524,7 +2524,7 @@ msgstr "Disable mail events reporting"
 #: Account.rb:850
 #, fuzzy
 msgctxt "Account"
-msgid "Mail events reporting is disabled. If you wish, you can enable it to receive information about changes made on your account and logins from new devices via E-mail"
+msgid "Email event reporting is disabled. If you wish, you can enable it to receive information about changes to your account and logins from new devices by email."
 msgstr "Mail events reporting is disabled. If you wish, you can enable it to receive information about changes made on your account and logins from new devices via E-mail"
 
 #: Account.rb:850
@@ -2536,7 +2536,7 @@ msgstr "Mail events reporting is enabled."
 #: Account.rb:91
 #, fuzzy
 msgctxt "Account"
-msgid "Error, you must disable mail events reporting first."
+msgid "Error: you must disable email event reporting first."
 msgstr "Error, you must disable mail events reporting first."
 
 #: UsersAddedMeToContacts.rb:36
@@ -2556,17 +2556,17 @@ msgstr "Novo contato"
 
 #: Contacts.rb:162
 msgctxt "Contacts"
-msgid "Enter the name of the user you want to add to your contacts' list."
+msgid "Enter the name of the user you want to add to your contact list."
 msgstr "Digite o nome do usuário que você deseja adicionar à lista de contatos."
 
 #: Contacts.rb:174
 msgctxt "Contacts"
-msgid "Contact was added."
+msgid "The contact has been added."
 msgstr "O contato foi adicionado."
 
 #: Contacts.rb:183
 msgctxt "Contacts"
-msgid "This user is already added to your contacts' list."
+msgid "This user is already in your contact list."
 msgstr "Este usuário já está adicionado à sua lista de contatos."
 
 #: Contacts.rb:219
@@ -2576,12 +2576,12 @@ msgstr "Esse usuário não existe."
 
 #: Contacts.rb:207
 msgctxt "Contacts"
-msgid "Contact has been deleted."
+msgid "The contact has been deleted."
 msgstr "O contato foi excluído."
 
 #: Contacts.rb:216
 msgctxt "Contacts"
-msgid "This user is not added to your contacts' list."
+msgid "This user is not in your contact list."
 msgstr "Este usuário não foi adicionado à lista de contatos."
 
 #: Contacts.rb:75
@@ -2591,7 +2591,7 @@ msgstr "Tem certeza de que deseja excluir este contato?"
 
 #: Contacts.rb:201
 msgctxt "Contacts"
-msgid "Type a username which you want to remove from your contact list."
+msgid "Enter the username of the person you want to remove from your contact list."
 msgstr "Digite o nome do usuário que você deseja remover da sua lista de contatos."
 
 #: Update.rb:14
@@ -2631,7 +2631,7 @@ msgstr "Download da atualização"
 
 #: Update.rb:74
 msgctxt "Update"
-msgid "Now, the update will be installed. The program will restart."
+msgid "The update will now be installed. The program will restart."
 msgstr "Agora, a atualização será instalada. O programa será reiniciado."
 
 #: Update.rb:90
@@ -2736,7 +2736,7 @@ msgstr "Mensagem:"
 
 #: Messages.rb:1331
 msgctxt "Messages"
-msgid "Message has been sent"
+msgid "The message has been sent"
 msgstr "mensagem enviada"
 
 #: Messages.rb:1038
@@ -3155,7 +3155,7 @@ msgstr "Relógio... Atalho: : R"
 
 #: MainMenu.rb:108
 msgctxt "MainMenu"
-msgid "Soun&dthemes"
+msgid "Sound &themes"
 msgstr "Temas sonoros... Atalho: : S"
 
 #: MainMenu.rb:108
@@ -3371,7 +3371,7 @@ msgstr "Meus contatos... Atalho: : M"
 
 #: MainMenu.rb:467
 msgctxt "MainMenu"
-msgid "Users who a&dded me to contacts"
+msgid "Users who a&dded me to their contact list"
 msgstr "Usuários que me adicionaram aos contatos... Atalho: : U"
 
 #: MainMenu.rb:467
@@ -3461,7 +3461,7 @@ msgstr "Novo tópico"
 
 #: Forum.rb:1971
 msgctxt "Forum"
-msgid "Added to the list of followed threads."
+msgid "You are now following this thread."
 msgstr "Adicionado à lista de tópicos seguidos."
 
 #: Forum.rb:1914
@@ -3626,7 +3626,7 @@ msgstr "Digite uma frase para procurar"
 
 #: Forum.rb:1874
 msgctxt "Forum"
-msgid "Add to followed threads list"
+msgid "Follow this thread"
 msgstr "Adicionar à lista de tópicos seguidos"
 
 #: Forum.rb:1876
@@ -3701,17 +3701,17 @@ msgstr "Deixar de seguir este fórum"
 
 #: Forum.rb:837
 msgctxt "Forum"
-msgid "Added to followed forums list."
+msgid "You are now following this forum."
 msgstr "Adicionado à lista de fóruns seguidos."
 
 #: Forum.rb:844
 msgctxt "Forum"
-msgid "Removed from followed forums list."
+msgid "You are no longer following this forum."
 msgstr "Removido da lista de fóruns seguidos."
 
 #: Forum.rb:1978
 msgctxt "Forum"
-msgid "Removed from followed threads list."
+msgid "You are no longer following this thread."
 msgstr "Removido da lista de tópicos seguidos."
 
 #: Forum.rb:2136
@@ -3756,7 +3756,7 @@ msgstr "O tópico foi movido."
 
 #: Forum.rb:1216
 msgctxt "Forum"
-msgid "The forum name has been changed."
+msgid "The thread name has been changed."
 msgstr "O nome do fórum foi alterado."
 
 #: Forum.rb:1838
@@ -3781,7 +3781,7 @@ msgstr "A postagem foi movida."
 
 #: Forum.rb:2116
 msgctxt "Forum"
-msgid "The post has been slided."
+msgid "The post has been repositioned."
 msgstr "O post foi deslocado."
 
 #: Forum.rb:2133
@@ -3943,7 +3943,7 @@ msgstr "You've just left the group"
 #: Forum.rb:484
 #, fuzzy
 msgctxt "Forum"
-msgid "Pass administrative privileges"
+msgid "Transfer administrator privileges"
 msgstr "Pass administrative privileges"
 
 #: Forum.rb:481
@@ -3961,7 +3961,7 @@ msgstr "Deny moderation privileges"
 #: Forum.rb:494
 #, fuzzy
 msgctxt "Forum"
-msgid "Ban in this group"
+msgid "Ban from this group"
 msgstr "Ban in this group"
 
 #: Forum.rb:499
@@ -3988,17 +3988,17 @@ msgstr "Privileges of this user have been changed."
 #: Forum.rb:584
 #, fuzzy
 msgctxt "Forum"
-msgid "Are you sure you want to resign your administrative privileges in %{groupname} and pass them to %{user}?"
+msgid "Are you sure you want to give up your administrator privileges in %{groupname} and transfer them to %{user}?"
 msgstr "Are you sure you want to resign your administrative privileges in %{groupname} and pass them to %{user}?"
 
 #, fuzzy
 msgctxt "Forum"
-msgid "Are you sure you want to ban %{user} in %{groupname}?"
+msgid "Are you sure you want to ban %{user} from %{groupname}?"
 msgstr "Are you sure you want to ban %{user} in %{groupname}?"
 
 #, fuzzy
 msgctxt "Forum"
-msgid "Are you sure you want to unban %{user} in %{groupname}?"
+msgid "Are you sure you want to unban %{user} from %{groupname}?"
 msgstr "Are you sure you want to unban %{user} in %{groupname}?"
 
 #: Forum.rb:496
@@ -4277,13 +4277,13 @@ msgstr "Edit group"
 #: Forum.rb:554
 #, fuzzy
 msgctxt "Forum"
-msgid "Ask to be enrolled in this group"
+msgid "Request to join this group"
 msgstr "Ask to be enrolled in this group"
 
 #: Forum.rb:640
 #, fuzzy
 msgctxt "Forum"
-msgid "Do you wish to ask to be enrolled in %{groupname}"
+msgid "Do you want to request to join %{groupname}?"
 msgstr "Do you wish to ask to be enrolled in %{groupname}"
 
 #: Forum.rb:648
@@ -4316,12 +4316,12 @@ msgstr "Refuse"
 
 #, fuzzy
 msgctxt "Forum"
-msgid "Do you want to accept request of user %{user}"
+msgid "Do you want to accept the request from %{user}?"
 msgstr "Do you want to accept request of user %{user}"
 
 #, fuzzy
 msgctxt "Forum"
-msgid "Do you want to refuse request of user %{user}"
+msgid "Do you want to reject the request from %{user}?"
 msgstr "Do you want to refuse request of user %{user}"
 
 #: Forum.rb:1730
@@ -4379,7 +4379,7 @@ msgstr "The file has been attached"
 #: Forum.rb:1724
 #, fuzzy
 msgctxt "Forum"
-msgid "This file has been already attached"
+msgid "This file has already been attached"
 msgstr "This file has been already attached"
 
 #: Forum.rb:1721
@@ -4509,7 +4509,7 @@ msgstr "Founder"
 #: Forum.rb:400
 #, fuzzy
 msgctxt "Forum"
-msgid "Founded at"
+msgid "Founded on"
 msgstr "Founded at"
 
 #: Forum.rb:395
@@ -4624,7 +4624,7 @@ msgstr "Não perguntar novamente"
 #: Login.rb:176
 #, fuzzy
 msgctxt "Login"
-msgid "To reenable auto log in feature, proceed to the general settings."
+msgid "To re-enable auto-login, go to General settings."
 msgstr "To reenable auto log in feature, proceed to the general settings."
 
 #: Login.rb:132
@@ -4697,13 +4697,13 @@ msgstr "Do you want to enable auto-Login-key encryption? When encrypted, the Aut
 #: Login.rb:263
 #, fuzzy
 msgctxt "Login"
-msgid "Do you want to encrypt this key with a custom pin code? You will be prompted for this code everytime you start Elten to unlock your account, but it will not be saved on the server and will be valid only for the auto-login-key stored on this device."
+msgid "Do you want to encrypt this key with a custom PIN? You will be prompted for this PIN every time you start Elten to unlock your account. It will not be saved on the server and will apply only to the auto-login key stored on this device."
 msgstr "Do you want to encrypt this key with a custom pin code? You will be prompted for this code everytime you start Elten to unlock your account, but it will not be saved on the server and will be valid only for the auto-login-key stored on this device."
 
 #: Login.rb:268
 #, fuzzy
 msgctxt "Login"
-msgid "Enter pin code"
+msgid "Enter PIN"
 msgstr "Enter pin code"
 
 #: Login.rb:268
@@ -4715,7 +4715,7 @@ msgstr "Reenter pin code"
 #: Login.rb:273
 #, fuzzy
 msgctxt "Login"
-msgid "The pin codes entered are different, please try again."
+msgid "The PINs you entered do not match. Please try again."
 msgstr "The pin codes entered are different, please try again."
 
 #: Registration.rb:23
@@ -4755,7 +4755,7 @@ msgstr "Ocorreu um erro desconhecido ao usar o banco de dados"
 
 #: Registration.rb:49
 msgctxt "Registration"
-msgid "Account with the specified username already exists."
+msgid "An account with the specified username already exists."
 msgstr "Conta com o nome de usuário especificado já existe."
 
 #: Registration.rb:51
@@ -4832,13 +4832,13 @@ msgstr "Uma nova versão do programa está disponível."
 #: Loading.rb:279
 #, fuzzy
 msgctxt "Loading"
-msgid "Elten detected that you are using NVDA. To support some features of this screenreader, it is necessary to install Elten addon. Do you want to do it now?"
+msgid "Elten has detected that you are using NVDA. To support some features of this screen reader, the Elten add-on for NVDA must be installed. Do you want to install it now?"
 msgstr "Elten detected that you are using NVDA. To support some features of this screenreader, it is necessary to install Elten addon. Do you want to do it now?"
 
 #: Loading.rb:279
 #, fuzzy
 msgctxt "Loading"
-msgid "New version of NVDA Elten addon is available. The version you're using is no longer supported in this Elten release and may cause some errors. Do you want to update it now?"
+msgid "A new version of the Elten add-on for NVDA is available. The version you are using is no longer supported by this Elten release and may cause errors. Do you want to update it now?"
 msgstr "New version of NVDA Elten addon is available. The version you're using is no longer supported in this Elten release and may cause some errors. Do you want to update it now?"
 
 #: EAPI_External.rb:359
@@ -5043,12 +5043,12 @@ msgstr "Cartão de visita"
 
 #: EAPI_Common.rb:111
 msgctxt "EAPI_Common"
-msgid "Remove from contacts' list"
+msgid "Remove from contact list"
 msgstr "Remover da lista de contatos"
 
 #: EAPI_Common.rb:113
 msgctxt "EAPI_Common"
-msgid "Add to contacts' list"
+msgid "Add to contact list"
 msgstr "Adicionar à lista de contatos"
 
 #: EAPI_Common.rb:247
@@ -5103,7 +5103,7 @@ msgstr "Abra a pasta do tema sonoro no Windows Explorer"
 
 #: EAPI_Common.rb:331
 msgctxt "EAPI_Common"
-msgid "Describe the found error"
+msgid "Describe the error you found"
 msgstr "Descreva o erro encontrado"
 
 #: EAPI_Common.rb:347
@@ -5242,12 +5242,12 @@ msgstr "Digite o segundo do áudio que você deseja escutar."
 #: EAPI_Common.rb:531
 #, fuzzy
 msgctxt "EAPI_Common"
-msgid "I accept Elten license agreement, Terms and Conditions and Privacy Policy"
+msgid "I accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy"
 msgstr "I accept Elten license agreement, Terms and Conditions and Privacy Policy"
 
 #: EAPI_Common.rb:531
 msgctxt "EAPI_Common"
-msgid "I do not accept, exit"
+msgid "Decline and exit"
 msgstr "Eu não aceito, sair"
 
 #: EAPI_Common.rb:1097
@@ -5407,7 +5407,7 @@ msgstr "Por favor, aguarde, a Fonte de som está sendo baixada. Pode demorar um 
 
 #: EAPI_Common.rb:571
 msgctxt "EAPI_Common"
-msgid "Soundfont downloaded succesfully."
+msgid "SoundFont downloaded successfully."
 msgstr "Fonte de som baixada com sucesso."
 
 #: EAPI_Common.rb:1103
@@ -5429,7 +5429,7 @@ msgstr "Checked"
 #: EAPI_Common.rb:528
 #, fuzzy
 msgctxt "EAPI_Common"
-msgid "License agreement"
+msgid "Licence agreement"
 msgstr "License agreement"
 
 #: EAPI_Common.rb:529
@@ -5447,7 +5447,7 @@ msgstr "Privacy Policy"
 #: EAPI_Common.rb:549
 #, fuzzy
 msgctxt "EAPI_Common"
-msgid "Do you accept Elten license agreement, terms and conditions and privacy policy?"
+msgid "Do you accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy?"
 msgstr "Do you accept Elten license agreement, terms and conditions and privacy policy?"
 
 #, fuzzy
@@ -5511,7 +5511,7 @@ msgstr "Leia as alterações da barra de progresso."
 #: EAPI_Network.rb:127
 #, fuzzy
 msgctxt "EAPI_Network"
-msgid "The file already exists. Do you want to override it?"
+msgid "The file already exists. Do you want to overwrite it?"
 msgstr "The file already exists. Do you want to override it?"
 
 msgctxt "EAPI_UI"
@@ -5592,7 +5592,7 @@ msgstr "Igual"
 
 #: EAPI_Speech.rb:276
 msgctxt "EAPI_Speech"
-msgid "graav"
+msgid "grave"
 msgstr "graav"
 
 #: EAPI_Speech.rb:278
@@ -5738,7 +5738,7 @@ msgstr "Caixa de seleção"
 
 #: EAPI_Form.rb:730
 msgctxt "EAPI_Form"
-msgid "Edit box"
+msgid "Text field"
 msgstr "Caixa de edição"
 
 #: EAPI_Form.rb:731
@@ -5798,7 +5798,7 @@ msgstr "Nenhuma combinação encontrada."
 
 #: EAPI_Form.rb:442
 msgctxt "EAPI_Form"
-msgid "Repeated"
+msgid "Redone"
 msgstr "Repetido"
 
 #: EAPI_Form.rb:465
@@ -5855,7 +5855,7 @@ msgstr "All tags"
 #: EAPI_Form.rb:490
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid "The file already exists. Do you want to override it?"
+msgid "The file already exists. Do you want to overwrite it?"
 msgstr "The file already exists. Do you want to override it?"
 
 #: Bug.rb:10
@@ -5900,13 +5900,13 @@ msgstr "OK"
 
 #: SoundThemes.rb:103
 msgctxt "Soundthemes"
-msgid "Select theme to download"
+msgid "Select the theme to download"
 msgstr "Selecione o tema para baixar"
 
 #: SpeedTest.rb:10
 #, fuzzy
 msgctxt "SpeedTest"
-msgid "Unit to test"
+msgid "Component to test"
 msgstr "Unit to test"
 
 #: SpeedTest.rb:10
@@ -5942,7 +5942,7 @@ msgstr "Blogs list"
 #: SpeedTest.rb:10
 #, fuzzy
 msgctxt "SpeedTest"
-msgid "Number of attempts to perform"
+msgid "Number of test runs"
 msgstr "Number of attempts to perform"
 
 #: SpeedTest.rb:10
@@ -5977,7 +5977,7 @@ msgstr "Maximum time"
 #: SpeedTest.rb:31
 #, fuzzy
 msgctxt "SpeedTest"
-msgid "Performing test, please wait"
+msgid "Test in progress. Please wait."
 msgstr "Performing test, please wait"
 
 #: SoundCard.rb:14
@@ -6126,7 +6126,7 @@ msgstr "Waiting for an action to be completed"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Border of a listbox"
+msgid "Border of a list box"
 msgstr "Border of a listbox"
 
 #, fuzzy
@@ -6161,57 +6161,57 @@ msgstr "Dialog window opened"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Capitalized letter in an editbox"
+msgid "Uppercase letter in a text field"
 msgstr "Capitalized letter in an editbox"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Delete of a text in an editbox"
+msgid "Text deleted from a text field"
 msgstr "Delete of a text in an editbox"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "End of line in an editbox"
+msgid "End of line in a text field"
 msgstr "End of line in an editbox"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Marker of an editbox in a form"
+msgid "Marker for a text field in a form"
 msgstr "Marker of an editbox in a form"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Password character in an editbox"
+msgid "Password character in a text field"
 msgstr "Password character in an editbox"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Space in an editbox"
+msgid "Space in a text field"
 msgstr "Space in an editbox"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Compressed file on a files tree"
+msgid "Compressed file in a file tree"
 msgstr "Compressed file on a files tree"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Audio file on a files tree"
+msgid "Audio file in a file tree"
 msgstr "Audio file on a files tree"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Directory on a files tree"
+msgid "Directory in a file tree"
 msgstr "Directory on a files tree"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Document on a files tree"
+msgid "Document in a file tree"
 msgstr "Document on a files tree"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Text file on a files tree"
+msgid "Text file in a file tree"
 msgstr "Text file on a files tree"
 
 #, fuzzy
@@ -6221,7 +6221,7 @@ msgstr "Marker of a form"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Item with attachment on a listbox"
+msgid "Item with an attachment in a list box"
 msgstr "Item with attachment on a listbox"
 
 #, fuzzy
@@ -6236,7 +6236,7 @@ msgstr "Closed item (ie. thread) on a listbox"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "Focus move on a listbox"
+msgid "Focus moved in a list box"
 msgstr "Focus move on a listbox"
 
 #, fuzzy
@@ -6261,7 +6261,7 @@ msgstr "Unchecked item on a listbox"
 
 #, fuzzy
 msgctxt "Sounds"
-msgid "User signed in or Elten window focused"
+msgid "User signed in or the Elten window received focus"
 msgstr "User signed in or Elten window focused"
 
 #, fuzzy
@@ -6360,7 +6360,7 @@ msgstr "Signal"
 #: Sounds.rb:96
 #, fuzzy
 msgctxt "Sounds"
-msgid "Sounds guide, press space to play"
+msgid "Sound guide; press Space to play"
 msgstr "Sounds guide, press space to play"
 
 #: Sounds.rb:54

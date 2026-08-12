@@ -12,7 +12,7 @@ class Scene_Registration
 begin
 stamp = get_stamp("")
 rescue Exception
-alert(p_("Registration", "Accounts registrations are not possible with direct code execution, please use an official Elten launcher."))
+alert(p_("Registration", "Account registration is not available when running the code directly. Please use an official Elten launcher."))
 $scene=Scene_Loading.new
 return
 end
@@ -39,7 +39,7 @@ end
         alert(p_("Registration", "This username is forbidden."))
         name=""
       elsif availability == :exists
-        alert(p_("Registration", "User with this name already exists."))
+        alert(p_("Registration", "A user with this name already exists."))
         name=""
       elsif availability != :available
         alert(_("Error"))
@@ -53,9 +53,9 @@ end
     end
   pswconfirm = ""
   while password == "" or password != pswconfirm
-    password = input_text(p_("Registration", "Enter your password. It is recommended to use a strong password, which consists  of numbers and letters. Maximum length of the password is 256 characters."),flags: EditBox::Flags::Password, text: "", escapable: true)
+    password = input_text(p_("Registration", "Enter your password. We recommend using a strong password consisting of letters and numbers. The maximum password length is 256 characters."),flags: EditBox::Flags::Password, text: "", escapable: true)
     break if password==nil
-    pswconfirm = input_text(p_("Registration", "Reenter your password"),flags: EditBox::Flags::Password, text: "", escapable: true)
+    pswconfirm = input_text(p_("Registration", "Re-enter your password"),flags: EditBox::Flags::Password, text: "", escapable: true)
     break if pswconfirm==nil
     if pswconfirm != password
       alert(p_("Registration", "The entered passwords differ"))
@@ -66,7 +66,7 @@ end
     return
     end
   while mail.include?("@")==false || mail.include?(".")==false
-    mail = input_text(p_("Registration", "Enter your e-mail address. It will be used in case you forget your password and  to send important information."), flags: 0, text: "", escapable: true)
+    mail = input_text(p_("Registration", "Enter your email address. It will be used to reset a forgotten password and to send you important information."), flags: 0, text: "", escapable: true)
     break if mail==nil
   end
   if mail==nil
@@ -81,15 +81,15 @@ end
 begin
 result = EltenLink::Accounts.register(elten_link, name: name, password: password, mail: mail, stamp: stamp)
 if result.respond_to?(:activated?) && result.activated?
-  alert(p_("Registration", "Registration is successful, thank you. You can log in using your username and  password."))
+  alert(p_("Registration", "Registration was successful. Thank you. You can log in using your username and password."))
 else
-  alert(p_("Registration", "Registration is successful, thank you. An activation code has been sent to your e-mail address. You will need to enter it during login."))
+  alert(p_("Registration", "Registration was successful. Thank you. An activation code has been sent to your email address. You will need to enter it when logging in."))
 end
 rescue EltenLink::Error => e
   if e.code.to_s == "accounts.name_forbidden"
     alert(p_("Registration", "This username is forbidden."))
   elsif e.code.to_s == "accounts.name_exists"
-    alert(p_("Registration", "Account with the specified username already exists."))
+    alert(p_("Registration", "An account with the specified username already exists."))
   elsif e.code.to_s == "accounts.disposable_email"
     alert(p_("Registration", "Disposable e-mail addresses cannot be used for registration. Please use a permanent e-mail address."))
   elsif e.code.to_s == "network_error"

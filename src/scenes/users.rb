@@ -24,7 +24,7 @@ class Scene_Users
         $scene = Scene_Main.new
         return
         when -3
-          alert(_("You haven't permissions to do this"))
+          alert(_("You do not have permission to do this"))
           $scene = Scene_Main.new
           return
     end

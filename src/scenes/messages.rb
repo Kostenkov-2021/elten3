@@ -266,8 +266,8 @@ else
 }
 end
 end
-s=p_("Messages", "Set all messages as a default view")
-s=p_("Messages", "Set subjects as a default view") if LocalConfig['MessagesDefaultToAllMessages', type: :bool]
+s=p_("Messages", "Set all messages as the default view")
+s=p_("Messages", "Set subjects as the default view") if LocalConfig['MessagesDefaultToAllMessages', type: :bool]
 menu.option(s) {
 LocalConfig['MessagesDefaultToAllMessages'] = !LocalConfig['MessagesDefaultToAllMessages', type: :bool]
 alert(_("Saved"))
@@ -407,14 +407,14 @@ if form.fields[2]!=nil and form.fields[2].pressed?
     end
   def deleteuser(u)
                          return if u.user[0..0]=="["
-  confirm(p_("Messages", "Are you sure you want to delete all messages with user %{user}")%{:user=>u.user}) do
+  confirm(p_("Messages", "Are you sure you want to delete all messages exchanged with %{user}?")%{:user=>u.user}) do
     begin
       EltenLink::Messages.delete_user(elten_link, u.user)
     rescue EltenLink::Error
       alert(_("Error"))
             return
     end
-    alert(p_("Messages", "All conversations with user have been deleted."))
+    alert(p_("Messages", "All conversations with the user have been deleted."))
                         @sel_users.disable_item(@sel_users.index)
                         @sel_users.focus
       end
@@ -515,7 +515,7 @@ end
 def deleteconversation(c)
   return if @user==nil
                          return if @user[0..0]=="["
-  confirm(p_("Messages", "Are you sure you want to delete conversation %{conversationname} with user %{user}")%{:conversationname=>c.subject, :user=>@user}) do
+  confirm(p_("Messages", "Are you sure you want to delete the conversation %{conversationname} with %{user}?")%{:conversationname=>c.subject, :user=>@user}) do
     begin
       EltenLink::Messages.delete_conversation(elten_link, user: @user, subject: c.subject)
     rescue EltenLink::Error
@@ -722,7 +722,7 @@ elsif @form_messages.fields[3].text!="" and @form_messages.fields[4]==nil
       else
       @form_messages.index=3
       @form_messages.fields[3].set_text("")
-      alert(p_("Messages", "Message has been sent"))
+      alert(p_("Messages", "The message has been sent"))
       end
 load_messages(@messages_user, @messages_subject, @messages_sp, @messages_limit, true)
       end
@@ -1070,7 +1070,7 @@ f.delete_audio(true)
 waiting_end
 end
          if sent
-           alert(p_("Messages", "Message has been sent"))
+           alert(p_("Messages", "The message has been sent"))
            if @scene != false and @scene != true and @scene.is_a?(Integer) == false and @scene.is_a?(Array)==false
            $scene = @scene
          else
@@ -1086,7 +1086,7 @@ def message_send_error(error)
   when "users.not_found", "messages.receiver_not_found"
     p_("Messages", "The recipient cannot be found.")
   when /forbidden|permission/
-    _("You haven't permissions to do this")
+    _("You do not have permission to do this")
   else
     error.message
   end

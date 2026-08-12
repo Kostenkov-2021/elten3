@@ -29,14 +29,14 @@ show(package)
   end
     def get_courier
     return Struct_PremiumPackages_PremiumPackage.new("courier", p_("PremiumPackages", "Courier"), [
-    p_("PremiumPackages", "Following forums in not moderated groups"),
-    p_("PremiumPackages", "Disabling signatures visibility"),
+    p_("PremiumPackages", "Following forums in groups you do not moderate"),
+    p_("PremiumPackages", "Ability to hide signatures"),
     p_("PremiumPackages", "Thread marking and bookmarks"),
-    p_("PremiumPackages", "Private messages protection against erroneous removal"),
+    p_("PremiumPackages", "Protection of private messages against accidental deletion"),
     p_("PremiumPackages", "History of mentions and replying to mentions"),
-    p_("PremiumPackages", "Groups pinning"),
+    p_("PremiumPackages", "Pinning groups"),
     p_("PremiumPackages", "Following blog posts"),
-        p_("PremiumPackages", "Extended limit of attachment size in private messages to 32MB"),
+        p_("PremiumPackages", "Larger private-message attachments, up to 32 MB"),
     p_("PremiumPackages", "Attaching polls to private messages"),
     p_("PremiumPackages", "Using Markdown in forum posts"),
     p_("PremiumPackages", "Reading transcriptions of audio posts in recommended groups"),
@@ -44,8 +44,8 @@ show(package)
   end
   def get_audiophile
     return Struct_PremiumPackages_PremiumPackage.new("audiophile", p_("PremiumPackages", "Audiophile"), [
-        p_("PremiumPackages", "Lifting the 2-minute limit for private voice messages"),
-    p_("PremiumPackages", "Lifting the 32kbps quality limit in private voice messages"),
+        p_("PremiumPackages", "Removal of the two-minute limit for private voice messages"),
+    p_("PremiumPackages", "Removal of the 32 kbps quality limit for private voice messages"),
     p_("PremiumPackages", "Recording conferences"),
     p_("PremiumPackages", "Creation of up to three public channels in conferences"),
     p_("PremiumPackages", "Creation of group channels in conferences"),
@@ -58,10 +58,10 @@ show(package)
   end
   def get_scribe
     return Struct_PremiumPackages_PremiumPackage.new("scribe", p_("PremiumPackages", "Scribe"), [
-p_("PremiumPackages", "Creation of second and following blogs"),
+p_("PremiumPackages", "Creation of additional blogs"),
 p_("PremiumPackages", "Pinning blogs to groups"),
 p_("PremiumPackages", "Spell checking"),
-p_("PremiumPackages", "Changing of blog address"),
+p_("PremiumPackages", "Changing the blog address"),
 p_("PremiumPackages", "Option to disable request for support on blogs"),
 p_("PremiumPackages", "Informing about new blog followers"),
 p_("PremiumPackages", "Translator"),
@@ -71,29 +71,29 @@ p_("PremiumPackages", "Blog posts scheduling"),
   def get_director
     return Struct_PremiumPackages_PremiumPackage.new("director", p_("PremiumPackages", "Director"), [
     p_("PremiumPackages", "Conference streaming to shoutcast servers"),
-p_("PremiumPackages", "Setting VST plugins on specific users"),
+p_("PremiumPackages", "Applying VST plug-ins to individual users"),
 p_("PremiumPackages", "Placing own sceneries in channels"),
 p_("PremiumPackages", "Creating conference-mode channels, where only administrators and allowed users can speak"),
-p_("PremiumPackages", "Setting different output soundcard for conferences than the one selected in Elten"),
-        p_("PremiumPackages", "Changing channels dimensions"),
+p_("PremiumPackages", "Selecting a separate output sound card for conferences"),
+        p_("PremiumPackages", "Changing channel dimensions"),
 ])
 end
 def get_orchestra
     return Struct_PremiumPackages_PremiumPackage.new("orchestra", p_("PremiumPackages", "Orchestra package"), [
-    p_("PremiumPackages", "Includes profits from courier, audiophile, scribe and director"),
+    p_("PremiumPackages", "Includes the benefits of Courier, Audiophile, Scribe and Director"),
   ])
 end
   def get_sponsor
     return Struct_PremiumPackages_PremiumPackage.new("sponsor", p_("PremiumPackages", "Sponsorship package"), [
-    p_("PremiumPackages", "Includes profits from all other packages, including future packages"),
-    p_("PremiumPackages", "Special assigning of user on lists and forum"),
-    p_("PremiumPackages", "Entry in the list of sponsors"),
+    p_("PremiumPackages", "Includes the benefits of all other packages, including future packages"),
+    p_("PremiumPackages", "Special recognition for the user in lists and on the forum"),
+    p_("PremiumPackages", "Listing in the sponsors list"),
   ])
 end
 def context(menu)
     if @packages.size>0
       package=@packages[@sel.index]
-      menu.option(p_("PremiumPackages", "Show profits")) {
+      menu.option(p_("PremiumPackages", "Show benefits")) {
 show(package)
 @sel.focus
       }
@@ -148,7 +148,7 @@ end
 sactivate=p_("PremiumPackages", "Activate package using code")
           sactivate=p_("PremiumPackages", "Extend package using code") if package.totime>0
     form=Form.new([
-    lst_profits = ListBox.new(package.profits, header: p_("PremiumPackages", "Profits of package %{name}")%{:name=>package.name}),
+    lst_profits = ListBox.new(package.profits, header: p_("PremiumPackages", "Benefits of the %{name} package")%{:name=>package.name}),
     btn_buy = Button.new(sbuy),
     btn_convert = Button.new(p_("PremiumPackages", "Convert")),
     btn_buycode = Button.new(p_("PremiumPackages", "Buy premium codes for use by any user")),
@@ -251,12 +251,12 @@ monthlyprice=c.monthlyprice.to_s+" "+@currency if c.monthlyprice!=nil
       def buy(package, convert=false)
         return if convert && !confirm(p_("PremiumPackages", "Regardless of the remaining duration of other packages, they will be replaced by the selected package. This package will be activated for a period of one year. The remaining period for other packages will be deducted from the package price. Do you want to continue?"))
         if package!=nil && !package.available
-          alert(p_("PremiumPackages", "This package is currently unavailable. Try to buy it in the next month."))
+          alert(p_("PremiumPackages", "This package is currently unavailable. Try to buy it next month."))
           return
         end
         type = 0
         if package!=nil && package.monthlyprice!=nil && package.monthlyprice!=0 && !convert
-          type = selector([p_("PremiumPackages", "One year") + ": " + package.price.to_s + " " + @currency, p_("PremiumPackage", "One month") + ": " + package.monthlyprice.to_s + " " + @currency], header: p_("PremiumPackages", "How long do you want to buy this package for?"), start_index: 0, cancel_index: -1)
+          type = selector([p_("PremiumPackages", "One year") + ": " + package.price.to_s + " " + @currency, p_("PremiumPackage", "One month") + ": " + package.monthlyprice.to_s + " " + @currency], header: p_("PremiumPackages", "For how long do you want to buy this package?"), start_index: 0, cancel_index: -1)
         end
         return if type==-1
         accepted=false
@@ -289,8 +289,8 @@ The granting of a premium package does not constitute a commitment or a commerci
        end
        dict={
        'transfer'=>p_("PremiumPackages", "Traditional bank transfer"),
-       'paypal'=>p_("PremiumPackages", "Paypal (using Paypal account or credit/debit card)"),
-       'p24'=>p_("PremiumPackages", "Przelewy24 (fast transfer from polish banks)"),
+       'paypal'=>p_("PremiumPackages", "PayPal (using a PayPal account or credit/debit card)"),
+       'p24'=>p_("PremiumPackages", "Przelewy24 (fast transfer from Polish banks)"),
        }
        selt=methods.map{|m|d=m['id'];dict[d]||d}
        l=selector(selt, header: p_("PremiumPackages", "Select payment method"), start_index: 0, cancel_index: -1)
@@ -321,13 +321,13 @@ info+="\n"+p_("PremiumPackages", "Please note that if you transfer a larger amou
 
 In order to reduce the processing time of your payment, you can forward the transfer confirmation to the Council of Elders.")
 info+="\n\n"
-info+=p_("PremiumPackages", "National transfer details (from Poland):
+info+=p_("PremiumPackages", "Domestic bank transfer details (from Poland):
 %{holder}
 Address: %{address}
 Account number: %{placcount}
 
 Additional data for foreign transfers:
-IBAN number: %{iban}
+IBAN: %{iban}
 BIC / SWIFT: %{swift}
 Bank address: %{bankaddress}
 Sort code: %{sortcode}")%{:holder=>transfer['holder'], :address=>transfer['address'], :placcount=>transfer['placcount'], :iban=>transfer['iban'], :swift=>transfer['swift'], :bankaddress=>transfer['bankaddress'], :sortcode=>transfer['sortcode']}
@@ -367,7 +367,7 @@ form=Form.new([
             per=0
             per+=method['plus'] if method['plus'].is_a?(Numeric)
             per+=method['perc_plus']*price/100.0 if method['perc_plus'].is_a?(Numeric)
-      return if (per!=0 && !confirm(p_("PremiumPackages", "You will be charged a %{amount} commission for the selected payment method. Do you want to continue?")%{:amount=>per.to_s+" "+@currency}))
+      return if (per!=0 && !confirm(p_("PremiumPackages", "You will be charged a processing fee of %{amount} for the selected payment method.")%{:amount=>per.to_s+" "+@currency}))
       begin
         url=EltenLink::Payments.pay(elten_link, method: method['id'], package: payment_package, currency: @currency, time: payment_time, amount: payment_amount)
       rescue EltenLink::Error
@@ -404,20 +404,20 @@ form=Form.new([
             per=0
             per+=method['plus'] if method['plus'].is_a?(Numeric)
             per+=method['perc_plus']*price/100.0 if method['perc_plus'].is_a?(Numeric)
-      return if (per!=0 && !confirm(p_("PremiumPackages", "You will be charged a %{amount} commission for the selected payment method. Do you want to continue?")%{:amount=>per.to_s+" "+@currency}))
-code = input_text(p_("PremiumPackages", "Enter blik code"), flags: EditBox::Flags::Numbers, text: "", escapable: true, permitted_characters: [], denied_characters: [], max_length: 6)
+      return if (per!=0 && !confirm(p_("PremiumPackages", "You will be charged a processing fee of %{amount} for the selected payment method.")%{:amount=>per.to_s+" "+@currency}))
+code = input_text(p_("PremiumPackages", "Enter the BLIK code"), flags: EditBox::Flags::Numbers, text: "", escapable: true, permitted_characters: [], denied_characters: [], max_length: 6)
 return if code==nil
       begin
         EltenLink::Payments.pay(elten_link, method: method['id'], package: payment_package, currency: @currency, time: payment_time, amount: payment_amount, code: code)
       rescue EltenLink::Error
         alert(_("Error"))
       else
-alert(p_("PremiumPackages", "Payment has been ordered. Additional confirmation may be required. The order will be processed once the payment is complete."))
+alert(p_("PremiumPackages", "The payment has been initiated. Additional confirmation may be required. The order will be processed once the payment is complete."))
         end
       end
     end
     def activate(package)
-      code=input_text(p_("PremiumPackages", "Type code to activate this package"), flags: 0, text: "", escapable: true)
+      code=input_text(p_("PremiumPackages", "Enter the code to activate this package"), flags: 0, text: "", escapable: true)
       return if code==nil
       begin
         duration=EltenLink::PremiumPackages.test_code(elten_link, code)
@@ -426,7 +426,7 @@ alert(p_("PremiumPackages", "Payment has been ordered. Additional confirmation m
         when -4
           alert(p_("PremiumPackages", "Code not found."))
           when -5
-            alert(p_("PremiumPackages", "This code has been already used."))
+            alert(p_("PremiumPackages", "This code has already been used."))
       else
         alert(_("Error"))
       end
@@ -435,7 +435,7 @@ alert(p_("PremiumPackages", "Payment has been ordered. Additional confirmation m
       tim=package.totime
       tim=Time.now.to_i if tim==0
       tim+=duration
-      confirm(p_("PremiumPackages", "The package %{name} will be active until %{time}. This code will be used up and you will not be able to use it again. Do you want to continue?")%{:name=>package.name, :time=>format_date(Time.at(tim))}) {
+      confirm(p_("PremiumPackages", "The package %{name} will be active until %{time}. This code will be redeemed and you will not be able to use it again. Do you want to continue?")%{:name=>package.name, :time=>format_date(Time.at(tim))}) {
       begin
         EltenLink::PremiumPackages.use_code(elten_link, package: package.package, code: code)
       rescue EltenLink::Error

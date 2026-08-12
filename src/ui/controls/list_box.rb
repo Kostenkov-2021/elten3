@@ -489,7 +489,7 @@ end
 
 def multiselection_limit_exceeded
   play_sound("border")
-  alert(np_("EAPI_Form", "You can heck only %{count} item", "You can check only %{count} items", @limit)%{:count=>@limit})
+  alert(np_("EAPI_Form", "You can check only %{count} item", "You can check only %{count} items", @limit)%{:count=>@limit})
 end
 
 def select_multiselection_indices(indices)
@@ -840,7 +840,7 @@ end
             remember_late_focus_states(pos) if spk
             if @header!=nil and @header!=""
             sp = text_utf8(header || @header)
-            sp+=" (#{text_utf8(p_("EAPI_Form", "Multiselection list"))})" if @multi==true and Configuration.controlspresentation!=:sound_only
+            sp+=" (#{text_utf8(p_("EAPI_Form", "Multi-select list"))})" if @multi==true and Configuration.controlspresentation!=:sound_only
                             sp+=": " if !" .:?!,".include?(sp[-1..-1] || "")
               sp+=" " if sp[-1..-1]!=" "
               end
@@ -955,13 +955,13 @@ def key_processed(k)
   def tips
     tps=[]
         if @multi
-      tps.push(p_("EAPI_Form", "Use space to select or unselect items"))
+      tps.push(p_("EAPI_Form", "Press Space to select or deselect items"))
       end
     if @tagged
-      tps.push(p_("EAPI_Form", "Use shift with up/down arrows to filter content by tags"))
+      tps.push(p_("EAPI_Form", "Press Shift+Up/Down Arrow to filter content by tags"))
       end
-    tps.push(p_("EAPI_Form", "Press CTRL + up arrow to read item index").sub(/CTRL/i, main_modifier_name))
-    tps.push(p_("EAPI_Form", "Press CTRL + down arrow to read count of items").sub(/CTRL/i, main_modifier_name))
+    tps.push(p_("EAPI_Form", "Press Ctrl+Up Arrow to hear the item number").sub(/CTRL/i, main_modifier_name))
+    tps.push(p_("EAPI_Form", "Press Ctrl+Down Arrow to hear the number of items").sub(/CTRL/i, main_modifier_name))
     return tps
     end
 end

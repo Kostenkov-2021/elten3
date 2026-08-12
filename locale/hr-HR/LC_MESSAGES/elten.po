@@ -320,13 +320,13 @@ msgstr "Mikrofon nepromjenjiv"
 #: ../agent/quicknav.rb:326 ../src/Scenes/Conference.rb:975
 #, fuzzy
 msgctxt "Conference"
-msgid "Roll a 6-sided dice"
+msgid "Roll a 6-sided die"
 msgstr "Zarolajte 6-jednostrane kockice"
 
 #: ../agent/quicknav.rb:329 ../src/Scenes/Conference.rb:976
 #, fuzzy
 msgctxt "Conference"
-msgid "Roll a custom dice"
+msgid "Roll a custom die"
 msgstr "Zarolajte prilagođene kockice"
 
 #: ../agent/quicknav.rb:331 ../src/Scenes/Conference.rb:1246
@@ -366,7 +366,7 @@ msgstr "Uklanjanje audio streama"
 #: ../agent/quicknav.rb:358 ../src/Scenes/Conference.rb:962
 #, fuzzy
 msgctxt "Conference"
-msgid "Disable push to talk"
+msgid "Disable push-to-talk"
 msgstr "Onemogući guranje u razgovor"
 
 #: ../agent/quicknav.rb:358 ../src/Scenes/Conference.rb:961
@@ -374,7 +374,7 @@ msgstr "Onemogući guranje u razgovor"
 #| msgctxt "Settings"
 #| msgid "Enable auto log in"
 msgctxt "Conference"
-msgid "Enable push to talk"
+msgid "Enable push-to-talk"
 msgstr "Uključi automatsku prijavu"
 
 #: ../agent/quicknav.rb:362
@@ -628,13 +628,13 @@ msgstr ""
 #: ../src/EAPI/Documents.rb:3
 #, fuzzy
 msgctxt "License"
-msgid "Elten source code can be found at GitHub:"
+msgid "Elten source code can be found on GitHub:"
 msgstr "Elten izvorni kod možete pronaći na GitHub:"
 
 #: ../src/EAPI/Documents.rb:689
 #, fuzzy
 msgctxt "Documentation"
-msgid "Current Elten modifier"
+msgid "Current Invisible Interface modifier key"
 msgstr "Trenutna latencija"
 
 #: ../src/FeedViewer[Scenes].rb:59
@@ -737,7 +737,7 @@ msgstr "Poruka"
 
 #: ../src/IIKeys[Scenes].rb:4
 msgctxt "IIKeys"
-msgid "Navigate up or down on lists"
+msgid "Move up or down through lists"
 msgstr ""
 
 #: ../src/IIKeys[Scenes].rb:5
@@ -765,7 +765,7 @@ msgstr ""
 
 #: ../src/IIKeys[Scenes].rb:9
 msgctxt "IIKeys"
-msgid "Cancel speech and stop currently played audio"
+msgid "Cancel speech and stop the audio that is currently playing"
 msgstr ""
 
 #: ../src/IIKeys[Scenes].rb:10
@@ -802,7 +802,7 @@ msgstr "Objavljeno"
 #| msgctxt "Settings"
 #| msgid "Interface"
 msgctxt "IIKeys"
-msgid "Invisible Interface Hotkeys"
+msgid "Invisible Interface keyboard shortcuts"
 msgstr "Sučelje"
 
 #: ../src/Scenes/Conference.rb:35
@@ -839,7 +839,7 @@ msgstr "Close"
 #: ../src/Scenes/Conference.rb:43
 #, fuzzy
 msgctxt "Conference"
-msgid "Use arrows to move in the channel space"
+msgid "Use the arrow keys to move around the channel space"
 msgstr "Koristite strelice za kretanje u prostoru kanala"
 
 #: ../src/Scenes/Conference.rb:56
@@ -867,7 +867,7 @@ msgstr "Spremi trenutnu postavku"
 #: ../src/Scenes/Conference.rb:80
 #, fuzzy
 msgctxt "Conference"
-msgid "Hold spacebar to whisper to user"
+msgid "Hold the Space bar to whisper to the user"
 msgstr "Držite razmaknu traku da šapnete korisniku"
 
 #: ../src/Scenes/Conference.rb:84
@@ -953,8 +953,8 @@ msgstr "U redu"
 #: ../src/Scenes/Conference.rb:175
 #, fuzzy
 msgctxt "Conference"
-msgid "%{user} has rolled %{value} dot on a %{count}-sided dice"
-msgid_plural "%{user} has rolled %{value} dots on a %{count}-sided dice"
+msgid "%{user} has rolled a %{value} on a %{count}-sided die"
+msgid_plural "%{user} has rolled a %{value} on a %{count}-sided die"
 msgstr[0] "%{user} je %{value} točku na %{count} kockice"
 msgstr[1] ""
 msgstr[2] ""
@@ -1040,7 +1040,7 @@ msgstr "Promjeni poziciju foruma"
 #: ../src/Scenes/Conference.rb:300 ../src/Scenes/Conference.rb:434
 #, fuzzy
 msgctxt "Conference"
-msgid "Space Virtualization"
+msgid "Spatial audio mode"
 msgstr "Virtualizacija prostora"
 
 #: ../src/Scenes/Conference.rb:304 ../src/Scenes/Conference.rb:1020
@@ -1224,7 +1224,7 @@ msgstr "Omogućite čekaonicu"
 #: ../src/Scenes/Conference.rb:436
 #, fuzzy
 msgctxt "Conference"
-msgid "Store as permanent channel"
+msgid "Make this a permanent channel"
 msgstr "Pohranite kao trajni kanal"
 
 #: ../src/Scenes/Conference.rb:437
@@ -1399,7 +1399,7 @@ msgstr "Spremi"
 #: ../src/Scenes/Conference.rb:698 ../src/Scenes/Conference.rb:725
 #, fuzzy
 msgctxt "Conference"
-msgid "Saving began"
+msgid "Saving started"
 msgstr "Štednja je počela"
 
 #: ../src/Scenes/Conference.rb:707 ../src/Scenes/Conference.rb:734
@@ -1431,13 +1431,13 @@ msgstr "Desno"
 #: ../src/Scenes/Conference.rb:772
 #, fuzzy
 msgctxt "Conference"
-msgid "Set push to talk shortcut"
+msgid "Set push-to-talk shortcut"
 msgstr "Postavite pritisni na razgovor prečac"
 
 #: ../src/Scenes/Conference.rb:774
 #, fuzzy
 msgctxt "Conference"
-msgid "Push to talk shortcut"
+msgid "Push-to-talk shortcut"
 msgstr "Pritisni na razgovor prečac"
 
 #: ../src/Scenes/Conference.rb:783
@@ -1507,25 +1507,25 @@ msgstr "Status"
 #: ../src/Scenes/Conference.rb:883
 #, fuzzy
 msgctxt "Conference"
-msgid "Remove soundcard stream"
+msgid "Remove sound card stream"
 msgstr "Uklanjanje streama zvučne kartice"
 
 #: ../src/Scenes/Conference.rb:885
 #, fuzzy
 msgctxt "Conference"
-msgid "Stream from soundcard"
+msgid "Stream from sound card"
 msgstr "Strujanje sa zvučne kartice"
 
 #: ../src/Scenes/Conference.rb:890
 #, fuzzy
 msgctxt "Conference"
-msgid "Select soundcard to stream"
+msgid "Select sound card to stream"
 msgstr "Odaberite zvučnu karticu za streaming"
 
 #: ../src/Scenes/Conference.rb:891
 #, fuzzy
 msgctxt "Conference"
-msgid "Turn on the listening"
+msgid "Monitor this input"
 msgstr "Uključite slušanje"
 
 #: ../src/Scenes/Conference.rb:892
@@ -1564,7 +1564,7 @@ msgstr "Streaming"
 #| msgctxt "Main"
 #| msgid "Change hotkey"
 msgctxt "Conference"
-msgid "Change volumes"
+msgid "Adjust volumes"
 msgstr "Promijeni tipkovnički prečac"
 
 #: ../src/Scenes/Conference.rb:944
@@ -1594,7 +1594,7 @@ msgstr "Spremite zasebne streamove (eksperimentalne)"
 #: ../src/Scenes/Conference.rb:959
 #, fuzzy
 msgctxt "Conference"
-msgid "Push to talk"
+msgid "Push-to-talk"
 msgstr "Pritisni za razgovor"
 
 #: ../src/Scenes/Conference.rb:974
@@ -1623,7 +1623,7 @@ msgstr "Pokaži rezultate"
 #| msgctxt "Account"
 #| msgid "Change password"
 msgctxt "Conference"
-msgid "Change output soundcard"
+msgid "Change output sound card"
 msgstr "Promijeni lozinku"
 
 #: ../src/Scenes/Conference.rb:984
@@ -1631,7 +1631,7 @@ msgstr "Promijeni lozinku"
 #| msgctxt "Blog"
 #| msgid "User not found"
 msgctxt "Conference"
-msgid "Use Elten soundcard"
+msgid "Use Elten sound card"
 msgstr "Korisnik nije pronađen"
 
 #: ../src/Scenes/Conference.rb:987
@@ -1639,7 +1639,7 @@ msgstr "Korisnik nije pronađen"
 #| msgctxt "Sounds"
 #| msgid "Select new sound"
 msgctxt "Conference"
-msgid "Select soundcard"
+msgid "Select sound card"
 msgstr "Izaberi novi zvuk"
 
 #: ../src/Scenes/Conference.rb:988
@@ -1901,7 +1901,7 @@ msgstr "Prenesi administratorska prava"
 
 #: ../src/Scenes/Documentation.rb:10
 msgctxt "Documentation"
-msgid "License agreement"
+msgid "Licence agreement"
 msgstr "Ugovor o licenciranju"
 
 #: ../src/Scenes/Documentation.rb:13
@@ -1979,13 +1979,13 @@ msgstr "Dostavljač"
 #: ../src/Scenes/PremiumPackages.rb:26
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Following forums in not moderated groups"
+msgid "Following forums in groups you do not moderate"
 msgstr "Praćenje foruma u ne moderiratnih skupina"
 
 #: ../src/Scenes/PremiumPackages.rb:27
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Disabling signatures visibility"
+msgid "Ability to hide signatures"
 msgstr "Onemogućivanje vidljivosti potpisa"
 
 #: ../src/Scenes/PremiumPackages.rb:28
@@ -1997,7 +1997,7 @@ msgstr "Označavanje niti i oznake"
 #: ../src/Scenes/PremiumPackages.rb:29
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Private messages protection against erroneous removal"
+msgid "Protection of private messages against accidental deletion"
 msgstr "Privatne poruke zaštita od pogrešnog uklanjanja"
 
 #: ../src/Scenes/PremiumPackages.rb:30
@@ -2009,7 +2009,7 @@ msgstr "Povijest spominjanja i odgovaranja na spominjanja"
 #: ../src/Scenes/PremiumPackages.rb:31
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Groups pinning"
+msgid "Pinning groups"
 msgstr "Grupe zapinjanje"
 
 #: ../src/Scenes/PremiumPackages.rb:32
@@ -2023,7 +2023,7 @@ msgstr "Sljeđeni blogovi"
 #: ../src/Scenes/PremiumPackages.rb:33
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Extended limit of attachment size in private messages to 32MB"
+msgid "Larger private-message attachments, up to 32 MB"
 msgstr "Prošireno ograničenje veličine privitaka u privatnim porukama na 32MB"
 
 #: ../src/Scenes/PremiumPackages.rb:34
@@ -2053,13 +2053,13 @@ msgstr "Preuzmi zvučne teme"
 #: ../src/Scenes/PremiumPackages.rb:40
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Lifting the 2-minute limit for private voice messages"
+msgid "Removal of the two-minute limit for private voice messages"
 msgstr "Ukidanje ograničenja od 2 minute za privatne glasovne poruke"
 
 #: ../src/Scenes/PremiumPackages.rb:41
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Lifting the 32kbps quality limit in private voice messages"
+msgid "Removal of the 32 kbps quality limit for private voice messages"
 msgstr ""
 "Ukidanje ograničenja kvalitete od 32 kbps u privatnim glasovnim porukama"
 
@@ -2098,9 +2098,7 @@ msgstr "Promjena DIMENZIJA HRTF-a"
 #: ../src/Scenes/PremiumPackages.rb:47
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid ""
-"Setting different output soundcard for conferences than the one selected in "
-"Elten"
+msgid "Selecting a separate output sound card for conferences"
 msgstr ""
 "Postavljanje različite izlazne zvučne kartice za konferencije od one "
 "odabrane u Eltenu"
@@ -2116,7 +2114,7 @@ msgstr "Pisar"
 #| msgctxt "Sounds"
 #| msgid "Notification: new post on a followed blog"
 msgctxt "PremiumPackages"
-msgid "Creation of second and following blogs"
+msgid "Creation of additional blogs"
 msgstr "Obavijest: novi post na praćenom blogu"
 
 #: ../src/Scenes/PremiumPackages.rb:54
@@ -2134,7 +2132,7 @@ msgstr "Provjeru pravopisa"
 #: ../src/Scenes/PremiumPackages.rb:56
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Changing of blog address"
+msgid "Changing the blog address"
 msgstr "Upiši naziv stvorenog bloga."
 
 #: ../src/Scenes/PremiumPackages.rb:57
@@ -2180,13 +2178,13 @@ msgstr "Uključuje zaradu od kurira, audiofila i pisara"
 #: ../src/Scenes/PremiumPackages.rb:66
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Special assigning of user on lists and forum"
+msgid "Special recognition for the user in lists and on the forum"
 msgstr "Posebno dodjeljivanje korisnika na popise i forum"
 
 #: ../src/Scenes/PremiumPackages.rb:67
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Entry in the list of sponsors"
+msgid "Listing in the sponsors list"
 msgstr "Unos na popis sponzora"
 
 #: ../src/Scenes/PremiumPackages.rb:73
@@ -2194,7 +2192,7 @@ msgstr "Unos na popis sponzora"
 #| msgctxt "Polls"
 #| msgid "Show results"
 msgctxt "PremiumPackages"
-msgid "Show profits"
+msgid "Show benefits"
 msgstr "Pokaži rezultate"
 
 #: ../src/Scenes/PremiumPackages.rb:78 ../src/Scenes/PremiumPackages.rb:113
@@ -2239,7 +2237,7 @@ msgstr "Kupite premium kodove za korištenje od strane bilo kojeg korisnika"
 #: ../src/Scenes/PremiumPackages.rb:118
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Profits of package %{name}"
+msgid "Benefits of the %{name} package"
 msgstr "Dobit paketa %{name}"
 
 #: ../src/Scenes/PremiumPackages.rb:123
@@ -2275,7 +2273,7 @@ msgstr ""
 #: ../src/Scenes/PremiumPackages.rb:206
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "This package is currently unavailable. Try to buy it in the next month."
+msgid "This package is currently unavailable. Try to buy it next month."
 msgstr ""
 "Ovaj paket trenutno nije dostupan. Pokušajte ga kupiti u sljedećih mjesec "
 "dana."
@@ -2325,7 +2323,7 @@ msgstr "Tradicionalni bankovni prijenos"
 #: ../src/Scenes/PremiumPackages.rb:237
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Paypal (using Paypal account or credit/debit card)"
+msgid "PayPal (using a PayPal account or credit/debit card)"
 msgstr "PayPal (korištenje PayPal računa ili kreditne/debitne kartice)"
 
 #: ../src/Scenes/PremiumPackages.rb:240
@@ -2381,17 +2379,7 @@ msgstr ""
 #: ../src/Scenes/PremiumPackages.rb:255
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid ""
-"National transfer details (from Poland):\n"
-"%{holder}\n"
-"Address: %{address}\n"
-"Account number: %{placcount}\n"
-"\n"
-"Additional data for foreign transfers:\n"
-"IBAN number: %{iban}\n"
-"BIC / SWIFT: %{swift}\n"
-"Bank address: %{bankaddress}\n"
-"Sort code: %{sortcode}"
+msgid "Domestic bank transfer details (from Poland):\n%{holder}\nAddress: %{address}\nAccount number: %{placcount}\n\nAdditional data for foreign transfers:\nIBAN: %{iban}\nBIC / SWIFT: %{swift}\nBank address: %{bankaddress}\nSort code: %{sortcode}"
 msgstr ""
 "Pojedinosti o nacionalnom transferu (iz Poljske):\n"
 "%{holder}\n"
@@ -2433,7 +2421,7 @@ msgstr ""
 #: ../src/Scenes/PremiumPackages.rb:311
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid "Type code to activate this package"
+msgid "Enter the code to activate this package"
 msgstr "Upišite kôd za aktivaciju ovog paketa"
 
 #: ../src/Scenes/PremiumPackages.rb:317
@@ -2449,15 +2437,13 @@ msgstr "Korisnik nije pronađen"
 #| msgctxt "Forum"
 #| msgid "This file has been already attached"
 msgctxt "PremiumPackages"
-msgid "This code has been already used."
+msgid "This code has already been used."
 msgstr "Ova datoteka je već dodana"
 
 #: ../src/Scenes/PremiumPackages.rb:328
 #, fuzzy
 msgctxt "PremiumPackages"
-msgid ""
-"The package %{name} will be active until %{time}. This code will be used up "
-"and you will not be able to use it again. Do you want to continue?"
+msgid "The package %{name} will be active until %{time}. This code will be redeemed and you will not be able to use it again. Do you want to continue?"
 msgstr ""
 "Paket će %{name} biti aktivan do %{time}. Ovaj kôd će se koristiti i nećete "
 "ga moći ponovno koristiti. Želiš li nastaviti?"
@@ -2521,12 +2507,12 @@ msgstr "Uloge ovog korisnika"
 
 #: ../src/eapi/Common.rb:124
 msgctxt "EAPI_Common"
-msgid "Remove from contacts' list"
+msgid "Remove from contact list"
 msgstr "Izbriši iz kontakata"
 
 #: ../src/eapi/Common.rb:126
 msgctxt "EAPI_Common"
-msgid "Add to contacts' list"
+msgid "Add to contact list"
 msgstr "Dodaj u kontakte"
 
 #: ../src/eapi/Common.rb:131
@@ -2562,7 +2548,7 @@ msgstr "Nema ničeg novog"
 
 #: ../src/eapi/Common.rb:333
 msgctxt "EAPI_Common"
-msgid "Describe the found error"
+msgid "Describe the error you found"
 msgstr "Opiši nađenu grešku"
 
 #: ../src/eapi/Common.rb:333
@@ -2715,7 +2701,7 @@ msgstr "Vizitka korisnika %{user}:"
 
 #: ../src/eapi/Common.rb:523
 msgctxt "EAPI_Common"
-msgid "License agreement"
+msgid "Licence agreement"
 msgstr "Ugovor o licenciranju"
 
 #: ../src/eapi/Common.rb:524
@@ -2730,21 +2716,18 @@ msgstr "Politika privatnosti"
 
 #: ../src/eapi/Common.rb:526
 msgctxt "EAPI_Common"
-msgid ""
-"I accept Elten license agreement, Terms and Conditions and Privacy Policy"
+msgid "I accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy"
 msgstr ""
 "Prihvaćam Elten ugovor licence, uvjete korištenja i pravila privatnosti"
 
 #: ../src/eapi/Common.rb:526
 msgctxt "EAPI_Common"
-msgid "I do not accept, exit"
+msgid "Decline and exit"
 msgstr "Ne prihvaćam, Zatvori program"
 
 #: ../src/eapi/Common.rb:544
 msgctxt "EAPI_Common"
-msgid ""
-"Do you accept Elten license agreement, terms and conditions and privacy "
-"policy?"
+msgid "Do you accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy?"
 msgstr ""
 "Prihvaćate li Elten licenčni ugovor, uvjete korištenja i pravila privatnosti?"
 
@@ -2756,10 +2739,7 @@ msgstr ""
 #| "needs an  external base of instruments. Do you want to download the base "
 #| "from the server  now? It may take several minutes."
 msgctxt "EAPI_Common"
-msgid ""
-"You are trying to play a midi file. In order to play such files, Elten needs "
-"an  external base of instruments. Do you want to download the base from the "
-"server  now? It may take several minutes."
+msgid "You are trying to play a MIDI file. Elten needs an external instrument sound bank to play MIDI files. Do you want to download it from the server now? This may take several minutes."
 msgstr ""
 " Pokušavate reproducirati Midi datoteku. Kako biste reproducirali takve "
 "datoteke, Elten treba vanjsku bazu instrumenata. Želite li sada preuzeti "
@@ -2774,7 +2754,7 @@ msgstr ""
 
 #: ../src/eapi/Common.rb:568
 msgctxt "EAPI_Common"
-msgid "Soundfont downloaded succesfully."
+msgid "SoundFont downloaded successfully."
 msgstr "Zvučna tema je uspješno preuzeta.."
 
 #: ../src/eapi/Common.rb:758
@@ -2843,7 +2823,7 @@ msgstr "Kontekstni izbornik"
 #| msgctxt "Contacts"
 #| msgid "Are you sure you want to delete this contact?"
 msgctxt "EAPI_Form"
-msgid "Press up or down arrow to select contact"
+msgid "Press the Up or Down Arrow key to select a contact"
 msgstr "Želiš li sigurno izbrisati ovaj kontakt?"
 
 #: ../src/eapi/Controls.rb:410
@@ -2856,7 +2836,7 @@ msgstr "Odaberi kontak"
 #| msgctxt "Forum"
 #| msgid "This user does not exist"
 msgctxt "EAPI_Form"
-msgid "User does not exist"
+msgid "The user does not exist"
 msgstr "Taj korisnik ne postoji"
 
 #: ../src/eapi/Controls.rb:600
@@ -2994,7 +2974,7 @@ msgstr "Prevedi"
 
 #: ../src/eapi/Controls.rb:1018 ../src/eapi/Controls.rb:1542
 msgctxt "EAPI_Form"
-msgid "Edit box"
+msgid "Text field"
 msgstr "polje za uređivanje"
 
 #: ../src/eapi/Controls.rb:1019 ../src/eapi/Controls.rb:2518
@@ -3048,7 +3028,7 @@ msgstr "ponovljeno"
 
 #: ../src/eapi/Controls.rb:1127
 msgctxt "EAPI_Form"
-msgid "Repeated"
+msgid "Redone"
 msgstr "Ponovljeno"
 
 #: ../src/eapi/Controls.rb:1130
@@ -3085,7 +3065,7 @@ msgstr "stavka popisa"
 #: ../src/eapi/Controls.rb:1736
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid "Use h or numbers from 1 to 6 to navigate to the next header"
+msgid "Use H or the number keys 1 to 6 to navigate to the next heading"
 msgstr "Koristite h ili brojeve od 1 do 6 za navigaciju do sljedećeg zaglavlje"
 
 #: ../src/eapi/Controls.rb:1737
@@ -3138,7 +3118,7 @@ msgstr "nije odabrano"
 #| msgctxt "Sounds"
 #| msgid "Marker of a multiselect listbox"
 msgctxt "EAPI_Form"
-msgid "Multiselection list"
+msgid "Multi-select list"
 msgstr "Granica višestrukog popisa"
 
 #: ../src/eapi/Controls.rb:2111
@@ -3149,13 +3129,13 @@ msgstr "prazan popis"
 #: ../src/eapi/Controls.rb:2185
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid "Use space to select or unselect items"
+msgid "Press Space to select or deselect items"
 msgstr "Koristite prostor za odabir ili odabir stavki"
 
 #: ../src/eapi/Controls.rb:2188
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid "Use shift with up/down arrows to filter content by tags"
+msgid "Press Shift+Up/Down Arrow to filter content by tags"
 msgstr ""
 "Koristite pomak sa strelicama prema gore/dolje za filtriranje sadržaja prema "
 "oznakama"
@@ -3163,13 +3143,13 @@ msgstr ""
 #: ../src/eapi/Controls.rb:2190
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid "Press CTRL + up arrow to read item index"
+msgid "Press Ctrl+Up Arrow to hear the item number"
 msgstr "Pritisnite CTRL + strelica prema gore za čitanje indeksa stavki"
 
 #: ../src/eapi/Controls.rb:2191
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid "Press CTRL + down arrow to read count of items"
+msgid "Press Ctrl+Down Arrow to hear the number of items"
 msgstr "Pritisnite CTRL + strelica prema dolje za čitanje broja stavki"
 
 #: ../src/eapi/Controls.rb:2220
@@ -3240,7 +3220,7 @@ msgstr "Create"
 #| msgctxt "Files"
 #| msgid "Files"
 msgctxt "EAPI_Form"
-msgid "Files Tree"
+msgid "File tree"
 msgstr "Datoteke"
 
 #: ../src/eapi/Controls.rb:2637
@@ -3287,8 +3267,7 @@ msgstr "Upiši stazu"
 #: ../src/eapi/Controls.rb:3046
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid ""
-"Use SHIFT with left/right arrows to select the column you want to navigate by"
+msgid "Use Shift+Left/Right Arrow to select the column you want to navigate by"
 msgstr ""
 "Upotrijebite SHIFT sa strelicama lijevo/desno da biste odabrali stupac po "
 "koji želite upravljati"
@@ -3393,13 +3372,13 @@ msgstr "Spremi"
 #: ../src/eapi/Controls.rb:3370
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid "Use spacebar to toggle pause"
+msgid "Press the Space bar to play or pause"
 msgstr "Koristite spacebar za zaključnu pauzu"
 
 #: ../src/eapi/Controls.rb:3371
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid "Use left/right arrows to slide"
+msgid "Use the Left/Right Arrow keys to seek"
 msgstr "Upotrijebite lijeve/desne strelice za klizanje"
 
 #: ../src/eapi/Controls.rb:3372
@@ -3413,25 +3392,25 @@ msgstr ""
 #: ../src/eapi/Controls.rb:3373
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid "Use SHIFT with left/right arrows to change panning"
+msgid "Use Shift+Left/Right Arrow to change panning"
 msgstr "Koristite SHIFT sa strelicama lijevo/desno za promjenu pomicanja"
 
 #: ../src/eapi/Controls.rb:3374
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid "Use SHIFT with up/down arrows to change pitch"
+msgid "Use Shift+Up/Down Arrow to change pitch"
 msgstr "Koristite SHIFT sa strelicama prema gore/dolje za promjenu visine"
 
 #: ../src/eapi/Controls.rb:3375
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid "Use CTRL with up/down arrows to change tempo"
+msgid "Use Ctrl+Up/Down Arrow to change tempo"
 msgstr "Koristite CTRL sa strelicama prema gore/dolje za promjenu tempa"
 
 #: ../src/eapi/Controls.rb:3376
 #, fuzzy
 msgctxt "EAPI_Form"
-msgid "Use backspace to return to the default settings"
+msgid "Press Backspace to restore the default settings"
 msgstr "Koristite backspace za povratak na zadane postavke"
 
 #: ../src/eapi/Controls.rb:3953
@@ -3546,9 +3525,7 @@ msgstr "Poništi snimanje"
 #| " All posts on this forum will be marked as read. Are you sure you want to "
 #| "continue?"
 msgctxt "EAPI_Form"
-msgid ""
-"The encoder settings will not apply to the current record. Are you sure you "
-"want to continue?"
+msgid "The encoder settings will not apply to the current recording. Are you sure you want to continue?"
 msgstr ""
 " Svi će postovi na ovom forumu biti označeni kao pročitani. Jeste li sigurni "
 "da želite nastaviti?"
@@ -3828,7 +3805,7 @@ msgstr "&moji prijatelji"
 
 #: ../src/eapi/MainMenu.rb:61
 msgctxt "MainMenu"
-msgid "Users who a&dded me to contacts"
+msgid "Users who a&dded me to their contact list"
 msgstr "&Korisnici koji su me dodali u prijatelje"
 
 #: ../src/eapi/MainMenu.rb:63
@@ -3912,7 +3889,7 @@ msgstr "&Inačica programa"
 
 #: ../src/eapi/MainMenu.rb:86
 msgctxt "MainMenu"
-msgid "Soun&dthemes"
+msgid "Sound &themes"
 msgstr "&zvučne teme"
 
 #: ../src/eapi/MainMenu.rb:87
@@ -3980,7 +3957,7 @@ msgstr "&čitaj me"
 #| msgctxt "EAPI_Common"
 #| msgid "License agreement"
 msgctxt "MainMenu"
-msgid "&License agreement"
+msgid "&Licence agreement"
 msgstr "Ugovor o licenci"
 
 #: ../src/eapi/MainMenu.rb:102
@@ -4010,7 +3987,7 @@ msgstr "Infor&mation o migraciji na Elten verziju 2.4"
 #| msgctxt "Settings"
 #| msgid "Interface"
 msgctxt "MainMenu"
-msgid "List of &Invisible Interface hotkeys"
+msgid "List of &Invisible Interface keyboard shortcuts"
 msgstr "Sučelje"
 
 #: ../src/eapi/MainMenu.rb:107
@@ -4062,7 +4039,7 @@ msgstr "slanje"
 
 #: ../src/eapi/Network.rb:181 ../src/eapi/Network.rb:224
 msgctxt "EAPI_Network"
-msgid "The file already exists. Do you want to override it?"
+msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Datoteka već postoji. Želite li ju nadpisati?"
 
 #: ../src/eapi/Network.rb:286
@@ -4112,13 +4089,13 @@ msgstr "Korištenje izabrane sapi govorne jedinice"
 #| msgctxt "Login"
 #| msgid "Do not ask again"
 msgctxt "EAPI_Common"
-msgid "Do not disturb on"
+msgid "Do not disturb is on"
 msgstr "Ne pitaj me ponovno"
 
 #: ../src/eapi/QuickActions.rb:109
 #, fuzzy
 msgctxt "EAPI_Common"
-msgid "Do not disturb off"
+msgid "Do not disturb is off"
 msgstr "Ne ometaj"
 
 #: ../src/eapi/QuickActions.rb:116
@@ -4273,19 +4250,19 @@ msgstr "Konferencije: nijemi mikrofon"
 #: ../src/eapi/QuickActions.rb:215
 #, fuzzy
 msgctxt "EAPI_QuickActions"
-msgid "Conferences: switch push to talk"
+msgid "Conferences: switch push-to-talk"
 msgstr "Konferencije: prebacite pritisak na razgovor"
 
 #: ../src/eapi/QuickActions.rb:216
 #, fuzzy
 msgctxt "EAPI_QuickActions"
-msgid "Conferences: roll a 6-sided dice"
+msgid "Conferences: roll a 6-sided die"
 msgstr "Konferencije: uvaljajte 6-jednostrane kockice"
 
 #: ../src/eapi/QuickActions.rb:217
 #, fuzzy
 msgctxt "EAPI_QuickActions"
-msgid "Conferences: roll a custom dice"
+msgid "Conferences: roll a custom die"
 msgstr "Konferencije: uvaljajte 6-jednostrane kockice"
 
 #: ../src/eapi/QuickActions.rb:218
@@ -4412,7 +4389,7 @@ msgstr "jednako"
 
 #: ../src/eapi/Speech.rb:338
 msgctxt "EAPI_Speech"
-msgid "graav"
+msgid "grave"
 msgstr "graav"
 
 #: ../src/eapi/Speech.rb:340
@@ -4583,10 +4560,7 @@ msgstr "Program će se pokušati vratiti u normalu."
 
 #: ../src/eapi/UI.rb:536
 msgctxt "EAPI_UI"
-msgid ""
-"Errors occurred while trying to register keys for invisible interface. "
-"Please make sure that other apps do not use the keys specified. You can "
-"change modifier keys of invisible interface using settings window."
+msgid "Errors occurred while trying to register keyboard shortcuts for the Invisible Interface. Make sure that the specified shortcuts are not used by other applications. You can change the Invisible Interface modifier keys in the Settings window."
 msgstr ""
 
 #: ../src/eapi/UI.rb:608
@@ -4850,7 +4824,7 @@ msgstr "Novi prijatelji"
 
 #: ../src/scenes/Account.rb:252
 msgctxt "Account"
-msgid "Friends' birthday"
+msgid "Friends' birthdays"
 msgstr "Rođendani prijatelja"
 
 #: ../src/scenes/Account.rb:252
@@ -4957,7 +4931,7 @@ msgstr "Ponovi novu lozinku."
 
 #: ../src/scenes/Account.rb:333
 msgctxt "Account"
-msgid "Fields: New Password and Repeat New Password have different values."
+msgid "The passwords do not match."
 msgstr "Polja: nova lozinka i ponovi novu lozinku ne poklapaju se."
 
 #: ../src/scenes/Account.rb:340
@@ -4989,7 +4963,7 @@ msgstr "E-mail je promijenjen."
 
 #: ../src/scenes/Account.rb:389
 msgctxt "Account"
-msgid "Error, you must disable mail events reporting first."
+msgid "Error: you must disable email event reporting first."
 msgstr "Greška, prvo morate isključiti izvještavanje o događajima e-mailom."
 
 #: ../src/scenes/Account.rb:407 ../src/scenes/Account.rb:465
@@ -5000,9 +4974,7 @@ msgstr "Greška, prvo morate isključiti izvještavanje o događajima e-mailom."
 #| " An error occurred while authenticating the account. You might have "
 #| "provided an  incorrect password."
 msgctxt "Account"
-msgid ""
-"An error occurred while authenticating the account. You might have provided "
-"an  incorrect password."
+msgid "An error occurred while verifying your account. You may have entered an incorrect password."
 msgstr ""
 " Dogodila se greška prilikom autentifikacije naloga. Možda ste upisali krivu "
 "lozinku."
@@ -5024,7 +4996,7 @@ msgstr "Datum stvaranja"
 
 #: ../src/scenes/Account.rb:437
 msgctxt "Account"
-msgid "Auto log in tokens"
+msgid "Auto-login tokens"
 msgstr "Ključevi automatske prijave"
 
 #: ../src/scenes/Account.rb:439
@@ -5039,9 +5011,7 @@ msgstr "Odjavi sve sesije"
 #| " Are you sure you want to remove all auto log in tokens and log out all "
 #| "sessions?  You will be logged off immediately."
 msgctxt "Account"
-msgid ""
-"Are you sure you want to remove all auto log in tokens and log out all "
-"sessions?  You will be logged off immediately."
+msgid "Are you sure you want to remove all auto-login tokens and log out of all sessions? You will be logged out immediately."
 msgstr ""
 " Jeste li sigurni da želite ukloniti sve tokene i odjaviti sve sesije?  Biti "
 "ćete odma odjavljeni."
@@ -5100,7 +5070,7 @@ msgstr "Jesi li siguran da želiš ukloniti ovog korisnika s crne liste?"
 
 #: ../src/scenes/Account.rb:551
 msgctxt "Account"
-msgid "A user has been removed from the black list."
+msgid "The user has been removed from the blacklist."
 msgstr "Korisnik je uklonjen s crne liste."
 
 #: ../src/scenes/Account.rb:604
@@ -5110,10 +5080,7 @@ msgstr "Posljednje prijave"
 
 #: ../src/scenes/Account.rb:625
 msgctxt "Account"
-msgid ""
-"If you wish, you can configure Elten to report any changes and logins  on "
-"your account from new devices to you by E-mail. To do this, you must verify "
-"your E-mail address. Do you want to do it now?"
+msgid "You can configure Elten to notify you by email about changes to your account and logins from new devices. To do so, you must verify your email address. Do you want to verify it now?"
 msgstr ""
 "Ako želite, mžete uključiti obavještavanje o novim prijavama na vaš nalog e-"
 "mail. Kako biste to učinili, Morate potvrditi vaš e-mail. Želite li to "
@@ -5142,10 +5109,7 @@ msgstr "Izvještavanje o događajima e-mailom je uključeno."
 
 #: ../src/scenes/Account.rb:644
 msgctxt "Account"
-msgid ""
-"Mail events reporting is disabled. If you wish, you can enable it to receive "
-"information about changes made on your account and logins from new devices "
-"via E-mail"
+msgid "Email event reporting is disabled. If you wish, you can enable it to receive information about changes to your account and logins from new devices by email."
 msgstr ""
 "Izvještavanje o događajima e-mailom je isključeno. Ako želite, možete ga "
 "uključiti ako želite doznati o promjenama na vašim nalozima i novim prijavama"
@@ -5158,7 +5122,7 @@ msgstr "Vijeće starješina"
 
 #: ../src/scenes/Admins.rb:15
 msgctxt "Admins"
-msgid "Recommended groups Moderators"
+msgid "Moderators of recommended groups"
 msgstr "Moderatori preporučenih grupa"
 
 #: ../src/scenes/Admins.rb:15
@@ -5259,10 +5223,7 @@ msgstr ""
 #| "it, it  will not be possible to log in from the older versions of the "
 #| "program. DO you  wish to continue anyway?"
 msgctxt "Authentication"
-msgid ""
-"Two-factor authentication was introduced in Elten 2.28. After activating it, "
-"it  will not be possible to log in from the older versions of the program. "
-"DO you  wish to continue anyway?"
+msgid "Two-factor authentication was introduced in Elten 2.28. After activating it, you will not be able to log in using older versions of the program. Do you wish to continue anyway?"
 msgstr ""
 " Dvofaktorna autentifikacija je uvedena u Verziji eltena 2.28. Poslije "
 "aktivacije, neće biti moguća prijava iz starije verzije programa. Želite li "
@@ -5288,9 +5249,7 @@ msgstr "Pričekaj, traje povezivanje na poslužitelj..."
 #| " On the phone number indicated, you will receive a text message with the "
 #| "code  activating two-factor authentication. Enter this code"
 msgctxt "Authentication"
-msgid ""
-"On the phone number indicated, you will receive a text message with the "
-"code  activating two-factor authentication. Enter this code"
+msgid "A text message containing the code to activate two-factor authentication will be sent to the phone number you provided. Enter the code."
 msgstr ""
 " Na telefonski broj koji ste upisali, dobit ćete kod sa dvofaktornom "
 "autentifikacijom. Upišite ovaj kod"
@@ -5420,7 +5379,7 @@ msgstr "Ban traje do"
 
 #: ../src/scenes/Ban.rb:108
 msgctxt "Ban"
-msgid "The ban cancel reason"
+msgid "Reason for lifting the ban"
 msgstr "Razlog odbaniravanja"
 
 #: ../src/scenes/Ban.rb:108
@@ -5470,7 +5429,7 @@ msgstr "Popularni blogovi mojih prijatelja"
 
 #: ../src/scenes/Blog.rb:13
 msgctxt "Blog"
-msgid "Open external wordpress blog"
+msgid "Open an external WordPress blog"
 msgstr "Otvori vanjski blog na Wordpress platformi"
 
 #: ../src/scenes/Blog.rb:13
@@ -5574,7 +5533,7 @@ msgstr "Nova kategorija"
 
 #: ../src/scenes/Blog.rb:241
 msgctxt "Blog"
-msgid "You do not have any blog. Do you want to create one?"
+msgid "You do not have a blog. Do you want to create one?"
 msgstr "Nemaš blog. Želiš li ga stvoriti?"
 
 #: ../src/scenes/Blog.rb:246
@@ -5613,7 +5572,7 @@ msgstr "Nema novih komentara na tvojem blogu."
 #| msgctxt "Blog"
 #| msgid "No new comments on your blog."
 msgctxt "Blog"
-msgid "No new comments to followed blog posts."
+msgid "No new comments on blog posts you follow."
 msgstr "Nema novih komentara na tvojem blogu."
 
 #: ../src/scenes/Blog.rb:319
@@ -5726,7 +5685,7 @@ msgstr "Izbrisano"
 #| msgctxt "Account"
 #| msgid "New posts on followed forums"
 msgctxt "Blog"
-msgid "Post unfollowed"
+msgid "You are no longer following this post"
 msgstr "Novi zapisi na sljeđenim forumima"
 
 #: ../src/scenes/Blog.rb:527
@@ -5798,7 +5757,7 @@ msgstr "Nema novih osvrta"
 #: ../src/scenes/Blog.rb:707
 #, fuzzy
 msgctxt "Blog"
-msgid "Mention by %{user}"
+msgid "Mention from %{user}"
 msgstr "kojeg zna %{count} korisnika"
 
 #: ../src/scenes/Blog.rb:709
@@ -5806,7 +5765,7 @@ msgstr "kojeg zna %{count} korisnika"
 #| msgctxt "Forum"
 #| msgid "User to mention"
 msgctxt "Blog"
-msgid "Send reply to mentioner"
+msgid "Reply to the user who mentioned you"
 msgstr "Korisnika kojeg treba spomenuti"
 
 #: ../src/scenes/Blog.rb:745
@@ -5860,28 +5819,28 @@ msgstr "Posljednje prijave"
 
 #: ../src/scenes/Blog.rb:824 ../src/scenes/Blog.rb:936
 msgctxt "Blog"
-msgid "Coworkers"
+msgid "Contributors"
 msgstr "suradnici"
 
 #: ../src/scenes/Blog.rb:828
 msgctxt "Blog"
-msgid "Add coworker"
+msgid "Add contributor"
 msgstr "dodaj suradnika"
 
 #: ../src/scenes/Blog.rb:829
 msgctxt "Blog"
-msgid "What user you want to add to this blog?"
+msgid "Which user do you want to add to this blog?"
 msgstr "Kojeg korisnika želite dodati u ovaj blog?"
 
 #: ../src/scenes/Blog.rb:839
 #, fuzzy
 msgctxt "Blog"
-msgid "Delete coworker"
+msgid "Remove contributor"
 msgstr "Izbriši knjižnu oznaku"
 
 #: ../src/scenes/Blog.rb:840
 msgctxt "Blog"
-msgid "Are you sure you want to release this coworker?"
+msgid "Are you sure you want to remove this contributor?"
 msgstr "Jeste li sigurni da želite otpustiti ovog suradnika?"
 
 #: ../src/scenes/Blog.rb:860
@@ -5889,7 +5848,7 @@ msgstr "Jeste li sigurni da želite otpustiti ovog suradnika?"
 #| msgctxt "Forum"
 #| msgid "Are you sure you want to delete %{groupname}?"
 msgctxt "Blog"
-msgid "Are you sure you want to delete blog %{name}?"
+msgid "Are you sure you want to delete the blog %{name}?"
 msgstr "Jeste li sigurni da želite izbrisati grupu %{groupname}?"
 
 #: ../src/scenes/Blog.rb:861
@@ -5950,7 +5909,7 @@ msgstr "Leave"
 #| msgctxt "Blog"
 #| msgid "Are you sure you want to cancel creating this post?"
 msgctxt "Blog"
-msgid "Are you sure you want to stop co-creating this blog?"
+msgid "Are you sure you want to stop contributing to this blog?"
 msgstr "Jesi li siguran da želiš izbrisati post?"
 
 #: ../src/scenes/Blog.rb:943
@@ -5982,10 +5941,7 @@ msgstr "Dodaj u sljeđene blogove"
 #: ../src/scenes/Blog.rb:975
 #, fuzzy
 msgctxt "Blog"
-msgid ""
-"This blog has been added to followed blogs. Do you want to mark all the "
-"posts published so far on it as read so that you don't see them in \"What's "
-"New\"?"
+msgid "You are now following this blog. Do you want to mark all of its existing posts as read so that they do not appear in What's New?"
 msgstr ""
 "Ovaj blog je dodan na praćene blogove. Želite li sve dosad objavljene objave "
 "na njemu označiti kao pročitane kako ih ne biste vidjeli u \"Što je novo\"?"
@@ -6067,13 +6023,13 @@ msgstr "Ciljni jezik"
 #: ../src/scenes/Blog.rb:1064
 #, fuzzy
 msgctxt "Blog"
-msgid "Wordpress user login"
+msgid "WordPress username"
 msgstr "Otvori blog ovog korisnika"
 
 #: ../src/scenes/Blog.rb:1065
 #, fuzzy
 msgctxt "Blog"
-msgid "Set new Wordpress password"
+msgid "Set new WordPress password"
 msgstr "Upiši novu lozinku ponovo"
 
 #: ../src/scenes/Blog.rb:1066
@@ -6089,7 +6045,7 @@ msgstr "Prezime"
 #: ../src/scenes/Blog.rb:1068
 #, fuzzy
 msgctxt "Blog"
-msgid "Nick"
+msgid "Nickname"
 msgstr "Pseudonim:"
 
 #: ../src/scenes/Blog.rb:1069
@@ -6112,19 +6068,19 @@ msgstr "Upiši svoju staru lozinku."
 #: ../src/scenes/Blog.rb:1104
 #, fuzzy
 msgctxt "Blog"
-msgid "New Wordpress password"
+msgid "New WordPress password"
 msgstr "Upiši svoju lozinku"
 
 #: ../src/scenes/Blog.rb:1107
 #, fuzzy
 msgctxt "Blog"
-msgid "Repeat new Wordpress password"
+msgid "Repeat new WordPress password"
 msgstr "Upiši novu lozinku ponovo"
 
 #: ../src/scenes/Blog.rb:1111
 #, fuzzy
 msgctxt "Blog"
-msgid "Wordpress password must be at least 6 characters long."
+msgid "WordPress password must be at least 6 characters long."
 msgstr "Wordpress lozinka mora biti duga najmanje 6 znakova."
 
 #: ../src/scenes/Blog.rb:1116
@@ -6217,7 +6173,7 @@ msgstr "Pokaži samo eltenovim korisnicima"
 #: ../src/scenes/Blog.rb:1400
 #, fuzzy
 msgctxt "Blog"
-msgid "By all visitors, but I must commit first comment of the specific person"
+msgid "By all visitors, but I must approve each person's first comment"
 msgstr ""
 "Od strane svih posjetitelja, ali moram počiniti prvi komentar određene osobe"
 
@@ -6236,31 +6192,31 @@ msgstr "Povijest poziva"
 #: ../src/scenes/Blog.rb:1400
 #, fuzzy
 msgctxt "Blog"
-msgid "By all visitors, but I must commit all of them"
+msgid "By all visitors, but I must approve every comment"
 msgstr "Od strane svih posjetitelja, ali moram ih sve počiniti."
 
 #: ../src/scenes/Blog.rb:1401
 #, fuzzy
 msgctxt "Blog"
-msgid "Disable commenting of older posts"
+msgid "Disable commenting on older posts"
 msgstr "Onemogućiti komentiranje starijih postova"
 
 #: ../src/scenes/Blog.rb:1402
 #, fuzzy
 msgctxt "Blog"
-msgid "Days after commenting of a post will be disabled"
+msgid "Number of days after which commenting on a post will be disabled"
 msgstr "Nekoliko dana nakon komentiranja posta bit će onemogućeno"
 
 #: ../src/scenes/Blog.rb:1403
 #, fuzzy
 msgctxt "Blog"
-msgid "Allow comments threading"
+msgid "Allow threaded comments"
 msgstr "Ukloni iz sljeđenih postova"
 
 #: ../src/scenes/Blog.rb:1404
 #, fuzzy
 msgctxt "Blog"
-msgid "Max comments thread depth"
+msgid "Maximum comment thread depth"
 msgstr "Maksimalni komentari dubina konca"
 
 #: ../src/scenes/Blog.rb:1405
@@ -6306,7 +6262,7 @@ msgstr "Izbriši ovaj komentar"
 #: ../src/scenes/Blog.rb:1408
 #, fuzzy
 msgctxt "Blog"
-msgid "Firstly display"
+msgid "Display first"
 msgstr "Prvi prikaz"
 
 #: ../src/scenes/Blog.rb:1467
@@ -6360,7 +6316,7 @@ msgstr "Prilagođeno"
 #: ../src/scenes/Blog.rb:1475
 #, fuzzy
 msgctxt "Blog"
-msgid "Links format"
+msgid "Link format"
 msgstr "Format veza"
 
 #: ../src/scenes/Blog.rb:1476
@@ -6459,7 +6415,7 @@ msgstr "Ostalo"
 #: ../src/scenes/Blog.rb:1506
 #, fuzzy
 msgctxt "Blog"
-msgid "My Wordpress account"
+msgid "My WordPress account"
 msgstr "Moj Wordpress račun"
 
 #: ../src/scenes/Blog.rb:1507
@@ -6518,13 +6474,13 @@ msgstr "Uređivač"
 #: ../src/scenes/Blog.rb:1701
 #, fuzzy
 msgctxt "Blog"
-msgid "Formattable editor"
+msgid "Rich-text editor"
 msgstr "Formatibilni urednik"
 
 #: ../src/scenes/Blog.rb:1701
 #, fuzzy
 msgctxt "Blog"
-msgid "Source Editor (HTML and Wordpress Shortcodes)"
+msgid "Source editor (HTML and WordPress shortcodes)"
 msgstr "Izvorni urednik (HTML i Wordpress shortcodes)"
 
 #: ../src/scenes/Blog.rb:1702 ../src/scenes/Blog.rb:1933
@@ -6578,7 +6534,7 @@ msgstr "Pravila su osvježena"
 
 #: ../src/scenes/Blog.rb:1709
 msgctxt "Blog"
-msgid "Allow users to comment this post"
+msgid "Allow users to comment on this post"
 msgstr "Dozvoli komentiranje ovog posta"
 
 #: ../src/scenes/Blog.rb:1715
@@ -6593,7 +6549,7 @@ msgstr "Tag koji treba dodati"
 
 #: ../src/scenes/Blog.rb:1725
 msgctxt "Blog"
-msgid "This tag does not exist, do you want to create it now?"
+msgid "This tag does not exist. Do you want to create it now?"
 msgstr "Ovaj tag ne postoji. Želiš li ga stvoriti?"
 
 #: ../src/scenes/Blog.rb:1737
@@ -6615,7 +6571,7 @@ msgstr "Datum objave nije određen"
 #: ../src/scenes/Blog.rb:1853
 #, fuzzy
 msgctxt "Blog"
-msgid "Selected publication date that is in the past"
+msgid "The selected publication date is in the past"
 msgstr "Odabrani datum objave koji je u prošlosti"
 
 #: ../src/scenes/Blog.rb:1898
@@ -6764,13 +6720,13 @@ msgstr ""
 #: ../src/scenes/Blog.rb:2181
 #, fuzzy
 msgctxt "Blog"
-msgid "Only first level subdomains are allowed"
+msgid "Only first-level subdomains are allowed"
 msgstr "Dopušteni su samo poddomini prve razine"
 
 #: ../src/scenes/Blog.rb:2185
 #, fuzzy
 msgctxt "Blog"
-msgid "Blog subdomain must be at least 3 characters long"
+msgid "The blog subdomain must be at least 3 characters long"
 msgstr "Poddomain bloga mora biti dug najmanje 3 znaka"
 
 #: ../src/scenes/Blog.rb:2190
@@ -6806,33 +6762,7 @@ msgstr "Promijenjena domena bloga"
 #: ../src/scenes/Blog.rb:2223
 #, fuzzy
 msgctxt "Blog"
-msgid ""
-"You should now configure your purchased domain to redirect to Elten blogging "
-"server. Below are the necessary details. If you have any problems, please "
-"feel free to ask questions in the forum.\n"
-"      \n"
-"      Wherever possible, we recommend that you use the CNAME record, as it "
-"does not need to be edited if the IP address of the server hosting your blog "
-"changes. Your blog's IP address may change, for example, due to a Elten "
-"Blogging Server migration. By configuring your domain's CNAME record, you "
-"don't need to do anything else.\n"
-"      To do this, please point your cname record to destination \"%{host}."
-"\"\n"
-"      \n"
-"      Unfortunately, many domain registrars do not support the CNAME record "
-"for top-level domains, so you may want to use the A record instead.\n"
-"      In such a case, please point the A record to IP address:\n"
-"%{ip}\n"
-".\n"
-"\n"
-"Please note that redirecting your domain is not aliasing and setting aliases "
-"or HTTP 301/ 3xx redirections will not work.\n"
-"\n"
-"You can get detailed description from your domain provider, for example at:\n"
-"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-"
-"Familiar-with-DNS\n"
-"\n"
-"Once completed, please continue."
+msgid "Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n\nWhere possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n\nMany domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n%{ip}\n\nPointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n\nDetailed instructions are available from your domain provider, for example at:\nhttps://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n\nOnce you have finished, continue."
 msgstr ""
 "Sada biste trebali konfigurirati kupljenu domenu kako biste je preusmjerili "
 "na Elten bloganje poslužitelja. U nastavku su potrebni detalji. Ako imate "
@@ -6869,15 +6799,13 @@ msgstr "Izbor domene"
 #: ../src/scenes/Blog.rb:2241
 #, fuzzy
 msgctxt "Blog"
-msgid "Ready, take me next"
+msgid "Done, continue"
 msgstr "Spremni, uzmite me sljedeći"
 
 #: ../src/scenes/Blog.rb:2253
 #, fuzzy
 msgctxt "Blog"
-msgid ""
-"Your domain is not pointing to Elten Blogs, please try again or wait a while "
-"to refresh DNS. It may take up to 24 hours to perform full DNS update."
+msgid "Your domain does not point to Elten Blogs. Try again, or wait for the DNS changes to propagate. Full DNS propagation may take up to 24 hours."
 msgstr ""
 "Vaša domena ne pokazuje na Elten blogove, pokušajte ponovno ili pričekajte "
 "neko vrijeme da osvježite DNS. To može potrajati i do 24 sata za obavljanje "
@@ -6886,8 +6814,7 @@ msgstr ""
 #: ../src/scenes/Blog.rb:2255
 #, fuzzy
 msgctxt "Blog"
-msgid ""
-"Your domain is pointing to Elten blogs, but www prefix is not. Please fix it."
+msgid "Your domain points to Elten Blogs, but the www subdomain does not. Please fix it."
 msgstr ""
 "Vaša domena pokazuje na Elten blogove, ali www prefix nije. Molim te, "
 "popravi to."
@@ -6977,17 +6904,17 @@ msgstr "Nowi Kontakt"
 
 #: ../src/scenes/Contacts.rb:108
 msgctxt "Contacts"
-msgid "Enter the name of the user you want to add to your contacts' list."
+msgid "Enter the name of the user you want to add to your contact list."
 msgstr "Upiši korisničko ime kontakta, kojeg želiš dodati."
 
 #: ../src/scenes/Contacts.rb:120
 msgctxt "Contacts"
-msgid "Contact was added."
+msgid "The contact has been added."
 msgstr "Kontakt je dodan."
 
 #: ../src/scenes/Contacts.rb:129
 msgctxt "Contacts"
-msgid "This user is already added to your contacts' list."
+msgid "This user is already in your contact list."
 msgstr "Ovaj se korisnik već nalazi u tvojim kontaktima."
 
 #: ../src/scenes/Contacts.rb:132 ../src/scenes/Contacts.rb:165
@@ -6997,17 +6924,17 @@ msgstr "Korisničko ime ne postoji."
 
 #: ../src/scenes/Contacts.rb:147
 msgctxt "Contacts"
-msgid "Type a username which you want to remove from your contact list."
+msgid "Enter the username of the person you want to remove from your contact list."
 msgstr "Upiši korisničko ime, kojeg želiš ukloniti iz kontakata."
 
 #: ../src/scenes/Contacts.rb:153
 msgctxt "Contacts"
-msgid "Contact has been deleted."
+msgid "The contact has been deleted."
 msgstr "Kontakt je izbrisan."
 
 #: ../src/scenes/Contacts.rb:162
 msgctxt "Contacts"
-msgid "This user is not added to your contacts' list."
+msgid "This user is not in your contact list."
 msgstr "Ovaj korisnik nije u tvojim kontaktima."
 
 #: ../src/scenes/Debug.rb:9
@@ -7027,12 +6954,7 @@ msgstr "U redu"
 
 #: ../src/scenes/ForgotPassword.rb:11
 msgctxt "ForgotPassword"
-msgid ""
-"If you lose your password, you can still reset it via the E-mail address "
-"provided  during the registration process. This way you shall generate the "
-"password reset  code which will be used to verify your identity. The code "
-"will be sent to your e- mail address. Warning! Two-factor authentication "
-"will be disabled on your  account. To continue, enter your username"
+msgid "If you forget your password, you can reset it using the email address you provided when registering. You can request a password reset code to verify your identity. The code will be sent to your email address. Warning: two-factor authentication will be disabled on your account. To continue, enter your username."
 msgstr ""
 "Ako izgubite svoju lozinku, možete ju resetirati uz pomoć e-maila kojeg ste "
 "upisali pri registraciji. Na taj ćete način generirati kod resetiranja "
@@ -7068,12 +6990,12 @@ msgstr "Upiši ključ povrata lozinke"
 
 #: ../src/scenes/ForgotPassword.rb:51
 msgctxt "ForgotPassword"
-msgid "Please wait while the password reset key is being generated."
+msgid "Please wait while the password reset code is being generated."
 msgstr "Molim pričekaj, traje stvaranje ključa za povrat lozinke..."
 
 #: ../src/scenes/ForgotPassword.rb:55 ../src/scenes/ForgotPassword.rb:91
 msgctxt "ForgotPassword"
-msgid "An unexpected error"
+msgid "Unexpected error"
 msgstr "Dogodila se neočekivana greška."
 
 #: ../src/scenes/ForgotPassword.rb:57
@@ -7083,9 +7005,7 @@ msgstr "Dogodila se neočekivana greška."
 #| " Password reset key has been sent to your specified E-mail address. To "
 #| "continue,  select the option for entering key."
 msgctxt "ForgotPassword"
-msgid ""
-"Password reset key has been sent to your specified E-mail address. To "
-"continue,  select the option for entering key."
+msgid "The password reset code has been sent to the email address you provided. To continue, select the option to enter the code."
 msgstr ""
 " Ključ za resetiranj lozinke je poslan na vašu e-mail adresu. Kako bste "
 "nastavili, označite opciju unos koda."
@@ -7132,9 +7052,7 @@ msgstr "Pričekaj sve dok lozinka budet izmjenjena"
 #| " The password has been changed. You can log in to your account using the "
 #| "new data."
 msgctxt "ForgotPassword"
-msgid ""
-"The password has been changed. You can log in to your account using the new "
-"data."
+msgid "You can log in to your account using your new credentials."
 msgstr ""
 " Lozinka je izmjenjena. Možete se prijaviti na vaš nalog koristeći nove "
 "podatke."
@@ -7458,7 +7376,7 @@ msgstr "Osnivač"
 
 #: ../src/scenes/Forum.rb:535
 msgctxt "Forum"
-msgid "Founded at"
+msgid "Founded on"
 msgstr "Osnovana"
 
 #: ../src/scenes/Forum.rb:538
@@ -7495,12 +7413,12 @@ msgstr "Ukupna veličina"
 
 #: ../src/scenes/Forum.rb:577 ../src/scenes/Forum.rb:3853
 msgctxt "Forum"
-msgid "Group regulations"
+msgid "Group rules"
 msgstr "Pravila grupe"
 
 #: ../src/scenes/Forum.rb:578
 msgctxt "Forum"
-msgid "Edit group regulations"
+msgid "Edit group rules"
 msgstr "Uredi pravila grupe"
 
 #: ../src/scenes/Forum.rb:584
@@ -7544,12 +7462,12 @@ msgstr "Prihvati pozivnicu"
 
 #: ../src/scenes/Forum.rb:601
 msgctxt "Forum"
-msgid "Ask to be enrolled in this group"
+msgid "Request to join this group"
 msgstr "Zatraži promociju u ovoj grupi"
 
 #: ../src/scenes/Forum.rb:606
 msgctxt "Forum"
-msgid "Do you wish to ask to be enrolled in %{groupname}"
+msgid "Do you want to request to join %{groupname}?"
 msgstr "Želite li stvarno zatražiti promociju u ovoj grupi %{groupname}"
 
 #: ../src/scenes/Forum.rb:608
@@ -7691,12 +7609,12 @@ msgstr "Prozor poruka je osvježen"
 #: ../src/scenes/Forum.rb:2729
 #, fuzzy
 msgctxt "Forum"
-msgid "Regulations of group %{groupname}"
+msgid "Rules of group %{groupname}"
 msgstr "Propisi skupine %{groupname}"
 
 #: ../src/scenes/Forum.rb:762
 msgctxt "Forum"
-msgid "Regulations updated"
+msgid "Rules updated"
 msgstr "Pravila su osvježena"
 
 #: ../src/scenes/Forum.rb:773
@@ -7834,26 +7752,24 @@ msgstr "Oduzmi moderatorska prava"
 
 #: ../src/scenes/Forum.rb:969
 msgctxt "Forum"
-msgid "Pass administrative privileges"
+msgid "Transfer administrator privileges"
 msgstr "Prenesi administratorska prava"
 
 #: ../src/scenes/Forum.rb:970
 msgctxt "Forum"
-msgid ""
-"Are you sure you want to resign your administrative privileges in "
-"%{groupname} and pass them to %{user}?"
+msgid "Are you sure you want to give up your administrator privileges in %{groupname} and transfer them to %{user}?"
 msgstr ""
 "Jeste li sigurni da se želite odreći administratorskih prava u %{groupname} "
 "i predati ih korisniku %{user}?"
 
 #: ../src/scenes/Forum.rb:981
 msgctxt "Forum"
-msgid "Ban in this group"
+msgid "Ban from this group"
 msgstr "Baniraj u ovoj grupi"
 
 #: ../src/scenes/Forum.rb:982
 msgctxt "Forum"
-msgid "Are you sure you want to ban %{user} in %{groupname}?"
+msgid "Are you sure you want to ban %{user} from %{groupname}?"
 msgstr ""
 "      Jeste li sugurni da želite banirati korisnika u %{user} u %{groupname}?"
 
@@ -7879,7 +7795,7 @@ msgstr "Unban"
 
 #: ../src/scenes/Forum.rb:991
 msgctxt "Forum"
-msgid "Are you sure you want to unban %{user} in %{groupname}?"
+msgid "Are you sure you want to unban %{user} from %{groupname}?"
 msgstr ""
 "      Jeste li sigurni da želite odbanirati korisnika %{user} u grupi      "
 "%{groupname}?"
@@ -7891,7 +7807,7 @@ msgstr "Prihvati"
 
 #: ../src/scenes/Forum.rb:995
 msgctxt "Forum"
-msgid "Do you want to accept request of user %{user}"
+msgid "Do you want to accept the request from %{user}?"
 msgstr "Želite li prihvatiti zahtjev korisnika %{user}"
 
 #: ../src/scenes/Forum.rb:997
@@ -7902,7 +7818,7 @@ msgstr "Odbiti"
 
 #: ../src/scenes/Forum.rb:998
 msgctxt "Forum"
-msgid "Do you want to refuse request of user %{user}"
+msgid "Do you want to reject the request from %{user}?"
 msgstr "Želite li odbaciti zahtjev korisnika %{user}"
 
 #: ../src/scenes/Forum.rb:1001
@@ -7918,7 +7834,7 @@ msgstr "Prihvati pozivnicu"
 #| msgctxt "Forum"
 #| msgid "Are you sure you want to unban %{user} in %{groupname}?"
 msgctxt "Forum"
-msgid "Are you sure you want to cancel invitation of %{user} to %{groupname}?"
+msgid "Are you sure you want to cancel %{user}'s invitation to %{groupname}?"
 msgstr ""
 "      Jeste li sigurni da želite odbanirati korisnika %{user} u grupi      "
 "%{groupname}?"
@@ -7943,7 +7859,7 @@ msgstr "Korisnik je pozvan"
 
 #: ../src/scenes/Forum.rb:1021 ../src/scenes/Messages.rb:1006
 #: ../src/scenes/Users.rb:21
-msgid "You haven't permissions to do this"
+msgid "You do not have permission to do this"
 msgstr "Nemaš odgovarajuća prava za izvršavanje ove operacije"
 
 #: ../src/scenes/Forum.rb:1023
@@ -7959,13 +7875,13 @@ msgstr "Ovaj korisnik već pripada toj grupi"
 #: ../src/scenes/Forum.rb:1063 ../src/scenes/Forum.rb:2730
 #, fuzzy
 msgctxt "Forum"
-msgid "I accept regulations of group %{groupname}"
+msgid "I accept the rules of the group %{groupname}"
 msgstr "Prihvaćam propise grupnih %{groupname}"
 
 #: ../src/scenes/Forum.rb:1064 ../src/scenes/Forum.rb:2731
 #, fuzzy
 msgctxt "Forum"
-msgid "I decline regulations of group %{groupname}"
+msgid "I do not accept the rules of the group %{groupname}"
 msgstr "Odbijam propise grupnih %{groupname}"
 
 #: ../src/scenes/Forum.rb:1089 ../src/scenes/Forum.rb:3795
@@ -8038,7 +7954,7 @@ msgstr "Moderatori preporučenih grupa"
 #| msgctxt "Forum"
 #| msgid "You've just joined the group"
 msgctxt "Forum"
-msgid "Not joined groups"
+msgid "Groups you have not joined"
 msgstr "Upravo ste se pridružili grupi"
 
 #: ../src/scenes/Forum.rb:1125
@@ -8138,12 +8054,12 @@ msgstr "Ukloni sljeđene forume"
 
 #: ../src/scenes/Forum.rb:1365
 msgctxt "Forum"
-msgid "Added to followed forums list."
+msgid "You are now following this forum."
 msgstr "Dodano u sljeđene forume."
 
 #: ../src/scenes/Forum.rb:1372
 msgctxt "Forum"
-msgid "Removed from followed forums list."
+msgid "You are no longer following this forum."
 msgstr "Izbrisano iz sljeđenih foruma."
 
 #: ../src/scenes/Forum.rb:1393
@@ -8359,7 +8275,7 @@ msgstr "Tema je označena"
 #: ../src/scenes/Forum.rb:1872 ../src/scenes/Forum.rb:2135
 #: ../src/scenes/Forum.rb:3133
 msgctxt "Forum"
-msgid "Add to followed threads list"
+msgid "Follow this thread"
 msgstr "Dodaj u sljeđene postove"
 
 #: ../src/scenes/Forum.rb:1873 ../src/scenes/Forum.rb:3134
@@ -8369,12 +8285,12 @@ msgstr "Ukloni iz sljeđenih postova"
 
 #: ../src/scenes/Forum.rb:1879 ../src/scenes/Forum.rb:3140
 msgctxt "Forum"
-msgid "Added to the list of followed threads."
+msgid "You are now following this thread."
 msgstr "Dodano do sljeđenih tema."
 
 #: ../src/scenes/Forum.rb:1886 ../src/scenes/Forum.rb:3147
 msgctxt "Forum"
-msgid "Removed from followed threads list."
+msgid "You are no longer following this thread."
 msgstr "Izbrisano iz sljeđenih tema."
 
 #: ../src/scenes/Forum.rb:1894
@@ -8454,7 +8370,7 @@ msgstr "Upiši nuvi naziv teme"
 
 #: ../src/scenes/Forum.rb:1950
 msgctxt "Forum"
-msgid "The forum name has been changed."
+msgid "The thread name has been changed."
 msgstr "Naziv je izmijenjen."
 
 #: ../src/scenes/Forum.rb:1957
@@ -8529,7 +8445,7 @@ msgstr "Grupa koju je osnovala %{founder}"
 #| msgctxt "Notes"
 #| msgid "Who do you want to share this note with?"
 msgctxt "Forum"
-msgid "Which group you want to offer this thread to?"
+msgid "Which group do you want to offer this thread to?"
 msgstr "S kim želiš podjeliti ovu bilješku?"
 
 #: ../src/scenes/Forum.rb:2030
@@ -8668,7 +8584,7 @@ msgstr "Odaberite datoteku koju želote priložiti"
 
 #: ../src/scenes/Forum.rb:2233 ../src/scenes/Forum.rb:2683
 msgctxt "Forum"
-msgid "This file has been already attached"
+msgid "This file has already been attached"
 msgstr "Ova datoteka je već dodana"
 
 #: ../src/scenes/Forum.rb:2236 ../src/scenes/Forum.rb:2686
@@ -8783,7 +8699,7 @@ msgstr "Nema novih osvrta"
 #: ../src/scenes/Forum.rb:2887
 #, fuzzy
 msgctxt "Forum"
-msgid "Mention by %{user}"
+msgid "Mention from %{user}"
 msgstr "kojeg zna %{count} korisnika"
 
 #: ../src/scenes/Forum.rb:2890
@@ -8791,7 +8707,7 @@ msgstr "kojeg zna %{count} korisnika"
 #| msgctxt "Forum"
 #| msgid "User to mention"
 msgctxt "Forum"
-msgid "Send reply to mentioner"
+msgid "Reply to the user who mentioned you"
 msgstr "Korisnika kojeg treba spomenuti"
 
 #: ../src/scenes/Forum.rb:2899 ../src/scenes/Forum.rb:2900
@@ -9047,7 +8963,7 @@ msgstr "Pozicioniraj post iznad"
 
 #: ../src/scenes/Forum.rb:3268
 msgctxt "Forum"
-msgid "The post has been slided."
+msgid "The post has been repositioned."
 msgstr "Zapis je prebačen."
 
 #: ../src/scenes/Forum.rb:3285
@@ -9178,7 +9094,7 @@ msgstr "Stvaranje grupnog kanala na konferencijama"
 #| msgctxt "Forum"
 #| msgid "Regulations updated"
 msgctxt "Forum"
-msgid "Regulations"
+msgid "Rules"
 msgstr "Pravila grupe"
 
 #: ../src/scenes/Forum.rb:3856
@@ -9262,7 +9178,7 @@ msgstr "Onemogućeno"
 #: ../src/scenes/Forum.rb:3864
 #, fuzzy
 msgctxt "Forum"
-msgid "Duration limit of audio posts in seconds, 0 for no limit"
+msgid "Maximum duration of audio posts in seconds; 0 means no limit"
 msgstr "Ograničenje trajanja audio postova u sekundi, 0 bez ograničenja"
 
 #: ../src/scenes/Honors.rb:66
@@ -9282,7 +9198,7 @@ msgstr "Značke korisnika %{user}"
 
 #: ../src/scenes/Honors.rb:74
 msgctxt "Honors"
-msgid "The user has been given no badges."
+msgid "The user has not been awarded any honors."
 msgstr "Korisnik nije dobio niti jednu zaslugu."
 
 #: ../src/scenes/Honors.rb:107 ../src/scenes/Honors.rb:122
@@ -9293,12 +9209,12 @@ msgstr "Level"
 
 #: ../src/scenes/Honors.rb:135
 msgctxt "Honors"
-msgid "Set as main honor"
+msgid "Set as primary honor"
 msgstr "Postavi kao glavnu oznaku"
 
 #: ../src/scenes/Honors.rb:140
 msgctxt "Honors"
-msgid "The badge has been set as default."
+msgid "The honor has been set as the primary honor."
 msgstr "Znača je postavljena kao podrazumjevana."
 
 #: ../src/scenes/Honors.rb:144
@@ -9308,7 +9224,7 @@ msgstr "Daj značku"
 
 #: ../src/scenes/Honors.rb:145
 msgctxt "Honors"
-msgid "Who should be granted this badge?"
+msgid "Who should receive this honor?"
 msgstr "Kome dati ovu značku?"
 
 #: ../src/scenes/Honors.rb:151
@@ -9328,9 +9244,7 @@ msgstr "Izbriši"
 
 #: ../src/scenes/Honors.rb:162
 msgctxt "Honors"
-msgid ""
-"Are you sure you want to delete this badge? All users granted with this "
-"badge will loose it."
+msgid "Are you sure you want to delete this badge? All users who have been granted this badge will lose it."
 msgstr ""
 "Žeste li sigurni da želite izbrisati ovu značku? Svi korisnici koji su je "
 "dobili izgubit će je."
@@ -9413,20 +9327,14 @@ msgstr "Koju verziju želite koristiti?"
 
 #: ../src/scenes/Loading.rb:257
 msgctxt "Loading"
-msgid ""
-"Elten detected that you are using NVDA. To support some features of this "
-"screenreader, it is necessary to install Elten addon. Do you want to do it "
-"now?"
+msgid "Elten has detected that you are using NVDA. To support some features of this screen reader, the Elten add-on for NVDA must be installed. Do you want to install it now?"
 msgstr ""
 "Elten je otkrio da koristite NVDA. Kako bi se poržavale neke značajke, "
 "Potrebno je instalirati dodatak za Elten. Želite li to učiniti sada?"
 
 #: ../src/scenes/Loading.rb:259
 msgctxt "Loading"
-msgid ""
-"New version of NVDA Elten addon is available. The version you're using is no "
-"longer supported in this Elten release and may cause some errors. Do you "
-"want to update it now?"
+msgid "A new version of the Elten add-on for NVDA is available. The version you are using is no longer supported by this Elten release and may cause errors. Do you want to update it now?"
 msgstr ""
 "Nova inačica Elten doddatka za Elten je dostupna. Verziju koju koristite "
 "više nećemo podržavati i ista može prouzrokovati neke greške. Želite li uju "
@@ -9435,15 +9343,7 @@ msgstr ""
 #: ../src/scenes/Loading.rb:298
 #, fuzzy
 msgctxt "Loading"
-msgid ""
-"Warning! Elten failed to verify server encryption key. It is possible that "
-"you are not connecting to Elten server but to one prepared by hackers. It is "
-"also possible that Elten Server key has changed. Any details should be "
-"provided on Elten Website Forum. If no information about key change was "
-"provided, it is very likely that you are vulnerable to hacker attack. In "
-"this cause any data that you will provide, including password, can be "
-"stolen. Are you sure you want to proceed with this connection? Select No to "
-"exit Elten."
+msgid "Warning! Elten failed to verify the server's encryption key. You may be connecting not to an Elten server, but to a server controlled by an attacker. The Elten server's key may also have changed. Details of any legitimate key change should be published on the Elten website or forum. If no such information has been published, this connection may be under attack. Any data you provide, including your password, could be stolen. Are you sure you want to continue with this connection? Select No to exit Elten."
 msgstr ""
 "Upozorenje! Elten nije uspio potvrditi ključ za šifriranje poslužitelja. "
 "Moguće je da se ne povezujete s Elten poslužiteljem, već s poslužiteljem "
@@ -9541,7 +9441,7 @@ msgstr "Lozinka:"
 
 #: ../src/scenes/Login.rb:44 ../src/scenes/Login.rb:245
 msgctxt "Login"
-msgid "Enter pin code"
+msgid "Enter PIN"
 msgstr "Upiši pin"
 
 #: ../src/scenes/Login.rb:60 ../src/scenes/Login.rb:169
@@ -9574,9 +9474,7 @@ msgstr "Provjera autentičnosti pomoću SMS-a"
 #| msgctxt "Authentication"
 #| msgid "Two-factor authentication is enabled on this account."
 msgctxt "Login"
-msgid ""
-"Two-factor authentication is enabled on this account. Select method to "
-"authenticate."
+msgid "Two-factor authentication is enabled on this account. Select an authentication method."
 msgstr "dvofaktorna autentifikacija je uključena za ovaj nalog"
 
 #: ../src/scenes/Login.rb:88
@@ -9594,10 +9492,7 @@ msgstr "Provjera autentičnosti pomoću sigurnosnog koda"
 #| "have access to the  phone number used, select the password reset option "
 #| "to disable two-factor  authentication."
 msgctxt "Login"
-msgid ""
-"Enter the code sent to you  by text message to allow this device to login. "
-"If you do not have access to the  phone number used, select the password "
-"reset option to disable two-factor  authentication."
+msgid "Enter the code sent to you by text message to allow this device to log in. If you cannot access the phone number used, select the password reset option to disable two-factor authentication."
 msgstr ""
 " Dvofaktorna autentifikacija je omogućena za ovaj nalog. upišite kod kojeg "
 "ste dobili u tekstualnoj poruci kako biste se prijavili u ovaj nalog. Ako "
@@ -9619,7 +9514,7 @@ msgstr "Greška verifikacije."
 
 #: ../src/scenes/Login.rb:124
 msgctxt "Login"
-msgid "The entered code is wrong, please try again"
+msgid "The code you entered is incorrect. Please try again."
 msgstr "Upisani kod je netočan, Molimo pokušajte ponovno"
 
 #: ../src/scenes/Login.rb:146
@@ -9664,9 +9559,7 @@ msgstr ""
 #| " An error occurred while authenticating the identity. You might have "
 #| "provided an  incorrect password."
 msgctxt "Login"
-msgid ""
-"An error occurred while authenticating the identity. You might have provided "
-"an  incorrect password."
+msgid "An error occurred while verifying your identity. You may have entered an incorrect password."
 msgstr ""
 " Dogodila se pogreška prilikom autentifikacije identiteta. Unijeli ste krivu "
 "lozinku."
@@ -9678,9 +9571,7 @@ msgstr ""
 #| " Automatic login will be proceeding until you log out.Automatic login "
 #| "keys can be  managed from the My Account tab in the Community menu."
 msgctxt "Login"
-msgid ""
-"Automatic login will be proceeding until you log out.Automatic login keys "
-"can be  managed from the My Account tab in the Community menu."
+msgid "Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
 msgstr ""
 " Automatska prijava bit će aktivna sve dok se ne odjavite.Njome možete "
 "upravljati iz izbornika zajednica u podizborniku moj nalog."
@@ -9693,10 +9584,7 @@ msgstr ""
 #| "you log  out. Automatic login keys can be managed from the My Account tab "
 #| "in the Community  menu."
 msgctxt "Login"
-msgid ""
-"Login data has been updated. Automatic login will be proceeding until you "
-"log  out. Automatic login keys can be managed from the My Account tab in the "
-"Community  menu."
+msgid "Login data has been updated. Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
 msgstr ""
 " Podaci za prijavu su uspješno ažurirani. Automatska prijava djeluje sve dok "
 "se ne odjavite. Njome možete upravljati iz izbornika zajednica u "
@@ -9704,7 +9592,7 @@ msgstr ""
 
 #: ../src/scenes/Login.rb:192
 msgctxt "Login"
-msgid "To reenable auto log in feature, proceed to the general settings."
+msgid "To re-enable auto-login, go to General settings."
 msgstr ""
 "  Kako biste ponovno uključili automatsku prijavu, molimo uđite u općenite   "
 "postavke."
@@ -9731,11 +9619,7 @@ msgstr "Greška veze sa serverom."
 
 #: ../src/scenes/Login.rb:242
 msgctxt "Login"
-msgid ""
-"Do you want to encrypt this key with a custom pin code? You will be prompted "
-"for this code everytime you start Elten to unlock your account, but it will "
-"not be saved on the server and will be valid only for the auto-login-key "
-"stored on this device."
+msgid "Do you want to encrypt this key with a custom PIN? You will be prompted for this PIN every time you start Elten to unlock your account. It will not be saved on the server and will apply only to the auto-login key stored on this device."
 msgstr ""
 "Žeelite li šifrirati ovaj ključ sa prilagođenim pin kodom? Svaki puta kada "
 "otvorite elten, biti ćete pitani da unesete pin, ali će isti pin biti valjan "
@@ -9743,12 +9627,12 @@ msgstr ""
 
 #: ../src/scenes/Login.rb:247
 msgctxt "Login"
-msgid "Enter pin code again"
+msgid "Enter PIN again"
 msgstr "Upiši pin ponovno"
 
 #: ../src/scenes/Login.rb:252
 msgctxt "Login"
-msgid "The pin codes entered are different, please try again."
+msgid "The PINs you entered do not match. Please try again."
 msgstr "Pinovi koje ste unijeli su različiti pokušajte ponovo."
 
 #: ../src/scenes/Main.rb:44
@@ -9781,7 +9665,7 @@ msgstr "Oznaka akcije"
 
 #: ../src/scenes/Main.rb:167
 msgctxt "Main"
-msgid "Change hotkey"
+msgid "Change keyboard shortcut"
 msgstr "Promijeni tipkovnički prečac"
 
 #: ../src/scenes/Main.rb:168
@@ -9792,12 +9676,12 @@ msgstr "Ništa"
 #: ../src/scenes/Main.rb:181
 #, fuzzy
 msgctxt "Main"
-msgid "Hotkey for action %{label}"
+msgid "Keyboard shortcut for action %{label}"
 msgstr "Hotkey za akcijske %{label}"
 
 #: ../src/scenes/Main.rb:195
 msgctxt "Main"
-msgid "This hotkey is already used by action %{action}"
+msgid "This keyboard shortcut is already used by action %{action}"
 msgstr "Taj tipkovnički prečac je već dodijeljen radnji %{action}"
 
 #: ../src/scenes/Main.rb:202
@@ -10179,7 +10063,7 @@ msgstr "Razgovor je stvoren"
 #| msgctxt "Messages"
 #| msgid "Are you sure you want to delete this message?"
 msgctxt "Messages"
-msgid "Are you sure you want to delete all messages with user %{user}"
+msgid "Are you sure you want to delete all messages exchanged with %{user}?"
 msgstr "Jesi li siguran da želiš izbrisati ovu poruku?"
 
 #: ../src/scenes/Messages.rb:342
@@ -10187,7 +10071,7 @@ msgstr "Jesi li siguran da želiš izbrisati ovu poruku?"
 #| msgctxt "Messages"
 #| msgid "Conversation has been created"
 msgctxt "Messages"
-msgid "All conversations with user have been deleted."
+msgid "All conversations with the user have been deleted."
 msgstr "Razgovor je stvoren"
 
 #: ../src/scenes/Messages.rb:368
@@ -10236,9 +10120,7 @@ msgstr "Dodaj korisnika u ovaj razgovor"
 #| "Are you sure you want to grant moderation privileges in %{groupname} to "
 #| "user %{user}?"
 msgctxt "Messages"
-msgid ""
-"Are you sure you want to delete conversation %{conversationname} with user "
-"%{user}"
+msgid "Are you sure you want to delete the conversation %{conversationname} with %{user}?"
 msgstr ""
 "Jeste li sigurni da želite dati moderatorska prava u grupi %{groupname} "
 "korisniku %{user}?"
@@ -10301,7 +10183,7 @@ msgstr "Polls"
 
 #: ../src/scenes/Messages.rb:655 ../src/scenes/Messages.rb:989
 msgctxt "Messages"
-msgid "Message has been sent"
+msgid "The message has been sent"
 msgstr "Poruka je poslana"
 
 #: ../src/scenes/Messages.rb:669
@@ -10523,12 +10405,12 @@ msgstr "S kim želiš podjeliti ovu bilješku?"
 
 #: ../src/scenes/Notes.rb:137
 msgctxt "Notes"
-msgid "User cannot be found"
+msgid "The user cannot be found"
 msgstr "Korisnik ne postoji"
 
 #: ../src/scenes/Notes.rb:143
 msgctxt "Notes"
-msgid "From now on you share this note with %{user}"
+msgid "You are now sharing this note with %{user}"
 msgstr "Od sada dijeliš bilješku s %{user}"
 
 #: ../src/scenes/Notes.rb:165
@@ -10551,7 +10433,7 @@ msgstr "Želiš li prestati dijeliti tu bilješku s %{user}?"
 
 #: ../src/scenes/Notes.rb:196
 msgctxt "Notes"
-msgid "You no longer share this note with %{user}"
+msgid "You are no longer sharing this note with %{user}"
 msgstr "Više ne dijeliš ovu bilješku s %{user}"
 
 #: ../src/scenes/Notes.rb:219
@@ -10562,9 +10444,7 @@ msgstr "Jesi li siguran da  želiš ukloniti %{name}?"
 #: ../src/scenes/Notes.rb:221
 #, fuzzy
 msgctxt "Notes"
-msgid ""
-"Do you really want to end sharing %{name}? It will be deleted from your "
-"notes list."
+msgid "Do you really want to stop sharing %{name}? It will be deleted from your list of notes."
 msgstr ""
 "Da li stvarno želiš prekinuti dijeljenje %{name}? Izbrisat će se s popisa "
 "bilješki."
@@ -10749,7 +10629,7 @@ msgstr "Višestrukog izbora"
 
 #: ../src/scenes/Polls.rb:228
 msgctxt "Polls"
-msgid "Edit box"
+msgid "Text field"
 msgstr "Polje za uređivanje"
 
 #: ../src/scenes/Polls.rb:228
@@ -11043,7 +10923,7 @@ msgstr ""
 #| msgctxt "Registration"
 #| msgid "Account with the specified username already exists."
 msgctxt "Registration"
-msgid "User with this name already exists."
+msgid "A user with this name already exists."
 msgstr "Korisničko ime već postoji."
 
 #: ../src/scenes/Registration.rb:27
@@ -11054,10 +10934,7 @@ msgstr "Korisničko ime već postoji."
 #| "consists  of numbers and letters. Maximum length of the password is 256 "
 #| "characters."
 msgctxt "Registration"
-msgid ""
-"Enter your password. It is recommended to use a strong password, which "
-"consists  of numbers and letters. Maximum length of the password is 256 "
-"characters."
+msgid "Enter your password. We recommend using a strong password consisting of letters and numbers. The maximum password length is 256 characters."
 msgstr ""
 " Upišite vašu lozinku. preporučuje se korištenje jake lozinke, koja se "
 "sastoji od brojeva i slova. maksimalna dužina lozinke je 256 znakova."
@@ -11067,7 +10944,7 @@ msgstr ""
 #| msgctxt "Registration"
 #| msgid " Reenter your password"
 msgctxt "Registration"
-msgid "Reenter your password"
+msgid "Re-enter your password"
 msgstr "Ponovno upiši lozinku"
 
 #: ../src/scenes/Registration.rb:32
@@ -11082,9 +10959,7 @@ msgstr "Upisane lozinke se razlikuju."
 #| " Enter your e-mail address. It will be used in case you forget your "
 #| "password and  to send important information."
 msgctxt "Registration"
-msgid ""
-"Enter your e-mail address. It will be used in case you forget your password "
-"and  to send important information."
+msgid "Enter your email address. It will be used to reset a forgotten password and to send you important information."
 msgstr ""
 " Upišite svoju e-mail adresu. Ona će se koristiti za slanje važnih "
 "informacija, te u slučaju ako zaboravite lozinku."
@@ -11096,9 +10971,7 @@ msgstr ""
 #| " Registration is successful, thank you. You can log in using your "
 #| "username and  password."
 msgctxt "Registration"
-msgid ""
-"Registration is successful, thank you. You can log in using your username "
-"and  password."
+msgid "Registration was successful. Thank you. You can log in using your username and password."
 msgstr ""
 " Registracija je uspjela, Hvala. Sada se možete prijaviti s vašim novim "
 "korisničkim imenom i lozinkom."
@@ -11110,7 +10983,7 @@ msgstr "Dogodio se nepoznati problem baze podataka."
 
 #: ../src/scenes/Registration.rb:55
 msgctxt "Registration"
-msgid "Account with the specified username already exists."
+msgid "An account with the specified username already exists."
 msgstr "Korisničko ime već postoji."
 
 #: ../src/scenes/Registration.rb:57
@@ -11145,7 +11018,7 @@ msgstr "Automatski minimiziraj Elten u polje obavjesti"
 
 #: ../src/scenes/Settings.rb:131
 msgctxt "Settings"
-msgid "Enable auto log in"
+msgid "Enable auto-login"
 msgstr "Uključi automatsku prijavu"
 
 #: ../src/scenes/Settings.rb:132
@@ -11177,7 +11050,7 @@ msgstr "Reproduciraj zvukove zvučnih tema"
 
 #: ../src/scenes/Settings.rb:139
 msgctxt "Settings"
-msgid "Soundtheme volume"
+msgid "Sound theme volume"
 msgstr "Glasnoća zvučne teme"
 
 #: ../src/scenes/Settings.rb:140
@@ -11248,7 +11121,7 @@ msgstr "Kružan"
 
 #: ../src/scenes/Settings.rb:160
 msgctxt "Settings"
-msgid "The display method of selection lists"
+msgid "Selection-list navigation mode"
 msgstr "Način prikaza stavaka popisa"
 
 #: ../src/scenes/Settings.rb:160
@@ -11261,7 +11134,7 @@ msgstr "Linearan"
 #| msgctxt "SoundThemes"
 #| msgid "Sound themes"
 msgctxt "Settings"
-msgid "Round up the forms"
+msgid "Wrap focus within forms"
 msgstr "Zvučne teme"
 
 #: ../src/scenes/Settings.rb:162
@@ -11308,9 +11181,7 @@ msgstr "Omogućite izlaz brajice (zahtijeva NVDA addon)"
 #: ../src/scenes/Settings.rb:192
 #, fuzzy
 msgctxt "Settings"
-msgid ""
-"Use a voice dictionary when processing characters (requires NVDA addon when "
-"using NVDA as a speech output)"
+msgid "Use a voice dictionary when processing characters (requires the NVDA add-on when using NVDA for speech output)"
 msgstr ""
 "Koristite glasovni rječnik prilikom obrade znakova (zahtijeva NVDA dodatak "
 "pri korištenju NVDA kao izlaza govora)"
@@ -11556,14 +11427,13 @@ msgstr "Status"
 
 #: ../src/scenes/SoundThemes.rb:111
 msgctxt "Soundthemes"
-msgid "Select theme to download"
+msgid "Select the theme to download"
 msgstr "Izaberi temu koju treba preuzeti"
 
 #: ../src/scenes/SoundThemes.rb:129
 #, fuzzy
 msgctxt "SoundThemes"
-msgid ""
-"Do you want to download theme %{name}? Need to download %{size} of data."
+msgid "Do you want to download the theme %{name}? You will need to download %{size} of data."
 msgstr "Želite li preuzeti temu %{name}? Trebate preuzeti %{size} podataka."
 
 #: ../src/scenes/Sounds.rb:14
@@ -11608,27 +11478,27 @@ msgstr "Oznaka formulara"
 
 #: ../src/scenes/Sounds.rb:22
 msgctxt "Sounds"
-msgid "Marker of a listbox"
+msgid "Marker for a list box"
 msgstr "Granica popisa"
 
 #: ../src/scenes/Sounds.rb:23
 msgctxt "Sounds"
-msgid "Marker of a multiselect listbox"
+msgid "Marker for a multi-select list box"
 msgstr "Granica višestrukog popisa"
 
 #: ../src/scenes/Sounds.rb:24
 msgctxt "Sounds"
-msgid "Focus move on a listbox"
+msgid "Focus moved in a list box"
 msgstr "Premještavanje fokusa na popisu"
 
 #: ../src/scenes/Sounds.rb:25
 msgctxt "Sounds"
-msgid "Border of a listbox"
+msgid "Border of a list box"
 msgstr "Granica popisa"
 
 #: ../src/scenes/Sounds.rb:26
 msgctxt "Sounds"
-msgid "Expandable item on a listbox"
+msgid "Expandable item in a list box"
 msgstr "Rasklopljiva stavka popisa"
 
 #: ../src/scenes/Sounds.rb:27
@@ -11658,17 +11528,17 @@ msgstr "Neoznačena stavka"
 
 #: ../src/scenes/Sounds.rb:32
 msgctxt "Sounds"
-msgid "New or updated item on a listbox"
+msgid "New or updated item in a list box"
 msgstr "Nova ili osvježena stavka popisa"
 
 #: ../src/scenes/Sounds.rb:33
 msgctxt "Sounds"
-msgid "Item with attachment on a listbox"
+msgid "Item with an attachment in a list box"
 msgstr "Stavka s privitkom u popisu"
 
 #: ../src/scenes/Sounds.rb:34
 msgctxt "Sounds"
-msgid "Closed item on a listbox"
+msgid "Closed item in a list box"
 msgstr "Zatvorena stavka popisa"
 
 #: ../src/scenes/Sounds.rb:35
@@ -11676,7 +11546,7 @@ msgstr "Zatvorena stavka popisa"
 #| msgctxt "Sounds"
 #| msgid "Pinned item on a listbox"
 msgctxt "Sounds"
-msgid "Item containing other items on a listbox"
+msgid "Item containing other items in a list box"
 msgstr "Pričvršćena stavka popisa"
 
 #: ../src/scenes/Sounds.rb:36
@@ -11684,7 +11554,7 @@ msgstr "Pričvršćena stavka popisa"
 #| msgctxt "Sounds"
 #| msgid "Closed item on a listbox"
 msgctxt "Sounds"
-msgid "Future item on a listbox"
+msgid "Future item in a list box"
 msgstr "Zatvorena stavka popisa"
 
 #: ../src/scenes/Sounds.rb:37
@@ -11692,12 +11562,12 @@ msgstr "Zatvorena stavka popisa"
 #| msgctxt "Sounds"
 #| msgid "Pinned item on a listbox"
 msgctxt "Sounds"
-msgid "Liked item on a listbox"
+msgid "Liked item in a list box"
 msgstr "Pričvršćena stavka popisa"
 
 #: ../src/scenes/Sounds.rb:38
 msgctxt "Sounds"
-msgid "Pinned item on a listbox"
+msgid "Pinned item in a list box"
 msgstr "Pričvršćena stavka popisa"
 
 #: ../src/scenes/Sounds.rb:39
@@ -11705,7 +11575,7 @@ msgstr "Pričvršćena stavka popisa"
 #| msgctxt "Sounds"
 #| msgid "Item with attachment on a listbox"
 msgctxt "Sounds"
-msgid "Item with restricted access on a listbox"
+msgid "Item with restricted access in a list box"
 msgstr "Stavka s privitkom u popisu"
 
 #: ../src/scenes/Sounds.rb:40
@@ -11722,32 +11592,32 @@ msgstr "Korisnik kao sponzor"
 
 #: ../src/scenes/Sounds.rb:42
 msgctxt "Sounds"
-msgid "Compressed file on a files tree"
+msgid "Compressed file in a file tree"
 msgstr "Komprimirana datoteka u listi datoteka"
 
 #: ../src/scenes/Sounds.rb:43
 msgctxt "Sounds"
-msgid "Audio file on a files tree"
+msgid "Audio file in a file tree"
 msgstr "Audio datoteka u listi datoteka"
 
 #: ../src/scenes/Sounds.rb:44
 msgctxt "Sounds"
-msgid "Directory on a files tree"
+msgid "Directory in a file tree"
 msgstr "Mapa u listi datoteka"
 
 #: ../src/scenes/Sounds.rb:45
 msgctxt "Sounds"
-msgid "Document on a files tree"
+msgid "Document in a file tree"
 msgstr "Dokument u listi datoteka"
 
 #: ../src/scenes/Sounds.rb:46
 msgctxt "Sounds"
-msgid "Text file on a files tree"
+msgid "Text file in a file tree"
 msgstr "Tekstualna datoteka u listi datoteka"
 
 #: ../src/scenes/Sounds.rb:47
 msgctxt "Sounds"
-msgid "Marker of an editbox in a form"
+msgid "Marker for a text field in a form"
 msgstr "Oznaka polja za uređivanje u obrazcu"
 
 #: ../src/scenes/Sounds.rb:48
@@ -11755,7 +11625,7 @@ msgstr "Oznaka polja za uređivanje u obrazcu"
 #| msgctxt "Sounds"
 #| msgid "A piece of text in an editbox is checked"
 msgctxt "Sounds"
-msgid "A piece of text in an editbox has beenselected"
+msgid "A piece of text in a text field has been selected"
 msgstr "Komad teksta u polju za uređivanja je označen"
 
 #: ../src/scenes/Sounds.rb:49
@@ -11763,32 +11633,32 @@ msgstr "Komad teksta u polju za uređivanja je označen"
 #| msgctxt "Sounds"
 #| msgid "A piece of text in an editbox is checked"
 msgctxt "Sounds"
-msgid "A piece of text in an editbox has been unselected"
+msgid "A piece of text in a text field has been unselected"
 msgstr "Komad teksta u polju za uređivanja je označen"
 
 #: ../src/scenes/Sounds.rb:50
 msgctxt "Sounds"
-msgid "Capitalized letter in an editbox"
+msgid "Uppercase letter in a text field"
 msgstr "Veliko slovo u polju za uređivanje"
 
 #: ../src/scenes/Sounds.rb:51
 msgctxt "Sounds"
-msgid "Delete of a text in an editbox"
+msgid "Text deleted from a text field"
 msgstr "Brisanje teksta u polju za uređivanje"
 
 #: ../src/scenes/Sounds.rb:52
 msgctxt "Sounds"
-msgid "End of line in an editbox"
+msgid "End of line in a text field"
 msgstr "Kraj retka u polju za uređivanje"
 
 #: ../src/scenes/Sounds.rb:53
 msgctxt "Sounds"
-msgid "Password character in an editbox"
+msgid "Password character in a text field"
 msgstr "Znak lozinke u polju za uređivanje"
 
 #: ../src/scenes/Sounds.rb:54
 msgctxt "Sounds"
-msgid "Space in an editbox"
+msgid "Space in a text field"
 msgstr "Prazno mjesto u polju za uređivanje"
 
 #: ../src/scenes/Sounds.rb:55
@@ -11817,7 +11687,7 @@ msgstr "Spomenuto u feedu"
 
 #: ../src/scenes/Sounds.rb:59
 msgctxt "Sounds"
-msgid "User signed in or Elten window focused"
+msgid "User signed in or the Elten window received focus"
 msgstr "Korisnik se prijavio ili je fokusiran prozor eltena"
 
 #: ../src/scenes/Sounds.rb:60
@@ -11979,13 +11849,13 @@ msgstr "Šapnite na konferenciji"
 #: ../src/scenes/Sounds.rb:87
 #, fuzzy
 msgctxt "Sounds"
-msgid "Push To Talk enabled in conferences"
+msgid "Push-to-talk enabled in conferences"
 msgstr "Push To Talk omogućen na konferencijama"
 
 #: ../src/scenes/Sounds.rb:88
 #, fuzzy
 msgctxt "Sounds"
-msgid "Push To Talk disabled in conferences"
+msgid "Push-to-talk disabled in conferences"
 msgstr "Push To Talk onemogućen na konferencijama"
 
 #: ../src/scenes/Sounds.rb:89
@@ -12048,7 +11918,7 @@ msgstr "Upišite naziv zvučne teme"
 
 #: ../src/scenes/Sounds.rb:130
 msgctxt "Sounds"
-msgid "Sounds guide, press space to play"
+msgid "Sound guide; press Space to play"
 msgstr "Zvučni vodič: pritisnite razmak za reprodukciju"
 
 #: ../src/scenes/Sounds.rb:131
@@ -12089,12 +11959,12 @@ msgstr "Izaberi novi zvuk"
 #: ../src/scenes/Sounds.rb:169
 #, fuzzy
 msgctxt "Sounds"
-msgid "The sound must not last longer than 5 minutes"
+msgid "The sound must be no longer than five minutes"
 msgstr "Zvuk ne smije trajati dulje od 5 minuta"
 
 #: ../src/scenes/Sounds.rb:184
 msgctxt "Sounds"
-msgid "Where to save this theme"
+msgid "Where do you want to save this theme?"
 msgstr "Gdje spremiti temu"
 
 #: ../src/scenes/Sounds.rb:193
@@ -12129,12 +11999,12 @@ msgstr "Start"
 
 #: ../src/scenes/SpeedTest.rb:9
 msgctxt "SpeedTest"
-msgid "Number of attempts to perform"
+msgid "Number of test runs"
 msgstr "Broj pokušaja koji treba izvesti"
 
 #: ../src/scenes/SpeedTest.rb:9
 msgctxt "SpeedTest"
-msgid "Unit to test"
+msgid "Component to test"
 msgstr "Jedinica za testiranje"
 
 #: ../src/scenes/SpeedTest.rb:9
@@ -12149,7 +12019,7 @@ msgstr "Struktura foruma (sažeto)"
 
 #: ../src/scenes/SpeedTest.rb:33
 msgctxt "SpeedTest"
-msgid "Performing test, please wait"
+msgid "Test in progress. Please wait."
 msgstr "Izvodim test... molimo pričekajte..."
 
 #: ../src/scenes/SpeedTest.rb:43
@@ -12179,9 +12049,7 @@ msgstr "Rezultati testiranja"
 #| " A new version of this program is available. Do you want to download and "
 #| "instal it?"
 msgctxt "Update"
-msgid ""
-"A new version of this program is available. Do you want to download and "
-"instal it?"
+msgid "A new version of this program is available. Do you want to download and install it?"
 msgstr ""
 " Nov verzja ovog programa je dostupna. Želite li ju preuzeti i instalirati?"
 
@@ -12198,16 +12066,14 @@ msgstr "Molim pričekati... traje preuzimanje datoteka"
 #| " The update has been downloaded. To install it, the program must be "
 #| "restarted.  Press enter to continue or escape to cancel."
 msgctxt "Update"
-msgid ""
-"The update has been downloaded. To install it, the program must be "
-"restarted.  Press enter to continue or escape to cancel."
+msgid "The update has been downloaded. To install it, the program must be restarted. Press Return to continue or Esc to cancel."
 msgstr ""
 " Nadogradnja je preuzeta. Kako biste ju instalirali, program mora biti "
 "ponovno pokrenut.  Pritisnite enter za nastavak ili escape za odustajanje."
 
 #: ../src/scenes/Update.rb:53
 msgctxt "Update"
-msgid "Now, the update will be installed. The program will restart."
+msgid "The update will now be installed. The program will restart."
 msgstr ""
 "       Nadogradnja će sada biti instalirana. Program će ponovno biti "
 "pokrenut."
@@ -12219,9 +12085,7 @@ msgstr ""
 #| " The program will be now reverted to the latest stable version. Elten "
 #| "will restart.  It may take several minutes."
 msgctxt "Update"
-msgid ""
-"The program will be now reverted to the latest stable version. Elten will "
-"restart.  It may take several minutes."
+msgid "The program will now be reverted to the latest stable version. Elten will restart. This may take several minutes."
 msgstr ""
 " Program će se vratiti na zadnju stabilnu verziju. Elten će se ponovno "
 "pokrenuti.  To može potrajati nekoliko minuta."
@@ -12252,12 +12116,12 @@ msgid "List of users"
 msgstr "Popis korisnika"
 
 #: ../src/scenes/UsersAddedMeToContacts.rb:13
-msgid "UsersAddedMeToThis section is unavailable for guests"
+msgid "This section is unavailable to guests"
 msgstr "UsersAddedMeToThis odjeljak je nedostupan gostima"
 
 #: ../src/scenes/UsersAddedMeToContacts.rb:35
 msgctxt "UsersAddedMeToContacts"
-msgid "Users who added me to their contacts list"
+msgid "Users who added me to their contact list"
 msgstr "Korisnici koji su me dodali u svoje kontakte"
 
 #: ../src/scenes/Users_RecentlyActived.rb:22
@@ -12312,7 +12176,7 @@ msgstr "Novi prijatelji"
 
 #: ../src/scenes/WhatsNew.rb:61
 msgctxt "WhatsNew"
-msgid "Friends' birthday"
+msgid "Friends' birthdays"
 msgstr "Rođendani prijatelja"
 
 #: ../src/scenes/WhatsNew.rb:62

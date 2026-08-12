@@ -10,7 +10,7 @@ class Scene_Blog
     @index=index
     end
   def main
-        @sel = ListBox.new([p_("Blog", "Managed blogs"),p_("Blog", "Recently updated blogs"),p_("Blog", "Frequently updated blogs"),p_("Blog", "Frequently commented blogs"),p_("Blog", "Followed blogs"), p_("Blog", "Blogs popular with my friends"), p_("Blog", "Open external wordpress blog"), p_("Blog", "Followed blog posts"), p_("Blog", "Received mentions"), p_("Blog", "Blogs library")],header: p_("Blog", "Blogs"),index: @index)
+        @sel = ListBox.new([p_("Blog", "Managed blogs"),p_("Blog", "Recently updated blogs"),p_("Blog", "Frequently updated blogs"),p_("Blog", "Frequently commented blogs"),p_("Blog", "Followed blogs"), p_("Blog", "Blogs popular with my friends"), p_("Blog", "Open an external WordPress blog"), p_("Blog", "Followed blog posts"), p_("Blog", "Received mentions"), p_("Blog", "Blogs library")],header: p_("Blog", "Blogs"),index: @index)
   unless Session.logged?
     @sel.disable_item(0)
     @sel.index=1
@@ -230,7 +230,7 @@ class Scene_Blog_Create
     end
   def main
     if @shared==false
-if !confirm(p_("Blog", "You do not have any blog. Do you want to create one?"))
+if !confirm(p_("Blog", "You do not have a blog. Do you want to create one?"))
   $scene = @scene
   return
 end
@@ -305,7 +305,7 @@ if @post.size==0 and @id=="NEW"
   $scene=Scene_Notifications.new
   return
   elsif @post.size==0 and @id=="NEWFOLLOWED"
-  alert(p_("Blog", "No new comments to followed blog posts."))
+  alert(p_("Blog", "No new comments on blog posts you follow."))
   $scene=Scene_Notifications.new
   return
   elsif @post.size==0 and @id=="NEWFOLLOWEDBLOGS"
@@ -529,7 +529,7 @@ else
       else
         if post.followed==true
           post.followed=false
-          alert(p_("Blog", "Post unfollowed"))
+          alert(p_("Blog", "You are no longer following this post"))
         else
           post.followed=true
           alert(p_("Blog", "Post followed"))
@@ -746,9 +746,9 @@ def context(menu)
   if @post.mention!=nil
       menu.submenu(p_("Blog", "Received mention")) {|m|
       m.option(p_("Blog", "Show mention"), nil, "/") {
-      input_text(p_("Blog", "Mention by %{user}")%{:user=>@post.mention.author}, flags: EditBox::Flags::ReadOnly, text: @post.mention.message, escapable: true)
+      input_text(p_("Blog", "Mention from %{user}")%{:user=>@post.mention.author}, flags: EditBox::Flags::ReadOnly, text: @post.mention.message, escapable: true)
       }
-      m.option(p_("Blog", "Send reply to mentioner"), nil, "?") {
+      m.option(p_("Blog", "Reply to the user who mentioned you"), nil, "?") {
       reply_to_mention
       }
       if ["mention", "message"].include?(LocalConfig["MentionReplyType", "", type: :string])
@@ -778,7 +778,7 @@ def context(menu)
         else
           if @post.followed==true
             @post.followed=false
-            alert(p_("Blog", "Post unfollowed"))
+            alert(p_("Blog", "You are no longer following this post"))
           else
             @post.followed=true
             alert(p_("Blog", "Post followed"))
@@ -950,12 +950,12 @@ end
 def blogcoworkers
     owners=blogowners(@blogs[@sel.index].id)
   selt=owners
-  sel=ListBox.new(selt,header: p_("Blog", "Coworkers"), index: 0, flags: 0, quiet: false)
+  sel=ListBox.new(selt,header: p_("Blog", "Contributors"), index: 0, flags: 0, quiet: false)
   sel.bind_context{|menu|
   menu.useroption(owners[sel.index])
   if blogowners(@blogs[@sel.index].id)[0]==Session.name   and @blogs[@sel.index].id[0..0]=="["
-  menu.option(p_("Blog", "Add coworker"), nil, "n") {
-                cow=input_user(p_("Blog", "What user you want to add to this blog?"))
+  menu.option(p_("Blog", "Add contributor"), nil, "n") {
+                cow=input_user(p_("Blog", "Which user do you want to add to this blog?"))
               if cow!=nil
                   EltenLink::Blog.add_coworker(elten_link, blog: @blogs[@sel.index].id, user: cow)
                   $blogownerstime=0
@@ -965,8 +965,8 @@ def blogcoworkers
                 end
   }
   if sel.index>0
-    menu.option(p_("Blog", "Delete coworker"), nil, :del) {
-                    confirm(p_("Blog", "Are you sure you want to release this coworker?")) {
+    menu.option(p_("Blog", "Remove contributor"), nil, :del) {
+                    confirm(p_("Blog", "Are you sure you want to remove this contributor?")) {
 EltenLink::Blog.remove_coworker(elten_link, blog: @blogs[@sel.index].id, user: owners[sel.index])                
 $blogownerstime=0
 owners=blogowners(@blogs[@sel.index].id)
@@ -986,7 +986,7 @@ owners=blogowners(@blogs[@sel.index].id)
   loop_update
 end
 def blogdelete
-    confirm(p_("Blog", "Are you sure you want to delete blog %{name}?")%{:name=>@blogs[@sel.index].name}) {
+    confirm(p_("Blog", "Are you sure you want to delete the blog %{name}?")%{:name=>@blogs[@sel.index].name}) {
     confirm(p_("Blog", "All posts written on this blog will be lost. Are you sure you want to continue?")) {
   begin
   EltenLink::Blog.delete_blog(elten_link, blog: @blogs[@sel.index].id)
@@ -1160,12 +1160,12 @@ if b.include?(Session.name)
   menu.option(p_("Blog", "Followers")) {
   blogfollowers
   }
-  menu.option(p_("Blog", "Coworkers")) {
+  menu.option(p_("Blog", "Contributors")) {
   blogcoworkers
   }
     if b[0]!=Session.name && b!=Session.name
     menu.option(p_("Blog", "Leave")) {
-    confirm(p_("Blog", "Are you sure you want to stop co-creating this blog?")) {
+    confirm(p_("Blog", "Are you sure you want to stop contributing to this blog?")) {
     begin
       EltenLink::Blog.leave_coworkers(elten_link, blog: @blogs[@sel.index].id)
     rescue EltenLink::Error
@@ -1202,7 +1202,7 @@ rescue EltenLink::Error
   alert(_("Error"))
 else
     @blogs[@sel.index].followed=true
-  confirm(p_("Blog", "This blog has been added to followed blogs. Do you want to mark all the posts published so far on it as read so that you don't see them in \"What's New\"?")) do
+  confirm(p_("Blog", "You are now following this blog. Do you want to mark all of its existing posts as read so that they do not appear in What's New?")) do
     begin
       EltenLink::Blog.mark_as_read(elten_link, blog: @blogs[@sel.index].id)
     rescue EltenLink::Error
@@ -1312,11 +1312,11 @@ class Scene_Blog_Profile
       return
     end
     @form = Form.new([
-    EditBox.new(p_("Blog", "Wordpress user login"), type: EditBox::Flags::ReadOnly, text: profile['user_login'], quiet: true),
-    Button.new(p_("Blog", "Set new Wordpress password")),
+    EditBox.new(p_("Blog", "WordPress username"), type: EditBox::Flags::ReadOnly, text: profile['user_login'], quiet: true),
+    Button.new(p_("Blog", "Set new WordPress password")),
     EditBox.new(p_("Blog", "First name"), type: 0, text: profile['first_name'], quiet: true),
     EditBox.new(p_("Blog", "Last name"), type: 0, text: profile['last_name'], quiet: true),
-    EditBox.new(p_("Blog", "Nick"), type: 0, text: profile['nickname'], quiet: true),
+    EditBox.new(p_("Blog", "Nickname"), type: 0, text: profile['nickname'], quiet: true),
     EditBox.new(p_("Blog", "Display name"), type: 0, text: profile['display_name'], quiet: true),
     EditBox.new(p_("Blog", "User description"), type: EditBox::Flags::MultiLine, text: profile['description'], quiet: true),
     Button.new(_("Save")),
@@ -1353,14 +1353,14 @@ class Scene_Blog_Profile
           m=nil
           suc=false
           until suc
-            t=p_("Blog", "New Wordpress password")
+            t=p_("Blog", "New WordPress password")
             t=m+"\r\n"+t if m!=nil
           nps=input_text(p_("Blog", t), flags: EditBox::Flags::Password,text: "",escapable: true)
-          rps=input_text(p_("Blog", "Repeat new Wordpress password"), flags: EditBox::Flags::Password,text: "",escapable: true) if nps!=nil
+          rps=input_text(p_("Blog", "Repeat new WordPress password"), flags: EditBox::Flags::Password,text: "",escapable: true) if nps!=nil
           break if nps==nil or rps==nil
           if rps==nps
             if rps.size<6
-              m=p_("Blog", "Wordpress password must be at least 6 characters long.")
+              m=p_("Blog", "WordPress password must be at least 6 characters long.")
             else
               suc=true
               end
@@ -1648,15 +1648,15 @@ def load_general
 end
 def load_comments
   setting_category(p_("Blog", "Comments"))
-  make_setting(p_("Blog", "Comments can be written"), [p_("Blog", "By all visitors"), p_("Blog", "By all visitors, but I must commit first comment of the specific person"), p_("Blog", "By all visitors, but I must commit all of them"), p_("Blog", "By Elten users only")], "^commentingtype")
-  make_setting(p_("Blog", "Disable commenting of older posts"), :bool, "close_comments_old_posts")
-  make_setting(p_("Blog", "Days after commenting of a post will be disabled"), :number, "close_comments_days_old")
-  make_setting(p_("Blog", "Allow comments threading"), :bool, "thread_comments")
-  make_setting(p_("Blog", "Max comments thread depth"), :number, "thread_comments_depth")
+  make_setting(p_("Blog", "Comments can be written"), [p_("Blog", "By all visitors"), p_("Blog", "By all visitors, but I must approve each person's first comment"), p_("Blog", "By all visitors, but I must approve every comment"), p_("Blog", "By Elten users only")], "^commentingtype")
+  make_setting(p_("Blog", "Disable commenting on older posts"), :bool, "close_comments_old_posts")
+  make_setting(p_("Blog", "Number of days after which commenting on a post will be disabled"), :number, "close_comments_days_old")
+  make_setting(p_("Blog", "Allow threaded comments"), :bool, "thread_comments")
+  make_setting(p_("Blog", "Maximum comment thread depth"), :number, "thread_comments_depth")
   make_setting(p_("Blog", "Order comments on the website"), [p_("Blog", "Ascending"), p_("Blog", "Descending")], "order_comments", ["asc", "desc"])
   make_setting(p_("Blog", "Split comments on the website into pages"), :bool, "page_comments")
   make_setting(p_("Blog", "Comments per page"), :number, "comments_per_page")
-  make_setting(p_("Blog", "Firstly display"), [p_("Blog", "Newest comments"), p_("Blog", "Oldest comments")], "default_comments_page", ["newest", "oldest"])
+  make_setting(p_("Blog", "Display first"), [p_("Blog", "Newest comments"), p_("Blog", "Oldest comments")], "default_comments_page", ["newest", "oldest"])
   make_setting(p_("Blog", "Automatically approve comments from Elten users"), :bool, "elten_autoapprove_comments")
   make_setting(p_("Blog", "Pending comments"), :custom, Proc.new{insert_scene(Scene_Blog_Comments.new(@blog))})
   on_load {
@@ -1725,7 +1725,7 @@ def load_posts
     linksmapping.push(currentconfig("permalink_structure"))
     links.push(p_("Blog", "Custom"))
   end
-  make_setting(p_("Blog", "Links format"), links, "permalink_structure", linksmapping)
+  make_setting(p_("Blog", "Link format"), links, "permalink_structure", linksmapping)
     make_setting(p_("Blog", "Posts in RSS"), :number, "posts_per_rss")
   make_setting(p_("Blog", "Use excerpts in RSS"), :bool, "rss_use_excerpt")
 end
@@ -1773,8 +1773,8 @@ def load_others
     end
   make_setting(p_("Blog", "If you want to redirect all browsers visiting this blog to another site, select it here"), b, "blog_redirect", bm)
   end
-  make_setting(p_("Blog", "My Wordpress account"), :custom, Proc.new{insert_scene(Scene_Blog_Profile.new)})
-  make_setting(p_("Blog", "Open Wordpress admin panel in my browser"), :custom, Proc.new{
+  make_setting(p_("Blog", "My WordPress account"), :custom, Proc.new{insert_scene(Scene_Blog_Profile.new)})
+  make_setting(p_("Blog", "Open WordPress admin panel in my browser"), :custom, Proc.new{
 begin
 bt=EltenLink::Blog.domain_info(elten_link, blog: @blog)
 rescue EltenLink::Error
@@ -1789,7 +1789,7 @@ else
   make_setting(p_("Blog", "Manage blog domain"), :custom, Proc.new{
   c=false
   if @changed
-    confirm(p_("Blog", "Blog settings have been changed. If you continue to domain change, mades you changed will be lost. Do you want to continue anyway? If you want to store new settings, select No and then Apply them before proceeding with domain change.")) {c=true}
+    confirm(p_("Blog", "The blog settings have been changed. If you continue with the domain change, your changes will be lost. Do you want to continue anyway? To save the new settings, select No, then select Apply before changing the domain.")) {c=true}
   else
     c=true
     end
@@ -2021,7 +2021,7 @@ class Scene_Blog_PostEditor
     end
     @fields = [
 edt_title = EditBox.new(p_("Blog", "Post title"),text: "",quiet: true),
-lst_editor = ListBox.new([p_("Blog", "Formattable editor"), p_("Blog", "Source Editor (HTML and Wordpress Shortcodes)")], header: p_("Blog", "Editor")),
+lst_editor = ListBox.new([p_("Blog", "Rich-text editor"), p_("Blog", "Source editor (HTML and WordPress shortcodes)")], header: p_("Blog", "Editor")),
 edt_post = EditBox.new(p_("Blog", "Post"), type: EditBox::Flags::MultiLine|EditBox::Flags::HTML|EditBox::Flags::Formattable,text: "",quiet: true),
 btn_audio = OpusRecordButton.new(p_("Blog", "Audio content"), EltenPath.join(Dirs.temp, "audioblogpost.opus"), max_bitrate: 128),
 lst_categories = ListBox.new(@categories.map{|c|c.name},header: p_("Blog", "Post categories"),index: 0,flags: ListBox::Flags::MultiSelection),
@@ -2030,7 +2030,7 @@ lst_visibility = ListBox.new([p_("Blog", "Show to everyone"),p_("Blog", "Show to
 edt_excerpt = EditBox.new(p_("Blog", "Excerpt"), type: EditBox::Flags::MultiLine,text: "",quiet: true),
 chk_schedule = CheckBox.new(p_("Blog", "Schedule this post to be published in the future")),
 btn_scheduledate = DateButton.new(p_("Blog", "Publication date"), (Time.now.year..(Time.now.year+3)), include_hour: true),
-chk_comments = CheckBox.new(p_("Blog", "Allow users to comment this post"), checked: true),
+chk_comments = CheckBox.new(p_("Blog", "Allow users to comment on this post"), checked: true),
 btn_send = Button.new(p_("Blog", "Send")),
 btn_cancel = Button.new(_("Cancel"))
 ]
@@ -2060,7 +2060,7 @@ for t in @tags
     break
     end
 end
-if tagid==-1 and confirm(p_("Blog", "This tag does not exist, do you want to create it now?"))
+if tagid==-1 and confirm(p_("Blog", "This tag does not exist. Do you want to create it now?"))
   begin
     tagid=EltenLink::Blog.tag_create(elten_link, blog: @owner, name: tagname).to_i
   rescue EltenLink::Error
@@ -2185,7 +2185,7 @@ loop do
         else
             tim=Time.local(btn_scheduledate.year, btn_scheduledate.month, btn_scheduledate.day, btn_scheduledate.hour, btn_scheduledate.min, btn_scheduledate.sec)
             if tim.to_i<=Time.now.to_i
-              alert(p_("Blog", "Selected publication date that is in the past"))
+              alert(p_("Blog", "The selected publication date is in the past"))
               suc=false
             else
              date=tim.to_i 
@@ -2256,7 +2256,7 @@ if suc
   end
     def selecttag
       if @tags.size < 1
-      alert(p_("Blog", "There are currently no tags created, please add a new one."))
+      alert(p_("Blog", "No tags have been created yet. Please add a new one."))
       return []
     end
     sel = ListBox.new(@tags.map { |t| t.name}, header: p_("Blog", "Select tag"), index: 0, flags: ListBox::Flags::MultiSelection, quiet: false)
@@ -2547,11 +2547,11 @@ end
       return false
     end
     if @lst_domaintype.index==1 && @edt_domain.text.include?(".")
-      alert(p_("Blog", "Only first level subdomains are allowed"))
+      alert(p_("Blog", "Only first-level subdomains are allowed"))
       return false
     end
     if @lst_domaintype.index==1 && @edt_domain.text.size<3
-      alert(p_("Blog", "Blog subdomain must be at least 3 characters long"))
+      alert(p_("Blog", "The blog subdomain must be at least 3 characters long"))
       return false
       end
     dom=@txt_fulldomain.text
@@ -2566,7 +2566,7 @@ end
     end
   def changeproceed
     return false if changevalidate==false
-    return false if !confirm(p_("Blog", "Warning! If you change your blog URL, some links may stop working. If you directly linked posts or other resources on your blog, they would no longer be available at previous URLs. In such case you will be required to fix them manually. Are you sure you want to continue?"))
+    return false if !confirm(p_("Blog", "Warning! If you change your blog URL, some links may stop working. Direct links to posts or other resources on your blog will no longer work at their previous URLs. You will need to update them manually. Are you sure you want to continue?"))
     dom=@txt_fulldomain.text
     d=".elten.blog"
     if dom[-1*d.size..-1]!=d
@@ -2593,25 +2593,22 @@ else
       end
         host=dt.host
       ip=dt.ip
-      text=p_("Blog", "You should now configure your purchased domain to redirect to Elten blogging server. Below are the necessary details. If you have any problems, please feel free to ask questions in the forum.
-      
-      Wherever possible, we recommend that you use the CNAME record, as it does not need to be edited if the IP address of the server hosting your blog changes. Your blog's IP address may change, for example, due to a Elten Blogging Server migration. By configuring your domain's CNAME record, you don't need to do anything else.
-      To do this, please point your cname record to destination \"%{host}.\"
-      
-      Unfortunately, many domain registrars do not support the CNAME record for top-level domains, so you may want to use the A record instead.
-      In such a case, please point the A record to IP address:
+      text=p_("Blog", "Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.
+
+Where possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.
+
+Many domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:
 %{ip}
-.
 
-Please note that redirecting your domain is not aliasing and setting aliases or HTTP 301/ 3xx redirections will not work.
+Pointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.
 
-You can get detailed description from your domain provider, for example at:
+Detailed instructions are available from your domain provider, for example at:
 https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS
 
-Once completed, please continue.")%{:ip=>ip,:host=>host}
+Once you have finished, continue.")%{:ip=>ip,:host=>host}
       form=Form.new([
       txt=EditBox.new(p_("Blog", "Setting the domain"), type: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly, text: text, quiet: true),
-      btn_next = Button.new(p_("Blog", "Ready, take me next")),
+      btn_next = Button.new(p_("Blog", "Done, continue")),
       btn_cancel = Button.new(_("Cancel"))
       ])
       r=true
@@ -2628,9 +2625,9 @@ Once completed, please continue.")%{:ip=>ip,:host=>host}
         next
       end
       if ch.status==0
-        alert(p_("Blog", "Your domain is not pointing to Elten Blogs, please try again or wait a while to refresh DNS. It may take up to 24 hours to perform full DNS update."))
+        alert(p_("Blog", "Your domain does not point to Elten Blogs. Try again, or wait for the DNS changes to propagate. Full DNS propagation may take up to 24 hours."))
       elsif ch.status==1
-        alert(p_("Blog", "Your domain is pointing to Elten blogs, but www prefix is not. Please fix it."))
+        alert(p_("Blog", "Your domain points to Elten Blogs, but the www subdomain does not. Please fix it."))
       else
         return true
         end

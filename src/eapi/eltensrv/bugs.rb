@@ -10,7 +10,7 @@ module EltenAPI
     def bug(getinfo=true,info="")
       loop_update
       if getinfo == true
-        info = prompt(p_("EAPI_Common", "Describe the found error"),p_("EAPI_Common", "Send"))
+        info = prompt(p_("EAPI_Common", "Describe the error you found"),p_("EAPI_Common", "Send"))
         if info == ""
           return 1
         end

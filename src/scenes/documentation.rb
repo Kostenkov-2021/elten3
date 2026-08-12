@@ -7,7 +7,7 @@ class Scene_Documentation
     text=""
     case @docid
     when "license"
-      label=p_("Documentation", "License agreement")
+      label=p_("Documentation", "Licence agreement")
       text= licensetext
       when "rules"
         label=p_("Documentation", "EltenLink terms and conditions")

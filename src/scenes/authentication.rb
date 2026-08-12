@@ -34,7 +34,7 @@ phone=""
   return main if password==nil
 phone=input_text(p_("Authentication", "Type your phone number that will be used during verification. Remember to enter  the country code, for example, +48 for Poland"),flags: 0,text: "",escapable: true) while (phone=="" or (phone[0..0]!="+" and phone[0..1]!="00") or phone.size<11 or (/[a-zA-Z,.\/;'\"\[\]!@\#\$%\^\&\*\(\)\_]/=~phone)!=nil) and phone!=nil
 return main if phone==nil
-return main if !confirm(p_("Authentication", "Two-factor authentication was introduced in Elten 2.28. After activating it, it  will not be possible to log in from the older versions of the program. DO you  wish to continue anyway?"))
+return main if !confirm(p_("Authentication", "Two-factor authentication was introduced in Elten 2.28. After activating it, you will not be able to log in using older versions of the program. Do you wish to continue anyway?"))
 return main if input_text(p_("Authentication", "Is this phone number correct? Press enter to continue or escape to cancel."),flags: EditBox::Flags::ReadOnly,text: phone, escapable: true)==nil
 if suc==true
 alert(p_("Authentication", "Please wait, connecting to the server ..."))
@@ -62,7 +62,7 @@ if !enable_ok
 else
   code=""
   tries=0
-  label=p_("Authentication", "On the phone number indicated, you will receive a text message with the code  activating two-factor authentication. Enter this code")
+  label=p_("Authentication", "A text message containing the code to activate two-factor authentication will be sent to the phone number you provided. Enter the code.")
   while tries<3
   code=input_text(label,flags: EditBox::Flags::Numbers).delete("\r\n") while code==""
   begin

@@ -302,12 +302,12 @@ msgstr "Mikrofon açıldı"
 
 #: ../agent/quicknav.rb:326 ../src/Scenes/Conference.rb:1274
 msgctxt "Conference"
-msgid "Roll a 6-sided dice"
+msgid "Roll a 6-sided die"
 msgstr "6 yüzlü zar at"
 
 #: ../agent/quicknav.rb:329 ../src/Scenes/Conference.rb:1275
 msgctxt "Conference"
-msgid "Roll a custom dice"
+msgid "Roll a custom die"
 msgstr "Özgün zar at"
 
 #: ../agent/quicknav.rb:331 ../src/Scenes/Conference.rb:1608
@@ -338,12 +338,12 @@ msgstr "Ses yayınını kaldır"
 
 #: ../agent/quicknav.rb:358 ../src/Scenes/Conference.rb:1256
 msgctxt "Conference"
-msgid "Disable push to talk"
+msgid "Disable push-to-talk"
 msgstr "Bas konuşu devredışı bırak"
 
 #: ../agent/quicknav.rb:358 ../src/Scenes/Conference.rb:1255
 msgctxt "Conference"
-msgid "Enable push to talk"
+msgid "Enable push-to-talk"
 msgstr "Bas konuşu etkinleştir"
 
 #: ../agent/quicknav.rb:362
@@ -431,7 +431,7 @@ msgstr ""
 
 #: ../src/EAPI/Documents.rb:3
 msgctxt "License"
-msgid "Elten source code can be found at GitHub:"
+msgid "Elten source code can be found on GitHub:"
 msgstr "Elten kaynak kodu GitHub'dadır:"
 
 #: ../src/EAPI/Documents.rb:3
@@ -442,7 +442,7 @@ msgstr "GNU General Public License v3 lisansının orijinal içeriği aşağıda
 
 #: ../src/EAPI/Documents.rb:689
 msgctxt "Documentation"
-msgid "Current Elten modifier"
+msgid "Current Invisible Interface modifier key"
 msgstr "Şu anki değişken tuş"
 
 #: ../src/Scenes/Auctions.rb:25 ../src/Scenes/CallHistory.rb:16
@@ -638,12 +638,12 @@ msgstr "Kapat"
 
 #: ../src/Scenes/Conference.rb:47
 msgctxt "Conference"
-msgid "Use arrows to move in the channel space"
+msgid "Use the arrow keys to move around the channel space"
 msgstr "Kanal aralığında gezinmek için ok tuşlarını kullanın"
 
 #: ../src/Scenes/Conference.rb:48
 msgctxt "Conference"
-msgid "Use shift with left/right arrows to rotate"
+msgid "Use Shift+Left/Right Arrow to rotate"
 msgstr ""
 "Değiştirmek için Shift tuşuna basılı tutup sol ve sağ ok tuşlarını kullanın"
 
@@ -719,7 +719,7 @@ msgstr "Konumu söyle"
 
 #: ../src/Scenes/Conference.rb:135
 msgctxt "Conference"
-msgid "Hold spacebar to whisper to user"
+msgid "Hold the Space bar to whisper to the user"
 msgstr "Kullanıcıya fısıldamak için boşluk tuşunu basılı tutun"
 
 #: ../src/Scenes/Conference.rb:139
@@ -804,8 +804,8 @@ msgstr "Tamam"
 
 #: ../src/Scenes/Conference.rb:256
 msgctxt "Conference"
-msgid "%{user} has rolled %{value} dot on a %{count}-sided dice"
-msgid_plural "%{user} has rolled %{value} dots on a %{count}-sided dice"
+msgid "%{user} has rolled a %{value} on a %{count}-sided die"
+msgid_plural "%{user} has rolled a %{value} on a %{count}-sided die"
 msgstr[0] "%{user} %{count} yüzlü zarda %{value} attı"
 msgstr[1] "%{user} %{count} yüzlü zarda %{value} attı"
 
@@ -842,7 +842,7 @@ msgstr "Takip et"
 
 #: ../src/Scenes/Conference.rb:377
 msgctxt "Conference"
-msgid "Channel followed"
+msgid "You are now following this channel"
 msgstr "Kanal takip edildi"
 
 #: ../src/Scenes/Conference.rb:382
@@ -852,7 +852,7 @@ msgstr "Takibi bırak"
 
 #: ../src/Scenes/Conference.rb:384
 msgctxt "Conference"
-msgid "Channel unfollowed"
+msgid "You are no longer following this channel"
 msgstr "Kanalın takibi bırakıldı"
 
 #: ../src/Scenes/Conference.rb:390 ../src/Scenes/Conference.rb:414
@@ -877,7 +877,7 @@ msgstr "Dil"
 
 #: ../src/Scenes/Conference.rb:395
 msgctxt "Conference"
-msgid "Followers count: "
+msgid "Number of followers: "
 msgstr "Takipçi sayısı: "
 
 #: ../src/Scenes/Conference.rb:396
@@ -892,7 +892,7 @@ msgstr "Bu kanalda bekleme odası mevcut."
 
 #: ../src/Scenes/Conference.rb:399
 msgctxt "Conference"
-msgid "Room id"
+msgid "Room ID"
 msgstr "Oda kimliği"
 
 #: ../src/Scenes/Conference.rb:400
@@ -912,7 +912,7 @@ msgstr "Kanal çerçeve boyutu"
 
 #: ../src/Scenes/Conference.rb:405 ../src/Scenes/Conference.rb:558
 msgctxt "Conference"
-msgid "Space Virtualization"
+msgid "Spatial audio mode"
 msgstr "Alan sanallaştırma"
 
 #: ../src/Scenes/Conference.rb:412 ../src/Scenes/Conference.rb:558
@@ -1086,7 +1086,7 @@ msgstr "Kanalı gizle"
 
 #: ../src/Scenes/Conference.rb:563
 msgctxt "Conference"
-msgid "Store as permanent channel"
+msgid "Make this a permanent channel"
 msgstr "Kalıcı kanal olarak bırak"
 
 #: ../src/Scenes/Conference.rb:564
@@ -1248,7 +1248,7 @@ msgstr "Kaydet"
 
 #: ../src/Scenes/Conference.rb:864 ../src/Scenes/Conference.rb:891
 msgctxt "Conference"
-msgid "Saving began"
+msgid "Saving started"
 msgstr "Kayıt başladı"
 
 #: ../src/Scenes/Conference.rb:873 ../src/Scenes/Conference.rb:900
@@ -1275,12 +1275,12 @@ msgstr "Sağ"
 
 #: ../src/Scenes/Conference.rb:938
 msgctxt "Conference"
-msgid "Set push to talk shortcut"
+msgid "Set push-to-talk shortcut"
 msgstr "Bas konuş kısayolu ayarla"
 
 #: ../src/Scenes/Conference.rb:940
 msgctxt "Conference"
-msgid "Push to talk shortcut"
+msgid "Push-to-talk shortcut"
 msgstr "Bas konuş kısayolu"
 
 #: ../src/Scenes/Conference.rb:949
@@ -1336,12 +1336,12 @@ msgstr "Durum"
 
 #: ../src/Scenes/Conference.rb:1054
 msgctxt "Conference"
-msgid "Remove soundcard stream"
+msgid "Remove sound card stream"
 msgstr "Ses kartı yayınını durdur"
 
 #: ../src/Scenes/Conference.rb:1067
 msgctxt "Conference"
-msgid "Stream from soundcard"
+msgid "Stream from sound card"
 msgstr "Ses kartını yayınla"
 
 #: ../src/Scenes/Conference.rb:1072 ../src/Scenes/Conference.rb:1850
@@ -1353,12 +1353,12 @@ msgstr "Loopback aygıtı"
 #: ../src/Scenes/Conference.rb:1072 ../src/Scenes/Conference.rb:1850
 #: ../src/Scenes/Conference.rb:2000
 msgctxt "Conference"
-msgid "Select soundcard to stream"
+msgid "Select sound card to stream"
 msgstr "Yayın yapılacak ses kartını seçin"
 
 #: ../src/Scenes/Conference.rb:1073 ../src/Scenes/Conference.rb:1851
 msgctxt "Conference"
-msgid "Turn on the listening"
+msgid "Monitor this input"
 msgstr "Dinlemeyi aç"
 
 #: ../src/Scenes/Conference.rb:1074
@@ -1470,7 +1470,7 @@ msgstr "Yayın"
 
 #: ../src/Scenes/Conference.rb:1234
 msgctxt "Conference"
-msgid "Change volumes"
+msgid "Adjust volumes"
 msgstr "Ses seviyelerini değiştir"
 
 #: ../src/Scenes/Conference.rb:1238
@@ -1495,7 +1495,7 @@ msgstr "Yayınları ayrı dosyalara kaydet (deneysel)"
 
 #: ../src/Scenes/Conference.rb:1253
 msgctxt "Conference"
-msgid "Push to talk"
+msgid "Push-to-talk"
 msgstr "Bas konuş"
 
 #: ../src/Scenes/Conference.rb:1273
@@ -1515,17 +1515,17 @@ msgstr "Durum göster"
 
 #: ../src/Scenes/Conference.rb:1281
 msgctxt "Conference"
-msgid "Change output soundcard"
+msgid "Change output sound card"
 msgstr "Çıkış ses kartını değiştir"
 
 #: ../src/Scenes/Conference.rb:1283
 msgctxt "Conference"
-msgid "Use Elten soundcard"
+msgid "Use Elten sound card"
 msgstr "Elten ses kartını kullan"
 
 #: ../src/Scenes/Conference.rb:1286
 msgctxt "Conference"
-msgid "Select soundcard"
+msgid "Select sound card"
 msgstr "Ses kartı seçin"
 
 #: ../src/Scenes/Conference.rb:1287
@@ -1795,7 +1795,7 @@ msgstr "Kaynakları göster"
 
 #: ../src/Scenes/Conference.rb:1722
 msgctxt "Conference"
-msgid "Locally mute"
+msgid "Mute locally"
 msgstr "Yerel olarak sesi kapat"
 
 #: ../src/Scenes/Conference.rb:1723
@@ -1805,12 +1805,12 @@ msgstr "Yerel olarak sesi aç"
 
 #: ../src/Scenes/Conference.rb:1728
 msgctxt "Conference"
-msgid "Locally unmuted"
+msgid "Unmuted locally"
 msgstr "Yerel olarak ses açıldı"
 
 #: ../src/Scenes/Conference.rb:1730
 msgctxt "Conference"
-msgid "Locally muted"
+msgid "Muted locally"
 msgstr "Yerel oolarak ses kapatıldı"
 
 #: ../src/Scenes/Conference.rb:1753 ../src/Scenes/Conference.rb:1932
@@ -1853,7 +1853,7 @@ msgstr "Yayın web adresi"
 
 #: ../src/Scenes/Conference.rb:1845
 msgctxt "Conference"
-msgid "New soundcard stream"
+msgid "New sound card stream"
 msgstr "Yeni ses kartı yayını"
 
 #: ../src/Scenes/Conference.rb:1897
@@ -1883,7 +1883,7 @@ msgstr "İnternet yayını ekle"
 
 #: ../src/Scenes/Conference.rb:1995
 msgctxt "Conference"
-msgid "Add soundcard"
+msgid "Add sound card"
 msgstr "Ses kartı ekle"
 
 #: ../src/Scenes/Conference.rb:2036
@@ -1893,7 +1893,7 @@ msgstr "Durum"
 
 #: ../src/Scenes/Conference.rb:2036
 msgctxt "Conference"
-msgid "VST Plugins"
+msgid "VST plug-ins"
 msgstr "VST eklentileri"
 
 #: ../src/Scenes/Conference.rb:2036 ../src/Scenes/Conference.rb:2050
@@ -2044,7 +2044,7 @@ msgstr "VST ekle"
 
 #: ../src/Scenes/Conference.rb:2239
 msgctxt "Conference"
-msgid "Select VST version 2 file to be loaded"
+msgid "Select a VST2 plug-in file to load"
 msgstr "Yüklenecek VST sürüm 2 dosyasını seçin"
 
 #: ../src/Scenes/Conference.rb:2245
@@ -2089,7 +2089,7 @@ msgstr "Sil"
 
 #: ../src/Scenes/Conference.rb:2385
 msgctxt "Conference"
-msgid "Are you sure you want to delete saved chain of name %{name}?"
+msgid "Are you sure you want to delete the saved chain named %{name}?"
 msgstr "%{name} adlı zinciri silmek istediğinizden emin misiniz?"
 
 #: ../src/Scenes/Conference.rb:2391
@@ -2104,7 +2104,7 @@ msgstr "Zincir adı"
 
 #: ../src/Scenes/Conference.rb:2408
 msgctxt "Conference"
-msgid "Are you sure you want to apply chain of name %{name}?"
+msgid "Are you sure you want to apply the chain named %{name}?"
 msgstr "%{name} adlı zinciri uygulamak istediğinizden emin misiniz?"
 
 #: ../src/Scenes/Conference.rb:2421
@@ -2114,7 +2114,7 @@ msgstr "Zincir eklendi"
 
 #: ../src/Scenes/Documentation.rb:10
 msgctxt "Documentation"
-msgid "License agreement"
+msgid "Licence agreement"
 msgstr "Lisans sözleşmesi"
 
 #: ../src/Scenes/Documentation.rb:13
@@ -2206,7 +2206,7 @@ msgstr "Mesaj"
 
 #: ../src/Scenes/IIKeys.rb:4
 msgctxt "IIKeys"
-msgid "Navigate up or down on lists"
+msgid "Move up or down through lists"
 msgstr "Listelerde yukarı veya aşağı dolaşım"
 
 #: ../src/Scenes/IIKeys.rb:5
@@ -2231,7 +2231,7 @@ msgstr "Seçili öğeyi etkinleştir"
 
 #: ../src/Scenes/IIKeys.rb:9
 msgctxt "IIKeys"
-msgid "Cancel speech and stop currently played audio"
+msgid "Cancel speech and stop the audio that is currently playing"
 msgstr "Konuşmayı ve çalan sesi durdur"
 
 #: ../src/Scenes/IIKeys.rb:10
@@ -2261,7 +2261,7 @@ msgstr "Akışa gönder"
 
 #: ../src/Scenes/IIKeys.rb:37
 msgctxt "IIKeys"
-msgid "Invisible Interface Hotkeys"
+msgid "Invisible Interface keyboard shortcuts"
 msgstr "Görünmez arayüz kısayol tuşları"
 
 #: ../src/Scenes/PremiumPackages.rb:13
@@ -2296,12 +2296,12 @@ msgstr "Kuriye rozeti"
 
 #: ../src/Scenes/PremiumPackages.rb:31
 msgctxt "PremiumPackages"
-msgid "Following forums in not moderated groups"
+msgid "Following forums in groups you do not moderate"
 msgstr "Resmi olarak yönetilmeyen grupların forumlarını takip etme"
 
 #: ../src/Scenes/PremiumPackages.rb:32
 msgctxt "PremiumPackages"
-msgid "Disabling signatures visibility"
+msgid "Ability to hide signatures"
 msgstr "İmza gösterilmesini devredışı bırakma"
 
 #: ../src/Scenes/PremiumPackages.rb:33
@@ -2311,7 +2311,7 @@ msgstr "Konu işaretleme ve yer işaretleri"
 
 #: ../src/Scenes/PremiumPackages.rb:34
 msgctxt "PremiumPackages"
-msgid "Private messages protection against erroneous removal"
+msgid "Protection of private messages against accidental deletion"
 msgstr "Özel mesajların yanlışlıkla silinmesine karşı koruma"
 
 #: ../src/Scenes/PremiumPackages.rb:35
@@ -2321,7 +2321,7 @@ msgstr "Bahsetme geçmişi ve bahsetmelere yanıt verme"
 
 #: ../src/Scenes/PremiumPackages.rb:36
 msgctxt "PremiumPackages"
-msgid "Groups pinning"
+msgid "Pinning groups"
 msgstr "Grup sabitleme"
 
 #: ../src/Scenes/PremiumPackages.rb:37
@@ -2331,7 +2331,7 @@ msgstr "Blog gönderilerini takip etme"
 
 #: ../src/Scenes/PremiumPackages.rb:38
 msgctxt "PremiumPackages"
-msgid "Extended limit of attachment size in private messages to 32MB"
+msgid "Larger private-message attachments, up to 32 MB"
 msgstr "Özel mesajlarda ek boyutunun 32MB'a çıkartılması"
 
 #: ../src/Scenes/PremiumPackages.rb:39
@@ -2356,12 +2356,12 @@ msgstr "Odyofil rozeti"
 
 #: ../src/Scenes/PremiumPackages.rb:46
 msgctxt "PremiumPackages"
-msgid "Lifting the 2-minute limit for private voice messages"
+msgid "Removal of the two-minute limit for private voice messages"
 msgstr "Özel sesli mesajlarda 2 dakika sınırının kaldırılması"
 
 #: ../src/Scenes/PremiumPackages.rb:47
 msgctxt "PremiumPackages"
-msgid "Lifting the 32kbps quality limit in private voice messages"
+msgid "Removal of the 32 kbps quality limit for private voice messages"
 msgstr "Özel sesli mesajlarda 32KB/S kalite sınırının kaldırılması"
 
 #: ../src/Scenes/PremiumPackages.rb:48
@@ -2406,7 +2406,7 @@ msgstr "Yazar rozeti"
 
 #: ../src/Scenes/PremiumPackages.rb:60
 msgctxt "PremiumPackages"
-msgid "Creation of second and following blogs"
+msgid "Creation of additional blogs"
 msgstr "İkinci bloğu oluşturma ve blog takip etme"
 
 #: ../src/Scenes/PremiumPackages.rb:61
@@ -2421,7 +2421,7 @@ msgstr "Yazım denetimi"
 
 #: ../src/Scenes/PremiumPackages.rb:63
 msgctxt "PremiumPackages"
-msgid "Changing of blog address"
+msgid "Changing the blog address"
 msgstr "Blog adresi değiştirme"
 
 #: ../src/Scenes/PremiumPackages.rb:64
@@ -2456,7 +2456,7 @@ msgstr "Sohbeti shoutcast sunucusunda yayınlama"
 
 #: ../src/Scenes/PremiumPackages.rb:73
 msgctxt "PremiumPackages"
-msgid "Setting VST plugins on specific users"
+msgid "Applying VST plug-ins to individual users"
 msgstr "Belirli kullanıcılara vst eklentisi uygulama"
 
 #: ../src/Scenes/PremiumPackages.rb:74
@@ -2475,14 +2475,12 @@ msgstr ""
 
 #: ../src/Scenes/PremiumPackages.rb:76
 msgctxt "PremiumPackages"
-msgid ""
-"Setting different output soundcard for conferences than the one selected in "
-"Elten"
+msgid "Selecting a separate output sound card for conferences"
 msgstr "Elten'in kullandığı ses kartından farklı bir ses kartı seçebilme"
 
 #: ../src/Scenes/PremiumPackages.rb:77
 msgctxt "PremiumPackages"
-msgid "Changing channels dimensions"
+msgid "Changing channel dimensions"
 msgstr "Kanal boyutu değiştirme"
 
 #: ../src/Scenes/PremiumPackages.rb:81
@@ -2492,7 +2490,7 @@ msgstr "Orkestra paketi"
 
 #: ../src/Scenes/PremiumPackages.rb:82
 msgctxt "PremiumPackages"
-msgid "Includes profits from courier, audiophile, scribe and director"
+msgid "Includes the benefits of Courier, Audiophile, Scribe and Director"
 msgstr "Kuriye, odyofil, yazar ve yönetmen rozetlerinin avantajlarını içerir"
 
 #: ../src/Scenes/PremiumPackages.rb:86
@@ -2502,22 +2500,22 @@ msgstr "Sponsorluk paketi"
 
 #: ../src/Scenes/PremiumPackages.rb:87
 msgctxt "PremiumPackages"
-msgid "Includes profits from all other packages, including future packages"
+msgid "Includes the benefits of all other packages, including future packages"
 msgstr "Gelecek paketler dahil olmak üzere tüm paketlerin avantajlarını içerir"
 
 #: ../src/Scenes/PremiumPackages.rb:88
 msgctxt "PremiumPackages"
-msgid "Special assigning of user on lists and forum"
+msgid "Special recognition for the user in lists and on the forum"
 msgstr "Listelerde ve forumlarda kullanıcılara özel atama"
 
 #: ../src/Scenes/PremiumPackages.rb:89
 msgctxt "PremiumPackages"
-msgid "Entry in the list of sponsors"
+msgid "Listing in the sponsors list"
 msgstr "Sponsor listesinde adınızın görünmesi"
 
 #: ../src/Scenes/PremiumPackages.rb:95
 msgctxt "PremiumPackages"
-msgid "Show profits"
+msgid "Show benefits"
 msgstr "Avantajları göster"
 
 #: ../src/Scenes/PremiumPackages.rb:100 ../src/Scenes/PremiumPackages.rb:145
@@ -2582,7 +2580,7 @@ msgstr "Para birimini seçin."
 
 #: ../src/Scenes/PremiumPackages.rb:150
 msgctxt "PremiumPackages"
-msgid "Profits of package %{name}"
+msgid "Benefits of the %{name} package"
 msgstr "%{name} paketinin avantajları"
 
 #: ../src/Scenes/PremiumPackages.rb:155
@@ -2614,7 +2612,7 @@ msgstr ""
 
 #: ../src/Scenes/PremiumPackages.rb:252
 msgctxt "PremiumPackages"
-msgid "This package is currently unavailable. Try to buy it in the next month."
+msgid "This package is currently unavailable. Try to buy it next month."
 msgstr ""
 "Bu paket şu anda mevcut değil. Sonraki ay satın almayı deneyebilirsiniz."
 
@@ -2630,7 +2628,7 @@ msgstr "Bir ay"
 
 #: ../src/Scenes/PremiumPackages.rb:257
 msgctxt "PremiumPackages"
-msgid "How long do you want to buy this package for?"
+msgid "For how long do you want to buy this package?"
 msgstr "Bu paketi ne kadar süre için satın almak istiyorsunuz?"
 
 #: ../src/Scenes/PremiumPackages.rb:262
@@ -2674,12 +2672,12 @@ msgstr "Banka transferi"
 
 #: ../src/Scenes/PremiumPackages.rb:288
 msgctxt "PremiumPackages"
-msgid "Paypal (using Paypal account or credit/debit card)"
+msgid "PayPal (using a PayPal account or credit/debit card)"
 msgstr "Paypal (Paypal hesabı veya kredi/bankamatik kartı kullanarak)"
 
 #: ../src/Scenes/PremiumPackages.rb:289
 msgctxt "PremiumPackages"
-msgid "Przelewy24 (fast transfer from polish banks)"
+msgid "Przelewy24 (fast transfer from Polish banks)"
 msgstr "Przelewy24 (Polonya bankalarına hızlı transfer)"
 
 #: ../src/Scenes/PremiumPackages.rb:292
@@ -2744,17 +2742,7 @@ msgstr ""
 
 #: ../src/Scenes/PremiumPackages.rb:320
 msgctxt "PremiumPackages"
-msgid ""
-"National transfer details (from Poland):\n"
-"%{holder}\n"
-"Address: %{address}\n"
-"Account number: %{placcount}\n"
-"\n"
-"Additional data for foreign transfers:\n"
-"IBAN number: %{iban}\n"
-"BIC / SWIFT: %{swift}\n"
-"Bank address: %{bankaddress}\n"
-"Sort code: %{sortcode}"
+msgid "Domestic bank transfer details (from Poland):\n%{holder}\nAddress: %{address}\nAccount number: %{placcount}\n\nAdditional data for foreign transfers:\nIBAN: %{iban}\nBIC / SWIFT: %{swift}\nBank address: %{bankaddress}\nSort code: %{sortcode}"
 msgstr ""
 "Polonya için ulusal transfer ayrıntıları:\n"
 "%{holder}\n"
@@ -2783,30 +2771,26 @@ msgstr "Kaç premium kod istersiniz?"
 
 #: ../src/Scenes/PremiumPackages.rb:367 ../src/Scenes/PremiumPackages.rb:402
 msgctxt "PremiumPackages"
-msgid ""
-"You will be charged a %{amount} commission for the selected payment method. "
-"Do you want to continue?"
+msgid "You will be charged a processing fee of %{amount} for the selected payment method."
 msgstr ""
 "Seçtiğiniz ödeme yöntemi için ödemenize %{amount} komisyon ücreti "
 "yansıyacaktır. Devam etmek istiyor musunuz?"
 
 #: ../src/Scenes/PremiumPackages.rb:403
 msgctxt "PremiumPackages"
-msgid "Enter blik code"
+msgid "Enter the BLIK code"
 msgstr "Blik kodu girin"
 
 #: ../src/Scenes/PremiumPackages.rb:410
 msgctxt "PremiumPackages"
-msgid ""
-"Payment has been ordered. Additional confirmation may be required. The order "
-"will be processed once the payment is complete."
+msgid "The payment has been initiated. Additional confirmation may be required. The order will be processed once the payment is complete."
 msgstr ""
 "Ödeme alındı. Ek doğrulama gerekebilir. Ödeme tamamlandığında sipariş işleme "
 "koyulacak."
 
 #: ../src/Scenes/PremiumPackages.rb:415
 msgctxt "PremiumPackages"
-msgid "Type code to activate this package"
+msgid "Enter the code to activate this package"
 msgstr "Bu paketi etkinleştirmek için kod yazın"
 
 #: ../src/Scenes/PremiumPackages.rb:421
@@ -2816,14 +2800,12 @@ msgstr "Kod bulunamadı."
 
 #: ../src/Scenes/PremiumPackages.rb:423
 msgctxt "PremiumPackages"
-msgid "This code has been already used."
+msgid "This code has already been used."
 msgstr "Bu kod zaten kullanılmış."
 
 #: ../src/Scenes/PremiumPackages.rb:432
 msgctxt "PremiumPackages"
-msgid ""
-"The package %{name} will be active until %{time}. This code will be used up "
-"and you will not be able to use it again. Do you want to continue?"
+msgid "The package %{name} will be active until %{time}. This code will be redeemed and you will not be able to use it again. Do you want to continue?"
 msgstr ""
 "%{name} paketi %{time} zamanına kadar etkin olacaktır. Bu kodu bir daha "
 "kullanamayacaksınız. Devam etmek istiyor musunuz?"
@@ -2918,7 +2900,7 @@ msgstr "Son kodu yükle"
 
 #: ../src/eapi/Common.rb:142
 msgctxt "EAPI_Common"
-msgid "Last codes"
+msgid "Code history"
 msgstr "Son kodlar"
 
 #: ../src/eapi/Common.rb:188
@@ -2953,12 +2935,12 @@ msgstr "kullanıcının rozetleri"
 
 #: ../src/eapi/Common.rb:219
 msgctxt "EAPI_Common"
-msgid "Remove from contacts' list"
+msgid "Remove from contact list"
 msgstr "Kişiler listesinden kaldır"
 
 #: ../src/eapi/Common.rb:221
 msgctxt "EAPI_Common"
-msgid "Add to contacts' list"
+msgid "Add to contact list"
 msgstr "Kişiler listesine ekle"
 
 #: ../src/eapi/Common.rb:224
@@ -2993,7 +2975,7 @@ msgstr "Akışı göster"
 
 #: ../src/eapi/Common.rb:247
 msgctxt "EAPI_Common"
-msgid "Monitor when this user becomes online"
+msgid "Notify me when this user comes online"
 msgstr "Kullanıcı çevrimiçi olduğunda bildir"
 
 #: ../src/eapi/Common.rb:249
@@ -3018,7 +3000,7 @@ msgstr "Kişiyi silmek istediğinizden emin misiniz?"
 
 #: ../src/eapi/Common.rb:320
 msgctxt "EAPI_Common"
-msgid "Feed unfollowed"
+msgid "You are no longer following this feed"
 msgstr "Akış takibi bırakıldı"
 
 #: ../src/eapi/Common.rb:322
@@ -3043,12 +3025,12 @@ msgstr "Zil sesi değiştirildi"
 
 #: ../src/eapi/Common.rb:350
 msgctxt "EAPI_Common"
-msgid "Notify me one time when this user becomes online"
+msgid "Notify me once when this user comes online"
 msgstr "Kullanıcı çevrimiçi olduğunda bana bir kez bildir"
 
 #: ../src/eapi/Common.rb:350
 msgctxt "EAPI_Common"
-msgid "Notify me whenever this user becomes online"
+msgid "Notify me whenever this user comes online"
 msgstr "Kullanıcı çevrimiçi olduğunda bildir"
 
 #: ../src/eapi/Common.rb:351
@@ -3078,7 +3060,7 @@ msgstr "Gönder"
 
 #: ../src/eapi/Common.rb:504
 msgctxt "EAPI_Common"
-msgid "Describe the found error"
+msgid "Describe the error you found"
 msgstr "Bulduğunuz hatayı açıklayın"
 
 #: ../src/eapi/Common.rb:518
@@ -3218,7 +3200,7 @@ msgstr "%{user} kullanıcısının kartviziti:"
 
 #: ../src/eapi/Common.rb:692
 msgctxt "EAPI_Common"
-msgid "License agreement"
+msgid "Licence agreement"
 msgstr "Lisans sözleşmesi"
 
 #: ../src/eapi/Common.rb:693
@@ -3233,32 +3215,26 @@ msgstr "Gizlilik sözleşmesi"
 
 #: ../src/eapi/Common.rb:695
 msgctxt "EAPI_Common"
-msgid "I do not accept, exit"
+msgid "Decline and exit"
 msgstr "Kabul etmiyorum, çık"
 
 #: ../src/eapi/Common.rb:695
 msgctxt "EAPI_Common"
-msgid ""
-"I accept Elten license agreement, Terms and Conditions and Privacy Policy"
+msgid "I accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy"
 msgstr ""
 "Elten lisans sözleşmesini, kullanım şartlarını ve gizlilik kurallarını kabul "
 "ediyorum"
 
 #: ../src/eapi/Common.rb:713
 msgctxt "EAPI_Common"
-msgid ""
-"Do you accept Elten license agreement, terms and conditions and privacy "
-"policy?"
+msgid "Do you accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy?"
 msgstr ""
 "Elten lisans anlaşmasını, kullanım şartlarını ve gizlilik sözleşmesini kabul "
 "ediyor musunuz?"
 
 #: ../src/eapi/Common.rb:734
 msgctxt "EAPI_Common"
-msgid ""
-"You are trying to play a midi file. In order to play such files, Elten needs "
-"an  external base of instruments. Do you want to download the base from the "
-"server  now? It may take several minutes."
+msgid "You are trying to play a MIDI file. Elten needs an external instrument sound bank to play MIDI files. Do you want to download it from the server now? This may take several minutes."
 msgstr ""
 "Midi dosyası oynatmaya çalışıyorsunuz. Elten bu tür dosyaları oynatabilmek "
 "için dışarıdan enstruman paketine ihtiyaç duyuyor. Paketi sunucudan şimdi "
@@ -3271,7 +3247,7 @@ msgstr "Lütfen bekleyin, ses fontu indiriliyor. Bir süre alabilir."
 
 #: ../src/eapi/Common.rb:737
 msgctxt "EAPI_Common"
-msgid "Soundfont downloaded succesfully."
+msgid "SoundFont downloaded successfully."
 msgstr "Ses fontu başarıyla indirildi."
 
 #: ../src/eapi/Common.rb:930
@@ -3305,9 +3281,7 @@ msgstr "Yönetmen"
 
 #: ../src/eapi/Common.rb:962
 msgctxt "EAPI_Common"
-msgid ""
-"This feature requires %{package} premium package. Would you like to see the "
-"premium packages available?"
+msgid "This feature requires the %{package} premium package. Would you like to see the available premium packages?"
 msgstr ""
 "Bu özellik %{package} premium paketini gerektirir. Mevcut olan premium "
 "paketlere gözatmak ister misiniz?"
@@ -3363,7 +3337,7 @@ msgstr "İçerik menüsü"
 
 #: ../src/eapi/Controls.rb:414
 msgctxt "EAPI_Form"
-msgid "Press up or down arrow to select contact"
+msgid "Press the Up or Down Arrow key to select a contact"
 msgstr "Kisi seçmek için yukarı ve aşağı ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:416
@@ -3373,7 +3347,7 @@ msgstr "Kişi seçin"
 
 #: ../src/eapi/Controls.rb:438
 msgctxt "EAPI_Form"
-msgid "User does not exist"
+msgid "The user does not exist"
 msgstr "Kullanıcı bulunamadı"
 
 #: ../src/eapi/Controls.rb:605
@@ -3504,7 +3478,7 @@ msgstr "Çevir"
 
 #: ../src/eapi/Controls.rb:1044 ../src/eapi/Controls.rb:1614
 msgctxt "EAPI_Form"
-msgid "Edit box"
+msgid "Text field"
 msgstr "Metin kutusu"
 
 #: ../src/eapi/Controls.rb:1045 ../src/eapi/Controls.rb:2638
@@ -3561,7 +3535,7 @@ msgstr "geri alındı"
 
 #: ../src/eapi/Controls.rb:1172
 msgctxt "EAPI_Form"
-msgid "Repeated"
+msgid "Redone"
 msgstr "Tekrarlandı"
 
 #: ../src/eapi/Controls.rb:1175
@@ -3601,7 +3575,7 @@ msgstr "Çerçeve"
 
 #: ../src/eapi/Controls.rb:1833
 msgctxt "EAPI_Form"
-msgid "Use h or numbers from 1 to 6 to navigate to the next header"
+msgid "Use H or the number keys 1 to 6 to navigate to the next heading"
 msgstr ""
 "Sonraki başlığa gitmek için h tuşunu ya da 1'den 6'ya kadar sayı tuşlarını "
 "kullanın"
@@ -3643,7 +3617,7 @@ msgstr "İşaretli"
 
 #: ../src/eapi/Controls.rb:2151
 msgctxt "EAPI_Form"
-msgid "You can heck only %{count} item"
+msgid "You can check only %{count} item"
 msgid_plural "You can check only %{count} items"
 msgstr[0] "Yalnızca %{count} öğe işaretleyebilirsiniz"
 msgstr[1] "Yalnızca %{count} öğe işaretleyebilirsiniz"
@@ -3655,7 +3629,7 @@ msgstr "Seçim iptal edildi"
 
 #: ../src/eapi/Controls.rb:2203
 msgctxt "EAPI_Form"
-msgid "Multiselection list"
+msgid "Multi-select list"
 msgstr "Çoklu seçmeli liste"
 
 #: ../src/eapi/Controls.rb:2212
@@ -3675,25 +3649,25 @@ msgstr "Boş liste"
 
 #: ../src/eapi/Controls.rb:2306
 msgctxt "EAPI_Form"
-msgid "Use space to select or unselect items"
+msgid "Press Space to select or deselect items"
 msgstr "Öğeleri seçmek veya seçimi iptal etmek için boşluk tuşunu kullanın"
 
 #: ../src/eapi/Controls.rb:2309
 msgctxt "EAPI_Form"
-msgid "Use shift with up/down arrows to filter content by tags"
+msgid "Press Shift+Up/Down Arrow to filter content by tags"
 msgstr ""
 "İçeriği etiketlerle filtrelemek için shift tuşu ile yukarı ve aşağı ok "
 "tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:2311
 msgctxt "EAPI_Form"
-msgid "Press CTRL + up arrow to read item index"
+msgid "Press Ctrl+Up Arrow to hear the item number"
 msgstr ""
 "Bulunulan öğenin sayısını okumak için ctrl+yukarı ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:2312
 msgctxt "EAPI_Form"
-msgid "Press CTRL + down arrow to read count of items"
+msgid "Press Ctrl+Down Arrow to hear the number of items"
 msgstr "Öğe sayısını okumak için ctrl+aşağı ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:2341
@@ -3768,7 +3742,7 @@ msgstr "Oluştur"
 
 #: ../src/eapi/Controls.rb:2643
 msgctxt "EAPI_Form"
-msgid "Files Tree"
+msgid "File tree"
 msgstr "Dosya ağacı"
 
 #: ../src/eapi/Controls.rb:2757
@@ -3808,8 +3782,7 @@ msgstr "Yol seçin"
 
 #: ../src/eapi/Controls.rb:3176
 msgctxt "EAPI_Form"
-msgid ""
-"Use SHIFT with left/right arrows to select the column you want to navigate by"
+msgid "Use Shift+Left/Right Arrow to select the column you want to navigate by"
 msgstr ""
 "Dolaşacağınız sütunu seçmek için shift+sol veya sağ ok tuşlarını kullanın"
 
@@ -3930,12 +3903,12 @@ msgstr "Dosyayı kaydet"
 
 #: ../src/eapi/Controls.rb:3601
 msgctxt "EAPI_Form"
-msgid "Use spacebar to toggle pause"
+msgid "Press the Space bar to play or pause"
 msgstr "Oynatmak veya duraklatmak için boşluk tuşunu kullanın"
 
 #: ../src/eapi/Controls.rb:3602
 msgctxt "EAPI_Form"
-msgid "Use left/right arrows to slide"
+msgid "Use the Left/Right Arrow keys to seek"
 msgstr "İleri veya geri sarmak için sağ veya sol ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:3603
@@ -3946,37 +3919,37 @@ msgstr ""
 
 #: ../src/eapi/Controls.rb:3604
 msgctxt "EAPI_Form"
-msgid "Use SHIFT with left/right arrows to change panning"
+msgid "Use Shift+Left/Right Arrow to change panning"
 msgstr ""
 "Ses yönünü değiştirmek için shift tuşu ile sağ veya sol ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:3605
 msgctxt "EAPI_Form"
-msgid "Use SHIFT with up/down arrows to change pitch"
+msgid "Use Shift+Up/Down Arrow to change pitch"
 msgstr ""
 "Kalınlığı değiştirmek için shift tuşu ile yukarı veya aşağı ok tuşlarını "
 "kullanın"
 
 #: ../src/eapi/Controls.rb:3606
 msgctxt "EAPI_Form"
-msgid "Use CTRL with up/down arrows to change tempo"
+msgid "Use Ctrl+Up/Down Arrow to change tempo"
 msgstr ""
 "Tempoyu değiştirmek için ctrl tuşu ile yukarı ve aşağı ok tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:3607
 msgctxt "EAPI_Form"
-msgid "Use backspace to return to the default settings"
+msgid "Press Backspace to restore the default settings"
 msgstr "Varsayılan ayarlara geri dönmek için backspace tuşunu kullanın"
 
 #: ../src/eapi/Controls.rb:3608
 msgctxt "EAPI_Form"
-msgid "Use home or end to move to the beginning or ending of a track"
+msgid "Press Home or End to move to the beginning or end of the track"
 msgstr ""
 "Parçanın başına veya sonuna gitmek için home ya da end tuşlarını kullanın"
 
 #: ../src/eapi/Controls.rb:3609
 msgctxt "EAPI_Form"
-msgid "Use page up or page down to navigate to the previous or next chapter"
+msgid "Press Page Up or Page Down to move to the previous or next chapter"
 msgstr ""
 "Sonraki veya önceki bölümlere gitmek için sayfa yukarı veya sayfa aşağı "
 "tuşlarını kullanın"
@@ -4066,9 +4039,7 @@ msgstr "Kayda devam et"
 
 #: ../src/eapi/Controls.rb:4290
 msgctxt "EAPI_Form"
-msgid ""
-"The encoder settings will not apply to the current record. Are you sure you "
-"want to continue?"
+msgid "The encoder settings will not apply to the current recording. Are you sure you want to continue?"
 msgstr ""
 "Kodlayıcı ayarları şu anki kayıt için geçerli olmayacak. Devam etmek "
 "istediğinizden emin misiniz?"
@@ -4170,10 +4141,7 @@ msgstr "Bölüm zamanı (ss:dd:ss.msmsms)"
 
 #: ../src/eapi/Controls.rb:4497
 msgctxt "EAPI_Form"
-msgid ""
-"Wrong time format, the proper format is two hours digits, colon, two minutes "
-"digits, colon, two seconds digits and, optionally, three milliseconds digits "
-"preceeded by dot"
+msgid "Invalid time format. Use hh:mm:ss.uuu: two digits each for hours, minutes and seconds, optionally followed by a full stop and three digits for milliseconds."
 msgstr ""
 "Yanlış zaman biçimi, iki basamaklı saat, iki nokta, iki basamaklı dakika, "
 "iki nokta, iki basamaklı saniye ve isteğe bağlı olarak nokta işareti ve "
@@ -4181,17 +4149,17 @@ msgstr ""
 
 #: ../src/eapi/Controls.rb:4514
 msgctxt "EAPI_Form"
-msgid "Add new chapter manually"
+msgid "Add a new chapter manually"
 msgstr "El ile yeni bölüm ekle"
 
 #: ../src/eapi/Controls.rb:4515
 msgctxt "EAPI_Form"
-msgid "Add chapters with playback"
+msgid "Add chapters during playback"
 msgstr "Oynatarak bölüm ekle"
 
 #: ../src/eapi/Controls.rb:4517
 msgctxt "EAPI_Form"
-msgid "Chapters editor, use context menu to add chapters"
+msgid "Chapter editor; use the context menu to add chapters"
 msgstr "Bölüm düzenleyici, bölüm eklemek için içerik menüsünü kullanın"
 
 #: ../src/eapi/Controls.rb:4521
@@ -4384,7 +4352,7 @@ msgstr "&Kişilerim"
 
 #: ../src/eapi/MainMenu.rb:61
 msgctxt "MainMenu"
-msgid "Users who a&dded me to contacts"
+msgid "Users who a&dded me to their contact list"
 msgstr "&Beni kişi listesine ekleyen kullanıcılar"
 
 #: ../src/eapi/MainMenu.rb:63
@@ -4464,7 +4432,7 @@ msgstr "Program &ayarları"
 
 #: ../src/eapi/MainMenu.rb:88
 msgctxt "MainMenu"
-msgid "Soun&dthemes"
+msgid "Sound &themes"
 msgstr "&Ses temaları"
 
 #: ../src/eapi/MainMenu.rb:89
@@ -4514,7 +4482,7 @@ msgstr "Özgün çeviri dosyası yükle &dosya"
 
 #: ../src/eapi/MainMenu.rb:102
 msgctxt "MainMenu"
-msgid "Select translations file"
+msgid "Select a translation file"
 msgstr "Çeviri dosyası seçin"
 
 #: ../src/eapi/MainMenu.rb:105
@@ -4559,7 +4527,7 @@ msgstr "&Benioku"
 
 #: ../src/eapi/MainMenu.rb:116
 msgctxt "MainMenu"
-msgid "&License agreement"
+msgid "&Licence agreement"
 msgstr "&Lisans sözleşmesi"
 
 #: ../src/eapi/MainMenu.rb:117
@@ -4579,7 +4547,7 @@ msgstr "&Elten'ın 2.4 sürümüne güncellenmesi hakkında bilgi"
 
 #: ../src/eapi/MainMenu.rb:120
 msgctxt "MainMenu"
-msgid "List of &Invisible Interface hotkeys"
+msgid "List of &Invisible Interface keyboard shortcuts"
 msgstr "Görünmez arayüz kısayol tuşlarının listesi"
 
 #: ../src/eapi/MainMenu.rb:122
@@ -4629,7 +4597,7 @@ msgstr "gönderiliyor..."
 
 #: ../src/eapi/Network.rb:184 ../src/eapi/Network.rb:229
 msgctxt "EAPI_Network"
-msgid "The file already exists. Do you want to override it?"
+msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Dosya zaten var. Üzerine yazmak istiyor musunuz?"
 
 #: ../src/eapi/Network.rb:291
@@ -4669,12 +4637,12 @@ msgstr "Seçilen SAPI sentezleyicisi kullanılıyor"
 
 #: ../src/eapi/QuickActions.rb:113
 msgctxt "EAPI_Common"
-msgid "Do not disturb on"
+msgid "Do not disturb is on"
 msgstr "Rahatsız etme açık"
 
 #: ../src/eapi/QuickActions.rb:117
 msgctxt "EAPI_Common"
-msgid "Do not disturb off"
+msgid "Do not disturb is off"
 msgstr "Rahatsız etme kapalı"
 
 #: ../src/eapi/QuickActions.rb:124
@@ -4809,17 +4777,17 @@ msgstr "Sohbet: Mikrofonu kapat"
 
 #: ../src/eapi/QuickActions.rb:224
 msgctxt "EAPI_QuickActions"
-msgid "Conferences: switch push to talk"
+msgid "Conferences: switch push-to-talk"
 msgstr "Sohbet: baş konuşu aç veya kapat"
 
 #: ../src/eapi/QuickActions.rb:225
 msgctxt "EAPI_QuickActions"
-msgid "Conferences: roll a 6-sided dice"
+msgid "Conferences: roll a 6-sided die"
 msgstr "Sohbet: 6 yüzlü zar at"
 
 #: ../src/eapi/QuickActions.rb:226
 msgctxt "EAPI_QuickActions"
-msgid "Conferences: roll a custom dice"
+msgid "Conferences: roll a custom die"
 msgstr "Sohbet: Zar at"
 
 #: ../src/eapi/QuickActions.rb:227
@@ -4939,7 +4907,7 @@ msgstr "eşittir"
 
 #: ../src/eapi/Speech.rb:377
 msgctxt "EAPI_Speech"
-msgid "graav"
+msgid "grave"
 msgstr "vurgu"
 
 #: ../src/eapi/Speech.rb:379
@@ -5098,10 +5066,7 @@ msgstr "Program donma hâlinden kurtulmaya çalışıyor."
 
 #: ../src/eapi/UI.rb:588
 msgctxt "EAPI_UI"
-msgid ""
-"Errors occurred while trying to register keys for invisible interface. "
-"Please make sure that other apps do not use the keys specified. You can "
-"change modifier keys of invisible interface using settings window."
+msgid "Errors occurred while trying to register keyboard shortcuts for the Invisible Interface. Make sure that the specified shortcuts are not used by other applications. You can change the Invisible Interface modifier keys in the Settings window."
 msgstr ""
 "Görünmez arayüz tuşlarını belirlerken hata oluştu. Diğer uygulamaların "
 "belirlenmeye çalışılan tuşları kullanmadığından emin olun. Görünmez arayüz "
@@ -5285,7 +5250,7 @@ msgstr "Yabancılar için profilimi gizle"
 
 #: ../src/scenes/Account.rb:249
 msgctxt "Account"
-msgid "Prevent banned users from writing me private messages"
+msgid "Prevent banned users from sending me private messages"
 msgstr "Banlanmış kullanıcıların bana özel mesaj yazmasını engelle"
 
 #: ../src/scenes/Account.rb:250
@@ -5395,7 +5360,7 @@ msgstr "Yeni arkadaşlar"
 
 #: ../src/scenes/Account.rb:262
 msgctxt "Account"
-msgid "Friends' birthday"
+msgid "Friends' birthdays"
 msgstr "Arkadaşın doğum günü"
 
 #: ../src/scenes/Account.rb:262
@@ -5490,7 +5455,7 @@ msgstr "Yeni şifreyi tekrarlayın."
 
 #: ../src/scenes/Account.rb:345
 msgctxt "Account"
-msgid "Fields: New Password and Repeat New Password have different values."
+msgid "The passwords do not match."
 msgstr "Yeni şifre ve yeni şifreyi tekrarlayın alanlarının değerleri farklı."
 
 #: ../src/scenes/Account.rb:352
@@ -5522,15 +5487,13 @@ msgstr "E-posta değiştirildi."
 
 #: ../src/scenes/Account.rb:401
 msgctxt "Account"
-msgid "Error, you must disable mail events reporting first."
+msgid "Error: you must disable email event reporting first."
 msgstr "Hata, ilk önce e-postayla olay raporlamayı devredışı bırakmalısınız."
 
 #: ../src/scenes/Account.rb:419 ../src/scenes/Account.rb:477
 #: ../src/scenes/Account.rb:589
 msgctxt "Account"
-msgid ""
-"An error occurred while authenticating the account. You might have provided "
-"an  incorrect password."
+msgid "An error occurred while verifying your account. You may have entered an incorrect password."
 msgstr "Hesaba izin verilirken hata oluştu. Yanlış şifre girmiş olabilirsiniz."
 
 #: ../src/scenes/Account.rb:444
@@ -5550,7 +5513,7 @@ msgstr "Bilgisayar"
 
 #: ../src/scenes/Account.rb:449
 msgctxt "Account"
-msgid "Auto log in tokens"
+msgid "Auto-login tokens"
 msgstr "Otomatik giriş belirteçleri"
 
 #: ../src/scenes/Account.rb:451
@@ -5560,9 +5523,7 @@ msgstr "Bütün oturumları kapat"
 
 #: ../src/scenes/Account.rb:467
 msgctxt "Account"
-msgid ""
-"Are you sure you want to remove all auto log in tokens and log out all "
-"sessions?  You will be logged off immediately."
+msgid "Are you sure you want to remove all auto-login tokens and log out of all sessions? You will be logged out immediately."
 msgstr ""
 "Tüm otomatik giriş belirteçlerini silip tüm istemcilerden çıkış yapmak "
 "istediğinizden emin misiniz? Çıkış işleminiz hemen gerçekleşir."
@@ -5613,7 +5574,7 @@ msgstr "Kullanıcıyı kara listeden kaldırmak istediğinizden emin misiniz?"
 
 #: ../src/scenes/Account.rb:563
 msgctxt "Account"
-msgid "A user has been removed from the black list."
+msgid "The user has been removed from the blacklist."
 msgstr "Kara listeden kullanıcı kaldırıldı."
 
 #: ../src/scenes/Account.rb:616
@@ -5623,10 +5584,7 @@ msgstr "Son girişler"
 
 #: ../src/scenes/Account.rb:637
 msgctxt "Account"
-msgid ""
-"If you wish, you can configure Elten to report any changes and logins  on "
-"your account from new devices to you by E-mail. To do this, you must verify "
-"your E-mail address. Do you want to do it now?"
+msgid "You can configure Elten to notify you by email about changes to your account and logins from new devices. To do so, you must verify your email address. Do you want to verify it now?"
 msgstr ""
 "İsterseniz, elten'ı hesabınıza yapılan değişiklikleri ve diğer cihazlardan "
 "girişleri e-posta ile bildirmek üzere ayarlayabilirsiniz. Bunu yapmak için, "
@@ -5650,10 +5608,7 @@ msgstr "E-posta ile olay raporlamasını devredışı bırak"
 
 #: ../src/scenes/Account.rb:656
 msgctxt "Account"
-msgid ""
-"Mail events reporting is disabled. If you wish, you can enable it to receive "
-"information about changes made on your account and logins from new devices "
-"via E-mail"
+msgid "Email event reporting is disabled. If you wish, you can enable it to receive information about changes to your account and logins from new devices by email."
 msgstr ""
 "E-posta ile olay raporlama devredışı. İsterseniz, e-postayla hesabınızda "
 "yapılan değişiklikler ve diğer cihazlardan girişler hakkında bilgi almak "
@@ -5666,26 +5621,7 @@ msgstr "Olay raporlama etkinleştirildi."
 
 #: ../src/scenes/Account.rb:684
 msgctxt "Account"
-msgid ""
-"Archiving your account will have the following effects:\n"
-"* An indication that the account is archived will be placed next to all "
-"posts on the forum.\n"
-"* The account will not be displayed in the users lists.\n"
-"* The account will be removed from all contact lists.\n"
-"* Users will not be able to send private messages to this account.\n"
-"* The profile (including status, visiting card and signature) will be "
-"removed from the server\n"
-"* You will be opted out off all groups you are not moderating or banned in\n"
-"* You will be opted out of all messages conversations\n"
-"* All information about threads followed by you, your pinned groups or "
-"marked threads will be removed\n"
-"\n"
-"Attention.\n"
-"Archiving an account does not mean deleting or hiding associated blogs or "
-"notes, this must be done manually before archiving.\n"
-"\n"
-"The account will be automatically unarchived the next time you log in, but "
-"removed data will not be restored.."
+msgid "Archiving your account will have the following effects:\n* An indication that the account is archived will appear next to all of its forum posts.\n* The account will not appear in user lists.\n* The account will be removed from all contact lists.\n* Users will not be able to send private messages to this account.\n* The profile, including the status, bio and signature, will be removed from the server.\n* You will leave all groups that you do not moderate and from which you are not banned.\n* You will leave all message conversations.\n* All information about threads you follow, groups you have pinned and threads you have marked will be removed.\n\nWarning:\nArchiving an account does not delete or hide its blogs or notes. You must do this manually before archiving the account.\n\nThe account will be unarchived automatically the next time you log in, but the removed data will not be restored."
 msgstr ""
 "Hesabınızı arşivlemek aşağıdakilere neden olabilir:\n"
 "* Forumdaki bütün mesajların yanına hesabın arşivlendiğine dair bir gösterge "
@@ -5728,7 +5664,7 @@ msgstr "Hesap arşivlendi"
 
 #: ../src/scenes/Admins.rb:15
 msgctxt "Admins"
-msgid "Recommended groups Moderators"
+msgid "Moderators of recommended groups"
 msgstr "Önerilen grup moderatörleri"
 
 #: ../src/scenes/Admins.rb:15
@@ -5809,10 +5745,7 @@ msgstr ""
 
 #: ../src/scenes/Authentication.rb:36
 msgctxt "Authentication"
-msgid ""
-"Two-factor authentication was introduced in Elten 2.28. After activating it, "
-"it  will not be possible to log in from the older versions of the program. "
-"DO you  wish to continue anyway?"
+msgid "Two-factor authentication was introduced in Elten 2.28. After activating it, you will not be able to log in using older versions of the program. Do you wish to continue anyway?"
 msgstr ""
 "İki öğeli kimlik doğrulama Elten 2.28 sürümünden itibaren kullanılmaya "
 "başlanmıştır. Etkinleştirildikten sonra programın daha eski sürümlerinden "
@@ -5833,9 +5766,7 @@ msgstr "Lütfen bekleyin, sunucuya bağlanılıyor..."
 
 #: ../src/scenes/Authentication.rb:47
 msgctxt "Authentication"
-msgid ""
-"On the phone number indicated, you will receive a text message with the "
-"code  activating two-factor authentication. Enter this code"
+msgid "A text message containing the code to activate two-factor authentication will be sent to the phone number you provided. Enter the code."
 msgstr ""
 "Belirtilen telefon numarasına iki öğeli kimlik doğrulamayı etkinleştirmek "
 "için kullanılacak olan kod sms mesajıyla gönderilecektir. Kodu girin"
@@ -5984,7 +5915,7 @@ msgstr "Ban süresi"
 
 #: ../src/scenes/Ban.rb:113
 msgctxt "Ban"
-msgid "The ban cancel reason"
+msgid "Reason for lifting the ban"
 msgstr "Ban iptal nedeni"
 
 #: ../src/scenes/Ban.rb:113
@@ -6024,7 +5955,7 @@ msgstr "Takip edilen bloglar"
 
 #: ../src/scenes/Blog.rb:13
 msgctxt "Blog"
-msgid "Open external wordpress blog"
+msgid "Open an external WordPress blog"
 msgstr "Wordpress bloğunu aç"
 
 #: ../src/scenes/Blog.rb:13
@@ -6125,7 +6056,7 @@ msgstr "Yeni kategori"
 
 #: ../src/scenes/Blog.rb:248
 msgctxt "Blog"
-msgid "You do not have any blog. Do you want to create one?"
+msgid "You do not have a blog. Do you want to create one?"
 msgstr "Hiçbir bloğunuz yok. Bir tane oluşturmak ister misiniz?"
 
 #: ../src/scenes/Blog.rb:253
@@ -6161,7 +6092,7 @@ msgstr "Bloğunuza yeni yorum yapılmamış."
 
 #: ../src/scenes/Blog.rb:325
 msgctxt "Blog"
-msgid "No new comments to followed blog posts."
+msgid "No new comments on blog posts you follow."
 msgstr "Takip edilen blog gönderilerinde yeni yorum yok."
 
 #: ../src/scenes/Blog.rb:329
@@ -6271,7 +6202,7 @@ msgstr "Gönderi takip edildi"
 
 #: ../src/scenes/Blog.rb:554 ../src/scenes/Blog.rb:811
 msgctxt "Blog"
-msgid "Post unfollowed"
+msgid "You are no longer following this post"
 msgstr "Gönderi takibi bırakıldı"
 
 #: ../src/scenes/Blog.rb:561
@@ -6336,12 +6267,12 @@ msgstr "Bahsetmeyi göster"
 
 #: ../src/scenes/Blog.rb:781
 msgctxt "Blog"
-msgid "Mention by %{user}"
+msgid "Mention from %{user}"
 msgstr "%{user} kullanıcısının bahsetmesi"
 
 #: ../src/scenes/Blog.rb:783
 msgctxt "Blog"
-msgid "Send reply to mentioner"
+msgid "Reply to the user who mentioned you"
 msgstr "Bahsedeni yanıtla"
 
 #: ../src/scenes/Blog.rb:819
@@ -6391,32 +6322,32 @@ msgstr "Blog listesi"
 
 #: ../src/scenes/Blog.rb:899 ../src/scenes/Blog.rb:1098
 msgctxt "Blog"
-msgid "Coworkers"
+msgid "Contributors"
 msgstr "İş arkadaşları"
 
 #: ../src/scenes/Blog.rb:903
 msgctxt "Blog"
-msgid "Add coworker"
+msgid "Add contributor"
 msgstr "İş arkadaşı ekle"
 
 #: ../src/scenes/Blog.rb:904
 msgctxt "Blog"
-msgid "What user you want to add to this blog?"
+msgid "Which user do you want to add to this blog?"
 msgstr "Bloğa hangi kullanıcıyı eklemek istiyorsunuz?"
 
 #: ../src/scenes/Blog.rb:914
 msgctxt "Blog"
-msgid "Delete coworker"
+msgid "Remove contributor"
 msgstr "Meslektaşı sil"
 
 #: ../src/scenes/Blog.rb:915
 msgctxt "Blog"
-msgid "Are you sure you want to release this coworker?"
+msgid "Are you sure you want to remove this contributor?"
 msgstr "İş arkadaşını çıkartmak istediğinizden emin misiniz?"
 
 #: ../src/scenes/Blog.rb:935
 msgctxt "Blog"
-msgid "Are you sure you want to delete blog %{name}?"
+msgid "Are you sure you want to delete the blog %{name}?"
 msgstr "%{name} adlı bloğu silmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Blog.rb:936
@@ -6495,7 +6426,7 @@ msgstr "Ayrıl"
 
 #: ../src/scenes/Blog.rb:1103
 msgctxt "Blog"
-msgid "Are you sure you want to stop co-creating this blog?"
+msgid "Are you sure you want to stop contributing to this blog?"
 msgstr "Bloğun yardımcı yöneticiliğinden ayrılmak istediğinizden emin misiniz?"
 
 #: ../src/scenes/Blog.rb:1105
@@ -6525,10 +6456,7 @@ msgstr "Takip edilen bloglara ekle"
 
 #: ../src/scenes/Blog.rb:1137
 msgctxt "Blog"
-msgid ""
-"This blog has been added to followed blogs. Do you want to mark all the "
-"posts published so far on it as read so that you don't see them in \"What's "
-"New\"?"
+msgid "You are now following this blog. Do you want to mark all of its existing posts as read so that they do not appear in What's New?"
 msgstr ""
 "Blog takip edilen bloglara eklendi. Blogda şu ana kadar yayınlanan tüm "
 "gönderileri neler yenide görmemek için okundu olarak işaretlemek ister "
@@ -6618,12 +6546,12 @@ msgstr "Bilinmeyen dillerdeki blogları gizle"
 
 #: ../src/scenes/Blog.rb:1243
 msgctxt "Blog"
-msgid "Wordpress user login"
+msgid "WordPress username"
 msgstr "Wordpress kullanıcı girişi"
 
 #: ../src/scenes/Blog.rb:1244
 msgctxt "Blog"
-msgid "Set new Wordpress password"
+msgid "Set new WordPress password"
 msgstr "Yeni wordpress şifresi ayarla"
 
 #: ../src/scenes/Blog.rb:1245
@@ -6638,7 +6566,7 @@ msgstr "Soyadı"
 
 #: ../src/scenes/Blog.rb:1247
 msgctxt "Blog"
-msgid "Nick"
+msgid "Nickname"
 msgstr "Rumuz"
 
 #: ../src/scenes/Blog.rb:1248
@@ -6658,17 +6586,17 @@ msgstr "Elten şifreniz"
 
 #: ../src/scenes/Blog.rb:1283
 msgctxt "Blog"
-msgid "New Wordpress password"
+msgid "New WordPress password"
 msgstr "Yeni wordpress şifresi"
 
 #: ../src/scenes/Blog.rb:1286
 msgctxt "Blog"
-msgid "Repeat new Wordpress password"
+msgid "Repeat new WordPress password"
 msgstr "Yeni wordpress şifresini tekrarlayın"
 
 #: ../src/scenes/Blog.rb:1290
 msgctxt "Blog"
-msgid "Wordpress password must be at least 6 characters long."
+msgid "WordPress password must be at least 6 characters long."
 msgstr "Wordpress şifresi en az 6 karakter uzunluğunda olmalıdır."
 
 #: ../src/scenes/Blog.rb:1295
@@ -6759,14 +6687,14 @@ msgstr "Tüm ziyaretçiler tarafından yapılan yorumlar"
 
 #: ../src/scenes/Blog.rb:1584
 msgctxt "Blog"
-msgid "By all visitors, but I must commit first comment of the specific person"
+msgid "By all visitors, but I must approve each person's first comment"
 msgstr ""
 "Tüm ziyaretçiler tarafından yapılan yorumlar her ziyaretçinin ilk yorumunu "
 "onaylamam gerekir"
 
 #: ../src/scenes/Blog.rb:1584
 msgctxt "Blog"
-msgid "By all visitors, but I must commit all of them"
+msgid "By all visitors, but I must approve every comment"
 msgstr "Tüm ziyaretçiler tarafından yapılan yorumlar hepsini onaylamam gerekir"
 
 #: ../src/scenes/Blog.rb:1584
@@ -6776,22 +6704,22 @@ msgstr "Sadece elten kullaınıcıları tarafından yapılan"
 
 #: ../src/scenes/Blog.rb:1585
 msgctxt "Blog"
-msgid "Disable commenting of older posts"
+msgid "Disable commenting on older posts"
 msgstr "Eski gönderilerin yorumlanmasını devredışı bırak"
 
 #: ../src/scenes/Blog.rb:1586
 msgctxt "Blog"
-msgid "Days after commenting of a post will be disabled"
+msgid "Number of days after which commenting on a post will be disabled"
 msgstr "* gün sonra yorumlar devredışı bırakılsın"
 
 #: ../src/scenes/Blog.rb:1587
 msgctxt "Blog"
-msgid "Allow comments threading"
+msgid "Allow threaded comments"
 msgstr "Konuların yorumlanmasına izin ver"
 
 #: ../src/scenes/Blog.rb:1588
 msgctxt "Blog"
-msgid "Max comments thread depth"
+msgid "Maximum comment thread depth"
 msgstr "En fazla yorum sayısı"
 
 #: ../src/scenes/Blog.rb:1589
@@ -6831,7 +6759,7 @@ msgstr "En eski yorumlar"
 
 #: ../src/scenes/Blog.rb:1592
 msgctxt "Blog"
-msgid "Firstly display"
+msgid "Display first"
 msgstr "İlk olarak görüntüle"
 
 #: ../src/scenes/Blog.rb:1593 ../src/scenes/Blog.rb:2266
@@ -6882,7 +6810,7 @@ msgstr "Özel"
 
 #: ../src/scenes/Blog.rb:1660
 msgctxt "Blog"
-msgid "Links format"
+msgid "Link format"
 msgstr "Link biçimi"
 
 #: ../src/scenes/Blog.rb:1661
@@ -6986,12 +6914,12 @@ msgstr ""
 
 #: ../src/scenes/Blog.rb:1708
 msgctxt "Blog"
-msgid "My Wordpress account"
+msgid "My WordPress account"
 msgstr "Wordpress hesabım"
 
 #: ../src/scenes/Blog.rb:1709
 msgctxt "Blog"
-msgid "Open Wordpress admin panel in my browser"
+msgid "Open WordPress admin panel in my browser"
 msgstr "Wordpress Yönetici panelini tarayıcımda aç"
 
 #: ../src/scenes/Blog.rb:1719
@@ -7006,11 +6934,7 @@ msgstr "Blog alan adını yönet"
 
 #: ../src/scenes/Blog.rb:1723
 msgctxt "Blog"
-msgid ""
-"Blog settings have been changed. If you continue to domain change, mades you "
-"changed will be lost. Do you want to continue anyway? If you want to store "
-"new settings, select No and then Apply them before proceeding with domain "
-"change."
+msgid "The blog settings have been changed. If you continue with the domain change, your changes will be lost. Do you want to continue anyway? To save the new settings, select No, then select Apply before changing the domain."
 msgstr ""
 "Blog ayarları değiştirildi. Alan adı değişikliğine devam ederseniz "
 "yaptığınız değişiklikler kaybolacak. Yine de devam etmek istiyor musunuz? "
@@ -7048,12 +6972,12 @@ msgstr "Gönderi başlığı"
 
 #: ../src/scenes/Blog.rb:1950
 msgctxt "Blog"
-msgid "Source Editor (HTML and Wordpress Shortcodes)"
+msgid "Source editor (HTML and WordPress shortcodes)"
 msgstr "Kaynak düzenleyicisi (html ve wordpress kısa kodları)"
 
 #: ../src/scenes/Blog.rb:1950
 msgctxt "Blog"
-msgid "Formattable editor"
+msgid "Rich-text editor"
 msgstr "Biçim tablosu düzenleyicisi"
 
 #: ../src/scenes/Blog.rb:1950
@@ -7113,7 +7037,7 @@ msgstr "Yayın tarihi"
 
 #: ../src/scenes/Blog.rb:1959
 msgctxt "Blog"
-msgid "Allow users to comment this post"
+msgid "Allow users to comment on this post"
 msgstr "Gönderiye kullanıcıların yorum yapmasına izin ver"
 
 #: ../src/scenes/Blog.rb:1965
@@ -7133,7 +7057,7 @@ msgstr "Eklenecek etiket"
 
 #: ../src/scenes/Blog.rb:1991
 msgctxt "Blog"
-msgid "This tag does not exist, do you want to create it now?"
+msgid "This tag does not exist. Do you want to create it now?"
 msgstr "Bu etiket mevcut değil, oluşturmak istiyor musunuz?"
 
 #: ../src/scenes/Blog.rb:2003
@@ -7153,7 +7077,7 @@ msgstr "Yayın tarihi ayarlanmadı"
 
 #: ../src/scenes/Blog.rb:2126
 msgctxt "Blog"
-msgid "Selected publication date that is in the past"
+msgid "The selected publication date is in the past"
 msgstr "Seçilen yayın tarihi geçmiş"
 
 #: ../src/scenes/Blog.rb:2178
@@ -7163,7 +7087,7 @@ msgstr "Gönderi eklendi."
 
 #: ../src/scenes/Blog.rb:2189
 msgctxt "Blog"
-msgid "There are currently no tags created, please add a new one."
+msgid "No tags have been created yet. Please add a new one."
 msgstr "Önceden oluşturulan etiket yok, yeni etiket oluşturun."
 
 #: ../src/scenes/Blog.rb:2192
@@ -7293,12 +7217,12 @@ msgstr ""
 
 #: ../src/scenes/Blog.rb:2481
 msgctxt "Blog"
-msgid "Only first level subdomains are allowed"
+msgid "Only first-level subdomains are allowed"
 msgstr "Sadece ilk seviye alt alan adlarına izin verilir"
 
 #: ../src/scenes/Blog.rb:2485
 msgctxt "Blog"
-msgid "Blog subdomain must be at least 3 characters long"
+msgid "The blog subdomain must be at least 3 characters long"
 msgstr "Blog alt alan adı en az 3 karakter uzunluğunda olmalıdır"
 
 #: ../src/scenes/Blog.rb:2490
@@ -7313,11 +7237,7 @@ msgstr "Girilen alan adı doğru değil"
 
 #: ../src/scenes/Blog.rb:2500
 msgctxt "Blog"
-msgid ""
-"Warning! If you change your blog URL, some links may stop working. If you "
-"directly linked posts or other resources on your blog, they would no longer "
-"be available at previous URLs. In such case you will be required to fix them "
-"manually. Are you sure you want to continue?"
+msgid "Warning! If you change your blog URL, some links may stop working. Direct links to posts or other resources on your blog will no longer work at their previous URLs. You will need to update them manually. Are you sure you want to continue?"
 msgstr ""
 "Dikkat! Blog web adresini değiştirirseniz bazı linkler çalışmayabilir. "
 "Bloğunuzdaki gönderilere veya kaynaklara doğrudan bağlantı verdiyseniz "
@@ -7331,33 +7251,7 @@ msgstr "Blog alan adı değiştirildi"
 
 #: ../src/scenes/Blog.rb:2523
 msgctxt "Blog"
-msgid ""
-"You should now configure your purchased domain to redirect to Elten blogging "
-"server. Below are the necessary details. If you have any problems, please "
-"feel free to ask questions in the forum.\n"
-"      \n"
-"      Wherever possible, we recommend that you use the CNAME record, as it "
-"does not need to be edited if the IP address of the server hosting your blog "
-"changes. Your blog's IP address may change, for example, due to a Elten "
-"Blogging Server migration. By configuring your domain's CNAME record, you "
-"don't need to do anything else.\n"
-"      To do this, please point your cname record to destination \"%{host}."
-"\"\n"
-"      \n"
-"      Unfortunately, many domain registrars do not support the CNAME record "
-"for top-level domains, so you may want to use the A record instead.\n"
-"      In such a case, please point the A record to IP address:\n"
-"%{ip}\n"
-".\n"
-"\n"
-"Please note that redirecting your domain is not aliasing and setting aliases "
-"or HTTP 301/ 3xx redirections will not work.\n"
-"\n"
-"You can get detailed description from your domain provider, for example at:\n"
-"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-"
-"Familiar-with-DNS\n"
-"\n"
-"Once completed, please continue."
+msgid "Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n\nWhere possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n\nMany domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n%{ip}\n\nPointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n\nDetailed instructions are available from your domain provider, for example at:\nhttps://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n\nOnce you have finished, continue."
 msgstr ""
 "Satın aldığınız alan adını elten blog sunucusuna yönlendirmesi için "
 "ayarlamalısınız. Gerekli ayrıntılar aşağıdadır. Sorun olursa forumda "
@@ -7391,14 +7285,12 @@ msgstr "Alan adını ayarlama"
 
 #: ../src/scenes/Blog.rb:2541
 msgctxt "Blog"
-msgid "Ready, take me next"
+msgid "Done, continue"
 msgstr "Hazırım, sonrakine götür"
 
 #: ../src/scenes/Blog.rb:2553
 msgctxt "Blog"
-msgid ""
-"Your domain is not pointing to Elten Blogs, please try again or wait a while "
-"to refresh DNS. It may take up to 24 hours to perform full DNS update."
+msgid "Your domain does not point to Elten Blogs. Try again, or wait for the DNS changes to propagate. Full DNS propagation may take up to 24 hours."
 msgstr ""
 "Alan adınız Elten bloglarına yönlendirme yapmıyor, tekrar deneyin veya DNS "
 "tazeleme için bir süre bekleyin. Tam DNS güncellemesi yapmak 24 saat kadar "
@@ -7406,8 +7298,7 @@ msgstr ""
 
 #: ../src/scenes/Blog.rb:2555
 msgctxt "Blog"
-msgid ""
-"Your domain is pointing to Elten blogs, but www prefix is not. Please fix it."
+msgid "Your domain points to Elten Blogs, but the www subdomain does not. Please fix it."
 msgstr ""
 "Alan adınız elten bloglarına yönlendiriyor ancak www ön eki yönlendirmiyor. "
 "Lütfen düzeltin."
@@ -7497,17 +7388,17 @@ msgstr "Yeni kişi"
 
 #: ../src/scenes/Contacts.rb:108
 msgctxt "Contacts"
-msgid "Enter the name of the user you want to add to your contacts' list."
+msgid "Enter the name of the user you want to add to your contact list."
 msgstr "Kişiler listenize eklemek istediğiniz kullanıcının adını girin."
 
 #: ../src/scenes/Contacts.rb:124
 msgctxt "Contacts"
-msgid "Contact was added."
+msgid "The contact has been added."
 msgstr "Kişi eklendi."
 
 #: ../src/scenes/Contacts.rb:133
 msgctxt "Contacts"
-msgid "This user is already added to your contacts' list."
+msgid "This user is already in your contact list."
 msgstr "Bu kullanıcı zaten kişi listenizde ekli."
 
 #: ../src/scenes/Contacts.rb:136 ../src/scenes/Contacts.rb:169
@@ -7517,17 +7408,17 @@ msgstr "Bu kullanıcı yok."
 
 #: ../src/scenes/Contacts.rb:151
 msgctxt "Contacts"
-msgid "Type a username which you want to remove from your contact list."
+msgid "Enter the username of the person you want to remove from your contact list."
 msgstr "Kişi listenizden kaldırmak istediğiniz kullanıcı adını yazın."
 
 #: ../src/scenes/Contacts.rb:157
 msgctxt "Contacts"
-msgid "Contact has been deleted."
+msgid "The contact has been deleted."
 msgstr "Kişi silindi."
 
 #: ../src/scenes/Contacts.rb:166
 msgctxt "Contacts"
-msgid "This user is not added to your contacts' list."
+msgid "This user is not in your contact list."
 msgstr "Bu kişi kişiler listenize eklenmemiş."
 
 #: ../src/scenes/Debug.rb:9
@@ -7547,12 +7438,7 @@ msgstr "Bildir"
 
 #: ../src/scenes/ForgotPassword.rb:11
 msgctxt "ForgotPassword"
-msgid ""
-"If you lose your password, you can still reset it via the E-mail address "
-"provided  during the registration process. This way you shall generate the "
-"password reset  code which will be used to verify your identity. The code "
-"will be sent to your e- mail address. Warning! Two-factor authentication "
-"will be disabled on your  account. To continue, enter your username"
+msgid "If you forget your password, you can reset it using the email address you provided when registering. You can request a password reset code to verify your identity. The code will be sent to your email address. Warning: two-factor authentication will be disabled on your account. To continue, enter your username."
 msgstr ""
 "Şifrenizi kaybederseniz kayıt işleminde kullandığınız e-posta adresiyle "
 "sıfırlayabilirsiniz. Bu şekilde kimliğinizi doğrulamak için kullanılan şifre "
@@ -7587,19 +7473,17 @@ msgstr "Şifre sıfırla"
 
 #: ../src/scenes/ForgotPassword.rb:51
 msgctxt "ForgotPassword"
-msgid "Please wait while the password reset key is being generated."
+msgid "Please wait while the password reset code is being generated."
 msgstr "Şifre sıfırlama anahtarı oluşturulurken lütfen bekleyin."
 
 #: ../src/scenes/ForgotPassword.rb:55 ../src/scenes/ForgotPassword.rb:91
 msgctxt "ForgotPassword"
-msgid "An unexpected error"
+msgid "Unexpected error"
 msgstr "Beklenmeyen hata"
 
 #: ../src/scenes/ForgotPassword.rb:57
 msgctxt "ForgotPassword"
-msgid ""
-"Password reset key has been sent to your specified E-mail address. To "
-"continue,  select the option for entering key."
+msgid "The password reset code has been sent to the email address you provided. To continue, select the option to enter the code."
 msgstr ""
 "Belirtilen e-posta adresinize şifre sıfırlama anahtarı gönderildi. Devam "
 "etmek için anahtar girme seçeneğini seçin."
@@ -7641,9 +7525,7 @@ msgstr "Şifre değiştirilirken lütfen bekleyin"
 
 #: ../src/scenes/ForgotPassword.rb:93
 msgctxt "ForgotPassword"
-msgid ""
-"The password has been changed. You can log in to your account using the new "
-"data."
+msgid "You can log in to your account using your new credentials."
 msgstr ""
 "Şifre değiştirildi. Yeni şifreyi kullanarak hesabınıza giriş yapabilirsiniz."
 
@@ -7933,7 +7815,7 @@ msgstr "Kurucu"
 
 #: ../src/scenes/Forum.rb:540
 msgctxt "Forum"
-msgid "Founded at"
+msgid "Founded on"
 msgstr "Şu zamanda kuruldu"
 
 #: ../src/scenes/Forum.rb:543
@@ -7970,12 +7852,12 @@ msgstr "Ortalama boyut"
 
 #: ../src/scenes/Forum.rb:582 ../src/scenes/Forum.rb:4473
 msgctxt "Forum"
-msgid "Group regulations"
+msgid "Group rules"
 msgstr "Grup kuralları"
 
 #: ../src/scenes/Forum.rb:583
 msgctxt "Forum"
-msgid "Edit group regulations"
+msgid "Edit group rules"
 msgstr "Grup kurallarını düzenle"
 
 #: ../src/scenes/Forum.rb:589
@@ -8010,12 +7892,12 @@ msgstr "Daveti kabul et"
 
 #: ../src/scenes/Forum.rb:606
 msgctxt "Forum"
-msgid "Ask to be enrolled in this group"
+msgid "Request to join this group"
 msgstr "Bu gruba katılım isteği gönder"
 
 #: ../src/scenes/Forum.rb:611
 msgctxt "Forum"
-msgid "Do you wish to ask to be enrolled in %{groupname}"
+msgid "Do you want to request to join %{groupname}?"
 msgstr ""
 "%{groupname} grubuna katılım isteği göndermek istediğinizden emin misiniz?"
 
@@ -8141,12 +8023,12 @@ msgstr "Günün mesajı güncellendi"
 #: ../src/scenes/Forum.rb:762 ../src/scenes/Forum.rb:1239
 #: ../src/scenes/Forum.rb:3127
 msgctxt "Forum"
-msgid "Regulations of group %{groupname}"
+msgid "Rules of group %{groupname}"
 msgstr "%{groupname} grubunun kuralları"
 
 #: ../src/scenes/Forum.rb:775
 msgctxt "Forum"
-msgid "Regulations updated"
+msgid "Rules updated"
 msgstr "Kurallar güncellendi"
 
 #: ../src/scenes/Forum.rb:786 ../src/scenes/Forum.rb:939
@@ -8216,7 +8098,7 @@ msgstr "Raporlanan gönderiye git"
 
 #: ../src/scenes/Forum.rb:870
 msgctxt "Forum"
-msgid "The searched thread has been already deleted."
+msgid "The thread you searched for has already been deleted."
 msgstr "Aradığınız konu silinmiş."
 
 #: ../src/scenes/Forum.rb:877 ../src/scenes/Forum.rb:909
@@ -8236,8 +8118,7 @@ msgstr "Neden"
 
 #: ../src/scenes/Forum.rb:918
 msgctxt "Forum"
-msgid ""
-"Do you want to send information about status of this report to its author?"
+msgid "Do you want to send information about the status of this report to its author?"
 msgstr "Bu raporun durumu hakkında yazara bilgi göndermek istiyor musunuz?"
 
 #: ../src/scenes/Forum.rb:929
@@ -8363,36 +8244,34 @@ msgstr "Moderasyon izinlerini al"
 
 #: ../src/scenes/Forum.rb:1115
 msgctxt "Forum"
-msgid "Pass administrative privileges"
+msgid "Transfer administrator privileges"
 msgstr "Yönetici izinlerini devret"
 
 #: ../src/scenes/Forum.rb:1116
 msgctxt "Forum"
-msgid ""
-"Are you sure you want to resign your administrative privileges in "
-"%{groupname} and pass them to %{user}?"
+msgid "Are you sure you want to give up your administrator privileges in %{groupname} and transfer them to %{user}?"
 msgstr ""
 "%{groupname} grubunda yönetici izinlerinizden vazgeçip onları %{user} "
 "kişisine devretmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Forum.rb:1124
 msgctxt "Forum"
-msgid "Enable inheritance of this users' role"
+msgid "Enable inheritance of this user's role"
 msgstr "Kullanıcının rolünü devral"
 
 #: ../src/scenes/Forum.rb:1125
 msgctxt "Forum"
-msgid "Disable inheritance of this users' role"
+msgid "Disable inheritance of this user's role"
 msgstr "Kullanıcının rolünü devret"
 
 #: ../src/scenes/Forum.rb:1151
 msgctxt "Forum"
-msgid "Ban in this group"
+msgid "Ban from this group"
 msgstr "Bu gruptan banla"
 
 #: ../src/scenes/Forum.rb:1152
 msgctxt "Forum"
-msgid "Are you sure you want to ban %{user} in %{groupname}?"
+msgid "Are you sure you want to ban %{user} from %{groupname}?"
 msgstr ""
 "%{groupname} grubunda %{user} kişisini banlamak istediğinizden emin misiniz?"
 
@@ -8415,7 +8294,7 @@ msgstr "Banı kaldır"
 
 #: ../src/scenes/Forum.rb:1161
 msgctxt "Forum"
-msgid "Are you sure you want to unban %{user} in %{groupname}?"
+msgid "Are you sure you want to unban %{user} from %{groupname}?"
 msgstr ""
 "%{groupname} grubunda %{user} kişisinin banını kaldırmak istediğinizden emin "
 "misiniz?"
@@ -8427,7 +8306,7 @@ msgstr "Kabul et"
 
 #: ../src/scenes/Forum.rb:1165
 msgctxt "Forum"
-msgid "Do you want to accept request of user %{user}"
+msgid "Do you want to accept the request from %{user}?"
 msgstr "%{user} kullanıcısının isteğini kabul etmek istiyor musunuz?"
 
 #: ../src/scenes/Forum.rb:1167
@@ -8437,7 +8316,7 @@ msgstr "Reddet"
 
 #: ../src/scenes/Forum.rb:1168
 msgctxt "Forum"
-msgid "Do you want to refuse request of user %{user}"
+msgid "Do you want to reject the request from %{user}?"
 msgstr "%{user} kişisinin isteğini reddetmek istiyor musunuz?"
 
 #: ../src/scenes/Forum.rb:1171
@@ -8447,7 +8326,7 @@ msgstr "Daveti iptal et"
 
 #: ../src/scenes/Forum.rb:1172
 msgctxt "Forum"
-msgid "Are you sure you want to cancel invitation of %{user} to %{groupname}?"
+msgid "Are you sure you want to cancel %{user}'s invitation to %{groupname}?"
 msgstr ""
 "%{user} kullanıcısının %{groupname} grubuna olan davetini iptal etmek "
 "istediğinizden emin misiniz?"
@@ -8474,7 +8353,7 @@ msgstr "Kullanıcı davet edildi"
 
 #: ../src/scenes/Forum.rb:1193 ../src/scenes/Messages.rb:1070
 #: ../src/scenes/Users.rb:21
-msgid "You haven't permissions to do this"
+msgid "You do not have permission to do this"
 msgstr "Bunu yapmaya izniniz yok"
 
 #: ../src/scenes/Forum.rb:1195
@@ -8489,12 +8368,12 @@ msgstr "Bu kullanıcı zaten bu grupta"
 
 #: ../src/scenes/Forum.rb:1240 ../src/scenes/Forum.rb:3128
 msgctxt "Forum"
-msgid "I accept regulations of group %{groupname}"
+msgid "I accept the rules of the group %{groupname}"
 msgstr "%{groupname} grubunun kurallarını kabul ediyorum"
 
 #: ../src/scenes/Forum.rb:1241 ../src/scenes/Forum.rb:3129
 msgctxt "Forum"
-msgid "I decline regulations of group %{groupname}"
+msgid "I do not accept the rules of the group %{groupname}"
 msgstr "%{groupname} grubunun kurallarını reddediyorum"
 
 #: ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:4402
@@ -8554,7 +8433,7 @@ msgstr "Önerilen gruplar"
 
 #: ../src/scenes/Forum.rb:1302
 msgctxt "Forum"
-msgid "Not joined groups"
+msgid "Groups you have not joined"
 msgstr "Katılınmayan gruplar"
 
 #: ../src/scenes/Forum.rb:1302
@@ -8644,12 +8523,12 @@ msgstr "Bu forumu takibi bırak"
 
 #: ../src/scenes/Forum.rb:1547
 msgctxt "Forum"
-msgid "Added to followed forums list."
+msgid "You are now following this forum."
 msgstr "Takip edilen forumlar listesine eklendi"
 
 #: ../src/scenes/Forum.rb:1554
 msgctxt "Forum"
-msgid "Removed from followed forums list."
+msgid "You are no longer following this forum."
 msgstr "Takip edilen forumlar listesinden kaldırıldı"
 
 #: ../src/scenes/Forum.rb:1575
@@ -8850,7 +8729,7 @@ msgstr "Konu işaretlendi"
 #: ../src/scenes/Forum.rb:2063 ../src/scenes/Forum.rb:2473
 #: ../src/scenes/Forum.rb:3531
 msgctxt "Forum"
-msgid "Add to followed threads list"
+msgid "Follow this thread"
 msgstr "Takip edilen konular listesine ekle"
 
 #: ../src/scenes/Forum.rb:2064 ../src/scenes/Forum.rb:3532
@@ -8860,12 +8739,12 @@ msgstr "Bu konuyu takibi bırak"
 
 #: ../src/scenes/Forum.rb:2070 ../src/scenes/Forum.rb:3538
 msgctxt "Forum"
-msgid "Added to the list of followed threads."
+msgid "You are now following this thread."
 msgstr "Takip edilen konular listesine eklendi."
 
 #: ../src/scenes/Forum.rb:2077 ../src/scenes/Forum.rb:3545
 msgctxt "Forum"
-msgid "Removed from followed threads list."
+msgid "You are no longer following this thread."
 msgstr "Takip edilen konular listesinden kaldırıldı"
 
 #: ../src/scenes/Forum.rb:2085
@@ -8942,7 +8821,7 @@ msgstr "Yeni konu ismi yazın"
 
 #: ../src/scenes/Forum.rb:2141
 msgctxt "Forum"
-msgid "The forum name has been changed."
+msgid "The thread name has been changed."
 msgstr "Forum adı değiştirildi."
 
 #: ../src/scenes/Forum.rb:2148
@@ -9012,7 +8891,7 @@ msgstr "Grup %{founder} tarafından kuruldu"
 
 #: ../src/scenes/Forum.rb:2214
 msgctxt "Forum"
-msgid "Which group you want to offer this thread to?"
+msgid "Which group do you want to offer this thread to?"
 msgstr "Konuyu hangi gruba teklif etmek istersiniz?"
 
 #: ../src/scenes/Forum.rb:2221 ../src/scenes/Forum.rb:2429
@@ -9118,7 +8997,7 @@ msgstr "Seçilen konular silindi."
 
 #: ../src/scenes/Forum.rb:2422
 msgctxt "Forum"
-msgid "Which group you want to offer these threads to?"
+msgid "Which group do you want to offer these threads to?"
 msgstr "Konuları hangi gruba teklif etmek istersiniz?"
 
 #: ../src/scenes/Forum.rb:2444 ../src/scenes/Forum.rb:2471
@@ -9208,7 +9087,7 @@ msgstr "Eklenecek dosya seçin"
 
 #: ../src/scenes/Forum.rb:2571 ../src/scenes/Forum.rb:3081
 msgctxt "Forum"
-msgid "This file has been already attached"
+msgid "This file has already been attached"
 msgstr "Bu dosya zaten eklenmiş"
 
 #: ../src/scenes/Forum.rb:2574 ../src/scenes/Forum.rb:3084
@@ -9315,12 +9194,12 @@ msgstr "Bahsetmeyi göster"
 
 #: ../src/scenes/Forum.rb:3315
 msgctxt "Forum"
-msgid "Mention by %{user}"
+msgid "Mention from %{user}"
 msgstr "%{user} kullanıcısının bahsetmesi"
 
 #: ../src/scenes/Forum.rb:3317
 msgctxt "Forum"
-msgid "Send reply to mentioner"
+msgid "Reply to the user who mentioned you"
 msgstr "Bahsedeni yanıtla"
 
 #: ../src/scenes/Forum.rb:3327 ../src/scenes/Forum.rb:3328
@@ -9520,7 +9399,7 @@ msgstr "Gönderiyi yukarı taşı"
 
 #: ../src/scenes/Forum.rb:3667
 msgctxt "Forum"
-msgid "The post has been slided."
+msgid "The post has been repositioned."
 msgstr "Gönderi kaydırıldı."
 
 #: ../src/scenes/Forum.rb:3687
@@ -9674,7 +9553,7 @@ msgstr "Genel"
 
 #: ../src/scenes/Forum.rb:4415
 msgctxt "Forum"
-msgid "Change group parent"
+msgid "Change parent group"
 msgstr "Grup yöneticisini değiştir"
 
 #: ../src/scenes/Forum.rb:4419 ../src/scenes/Forum.rb:4444
@@ -9684,7 +9563,7 @@ msgstr "Hiçbiri"
 
 #: ../src/scenes/Forum.rb:4419
 msgctxt "Forum"
-msgid "Select group parent"
+msgid "Select parent group"
 msgstr "Grup yöneticisi seçin"
 
 #: ../src/scenes/Forum.rb:4427
@@ -9710,7 +9589,7 @@ msgstr "Sohbetlerde grup kanalı oluştur"
 
 #: ../src/scenes/Forum.rb:4472
 msgctxt "Forum"
-msgid "Regulations"
+msgid "Rules"
 msgstr "Kurallar"
 
 #: ../src/scenes/Forum.rb:4476
@@ -9775,7 +9654,7 @@ msgstr "Rapor görünürlüğü"
 
 #: ../src/scenes/Forum.rb:4484
 msgctxt "Forum"
-msgid "Duration limit of audio posts in seconds, 0 for no limit"
+msgid "Maximum duration of audio posts in seconds; 0 means no limit"
 msgstr "Sesli gönderi süre sınırı, sınırsız olması için 0 yazın"
 
 #: ../src/scenes/Honors.rb:66
@@ -9795,7 +9674,7 @@ msgstr "%{user} kişisinin rozetleri"
 
 #: ../src/scenes/Honors.rb:74
 msgctxt "Honors"
-msgid "The user has been given no badges."
+msgid "The user has not been awarded any honors."
 msgstr "Kullanıcıya rozet verilmemiş."
 
 #: ../src/scenes/Honors.rb:107 ../src/scenes/Honors.rb:122
@@ -9806,12 +9685,12 @@ msgstr "Seviye"
 
 #: ../src/scenes/Honors.rb:135
 msgctxt "Honors"
-msgid "Set as main honor"
+msgid "Set as primary honor"
 msgstr "Ana onur olarak ayarla"
 
 #: ../src/scenes/Honors.rb:140
 msgctxt "Honors"
-msgid "The badge has been set as default."
+msgid "The honor has been set as the primary honor."
 msgstr "Rozet varsayılan olarak ayarlandı."
 
 #: ../src/scenes/Honors.rb:144
@@ -9821,7 +9700,7 @@ msgstr "Rozet ver"
 
 #: ../src/scenes/Honors.rb:145
 msgctxt "Honors"
-msgid "Who should be granted this badge?"
+msgid "Who should receive this honor?"
 msgstr "Bu rozet kime verilsin?"
 
 #: ../src/scenes/Honors.rb:151
@@ -9841,9 +9720,7 @@ msgstr "Sil"
 
 #: ../src/scenes/Honors.rb:162
 msgctxt "Honors"
-msgid ""
-"Are you sure you want to delete this badge? All users granted with this "
-"badge will loose it."
+msgid "Are you sure you want to delete this badge? All users who have been granted this badge will lose it."
 msgstr ""
 "Bu rozeti silmek istediğinizden emin misiniz? Bu rozeti alan bütün "
 "kullanıcılar rozeti kaybedecek."
@@ -9921,10 +9798,7 @@ msgstr "Hangi sürümü kullanmak istiyorsunuz?"
 
 #: ../src/scenes/Loading.rb:262
 msgctxt "Loading"
-msgid ""
-"Elten detected that you are using NVDA. To support some features of this "
-"screenreader, it is necessary to install Elten addon. Do you want to do it "
-"now?"
+msgid "Elten has detected that you are using NVDA. To support some features of this screen reader, the Elten add-on for NVDA must be installed. Do you want to install it now?"
 msgstr ""
 "Elten NVDA kullandığınızı algıladı. Bu ekran okuyucunun bazı özelliklerini "
 "desteklemek için, elten eklentisini kurmanız gereklidir. Bunu şimdi yapmak "
@@ -9932,10 +9806,7 @@ msgstr ""
 
 #: ../src/scenes/Loading.rb:264
 msgctxt "Loading"
-msgid ""
-"New version of NVDA Elten addon is available. The version you're using is no "
-"longer supported in this Elten release and may cause some errors. Do you "
-"want to update it now?"
+msgid "A new version of the Elten add-on for NVDA is available. The version you are using is no longer supported by this Elten release and may cause errors. Do you want to update it now?"
 msgstr ""
 "Elten NVDA eklentisinin yeni sürümü mevcut. Şu an kullandığınız sürüm bu "
 "Elten sürümünde desteklenmiyor ve hatalara sebep olabilir. Eklentiyi şimdi "
@@ -9943,15 +9814,7 @@ msgstr ""
 
 #: ../src/scenes/Loading.rb:303
 msgctxt "Loading"
-msgid ""
-"Warning! Elten failed to verify server encryption key. It is possible that "
-"you are not connecting to Elten server but to one prepared by hackers. It is "
-"also possible that Elten Server key has changed. Any details should be "
-"provided on Elten Website Forum. If no information about key change was "
-"provided, it is very likely that you are vulnerable to hacker attack. In "
-"this cause any data that you will provide, including password, can be "
-"stolen. Are you sure you want to proceed with this connection? Select No to "
-"exit Elten."
+msgid "Warning! Elten failed to verify the server's encryption key. You may be connecting not to an Elten server, but to a server controlled by an attacker. The Elten server's key may also have changed. Details of any legitimate key change should be published on the Elten website or forum. If no such information has been published, this connection may be under attack. Any data you provide, including your password, could be stolen. Are you sure you want to continue with this connection? Select No to exit Elten."
 msgstr ""
 "Uyarı! Elten sunucu şifreleleme anahtarını doğrulayamadı. Hackerlar "
 "tarafından hazırlanan bir sunucuya bağlanıyor olabilirsiniz. Elten sunucu "
@@ -10077,7 +9940,7 @@ msgstr "Şifre:"
 
 #: ../src/scenes/Login.rb:44 ../src/scenes/Login.rb:245
 msgctxt "Login"
-msgid "Enter pin code"
+msgid "Enter PIN"
 msgstr "Pin kodunu girin"
 
 #: ../src/scenes/Login.rb:60 ../src/scenes/Login.rb:169
@@ -10104,9 +9967,7 @@ msgstr ""
 
 #: ../src/scenes/Login.rb:88
 msgctxt "Login"
-msgid ""
-"Two-factor authentication is enabled on this account. Select method to "
-"authenticate."
+msgid "Two-factor authentication is enabled on this account. Select an authentication method."
 msgstr ""
 "Bu hesapta iki öğeli kimlik doğrulama etkin. Doğrulamak için bir yöntem "
 "seçin."
@@ -10123,10 +9984,7 @@ msgstr "Sms ile doğrula"
 
 #: ../src/scenes/Login.rb:104
 msgctxt "Login"
-msgid ""
-"Enter the code sent to you  by text message to allow this device to login. "
-"If you do not have access to the  phone number used, select the password "
-"reset option to disable two-factor  authentication."
+msgid "Enter the code sent to you by text message to allow this device to log in. If you cannot access the phone number used, select the password reset option to disable two-factor authentication."
 msgstr ""
 "Bu cihazın giriş yapabilmesi için size mesaj olarak gönderilen kodu girin. "
 "Kullanılan telefon numarasına erişiminiz yoksa iki öğeli kimlik doğrulamayı "
@@ -10144,7 +10002,7 @@ msgstr "Doğrulama başarısız oldu."
 
 #: ../src/scenes/Login.rb:124
 msgctxt "Login"
-msgid "The entered code is wrong, please try again"
+msgid "The code you entered is incorrect. Please try again."
 msgstr "Girilen kod yanlış, lütfen tekrar deneyin"
 
 #: ../src/scenes/Login.rb:146
@@ -10174,26 +10032,19 @@ msgstr ""
 
 #: ../src/scenes/Login.rb:164
 msgctxt "Login"
-msgid ""
-"An error occurred while authenticating the identity. You might have provided "
-"an  incorrect password."
+msgid "An error occurred while verifying your identity. You may have entered an incorrect password."
 msgstr "Kimlik doğrulamasında hata oluştu. Yanlış şifre girmiş olabilirsiniz."
 
 #: ../src/scenes/Login.rb:179
 msgctxt "Login"
-msgid ""
-"Automatic login will be proceeding until you log out.Automatic login keys "
-"can be  managed from the My Account tab in the Community menu."
+msgid "Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
 msgstr ""
 "Otomatik giriş oturumu kapatana kadar geçerli olacaktır. Otomatik giriş "
 "anahtarları topluluk menüsündeki hesabım sekmesinden yönetilebilir."
 
 #: ../src/scenes/Login.rb:181
 msgctxt "Login"
-msgid ""
-"Login data has been updated. Automatic login will be proceeding until you "
-"log  out. Automatic login keys can be managed from the My Account tab in the "
-"Community  menu."
+msgid "Login data has been updated. Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
 msgstr ""
 "Giriş verisi güncellendi. Otomatik giriş oturumu kapatana kadar geçerli "
 "olacaktır. Otomatik giriş anahtarları topluluk menüsündeki hesabım "
@@ -10201,7 +10052,7 @@ msgstr ""
 
 #: ../src/scenes/Login.rb:192
 msgctxt "Login"
-msgid "To reenable auto log in feature, proceed to the general settings."
+msgid "To re-enable auto-login, go to General settings."
 msgstr "Otomatik girişi yeniden etkinleştirmek için, genel ayarlara gidin."
 
 #: ../src/scenes/Login.rb:206
@@ -10226,11 +10077,7 @@ msgstr "Bağlantı başarısız oldu."
 
 #: ../src/scenes/Login.rb:242
 msgctxt "Login"
-msgid ""
-"Do you want to encrypt this key with a custom pin code? You will be prompted "
-"for this code everytime you start Elten to unlock your account, but it will "
-"not be saved on the server and will be valid only for the auto-login-key "
-"stored on this device."
+msgid "Do you want to encrypt this key with a custom PIN? You will be prompted for this PIN every time you start Elten to unlock your account. It will not be saved on the server and will apply only to the auto-login key stored on this device."
 msgstr ""
 "Bu anahtarı özgün bir pin koduyla şifrelemek istiyor musunuz? Elten'ı her "
 "başlatışınızda hesabınızın kilidini açmak için bu kod sorulacak, ancak bu "
@@ -10239,12 +10086,12 @@ msgstr ""
 
 #: ../src/scenes/Login.rb:247
 msgctxt "Login"
-msgid "Enter pin code again"
+msgid "Enter PIN again"
 msgstr "Pin kodunu yeniden girin"
 
 #: ../src/scenes/Login.rb:252
 msgctxt "Login"
-msgid "The pin codes entered are different, please try again."
+msgid "The PINs you entered do not match. Please try again."
 msgstr "Girilen pin kodları farklı, lütfen tekrar deneyin."
 
 #: ../src/scenes/Main.rb:45
@@ -10276,7 +10123,7 @@ msgstr "Eylem etiketi"
 
 #: ../src/scenes/Main.rb:192
 msgctxt "Main"
-msgid "Change hotkey"
+msgid "Change keyboard shortcut"
 msgstr "Kısayol tuşunu değiştir"
 
 #: ../src/scenes/Main.rb:193
@@ -10286,12 +10133,12 @@ msgstr "Hiçbiri"
 
 #: ../src/scenes/Main.rb:206
 msgctxt "Main"
-msgid "Hotkey for action %{label}"
+msgid "Keyboard shortcut for action %{label}"
 msgstr "%{label} eylemi için kısayol tuşu"
 
 #: ../src/scenes/Main.rb:220
 msgctxt "Main"
-msgid "This hotkey is already used by action %{action}"
+msgid "This keyboard shortcut is already used by action %{action}"
 msgstr "Bu kısayol tuşu zaten %{action} eylemi için kullanılıyor"
 
 #: ../src/scenes/Main.rb:227
@@ -10551,12 +10398,12 @@ msgstr "Konuşmaları sil"
 
 #: ../src/scenes/Messages.rb:235
 msgctxt "Messages"
-msgid "Set all messages as a default view"
+msgid "Set all messages as the default view"
 msgstr "Varsayılan görünümü tüm mesajlar olarak ayarla"
 
 #: ../src/scenes/Messages.rb:236
 msgctxt "Messages"
-msgid "Set subjects as a default view"
+msgid "Set subjects as the default view"
 msgstr "Varsayılan görünümü konular olarak ayarla"
 
 #: ../src/scenes/Messages.rb:241
@@ -10639,12 +10486,12 @@ msgstr "Konuşma değiştirildi"
 
 #: ../src/scenes/Messages.rb:378
 msgctxt "Messages"
-msgid "Are you sure you want to delete all messages with user %{user}"
+msgid "Are you sure you want to delete all messages exchanged with %{user}?"
 msgstr "%{user} ile olan tüm konuşmaları silmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Messages.rb:383
 msgctxt "Messages"
-msgid "All conversations with user have been deleted."
+msgid "All conversations with the user have been deleted."
 msgstr "Kişiyle olan tüm konuşmalar silindi."
 
 #: ../src/scenes/Messages.rb:409
@@ -10679,9 +10526,7 @@ msgstr "Bu konuşmaya yeni mesaj gönder"
 
 #: ../src/scenes/Messages.rb:493
 msgctxt "Messages"
-msgid ""
-"Are you sure you want to delete conversation %{conversationname} with user "
-"%{user}"
+msgid "Are you sure you want to delete the conversation %{conversationname} with %{user}?"
 msgstr ""
 "%{user} kullanıcısıyla olan %{conversationname} konuşmasını silmek "
 "istediğinizden emin misiniz?"
@@ -10743,7 +10588,7 @@ msgstr "Anketler"
 
 #: ../src/scenes/Messages.rb:709 ../src/scenes/Messages.rb:1053
 msgctxt "Messages"
-msgid "Message has been sent"
+msgid "The message has been sent"
 msgstr "Mesaj göndderildi"
 
 #: ../src/scenes/Messages.rb:724
@@ -10938,12 +10783,12 @@ msgstr "Bu notu kiminle paylaşmak istiyorsunuz?"
 
 #: ../src/scenes/Notes.rb:137
 msgctxt "Notes"
-msgid "User cannot be found"
+msgid "The user cannot be found"
 msgstr "Kullanıcı bulunamadı."
 
 #: ../src/scenes/Notes.rb:143
 msgctxt "Notes"
-msgid "From now on you share this note with %{user}"
+msgid "You are now sharing this note with %{user}"
 msgstr "Artık bu notu %{user} ile paylaşıyorsunuz"
 
 #: ../src/scenes/Notes.rb:165
@@ -10964,7 +10809,7 @@ msgstr ""
 
 #: ../src/scenes/Notes.rb:196
 msgctxt "Notes"
-msgid "You no longer share this note with %{user}"
+msgid "You are no longer sharing this note with %{user}"
 msgstr "Artık bu notu %{user} ile paylaşmıyorsunuz"
 
 #: ../src/scenes/Notes.rb:219
@@ -10974,9 +10819,7 @@ msgstr "%{name} öğesini silmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Notes.rb:221
 msgctxt "Notes"
-msgid ""
-"Do you really want to end sharing %{name}? It will be deleted from your "
-"notes list."
+msgid "Do you really want to stop sharing %{name}? It will be deleted from your list of notes."
 msgstr ""
 "%{name} notunu paylaşmayı durdurmak istediğinizden emin misiniz? Notlar "
 "listenizden silinecektir."
@@ -11146,7 +10989,7 @@ msgstr "Çoklu seçimli"
 
 #: ../src/scenes/Polls.rb:234
 msgctxt "Polls"
-msgid "Edit box"
+msgid "Text field"
 msgstr "Metin kutusu"
 
 #: ../src/scenes/Polls.rb:234
@@ -11156,12 +10999,12 @@ msgstr "Soru türü"
 
 #: ../src/scenes/Polls.rb:235
 msgctxt "Polls"
-msgid "Limit count of answers that can be checked"
+msgid "Limit the number of answers that can be selected"
 msgstr "İşaretlenebilecek cevapların sayısını sınırla"
 
 #: ../src/scenes/Polls.rb:236
 msgctxt "Polls"
-msgid "Count of answers that can be checked"
+msgid "Maximum number of answers that can be selected"
 msgstr "İşaretlenebilecek cevap sayısı"
 
 #: ../src/scenes/Polls.rb:238 ../src/scenes/Polls.rb:622
@@ -11226,8 +11069,8 @@ msgstr "Çoklu seçimli soru"
 
 #: ../src/scenes/Polls.rb:406
 msgctxt "Polls"
-msgid "Up to %{limit}-choice question"
-msgid_plural "Up to %{limit}-choices question"
+msgid "Question allowing up to %{limit} choices"
+msgid_plural "Questions allowing up to %{limit} choices"
 msgstr[0] "%{limit} seçimli soru"
 msgstr[1] "Çoklu seçimli soru"
 
@@ -11394,7 +11237,7 @@ msgstr ""
 
 #: ../src/scenes/Programs.rb:104
 msgctxt "Programs"
-msgid "Installation canceled."
+msgid "Installation cancelled."
 msgstr "Kurulum iptal edildi."
 
 #: ../src/scenes/Programs.rb:111
@@ -11428,22 +11271,19 @@ msgstr ""
 
 #: ../src/scenes/Registration.rb:16
 msgctxt "Registration"
-msgid "User with this name already exists."
+msgid "A user with this name already exists."
 msgstr "Bu kullanıcı adı alınmış."
 
 #: ../src/scenes/Registration.rb:27
 msgctxt "Registration"
-msgid ""
-"Enter your password. It is recommended to use a strong password, which "
-"consists  of numbers and letters. Maximum length of the password is 256 "
-"characters."
+msgid "Enter your password. We recommend using a strong password consisting of letters and numbers. The maximum password length is 256 characters."
 msgstr ""
 "Şifrenizi girin. Sayılardan ve harflerden oluşan güçlü bir şifre kullanmanız "
 "önerilir."
 
 #: ../src/scenes/Registration.rb:29
 msgctxt "Registration"
-msgid "Reenter your password"
+msgid "Re-enter your password"
 msgstr "Şifrenizi yeniden girin"
 
 #: ../src/scenes/Registration.rb:32
@@ -11453,18 +11293,14 @@ msgstr "Girilen şifreler farklı"
 
 #: ../src/scenes/Registration.rb:40
 msgctxt "Registration"
-msgid ""
-"Enter your e-mail address. It will be used in case you forget your password "
-"and  to send important information."
+msgid "Enter your email address. It will be used to reset a forgotten password and to send you important information."
 msgstr ""
 "E-posta adresinizi girin. Şifrenizi unuttuğunuzda ve önemli bilgi göndermek "
 "için kullanılacaktır."
 
 #: ../src/scenes/Registration.rb:51
 msgctxt "Registration"
-msgid ""
-"Registration is successful, thank you. You can log in using your username "
-"and  password."
+msgid "Registration was successful. Thank you. You can log in using your username and password."
 msgstr ""
 "Kayıt başarılı, teşekkürler. Kullanıcı adınızı ve şifrenizi kullanarak giriş "
 "yapabilirsiniz."
@@ -11476,7 +11312,7 @@ msgstr "Veritabanını kullanırken bilinmeyen hata oluştu"
 
 #: ../src/scenes/Registration.rb:55
 msgctxt "Registration"
-msgid "Account with the specified username already exists."
+msgid "An account with the specified username already exists."
 msgstr "Verilen kullanıcı adıyla zaten bir hesap var."
 
 #: ../src/scenes/Registration.rb:57
@@ -11511,7 +11347,7 @@ msgstr "Elten'ı otomatik olarak sistem tepsisine küçült"
 
 #: ../src/scenes/Settings.rb:132
 msgctxt "Settings"
-msgid "Enable auto log in"
+msgid "Enable auto-login"
 msgstr "Otomatik girişi etkinleştir"
 
 #: ../src/scenes/Settings.rb:133
@@ -11561,12 +11397,12 @@ msgstr "Arayüz"
 
 #: ../src/scenes/Settings.rb:140
 msgctxt "Settings"
-msgid "Play sounds of sound themes"
+msgid "Play sounds from sound themes"
 msgstr "Ses temalarının seslerini çal"
 
 #: ../src/scenes/Settings.rb:141
 msgctxt "Settings"
-msgid "Soundtheme volume"
+msgid "Sound theme volume"
 msgstr "Ses teması ses seviyesi"
 
 #: ../src/scenes/Settings.rb:142
@@ -11611,7 +11447,7 @@ msgstr "Seslendirme ve ses"
 
 #: ../src/scenes/Settings.rb:160
 msgctxt "Settings"
-msgid "Control types announcement"
+msgid "Announce control types"
 msgstr "Kontrol türü bildirimi"
 
 #: ../src/scenes/Settings.rb:160 ../src/scenes/Settings.rb:248
@@ -11626,7 +11462,7 @@ msgstr "Metin alanlarına uzun satırları sığdır"
 
 #: ../src/scenes/Settings.rb:162
 msgctxt "Settings"
-msgid "The display method of selection lists"
+msgid "Selection-list navigation mode"
 msgstr "Seçim listelerinin görüntülenme şekli"
 
 #: ../src/scenes/Settings.rb:162
@@ -11641,7 +11477,7 @@ msgstr "Dairesel"
 
 #: ../src/scenes/Settings.rb:163
 msgctxt "Settings"
-msgid "Round up the forms"
+msgid "Wrap focus within forms"
 msgstr "Formları toparla"
 
 #: ../src/scenes/Settings.rb:164
@@ -11701,9 +11537,7 @@ msgstr "Braille çıkışını etkinleştir (NVDA eklentisi gerektirir)"
 
 #: ../src/scenes/Settings.rb:195
 msgctxt "Settings"
-msgid ""
-"Use a voice dictionary when processing characters (requires NVDA addon when "
-"using NVDA as a speech output)"
+msgid "Use a voice dictionary when processing characters (requires the NVDA add-on when using NVDA for speech output)"
 msgstr ""
 "Karakterleri işlerken sözlük kullan (seslendirme olarak NVDA kullanırken "
 "NVDA eklentisi gerektirir)"
@@ -11865,7 +11699,7 @@ msgstr "Bilinear HRTF eklemesi kullan"
 
 #: ../src/scenes/Settings.rb:321
 msgctxt "Settings"
-msgid "Disable concurrent requests (HTTP2)"
+msgid "Disable concurrent requests (HTTP/2)"
 msgstr "Eşzamanlı istekleri devredışı bırak (HTTP2)"
 
 #: ../src/scenes/Settings.rb:322
@@ -11880,7 +11714,7 @@ msgstr "Maksimum UDP paketi yük boyutu"
 
 #: ../src/scenes/Settings.rb:324
 msgctxt "Settings"
-msgid "Conferences audio buffer in frames"
+msgid "Conference audio buffer in frames"
 msgstr "Çerçeve cinsinden sohbet ses önbelleği"
 
 #: ../src/scenes/Settings.rb:325
@@ -11975,7 +11809,7 @@ msgstr "Durum"
 
 #: ../src/scenes/SoundThemes.rb:144
 msgctxt "Soundthemes"
-msgid "Select theme to download"
+msgid "Select the theme to download"
 msgstr "İndirilecek tema seçin"
 
 #: ../src/scenes/SoundThemes.rb:144
@@ -11990,15 +11824,14 @@ msgstr "İndir"
 
 #: ../src/scenes/SoundThemes.rb:159 ../src/scenes/SoundThemes.rb:193
 msgctxt "SoundThemes"
-msgid ""
-"Do you want to download theme %{name}? Need to download %{size} of data."
+msgid "Do you want to download the theme %{name}? You will need to download %{size} of data."
 msgstr ""
 "%{name} adlı temayı indirmek istiyor musunuz? %{size} boyutunda veri "
 "indirilmesi gerekecek."
 
 #: ../src/scenes/SoundThemes.rb:168
 msgctxt "SoundThemes"
-msgid "Are you sure you want to delete sound theme %{name} from the server?"
+msgid "Are you sure you want to delete the sound theme %{name} from the server?"
 msgstr "%{name} adlı temayı sunucudan silmek istediğinizden emin misiniz?"
 
 #: ../src/scenes/Sounds.rb:14
@@ -12043,27 +11876,27 @@ msgstr "Form işaretçisi"
 
 #: ../src/scenes/Sounds.rb:22
 msgctxt "Sounds"
-msgid "Marker of a listbox"
+msgid "Marker for a list box"
 msgstr "Liste kutusu işaretçisi"
 
 #: ../src/scenes/Sounds.rb:23
 msgctxt "Sounds"
-msgid "Marker of a multiselect listbox"
+msgid "Marker for a multi-select list box"
 msgstr "Çoktan seçmeli liste kutusu işaretçisi"
 
 #: ../src/scenes/Sounds.rb:24
 msgctxt "Sounds"
-msgid "Focus move on a listbox"
+msgid "Focus moved in a list box"
 msgstr "Liste kutusunda odak hareketi"
 
 #: ../src/scenes/Sounds.rb:25
 msgctxt "Sounds"
-msgid "Border of a listbox"
+msgid "Border of a list box"
 msgstr "Liste kutusunun sınırı"
 
 #: ../src/scenes/Sounds.rb:26
 msgctxt "Sounds"
-msgid "Expandable item on a listbox"
+msgid "Expandable item in a list box"
 msgstr "Liste kutusunda genişletilebilir öğe"
 
 #: ../src/scenes/Sounds.rb:27
@@ -12083,52 +11916,52 @@ msgstr "Öğe seçildi"
 
 #: ../src/scenes/Sounds.rb:30
 msgctxt "Sounds"
-msgid "Ticked item on a listbox"
+msgid "Ticked item in a list box"
 msgstr "Liste kutusunda işaretli öğe"
 
 #: ../src/scenes/Sounds.rb:31
 msgctxt "Sounds"
-msgid "Unticked item on a listbox"
+msgid "Unticked item in a list box"
 msgstr "Liste kutusunda işaretsiz öğe"
 
 #: ../src/scenes/Sounds.rb:32
 msgctxt "Sounds"
-msgid "New or updated item on a listbox"
+msgid "New or updated item in a list box"
 msgstr "Liste kutusunda yeni veya güncellenen öğe"
 
 #: ../src/scenes/Sounds.rb:33
 msgctxt "Sounds"
-msgid "Item with attachment on a listbox"
+msgid "Item with an attachment in a list box"
 msgstr "Liste kutusunda ekli öğe"
 
 #: ../src/scenes/Sounds.rb:34
 msgctxt "Sounds"
-msgid "Closed item on a listbox"
+msgid "Closed item in a list box"
 msgstr "Liste kutusunda kapalı öğe"
 
 #: ../src/scenes/Sounds.rb:35
 msgctxt "Sounds"
-msgid "Item containing other items on a listbox"
+msgid "Item containing other items in a list box"
 msgstr "Liste kutusunda içerisinde diğer öğeler bulunan öğe"
 
 #: ../src/scenes/Sounds.rb:36
 msgctxt "Sounds"
-msgid "Future item on a listbox"
+msgid "Future item in a list box"
 msgstr "Liste kutusunda gelecek öğe"
 
 #: ../src/scenes/Sounds.rb:37
 msgctxt "Sounds"
-msgid "Liked item on a listbox"
+msgid "Liked item in a list box"
 msgstr "Liste kutusunda beğenilen öğe"
 
 #: ../src/scenes/Sounds.rb:38
 msgctxt "Sounds"
-msgid "Pinned item on a listbox"
+msgid "Pinned item in a list box"
 msgstr "Liste kutusunda sabitlenmiş öğe"
 
 #: ../src/scenes/Sounds.rb:39
 msgctxt "Sounds"
-msgid "Item with restricted access on a listbox"
+msgid "Item with restricted access in a list box"
 msgstr "Liste kutusunda sınırlı erişime sahip öğe"
 
 #: ../src/scenes/Sounds.rb:40
@@ -12143,72 +11976,72 @@ msgstr "Sponsor kullanıcı"
 
 #: ../src/scenes/Sounds.rb:42
 msgctxt "Sounds"
-msgid "Compressed file on a files tree"
+msgid "Compressed file in a file tree"
 msgstr "Dosyalar ağacında sıkıştırılmış dosya"
 
 #: ../src/scenes/Sounds.rb:43
 msgctxt "Sounds"
-msgid "Audio file on a files tree"
+msgid "Audio file in a file tree"
 msgstr "Dosyalar ağacında ses dosyası"
 
 #: ../src/scenes/Sounds.rb:44
 msgctxt "Sounds"
-msgid "Directory on a files tree"
+msgid "Directory in a file tree"
 msgstr "Dosyalar ağacında klasör"
 
 #: ../src/scenes/Sounds.rb:45
 msgctxt "Sounds"
-msgid "Document on a files tree"
+msgid "Document in a file tree"
 msgstr "Dosyalar ağacında belge"
 
 #: ../src/scenes/Sounds.rb:46
 msgctxt "Sounds"
-msgid "Text file on a files tree"
+msgid "Text file in a file tree"
 msgstr "Dosyalar ağacında metin dosyası"
 
 #: ../src/scenes/Sounds.rb:47
 msgctxt "Sounds"
-msgid "Marker of an editbox with audio in a form"
+msgid "Marker for a text field with audio in a form"
 msgstr "Formda sesli metin kutusu işaretçisi"
 
 #: ../src/scenes/Sounds.rb:48
 msgctxt "Sounds"
-msgid "Marker of an editbox in a form"
+msgid "Marker for a text field in a form"
 msgstr "Formda metin kutusu işaretçisi"
 
 #: ../src/scenes/Sounds.rb:49
 msgctxt "Sounds"
-msgid "A piece of text in an editbox has beenselected"
+msgid "A piece of text in a text field has been selected"
 msgstr "Metin kutusunda metin seçildi"
 
 #: ../src/scenes/Sounds.rb:50
 msgctxt "Sounds"
-msgid "A piece of text in an editbox has been unselected"
+msgid "A piece of text in a text field has been unselected"
 msgstr "Metin kutusunda metnin seçimi iptal edildi"
 
 #: ../src/scenes/Sounds.rb:51
 msgctxt "Sounds"
-msgid "Capitalized letter in an editbox"
+msgid "Uppercase letter in a text field"
 msgstr "Metin kutusunda büyük harf"
 
 #: ../src/scenes/Sounds.rb:52
 msgctxt "Sounds"
-msgid "Delete of a text in an editbox"
+msgid "Text deleted from a text field"
 msgstr "Metin kutusunda metin silme"
 
 #: ../src/scenes/Sounds.rb:53
 msgctxt "Sounds"
-msgid "End of line in an editbox"
+msgid "End of line in a text field"
 msgstr "Metin kutusunda satır sonu"
 
 #: ../src/scenes/Sounds.rb:54
 msgctxt "Sounds"
-msgid "Password character in an editbox"
+msgid "Password character in a text field"
 msgstr "Metin kutusunda şifre karakteri"
 
 #: ../src/scenes/Sounds.rb:55
 msgctxt "Sounds"
-msgid "Space in an editbox"
+msgid "Space in a text field"
 msgstr "Metin kutusunda boşluk"
 
 #: ../src/scenes/Sounds.rb:56
@@ -12233,7 +12066,7 @@ msgstr "Akışta bahsedilme"
 
 #: ../src/scenes/Sounds.rb:60
 msgctxt "Sounds"
-msgid "User signed in or Elten window focused"
+msgid "User signed in or the Elten window received focus"
 msgstr "Kullanıcı oturum açtı veya Elten penceresine odaklanıldı"
 
 #: ../src/scenes/Sounds.rb:61
@@ -12328,7 +12161,7 @@ msgstr "Bildirim: çevrimiçi izleme"
 
 #: ../src/scenes/Sounds.rb:79
 msgctxt "Sounds"
-msgid "Notification: new user joined followed conference channel"
+msgid "Notification: a new user joined a conference channel you follow"
 msgstr "Bildirim: takip edilen konferans kanalına yeni kullanıcı katıldı"
 
 #: ../src/scenes/Sounds.rb:80
@@ -12383,12 +12216,12 @@ msgstr "Sohbette fısıldama"
 
 #: ../src/scenes/Sounds.rb:90
 msgctxt "Sounds"
-msgid "Push To Talk enabled in conferences"
+msgid "Push-to-talk enabled in conferences"
 msgstr "Sohbette bas konuş etkin"
 
 #: ../src/scenes/Sounds.rb:91
 msgctxt "Sounds"
-msgid "Push To Talk disabled in conferences"
+msgid "Push-to-talk disabled in conferences"
 msgstr "Sohbette bas konuş devredışı"
 
 #: ../src/scenes/Sounds.rb:92
@@ -12458,12 +12291,12 @@ msgstr "Sinyal"
 
 #: ../src/scenes/Sounds.rb:111 ../src/scenes/Sounds.rb:177
 msgctxt "Sounds"
-msgid "Type name of the sound theme"
+msgid "Enter a name for the sound theme"
 msgstr "Ses temasının adını yazın"
 
 #: ../src/scenes/Sounds.rb:136
 msgctxt "Sounds"
-msgid "Sounds guide, press space to play"
+msgid "Sound guide; press Space to play"
 msgstr "Ses rehberi, oynatmak için boşluğa basın"
 
 #: ../src/scenes/Sounds.rb:137
@@ -12523,12 +12356,12 @@ msgstr "Yeni ses seç"
 
 #: ../src/scenes/Sounds.rb:194
 msgctxt "Sounds"
-msgid "The sound must not last longer than 5 minutes"
+msgid "The sound must be no longer than five minutes"
 msgstr "Ses 5 dakikadan uzun olmamalıdır"
 
 #: ../src/scenes/Sounds.rb:209
 msgctxt "Sounds"
-msgid "Where to save this theme"
+msgid "Where do you want to save this theme?"
 msgstr "Tema kayıt yeri"
 
 #: ../src/scenes/Sounds.rb:222
@@ -12556,9 +12389,7 @@ msgstr ""
 
 #: ../src/scenes/Sounds.rb:276
 msgctxt "Sounds"
-msgid ""
-"Sound theme ID. This ID will be used to track updates of this sound theme. "
-"Keep the current ID if you want to update existing sound theme."
+msgid "Sound theme ID. This ID will be used to track updates to this sound theme. Keep the current ID if you want to update the existing sound theme."
 msgstr ""
 "Ses teması kimliği. bu kimlik ses temasının güncellemelerini izlemek için "
 "kullanılır. Var olan ses temasını gücellemek istiyorsanız geçerli kimliği "
@@ -12566,7 +12397,7 @@ msgstr ""
 
 #: ../src/scenes/Sounds.rb:300 ../src/scenes/Sounds.rb:308
 msgctxt "Sounds"
-msgid "Sound theme with that ID already exists."
+msgid "A sound theme with that ID already exists."
 msgstr "Ses teması kimliği zaten alınmış."
 
 #: ../src/scenes/Sounds.rb:327
@@ -12591,7 +12422,7 @@ msgstr "Ne yeni"
 
 #: ../src/scenes/SpeedTest.rb:9
 msgctxt "SpeedTest"
-msgid "Unit to test"
+msgid "Component to test"
 msgstr "Test edilecek birim"
 
 #: ../src/scenes/SpeedTest.rb:9
@@ -12606,7 +12437,7 @@ msgstr "Mesaj alıcıları"
 
 #: ../src/scenes/SpeedTest.rb:9
 msgctxt "SpeedTest"
-msgid "Number of attempts to perform"
+msgid "Number of test runs"
 msgstr "Test sayısı"
 
 #: ../src/scenes/SpeedTest.rb:9
@@ -12621,7 +12452,7 @@ msgstr "Bloglar"
 
 #: ../src/scenes/SpeedTest.rb:33
 msgctxt "SpeedTest"
-msgid "Performing test, please wait"
+msgid "Test in progress. Please wait."
 msgstr "Test yapılıyor, lütfen bekleyin"
 
 #: ../src/scenes/SpeedTest.rb:48
@@ -12641,7 +12472,7 @@ msgstr "Maksimum süre"
 
 #: ../src/scenes/SpeedTest.rb:51
 msgctxt "SpeedTest"
-msgid "Errors count"
+msgid "Number of errors"
 msgstr "Hata sayısı"
 
 #: ../src/scenes/SpeedTest.rb:57
@@ -12651,9 +12482,7 @@ msgstr "Test sonuçları"
 
 #: ../src/scenes/Update.rb:13
 msgctxt "Update"
-msgid ""
-"A new version of this program is available. Do you want to download and "
-"instal it?"
+msgid "A new version of this program is available. Do you want to download and install it?"
 msgstr "Elten'ın yeni sürümü mevcut. İndirmek ve kurmak istiyor musunuz?"
 
 #: ../src/scenes/Update.rb:36 ../src/scenes/Update.rb:66
@@ -12664,23 +12493,19 @@ msgstr "Dosyalar indirilirken lütfen bekleyin."
 
 #: ../src/scenes/Update.rb:40
 msgctxt "Update"
-msgid ""
-"The update has been downloaded. To install it, the program must be "
-"restarted.  Press enter to continue or escape to cancel."
+msgid "The update has been downloaded. To install it, the program must be restarted. Press Return to continue or Esc to cancel."
 msgstr ""
 "Güncelleme indirildi. Kurmak için program yeniden başlatılmalıdır. Devam "
 "etmek için enter'a basın veya iptal etmek için escape'e basın."
 
 #: ../src/scenes/Update.rb:53
 msgctxt "Update"
-msgid "Now, the update will be installed. The program will restart."
+msgid "The update will now be installed. The program will restart."
 msgstr "Şimdi, güncelleme kurulacak. Program yeniden başlayacak."
 
 #: ../src/scenes/Update.rb:71
 msgctxt "Update"
-msgid ""
-"The program will be now reverted to the latest stable version. Elten will "
-"restart.  It may take several minutes."
+msgid "The program will now be reverted to the latest stable version. Elten will restart. This may take several minutes."
 msgstr ""
 "Program en son kararlı sürümüne düşürülecektir. Elten yeniden başlayacak. "
 "Birkaç dakika alabilir."
@@ -12711,12 +12536,12 @@ msgid "List of users"
 msgstr "Kullanıcı listesi"
 
 #: ../src/scenes/UsersAddedMeToContacts.rb:13
-msgid "UsersAddedMeToThis section is unavailable for guests"
+msgid "This section is unavailable to guests"
 msgstr "Beni bu bölüme ekleyenler konuklar için kullanılamaz"
 
 #: ../src/scenes/UsersAddedMeToContacts.rb:35
 msgctxt "UsersAddedMeToContacts"
-msgid "Users who added me to their contacts list"
+msgid "Users who added me to their contact list"
 msgstr "Beni kişiler listesine eklemiş olan kullanıcılar"
 
 #: ../src/scenes/Users_RecentlyActived.rb:22
@@ -12771,7 +12596,7 @@ msgstr "Yeni arkadaşlar"
 
 #: ../src/scenes/WhatsNew.rb:61
 msgctxt "WhatsNew"
-msgid "Friends' birthday"
+msgid "Friends' birthdays"
 msgstr "Arkadaşın doğum günü"
 
 #: ../src/scenes/WhatsNew.rb:62

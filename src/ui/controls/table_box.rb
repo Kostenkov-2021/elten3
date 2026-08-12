@@ -202,7 +202,7 @@ super
            end
          def tips
              tips=[]
-             tips.push(p_("EAPI_Form", "Use SHIFT with left/right arrows to select the column you want to navigate by"))
+             tips.push(p_("EAPI_Form", "Use Shift+Left/Right Arrow to select the column you want to navigate by"))
              return tips
              end
          end

@@ -116,7 +116,7 @@ class Scene_Ban_Unban
                     bantotime=""
                     t=Time.at(baninfo.totime)
                     bantotime=format_date(t)
-                                      @form=Form.new([EditBox.new(p_("Ban", "The ban reason"),type: EditBox::Flags::ReadOnly,text: baninfo.reason,quiet: true),EditBox.new(p_("Ban", "Ban valid until"),type: EditBox::Flags::ReadOnly,text: bantotime,quiet: true),EditBox.new(p_("Ban", "The ban cancel reason"),text: "",quiet: true),Button.new(p_("Ban", "Unban")),Button.new(_("Cancel"))])
+                                      @form=Form.new([EditBox.new(p_("Ban", "The ban reason"),type: EditBox::Flags::ReadOnly,text: baninfo.reason,quiet: true),EditBox.new(p_("Ban", "Ban valid until"),type: EditBox::Flags::ReadOnly,text: bantotime,quiet: true),EditBox.new(p_("Ban", "Reason for lifting the ban"),text: "",quiet: true),Button.new(p_("Ban", "Unban")),Button.new(_("Cancel"))])
     loop do
       loop_update
       @form.update

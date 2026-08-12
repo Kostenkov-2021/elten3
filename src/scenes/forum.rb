@@ -739,7 +739,7 @@ return result
         s += p_("Forum", "Founder") + ": " + g.founder + "\n"
         if g.created > 0
           t = Time.at(g.created)
-          s += p_("Forum", "Founded at") + ": " + format_date(t, true) + "\n"
+          s += p_("Forum", "Founded on") + ": " + format_date(t, true) + "\n"
         end
         acs = forum_fetch([], nil) { EltenLink::Forum.group_most_active_members(elten_link, group_id: g.id) }
         s += p_("Forum", "The most active members") + ": " + acs.map { |x| x.to_s.delete("\r\n") }.join(", ") + "\n" if acs.size > 0
@@ -772,8 +772,8 @@ return result
         loop_update
       }
       if @sgroups[@grpsel.index - @grpheadindex].hasregulations or @sgroups[@grpsel.index - @grpheadindex].role==2
-                s=p_("Forum", "Group regulations")
-        s=p_("Forum", "Edit group regulations") if @sgroups[@grpsel.index - @grpheadindex].role==2
+                s=p_("Forum", "Group rules")
+        s=p_("Forum", "Edit group rules") if @sgroups[@grpsel.index - @grpheadindex].role==2
               menu.option(s) {
               groupregulationsdlg(@sgroups[@grpsel.index - @grpheadindex])
               }
@@ -796,12 +796,12 @@ if (((@sgroups[@grpsel.index - @grpheadindex].role==1 || (@sgroups[@grpsel.index
       s = ""
       s = p_("Forum", "Join") if @sgroups[@grpsel.index - @grpheadindex].role == 0 and @sgroups[@grpsel.index - @grpheadindex].open and @sgroups[@grpsel.index - @grpheadindex].public
       s = p_("Forum", "Accept invitation") if @sgroups[@grpsel.index - @grpheadindex].role == 5
-      s = p_("Forum", "Ask to be enrolled in this group") if @sgroups[@grpsel.index - @grpheadindex].role == 0 && ((@sgroups[@grpsel.index - @grpheadindex].public && !@sgroups[@grpsel.index - @grpheadindex].open) || (@sgroups[@grpsel.index - @grpheadindex].open && !@sgroups[@grpsel.index - @grpheadindex].public))
+      s = p_("Forum", "Request to join this group") if @sgroups[@grpsel.index - @grpheadindex].role == 0 && ((@sgroups[@grpsel.index - @grpheadindex].public && !@sgroups[@grpsel.index - @grpheadindex].open) || (@sgroups[@grpsel.index - @grpheadindex].open && !@sgroups[@grpsel.index - @grpheadindex].public))
       if s != ""
         menu.option(s, nil, "j") {
         if canjoin(@sgroups[@grpsel.index - @grpheadindex])
           if @sgroups[@grpsel.index - @grpheadindex].role == 0 && ((@sgroups[@grpsel.index - @grpheadindex].public && !@sgroups[@grpsel.index - @grpheadindex].open) || (@sgroups[@grpsel.index - @grpheadindex].open && !@sgroups[@grpsel.index - @grpheadindex].public))
-            s = p_("Forum", "Do you wish to ask to be enrolled in %{groupname}")
+            s = p_("Forum", "Do you want to request to join %{groupname}?")
           else
             s = p_("Forum", "Are you sure you want to join %{groupname}?")
           end
@@ -945,7 +945,7 @@ end
   def groupregulationsdlg(group)
     regs = groupregulations(group)
       fields=[
-            EditBox.new((p_("Forum", "Regulations of group %{groupname}")%{:groupname=>group.name}), type: ((group.role==2)?(EditBox::Flags::MultiLine):(EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly)), text: regs),
+            EditBox.new((p_("Forum", "Rules of group %{groupname}")%{:groupname=>group.name}), type: ((group.role==2)?(EditBox::Flags::MultiLine):(EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly)), text: regs),
             Button.new(_("Save")),
             Button.new(_("Cancel"))
             ]
@@ -959,7 +959,7 @@ end
                 if forum_attempt(nil) {
                   EltenLink::Forum.update_group_regulations(elten_link, group_id: group.id, text: form.fields[0].text)
                 }
-                  alert(p_("Forum", "Regulations updated"))
+                  alert(p_("Forum", "Rules updated"))
                                   break
                 end
                 end
@@ -1009,7 +1009,7 @@ end
                             menu.option(p_("Forum", "Go to reported post"), nil, "o") {
                             thread = @threads.find{|t|t.id==report.thread}
                             if thread==nil
-                              alert(p_("Forum", "The searched thread has been already deleted."))
+                              alert(p_("Forum", "The thread you searched for has already been deleted."))
                               else
 insert_scene(Scene_Forum_Thread.new(thread, -13, 0, report.post, nil, Scene_Main.new))
                             loop_update
@@ -1069,7 +1069,7 @@ rfr.call
                           if forum_attempt(nil) {
                             EltenLink::Forum.resolve_report(elten_link, group_id: group.id, report_id: report.id, status: lst_status.index + 1, reason: edt_reason.text)
                           }
-                            confirm(p_("Forum", "Do you want to send information about status of this report to its author?")) {
+                            confirm(p_("Forum", "Do you want to send information about the status of this report to its author?")) {
                             subj=report.content[0...400]
                             thread=@threads.find{|t|t.id==report.thread}
                             if thread!=nil
@@ -1227,15 +1227,15 @@ sel.focus
       if users.size>0
         menu.useroption(users[sel.index])
   if users[sel.index]==Session.name && roles[sel.index]==2 && group.founder!=Session.name
-    menu.option(p_("Forum", "Resign moderation privileges")) {
-      confirm(p_("Forum", "Are you sure you want to resign moderation privileges in %{groupname}?")%{ :groupname => group.name }) {
+    menu.option(p_("Forum", "Give up moderator privileges")) {
+      confirm(p_("Forum", "Are you sure you want to give up your moderator privileges in %{groupname}?")%{ :groupname => group.name }) {
         if forum_attempt(nil) {
           EltenLink::Forum.update_member(elten_link, group_id: group.id, user: Session.name, action: "moderationresign")
         }
           roles[sel.index]=1
           group.role=1
           chrfr=true
-          alert(p_("Forum", "You have resigned moderation privileges."))
+          alert(p_("Forum", "You have given up your moderator privileges."))
           rfr.call
         end
       }
@@ -1252,8 +1252,8 @@ sel.focus
       }
     elsif roles[sel.index]==2
       menu.option(p_("Forum", "Deny moderation privileges")) {chpr.call("moderationdeny")}
-      menu.option(p_("Forum", "Pass administrative privileges")) {
-                    confirm(p_("Forum", "Are you sure you want to resign your administrative privileges in %{groupname} and pass them to %{user}?")%{ :user => users[sel.index], :groupname => group.name }) {
+      menu.option(p_("Forum", "Transfer administrator privileges")) {
+                    confirm(p_("Forum", "Are you sure you want to give up your administrator privileges in %{groupname} and transfer them to %{user}?")%{ :user => users[sel.index], :groupname => group.name }) {
                    group.founder=users[sel.index]
                     chpr.call("passadmin")
                     }
@@ -1261,8 +1261,8 @@ sel.focus
     end
     end
       if roles[sel.index]==2 || roles[sel.index]==3
-        s=p_("Forum", "Enable inheritance of this users' role")
-        s=p_("Forum", "Disable inheritance of this users' role") if inherits[sel.index]
+        s=p_("Forum", "Enable inheritance of this user's role")
+        s=p_("Forum", "Disable inheritance of this user's role") if inherits[sel.index]
 menu.option(s) {
 inherit = inherits[sel.index] ? 0 : 1
 if forum_attempt(nil) {
@@ -1282,8 +1282,8 @@ if users[sel.index]!=Session.name
       case roles[sel.index]
       when 1
                     if group.open && group.public
-                      menu.option(p_("Forum", "Ban in this group")) {
-                                        confirm(p_("Forum", "Are you sure you want to ban %{user} in %{groupname}?")%{:user=>users[sel.index], :groupname=>group.name}) {chus.call("ban")}
+                      menu.option(p_("Forum", "Ban from this group")) {
+                                        confirm(p_("Forum", "Are you sure you want to ban %{user} from %{groupname}?")%{:user=>users[sel.index], :groupname=>group.name}) {chus.call("ban")}
                       }
                     else
                       menu.option(p_("Forum", "Kick")) {
@@ -1292,18 +1292,18 @@ if users[sel.index]!=Session.name
                       end
                       when 3
                         menu.option(p_("Forum", "Unban")) {
-                        confirm(p_("Forum", "Are you sure you want to unban %{user} in %{groupname}?")%{:user=>users[sel.index], :groupname=>group.name}) {chus.call("unban")}
+                        confirm(p_("Forum", "Are you sure you want to unban %{user} from %{groupname}?")%{:user=>users[sel.index], :groupname=>group.name}) {chus.call("unban")}
                         }
                         when 4
                           menu.option(p_("Forum", "Accept")) {
-                          confirm(p_("Forum", "Do you want to accept request of user %{user}")%{:user=>users[sel.index]}) {chus.call("accept")}
+                          confirm(p_("Forum", "Do you want to accept the request from %{user}?")%{:user=>users[sel.index]}) {chus.call("accept")}
                           }
                           menu.option(p_("Forum", "Refuse")) {
-                          confirm(p_("Forum", "Do you want to refuse request of user %{user}")%{:user=>users[sel.index]}) {chus.call("refuse")}
+                          confirm(p_("Forum", "Do you want to reject the request from %{user}?")%{:user=>users[sel.index]}) {chus.call("refuse")}
                           }
                           when 5
                             menu.option(p_("Forum", "Cancel invitation")) {
-                      confirm(p_("Forum", "Are you sure you want to cancel invitation of %{user} to %{groupname}?")%{:user=>users[sel.index], :groupname=>group.name}) {chus.call("cancel")}
+                      confirm(p_("Forum", "Are you sure you want to cancel %{user}'s invitation to %{groupname}?")%{:user=>users[sel.index], :groupname=>group.name}) {chus.call("cancel")}
                       }
       end
       end
@@ -1355,9 +1355,9 @@ rfr.call
       return true if !group.hasregulations
 regs=groupregulations(group)
 fields = [
-EditBox.new(p_("Forum", "Regulations of group %{groupname}")%{:groupname=>group.name}, type: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly, text: regs),
-Button.new(p_("Forum", "I accept regulations of group %{groupname}")%{:groupname=>group.name}),
-Button.new(p_("Forum", "I decline regulations of group %{groupname}")%{:groupname=>group.name})
+EditBox.new(p_("Forum", "Rules of group %{groupname}")%{:groupname=>group.name}, type: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly, text: regs),
+Button.new(p_("Forum", "I accept the rules of the group %{groupname}")%{:groupname=>group.name}),
+Button.new(p_("Forum", "I do not accept the rules of the group %{groupname}")%{:groupname=>group.name})
 ]
 form=Form.new(fields)
 loop do
@@ -1417,7 +1417,7 @@ loop do
     form=Form.new([
     edt_query = EditBox.new(p_("Forum", "Search query"), type: 0, text: "", quiet: true),
     lst_phrasein = ListBox.new([p_("Forum", "Titles"), p_("Forum", "Content"), p_("Forum", "Authors")], header: p_("Forum", "Search in"), index: 0, flags: ListBox::Flags::MultiSelection),
-    lst_threadin = ListBox.new([p_("Forum", "Joined groups"), p_("Forum", "Recommended groups"), p_("Forum", "Not joined groups")], header: p_("Forum", "of threads in"), index: 0, flags: ListBox::Flags::MultiSelection),
+    lst_threadin = ListBox.new([p_("Forum", "Joined groups"), p_("Forum", "Recommended groups"), p_("Forum", "Groups you have not joined")], header: p_("Forum", "of threads in"), index: 0, flags: ListBox::Flags::MultiSelection),
     chk_transcriptions = CheckBox.new(p_("Forum", "Include transcriptions of audio posts")),
     btn_search = Button.new(p_("Forum", "Search")),
     btn_cancel = Button.new(_("Cancel"))
@@ -1669,14 +1669,14 @@ form.focus
           if forum_attempt(nil) {
             EltenLink::Forum.follow_forum(elten_link, forumid: @sforums[@frmsel.index].id)
           }
-            alert(p_("Forum", "Added to followed forums list."))
+            alert(p_("Forum", "You are now following this forum."))
             @sforums[@frmsel.index].followed = true
           end
         else
           if forum_attempt(nil) {
             EltenLink::Forum.unfollow_forum(elten_link, forumid: @sforums[@frmsel.index].id)
           }
-            alert(p_("Forum", "Removed from followed forums list."))
+            alert(p_("Forum", "You are no longer following this forum."))
             @sforums[@frmsel.index].followed = false
           end
         end
@@ -2154,21 +2154,21 @@ threadopen(@thrsel.index)
           end
           end
       }
-            s = p_("Forum", "Add to followed threads list")
+            s = p_("Forum", "Follow this thread")
       s = p_("Forum", "Unfollow this thread") if @sthreads[@thrsel.index].followed == true
       menu.option(s, nil, "l") {
         if @sthreads[@thrsel.index].followed == false
           if forum_attempt(nil) {
             EltenLink::Forum.follow_thread(elten_link, thread_id: @sthreads[@thrsel.index].id)
           }
-            alert(p_("Forum", "Added to the list of followed threads."))
+            alert(p_("Forum", "You are now following this thread."))
             @sthreads[@thrsel.index].followed = true
           end
         else
           if forum_attempt(nil) {
             EltenLink::Forum.unfollow_thread(elten_link, thread_id: @sthreads[@thrsel.index].id)
           }
-            alert(p_("Forum", "Removed from followed threads list."))
+            alert(p_("Forum", "You are no longer following this thread."))
             @sthreads[@thrsel.index].followed = false
             if @forum == -1
               @lastthreadindex = @thrsel.index
@@ -2230,7 +2230,7 @@ threadopen(@thrsel.index)
             if forum_attempt(nil) {
               EltenLink::Forum.rename_thread(elten_link, thread_id: @sthreads[@thrsel.index].id, name: name)
             }
-              alert(p_("Forum", "The forum name has been changed."))
+              alert(p_("Forum", "The thread name has been changed."))
               getcache
               @lastthreadindex = @thrsel.index
               threadsmain(@forum)
@@ -2296,7 +2296,7 @@ forum_fetch([], nil) { EltenLink::Forum.group_members(elten_link, group_id: @sth
           dgroups.push(g) if g.role>0 and users.include?(g.founder) and g.id!=@sthreads[@thrsel.index].forum.group.id
           end
         dests=dgroups.map{|g|g.name+" - "+p_("Forum", "Group founded by %{founder}")%{:founder=>g.founder}}
-        ind=selector(dests, header: p_("Forum", "Which group you want to offer this thread to?"), start_index: 0, cancel_index: -1)
+        ind=selector(dests, header: p_("Forum", "Which group do you want to offer this thread to?"), start_index: 0, cancel_index: -1)
         if ind>=0
         dest=dgroups[ind]
         if forum_attempt(nil) {
@@ -2494,7 +2494,7 @@ forum_fetch([], nil) { EltenLink::Forum.group_members(elten_link, group_id: @sth
           dgroups.push(g) if g.role>0 and users.include?(g.founder) and g.id!=@sthreads[@thrsel.index].forum.group.id
           end
         dests=dgroups.map{|g|g.name+" - "+p_("Forum", "Group founded by %{founder}")%{:founder=>g.founder}}
-        ind=selector(dests, header: p_("Forum", "Which group you want to offer these threads to?"), start_index: 0, cancel_index: -1)
+        ind=selector(dests, header: p_("Forum", "Which group do you want to offer these threads to?"), start_index: 0, cancel_index: -1)
         if ind>=0
         dest=dgroups[ind]
         if forum_attempt(nil) {
@@ -2546,7 +2546,7 @@ form.wait
       else
       fields[1..6] = [OpusRecordButton.new(p_("Forum", "Audio post"), EltenPath.join(Dirs.temp, "audiopost.opus"), max_bitrate: 96, bitrate: 48), nil, nil, nil, nil, nil]
     end
-    fields += [CheckBox.new(p_("Forum", "Add to followed threads list")), ListBox.new(forums, header: p_("Forum", "Forum"), index: forumindex), nil, Button.new(_("Cancel"))]
+    fields += [CheckBox.new(p_("Forum", "Follow this thread")), ListBox.new(forums, header: p_("Forum", "Forum"), index: forumindex), nil, Button.new(_("Cancel"))]
     form = Form.new(fields)
     selected_tags = {}
     current_tag_forum_id = nil
@@ -2674,7 +2674,7 @@ form.wait
         l = get_file(p_("Forum", "Select file to attach"), path: EltenPath.with_separator(Dirs.documents))
         if l != "" and l != nil
           if files.include?(l)
-            alert(p_("Forum", "This file has been already attached"))
+            alert(p_("Forum", "This file has already been attached"))
           else
             if File.size(l) > 16777216
               alert(p_("Forum", "This file is too large"))
@@ -2961,7 +2961,7 @@ return $scene=Scene_Main.new if @form==nil
         l = get_file(p_("Forum", "Select file to attach"), path: EltenPath.with_separator(Dirs.documents))
         if l != "" and l != nil
           if @attachments.include?(l)
-            alert(p_("Forum", "This file has been already attached"))
+            alert(p_("Forum", "This file has already been attached"))
           else
             if File.size(l) > 16777216
               alert(p_("Forum", "This file is too large"))
@@ -3002,9 +3002,9 @@ return $scene=Scene_Main.new if @form==nil
       return true if !@threadclass.forum.group.hasregulations
 regs=groupregulations
 fields = [
-EditBox.new(p_("Forum", "Regulations of group %{groupname}")%{:groupname=>@threadclass.forum.group.name}, type: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly, text: regs),
-Button.new(p_("Forum", "I accept regulations of group %{groupname}")%{:groupname=>@threadclass.forum.group.name}),
-Button.new(p_("Forum", "I decline regulations of group %{groupname}")%{:groupname=>@threadclass.forum.group.name})
+EditBox.new(p_("Forum", "Rules of group %{groupname}")%{:groupname=>@threadclass.forum.group.name}, type: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly, text: regs),
+Button.new(p_("Forum", "I accept the rules of the group %{groupname}")%{:groupname=>@threadclass.forum.group.name}),
+Button.new(p_("Forum", "I do not accept the rules of the group %{groupname}")%{:groupname=>@threadclass.forum.group.name})
 ]
 form=Form.new(fields)
 loop do
@@ -3207,9 +3207,9 @@ end
     if mention!=nil
       menu.submenu(p_("Forum", "Received mention")) {|m|
       m.option(p_("Forum", "Show mention"), nil, "/") {
-      input_text(p_("Forum", "Mention by %{user}")%{:user=>mention.author}, flags: EditBox::Flags::ReadOnly, text: mention.message, escapable: true)
+      input_text(p_("Forum", "Mention from %{user}")%{:user=>mention.author}, flags: EditBox::Flags::ReadOnly, text: mention.message, escapable: true)
       }
-      m.option(p_("Forum", "Send reply to mentioner"), nil, "?") {
+      m.option(p_("Forum", "Reply to the user who mentioned you"), nil, "?") {
       reply_to_mention(mention)
       }
       if ["mention", "message"].include?(LocalConfig["MentionReplyType", "", type: :string])
@@ -3414,21 +3414,21 @@ if post.edited && !post.locked
           end
           end
             }
-    s = p_("Forum", "Add to followed threads list")
+    s = p_("Forum", "Follow this thread")
     s = p_("Forum", "Unfollow this thread") if @followed == true
     menu.option(s, nil, "l") {
       if @followed == false
         if forum_attempt(nil) {
           EltenLink::Forum.follow_thread(elten_link, thread_id: @thread)
         }
-          alert(p_("Forum", "Added to the list of followed threads."))
+          alert(p_("Forum", "You are now following this thread."))
           @followed = true
         end
       else
         if forum_attempt(nil) {
           EltenLink::Forum.unfollow_thread(elten_link, thread_id: @thread)
         }
-          alert(p_("Forum", "Removed from followed threads list."))
+          alert(p_("Forum", "You are no longer following this thread."))
           @followed = false
         end
       end
@@ -3542,7 +3542,7 @@ end
               if forum_attempt(nil) {
                 EltenLink::Forum.reorder_post(elten_link, post_id: @posts[@form.index / 3].id, before_post_id: ((dest<@posts.size)?(@posts[dest].id):(0)))
               }
-                alert(p_("Forum", "The post has been slided."))
+                alert(p_("Forum", "The post has been repositioned."))
               end
               main
             end
@@ -4398,11 +4398,11 @@ def load_general
 if currentconfig("recommended").to_i==0
   make_setting(p_("Forum", "Group type"), [p_("Forum", "Hidden"), p_("Forum", "Public")], "public")
   make_setting(p_("Forum", "Group join type"), ["", ""], "open")
-make_setting(p_("Forum", "Change group parent"), :custom, Proc.new{
+make_setting(p_("Forum", "Change parent group"), :custom, Proc.new{
 groups=Scene_Forum.getstruct['groups'].find_all{|g|(g.role==2 || g.public || g.open) && g.id!=@group.id}
 ind=(groups.find_index(groups.find{|g|g.id==currentconfig("parent").to_i})||-1)+1
 dialog_open
-b = selector([p_("Forum", "None")]+groups.map{|g|g.name}, header: p_("Forum", "Select group parent"), start_index: ind, cancel_index: -1)
+b = selector([p_("Forum", "None")]+groups.map{|g|g.name}, header: p_("Forum", "Select parent group"), start_index: ind, cancel_index: -1)
 if b!=-1
   id=0
   id=groups[b-1].id if b>0
@@ -4448,8 +4448,8 @@ end
 }
 end
 def load_regulations
-  setting_category(p_("Forum", "Regulations"))
-  make_setting(p_("Forum", "Group regulations"), :longtext, "regulations")
+  setting_category(p_("Forum", "Rules"))
+  make_setting(p_("Forum", "Group rules"), :longtext, "regulations")
 end
 def load_featured_threads
   setting_category(p_("Forum", "Featured threads"))
@@ -4495,7 +4495,7 @@ make_setting(p_("Forum", "Prevent users from attaching files"), :bool, "prevent_
 make_setting(p_("Forum", "Hide edit history"), :bool, "hide_edithistory")
 make_setting(p_("Forum", "Allow members to report posts"), :bool, "allow_postreporting")
 make_setting(p_("Forum", "Reports visibility"), [p_("Forum", "Disabled"), p_("Forum", "Show only to report author"), p_("Forum", "Show all accepted reports"), p_("Forum", "Show all reports")], "show_postreports")
-make_setting(p_("Forum", "Duration limit of audio posts in seconds, 0 for no limit"), :number, "audiolimit")
+make_setting(p_("Forum", "Maximum duration of audio posts in seconds; 0 means no limit"), :number, "audiolimit")
 end
       def main
         make_window

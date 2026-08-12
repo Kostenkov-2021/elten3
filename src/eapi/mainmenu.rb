@@ -72,7 +72,7 @@ module GlobalMenu
     @menu.submenu(p_("MainMenu", "&Users")) {|m|
     if Session.logged?
     m.scene(p_("MainMenu", "My &contacts"), Scene_Contacts)
-    m.scene(p_("MainMenu", "Users who a&dded me to contacts"), Scene_Users_AddedMeToContacts)
+    m.scene(p_("MainMenu", "Users who a&dded me to their contact list"), Scene_Users_AddedMeToContacts)
     end
     m.scene(p_("MainMenu", "Who is &online?"), Scene_Online)
     m.scene(p_("MainMenu", "&badges"), Scene_Honors)
@@ -99,14 +99,14 @@ module GlobalMenu
     }
     @menu.submenu(p_("MainMenu", "&Tools")) {|m|
     m.scene(p_("MainMenu", "Program &settings"), Scene_Settings)
-    m.scene(p_("MainMenu", "Soun&dthemes"), Scene_SoundThemes)
+    m.scene(p_("MainMenu", "Sound &themes"), Scene_SoundThemes)
     m.scene(p_("MainMenu", "Speed &test"), Scene_SpeedTest)
     m.scene(p_("MainMenu", "&Install Elten"), Scene_Install)
     m.scene(p_("MainMenu", "&Log viewer"), Scene_Log)
     m.scene(p_("MainMenu", "&Console"), Scene_Console) if developer_mode?
     if developer_mode?
       m.option(p_("MainMenu", "Load custom translation &file")) {
-      f=get_file(p_("MainMenu", "Select translations file"), path: "", save: false, extensions: [".mo"])
+      f=get_file(p_("MainMenu", "Select a translation file"), path: "", save: false, extensions: [".mo"])
       if f!=nil
       loadlocale f
       alert(p_("MainMenu", "Translation loaded"))
@@ -121,11 +121,11 @@ module GlobalMenu
     m.scene(p_("MainMenu", "Program &version"), Scene_Version)
     m.scene(p_("MainMenu", "Sounds &guide"), Scene_Sounds)
       m.scene(p_("MainMenu", "&Read me"), Scene_Documentation, "readme")
-   m.scene(p_("MainMenu", "&License agreement"), Scene_Documentation, "license")
+   m.scene(p_("MainMenu", "&Licence agreement"), Scene_Documentation, "license")
    m.scene(p_("MainMenu", "&Terms and conditions"), Scene_Documentation, "rules")
    m.scene(p_("MainMenu", "&Privacy policy"), Scene_Documentation, "privacypolicy")
    m.scene(p_("MainMenu", "Infor&mation about migration to Elten version 2.4"), Scene_Documentation, "migration24")
-   m.scene(p_("MainMenu", "List of &Invisible Interface hotkeys"), Scene_IIKeys)
+   m.scene(p_("MainMenu", "List of &Invisible Interface keyboard shortcuts"), Scene_IIKeys)
     }
     @menu.submenu(p_("MainMenu", "&Quit")) {|m|
     if tray_supported?

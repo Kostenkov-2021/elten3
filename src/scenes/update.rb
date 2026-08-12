@@ -16,7 +16,7 @@ class Scene_Update_Confirmation
     msg = if version!=""
       p_("Update", "A new version of Elten is available: %{version}. Do you want to download and install it?")%{:version=>version}
     else
-      p_("Update", "A new version of this program is available. Do you want to download and instal it?")
+      p_("Update", "A new version of this program is available. Do you want to download and install it?")
     end
                            if !confirm(msg)
           if $preinitialized != true
@@ -49,7 +49,7 @@ class Scene_Update
             end
     speech_wait
     if Session.logged?
-    alert(p_("Update", "The update has been downloaded. To install it, the program must be restarted.  Press enter to continue or escape to cancel."))
+    alert(p_("Update", "The update has been downloaded. To install it, the program must be restarted. Press Return to continue or Esc to cancel."))
     cn=true
     deadline = Time.now.to_f + 30
     while Time.now.to_f < deadline
@@ -63,7 +63,7 @@ class Scene_Update
       end
     else
       cn=true
-      alert(p_("Update", "Now, the update will be installed. The program will restart."))
+      alert(p_("Update", "The update will now be installed. The program will restart."))
       end
       if cn == true                      
       $exit=true  
@@ -87,7 +87,7 @@ class Scene_Update
               return
             end
     speech_wait
-    alert(p_("Update", "The program will be now reverted to the latest stable version. Elten will restart.  It may take several minutes."))
+    alert(p_("Update", "The program will now be reverted to the latest stable version. Elten will restart. This may take several minutes."))
       $exit=true  
                                         $scene=nil
     $exitupdate=true

@@ -227,9 +227,9 @@ end
 v=44
 if nvda_running && defined?(NVDA) && (!NVDA.check || NVDA.getversion!=v)
   if !NVDA.check
-  str=p_("Loading", "Elten detected that you are using NVDA. To support some features of this screenreader, it is necessary to install Elten addon. Do you want to do it now?")
+  str=p_("Loading", "Elten has detected that you are using NVDA. To support some features of this screen reader, the Elten add-on for NVDA must be installed. Do you want to install it now?")
 elsif NVDA.getversion!=v
-  str=p_("Loading", "New version of NVDA Elten addon is available. The version you're using is no longer supported in this Elten release and may cause some errors. Do you want to update it now?")
+  str=p_("Loading", "A new version of the Elten add-on for NVDA is available. The version you are using is no longer supported by this Elten release and may cause errors. Do you want to update it now?")
     end
   addon_path=EltenPath.join(File.dirname($path), "data", "elten.nvda-addon")
   if FileTest.exists?(addon_path)
@@ -249,7 +249,7 @@ suc=true
   }
  }
   else
-    alert(p_("Loading", "Elten NVDA addon package is not available in this build. Install or update the Elten NVDA addon manually to enable full NVDA integration."))
+    alert(p_("Loading", "The Elten add-on for NVDA is not available in this build. Install or update it manually to enable full NVDA integration."))
   end
 end
 Log.info("NVDA Version: "+NVDA.getnvdaversion.to_s) if defined?(NVDA) && NVDA.check
@@ -266,7 +266,7 @@ if $srvverify==true
   Log.info("Server successfully verified")
 else
   Log.warning("Server not verified")
-  if !confirm(p_("Loading", "Warning! Elten failed to verify server encryption key. It is possible that you are not connecting to Elten server but to one prepared by hackers. It is also possible that Elten Server key has changed. Any details should be provided on Elten Website Forum. If no information about key change was provided, it is very likely that you are vulnerable to hacker attack. In this cause any data that you will provide, including password, can be stolen. Are you sure you want to proceed with this connection? Select No to exit Elten."))
+  if !confirm(p_("Loading", "Warning! Elten failed to verify the server's encryption key. You may be connecting not to an Elten server, but to a server controlled by an attacker. The Elten server's key may also have changed. Details of any legitimate key change should be published on the Elten website or forum. If no such information has been published, this connection may be under attack. Any data you provide, including your password, could be stolen. Are you sure you want to continue with this connection? Select No to exit Elten."))
   $exit=true
   $scene=nil
     exit

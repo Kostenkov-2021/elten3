@@ -109,7 +109,7 @@ module EltenAPI
         actions << user_menu_action(follow_label) do
           if set_feed_follow(user, follow: !feed_followed)
             if feed_followed
-              alert(p_("EAPI_Common", "Feed unfollowed"))
+              alert(p_("EAPI_Common", "You are no longer following this feed"))
             else
               alert(p_("EAPI_Common", "Feed followed"))
             end
@@ -162,7 +162,7 @@ module EltenAPI
         monitor_label = if monitored
           p_("EAPI_Common", "Do not monitor this user")
         else
-          p_("EAPI_Common", "Monitor when this user becomes online")
+          p_("EAPI_Common", "Notify me when this user comes online")
         end
         actions << user_menu_action(monitor_label) do
           if monitored
@@ -171,8 +171,8 @@ module EltenAPI
             end
           else
             options = [
-              p_("EAPI_Common", "Notify me one time when this user becomes online"),
-              p_("EAPI_Common", "Notify me whenever this user becomes online")
+              p_("EAPI_Common", "Notify me once when this user comes online"),
+              p_("EAPI_Common", "Notify me whenever this user comes online")
             ]
             selection = selector(options, header: p_("EAPI_Common", "Online monitor"), start_index: 0, cancel_index: -1)
             if selection >= 0 && add_online_monitor(user, permanent: selection)
@@ -182,9 +182,9 @@ module EltenAPI
         end
 
         contacts_label = if in_contacts
-          p_("EAPI_Common", "Remove from contacts' list")
+          p_("EAPI_Common", "Remove from contact list")
         else
-          p_("EAPI_Common", "Add to contacts' list")
+          p_("EAPI_Common", "Add to contact list")
         end
         actions << user_menu_action(contacts_label) do
           if in_contacts

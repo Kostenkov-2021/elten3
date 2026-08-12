@@ -18,10 +18,10 @@ module EltenAPI
 def player(file, label: "", wait: false, control: true, try_download: false, is_stream: false)
   soundfont=EltenPath.join(Dirs.extras, "soundfont.sf2")
   if File.extname(file).downcase==".mid" and FileTest.exists?(soundfont) == false
-    if confirm(p_("EAPI_Common", "You are trying to play a midi file. In order to play such files, Elten needs an  external base of instruments. Do you want to download the base from the server  now? It may take several minutes."))
+    if confirm(p_("EAPI_Common", "You are trying to play a MIDI file. Elten needs an external instrument sound bank to play MIDI files. Do you want to download it from the server now? This may take several minutes."))
       alert(p_("EAPI_Common", "Please wait, the soundfont is being downloaded. It may take a while."))
     download_file(soundfont_url,soundfont)
-    alert(p_("EAPI_Common", "Soundfont downloaded succesfully."))
+    alert(p_("EAPI_Common", "SoundFont downloaded successfully."))
     Bass::BASS_SetConfigPtr.call(0x10403,soundfont)
   else
     return

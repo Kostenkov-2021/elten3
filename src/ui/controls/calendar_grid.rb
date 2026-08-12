@@ -81,8 +81,8 @@ module EltenAPI
 
       def tips
         [
-          p_("Calendar", "Use left and right arrows to move by days"),
-          p_("Calendar", "Use up and down arrows to move by weeks"),
+          p_("Calendar", "Use the Left and Right Arrow keys to move by days"),
+          p_("Calendar", "Use the Up and Down Arrow keys to move by weeks"),
           p_("Calendar", "Use Page Up and Page Down to move by months"),
           p_("Calendar", "Press Home to return to today")
         ]

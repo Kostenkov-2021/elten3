@@ -304,12 +304,12 @@ msgstr "Microfon scos de pe mut"
 
 #: ../agent/quicknav.rb:326 ../src/Scenes/Conference.rb:1274
 msgctxt "Conference"
-msgid "Roll a 6-sided dice"
+msgid "Roll a 6-sided die"
 msgstr "Aruncă un zar cu 6 fețe"
 
 #: ../agent/quicknav.rb:329 ../src/Scenes/Conference.rb:1275
 msgctxt "Conference"
-msgid "Roll a custom dice"
+msgid "Roll a custom die"
 msgstr "Aruncă un zar personalizat"
 
 #: ../agent/quicknav.rb:331 ../src/Scenes/Conference.rb:1608
@@ -340,12 +340,12 @@ msgstr "Elimină stream-ul audio"
 
 #: ../agent/quicknav.rb:358 ../src/Scenes/Conference.rb:1256
 msgctxt "Conference"
-msgid "Disable push to talk"
+msgid "Disable push-to-talk"
 msgstr "Dezactivează Menține pentru a vorbi"
 
 #: ../agent/quicknav.rb:358 ../src/Scenes/Conference.rb:1255
 msgctxt "Conference"
-msgid "Enable push to talk"
+msgid "Enable push-to-talk"
 msgstr "Activează Menține pentru a vorbi"
 
 #: ../agent/quicknav.rb:362
@@ -434,7 +434,7 @@ msgstr ""
 
 #: ../src/EAPI/Documents.rb:3
 msgctxt "License"
-msgid "Elten source code can be found at GitHub:"
+msgid "Elten source code can be found on GitHub:"
 msgstr "Codul sursă Elten poate fi găsit la GitHub:"
 
 #: ../src/EAPI/Documents.rb:3
@@ -446,7 +446,7 @@ msgstr ""
 
 #: ../src/EAPI/Documents.rb:689
 msgctxt "Documentation"
-msgid "Current Elten modifier"
+msgid "Current Invisible Interface modifier key"
 msgstr "Modificatorul curent Elten"
 
 #: ../src/Scenes/Auctions.rb:25 ../src/Scenes/CallHistory.rb:16
@@ -643,12 +643,12 @@ msgstr "Închide"
 
 #: ../src/Scenes/Conference.rb:47
 msgctxt "Conference"
-msgid "Use arrows to move in the channel space"
+msgid "Use the arrow keys to move around the channel space"
 msgstr "Folosește săgețile pentru a te mișca în spațiul canalului"
 
 #: ../src/Scenes/Conference.rb:48
 msgctxt "Conference"
-msgid "Use shift with left/right arrows to rotate"
+msgid "Use Shift+Left/Right Arrow to rotate"
 msgstr "Folosește shift cu săgețile stânga/dreapta pentru a roti"
 
 #: ../src/Scenes/Conference.rb:59
@@ -723,7 +723,7 @@ msgstr "Citește poziția curentă"
 
 #: ../src/Scenes/Conference.rb:135
 msgctxt "Conference"
-msgid "Hold spacebar to whisper to user"
+msgid "Hold the Space bar to whisper to the user"
 msgstr "Menține tasta Spațiu pentru a șopti către utilizator"
 
 #: ../src/Scenes/Conference.rb:139
@@ -808,8 +808,8 @@ msgstr "OK"
 
 #: ../src/Scenes/Conference.rb:256
 msgctxt "Conference"
-msgid "%{user} has rolled %{value} dot on a %{count}-sided dice"
-msgid_plural "%{user} has rolled %{value} dots on a %{count}-sided dice"
+msgid "%{user} has rolled a %{value} on a %{count}-sided die"
+msgid_plural "%{user} has rolled a %{value} on a %{count}-sided die"
 msgstr[0] "%{user} a aruncat %{value} puncte pe un zar cu %{count} fețe"
 msgstr[1] "%{user} au aruncat %{value} puncte pe un zar cu %{count} fețe"
 msgstr[2] "%{user} au aruncat %{value} puncte pe un zar cu %{count} fețe"
@@ -847,7 +847,7 @@ msgstr "Urmărește"
 
 #: ../src/Scenes/Conference.rb:377
 msgctxt "Conference"
-msgid "Channel followed"
+msgid "You are now following this channel"
 msgstr "Canal urmărit"
 
 #: ../src/Scenes/Conference.rb:382
@@ -857,7 +857,7 @@ msgstr "Nu mai urmări"
 
 #: ../src/Scenes/Conference.rb:384
 msgctxt "Conference"
-msgid "Channel unfollowed"
+msgid "You are no longer following this channel"
 msgstr "Canalul nu mai este urmărit"
 
 #: ../src/Scenes/Conference.rb:390 ../src/Scenes/Conference.rb:414
@@ -882,7 +882,7 @@ msgstr "Limbă"
 
 #: ../src/Scenes/Conference.rb:395
 msgctxt "Conference"
-msgid "Followers count: "
+msgid "Number of followers: "
 msgstr "Numărul de urmăritori: "
 
 #: ../src/Scenes/Conference.rb:396
@@ -897,7 +897,7 @@ msgstr "Acest canal are o sală de așteptare."
 
 #: ../src/Scenes/Conference.rb:399
 msgctxt "Conference"
-msgid "Room id"
+msgid "Room ID"
 msgstr "ID-ul camerei"
 
 #: ../src/Scenes/Conference.rb:400
@@ -917,7 +917,7 @@ msgstr "Dimensiunea cadrului canalului"
 
 #: ../src/Scenes/Conference.rb:405 ../src/Scenes/Conference.rb:558
 msgctxt "Conference"
-msgid "Space Virtualization"
+msgid "Spatial audio mode"
 msgstr "Virtualizare"
 
 #: ../src/Scenes/Conference.rb:412 ../src/Scenes/Conference.rb:558
@@ -1091,7 +1091,7 @@ msgstr "Ascunde această cameră"
 
 #: ../src/Scenes/Conference.rb:563
 msgctxt "Conference"
-msgid "Store as permanent channel"
+msgid "Make this a permanent channel"
 msgstr "Păstrează canalul permanent"
 
 #: ../src/Scenes/Conference.rb:564
@@ -1255,7 +1255,7 @@ msgstr "Salvează"
 
 #: ../src/Scenes/Conference.rb:864 ../src/Scenes/Conference.rb:891
 msgctxt "Conference"
-msgid "Saving began"
+msgid "Saving started"
 msgstr "Salvarea a început"
 
 #: ../src/Scenes/Conference.rb:873 ../src/Scenes/Conference.rb:900
@@ -1282,12 +1282,12 @@ msgstr "Dreapta"
 
 #: ../src/Scenes/Conference.rb:938
 msgctxt "Conference"
-msgid "Set push to talk shortcut"
+msgid "Set push-to-talk shortcut"
 msgstr "Setează scurtătura pentru Menține pentru a vorbi"
 
 #: ../src/Scenes/Conference.rb:940
 msgctxt "Conference"
-msgid "Push to talk shortcut"
+msgid "Push-to-talk shortcut"
 msgstr "Scurtătură Menține pentru a Vorbi"
 
 #: ../src/Scenes/Conference.rb:949
@@ -1343,12 +1343,12 @@ msgstr "Stare"
 
 #: ../src/Scenes/Conference.rb:1054
 msgctxt "Conference"
-msgid "Remove soundcard stream"
+msgid "Remove sound card stream"
 msgstr "Elimină stream-ul plăcii de sunet"
 
 #: ../src/Scenes/Conference.rb:1067
 msgctxt "Conference"
-msgid "Stream from soundcard"
+msgid "Stream from sound card"
 msgstr "Transmite placa de sunet"
 
 #: ../src/Scenes/Conference.rb:1072 ../src/Scenes/Conference.rb:1850
@@ -1360,12 +1360,12 @@ msgstr "Dispozitiv loopback"
 #: ../src/Scenes/Conference.rb:1072 ../src/Scenes/Conference.rb:1850
 #: ../src/Scenes/Conference.rb:2000
 msgctxt "Conference"
-msgid "Select soundcard to stream"
+msgid "Select sound card to stream"
 msgstr "Selectează placa de sunet pe care vrei să o transmiți"
 
 #: ../src/Scenes/Conference.rb:1073 ../src/Scenes/Conference.rb:1851
 msgctxt "Conference"
-msgid "Turn on the listening"
+msgid "Monitor this input"
 msgstr "Pornește ascultarea"
 
 #: ../src/Scenes/Conference.rb:1074
@@ -1477,7 +1477,7 @@ msgstr "Transmite"
 
 #: ../src/Scenes/Conference.rb:1234
 msgctxt "Conference"
-msgid "Change volumes"
+msgid "Adjust volumes"
 msgstr "Modifică volumele"
 
 #: ../src/Scenes/Conference.rb:1238
@@ -1502,7 +1502,7 @@ msgstr "Salvează stream-uri separate (Experimental)"
 
 #: ../src/Scenes/Conference.rb:1253
 msgctxt "Conference"
-msgid "Push to talk"
+msgid "Push-to-talk"
 msgstr "Menține pentru a Vorbi"
 
 #: ../src/Scenes/Conference.rb:1273
@@ -1522,17 +1522,17 @@ msgstr "Arată starea"
 
 #: ../src/Scenes/Conference.rb:1281
 msgctxt "Conference"
-msgid "Change output soundcard"
+msgid "Change output sound card"
 msgstr "Modifică placa de sunet de ieșire"
 
 #: ../src/Scenes/Conference.rb:1283
 msgctxt "Conference"
-msgid "Use Elten soundcard"
+msgid "Use Elten sound card"
 msgstr "Folosește-o pe cea configurată în Elten"
 
 #: ../src/Scenes/Conference.rb:1286
 msgctxt "Conference"
-msgid "Select soundcard"
+msgid "Select sound card"
 msgstr "Selectează placa de sunet pe care vrei să o transmiții"
 
 #: ../src/Scenes/Conference.rb:1287
@@ -1803,7 +1803,7 @@ msgstr "Arată sursele"
 
 #: ../src/Scenes/Conference.rb:1722
 msgctxt "Conference"
-msgid "Locally mute"
+msgid "Mute locally"
 msgstr "Pune local pe mut"
 
 #: ../src/Scenes/Conference.rb:1723
@@ -1813,12 +1813,12 @@ msgstr "Scoate local de pe mut"
 
 #: ../src/Scenes/Conference.rb:1728
 msgctxt "Conference"
-msgid "Locally unmuted"
+msgid "Unmuted locally"
 msgstr "Scos local de pe mut"
 
 #: ../src/Scenes/Conference.rb:1730
 msgctxt "Conference"
-msgid "Locally muted"
+msgid "Muted locally"
 msgstr "Pus local pe mut"
 
 #: ../src/Scenes/Conference.rb:1753 ../src/Scenes/Conference.rb:1932
@@ -1861,7 +1861,7 @@ msgstr "Link-ul transmisiunii"
 
 #: ../src/Scenes/Conference.rb:1845
 msgctxt "Conference"
-msgid "New soundcard stream"
+msgid "New sound card stream"
 msgstr "Transmisiune nouă a plăcii de sunet"
 
 #: ../src/Scenes/Conference.rb:1897
@@ -1891,7 +1891,7 @@ msgstr "Adaugă flux de pe internet"
 
 #: ../src/Scenes/Conference.rb:1995
 msgctxt "Conference"
-msgid "Add soundcard"
+msgid "Add sound card"
 msgstr "Adaugă placă de sunet"
 
 #: ../src/Scenes/Conference.rb:2036
@@ -1901,7 +1901,7 @@ msgstr "Stare"
 
 #: ../src/Scenes/Conference.rb:2036
 msgctxt "Conference"
-msgid "VST Plugins"
+msgid "VST plug-ins"
 msgstr "Pluginuri VST"
 
 #: ../src/Scenes/Conference.rb:2036 ../src/Scenes/Conference.rb:2050
@@ -2052,7 +2052,7 @@ msgstr "Adaugă VST"
 
 #: ../src/Scenes/Conference.rb:2239
 msgctxt "Conference"
-msgid "Select VST version 2 file to be loaded"
+msgid "Select a VST2 plug-in file to load"
 msgstr "Selectează fișierul cu un VST 2 ca acesta să fie încărcat"
 
 #: ../src/Scenes/Conference.rb:2245
@@ -2097,7 +2097,7 @@ msgstr "Șterge"
 
 #: ../src/Scenes/Conference.rb:2385
 msgctxt "Conference"
-msgid "Are you sure you want to delete saved chain of name %{name}?"
+msgid "Are you sure you want to delete the saved chain named %{name}?"
 msgstr "Sigur vrei să ștergi lanțul salvat cu numele %{name}?"
 
 #: ../src/Scenes/Conference.rb:2391
@@ -2112,7 +2112,7 @@ msgstr "Numele lanțului"
 
 #: ../src/Scenes/Conference.rb:2408
 msgctxt "Conference"
-msgid "Are you sure you want to apply chain of name %{name}?"
+msgid "Are you sure you want to apply the chain named %{name}?"
 msgstr "Sigur vrei să aplici lanțul cu numele %{name}?"
 
 #: ../src/Scenes/Conference.rb:2421
@@ -2122,7 +2122,7 @@ msgstr "Lanț importat"
 
 #: ../src/Scenes/Documentation.rb:10
 msgctxt "Documentation"
-msgid "License agreement"
+msgid "Licence agreement"
 msgstr "Acord de licențiere"
 
 #: ../src/Scenes/Documentation.rb:13
@@ -2215,7 +2215,7 @@ msgstr "Mesaj"
 
 #: ../src/Scenes/IIKeys.rb:4
 msgctxt "IIKeys"
-msgid "Navigate up or down on lists"
+msgid "Move up or down through lists"
 msgstr "Navighează sus sau jos în liste"
 
 #: ../src/Scenes/IIKeys.rb:5
@@ -2240,7 +2240,7 @@ msgstr "Activează elementul selectat"
 
 #: ../src/Scenes/IIKeys.rb:9
 msgctxt "IIKeys"
-msgid "Cancel speech and stop currently played audio"
+msgid "Cancel speech and stop the audio that is currently playing"
 msgstr "Oprește vorbirea și fișierul audio care se redă"
 
 #: ../src/Scenes/IIKeys.rb:10
@@ -2270,7 +2270,7 @@ msgstr "Postează într-un flux"
 
 #: ../src/Scenes/IIKeys.rb:37
 msgctxt "IIKeys"
-msgid "Invisible Interface Hotkeys"
+msgid "Invisible Interface keyboard shortcuts"
 msgstr "Combinațiile de taste ale interfeței invizibile"
 
 #: ../src/Scenes/PremiumPackages.rb:13
@@ -2305,12 +2305,12 @@ msgstr "Curier"
 
 #: ../src/Scenes/PremiumPackages.rb:31
 msgctxt "PremiumPackages"
-msgid "Following forums in not moderated groups"
+msgid "Following forums in groups you do not moderate"
 msgstr "Urmărirea forumurilor în grupuri nemoderate"
 
 #: ../src/Scenes/PremiumPackages.rb:32
 msgctxt "PremiumPackages"
-msgid "Disabling signatures visibility"
+msgid "Ability to hide signatures"
 msgstr "Dezactivarea vizibilității semnăturilor"
 
 #: ../src/Scenes/PremiumPackages.rb:33
@@ -2320,7 +2320,7 @@ msgstr "Marcarea subiectelor și a semnelor de carte"
 
 #: ../src/Scenes/PremiumPackages.rb:34
 msgctxt "PremiumPackages"
-msgid "Private messages protection against erroneous removal"
+msgid "Protection of private messages against accidental deletion"
 msgstr "Protecția mesajelor private împotriva eliminării eronate"
 
 #: ../src/Scenes/PremiumPackages.rb:35
@@ -2330,7 +2330,7 @@ msgstr "Istoricul mențiunilor și răspunsul la mențiuni"
 
 #: ../src/Scenes/PremiumPackages.rb:36
 msgctxt "PremiumPackages"
-msgid "Groups pinning"
+msgid "Pinning groups"
 msgstr "Fixarea grupurilor"
 
 #: ../src/Scenes/PremiumPackages.rb:37
@@ -2340,7 +2340,7 @@ msgstr "Urmărirea postărilor din bloguri"
 
 #: ../src/Scenes/PremiumPackages.rb:38
 msgctxt "PremiumPackages"
-msgid "Extended limit of attachment size in private messages to 32MB"
+msgid "Larger private-message attachments, up to 32 MB"
 msgstr "Limita extinsă a mărimii atașamentului în mesajele private la 32 MB"
 
 #: ../src/Scenes/PremiumPackages.rb:39
@@ -2366,12 +2366,12 @@ msgstr "Audiofil"
 
 #: ../src/Scenes/PremiumPackages.rb:46
 msgctxt "PremiumPackages"
-msgid "Lifting the 2-minute limit for private voice messages"
+msgid "Removal of the two-minute limit for private voice messages"
 msgstr "Ridicarea limitei de două minute pentru mesajele vocale private"
 
 #: ../src/Scenes/PremiumPackages.rb:47
 msgctxt "PremiumPackages"
-msgid "Lifting the 32kbps quality limit in private voice messages"
+msgid "Removal of the 32 kbps quality limit for private voice messages"
 msgstr "Ridicarea limitei de calitate de 32 kbps în mesajele vocale private"
 
 #: ../src/Scenes/PremiumPackages.rb:48
@@ -2416,7 +2416,7 @@ msgstr "Scrib"
 
 #: ../src/Scenes/PremiumPackages.rb:60
 msgctxt "PremiumPackages"
-msgid "Creation of second and following blogs"
+msgid "Creation of additional blogs"
 msgstr "Creearea a două sau mai multor blog-uri"
 
 #: ../src/Scenes/PremiumPackages.rb:61
@@ -2431,7 +2431,7 @@ msgstr "Verificarea ortografiei"
 
 #: ../src/Scenes/PremiumPackages.rb:63
 msgctxt "PremiumPackages"
-msgid "Changing of blog address"
+msgid "Changing the blog address"
 msgstr "Schimbarea adresei blogului"
 
 #: ../src/Scenes/PremiumPackages.rb:64
@@ -2466,7 +2466,7 @@ msgstr "Transmisia conferințelor pe un server ShoutCast"
 
 #: ../src/Scenes/PremiumPackages.rb:73
 msgctxt "PremiumPackages"
-msgid "Setting VST plugins on specific users"
+msgid "Applying VST plug-ins to individual users"
 msgstr "Setarea pluginurilor VST pentru utilizatori specifici"
 
 #: ../src/Scenes/PremiumPackages.rb:74
@@ -2485,16 +2485,14 @@ msgstr ""
 
 #: ../src/Scenes/PremiumPackages.rb:76
 msgctxt "PremiumPackages"
-msgid ""
-"Setting different output soundcard for conferences than the one selected in "
-"Elten"
+msgid "Selecting a separate output sound card for conferences"
 msgstr ""
 "Setarea unei plăci de sunet de ieșire diferite pentru conferințe decât cea "
 "selectată în Elten"
 
 #: ../src/Scenes/PremiumPackages.rb:77
 msgctxt "PremiumPackages"
-msgid "Changing channels dimensions"
+msgid "Changing channel dimensions"
 msgstr "Modificarea dimensiunilor canalelor"
 
 #: ../src/Scenes/PremiumPackages.rb:81
@@ -2504,7 +2502,7 @@ msgstr "Pachetul Orchestra"
 
 #: ../src/Scenes/PremiumPackages.rb:82
 msgctxt "PremiumPackages"
-msgid "Includes profits from courier, audiophile, scribe and director"
+msgid "Includes the benefits of Courier, Audiophile, Scribe and Director"
 msgstr "Include beneficiile din curier, audiofil, scrib și director"
 
 #: ../src/Scenes/PremiumPackages.rb:86
@@ -2514,22 +2512,22 @@ msgstr "Pachet de sponsorizare"
 
 #: ../src/Scenes/PremiumPackages.rb:87
 msgctxt "PremiumPackages"
-msgid "Includes profits from all other packages, including future packages"
+msgid "Includes the benefits of all other packages, including future packages"
 msgstr "Include beneficiile din toate pachetele, inclusiv pachetele viitoare"
 
 #: ../src/Scenes/PremiumPackages.rb:88
 msgctxt "PremiumPackages"
-msgid "Special assigning of user on lists and forum"
+msgid "Special recognition for the user in lists and on the forum"
 msgstr "Alocarea specială pe liste și forum"
 
 #: ../src/Scenes/PremiumPackages.rb:89
 msgctxt "PremiumPackages"
-msgid "Entry in the list of sponsors"
+msgid "Listing in the sponsors list"
 msgstr "Intrare în lista sponsorilor"
 
 #: ../src/Scenes/PremiumPackages.rb:95
 msgctxt "PremiumPackages"
-msgid "Show profits"
+msgid "Show benefits"
 msgstr "Arată beneficiile"
 
 #: ../src/Scenes/PremiumPackages.rb:100 ../src/Scenes/PremiumPackages.rb:145
@@ -2594,7 +2592,7 @@ msgstr "Selectează moneda."
 
 #: ../src/Scenes/PremiumPackages.rb:150
 msgctxt "PremiumPackages"
-msgid "Profits of package %{name}"
+msgid "Benefits of the %{name} package"
 msgstr "Beneficiile pachetului %{name}"
 
 #: ../src/Scenes/PremiumPackages.rb:155
@@ -2627,7 +2625,7 @@ msgstr ""
 
 #: ../src/Scenes/PremiumPackages.rb:252
 msgctxt "PremiumPackages"
-msgid "This package is currently unavailable. Try to buy it in the next month."
+msgid "This package is currently unavailable. Try to buy it next month."
 msgstr ""
 "Acest pachet nu este disponibil momentan. Încearcă să-l cumperi în luna "
 "următoare."
@@ -2644,7 +2642,7 @@ msgstr "O lună"
 
 #: ../src/Scenes/PremiumPackages.rb:257
 msgctxt "PremiumPackages"
-msgid "How long do you want to buy this package for?"
+msgid "For how long do you want to buy this package?"
 msgstr "Pentru cât timp dorești să cumperi pachetul?"
 
 #: ../src/Scenes/PremiumPackages.rb:262
@@ -2689,12 +2687,12 @@ msgstr "Transfer bancar tradițional"
 
 #: ../src/Scenes/PremiumPackages.rb:288
 msgctxt "PremiumPackages"
-msgid "Paypal (using Paypal account or credit/debit card)"
+msgid "PayPal (using a PayPal account or credit/debit card)"
 msgstr "PayPal (folosind contul PayPal sau un card de credit/debit)"
 
 #: ../src/Scenes/PremiumPackages.rb:289
 msgctxt "PremiumPackages"
-msgid "Przelewy24 (fast transfer from polish banks)"
+msgid "Przelewy24 (fast transfer from Polish banks)"
 msgstr "Przelewy24 (transfer rapid din băncile poloneze)"
 
 #: ../src/Scenes/PremiumPackages.rb:292
@@ -2759,17 +2757,7 @@ msgstr ""
 
 #: ../src/Scenes/PremiumPackages.rb:320
 msgctxt "PremiumPackages"
-msgid ""
-"National transfer details (from Poland):\n"
-"%{holder}\n"
-"Address: %{address}\n"
-"Account number: %{placcount}\n"
-"\n"
-"Additional data for foreign transfers:\n"
-"IBAN number: %{iban}\n"
-"BIC / SWIFT: %{swift}\n"
-"Bank address: %{bankaddress}\n"
-"Sort code: %{sortcode}"
+msgid "Domestic bank transfer details (from Poland):\n%{holder}\nAddress: %{address}\nAccount number: %{placcount}\n\nAdditional data for foreign transfers:\nIBAN: %{iban}\nBIC / SWIFT: %{swift}\nBank address: %{bankaddress}\nSort code: %{sortcode}"
 msgstr ""
 "Detalii despre transferul național (din Polonia):\n"
 "%{holder}\n"
@@ -2799,30 +2787,26 @@ msgstr "Câte coduri premium ai dori să cumperi?"
 
 #: ../src/Scenes/PremiumPackages.rb:367 ../src/Scenes/PremiumPackages.rb:402
 msgctxt "PremiumPackages"
-msgid ""
-"You will be charged a %{amount} commission for the selected payment method. "
-"Do you want to continue?"
+msgid "You will be charged a processing fee of %{amount} for the selected payment method."
 msgstr ""
 "Vei plăti un comision de %{amount} pentru metoda de plată selectată. Vrei să "
 "continui?"
 
 #: ../src/Scenes/PremiumPackages.rb:403
 msgctxt "PremiumPackages"
-msgid "Enter blik code"
+msgid "Enter the BLIK code"
 msgstr "Introdu codul blik"
 
 #: ../src/Scenes/PremiumPackages.rb:410
 msgctxt "PremiumPackages"
-msgid ""
-"Payment has been ordered. Additional confirmation may be required. The order "
-"will be processed once the payment is complete."
+msgid "The payment has been initiated. Additional confirmation may be required. The order will be processed once the payment is complete."
 msgstr ""
 "Plata a fost comandată. Este posibil să fie necesară o confirmare "
 "suplimentară. Comanda va fi procesată odată ce plata este completă."
 
 #: ../src/Scenes/PremiumPackages.rb:415
 msgctxt "PremiumPackages"
-msgid "Type code to activate this package"
+msgid "Enter the code to activate this package"
 msgstr "Introdu codul pentru a activa pachetul"
 
 #: ../src/Scenes/PremiumPackages.rb:421
@@ -2832,14 +2816,12 @@ msgstr "Cod negăsit."
 
 #: ../src/Scenes/PremiumPackages.rb:423
 msgctxt "PremiumPackages"
-msgid "This code has been already used."
+msgid "This code has already been used."
 msgstr "Acest cod a fost deja utilizat."
 
 #: ../src/Scenes/PremiumPackages.rb:432
 msgctxt "PremiumPackages"
-msgid ""
-"The package %{name} will be active until %{time}. This code will be used up "
-"and you will not be able to use it again. Do you want to continue?"
+msgid "The package %{name} will be active until %{time}. This code will be redeemed and you will not be able to use it again. Do you want to continue?"
 msgstr ""
 "Pachetul %{name} va fi disponibil până pe %{time}. Acest cod va fi epuizat "
 "și nu îl vei mai putea folosi din nou. Dorești să continui?"
@@ -2934,7 +2916,7 @@ msgstr "Încarcă ultimul cod"
 
 #: ../src/eapi/Common.rb:142
 msgctxt "EAPI_Common"
-msgid "Last codes"
+msgid "Code history"
 msgstr "Ultimele coduri"
 
 #: ../src/eapi/Common.rb:188
@@ -2969,12 +2951,12 @@ msgstr "insignele acestui utilizator"
 
 #: ../src/eapi/Common.rb:219
 msgctxt "EAPI_Common"
-msgid "Remove from contacts' list"
+msgid "Remove from contact list"
 msgstr "Șterge din lista de contacte"
 
 #: ../src/eapi/Common.rb:221
 msgctxt "EAPI_Common"
-msgid "Add to contacts' list"
+msgid "Add to contact list"
 msgstr "Adaugă în lista de contacte"
 
 #: ../src/eapi/Common.rb:224
@@ -3009,7 +2991,7 @@ msgstr "Arată fluxul"
 
 #: ../src/eapi/Common.rb:247
 msgctxt "EAPI_Common"
-msgid "Monitor when this user becomes online"
+msgid "Notify me when this user comes online"
 msgstr "Monitorizează când utilizatorul intră online"
 
 #: ../src/eapi/Common.rb:249
@@ -3034,7 +3016,7 @@ msgstr "Sigur ştergi acest contact?"
 
 #: ../src/eapi/Common.rb:320
 msgctxt "EAPI_Common"
-msgid "Feed unfollowed"
+msgid "You are no longer following this feed"
 msgstr "Fluxul nu mai este urmărit"
 
 #: ../src/eapi/Common.rb:322
@@ -3059,12 +3041,12 @@ msgstr "Ton de apel modificat"
 
 #: ../src/eapi/Common.rb:350
 msgctxt "EAPI_Common"
-msgid "Notify me one time when this user becomes online"
+msgid "Notify me once when this user comes online"
 msgstr "Notifică-mă doar odată când utilizatorul se conectează"
 
 #: ../src/eapi/Common.rb:350
 msgctxt "EAPI_Common"
-msgid "Notify me whenever this user becomes online"
+msgid "Notify me whenever this user comes online"
 msgstr "Notifică-mă de fiecare dată când utilizatorul se conectează"
 
 #: ../src/eapi/Common.rb:351
@@ -3094,7 +3076,7 @@ msgstr "Trimite"
 
 #: ../src/eapi/Common.rb:504
 msgctxt "EAPI_Common"
-msgid "Describe the found error"
+msgid "Describe the error you found"
 msgstr "Descrie eroarea găsită"
 
 #: ../src/eapi/Common.rb:518
@@ -3238,7 +3220,7 @@ msgstr "Cartea de vizită a %{user}:"
 
 #: ../src/eapi/Common.rb:692
 msgctxt "EAPI_Common"
-msgid "License agreement"
+msgid "Licence agreement"
 msgstr "Acord de licențiere"
 
 #: ../src/eapi/Common.rb:693
@@ -3253,32 +3235,26 @@ msgstr "Politica de confidențialitate"
 
 #: ../src/eapi/Common.rb:695
 msgctxt "EAPI_Common"
-msgid "I do not accept, exit"
+msgid "Decline and exit"
 msgstr "Nu accept, vreau să închid programul"
 
 #: ../src/eapi/Common.rb:695
 msgctxt "EAPI_Common"
-msgid ""
-"I accept Elten license agreement, Terms and Conditions and Privacy Policy"
+msgid "I accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy"
 msgstr ""
 "Accept acordul de licență Elten, termenii și condițiile și politica de "
 "confidențialitate"
 
 #: ../src/eapi/Common.rb:713
 msgctxt "EAPI_Common"
-msgid ""
-"Do you accept Elten license agreement, terms and conditions and privacy "
-"policy?"
+msgid "Do you accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy?"
 msgstr ""
 "Accepți acordul de licență Elten, termenii și condițiile și politica de "
 "confidențialitate?"
 
 #: ../src/eapi/Common.rb:734
 msgctxt "EAPI_Common"
-msgid ""
-"You are trying to play a midi file. In order to play such files, Elten needs "
-"an  external base of instruments. Do you want to download the base from the "
-"server  now? It may take several minutes."
+msgid "You are trying to play a MIDI file. Elten needs an external instrument sound bank to play MIDI files. Do you want to download it from the server now? This may take several minutes."
 msgstr ""
 "Încerci să redai un fișier midi. Pentru a reda astfel de fișiere, Elten are "
 "nevoie de o bază externă de instrumente. Vrei să descarci baza de pe server "
@@ -3292,7 +3268,7 @@ msgstr ""
 
 #: ../src/eapi/Common.rb:737
 msgctxt "EAPI_Common"
-msgid "Soundfont downloaded succesfully."
+msgid "SoundFont downloaded successfully."
 msgstr "Fontul sonor a fost descărcat cu succes."
 
 #: ../src/eapi/Common.rb:930
@@ -3326,9 +3302,7 @@ msgstr "Director"
 
 #: ../src/eapi/Common.rb:962
 msgctxt "EAPI_Common"
-msgid ""
-"This feature requires %{package} premium package. Would you like to see the "
-"premium packages available?"
+msgid "This feature requires the %{package} premium package. Would you like to see the available premium packages?"
 msgstr ""
 "Această funcție necesită ca pachetul premium %{package} să fie activ. Vrei "
 "să deschizi o listă cu toate pachetele premium?"
@@ -3384,7 +3358,7 @@ msgstr "Meniu contextual"
 
 #: ../src/eapi/Controls.rb:414
 msgctxt "EAPI_Form"
-msgid "Press up or down arrow to select contact"
+msgid "Press the Up or Down Arrow key to select a contact"
 msgstr "Apasă săgețile sus/jos pentru a selecta contactul"
 
 #: ../src/eapi/Controls.rb:416
@@ -3394,7 +3368,7 @@ msgstr "Selectează contactul"
 
 #: ../src/eapi/Controls.rb:438
 msgctxt "EAPI_Form"
-msgid "User does not exist"
+msgid "The user does not exist"
 msgstr "Utilizatorul nu există"
 
 #: ../src/eapi/Controls.rb:605
@@ -3525,7 +3499,7 @@ msgstr "Tradu"
 
 #: ../src/eapi/Controls.rb:1044 ../src/eapi/Controls.rb:1614
 msgctxt "EAPI_Form"
-msgid "Edit box"
+msgid "Text field"
 msgstr "Editare"
 
 #: ../src/eapi/Controls.rb:1045 ../src/eapi/Controls.rb:2638
@@ -3583,7 +3557,7 @@ msgstr "ultima modificare anulată"
 
 #: ../src/eapi/Controls.rb:1172
 msgctxt "EAPI_Form"
-msgid "Repeated"
+msgid "Redone"
 msgstr "Refăcut"
 
 #: ../src/eapi/Controls.rb:1175
@@ -3623,7 +3597,7 @@ msgstr "Cadru"
 
 #: ../src/eapi/Controls.rb:1833
 msgctxt "EAPI_Form"
-msgid "Use h or numbers from 1 to 6 to navigate to the next header"
+msgid "Use H or the number keys 1 to 6 to navigate to the next heading"
 msgstr ""
 "Folosește h sau numere de la 1 la 6 pentru a naviga la următoarea rubrică"
 
@@ -3666,7 +3640,7 @@ msgstr "Bifat"
 
 #: ../src/eapi/Controls.rb:2151
 msgctxt "EAPI_Form"
-msgid "You can heck only %{count} item"
+msgid "You can check only %{count} item"
 msgid_plural "You can check only %{count} items"
 msgstr[0] "Poți să iei doar %{count} element"
 msgstr[1] "Poți să iei doar %{count} elemente"
@@ -3679,7 +3653,7 @@ msgstr "Debifat"
 
 #: ../src/eapi/Controls.rb:2203
 msgctxt "EAPI_Form"
-msgid "Multiselection list"
+msgid "Multi-select list"
 msgstr "Lista multiselecție"
 
 #: ../src/eapi/Controls.rb:2212
@@ -3699,23 +3673,23 @@ msgstr "Listă goală"
 
 #: ../src/eapi/Controls.rb:2306
 msgctxt "EAPI_Form"
-msgid "Use space to select or unselect items"
+msgid "Press Space to select or deselect items"
 msgstr "Folosește spațiu pentru a bifa sau debifa elemente"
 
 #: ../src/eapi/Controls.rb:2309
 msgctxt "EAPI_Form"
-msgid "Use shift with up/down arrows to filter content by tags"
+msgid "Press Shift+Up/Down Arrow to filter content by tags"
 msgstr ""
 "Folosește shift cu săgețile sus jos pentru a filtra elemente după etichetă"
 
 #: ../src/eapi/Controls.rb:2311
 msgctxt "EAPI_Form"
-msgid "Press CTRL + up arrow to read item index"
+msgid "Press Ctrl+Up Arrow to hear the item number"
 msgstr "Apasă CTRL + săgeată sus pentru a citi indexul elementului"
 
 #: ../src/eapi/Controls.rb:2312
 msgctxt "EAPI_Form"
-msgid "Press CTRL + down arrow to read count of items"
+msgid "Press Ctrl+Down Arrow to hear the number of items"
 msgstr "Apasă CTRL + săgeată în jos pentru a citi numărul de elemente"
 
 #: ../src/eapi/Controls.rb:2341
@@ -3790,7 +3764,7 @@ msgstr "Creează"
 
 #: ../src/eapi/Controls.rb:2643
 msgctxt "EAPI_Form"
-msgid "Files Tree"
+msgid "File tree"
 msgstr "Lista de fișiere"
 
 #: ../src/eapi/Controls.rb:2757
@@ -3830,8 +3804,7 @@ msgstr "Selectează o cale."
 
 #: ../src/eapi/Controls.rb:3176
 msgctxt "EAPI_Form"
-msgid ""
-"Use SHIFT with left/right arrows to select the column you want to navigate by"
+msgid "Use Shift+Left/Right Arrow to select the column you want to navigate by"
 msgstr ""
 "Folosește SHIFT cu săgețile stânga / dreapta pentru a selecta coloana prin "
 "care vrei să navighezi"
@@ -3953,12 +3926,12 @@ msgstr "Salvează fișierul"
 
 #: ../src/eapi/Controls.rb:3601
 msgctxt "EAPI_Form"
-msgid "Use spacebar to toggle pause"
+msgid "Press the Space bar to play or pause"
 msgstr "Folosește spațiu pentru a comuta pauza"
 
 #: ../src/eapi/Controls.rb:3602
 msgctxt "EAPI_Form"
-msgid "Use left/right arrows to slide"
+msgid "Use the Left/Right Arrow keys to seek"
 msgstr "Folosește săgețile stânga dreapta pentru a derula"
 
 #: ../src/eapi/Controls.rb:3603
@@ -3968,34 +3941,34 @@ msgstr "Folosește săgețile sus jos pentru a modifica volumul redării"
 
 #: ../src/eapi/Controls.rb:3604
 msgctxt "EAPI_Form"
-msgid "Use SHIFT with left/right arrows to change panning"
+msgid "Use Shift+Left/Right Arrow to change panning"
 msgstr "Folosește shift+săgețile stânga dreapta pentru a poziționa sunetul"
 
 #: ../src/eapi/Controls.rb:3605
 msgctxt "EAPI_Form"
-msgid "Use SHIFT with up/down arrows to change pitch"
+msgid "Use Shift+Up/Down Arrow to change pitch"
 msgstr "Folosește shift+săgețile sus/jos pentru a modifica înălțimea"
 
 #: ../src/eapi/Controls.rb:3606
 msgctxt "EAPI_Form"
-msgid "Use CTRL with up/down arrows to change tempo"
+msgid "Use Ctrl+Up/Down Arrow to change tempo"
 msgstr "Folosește ctrl+săgețile sus/jos pentru a modifica viteza"
 
 #: ../src/eapi/Controls.rb:3607
 msgctxt "EAPI_Form"
-msgid "Use backspace to return to the default settings"
+msgid "Press Backspace to restore the default settings"
 msgstr "Folosește backspace pentru a reveni la setările implicite"
 
 #: ../src/eapi/Controls.rb:3608
 msgctxt "EAPI_Form"
-msgid "Use home or end to move to the beginning or ending of a track"
+msgid "Press Home or End to move to the beginning or end of the track"
 msgstr ""
 "Folosește tasta home pentru a te poziționa la începutul unei piese, "
 "respectiv end pentru a te poziționa la sfârșitul acesteia"
 
 #: ../src/eapi/Controls.rb:3609
 msgctxt "EAPI_Form"
-msgid "Use page up or page down to navigate to the previous or next chapter"
+msgid "Press Page Up or Page Down to move to the previous or next chapter"
 msgstr ""
 "Folosește page up pentru a naviga la capitolul următor, respectiv page down "
 "pentru a naviga la capitolul anterior"
@@ -4084,9 +4057,7 @@ msgstr "Continuă înregistrarea"
 
 #: ../src/eapi/Controls.rb:4290
 msgctxt "EAPI_Form"
-msgid ""
-"The encoder settings will not apply to the current record. Are you sure you "
-"want to continue?"
+msgid "The encoder settings will not apply to the current recording. Are you sure you want to continue?"
 msgstr ""
 "Setările encoderului nu se vor aplica pe înregistrarea curentă. Sigur vrei "
 "să continui?"
@@ -4188,10 +4159,7 @@ msgstr "Timpul capitolului (hh:mm:ss.uuu)"
 
 #: ../src/eapi/Controls.rb:4497
 msgctxt "EAPI_Form"
-msgid ""
-"Wrong time format, the proper format is two hours digits, colon, two minutes "
-"digits, colon, two seconds digits and, optionally, three milliseconds digits "
-"preceeded by dot"
+msgid "Invalid time format. Use hh:mm:ss.uuu: two digits each for hours, minutes and seconds, optionally followed by a full stop and three digits for milliseconds."
 msgstr ""
 "Formatul de timp este greșit, cel corespunzător este ora din două cifre, "
 "două puncte, minutele din două cifre, două puncte, secundele din două cifre "
@@ -4199,17 +4167,17 @@ msgstr ""
 
 #: ../src/eapi/Controls.rb:4514
 msgctxt "EAPI_Form"
-msgid "Add new chapter manually"
+msgid "Add a new chapter manually"
 msgstr "Adaugă manual un capitol nou"
 
 #: ../src/eapi/Controls.rb:4515
 msgctxt "EAPI_Form"
-msgid "Add chapters with playback"
+msgid "Add chapters during playback"
 msgstr "Adaugă capitole cu redare"
 
 #: ../src/eapi/Controls.rb:4517
 msgctxt "EAPI_Form"
-msgid "Chapters editor, use context menu to add chapters"
+msgid "Chapter editor; use the context menu to add chapters"
 msgstr ""
 "Editorul de capitole, utilizează meniul contextual pentru a adăuga capitole"
 
@@ -4403,7 +4371,7 @@ msgstr "Contactele mele"
 
 #: ../src/eapi/MainMenu.rb:61
 msgctxt "MainMenu"
-msgid "Users who a&dded me to contacts"
+msgid "Users who a&dded me to their contact list"
 msgstr "Utilizatorii care m-au adăugat la contacte"
 
 #: ../src/eapi/MainMenu.rb:63
@@ -4483,7 +4451,7 @@ msgstr "Setările programului"
 
 #: ../src/eapi/MainMenu.rb:88
 msgctxt "MainMenu"
-msgid "Soun&dthemes"
+msgid "Sound &themes"
 msgstr "Teme de sunete"
 
 #: ../src/eapi/MainMenu.rb:89
@@ -4533,7 +4501,7 @@ msgstr "Încarcă un &fișier de traducere personalizată"
 
 #: ../src/eapi/MainMenu.rb:102
 msgctxt "MainMenu"
-msgid "Select translations file"
+msgid "Select a translation file"
 msgstr "Selectează fișierul de traducere"
 
 #: ../src/eapi/MainMenu.rb:105
@@ -4578,7 +4546,7 @@ msgstr "Readme"
 
 #: ../src/eapi/MainMenu.rb:116
 msgctxt "MainMenu"
-msgid "&License agreement"
+msgid "&Licence agreement"
 msgstr "&Acord de licențiere"
 
 #: ../src/eapi/MainMenu.rb:117
@@ -4598,7 +4566,7 @@ msgstr "Informații despre migrarea la Elten 2.4"
 
 #: ../src/eapi/MainMenu.rb:120
 msgctxt "MainMenu"
-msgid "List of &Invisible Interface hotkeys"
+msgid "List of &Invisible Interface keyboard shortcuts"
 msgstr "Lista scurtăturilor interfeței invizibile"
 
 #: ../src/eapi/MainMenu.rb:122
@@ -4648,7 +4616,7 @@ msgstr "se trimite..."
 
 #: ../src/eapi/Network.rb:184 ../src/eapi/Network.rb:229
 msgctxt "EAPI_Network"
-msgid "The file already exists. Do you want to override it?"
+msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Fișierul deja există. Vrei să-l înlocuiești?"
 
 #: ../src/eapi/Network.rb:291
@@ -4688,12 +4656,12 @@ msgstr "Se folosește un sintetizator SAPI selectat"
 
 #: ../src/eapi/QuickActions.rb:113
 msgctxt "EAPI_Common"
-msgid "Do not disturb on"
+msgid "Do not disturb is on"
 msgstr "Modul Nu deranja activat"
 
 #: ../src/eapi/QuickActions.rb:117
 msgctxt "EAPI_Common"
-msgid "Do not disturb off"
+msgid "Do not disturb is off"
 msgstr "Modul Nu deranja dezactivat"
 
 #: ../src/eapi/QuickActions.rb:124
@@ -4828,17 +4796,17 @@ msgstr "Pune microfonul pe mut"
 
 #: ../src/eapi/QuickActions.rb:224
 msgctxt "EAPI_QuickActions"
-msgid "Conferences: switch push to talk"
+msgid "Conferences: switch push-to-talk"
 msgstr "Treci pe Menține pentru a Vorbi"
 
 #: ../src/eapi/QuickActions.rb:225
 msgctxt "EAPI_QuickActions"
-msgid "Conferences: roll a 6-sided dice"
+msgid "Conferences: roll a 6-sided die"
 msgstr "Aruncă un zar cu 6 fețe"
 
 #: ../src/eapi/QuickActions.rb:226
 msgctxt "EAPI_QuickActions"
-msgid "Conferences: roll a custom dice"
+msgid "Conferences: roll a custom die"
 msgstr "Conferințe: aruncă un zar personalizat"
 
 #: ../src/eapi/QuickActions.rb:227
@@ -4958,7 +4926,7 @@ msgstr "egal"
 
 #: ../src/eapi/Speech.rb:377
 msgctxt "EAPI_Speech"
-msgid "graav"
+msgid "grave"
 msgstr "graav"
 
 #: ../src/eapi/Speech.rb:379
@@ -5117,10 +5085,7 @@ msgstr "Programul încearcă să-și recupereze funcționarea."
 
 #: ../src/eapi/UI.rb:588
 msgctxt "EAPI_UI"
-msgid ""
-"Errors occurred while trying to register keys for invisible interface. "
-"Please make sure that other apps do not use the keys specified. You can "
-"change modifier keys of invisible interface using settings window."
+msgid "Errors occurred while trying to register keyboard shortcuts for the Invisible Interface. Make sure that the specified shortcuts are not used by other applications. You can change the Invisible Interface modifier keys in the Settings window."
 msgstr ""
 "A apărut o eroare la înregistrarea tastelor pentru interfața invizibilă. "
 "Asigură-te că tastele specificate nu sunt folosite de alte aplicații. Poți "
@@ -5306,7 +5271,7 @@ msgstr "Ascunde profilul meu pentru străini"
 
 #: ../src/scenes/Account.rb:249
 msgctxt "Account"
-msgid "Prevent banned users from writing me private messages"
+msgid "Prevent banned users from sending me private messages"
 msgstr "Împiedică utilizatorii banați să-mi scrie mesaje private"
 
 #: ../src/scenes/Account.rb:250
@@ -5416,7 +5381,7 @@ msgstr "Prieteni noi"
 
 #: ../src/scenes/Account.rb:262
 msgctxt "Account"
-msgid "Friends' birthday"
+msgid "Friends' birthdays"
 msgstr "Ziua de Naștere a prietenilor"
 
 #: ../src/scenes/Account.rb:262
@@ -5511,7 +5476,7 @@ msgstr "Re-introdu noua parolă."
 
 #: ../src/scenes/Account.rb:345
 msgctxt "Account"
-msgid "Fields: New Password and Repeat New Password have different values."
+msgid "The passwords do not match."
 msgstr "Câmpuri: Parola nouă și cea repetată au valori diferite."
 
 #: ../src/scenes/Account.rb:352
@@ -5543,7 +5508,7 @@ msgstr "Adresa de E-Mail a fost modificată."
 
 #: ../src/scenes/Account.rb:401
 msgctxt "Account"
-msgid "Error, you must disable mail events reporting first."
+msgid "Error: you must disable email event reporting first."
 msgstr ""
 "Eroare, trebuie mai întâi să dezactivezi raportarea evenimentelor prin e-"
 "mail."
@@ -5551,9 +5516,7 @@ msgstr ""
 #: ../src/scenes/Account.rb:419 ../src/scenes/Account.rb:477
 #: ../src/scenes/Account.rb:589
 msgctxt "Account"
-msgid ""
-"An error occurred while authenticating the account. You might have provided "
-"an  incorrect password."
+msgid "An error occurred while verifying your account. You may have entered an incorrect password."
 msgstr ""
 "A apărut o eroare la autentificarea contului. Este posibil să fi furnizat o "
 "parolă incorectă."
@@ -5575,7 +5538,7 @@ msgstr "Computer"
 
 #: ../src/scenes/Account.rb:449
 msgctxt "Account"
-msgid "Auto log in tokens"
+msgid "Auto-login tokens"
 msgstr "Tokenuri de autentificare automată"
 
 #: ../src/scenes/Account.rb:451
@@ -5585,9 +5548,7 @@ msgstr "Deloghează toate sesiunile"
 
 #: ../src/scenes/Account.rb:467
 msgctxt "Account"
-msgid ""
-"Are you sure you want to remove all auto log in tokens and log out all "
-"sessions?  You will be logged off immediately."
+msgid "Are you sure you want to remove all auto-login tokens and log out of all sessions? You will be logged out immediately."
 msgstr ""
 "Sigur vrei să elimini toate tokenurile de autentificare automată și să "
 "deconectezi toate sesiunile? Vei fi deconectat imediat."
@@ -5638,7 +5599,7 @@ msgstr "Sigur vrei să ștergi acest utilizator din lista neagră?"
 
 #: ../src/scenes/Account.rb:563
 msgctxt "Account"
-msgid "A user has been removed from the black list."
+msgid "The user has been removed from the blacklist."
 msgstr "Utilizatorul a fost șters din lista neagră."
 
 #: ../src/scenes/Account.rb:616
@@ -5648,10 +5609,7 @@ msgstr "Ultimele autentificări"
 
 #: ../src/scenes/Account.rb:637
 msgctxt "Account"
-msgid ""
-"If you wish, you can configure Elten to report any changes and logins  on "
-"your account from new devices to you by E-mail. To do this, you must verify "
-"your E-mail address. Do you want to do it now?"
+msgid "You can configure Elten to notify you by email about changes to your account and logins from new devices. To do so, you must verify your email address. Do you want to verify it now?"
 msgstr ""
 "Dacă dorești, poți configura Elten să-ți raporteze prin e-mail orice "
 "modificări și conectări la contul tău de pe dispozitive noi. Pentru a face "
@@ -5677,10 +5635,7 @@ msgstr "Dezactivează raportarea evenimentelor prin e-mail"
 
 #: ../src/scenes/Account.rb:656
 msgctxt "Account"
-msgid ""
-"Mail events reporting is disabled. If you wish, you can enable it to receive "
-"information about changes made on your account and logins from new devices "
-"via E-mail"
+msgid "Email event reporting is disabled. If you wish, you can enable it to receive information about changes to your account and logins from new devices by email."
 msgstr ""
 "Raportarea evenimentelor prin e-mail este dezactivată. Dacă dorești, o poți "
 "activa pentru a primi informații despre modificările făcute în contul tău și "
@@ -5693,26 +5648,7 @@ msgstr "Raportarea evenimentelor prin e-mail este activată."
 
 #: ../src/scenes/Account.rb:684
 msgctxt "Account"
-msgid ""
-"Archiving your account will have the following effects:\n"
-"* An indication that the account is archived will be placed next to all "
-"posts on the forum.\n"
-"* The account will not be displayed in the users lists.\n"
-"* The account will be removed from all contact lists.\n"
-"* Users will not be able to send private messages to this account.\n"
-"* The profile (including status, visiting card and signature) will be "
-"removed from the server\n"
-"* You will be opted out off all groups you are not moderating or banned in\n"
-"* You will be opted out of all messages conversations\n"
-"* All information about threads followed by you, your pinned groups or "
-"marked threads will be removed\n"
-"\n"
-"Attention.\n"
-"Archiving an account does not mean deleting or hiding associated blogs or "
-"notes, this must be done manually before archiving.\n"
-"\n"
-"The account will be automatically unarchived the next time you log in, but "
-"removed data will not be restored.."
+msgid "Archiving your account will have the following effects:\n* An indication that the account is archived will appear next to all of its forum posts.\n* The account will not appear in user lists.\n* The account will be removed from all contact lists.\n* Users will not be able to send private messages to this account.\n* The profile, including the status, bio and signature, will be removed from the server.\n* You will leave all groups that you do not moderate and from which you are not banned.\n* You will leave all message conversations.\n* All information about threads you follow, groups you have pinned and threads you have marked will be removed.\n\nWarning:\nArchiving an account does not delete or hide its blogs or notes. You must do this manually before archiving the account.\n\nThe account will be unarchived automatically the next time you log in, but the removed data will not be restored."
 msgstr ""
 "Arhivarea contului va avea următoarele efecte:\n"
 "* Lângă toate postările de pe forum va fi precizat faptul că a fost arhivat "
@@ -5758,7 +5694,7 @@ msgstr "Cont arhivat"
 
 #: ../src/scenes/Admins.rb:15
 msgctxt "Admins"
-msgid "Recommended groups Moderators"
+msgid "Moderators of recommended groups"
 msgstr "Grupuri recomandate cu moderatori"
 
 #: ../src/scenes/Admins.rb:15
@@ -5840,10 +5776,7 @@ msgstr ""
 
 #: ../src/scenes/Authentication.rb:36
 msgctxt "Authentication"
-msgid ""
-"Two-factor authentication was introduced in Elten 2.28. After activating it, "
-"it  will not be possible to log in from the older versions of the program. "
-"DO you  wish to continue anyway?"
+msgid "Two-factor authentication was introduced in Elten 2.28. After activating it, you will not be able to log in using older versions of the program. Do you wish to continue anyway?"
 msgstr ""
 "Autentificarea în doi pași a fost introdusă în Elten 2.28. După activare, nu "
 "va fi posibil să te conectezi din versiunile mai vechi ale programului. "
@@ -5866,9 +5799,7 @@ msgstr ""
 
 #: ../src/scenes/Authentication.rb:47
 msgctxt "Authentication"
-msgid ""
-"On the phone number indicated, you will receive a text message with the "
-"code  activating two-factor authentication. Enter this code"
+msgid "A text message containing the code to activate two-factor authentication will be sent to the phone number you provided. Enter the code."
 msgstr ""
 "Pe numărul de telefon indicat, vei primi un mesaj text cu codul care "
 "activează autentificarea în doi pași. Introdu acest cod"
@@ -6015,7 +5946,7 @@ msgstr "Ban valid până pe"
 
 #: ../src/scenes/Ban.rb:113
 msgctxt "Ban"
-msgid "The ban cancel reason"
+msgid "Reason for lifting the ban"
 msgstr "Motivul debanării"
 
 #: ../src/scenes/Ban.rb:113
@@ -6055,7 +5986,7 @@ msgstr "Bloguri urmărite"
 
 #: ../src/scenes/Blog.rb:13
 msgctxt "Blog"
-msgid "Open external wordpress blog"
+msgid "Open an external WordPress blog"
 msgstr "Deschide un blog extern WordPress"
 
 #: ../src/scenes/Blog.rb:13
@@ -6156,7 +6087,7 @@ msgstr "Categorie nouă"
 
 #: ../src/scenes/Blog.rb:248
 msgctxt "Blog"
-msgid "You do not have any blog. Do you want to create one?"
+msgid "You do not have a blog. Do you want to create one?"
 msgstr "Încă nu ai blog. Vrei să creezi unul?"
 
 #: ../src/scenes/Blog.rb:253
@@ -6192,7 +6123,7 @@ msgstr "Niciun comentariu nou pe blogul tău."
 
 #: ../src/scenes/Blog.rb:325
 msgctxt "Blog"
-msgid "No new comments to followed blog posts."
+msgid "No new comments on blog posts you follow."
 msgstr "Niciun comentariu nou în blogurile urmărite."
 
 #: ../src/scenes/Blog.rb:329
@@ -6302,7 +6233,7 @@ msgstr "Postare urmărită"
 
 #: ../src/scenes/Blog.rb:554 ../src/scenes/Blog.rb:811
 msgctxt "Blog"
-msgid "Post unfollowed"
+msgid "You are no longer following this post"
 msgstr "Nu vei mai urmări postarea"
 
 #: ../src/scenes/Blog.rb:561
@@ -6367,12 +6298,12 @@ msgstr "Arată mențiunea"
 
 #: ../src/scenes/Blog.rb:781
 msgctxt "Blog"
-msgid "Mention by %{user}"
+msgid "Mention from %{user}"
 msgstr "Mențiune de %{user}"
 
 #: ../src/scenes/Blog.rb:783
 msgctxt "Blog"
-msgid "Send reply to mentioner"
+msgid "Reply to the user who mentioned you"
 msgstr "Trimite răspuns la menționator"
 
 #: ../src/scenes/Blog.rb:819
@@ -6422,32 +6353,32 @@ msgstr "Lista blogurilor"
 
 #: ../src/scenes/Blog.rb:899 ../src/scenes/Blog.rb:1098
 msgctxt "Blog"
-msgid "Coworkers"
+msgid "Contributors"
 msgstr "Contributori"
 
 #: ../src/scenes/Blog.rb:903
 msgctxt "Blog"
-msgid "Add coworker"
+msgid "Add contributor"
 msgstr "Adaugă contributor"
 
 #: ../src/scenes/Blog.rb:904
 msgctxt "Blog"
-msgid "What user you want to add to this blog?"
+msgid "Which user do you want to add to this blog?"
 msgstr "Pe cine vrei să adaugi la acest blog?"
 
 #: ../src/scenes/Blog.rb:914
 msgctxt "Blog"
-msgid "Delete coworker"
+msgid "Remove contributor"
 msgstr "Șterge contributor"
 
 #: ../src/scenes/Blog.rb:915
 msgctxt "Blog"
-msgid "Are you sure you want to release this coworker?"
+msgid "Are you sure you want to remove this contributor?"
 msgstr "Sigur vrei să ștergi acest contributor?"
 
 #: ../src/scenes/Blog.rb:935
 msgctxt "Blog"
-msgid "Are you sure you want to delete blog %{name}?"
+msgid "Are you sure you want to delete the blog %{name}?"
 msgstr "Sigur vrei să ștergi blogul %{name}?"
 
 #: ../src/scenes/Blog.rb:936
@@ -6525,7 +6456,7 @@ msgstr "Părăsește"
 
 #: ../src/scenes/Blog.rb:1103
 msgctxt "Blog"
-msgid "Are you sure you want to stop co-creating this blog?"
+msgid "Are you sure you want to stop contributing to this blog?"
 msgstr "Sigur vrei să nu mai contribui la acest blog?"
 
 #: ../src/scenes/Blog.rb:1105
@@ -6555,10 +6486,7 @@ msgstr "Adaugă la lista blogurilor urmărite"
 
 #: ../src/scenes/Blog.rb:1137
 msgctxt "Blog"
-msgid ""
-"This blog has been added to followed blogs. Do you want to mark all the "
-"posts published so far on it as read so that you don't see them in \"What's "
-"New\"?"
+msgid "You are now following this blog. Do you want to mark all of its existing posts as read so that they do not appear in What's New?"
 msgstr ""
 "Acest blog a fost adăugat la blogurile urmărite. Dorești să marchezi toate "
 "postările publicate până acum ca citite, astfel încât să nu le vezi în „Ce "
@@ -6647,12 +6575,12 @@ msgstr "Ascunde blogurile în limbile necunoscute"
 
 #: ../src/scenes/Blog.rb:1243
 msgctxt "Blog"
-msgid "Wordpress user login"
+msgid "WordPress username"
 msgstr "Logare utilizator WordPress"
 
 #: ../src/scenes/Blog.rb:1244
 msgctxt "Blog"
-msgid "Set new Wordpress password"
+msgid "Set new WordPress password"
 msgstr "Setează o parolă WordPress nouă"
 
 #: ../src/scenes/Blog.rb:1245
@@ -6667,7 +6595,7 @@ msgstr "Nume de familie"
 
 #: ../src/scenes/Blog.rb:1247
 msgctxt "Blog"
-msgid "Nick"
+msgid "Nickname"
 msgstr "Pseudonim"
 
 #: ../src/scenes/Blog.rb:1248
@@ -6687,17 +6615,17 @@ msgstr "Parola ta de la Elten"
 
 #: ../src/scenes/Blog.rb:1283
 msgctxt "Blog"
-msgid "New Wordpress password"
+msgid "New WordPress password"
 msgstr "Parolă nouă WordPress"
 
 #: ../src/scenes/Blog.rb:1286
 msgctxt "Blog"
-msgid "Repeat new Wordpress password"
+msgid "Repeat new WordPress password"
 msgstr "Re-introdu parola noua WordPress"
 
 #: ../src/scenes/Blog.rb:1290
 msgctxt "Blog"
-msgid "Wordpress password must be at least 6 characters long."
+msgid "WordPress password must be at least 6 characters long."
 msgstr "Parola WordPress trebuie să aibă cel puțin 6 caractere."
 
 #: ../src/scenes/Blog.rb:1295
@@ -6785,13 +6713,13 @@ msgstr "De toți vizitatorii"
 
 #: ../src/scenes/Blog.rb:1584
 msgctxt "Blog"
-msgid "By all visitors, but I must commit first comment of the specific person"
+msgid "By all visitors, but I must approve each person's first comment"
 msgstr ""
 "By all visitors, but I must commit first comment of the specific person"
 
 #: ../src/scenes/Blog.rb:1584
 msgctxt "Blog"
-msgid "By all visitors, but I must commit all of them"
+msgid "By all visitors, but I must approve every comment"
 msgstr "By all visitors, but I must commit all of them"
 
 #: ../src/scenes/Blog.rb:1584
@@ -6801,24 +6729,24 @@ msgstr "Doar de utilizatorii Elten"
 
 #: ../src/scenes/Blog.rb:1585
 msgctxt "Blog"
-msgid "Disable commenting of older posts"
+msgid "Disable commenting on older posts"
 msgstr "Dezactivează comentarea postărilor vechi"
 
 #: ../src/scenes/Blog.rb:1586
 msgctxt "Blog"
-msgid "Days after commenting of a post will be disabled"
+msgid "Number of days after which commenting on a post will be disabled"
 msgstr ""
 "Zile după care comentariile postărilor vor fi dezactivate dacă nu sunt "
 "comentarii"
 
 #: ../src/scenes/Blog.rb:1587
 msgctxt "Blog"
-msgid "Allow comments threading"
+msgid "Allow threaded comments"
 msgstr "Allow comments threading"
 
 #: ../src/scenes/Blog.rb:1588
 msgctxt "Blog"
-msgid "Max comments thread depth"
+msgid "Maximum comment thread depth"
 msgstr "Max comments thread depth"
 
 #: ../src/scenes/Blog.rb:1589
@@ -6858,7 +6786,7 @@ msgstr "Comentariile vechi"
 
 #: ../src/scenes/Blog.rb:1592
 msgctxt "Blog"
-msgid "Firstly display"
+msgid "Display first"
 msgstr "Arată în primul rând"
 
 #: ../src/scenes/Blog.rb:1593 ../src/scenes/Blog.rb:2266
@@ -6910,7 +6838,7 @@ msgstr "Personalizat"
 
 #: ../src/scenes/Blog.rb:1660
 msgctxt "Blog"
-msgid "Links format"
+msgid "Link format"
 msgstr "Formatul link-urilor"
 
 #: ../src/scenes/Blog.rb:1661
@@ -7014,12 +6942,12 @@ msgstr ""
 
 #: ../src/scenes/Blog.rb:1708
 msgctxt "Blog"
-msgid "My Wordpress account"
+msgid "My WordPress account"
 msgstr "Contul meu WordPress"
 
 #: ../src/scenes/Blog.rb:1709
 msgctxt "Blog"
-msgid "Open Wordpress admin panel in my browser"
+msgid "Open WordPress admin panel in my browser"
 msgstr "Deschide panoul de administrare Wordpress în browser-ul meu"
 
 #: ../src/scenes/Blog.rb:1719
@@ -7034,11 +6962,7 @@ msgstr "Administrează domeniul blogului"
 
 #: ../src/scenes/Blog.rb:1723
 msgctxt "Blog"
-msgid ""
-"Blog settings have been changed. If you continue to domain change, mades you "
-"changed will be lost. Do you want to continue anyway? If you want to store "
-"new settings, select No and then Apply them before proceeding with domain "
-"change."
+msgid "The blog settings have been changed. If you continue with the domain change, your changes will be lost. Do you want to continue anyway? To save the new settings, select No, then select Apply before changing the domain."
 msgstr ""
 "Setările blogului au fost modificate. Dacă continui cu modificarea "
 "domeniului, toate modificările efectuate vor fi șterse. Dorești să continui "
@@ -7076,12 +7000,12 @@ msgstr "Titlul postării"
 
 #: ../src/scenes/Blog.rb:1950
 msgctxt "Blog"
-msgid "Source Editor (HTML and Wordpress Shortcodes)"
+msgid "Source editor (HTML and WordPress shortcodes)"
 msgstr "Editor sursă (coduri scurte HTML și Wordpress)"
 
 #: ../src/scenes/Blog.rb:1950
 msgctxt "Blog"
-msgid "Formattable editor"
+msgid "Rich-text editor"
 msgstr "Editor formatabil"
 
 #: ../src/scenes/Blog.rb:1950
@@ -7141,7 +7065,7 @@ msgstr "Data publicării"
 
 #: ../src/scenes/Blog.rb:1959
 msgctxt "Blog"
-msgid "Allow users to comment this post"
+msgid "Allow users to comment on this post"
 msgstr "Permite utilizatorilor să comenteze la această postare"
 
 #: ../src/scenes/Blog.rb:1965
@@ -7161,7 +7085,7 @@ msgstr "Eticheta care urmează a fi adăugată"
 
 #: ../src/scenes/Blog.rb:1991
 msgctxt "Blog"
-msgid "This tag does not exist, do you want to create it now?"
+msgid "This tag does not exist. Do you want to create it now?"
 msgstr "Această etichetă nu există, vrei să o creezi acum?"
 
 #: ../src/scenes/Blog.rb:2003
@@ -7181,7 +7105,7 @@ msgstr "Data publicării nu este setată"
 
 #: ../src/scenes/Blog.rb:2126
 msgctxt "Blog"
-msgid "Selected publication date that is in the past"
+msgid "The selected publication date is in the past"
 msgstr "Ai selectat o dată pentru publicare din trecut."
 
 #: ../src/scenes/Blog.rb:2178
@@ -7191,7 +7115,7 @@ msgstr "Postarea a fost adăugată."
 
 #: ../src/scenes/Blog.rb:2189
 msgctxt "Blog"
-msgid "There are currently no tags created, please add a new one."
+msgid "No tags have been created yet. Please add a new one."
 msgstr ""
 "În momentul de față nu sunt etichete create, te rugăm să adaugi una nouă."
 
@@ -7323,12 +7247,12 @@ msgstr ""
 
 #: ../src/scenes/Blog.rb:2481
 msgctxt "Blog"
-msgid "Only first level subdomains are allowed"
+msgid "Only first-level subdomains are allowed"
 msgstr "Sunt permise doar subdomeniile de primul nivel"
 
 #: ../src/scenes/Blog.rb:2485
 msgctxt "Blog"
-msgid "Blog subdomain must be at least 3 characters long"
+msgid "The blog subdomain must be at least 3 characters long"
 msgstr "Subdomeniul blogului trebuie să aibă cel puțin 3 caractere"
 
 #: ../src/scenes/Blog.rb:2490
@@ -7343,11 +7267,7 @@ msgstr "Domeniul introdus nu este valid"
 
 #: ../src/scenes/Blog.rb:2500
 msgctxt "Blog"
-msgid ""
-"Warning! If you change your blog URL, some links may stop working. If you "
-"directly linked posts or other resources on your blog, they would no longer "
-"be available at previous URLs. In such case you will be required to fix them "
-"manually. Are you sure you want to continue?"
+msgid "Warning! If you change your blog URL, some links may stop working. Direct links to posts or other resources on your blog will no longer work at their previous URLs. You will need to update them manually. Are you sure you want to continue?"
 msgstr ""
 "Atenție! Dacă schimbi URL-ul blogului, unele linkuri pot înceta să "
 "funcționeze. Dacă ai legat direct postări sau alte resurse pe blog, acestea "
@@ -7361,33 +7281,7 @@ msgstr "Domeniul blogului a fost modificat"
 
 #: ../src/scenes/Blog.rb:2523
 msgctxt "Blog"
-msgid ""
-"You should now configure your purchased domain to redirect to Elten blogging "
-"server. Below are the necessary details. If you have any problems, please "
-"feel free to ask questions in the forum.\n"
-"      \n"
-"      Wherever possible, we recommend that you use the CNAME record, as it "
-"does not need to be edited if the IP address of the server hosting your blog "
-"changes. Your blog's IP address may change, for example, due to a Elten "
-"Blogging Server migration. By configuring your domain's CNAME record, you "
-"don't need to do anything else.\n"
-"      To do this, please point your cname record to destination \"%{host}."
-"\"\n"
-"      \n"
-"      Unfortunately, many domain registrars do not support the CNAME record "
-"for top-level domains, so you may want to use the A record instead.\n"
-"      In such a case, please point the A record to IP address:\n"
-"%{ip}\n"
-".\n"
-"\n"
-"Please note that redirecting your domain is not aliasing and setting aliases "
-"or HTTP 301/ 3xx redirections will not work.\n"
-"\n"
-"You can get detailed description from your domain provider, for example at:\n"
-"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-"
-"Familiar-with-DNS\n"
-"\n"
-"Once completed, please continue."
+msgid "Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n\nWhere possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n\nMany domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n%{ip}\n\nPointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n\nDetailed instructions are available from your domain provider, for example at:\nhttps://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n\nOnce you have finished, continue."
 msgstr ""
 "Acum ar trebui să configurezi domeniul achiziționat pentru a redirecționa "
 "către serverul de blog Elten. Mai jos sunt detaliile necesare. Dacă ai "
@@ -7427,14 +7321,12 @@ msgstr "Se setează domeniul"
 
 #: ../src/scenes/Blog.rb:2541
 msgctxt "Blog"
-msgid "Ready, take me next"
+msgid "Done, continue"
 msgstr "Gata, mergi mai departe"
 
 #: ../src/scenes/Blog.rb:2553
 msgctxt "Blog"
-msgid ""
-"Your domain is not pointing to Elten Blogs, please try again or wait a while "
-"to refresh DNS. It may take up to 24 hours to perform full DNS update."
+msgid "Your domain does not point to Elten Blogs. Try again, or wait for the DNS changes to propagate. Full DNS propagation may take up to 24 hours."
 msgstr ""
 "Domeniul tău nu este redirecționat către Elten Blogging, te rugăm să încerci "
 "din nou sau să aștepți puțin pentru a actualiza DNS-ul. Poate dura până la "
@@ -7442,8 +7334,7 @@ msgstr ""
 
 #: ../src/scenes/Blog.rb:2555
 msgctxt "Blog"
-msgid ""
-"Your domain is pointing to Elten blogs, but www prefix is not. Please fix it."
+msgid "Your domain points to Elten Blogs, but the www subdomain does not. Please fix it."
 msgstr ""
 "Domeniul tău redirecționează către Elten Blogging, dar prefixul www nu o "
 "face. Te rugăm să îl remediezi."
@@ -7533,18 +7424,18 @@ msgstr "Contact nou"
 
 #: ../src/scenes/Contacts.rb:108
 msgctxt "Contacts"
-msgid "Enter the name of the user you want to add to your contacts' list."
+msgid "Enter the name of the user you want to add to your contact list."
 msgstr ""
 "Introdu numele utilizatorului pe care vrei să-l adaugi în lista de contacte."
 
 #: ../src/scenes/Contacts.rb:124
 msgctxt "Contacts"
-msgid "Contact was added."
+msgid "The contact has been added."
 msgstr "Contact adăugat."
 
 #: ../src/scenes/Contacts.rb:133
 msgctxt "Contacts"
-msgid "This user is already added to your contacts' list."
+msgid "This user is already in your contact list."
 msgstr "Acest utilizator este deja în lista ta de contacte."
 
 #: ../src/scenes/Contacts.rb:136 ../src/scenes/Contacts.rb:169
@@ -7554,17 +7445,17 @@ msgstr "Acest utilizator nu există."
 
 #: ../src/scenes/Contacts.rb:151
 msgctxt "Contacts"
-msgid "Type a username which you want to remove from your contact list."
+msgid "Enter the username of the person you want to remove from your contact list."
 msgstr "Scrie numele utilizatorului pe care vrei să-l elimini din contacte."
 
 #: ../src/scenes/Contacts.rb:157
 msgctxt "Contacts"
-msgid "Contact has been deleted."
+msgid "The contact has been deleted."
 msgstr "Contact eliminat."
 
 #: ../src/scenes/Contacts.rb:166
 msgctxt "Contacts"
-msgid "This user is not added to your contacts' list."
+msgid "This user is not in your contact list."
 msgstr "Acest utilizator nu este în prezent în lista contactelor."
 
 #: ../src/scenes/Debug.rb:9
@@ -7584,12 +7475,7 @@ msgstr "Un report"
 
 #: ../src/scenes/ForgotPassword.rb:11
 msgctxt "ForgotPassword"
-msgid ""
-"If you lose your password, you can still reset it via the E-mail address "
-"provided  during the registration process. This way you shall generate the "
-"password reset  code which will be used to verify your identity. The code "
-"will be sent to your e- mail address. Warning! Two-factor authentication "
-"will be disabled on your  account. To continue, enter your username"
+msgid "If you forget your password, you can reset it using the email address you provided when registering. You can request a password reset code to verify your identity. The code will be sent to your email address. Warning: two-factor authentication will be disabled on your account. To continue, enter your username."
 msgstr ""
 "Dacă îți pierzi parola, o poți reseta oricând prin adresa de e-mail "
 "furnizată în timpul procesului de înregistrare. În acest fel, vei genera "
@@ -7627,19 +7513,17 @@ msgstr "Parolă resetată cu succes"
 
 #: ../src/scenes/ForgotPassword.rb:51
 msgctxt "ForgotPassword"
-msgid "Please wait while the password reset key is being generated."
+msgid "Please wait while the password reset code is being generated."
 msgstr "Te rugăm să aștepți cât timp ne conectăm la server și generăm o cheie."
 
 #: ../src/scenes/ForgotPassword.rb:55 ../src/scenes/ForgotPassword.rb:91
 msgctxt "ForgotPassword"
-msgid "An unexpected error"
+msgid "Unexpected error"
 msgstr "Eroare neprevăzută"
 
 #: ../src/scenes/ForgotPassword.rb:57
 msgctxt "ForgotPassword"
-msgid ""
-"Password reset key has been sent to your specified E-mail address. To "
-"continue,  select the option for entering key."
+msgid "The password reset code has been sent to the email address you provided. To continue, select the option to enter the code."
 msgstr ""
 "Cheia de resetare a parolei a fost trimisă la adresa de e-mail specificată. "
 "Pentru a continua, selectează opțiunea pentru introducerea acesteia."
@@ -7682,9 +7566,7 @@ msgstr ""
 
 #: ../src/scenes/ForgotPassword.rb:93
 msgctxt "ForgotPassword"
-msgid ""
-"The password has been changed. You can log in to your account using the new "
-"data."
+msgid "You can log in to your account using your new credentials."
 msgstr ""
 "Parola a fost schimbată. Acum te poți conecta la contul tău folosind noile "
 "date."
@@ -7981,7 +7863,7 @@ msgstr "Fondator"
 
 #: ../src/scenes/Forum.rb:540
 msgctxt "Forum"
-msgid "Founded at"
+msgid "Founded on"
 msgstr "Fondat pe"
 
 #: ../src/scenes/Forum.rb:543
@@ -8018,12 +7900,12 @@ msgstr "Mărimea totală"
 
 #: ../src/scenes/Forum.rb:582 ../src/scenes/Forum.rb:4473
 msgctxt "Forum"
-msgid "Group regulations"
+msgid "Group rules"
 msgstr "Regulile grupului"
 
 #: ../src/scenes/Forum.rb:583
 msgctxt "Forum"
-msgid "Edit group regulations"
+msgid "Edit group rules"
 msgstr "Editează regulile grupului"
 
 #: ../src/scenes/Forum.rb:589
@@ -8058,12 +7940,12 @@ msgstr "Acceptă invitația"
 
 #: ../src/scenes/Forum.rb:606
 msgctxt "Forum"
-msgid "Ask to be enrolled in this group"
+msgid "Request to join this group"
 msgstr "Cere să fii adăugat în grup"
 
 #: ../src/scenes/Forum.rb:611
 msgctxt "Forum"
-msgid "Do you wish to ask to be enrolled in %{groupname}"
+msgid "Do you want to request to join %{groupname}?"
 msgstr "Vrei să ceri să fii adăugat în %{groupname}?"
 
 #: ../src/scenes/Forum.rb:613
@@ -8186,12 +8068,12 @@ msgstr "Mesajul zilei a fost actualizat"
 #: ../src/scenes/Forum.rb:762 ../src/scenes/Forum.rb:1239
 #: ../src/scenes/Forum.rb:3127
 msgctxt "Forum"
-msgid "Regulations of group %{groupname}"
+msgid "Rules of group %{groupname}"
 msgstr "Regulile grupului %{groupname}"
 
 #: ../src/scenes/Forum.rb:775
 msgctxt "Forum"
-msgid "Regulations updated"
+msgid "Rules updated"
 msgstr "Reguli actualizate"
 
 #: ../src/scenes/Forum.rb:786 ../src/scenes/Forum.rb:939
@@ -8261,7 +8143,7 @@ msgstr "Mergi la postarea raportată"
 
 #: ../src/scenes/Forum.rb:870
 msgctxt "Forum"
-msgid "The searched thread has been already deleted."
+msgid "The thread you searched for has already been deleted."
 msgstr "Subiectul căutat a fost deja șters."
 
 #: ../src/scenes/Forum.rb:877 ../src/scenes/Forum.rb:909
@@ -8281,8 +8163,7 @@ msgstr "Motiv"
 
 #: ../src/scenes/Forum.rb:918
 msgctxt "Forum"
-msgid ""
-"Do you want to send information about status of this report to its author?"
+msgid "Do you want to send information about the status of this report to its author?"
 msgstr ""
 "Dorești să trimiți informații despre starea acestui raport către autor?"
 
@@ -8409,36 +8290,34 @@ msgstr "Elimină privilegiile de moderator"
 
 #: ../src/scenes/Forum.rb:1115
 msgctxt "Forum"
-msgid "Pass administrative privileges"
+msgid "Transfer administrator privileges"
 msgstr "Trece privilegiile tale de administrator altui utilizator"
 
 #: ../src/scenes/Forum.rb:1116
 msgctxt "Forum"
-msgid ""
-"Are you sure you want to resign your administrative privileges in "
-"%{groupname} and pass them to %{user}?"
+msgid "Are you sure you want to give up your administrator privileges in %{groupname} and transfer them to %{user}?"
 msgstr ""
 "Sigur vrei să-ți elimini privilegiile de administrator din %{groupname} și "
 "să i le dai lui %{user}?"
 
 #: ../src/scenes/Forum.rb:1124
 msgctxt "Forum"
-msgid "Enable inheritance of this users' role"
+msgid "Enable inheritance of this user's role"
 msgstr "Activează moștenirea rolului acestui utilizator"
 
 #: ../src/scenes/Forum.rb:1125
 msgctxt "Forum"
-msgid "Disable inheritance of this users' role"
+msgid "Disable inheritance of this user's role"
 msgstr "Dezactivează moștenirea rolului acestui utilizator"
 
 #: ../src/scenes/Forum.rb:1151
 msgctxt "Forum"
-msgid "Ban in this group"
+msgid "Ban from this group"
 msgstr "Banează din acest grup"
 
 #: ../src/scenes/Forum.rb:1152
 msgctxt "Forum"
-msgid "Are you sure you want to ban %{user} in %{groupname}?"
+msgid "Are you sure you want to ban %{user} from %{groupname}?"
 msgstr "Sigur vrei să banezi utilizatorul %{user} din %{groupname}?"
 
 #: ../src/scenes/Forum.rb:1155
@@ -8458,7 +8337,7 @@ msgstr "Debanează"
 
 #: ../src/scenes/Forum.rb:1161
 msgctxt "Forum"
-msgid "Are you sure you want to unban %{user} in %{groupname}?"
+msgid "Are you sure you want to unban %{user} from %{groupname}?"
 msgstr "Sigur vrei să debanezi utilizatorul %{user} din %{groupname}?"
 
 #: ../src/scenes/Forum.rb:1164
@@ -8468,7 +8347,7 @@ msgstr "Acceptă"
 
 #: ../src/scenes/Forum.rb:1165
 msgctxt "Forum"
-msgid "Do you want to accept request of user %{user}"
+msgid "Do you want to accept the request from %{user}?"
 msgstr "Vrei să accepți cererea utilizatorului %{user}?"
 
 #: ../src/scenes/Forum.rb:1167
@@ -8478,7 +8357,7 @@ msgstr "Refuză"
 
 #: ../src/scenes/Forum.rb:1168
 msgctxt "Forum"
-msgid "Do you want to refuse request of user %{user}"
+msgid "Do you want to reject the request from %{user}?"
 msgstr "Sigur vrei să refuzi cererea utilizatorului %{user}?"
 
 #: ../src/scenes/Forum.rb:1171
@@ -8488,7 +8367,7 @@ msgstr "Anulează invitația"
 
 #: ../src/scenes/Forum.rb:1172
 msgctxt "Forum"
-msgid "Are you sure you want to cancel invitation of %{user} to %{groupname}?"
+msgid "Are you sure you want to cancel %{user}'s invitation to %{groupname}?"
 msgstr "Sigur vrei să anulezi invitația lui %{user} în %{groupname}?"
 
 #: ../src/scenes/Forum.rb:1179
@@ -8513,7 +8392,7 @@ msgstr "Utilizatorul a fost invitat"
 
 #: ../src/scenes/Forum.rb:1193 ../src/scenes/Messages.rb:1070
 #: ../src/scenes/Users.rb:21
-msgid "You haven't permissions to do this"
+msgid "You do not have permission to do this"
 msgstr "Nu ai permisiunile necesare să faci asta"
 
 #: ../src/scenes/Forum.rb:1195
@@ -8528,12 +8407,12 @@ msgstr "Acest utilizator deja face parte din acest grup"
 
 #: ../src/scenes/Forum.rb:1240 ../src/scenes/Forum.rb:3128
 msgctxt "Forum"
-msgid "I accept regulations of group %{groupname}"
+msgid "I accept the rules of the group %{groupname}"
 msgstr "Sunt de acord cu regulile grupului %{groupname}"
 
 #: ../src/scenes/Forum.rb:1241 ../src/scenes/Forum.rb:3129
 msgctxt "Forum"
-msgid "I decline regulations of group %{groupname}"
+msgid "I do not accept the rules of the group %{groupname}"
 msgstr "Nu sunt de acord cu regulile grupului %{groupname}"
 
 #: ../src/scenes/Forum.rb:1266 ../src/scenes/Forum.rb:4402
@@ -8593,7 +8472,7 @@ msgstr "Grupuri recomandate"
 
 #: ../src/scenes/Forum.rb:1302
 msgctxt "Forum"
-msgid "Not joined groups"
+msgid "Groups you have not joined"
 msgstr "Grupuri în care nu te-ai alăturat"
 
 #: ../src/scenes/Forum.rb:1302
@@ -8683,12 +8562,12 @@ msgstr "Nu mai urmări acest forum"
 
 #: ../src/scenes/Forum.rb:1547
 msgctxt "Forum"
-msgid "Added to followed forums list."
+msgid "You are now following this forum."
 msgstr "Acum urmărești forumul."
 
 #: ../src/scenes/Forum.rb:1554
 msgctxt "Forum"
-msgid "Removed from followed forums list."
+msgid "You are no longer following this forum."
 msgstr "Nu vei mai urmări acest forum."
 
 #: ../src/scenes/Forum.rb:1575
@@ -8888,7 +8767,7 @@ msgstr "Subiect marcat"
 #: ../src/scenes/Forum.rb:2063 ../src/scenes/Forum.rb:2473
 #: ../src/scenes/Forum.rb:3531
 msgctxt "Forum"
-msgid "Add to followed threads list"
+msgid "Follow this thread"
 msgstr "Urmărește subiectul"
 
 #: ../src/scenes/Forum.rb:2064 ../src/scenes/Forum.rb:3532
@@ -8898,12 +8777,12 @@ msgstr "Nu mai urmări subiectul"
 
 #: ../src/scenes/Forum.rb:2070 ../src/scenes/Forum.rb:3538
 msgctxt "Forum"
-msgid "Added to the list of followed threads."
+msgid "You are now following this thread."
 msgstr "Urmărit."
 
 #: ../src/scenes/Forum.rb:2077 ../src/scenes/Forum.rb:3545
 msgctxt "Forum"
-msgid "Removed from followed threads list."
+msgid "You are no longer following this thread."
 msgstr "Nu vei mai urmări."
 
 #: ../src/scenes/Forum.rb:2085
@@ -8979,7 +8858,7 @@ msgstr "Introdu un nou titlu pentru suibiect"
 
 #: ../src/scenes/Forum.rb:2141
 msgctxt "Forum"
-msgid "The forum name has been changed."
+msgid "The thread name has been changed."
 msgstr "Numele a fost modificat."
 
 #: ../src/scenes/Forum.rb:2148
@@ -9049,7 +8928,7 @@ msgstr "Grup fondat de %{founder}"
 
 #: ../src/scenes/Forum.rb:2214
 msgctxt "Forum"
-msgid "Which group you want to offer this thread to?"
+msgid "Which group do you want to offer this thread to?"
 msgstr "Cărui grup ai vrea să-i oferi subiectul?"
 
 #: ../src/scenes/Forum.rb:2221 ../src/scenes/Forum.rb:2429
@@ -9157,7 +9036,7 @@ msgstr "Subiectele selectate au fost șterse."
 
 #: ../src/scenes/Forum.rb:2422
 msgctxt "Forum"
-msgid "Which group you want to offer these threads to?"
+msgid "Which group do you want to offer these threads to?"
 msgstr "Cărui grup ai vrea să-i oferi subiectele?"
 
 #: ../src/scenes/Forum.rb:2444 ../src/scenes/Forum.rb:2471
@@ -9247,7 +9126,7 @@ msgstr "Selectează fișierul care urmează a fi atașat"
 
 #: ../src/scenes/Forum.rb:2571 ../src/scenes/Forum.rb:3081
 msgctxt "Forum"
-msgid "This file has been already attached"
+msgid "This file has already been attached"
 msgstr "Fișierul a fost deja atașat"
 
 #: ../src/scenes/Forum.rb:2574 ../src/scenes/Forum.rb:3084
@@ -9355,12 +9234,12 @@ msgstr "Arată mențiunea"
 
 #: ../src/scenes/Forum.rb:3315
 msgctxt "Forum"
-msgid "Mention by %{user}"
+msgid "Mention from %{user}"
 msgstr "Mențiune de la %{user}"
 
 #: ../src/scenes/Forum.rb:3317
 msgctxt "Forum"
-msgid "Send reply to mentioner"
+msgid "Reply to the user who mentioned you"
 msgstr "Trimite răspuns la menționator"
 
 #: ../src/scenes/Forum.rb:3327 ../src/scenes/Forum.rb:3328
@@ -9560,7 +9439,7 @@ msgstr "Plasează postarea mai sus"
 
 #: ../src/scenes/Forum.rb:3667
 msgctxt "Forum"
-msgid "The post has been slided."
+msgid "The post has been repositioned."
 msgstr "Postarea a fost mutată."
 
 #: ../src/scenes/Forum.rb:3687
@@ -9716,7 +9595,7 @@ msgstr "General"
 
 #: ../src/scenes/Forum.rb:4415
 msgctxt "Forum"
-msgid "Change group parent"
+msgid "Change parent group"
 msgstr "Modifică grupul principal"
 
 #: ../src/scenes/Forum.rb:4419 ../src/scenes/Forum.rb:4444
@@ -9726,7 +9605,7 @@ msgstr "Niciuna"
 
 #: ../src/scenes/Forum.rb:4419
 msgctxt "Forum"
-msgid "Select group parent"
+msgid "Select parent group"
 msgstr "Selectează grupul principal"
 
 #: ../src/scenes/Forum.rb:4427
@@ -9751,7 +9630,7 @@ msgstr "Creează canal de grup în conferițe"
 
 #: ../src/scenes/Forum.rb:4472
 msgctxt "Forum"
-msgid "Regulations"
+msgid "Rules"
 msgstr "Regulament"
 
 #: ../src/scenes/Forum.rb:4476
@@ -9816,7 +9695,7 @@ msgstr "Vizibilitatea rapoartelor"
 
 #: ../src/scenes/Forum.rb:4484
 msgctxt "Forum"
-msgid "Duration limit of audio posts in seconds, 0 for no limit"
+msgid "Maximum duration of audio posts in seconds; 0 means no limit"
 msgstr "Durata limită a postărilor audio în secunde, 0 pentru nelimitat"
 
 #: ../src/scenes/Honors.rb:66
@@ -9836,7 +9715,7 @@ msgstr "Insignele lui %{user}"
 
 #: ../src/scenes/Honors.rb:74
 msgctxt "Honors"
-msgid "The user has been given no badges."
+msgid "The user has not been awarded any honors."
 msgstr "Utilizatorul nu are insigne."
 
 #: ../src/scenes/Honors.rb:107 ../src/scenes/Honors.rb:122
@@ -9847,12 +9726,12 @@ msgstr "Nivel"
 
 #: ../src/scenes/Honors.rb:135
 msgctxt "Honors"
-msgid "Set as main honor"
+msgid "Set as primary honor"
 msgstr "Setează ca principală"
 
 #: ../src/scenes/Honors.rb:140
 msgctxt "Honors"
-msgid "The badge has been set as default."
+msgid "The honor has been set as the primary honor."
 msgstr "Insigna a fost setată ca implicită."
 
 #: ../src/scenes/Honors.rb:144
@@ -9862,7 +9741,7 @@ msgstr "Oferă o insignă"
 
 #: ../src/scenes/Honors.rb:145
 msgctxt "Honors"
-msgid "Who should be granted this badge?"
+msgid "Who should receive this honor?"
 msgstr "Cui vrei să-i oferi insigna?"
 
 #: ../src/scenes/Honors.rb:151
@@ -9882,9 +9761,7 @@ msgstr "Șterge"
 
 #: ../src/scenes/Honors.rb:162
 msgctxt "Honors"
-msgid ""
-"Are you sure you want to delete this badge? All users granted with this "
-"badge will loose it."
+msgid "Are you sure you want to delete this badge? All users who have been granted this badge will lose it."
 msgstr ""
 "Sigur vrei să ștergi această insignă? Toți utilizatorii care au deja insigna "
 "o vor pierde."
@@ -9962,10 +9839,7 @@ msgstr "Ce versiune vrei să folosești?"
 
 #: ../src/scenes/Loading.rb:262
 msgctxt "Loading"
-msgid ""
-"Elten detected that you are using NVDA. To support some features of this "
-"screenreader, it is necessary to install Elten addon. Do you want to do it "
-"now?"
+msgid "Elten has detected that you are using NVDA. To support some features of this screen reader, the Elten add-on for NVDA must be installed. Do you want to install it now?"
 msgstr ""
 "Elten a detectat că utilizezi NVDA. Pentru ca unele caracteristici ale "
 "acestui cititor de ecran să funcționeze corect cu Elten, este necesar să "
@@ -9973,10 +9847,7 @@ msgstr ""
 
 #: ../src/scenes/Loading.rb:264
 msgctxt "Loading"
-msgid ""
-"New version of NVDA Elten addon is available. The version you're using is no "
-"longer supported in this Elten release and may cause some errors. Do you "
-"want to update it now?"
+msgid "A new version of the Elten add-on for NVDA is available. The version you are using is no longer supported by this Elten release and may cause errors. Do you want to update it now?"
 msgstr ""
 "Este disponibilă o nouă versiune a suplimentului Elten pentru NVDA. "
 "Versiunea pe care o utilizezi nu mai este acceptată în această versiune "
@@ -9984,15 +9855,7 @@ msgstr ""
 
 #: ../src/scenes/Loading.rb:303
 msgctxt "Loading"
-msgid ""
-"Warning! Elten failed to verify server encryption key. It is possible that "
-"you are not connecting to Elten server but to one prepared by hackers. It is "
-"also possible that Elten Server key has changed. Any details should be "
-"provided on Elten Website Forum. If no information about key change was "
-"provided, it is very likely that you are vulnerable to hacker attack. In "
-"this cause any data that you will provide, including password, can be "
-"stolen. Are you sure you want to proceed with this connection? Select No to "
-"exit Elten."
+msgid "Warning! Elten failed to verify the server's encryption key. You may be connecting not to an Elten server, but to a server controlled by an attacker. The Elten server's key may also have changed. Details of any legitimate key change should be published on the Elten website or forum. If no such information has been published, this connection may be under attack. Any data you provide, including your password, could be stolen. Are you sure you want to continue with this connection? Select No to exit Elten."
 msgstr ""
 "Avertizare! Elten nu a reușit să verifice cheia de criptare a serverului. "
 "Este posibil să nu te conectezi la serverul Elten, ci la unul făcut de "
@@ -10119,7 +9982,7 @@ msgstr "Parola:"
 
 #: ../src/scenes/Login.rb:44 ../src/scenes/Login.rb:245
 msgctxt "Login"
-msgid "Enter pin code"
+msgid "Enter PIN"
 msgstr "Introdu codul PIN"
 
 #: ../src/scenes/Login.rb:60 ../src/scenes/Login.rb:169
@@ -10145,9 +10008,7 @@ msgstr ""
 
 #: ../src/scenes/Login.rb:88
 msgctxt "Login"
-msgid ""
-"Two-factor authentication is enabled on this account. Select method to "
-"authenticate."
+msgid "Two-factor authentication is enabled on this account. Select an authentication method."
 msgstr ""
 "Autentificarea în doi pași este activată pe acest cont. Selectează modul "
 "prin care vrei să te autentifici."
@@ -10164,10 +10025,7 @@ msgstr "Autentifică-te utilizând un mesaj SMS"
 
 #: ../src/scenes/Login.rb:104
 msgctxt "Login"
-msgid ""
-"Enter the code sent to you  by text message to allow this device to login. "
-"If you do not have access to the  phone number used, select the password "
-"reset option to disable two-factor  authentication."
+msgid "Enter the code sent to you by text message to allow this device to log in. If you cannot access the phone number used, select the password reset option to disable two-factor authentication."
 msgstr ""
 "Introdu codul trimis prin mesaj text pentru a permite acestui dispozitiv să "
 "se conecteze. Dacă nu ai acces la numărul de telefon utilizat, selectează "
@@ -10185,7 +10043,7 @@ msgstr "Verificare eșuată."
 
 #: ../src/scenes/Login.rb:124
 msgctxt "Login"
-msgid "The entered code is wrong, please try again"
+msgid "The code you entered is incorrect. Please try again."
 msgstr "Codul introdus este greșit, te rugăm să încerci din nou"
 
 #: ../src/scenes/Login.rb:146
@@ -10216,18 +10074,14 @@ msgstr ""
 
 #: ../src/scenes/Login.rb:164
 msgctxt "Login"
-msgid ""
-"An error occurred while authenticating the identity. You might have provided "
-"an  incorrect password."
+msgid "An error occurred while verifying your identity. You may have entered an incorrect password."
 msgstr ""
 "A apărut o eroare la verificarea identității. Este posibil să fi furnizat o "
 "parolă incorectă."
 
 #: ../src/scenes/Login.rb:179
 msgctxt "Login"
-msgid ""
-"Automatic login will be proceeding until you log out.Automatic login keys "
-"can be  managed from the My Account tab in the Community menu."
+msgid "Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
 msgstr ""
 "Conectarea automată va continua până când te deconectezi. Cheile de "
 "conectare automate pot fi gestionate din fila Contul meu din meniul "
@@ -10235,10 +10089,7 @@ msgstr ""
 
 #: ../src/scenes/Login.rb:181
 msgctxt "Login"
-msgid ""
-"Login data has been updated. Automatic login will be proceeding until you "
-"log  out. Automatic login keys can be managed from the My Account tab in the "
-"Community  menu."
+msgid "Login data has been updated. Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
 msgstr ""
 "Datele de autentificare au fost actualizate. Conectarea automată va continua "
 "până când te deconectezi. Cheile de autentificare automate pot fi gestionate "
@@ -10246,7 +10097,7 @@ msgstr ""
 
 #: ../src/scenes/Login.rb:192
 msgctxt "Login"
-msgid "To reenable auto log in feature, proceed to the general settings."
+msgid "To re-enable auto-login, go to General settings."
 msgstr ""
 "Pentru a reactiva funcția de autentificare automată, treci la setările "
 "generale."
@@ -10273,11 +10124,7 @@ msgstr "Conexiune eșuată."
 
 #: ../src/scenes/Login.rb:242
 msgctxt "Login"
-msgid ""
-"Do you want to encrypt this key with a custom pin code? You will be prompted "
-"for this code everytime you start Elten to unlock your account, but it will "
-"not be saved on the server and will be valid only for the auto-login-key "
-"stored on this device."
+msgid "Do you want to encrypt this key with a custom PIN? You will be prompted for this PIN every time you start Elten to unlock your account. It will not be saved on the server and will apply only to the auto-login key stored on this device."
 msgstr ""
 "Vrei să criptezi această cheie cu un cod PIN personalizat? Ți se va solicita "
 "acest cod de fiecare dată când pornești Elten pentru a îți debloca contul, "
@@ -10286,12 +10133,12 @@ msgstr ""
 
 #: ../src/scenes/Login.rb:247
 msgctxt "Login"
-msgid "Enter pin code again"
+msgid "Enter PIN again"
 msgstr "Introdu din nou codul PIN"
 
 #: ../src/scenes/Login.rb:252
 msgctxt "Login"
-msgid "The pin codes entered are different, please try again."
+msgid "The PINs you entered do not match. Please try again."
 msgstr "Codurile PIN introduse sunt diferite, te rugăm să încerci din nou."
 
 #: ../src/scenes/Main.rb:45
@@ -10321,7 +10168,7 @@ msgstr "Eticheta acțiunii"
 
 #: ../src/scenes/Main.rb:192
 msgctxt "Main"
-msgid "Change hotkey"
+msgid "Change keyboard shortcut"
 msgstr "Modifică scurtătura"
 
 #: ../src/scenes/Main.rb:193
@@ -10331,12 +10178,12 @@ msgstr "Niciuna"
 
 #: ../src/scenes/Main.rb:206
 msgctxt "Main"
-msgid "Hotkey for action %{label}"
+msgid "Keyboard shortcut for action %{label}"
 msgstr "Scurtătura pentru acțiunea %{label}"
 
 #: ../src/scenes/Main.rb:220
 msgctxt "Main"
-msgid "This hotkey is already used by action %{action}"
+msgid "This keyboard shortcut is already used by action %{action}"
 msgstr "Această scurtătură este deja utilizată de acțiunea %{action}"
 
 #: ../src/scenes/Main.rb:227
@@ -10597,12 +10444,12 @@ msgstr "Șterge conversații"
 
 #: ../src/scenes/Messages.rb:235
 msgctxt "Messages"
-msgid "Set all messages as a default view"
+msgid "Set all messages as the default view"
 msgstr "Setează toate mesajele ca vizualizare implicită"
 
 #: ../src/scenes/Messages.rb:236
 msgctxt "Messages"
-msgid "Set subjects as a default view"
+msgid "Set subjects as the default view"
 msgstr "Setează subiectul ca vizualizare implicită"
 
 #: ../src/scenes/Messages.rb:241
@@ -10683,12 +10530,12 @@ msgstr "Conversație modificată"
 
 #: ../src/scenes/Messages.rb:378
 msgctxt "Messages"
-msgid "Are you sure you want to delete all messages with user %{user}"
+msgid "Are you sure you want to delete all messages exchanged with %{user}?"
 msgstr "Sigur vrei să ștergi toate mesajele cu %{user}?"
 
 #: ../src/scenes/Messages.rb:383
 msgctxt "Messages"
-msgid "All conversations with user have been deleted."
+msgid "All conversations with the user have been deleted."
 msgstr "Toate conversațiile cu utilizatorul selectat au fost șterse."
 
 #: ../src/scenes/Messages.rb:409
@@ -10723,9 +10570,7 @@ msgstr "Trimite un mesaj nou în această conversație"
 
 #: ../src/scenes/Messages.rb:493
 msgctxt "Messages"
-msgid ""
-"Are you sure you want to delete conversation %{conversationname} with user "
-"%{user}"
+msgid "Are you sure you want to delete the conversation %{conversationname} with %{user}?"
 msgstr "Sigur vrei să ștergi conversația %{conversationname} cu %{user}?"
 
 #: ../src/scenes/Messages.rb:498
@@ -10785,7 +10630,7 @@ msgstr "Sondaje"
 
 #: ../src/scenes/Messages.rb:709 ../src/scenes/Messages.rb:1053
 msgctxt "Messages"
-msgid "Message has been sent"
+msgid "The message has been sent"
 msgstr "Mesaj trimis"
 
 #: ../src/scenes/Messages.rb:724
@@ -10980,12 +10825,12 @@ msgstr "Cu cine vrei să partajezi notița?"
 
 #: ../src/scenes/Notes.rb:137
 msgctxt "Notes"
-msgid "User cannot be found"
+msgid "The user cannot be found"
 msgstr "Utilizatorul nu poate fi găsit."
 
 #: ../src/scenes/Notes.rb:143
 msgctxt "Notes"
-msgid "From now on you share this note with %{user}"
+msgid "You are now sharing this note with %{user}"
 msgstr "De acum înainte, partajezi această notiță cu %{user}"
 
 #: ../src/scenes/Notes.rb:165
@@ -11005,7 +10850,7 @@ msgstr "Sigur vrei să nu mai partajezi notița cu %{user}?"
 
 #: ../src/scenes/Notes.rb:196
 msgctxt "Notes"
-msgid "You no longer share this note with %{user}"
+msgid "You are no longer sharing this note with %{user}"
 msgstr "Nu mai partajezi notița cu %{user}"
 
 #: ../src/scenes/Notes.rb:219
@@ -11015,9 +10860,7 @@ msgstr "Sigur vrei să ștergi %{name}?"
 
 #: ../src/scenes/Notes.rb:221
 msgctxt "Notes"
-msgid ""
-"Do you really want to end sharing %{name}? It will be deleted from your "
-"notes list."
+msgid "Do you really want to stop sharing %{name}? It will be deleted from your list of notes."
 msgstr ""
 "Sigur vrei să nu mai partajezi %{name}? Aceasta va fi ștearsă din lista ta "
 "de notițe."
@@ -11188,7 +11031,7 @@ msgstr "Selecție multiplă"
 
 #: ../src/scenes/Polls.rb:234
 msgctxt "Polls"
-msgid "Edit box"
+msgid "Text field"
 msgstr "Câmp de editare"
 
 #: ../src/scenes/Polls.rb:234
@@ -11198,12 +11041,12 @@ msgstr "Tipul întrebării"
 
 #: ../src/scenes/Polls.rb:235
 msgctxt "Polls"
-msgid "Limit count of answers that can be checked"
+msgid "Limit the number of answers that can be selected"
 msgstr "Numărul limită de răspunsuri care pot fi bifate"
 
 #: ../src/scenes/Polls.rb:236
 msgctxt "Polls"
-msgid "Count of answers that can be checked"
+msgid "Maximum number of answers that can be selected"
 msgstr "Numărul de răspunsuri care pot fi bifate"
 
 #: ../src/scenes/Polls.rb:238 ../src/scenes/Polls.rb:622
@@ -11268,8 +11111,8 @@ msgstr "Întrebare cu selecție multiplă"
 
 #: ../src/scenes/Polls.rb:406
 msgctxt "Polls"
-msgid "Up to %{limit}-choice question"
-msgid_plural "Up to %{limit}-choices question"
+msgid "Question allowing up to %{limit} choices"
+msgid_plural "Questions allowing up to %{limit} choices"
 msgstr[0] "Întrebare cu până la o opțiune"
 msgstr[1] "Întrebare cu până la %{limit} opțiuni"
 msgstr[2] "Întrebare cu până la %{limit} opțiuni"
@@ -11437,7 +11280,7 @@ msgstr ""
 
 #: ../src/scenes/Programs.rb:104
 msgctxt "Programs"
-msgid "Installation canceled."
+msgid "Installation cancelled."
 msgstr "Instalare anulată."
 
 #: ../src/scenes/Programs.rb:111
@@ -11471,22 +11314,19 @@ msgstr ""
 
 #: ../src/scenes/Registration.rb:16
 msgctxt "Registration"
-msgid "User with this name already exists."
+msgid "A user with this name already exists."
 msgstr "Contul cu numele de utilizator specificat există deja."
 
 #: ../src/scenes/Registration.rb:27
 msgctxt "Registration"
-msgid ""
-"Enter your password. It is recommended to use a strong password, which "
-"consists  of numbers and letters. Maximum length of the password is 256 "
-"characters."
+msgid "Enter your password. We recommend using a strong password consisting of letters and numbers. The maximum password length is 256 characters."
 msgstr ""
 "Introdu parola. Se recomandă utilizarea unei parole puternice, care constă "
 "din cifre și litere. Lungimea maximă a parolei este de 256 de caractere."
 
 #: ../src/scenes/Registration.rb:29
 msgctxt "Registration"
-msgid "Reenter your password"
+msgid "Re-enter your password"
 msgstr "Introdu parola din nou pentru confirmare"
 
 #: ../src/scenes/Registration.rb:32
@@ -11496,18 +11336,14 @@ msgstr "Parolele introduse sunt diferite"
 
 #: ../src/scenes/Registration.rb:40
 msgctxt "Registration"
-msgid ""
-"Enter your e-mail address. It will be used in case you forget your password "
-"and  to send important information."
+msgid "Enter your email address. It will be used to reset a forgotten password and to send you important information."
 msgstr ""
 "Introdu adresa de e-mail. Aceasta va fi utilizată în cazul în care îți uiți "
 "parola și pentru a primi informații importante."
 
 #: ../src/scenes/Registration.rb:51
 msgctxt "Registration"
-msgid ""
-"Registration is successful, thank you. You can log in using your username "
-"and  password."
+msgid "Registration was successful. Thank you. You can log in using your username and password."
 msgstr ""
 "Înregistrarea este reușită, îți mulțumim. Acum te poți conecta folosind "
 "numele de utilizator și parola."
@@ -11519,7 +11355,7 @@ msgstr "A apărut o eroare necunoscută în timpul utilizării bazei de date"
 
 #: ../src/scenes/Registration.rb:55
 msgctxt "Registration"
-msgid "Account with the specified username already exists."
+msgid "An account with the specified username already exists."
 msgstr "Contul cu numele de utilizator specificat există deja."
 
 #: ../src/scenes/Registration.rb:57
@@ -11554,7 +11390,7 @@ msgstr "Minimizează automat fereastra Elten în tray"
 
 #: ../src/scenes/Settings.rb:132
 msgctxt "Settings"
-msgid "Enable auto log in"
+msgid "Enable auto-login"
 msgstr "Activează autentificarea automată"
 
 #: ../src/scenes/Settings.rb:133
@@ -11604,12 +11440,12 @@ msgstr "Interfață"
 
 #: ../src/scenes/Settings.rb:140
 msgctxt "Settings"
-msgid "Play sounds of sound themes"
+msgid "Play sounds from sound themes"
 msgstr "Redă sunetele temelor de sunete"
 
 #: ../src/scenes/Settings.rb:141
 msgctxt "Settings"
-msgid "Soundtheme volume"
+msgid "Sound theme volume"
 msgstr "Volumul temei de sunete"
 
 #: ../src/scenes/Settings.rb:142
@@ -11654,7 +11490,7 @@ msgstr "Voce și sunet"
 
 #: ../src/scenes/Settings.rb:160
 msgctxt "Settings"
-msgid "Control types announcement"
+msgid "Announce control types"
 msgstr "Anunțul tipurilor de control"
 
 #: ../src/scenes/Settings.rb:160 ../src/scenes/Settings.rb:248
@@ -11669,7 +11505,7 @@ msgstr "Afișează linii lungi în câmpuri de text"
 
 #: ../src/scenes/Settings.rb:162
 msgctxt "Settings"
-msgid "The display method of selection lists"
+msgid "Selection-list navigation mode"
 msgstr "Metoda de afișare a listelor de selecție"
 
 #: ../src/scenes/Settings.rb:162
@@ -11684,7 +11520,7 @@ msgstr "Circular"
 
 #: ../src/scenes/Settings.rb:163
 msgctxt "Settings"
-msgid "Round up the forms"
+msgid "Wrap focus within forms"
 msgstr "Navigare circulară"
 
 #: ../src/scenes/Settings.rb:164
@@ -11744,9 +11580,7 @@ msgstr "Activează ieșirea braille (necesită supliment NVDA)"
 
 #: ../src/scenes/Settings.rb:195
 msgctxt "Settings"
-msgid ""
-"Use a voice dictionary when processing characters (requires NVDA addon when "
-"using NVDA as a speech output)"
+msgid "Use a voice dictionary when processing characters (requires the NVDA add-on when using NVDA for speech output)"
 msgstr ""
 "Utilizează un dicționar vocal atunci când se prelucrează caractere (necesită "
 "supliment NVDA când utilizezi NVDA ca ieșire vocală)"
@@ -11909,7 +11743,7 @@ msgstr "Utilizează interpolarea biliniară HRTF"
 
 #: ../src/scenes/Settings.rb:321
 msgctxt "Settings"
-msgid "Disable concurrent requests (HTTP2)"
+msgid "Disable concurrent requests (HTTP/2)"
 msgstr "Dezactivează solicitările concurente (HTTP2)"
 
 #: ../src/scenes/Settings.rb:322
@@ -11924,7 +11758,7 @@ msgstr "Dimensiunea maximă a sarcinii utile pachetului UDP"
 
 #: ../src/scenes/Settings.rb:324
 msgctxt "Settings"
-msgid "Conferences audio buffer in frames"
+msgid "Conference audio buffer in frames"
 msgstr "Buffer audio pentru conferințe în cadre"
 
 #: ../src/scenes/Settings.rb:325
@@ -12019,7 +11853,7 @@ msgstr "Stare"
 
 #: ../src/scenes/SoundThemes.rb:144
 msgctxt "Soundthemes"
-msgid "Select theme to download"
+msgid "Select the theme to download"
 msgstr "Selectează tema care urmează a fi descărcată"
 
 #: ../src/scenes/SoundThemes.rb:144
@@ -12034,13 +11868,12 @@ msgstr "Descarcă"
 
 #: ../src/scenes/SoundThemes.rb:159 ../src/scenes/SoundThemes.rb:193
 msgctxt "SoundThemes"
-msgid ""
-"Do you want to download theme %{name}? Need to download %{size} of data."
+msgid "Do you want to download the theme %{name}? You will need to download %{size} of data."
 msgstr "Vrei să descarci tema %{name}? Trebuie descărcați %{size} de date."
 
 #: ../src/scenes/SoundThemes.rb:168
 msgctxt "SoundThemes"
-msgid "Are you sure you want to delete sound theme %{name} from the server?"
+msgid "Are you sure you want to delete the sound theme %{name} from the server?"
 msgstr "Ești sigur că vrei să ștergi tema de sunete %{name} de pe server?"
 
 #: ../src/scenes/Sounds.rb:14
@@ -12085,27 +11918,27 @@ msgstr "Marker al unui formular"
 
 #: ../src/scenes/Sounds.rb:22
 msgctxt "Sounds"
-msgid "Marker of a listbox"
+msgid "Marker for a list box"
 msgstr "Markerul unei liste"
 
 #: ../src/scenes/Sounds.rb:23
 msgctxt "Sounds"
-msgid "Marker of a multiselect listbox"
+msgid "Marker for a multi-select list box"
 msgstr "Markerul unei liste de selecție multiplă"
 
 #: ../src/scenes/Sounds.rb:24
 msgctxt "Sounds"
-msgid "Focus move on a listbox"
+msgid "Focus moved in a list box"
 msgstr "Mutarea focalizării într-o listă"
 
 #: ../src/scenes/Sounds.rb:25
 msgctxt "Sounds"
-msgid "Border of a listbox"
+msgid "Border of a list box"
 msgstr "Marginea unei liste"
 
 #: ../src/scenes/Sounds.rb:26
 msgctxt "Sounds"
-msgid "Expandable item on a listbox"
+msgid "Expandable item in a list box"
 msgstr "Element extensibil dintr-o listă"
 
 #: ../src/scenes/Sounds.rb:27
@@ -12125,52 +11958,52 @@ msgstr "Element selectat"
 
 #: ../src/scenes/Sounds.rb:30
 msgctxt "Sounds"
-msgid "Ticked item on a listbox"
+msgid "Ticked item in a list box"
 msgstr "Element bifat într-o listă"
 
 #: ../src/scenes/Sounds.rb:31
 msgctxt "Sounds"
-msgid "Unticked item on a listbox"
+msgid "Unticked item in a list box"
 msgstr "Element debifat într-o listă"
 
 #: ../src/scenes/Sounds.rb:32
 msgctxt "Sounds"
-msgid "New or updated item on a listbox"
+msgid "New or updated item in a list box"
 msgstr "Element nou sau actualizat într-o listă"
 
 #: ../src/scenes/Sounds.rb:33
 msgctxt "Sounds"
-msgid "Item with attachment on a listbox"
+msgid "Item with an attachment in a list box"
 msgstr "Element cu atașament într-o listă"
 
 #: ../src/scenes/Sounds.rb:34
 msgctxt "Sounds"
-msgid "Closed item on a listbox"
+msgid "Closed item in a list box"
 msgstr "Element închis într-o listă"
 
 #: ../src/scenes/Sounds.rb:35
 msgctxt "Sounds"
-msgid "Item containing other items on a listbox"
+msgid "Item containing other items in a list box"
 msgstr "Element care conține alte elemente dintr-o listă"
 
 #: ../src/scenes/Sounds.rb:36
 msgctxt "Sounds"
-msgid "Future item on a listbox"
+msgid "Future item in a list box"
 msgstr "Element future într-o listă"
 
 #: ../src/scenes/Sounds.rb:37
 msgctxt "Sounds"
-msgid "Liked item on a listbox"
+msgid "Liked item in a list box"
 msgstr "Element apreciat într-o listă"
 
 #: ../src/scenes/Sounds.rb:38
 msgctxt "Sounds"
-msgid "Pinned item on a listbox"
+msgid "Pinned item in a list box"
 msgstr "Element fixat într-o listă"
 
 #: ../src/scenes/Sounds.rb:39
 msgctxt "Sounds"
-msgid "Item with restricted access on a listbox"
+msgid "Item with restricted access in a list box"
 msgstr "Element cu acces restricționat într-o listă"
 
 #: ../src/scenes/Sounds.rb:40
@@ -12185,72 +12018,72 @@ msgstr "Utilizatorul este un sponsor"
 
 #: ../src/scenes/Sounds.rb:42
 msgctxt "Sounds"
-msgid "Compressed file on a files tree"
+msgid "Compressed file in a file tree"
 msgstr "Fișier compresat"
 
 #: ../src/scenes/Sounds.rb:43
 msgctxt "Sounds"
-msgid "Audio file on a files tree"
+msgid "Audio file in a file tree"
 msgstr "Fișier audio"
 
 #: ../src/scenes/Sounds.rb:44
 msgctxt "Sounds"
-msgid "Directory on a files tree"
+msgid "Directory in a file tree"
 msgstr "Folder"
 
 #: ../src/scenes/Sounds.rb:45
 msgctxt "Sounds"
-msgid "Document on a files tree"
+msgid "Document in a file tree"
 msgstr "Document"
 
 #: ../src/scenes/Sounds.rb:46
 msgctxt "Sounds"
-msgid "Text file on a files tree"
+msgid "Text file in a file tree"
 msgstr "Fișier text"
 
 #: ../src/scenes/Sounds.rb:47
 msgctxt "Sounds"
-msgid "Marker of an editbox with audio in a form"
+msgid "Marker for a text field with audio in a form"
 msgstr "Markerul unei casete de editare cu audio într-un formular"
 
 #: ../src/scenes/Sounds.rb:48
 msgctxt "Sounds"
-msgid "Marker of an editbox in a form"
+msgid "Marker for a text field in a form"
 msgstr "Markerul unei casete de editare"
 
 #: ../src/scenes/Sounds.rb:49
 msgctxt "Sounds"
-msgid "A piece of text in an editbox has beenselected"
+msgid "A piece of text in a text field has been selected"
 msgstr "Un text dintr-un câmp de editare a fost selectat"
 
 #: ../src/scenes/Sounds.rb:50
 msgctxt "Sounds"
-msgid "A piece of text in an editbox has been unselected"
+msgid "A piece of text in a text field has been unselected"
 msgstr "Un text dintr-un câmp de editare a fost deselectat"
 
 #: ../src/scenes/Sounds.rb:51
 msgctxt "Sounds"
-msgid "Capitalized letter in an editbox"
+msgid "Uppercase letter in a text field"
 msgstr "Literă majusculă într-un câmp de editare"
 
 #: ../src/scenes/Sounds.rb:52
 msgctxt "Sounds"
-msgid "Delete of a text in an editbox"
+msgid "Text deleted from a text field"
 msgstr "Ștergerea unui text dintr-un câmp de editare"
 
 #: ../src/scenes/Sounds.rb:53
 msgctxt "Sounds"
-msgid "End of line in an editbox"
+msgid "End of line in a text field"
 msgstr "Sfârșitul unei linii dintr-un câmp de text"
 
 #: ../src/scenes/Sounds.rb:54
 msgctxt "Sounds"
-msgid "Password character in an editbox"
+msgid "Password character in a text field"
 msgstr "Caracter de parolă dintr-un câmp de editare"
 
 #: ../src/scenes/Sounds.rb:55
 msgctxt "Sounds"
-msgid "Space in an editbox"
+msgid "Space in a text field"
 msgstr "Spațiu într-un câmp de editare"
 
 #: ../src/scenes/Sounds.rb:56
@@ -12275,7 +12108,7 @@ msgstr "Menționat într-un flux"
 
 #: ../src/scenes/Sounds.rb:60
 msgctxt "Sounds"
-msgid "User signed in or Elten window focused"
+msgid "User signed in or the Elten window received focus"
 msgstr "Te-ai autentificat sau ai maximizat fereastra Elten"
 
 #: ../src/scenes/Sounds.rb:61
@@ -12370,7 +12203,7 @@ msgstr "Notificare: monitor online"
 
 #: ../src/scenes/Sounds.rb:79
 msgctxt "Sounds"
-msgid "Notification: new user joined followed conference channel"
+msgid "Notification: a new user joined a conference channel you follow"
 msgstr "Notificare: un utilizator a intrat în canalul de conferință urmărit"
 
 #: ../src/scenes/Sounds.rb:80
@@ -12425,12 +12258,12 @@ msgstr "Șoaptă în conferință"
 
 #: ../src/scenes/Sounds.rb:90
 msgctxt "Sounds"
-msgid "Push To Talk enabled in conferences"
+msgid "Push-to-talk enabled in conferences"
 msgstr "Menține pentru a vorbi activat în conferință"
 
 #: ../src/scenes/Sounds.rb:91
 msgctxt "Sounds"
-msgid "Push To Talk disabled in conferences"
+msgid "Push-to-talk disabled in conferences"
 msgstr "Menține pentru a vorbi dezactivat în conferință"
 
 #: ../src/scenes/Sounds.rb:92
@@ -12500,12 +12333,12 @@ msgstr "Semnal"
 
 #: ../src/scenes/Sounds.rb:111 ../src/scenes/Sounds.rb:177
 msgctxt "Sounds"
-msgid "Type name of the sound theme"
+msgid "Enter a name for the sound theme"
 msgstr "Introdu numele temei de sunete"
 
 #: ../src/scenes/Sounds.rb:136
 msgctxt "Sounds"
-msgid "Sounds guide, press space to play"
+msgid "Sound guide; press Space to play"
 msgstr "Ghid de sunete. Apasă spațiu pentru a reda un sunet"
 
 #: ../src/scenes/Sounds.rb:137
@@ -12565,12 +12398,12 @@ msgstr "Selectează sunet nou"
 
 #: ../src/scenes/Sounds.rb:194
 msgctxt "Sounds"
-msgid "The sound must not last longer than 5 minutes"
+msgid "The sound must be no longer than five minutes"
 msgstr "Sunetul nu ar trebui să fie mai lung de 5 minute"
 
 #: ../src/scenes/Sounds.rb:209
 msgctxt "Sounds"
-msgid "Where to save this theme"
+msgid "Where do you want to save this theme?"
 msgstr "Locația în care să fie salvată tema"
 
 #: ../src/scenes/Sounds.rb:222
@@ -12598,9 +12431,7 @@ msgstr ""
 
 #: ../src/scenes/Sounds.rb:276
 msgctxt "Sounds"
-msgid ""
-"Sound theme ID. This ID will be used to track updates of this sound theme. "
-"Keep the current ID if you want to update existing sound theme."
+msgid "Sound theme ID. This ID will be used to track updates to this sound theme. Keep the current ID if you want to update the existing sound theme."
 msgstr ""
 "ID-ul temei de sunete. Va fi utilizat la urmărirea actualizărilor acestei "
 "teme de sunete. Păstrează-l dacă vrei să actualizezi tema existentă de "
@@ -12608,7 +12439,7 @@ msgstr ""
 
 #: ../src/scenes/Sounds.rb:300 ../src/scenes/Sounds.rb:308
 msgctxt "Sounds"
-msgid "Sound theme with that ID already exists."
+msgid "A sound theme with that ID already exists."
 msgstr "Tema de sunete cu acest ID există deja."
 
 #: ../src/scenes/Sounds.rb:327
@@ -12633,7 +12464,7 @@ msgstr "Ce este nou"
 
 #: ../src/scenes/SpeedTest.rb:9
 msgctxt "SpeedTest"
-msgid "Unit to test"
+msgid "Component to test"
 msgstr "Unitatea care urmează a fi testată"
 
 #: ../src/scenes/SpeedTest.rb:9
@@ -12648,7 +12479,7 @@ msgstr "Destinatarii mesajelor"
 
 #: ../src/scenes/SpeedTest.rb:9
 msgctxt "SpeedTest"
-msgid "Number of attempts to perform"
+msgid "Number of test runs"
 msgstr "Numărul încercărilor"
 
 #: ../src/scenes/SpeedTest.rb:9
@@ -12663,7 +12494,7 @@ msgstr "Lista blogurilor"
 
 #: ../src/scenes/SpeedTest.rb:33
 msgctxt "SpeedTest"
-msgid "Performing test, please wait"
+msgid "Test in progress. Please wait."
 msgstr "Se face testul"
 
 #: ../src/scenes/SpeedTest.rb:48
@@ -12683,7 +12514,7 @@ msgstr "Timp maxim"
 
 #: ../src/scenes/SpeedTest.rb:51
 msgctxt "SpeedTest"
-msgid "Errors count"
+msgid "Number of errors"
 msgstr "Numărul de erori"
 
 #: ../src/scenes/SpeedTest.rb:57
@@ -12693,9 +12524,7 @@ msgstr "Rezultatele testului"
 
 #: ../src/scenes/Update.rb:13
 msgctxt "Update"
-msgid ""
-"A new version of this program is available. Do you want to download and "
-"instal it?"
+msgid "A new version of this program is available. Do you want to download and install it?"
 msgstr ""
 "O nouă versiune este disponibilă. Vrei să o descarci și să o instalezi?"
 
@@ -12707,23 +12536,19 @@ msgstr "Te rugăm să aștepți cât timp se descarcă fișierele."
 
 #: ../src/scenes/Update.rb:40
 msgctxt "Update"
-msgid ""
-"The update has been downloaded. To install it, the program must be "
-"restarted.  Press enter to continue or escape to cancel."
+msgid "The update has been downloaded. To install it, the program must be restarted. Press Return to continue or Esc to cancel."
 msgstr ""
 "Descărcare finalizată. Pentru actualizare, programul trebuie să repornească. "
 "Apasă enter pentru a reporni sau escape pentru a anula."
 
 #: ../src/scenes/Update.rb:53
 msgctxt "Update"
-msgid "Now, the update will be installed. The program will restart."
+msgid "The update will now be installed. The program will restart."
 msgstr "Acum se va instala actualizarea. Programul va reporni."
 
 #: ../src/scenes/Update.rb:71
 msgctxt "Update"
-msgid ""
-"The program will be now reverted to the latest stable version. Elten will "
-"restart.  It may take several minutes."
+msgid "The program will now be reverted to the latest stable version. Elten will restart. This may take several minutes."
 msgstr ""
 "Programul va fi acum repornit și readus la ultima versiune stabilă. Poate "
 "dura câteva minute."
@@ -12754,12 +12579,12 @@ msgid "List of users"
 msgstr "Lista utilizatorilor"
 
 #: ../src/scenes/UsersAddedMeToContacts.rb:13
-msgid "UsersAddedMeToThis section is unavailable for guests"
+msgid "This section is unavailable to guests"
 msgstr "Secțiune indisponibilă pentru oaspeți"
 
 #: ../src/scenes/UsersAddedMeToContacts.rb:35
 msgctxt "UsersAddedMeToContacts"
-msgid "Users who added me to their contacts list"
+msgid "Users who added me to their contact list"
 msgstr "Utilizatori care m-au adăugat la contacte"
 
 #: ../src/scenes/Users_RecentlyActived.rb:22
@@ -12814,7 +12639,7 @@ msgstr "Prieteni noi"
 
 #: ../src/scenes/WhatsNew.rb:61
 msgctxt "WhatsNew"
-msgid "Friends' birthday"
+msgid "Friends' birthdays"
 msgstr "Ziua prietenului"
 
 #: ../src/scenes/WhatsNew.rb:62

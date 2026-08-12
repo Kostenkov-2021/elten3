@@ -53,7 +53,7 @@ stdownload
                         $scene=Scene_Sounds.new(@soundthemes[@sel.index].file)
           }
           menu.option(p_("SoundThemes", "Delete"), nil, :del) {
-                          confirm(p_("SoundThemes", "Are you sure you want to delete sound theme %{soundtheme}?")%{ :soundtheme => @soundthemes[@sel.index].name}) {
+                          confirm(p_("SoundThemes", "Are you sure you want to delete the sound theme %{soundtheme}?")%{ :soundtheme => @soundthemes[@sel.index].name}) {
                 File.delete(@soundthemes[@sel.index].file)
                 @return=true
                 main
@@ -130,7 +130,7 @@ end
       [s.name,status,s.user,s.count.to_s]
       }
       }   
-      sel = TableBox.new([nil,p_("SoundThemes","Status"),p_("SoundThemes","Author"),p_("SoundThemes","Used by")],[],index: 0,header: p_("Soundthemes", "Select theme to download"), quiet: true)
+      sel = TableBox.new([nil,p_("SoundThemes","Status"),p_("SoundThemes","Author"),p_("SoundThemes","Used by")],[],index: 0,header: p_("Soundthemes", "Select the theme to download"), quiet: true)
       rfr.call
       sel.rows=sts
       sel.reload
@@ -145,7 +145,7 @@ menu.option(p_("SoundThemes", "Download")) {
      else
        size=(((st.size/1048576.0)*10.0).round/10.0).to_s+"MB"
        end
-     confirm(p_("SoundThemes", "Do you want to download theme %{name}? Need to download %{size} of data.")%{:name=>st.name, :size=>size}) {
+     confirm(p_("SoundThemes", "Do you want to download the theme %{name}? You will need to download %{size} of data.")%{:name=>st.name, :size=>size}) {
           downloadtheme(st)
           rfr.call
           sel.rows=sts
@@ -154,7 +154,7 @@ menu.option(p_("SoundThemes", "Download")) {
 }
 if st.user==Session.name || Session.moderator==1
 menu.option(p_("SoundThemes", "Delete"), nil, :del) {
-confirm(p_("SoundThemes", "Are you sure you want to delete sound theme %{name} from the server?")%{:name=>st.name}) {
+confirm(p_("SoundThemes", "Are you sure you want to delete the sound theme %{name} from the server?")%{:name=>st.name}) {
 begin
   EltenLink::SoundThemes.delete(elten_link, File.basename(st.file, ".elsnd"))
 rescue EltenLink::Error => e
@@ -185,7 +185,7 @@ break
      else
        size=(((st.size/1048576.0)*10.0).round/10.0).to_s+"MB"
        end
-     confirm(p_("SoundThemes", "Do you want to download theme %{name}? Need to download %{size} of data.")%{:name=>st.name, :size=>size}) {
+     confirm(p_("SoundThemes", "Do you want to download the theme %{name}? You will need to download %{size} of data.")%{:name=>st.name, :size=>size}) {
           downloadtheme(st)
           rfr.call
           sel.rows=sts

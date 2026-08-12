@@ -613,7 +613,7 @@ search
   }
     end
   }
-    s=@header+" - "+p_("EAPI_Form", "Edit box")+" ("+_("Context menu")+")"
+    s=@header+" - "+p_("EAPI_Form", "Text field")+" ("+_("Context menu")+")"
   s=p_("EAPI_Form", "Edit") if submenu==false
     menu.submenu(s) {|m|c.call(m)}
   super(menu, submenu)
@@ -745,7 +745,7 @@ u[0]==1?delete_inserted_undo(u[1],u[2]):einsert(u[2],u[1],false)
         @redo.delete_at(@redo.size-1)
                 r[0]==2?delete_inserted_undo(r[1],r[2]):einsert(r[2],r[1],false)
                     @undo.push(r)
-          alert(p_("EAPI_Form", "Repeated"), false)
+          alert(p_("EAPI_Form", "Redone"), false)
         end
         def search
                 search=input_text(p_("EAPI_Form", "Enter a phrase to look for"),flags: 0,text: @lastsearch||"",escapable: true, permitted_characters: [], denied_characters: [], max_length: 0, move_to_end: false, select_all: true)
@@ -1485,7 +1485,7 @@ def value
           play_sound(snd, volume: 100, pitch: 100, pan: pos)
           end
         end
-      tp=p_("EAPI_Form", "Edit box")
+      tp=p_("EAPI_Form", "Text field")
       tp=p_("EAPI_Form", "Text") if (@flags&Flags::ReadOnly)>0
       tp=p_("EAPI_Form", "Media") if @audiotext!=nil
       tph=tp+": "
@@ -1791,7 +1791,7 @@ end
      def tips
                 tips=[]
        if (@flags&Flags::HTML)>0 || (@flags&Flags::MarkDown)>0
-         tips.push(p_("EAPI_Form", "Use h or numbers from 1 to 6 to navigate to the next header"))
+         tips.push(p_("EAPI_Form", "Use H or the number keys 1 to 6 to navigate to the next heading"))
          tips.push(p_("EAPI_Form", "Use k to navigate to the next link"))
          tips.push(p_("EAPI_Form", "Use i to navigate to the next list item"))
          tips.push(p_("EAPI_Form", "Use the above shortcuts with shift to navigate to the previous items"))

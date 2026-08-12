@@ -54,8 +54,8 @@ class Scene_Conference
     btn_close = Button.new(p_("Conference", "Close"))
     ], index: @prefocus||0, silent: false, quiet: true)
     @prefocus=nil
-    st_conference.add_tip(p_("Conference", "Use arrows to move in the channel space"))
-    st_conference.add_tip(p_("Conference", "Use shift with left/right arrows to rotate"))
+    st_conference.add_tip(p_("Conference", "Use the arrow keys to move around the channel space"))
+    st_conference.add_tip(p_("Conference", "Use Shift+Left/Right Arrow to rotate"))
                         lst_users.bind_context{|menu|
     if lst_users.options.size>0
       user=Conference.channel.users[lst_users.index]
@@ -152,7 +152,7 @@ end
       t=Time.now.to_f
       loop_update while key_held?(0x20)
       Conference.whisper(0)
-      speak(p_("Conference", "Hold spacebar to whisper to user")) if Time.now.to_f-t<0.25
+      speak(p_("Conference", "Hold the Space bar to whisper to the user")) if Time.now.to_f-t<0.25
       }
     else
             if Conference.channel.administrators.include?(Session.name)
@@ -266,7 +266,7 @@ if c[2].is_a?(String)
         params=c[3]
     case c[2]
     when :diceroll
-      options.push(np_("Conference", "%{user} has rolled %{value} dot on a %{count}-sided dice", "%{user} has rolled %{value} dots on a %{count}-sided dice", params[0].to_i)%{:user=>c[0], :value=>params[0].to_s, :count=>params[1].to_s})
+      options.push(np_("Conference", "%{user} has rolled a %{value} on a %{count}-sided die", "%{user} has rolled a %{value} on a %{count}-sided die", params[0].to_i)%{:user=>c[0], :value=>params[0].to_s, :count=>params[1].to_s})
     else
       options.push("")
       end
@@ -426,14 +426,14 @@ end
     if ch.followed==false
       menu.option(p_("Conference", "Follow"), nil, "l") {
       Conference.follow(ch.id)
-speak(p_("Conference", "Channel followed"))
+speak(p_("Conference", "You are now following this channel"))
       @chans=get_channelslist
   locha.call(@chans)
       }
     else
             menu.option(p_("Conference", "Unfollow"), nil, "l") {
             Conference.unfollow(ch.id)
-speak(p_("Conference", "Channel unfollowed"))
+speak(p_("Conference", "You are no longer following this channel"))
       @chans=get_channelslist
   locha.call(@chans)
   }
@@ -444,17 +444,17 @@ speak(p_("Conference", "Channel unfollowed"))
   txt+=p_("Conference", "Creator")+": "+ch.creator+"\n" if ch.creator.is_a?(String) and ch.creator!=""
   txt+=p_("Conference", "Administrators")+": "+ch.administrators.join(", ")+"\n" if ch.administrators.is_a?(Array) and ch.administrators.size>0
   txt+=p_("Conference", "Language")+": "+ch.lang+"\n" if ch.lang!=""
-  txt+=p_("Conference", "Followers count: ")+": "+ch.followers_count.to_s+"\n"
+  txt+=p_("Conference", "Number of followers: ")+ch.followers_count.to_s+"\n"
     txt+=p_("Conference", "This channel is password-protected.")+"\n" if ch.passworded
     txt+=p_("Conference", "A waiting room is enabled on this channel.")+"\n" if ch.waiting_type>0
     if ch.room_id!=nil
-    txt+=p_("Conference", "Room id")+": #{ch.room_id}\n"
+    txt+=p_("Conference", "Room ID")+": #{ch.room_id}\n"
     txt+=p_("Conference", "URL for joining using Web Browser")+":\n#{ch.join_url}\n\n" if ch.join_url!=nil
     end
   txt+=p_("Conference", "Channel bitrate")+": "+ch.bitrate.to_s+"kbps\n"
   txt+=p_("Conference", "Channel frame size")+": "+ch.framesize.to_s+"ms\n"
   txt+=p_("Conference", "Channels")+": "+((ch.channels==2)?("Stereo"):("Mono"))+"\n"
-  txt+=p_("Conference", "Space Virtualization")+": "
+  txt+=p_("Conference", "Spatial audio mode")+": "
   case ch.spatialization
   when 0
 txt+="Panning"
@@ -605,7 +605,7 @@ for preset in presets
     chk_fec = CheckBox.new(p_("Conference", "Enable forward error correction"), checked: channel.fec==true),
     chk_predictiondisabled = CheckBox.new(p_("Conference", "Disable encoding prediction"), checked: channel.prediction_disabled==true),    
     lst_channels = ListBox.new(["Mono", "Stereo"], header: p_("Conference", "Channels"), index: channel.channels-1),
-    lst_spatialization = ListBox.new(["Panning", "HRTF", p_("Conference", "Round table")], header: p_("Conference", "Space Virtualization"), index: channel.spatialization),
+    lst_spatialization = ListBox.new(["Panning", "HRTF", p_("Conference", "Round table")], header: p_("Conference", "Spatial audio mode"), index: channel.spatialization),
     chk_conference = CheckBox.new(p_("Conference", "Enable conference mode (only channel administrators and allowed users can speak)"), checked: channel.conference_mode>0),
     chk_waiting = CheckBox.new(p_("Conference", "Enable waiting room"), checked: channel.waiting_type>0),
     chk_allowguests = CheckBox.new(p_("Conference", "Allow guests to join this channel"), checked: channel.allow_guests),
@@ -615,7 +615,7 @@ for preset in presets
       p_("Conference", "Blacklists of all channel administrators")
     ], header: p_("Conference", "Block users from joining based on"), index: channel.blacklist_policy),
 chk_hidden = CheckBox.new(p_("Conference", "Make this channel hidden"), checked: !channel.public),
-    chk_permanent = CheckBox.new(p_("Conference", "Store as permanent channel"), checked: channel.permanent),
+    chk_permanent = CheckBox.new(p_("Conference", "Make this a permanent channel"), checked: channel.permanent),
     edt_width = EditBox.new(p_("Conference", "Channel width"), type: EditBox::Flags::Numbers, text: channel.width.to_s, quiet: true),
     edt_height = EditBox.new(p_("Conference", "Channel height"), type: EditBox::Flags::Numbers, text: channel.height.to_s, quiet: true),
     edt_password = EditBox.new(p_("Conference", "Channel password (leave this field blank to set a channel without a password)"), type: 0, text: channel.password||"", quiet: true),
@@ -940,7 +940,7 @@ nm=sprintf("Conference_%04d%02d%02d%02d%02d.ogg", tm.year, tm.month, tm.day, tm.
         btn_save.on(:press) {
 fl=EltenPath.join(tr_path.selected, edt_filename.text)
 fl+=".ogg" if File.extname(fl).downcase!=".ogg"
-        alert(p_("Conference", "Saving began"))
+        alert(p_("Conference", "Saving started"))
 Conference.begin_save(fl)
         form.resume
         }
@@ -967,7 +967,7 @@ nm=sprintf("Conference_%04d%02d%02d%02d%02d", tm.year, tm.month, tm.day, tm.hour
         btn_cancel.on(:press) {form.resume}
         btn_save.on(:press) {
 fl=EltenPath.join(tr_path.selected, edt_dirname.text)
-        alert(p_("Conference", "Saving began"))
+        alert(p_("Conference", "Saving started"))
 Conference.begin_fullsave(fl)
         form.resume
         }
@@ -1014,9 +1014,9 @@ def generate_pushtotalkkeyslabel
   end
 end
 if kb.size==0
-  return p_("Conference", "Set push to talk shortcut")
+  return p_("Conference", "Set push-to-talk shortcut")
 else
-  return p_("Conference", "Push to talk shortcut")+": "+kb.join("+")
+  return p_("Conference", "Push-to-talk shortcut")+": "+kb.join("+")
   end
 end
 def pushtotalk_setkeys
@@ -1130,7 +1130,7 @@ for s in Conference.mystreams.streams
   cardset = true if s.sources.find{|s|!s.scrollable}!=nil
   end
     if cardset
-menu.option(p_("Conference", "Remove soundcard stream")) {
+menu.option(p_("Conference", "Remove sound card stream")) {
 td=[]
 for i in 0...Conference.mystreams.sources.size
   td.push(i) if !Conference.mystreams.sources[i].scrollable
@@ -1143,13 +1143,13 @@ end
 td.reverse.each{|q|Conference.stream_remove(q)}
 }
 else
-menu.option(p_("Conference", "Stream from soundcard")) {
+menu.option(p_("Conference", "Stream from sound card")) {
       mics=Bass.microphones
       cardid=-1
      listen=false
 form=Form.new([
-lst_card = ListBox.new(mics.map{|m|o="";o=" ("+p_("Conference", "Loopback device")+")" if m.loopback?;m.name+o}, header: p_("Conference", "Select soundcard to stream")),
-chk_listen = CheckBox.new(p_("Conference", "Turn on the listening"), checked: true),
+lst_card = ListBox.new(mics.map{|m|o="";o=" ("+p_("Conference", "Loopback device")+")" if m.loopback?;m.name+o}, header: p_("Conference", "Select sound card to stream")),
+chk_listen = CheckBox.new(p_("Conference", "Monitor this input"), checked: true),
 btn_cardok = Button.new(p_("Conference", "Stream")),
 btn_cardcancel = Button.new(_("Cancel"))
 ], index: 0, silent: false, quiet: true)
@@ -1310,7 +1310,7 @@ end
       speak(p_("Conference", "Microphone unmuted"))
       end
   }
-  menu.option(p_("Conference", "Change volumes"), nil, "u") {
+  menu.option(p_("Conference", "Adjust volumes"), nil, "u") {
   setvolumes
   }
   if Conference.saving?
@@ -1329,16 +1329,16 @@ end
     }
     }
     end
-  menu.submenu(p_("Conference", "Push to talk")) {|m|
+  menu.submenu(p_("Conference", "Push-to-talk")) {|m|
   if Conference.pushtotalk_keys!=[]
-  s=p_("Conference", "Enable push to talk")
-  s=p_("Conference", "Disable push to talk") if Conference.pushtotalk
+  s=p_("Conference", "Enable push-to-talk")
+  s=p_("Conference", "Disable push-to-talk") if Conference.pushtotalk
   m.option(s, nil, "k") {
   Conference.pushtotalk=!Conference.pushtotalk
   if Conference.pushtotalk==false
-  alert(p_("Conference", "Push to talk disabled"))
+  alert(p_("Conference", "Push-to-talk disabled"))
 else
-  alert(p_("Conference", "Push to talk enabled"))
+  alert(p_("Conference", "Push-to-talk enabled"))
     end
   LocalConfig["ConferencePushToTalk"] = Conference.pushtotalk
   }
@@ -1355,18 +1355,18 @@ pushtotalk_setkeys
   end
   }
   menu.submenu(p_("Conference", "Miscellaneous")) {|m|
-  m.option(p_("Conference", "Roll a 6-sided dice"), nil, "d") {Conference.diceroll}
-  m.option(p_("Conference", "Roll a custom dice"), nil, "D") {
+  m.option(p_("Conference", "Roll a 6-sided die"), nil, "d") {Conference.diceroll}
+  m.option(p_("Conference", "Roll a custom die"), nil, "D") {
 self.class.custom_diceroll
   }
     }
   menu.option(p_("Conference", "Show status")) {showstatus}
-menu.option(p_("Conference", "Change output soundcard")) {
+menu.option(p_("Conference", "Change output sound card")) {
 if requires_premiumpackage("director")
-      cards=[p_("Conference", "Use Elten soundcard")]+Bass.soundcards[2..-1].map{|c|c.name}
+      cards=[p_("Conference", "Use Elten sound card")]+Bass.soundcards[2..-1].map{|c|c.name}
       cardid=-1
 form=Form.new([
-lst_card = ListBox.new(cards, header: p_("Conference", "Select soundcard")),
+lst_card = ListBox.new(cards, header: p_("Conference", "Select sound card")),
 btn_cardok = Button.new(p_("Conference", "Select")),
 btn_cardcancel = Button.new(_("Cancel"))
 ], index: 0, silent: false, quiet: true)
@@ -1678,15 +1678,15 @@ rfr.call
 sel.focus
 }
   if sid>=0
-  s=p_("Conference", "Locally mute")
+  s=p_("Conference", "Mute locally")
   s=p_("Conference", "Locally unmute") if stream.locally_muted
     menu.option(s, nil, "m") {
     Conference.locallymutestream(sid, !stream.locally_muted)
     stream.locally_muted = !stream.locally_muted
     if !stream.locally_muted
-      alert(p_("Conference", "Locally unmuted"))
+      alert(p_("Conference", "Unmuted locally"))
     else
-      alert(p_("Conference", "Locally muted"))
+      alert(p_("Conference", "Muted locally"))
     end
         }
     menu.option(p_("Conference", "Change volume"), nil, "u") {
@@ -1801,13 +1801,13 @@ form.wait
 rfr.call
 sel.focus
 }
-menu.option(p_("Conference", "New soundcard stream"), nil, "c") {
+menu.option(p_("Conference", "New sound card stream"), nil, "c") {
       mics=Bass.microphones
       cardid=-1
      listen=false
 form=Form.new([
-lst_card = ListBox.new(mics.map{|m|o="";o=" ("+p_("Conference", "Loopback device")+")" if m.loopback?;m.name+o}, header: p_("Conference", "Select soundcard to stream")),
-chk_listen = CheckBox.new(p_("Conference", "Turn on the listening"), checked: true),
+lst_card = ListBox.new(mics.map{|m|o="";o=" ("+p_("Conference", "Loopback device")+")" if m.loopback?;m.name+o}, header: p_("Conference", "Select sound card to stream")),
+chk_listen = CheckBox.new(p_("Conference", "Monitor this input"), checked: true),
 lst_location = ListBox.new([p_("Conference", "Right next to me"), p_("Conference", "Here"), p_("Conference", "Everywhere")], header: p_("Conference", "Location")),
 btn_place = Button.new(p_("Conference", "Place")),
 btn_cancel = Button.new(_("Cancel"))
@@ -1951,12 +1951,12 @@ form.wait
 rfr.call
 sel.focus
 }
-menu.option(p_("Conference", "Add soundcard"), nil, "c") {
+menu.option(p_("Conference", "Add sound card"), nil, "c") {
       mics=Bass.microphones
       cardid=-1
      listen=false
 form=Form.new([
-lst_card = ListBox.new(mics.map{|m|o="";o=" ("+p_("Conference", "Loopback device")+")" if m.loopback?;m.name+o}, header: p_("Conference", "Select soundcard to stream")),
+lst_card = ListBox.new(mics.map{|m|o="";o=" ("+p_("Conference", "Loopback device")+")" if m.loopback?;m.name+o}, header: p_("Conference", "Select sound card to stream")),
 btn_place = Button.new(p_("Conference", "Place")),
 btn_cancel = Button.new(_("Cancel"))
 ], index: 0, silent: false, quiet: true)
@@ -1992,7 +1992,7 @@ class Scene_Conference_VSTS
     @userid=userid
     end
   def main
-    @sel = TableBox.new([p_("Conference", "Name"), p_("Conference", "State"), p_("Conference", "File")], [], index: 0, header: p_("Conference", "VST Plugins"))
+    @sel = TableBox.new([p_("Conference", "Name"), p_("Conference", "State"), p_("Conference", "File")], [], index: 0, header: p_("Conference", "VST plug-ins"))
     @sel.bind_context{|menu|context(menu)}
     refresh
     @sel.focus
@@ -2196,7 +2196,7 @@ end
 }
 end
 menu.option(p_("Conference", "Add VST"), nil, "n") {
-      file = get_file(p_("Conference", "Select VST version 2 file to be loaded"), path: "", save: false, extensions: EltenSystemHelpers.vst2_extensions)
+      file = get_file(p_("Conference", "Select a VST2 plug-in file to load"), path: "", save: false, extensions: EltenSystemHelpers.vst2_extensions)
     if file!=nil
       Conference.vst_add(file, @userid)
       refresh
@@ -2342,7 +2342,7 @@ wr+=[v[0].bytesize].pack("I")
  sel.bind_context{|menu|
  if chains.size>0
  menu.option(_("Delete"), nil, :del) {
- confirm(p_("Conference", "Are you sure you want to delete saved chain of name %{name}?")%{:name=>chains[sel.index][0]})
+ confirm(p_("Conference", "Are you sure you want to delete the saved chain named %{name}?")%{:name=>chains[sel.index][0]})
  chains.delete_at(sel.index)
  save.call
  rfr.call
@@ -2365,7 +2365,7 @@ wr+=[v[0].bytesize].pack("I")
    sel.update
    if sel.selected? && chains.size>0
      chain=chains[sel.index]
-     confirm(p_("Conference", "Are you sure you want to apply chain of name %{name}?")%{:name=>chain[0]}) {
+     confirm(p_("Conference", "Are you sure you want to apply the chain named %{name}?")%{:name=>chain[0]}) {
      while @vsts.size>0
        Conference.vst_remove(0, @userid)
 refresh

@@ -139,7 +139,7 @@ msgstr "Załaduj ostatni kod"
 
 #: src/eapi/common/console.rb:157
 msgctxt "EAPI_Common"
-msgid "Last codes"
+msgid "Code history"
 msgstr "Ostatnie kody"
 
 #: src/eapi/common/console.rb:203
@@ -149,7 +149,7 @@ msgstr "Czy na pewno chcesz opuścić konsolę?"
 
 #: src/eapi/common/license.rb:18
 msgctxt "EAPI_Common"
-msgid "License agreement"
+msgid "Licence agreement"
 msgstr "Licencja Użytkownika programu Elten"
 
 #: src/eapi/common/license.rb:19
@@ -164,32 +164,26 @@ msgstr "Polityka Prywatności"
 
 #: src/eapi/common/license.rb:21
 msgctxt "EAPI_Common"
-msgid "I do not accept, exit"
+msgid "Decline and exit"
 msgstr "Nie akceptuję, zamknij program"
 
 #: src/eapi/common/license.rb:21
 msgctxt "EAPI_Common"
-msgid ""
-"I accept Elten license agreement, Terms and Conditions and Privacy Policy"
+msgid "I accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy"
 msgstr ""
 "Akceptuję Umowę Licencyjną programu Elten, jego Regulamin oraz Politykę "
 "Prywatności"
 
 #: src/eapi/common/license.rb:39
 msgctxt "EAPI_Common"
-msgid ""
-"Do you accept Elten license agreement, terms and conditions and privacy "
-"policy?"
+msgid "Do you accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy?"
 msgstr ""
 "Czy akceptujesz Umowę Licencyjną programu Elten, jego Regulamin oraz "
 "Politykę Prywatności?"
 
 #: src/eapi/common/media.rb:21
 msgctxt "EAPI_Common"
-msgid ""
-"You are trying to play a midi file. In order to play such files, Elten needs "
-"an  external base of instruments. Do you want to download the base from the "
-"server  now? It may take several minutes."
+msgid "You are trying to play a MIDI file. Elten needs an external instrument sound bank to play MIDI files. Do you want to download it from the server now? This may take several minutes."
 msgstr ""
 "Próbujesz odtworzyć plik typu midi. Aby poprawnie odtwarzać pliki tego typu, "
 "program Elten wymaga zewnętrznej bazy brzmień instrumentów. Czy chcesz ją "
@@ -204,7 +198,7 @@ msgstr ""
 
 #: src/eapi/common/media.rb:24
 msgctxt "EAPI_Common"
-msgid "Soundfont downloaded succesfully."
+msgid "SoundFont downloaded successfully."
 msgstr "Baza brzmień midi została pobrana."
 
 #: src/eapi/common/premium.rb:24
@@ -229,9 +223,7 @@ msgstr "Reżyser"
 
 #: src/eapi/common/premium.rb:32
 msgctxt "EAPI_Common"
-msgid ""
-"This feature requires %{package} premium package. Would you like to see the "
-"premium packages available?"
+msgid "This feature requires the %{package} premium package. Would you like to see the available premium packages?"
 msgstr ""
 "Ta funkcja wymaga pakietu premium %{package}. Czy chcesz zobaczyć dostępne "
 "pakiety premium?"
@@ -273,7 +265,7 @@ msgstr "Śledź tablicę"
 
 #: src/eapi/common/user_menu.rb:112
 msgctxt "EAPI_Common"
-msgid "Feed unfollowed"
+msgid "You are no longer following this feed"
 msgstr "Tablica nie jest już śledzona"
 
 #: src/eapi/common/user_menu.rb:114
@@ -331,7 +323,7 @@ msgstr "Nie powiadamiaj już mnie, gdy ten użytkownik jest online"
 
 #: src/eapi/common/user_menu.rb:165
 msgctxt "EAPI_Common"
-msgid "Monitor when this user becomes online"
+msgid "Notify me when this user comes online"
 msgstr "Powiadom mnie, kiedy ten użytkownik będzie online"
 
 #: src/eapi/common/user_menu.rb:170
@@ -341,12 +333,12 @@ msgstr "Ten użytkownik nie jest już monitorowany"
 
 #: src/eapi/common/user_menu.rb:174
 msgctxt "EAPI_Common"
-msgid "Notify me one time when this user becomes online"
+msgid "Notify me once when this user comes online"
 msgstr "Powiadom mnie raz, gdy ten użytkownik będzie online"
 
 #: src/eapi/common/user_menu.rb:175
 msgctxt "EAPI_Common"
-msgid "Notify me whenever this user becomes online"
+msgid "Notify me whenever this user comes online"
 msgstr "Powiadom mnie za każdym razem, gdy ten użytkownik będzie online"
 
 #: src/eapi/common/user_menu.rb:177
@@ -361,12 +353,12 @@ msgstr "Ten użytkownik jest teraz monitorowany"
 
 #: src/eapi/common/user_menu.rb:185
 msgctxt "EAPI_Common"
-msgid "Remove from contacts' list"
+msgid "Remove from contact list"
 msgstr "Usuń z kontaktów"
 
 #: src/eapi/common/user_menu.rb:187
 msgctxt "EAPI_Common"
-msgid "Add to contacts' list"
+msgid "Add to contact list"
 msgstr "Dodaj do kontaktów"
 
 #: src/eapi/common/user_menu.rb:191
@@ -549,7 +541,7 @@ msgstr ""
 
 #: src/eapi/documents.rb:3
 msgctxt "License"
-msgid "Elten source code can be found at GitHub:"
+msgid "Elten source code can be found on GitHub:"
 msgstr "Kod źródłowy Eltena można znaleźć w serwisie GitHub:"
 
 #: src/eapi/documents.rb:3
@@ -582,7 +574,7 @@ msgstr ""
 
 #: src/eapi/documents.rb:684
 msgctxt "Documentation"
-msgid "Current Elten modifier"
+msgid "Current Invisible Interface modifier key"
 msgstr "Obecny modyfikator Eltena"
 
 #: src/eapi/eltensrv/attachments.rb:21 src/eapi/eltensrv/attachments.rb:28
@@ -688,7 +680,7 @@ msgstr "Załącznik został pobrany."
 
 #: src/eapi/eltensrv/bugs.rb:13
 msgctxt "EAPI_Common"
-msgid "Describe the found error"
+msgid "Describe the error you found"
 msgstr "Opisz znaleziony błąd"
 
 #: src/eapi/eltensrv/bugs.rb:13
@@ -944,7 +936,7 @@ msgstr "Moje &kontakty"
 
 #: src/eapi/mainmenu.rb:66
 msgctxt "MainMenu"
-msgid "Users who a&dded me to contacts"
+msgid "Users who a&dded me to their contact list"
 msgstr "Użytkownicy, którzy &dodali mnie do swoich kontaktów"
 
 #: src/eapi/mainmenu.rb:68
@@ -1024,7 +1016,7 @@ msgstr "U&stawienia programu"
 
 #: src/eapi/mainmenu.rb:93
 msgctxt "MainMenu"
-msgid "Soun&dthemes"
+msgid "Sound &themes"
 msgstr "Tematy &dźwiękowe"
 
 #: src/eapi/mainmenu.rb:94
@@ -1054,7 +1046,7 @@ msgstr "Załaduj niestandardowe tłumaczenie z plik&u"
 
 #: src/eapi/mainmenu.rb:100
 msgctxt "MainMenu"
-msgid "Select translations file"
+msgid "Select a translation file"
 msgstr "Wybierz plik z tłumaczeniami"
 
 #: src/eapi/mainmenu.rb:103
@@ -1099,7 +1091,7 @@ msgstr "P&rzeczytaj mnie"
 
 #: src/eapi/mainmenu.rb:115
 msgctxt "MainMenu"
-msgid "&License agreement"
+msgid "&Licence agreement"
 msgstr "&Licencja Użytkownika"
 
 #: src/eapi/mainmenu.rb:116
@@ -1119,7 +1111,7 @@ msgstr "Infor&macje o migracji do Eltena w wersji 2.4"
 
 #: src/eapi/mainmenu.rb:119
 msgctxt "MainMenu"
-msgid "List of &Invisible Interface hotkeys"
+msgid "List of &Invisible Interface keyboard shortcuts"
 msgstr "Skróty klawiszowe n&iewidzialnego interfejsu"
 
 #: src/eapi/mainmenu.rb:121
@@ -1174,7 +1166,7 @@ msgstr "Okno %{number}"
 
 #: src/eapi/network.rb:71
 msgctxt "EAPI_Network"
-msgid "The file already exists. Do you want to override it?"
+msgid "The file already exists. Do you want to overwrite it?"
 msgstr "Plik już istnieje. Czy chcesz go nadpisać?"
 
 #: src/eapi/notificationgroups.rb:152 src/eapi/notificationgroups.rb:378
@@ -1334,12 +1326,12 @@ msgstr "Używanie wybranej syntezy SAPI"
 
 #: src/eapi/quickactions.rb:129
 msgctxt "EAPI_Common"
-msgid "Do not disturb on"
+msgid "Do not disturb is on"
 msgstr "Włączono tryb \"nie przeszkadzać\""
 
 #: src/eapi/quickactions.rb:132
 msgctxt "EAPI_Common"
-msgid "Do not disturb off"
+msgid "Do not disturb is off"
 msgstr "Wyłączono tryb \"nie przeszkadzać\""
 
 #: src/eapi/quickactions.rb:139
@@ -1474,17 +1466,17 @@ msgstr "Konferencje: wycisz mikrofon"
 
 #: src/eapi/quickactions.rb:306
 msgctxt "EAPI_QuickActions"
-msgid "Conferences: switch push to talk"
+msgid "Conferences: switch push-to-talk"
 msgstr "Konferencje: przełącz funkcję Naciśnij i Mów"
 
 #: src/eapi/quickactions.rb:307
 msgctxt "EAPI_QuickActions"
-msgid "Conferences: roll a 6-sided dice"
+msgid "Conferences: roll a 6-sided die"
 msgstr "Konferencje: rzuć 6-ścienną kostką do gry"
 
 #: src/eapi/quickactions.rb:308
 msgctxt "EAPI_QuickActions"
-msgid "Conferences: roll a custom dice"
+msgid "Conferences: roll a custom die"
 msgstr "Konferencje: rzuć niestandardową kostką do gry"
 
 #: src/eapi/quickactions.rb:309
@@ -1554,7 +1546,7 @@ msgstr "równe"
 
 #: src/eapi/speech.rb:254
 msgctxt "EAPI_Speech"
-msgid "graav"
+msgid "grave"
 msgstr "akcent"
 
 #: src/eapi/speech.rb:256
@@ -1790,10 +1782,7 @@ msgstr "%{count} z %{maximum} znaków"
 
 #: src/platforms/windows/invisibleinterface/service.rb:232
 msgctxt "EAPI_UI"
-msgid ""
-"Errors occurred while trying to register keys for invisible interface. "
-"Please make sure that other apps do not use the keys specified. You can "
-"change modifier keys of invisible interface using settings window."
+msgid "Errors occurred while trying to register keyboard shortcuts for the Invisible Interface. Make sure that the specified shortcuts are not used by other applications. You can change the Invisible Interface modifier keys in the Settings window."
 msgstr ""
 "Wystąpił błąd podczas próby zarejestrowania skrótów klawiszowych dla "
 "niewidzialnego interfejsu. Upewnij się, że inne aplikacje nie używają "
@@ -1876,13 +1865,13 @@ msgstr "Mikrofon wyciszony"
 #: src/platforms/windows/invisibleinterface/service.rb:566
 #: src/scenes/conference.rb:1316
 msgctxt "Conference"
-msgid "Roll a 6-sided dice"
+msgid "Roll a 6-sided die"
 msgstr "Rzuć 6-ścienną kostką do gry"
 
 #: src/platforms/windows/invisibleinterface/service.rb:567
 #: src/scenes/conference.rb:1317
 msgctxt "Conference"
-msgid "Roll a custom dice"
+msgid "Roll a custom die"
 msgstr "Rzuć niestandardową kostką"
 
 #: src/platforms/windows/invisibleinterface/service.rb:570
@@ -1906,13 +1895,13 @@ msgstr "Usuń strumień"
 #: src/platforms/windows/invisibleinterface/service.rb:581
 #: src/scenes/conference.rb:1292
 msgctxt "Conference"
-msgid "Enable push to talk"
+msgid "Enable push-to-talk"
 msgstr "Włącz funkcję Naciśnij i Mów"
 
 #: src/platforms/windows/invisibleinterface/service.rb:581
 #: src/scenes/conference.rb:1293
 msgctxt "Conference"
-msgid "Disable push to talk"
+msgid "Disable push-to-talk"
 msgstr "Wyłącz funkcję Naciśnij i Mów"
 
 #: src/platforms/windows/invisibleinterface/service.rb:582
@@ -2184,7 +2173,7 @@ msgstr "Ukryj mój profil przed osobami z poza mojej listy kontaktów"
 
 #: src/scenes/account.rb:288
 msgctxt "Account"
-msgid "Prevent banned users from writing me private messages"
+msgid "Prevent banned users from sending me private messages"
 msgstr ""
 "Nie pozwalaj zbanowanym użytkownikom na wysyłanie mi prywatnych wiadomości"
 
@@ -2275,7 +2264,7 @@ msgstr "Nowi znajomi"
 
 #: src/scenes/account.rb:300
 msgctxt "Account"
-msgid "Friends' birthday"
+msgid "Friends' birthdays"
 msgstr "Urodziny znajomych"
 
 #: src/scenes/account.rb:300
@@ -2380,7 +2369,7 @@ msgstr "Repeat new password."
 
 #: src/scenes/account.rb:384
 msgctxt "Account"
-msgid "Fields: New Password and Repeat New Password have different values."
+msgid "The passwords do not match."
 msgstr "Pola: Nowe Hasło i Powtórz Nowe Hasło mają różne wartości."
 
 #: src/scenes/account.rb:389
@@ -2413,15 +2402,13 @@ msgstr "Adres e-mail został zmieniony."
 
 #: src/scenes/account.rb:428
 msgctxt "Account"
-msgid "Error, you must disable mail events reporting first."
+msgid "Error: you must disable email event reporting first."
 msgstr "Błąd, musisz najpierw wyłączyć raportowanie zdarzeń."
 
 #: src/scenes/account.rb:450 src/scenes/account.rb:492
 #: src/scenes/account.rb:601
 msgctxt "Account"
-msgid ""
-"An error occurred while authenticating the account. You might have provided "
-"an  incorrect password."
+msgid "An error occurred while verifying your account. You may have entered an incorrect password."
 msgstr ""
 "Wystąpił błąd podczas próby uwierzytelnienia konta. Prawdopodobnie podano "
 "błędne hasło."
@@ -2443,7 +2430,7 @@ msgstr "Komputer"
 
 #: src/scenes/account.rb:462
 msgctxt "Account"
-msgid "Auto log in tokens"
+msgid "Auto-login tokens"
 msgstr "Klucze automatycznego logowania"
 
 #: src/scenes/account.rb:464
@@ -2472,9 +2459,7 @@ msgstr "Odśwież"
 
 #: src/scenes/account.rb:480
 msgctxt "Account"
-msgid ""
-"Are you sure you want to remove all auto log in tokens and log out all "
-"sessions?  You will be logged off immediately."
+msgid "Are you sure you want to remove all auto-login tokens and log out of all sessions? You will be logged out immediately."
 msgstr ""
 "Czy jesteś pewien, że chcesz usunąć wszystkie klucze automatycznego "
 "logowania i wylogować wszystkie sesje? To konto zostanie natychmiast "
@@ -2535,7 +2520,7 @@ msgstr "Czy na pewno chcesz usunąć tego użytkownika z czarnej listy?"
 
 #: src/scenes/account.rb:574
 msgctxt "Account"
-msgid "A user has been removed from the black list."
+msgid "The user has been removed from the blacklist."
 msgstr "Użytkownik został usunięty z czarnej listy."
 
 #: src/scenes/account.rb:613
@@ -2545,10 +2530,7 @@ msgstr "Ostatnie logowania"
 
 #: src/scenes/account.rb:634
 msgctxt "Account"
-msgid ""
-"If you wish, you can configure Elten to report any changes and logins  on "
-"your account from new devices to you by E-mail. To do this, you must verify "
-"your E-mail address. Do you want to do it now?"
+msgid "You can configure Elten to notify you by email about changes to your account and logins from new devices. To do so, you must verify your email address. Do you want to verify it now?"
 msgstr ""
 "Jeśli chcesz, możesz skonfigurować Eltena tak, aby otrzymywać powiadomienia "
 "o wszystkich zmianach wprowadzanych na twoim koncie oraz nowych logowaniach "
@@ -2575,10 +2557,7 @@ msgstr "Włącz raportowanie zdarzeń"
 
 #: src/scenes/account.rb:655
 msgctxt "Account"
-msgid ""
-"Mail events reporting is disabled. If you wish, you can enable it to receive "
-"information about changes made on your account and logins from new devices "
-"via E-mail"
+msgid "Email event reporting is disabled. If you wish, you can enable it to receive information about changes to your account and logins from new devices by email."
 msgstr ""
 "Raportowanie zdarzeń jest wyłączone. Włącz je, aby otrzymywać powiadomienia "
 "o zmianach na twoim koncie oraz logowaniach z nowych urządzeń na swój adres "
@@ -2591,26 +2570,7 @@ msgstr "Raportowanie zdarzeń jest włączone."
 
 #: src/scenes/account.rb:687
 msgctxt "Account"
-msgid ""
-"Archiving your account will have the following effects:\n"
-"* An indication that the account is archived will be placed next to all "
-"posts on the forum.\n"
-"* The account will not be displayed in the users lists.\n"
-"* The account will be removed from all contact lists.\n"
-"* Users will not be able to send private messages to this account.\n"
-"* The profile (including status, visiting card and signature) will be "
-"removed from the server\n"
-"* You will be opted out off all groups you are not moderating or banned in\n"
-"* You will be opted out of all messages conversations\n"
-"* All information about threads followed by you, your pinned groups or "
-"marked threads will be removed\n"
-"\n"
-"Attention.\n"
-"Archiving an account does not mean deleting or hiding associated blogs or "
-"notes, this must be done manually before archiving.\n"
-"\n"
-"The account will be automatically unarchived the next time you log in, but "
-"removed data will not be restored.."
+msgid "Archiving your account will have the following effects:\n* An indication that the account is archived will appear next to all of its forum posts.\n* The account will not appear in user lists.\n* The account will be removed from all contact lists.\n* Users will not be able to send private messages to this account.\n* The profile, including the status, bio and signature, will be removed from the server.\n* You will leave all groups that you do not moderate and from which you are not banned.\n* You will leave all message conversations.\n* All information about threads you follow, groups you have pinned and threads you have marked will be removed.\n\nWarning:\nArchiving an account does not delete or hide its blogs or notes. You must do this manually before archiving the account.\n\nThe account will be unarchived automatically the next time you log in, but the removed data will not be restored."
 msgstr ""
 "Zarchiwizowanie konta będzie miało następujące skutki:\n"
 "* Informacja, że konto jest zarchiwizowane zostanie umieszczona przy "
@@ -2704,7 +2664,7 @@ msgstr "Zamknij"
 
 #: src/scenes/account.rb:768
 msgctxt "Account"
-msgid "Data export enqueued"
+msgid "Data export queued for processing"
 msgstr "Zlecono eksport danych"
 
 #: src/scenes/account.rb:803
@@ -2739,7 +2699,7 @@ msgstr "Administratorzy Społeczności"
 
 #: src/scenes/admins.rb:16
 msgctxt "Admins"
-msgid "Recommended groups Moderators"
+msgid "Moderators of recommended groups"
 msgstr "Moderatorzy grup rekomendowanych"
 
 #: src/scenes/admins.rb:16
@@ -2813,10 +2773,7 @@ msgstr ""
 
 #: src/scenes/authentication.rb:37
 msgctxt "Authentication"
-msgid ""
-"Two-factor authentication was introduced in Elten 2.28. After activating it, "
-"it  will not be possible to log in from the older versions of the program. "
-"DO you  wish to continue anyway?"
+msgid "Two-factor authentication was introduced in Elten 2.28. After activating it, you will not be able to log in using older versions of the program. Do you wish to continue anyway?"
 msgstr ""
 "Uwierzytelnianie dwuetapowe zostało wprowadzone w Eltenie 2.28. Po "
 "aktywowaniu go, zalogowanie się ze starszych wersji programu nie będzie "
@@ -2859,9 +2816,7 @@ msgstr "Usługa SMS jest tymczasowo niedostępna. Spróbuj ponownie później."
 
 #: src/scenes/authentication.rb:65
 msgctxt "Authentication"
-msgid ""
-"On the phone number indicated, you will receive a text message with the "
-"code  activating two-factor authentication. Enter this code"
+msgid "A text message containing the code to activate two-factor authentication will be sent to the phone number you provided. Enter the code."
 msgstr ""
 "Na wskazany numer telefonu otrzymasz wiadomość SMS z kodem aktywującym "
 "uwierzytelnianie dwuetapowe. Wprowadź ten kod"
@@ -3008,7 +2963,7 @@ msgstr "Ban ważny do"
 
 #: src/scenes/ban.rb:119
 msgctxt "Ban"
-msgid "The ban cancel reason"
+msgid "Reason for lifting the ban"
 msgstr "Przyczyna anulowania bana"
 
 #: src/scenes/ban.rb:119
@@ -3053,7 +3008,7 @@ msgstr "Blogi popularne wśród moich znajomych"
 
 #: src/scenes/blog.rb:13
 msgctxt "Blog"
-msgid "Open external wordpress blog"
+msgid "Open an external WordPress blog"
 msgstr "Otwórz zewnętrzny blog Wordpress"
 
 #: src/scenes/blog.rb:13
@@ -3148,7 +3103,7 @@ msgstr "Nowa kategoria"
 
 #: src/scenes/blog.rb:233
 msgctxt "Blog"
-msgid "You do not have any blog. Do you want to create one?"
+msgid "You do not have a blog. Do you want to create one?"
 msgstr "Nie posiadasz bloga. Czy chcesz go założyć?"
 
 #: src/scenes/blog.rb:238
@@ -3184,7 +3139,7 @@ msgstr "Brak nowych komentarzy na twoim blogu."
 
 #: src/scenes/blog.rb:308
 msgctxt "Blog"
-msgid "No new comments to followed blog posts."
+msgid "No new comments on blog posts you follow."
 msgstr "Brak nowych komentarzy do śledzonych wpisów na blogach."
 
 #: src/scenes/blog.rb:312
@@ -3298,7 +3253,7 @@ msgstr "Usuń ze śledzonych wpisów"
 
 #: src/scenes/blog.rb:533 src/scenes/blog.rb:771
 msgctxt "Blog"
-msgid "Post unfollowed"
+msgid "You are no longer following this post"
 msgstr "Wpis nie jest już śledzony"
 
 #: src/scenes/blog.rb:536 src/scenes/blog.rb:774
@@ -3378,12 +3333,12 @@ msgstr "Pokaż wzmiankę"
 
 #: src/scenes/blog.rb:742
 msgctxt "Blog"
-msgid "Mention by %{user}"
+msgid "Mention from %{user}"
 msgstr "Wzmianka od %{user}"
 
 #: src/scenes/blog.rb:744
 msgctxt "Blog"
-msgid "Send reply to mentioner"
+msgid "Reply to the user who mentioned you"
 msgstr "Odpowiedz na wzmiankę"
 
 #: src/scenes/blog.rb:779
@@ -3433,32 +3388,32 @@ msgstr "Ostatni wpis"
 
 #: src/scenes/blog.rb:904 src/scenes/blog.rb:1114
 msgctxt "Blog"
-msgid "Coworkers"
+msgid "Contributors"
 msgstr "Redaktorzy"
 
 #: src/scenes/blog.rb:908
 msgctxt "Blog"
-msgid "Add coworker"
+msgid "Add contributor"
 msgstr "Dodaj redaktora"
 
 #: src/scenes/blog.rb:909
 msgctxt "Blog"
-msgid "What user you want to add to this blog?"
+msgid "Which user do you want to add to this blog?"
 msgstr "Kogo chcesz dodać do tego bloga?"
 
 #: src/scenes/blog.rb:919
 msgctxt "Blog"
-msgid "Delete coworker"
+msgid "Remove contributor"
 msgstr "Usuń redaktora"
 
 #: src/scenes/blog.rb:920
 msgctxt "Blog"
-msgid "Are you sure you want to release this coworker?"
+msgid "Are you sure you want to remove this contributor?"
 msgstr "Czy jesteś pewien, że chcesz usunąć tego redaktora?"
 
 #: src/scenes/blog.rb:940
 msgctxt "Blog"
-msgid "Are you sure you want to delete blog %{name}?"
+msgid "Are you sure you want to delete the blog %{name}?"
 msgstr "Czy na pewno chcesz usunąć blog %{name}?"
 
 #: src/scenes/blog.rb:941
@@ -3537,7 +3492,7 @@ msgstr "Opuść"
 
 #: src/scenes/blog.rb:1119
 msgctxt "Blog"
-msgid "Are you sure you want to stop co-creating this blog?"
+msgid "Are you sure you want to stop contributing to this blog?"
 msgstr "Czy jesteś pewien, że chcesz opuścić redakcję tego bloga?"
 
 #: src/scenes/blog.rb:1125
@@ -3567,10 +3522,7 @@ msgstr "Dodaj do śledzonych blogów"
 
 #: src/scenes/blog.rb:1156
 msgctxt "Blog"
-msgid ""
-"This blog has been added to followed blogs. Do you want to mark all the "
-"posts published so far on it as read so that you don't see them in \"What's "
-"New\"?"
+msgid "You are now following this blog. Do you want to mark all of its existing posts as read so that they do not appear in What's New?"
 msgstr ""
 "Ten blog został dodany do śledzonych blogów. Czy chcesz oznaczyć wszystkie "
 "dotychczas opublikowane na nim wpisy jako przeczytane, aby nie pokazywały "
@@ -3662,12 +3614,12 @@ msgstr "Ukryj blogi w nieznanych językach"
 
 #: src/scenes/blog.rb:1266
 msgctxt "Blog"
-msgid "Wordpress user login"
+msgid "WordPress username"
 msgstr "Nazwa konta Wordpress"
 
 #: src/scenes/blog.rb:1267
 msgctxt "Blog"
-msgid "Set new Wordpress password"
+msgid "Set new WordPress password"
 msgstr "Ustaw nowe hasło do konta Wordpress"
 
 #: src/scenes/blog.rb:1268
@@ -3682,7 +3634,7 @@ msgstr "Nazwisko"
 
 #: src/scenes/blog.rb:1270
 msgctxt "Blog"
-msgid "Nick"
+msgid "Nickname"
 msgstr "Pseudonim"
 
 #: src/scenes/blog.rb:1271
@@ -3702,17 +3654,17 @@ msgstr "Hasło Twojego Eltenowego konta"
 
 #: src/scenes/blog.rb:1307
 msgctxt "Blog"
-msgid "New Wordpress password"
+msgid "New WordPress password"
 msgstr "Nowe hasło Wordpress"
 
 #: src/scenes/blog.rb:1310
 msgctxt "Blog"
-msgid "Repeat new Wordpress password"
+msgid "Repeat new WordPress password"
 msgstr "Powtórz hasło Wordpress"
 
 #: src/scenes/blog.rb:1314
 msgctxt "Blog"
-msgid "Wordpress password must be at least 6 characters long."
+msgid "WordPress password must be at least 6 characters long."
 msgstr "Hasło Wordpress musi składać się z conajmniej 6 znaków."
 
 #: src/scenes/blog.rb:1319
@@ -3803,14 +3755,14 @@ msgstr "Przez wszystkich odwiedzających"
 
 #: src/scenes/blog.rb:1602
 msgctxt "Blog"
-msgid "By all visitors, but I must commit first comment of the specific person"
+msgid "By all visitors, but I must approve each person's first comment"
 msgstr ""
 "Przez wszystkich odwiedzających, ale muszę zatwierdzić pierwszy komentarz "
 "każdej osoby"
 
 #: src/scenes/blog.rb:1602
 msgctxt "Blog"
-msgid "By all visitors, but I must commit all of them"
+msgid "By all visitors, but I must approve every comment"
 msgstr "Przez wszystkich odwiedzających, ale muszę zatwierdzić każdy z nich"
 
 #: src/scenes/blog.rb:1602
@@ -3820,22 +3772,22 @@ msgstr "Tylko przez użytkowników Eltena"
 
 #: src/scenes/blog.rb:1603
 msgctxt "Blog"
-msgid "Disable commenting of older posts"
+msgid "Disable commenting on older posts"
 msgstr "Automatycznie wyłącz komentowanie starszych wpisów"
 
 #: src/scenes/blog.rb:1604
 msgctxt "Blog"
-msgid "Days after commenting of a post will be disabled"
+msgid "Number of days after which commenting on a post will be disabled"
 msgstr "Dni, po których komentowanie wpisu zostanie wyłączone"
 
 #: src/scenes/blog.rb:1605
 msgctxt "Blog"
-msgid "Allow comments threading"
+msgid "Allow threaded comments"
 msgstr "Zezwól na wątkowanie komentarzy"
 
 #: src/scenes/blog.rb:1606
 msgctxt "Blog"
-msgid "Max comments thread depth"
+msgid "Maximum comment thread depth"
 msgstr "Maksymalna głębokość wątku"
 
 #: src/scenes/blog.rb:1607
@@ -3865,7 +3817,7 @@ msgstr "Komentarze na stronę"
 
 #: src/scenes/blog.rb:1610
 msgctxt "Blog"
-msgid "Firstly display"
+msgid "Display first"
 msgstr "Na początku wyświetl"
 
 #: src/scenes/blog.rb:1610
@@ -3931,7 +3883,7 @@ msgstr "Ustawienie niestandardowe"
 
 #: src/scenes/blog.rb:1679
 msgctxt "Blog"
-msgid "Links format"
+msgid "Link format"
 msgstr "Format łączy do wpisów"
 
 #: src/scenes/blog.rb:1680
@@ -4035,12 +3987,12 @@ msgstr ""
 
 #: src/scenes/blog.rb:1727
 msgctxt "Blog"
-msgid "My Wordpress account"
+msgid "My WordPress account"
 msgstr "Moje konto Wordpress"
 
 #: src/scenes/blog.rb:1728
 msgctxt "Blog"
-msgid "Open Wordpress admin panel in my browser"
+msgid "Open WordPress admin panel in my browser"
 msgstr "Otwórz panel administracyjny Wordpress w mojej przeglądarce"
 
 #: src/scenes/blog.rb:1739
@@ -4055,11 +4007,7 @@ msgstr "Zarządzaj domeną bloga"
 
 #: src/scenes/blog.rb:1743
 msgctxt "Blog"
-msgid ""
-"Blog settings have been changed. If you continue to domain change, mades you "
-"changed will be lost. Do you want to continue anyway? If you want to store "
-"new settings, select No and then Apply them before proceeding with domain "
-"change."
+msgid "The blog settings have been changed. If you continue with the domain change, your changes will be lost. Do you want to continue anyway? To save the new settings, select No, then select Apply before changing the domain."
 msgstr ""
 "Ustawienia bloga zostały zmienione. Jeśli będziesz kontynuować zmianę "
 "domeny, wprowadzone zmiany zostaną utracone. Czy mimo to chcesz kontynuować? "
@@ -4097,12 +4045,12 @@ msgstr "Tytuł wpisu"
 
 #: src/scenes/blog.rb:1975
 msgctxt "Blog"
-msgid "Formattable editor"
+msgid "Rich-text editor"
 msgstr "Edytor z formatowaniem"
 
 #: src/scenes/blog.rb:1975
 msgctxt "Blog"
-msgid "Source Editor (HTML and Wordpress Shortcodes)"
+msgid "Source editor (HTML and WordPress shortcodes)"
 msgstr "Edytor źródłowy (HTML i tagi Wordpress)"
 
 #: src/scenes/blog.rb:1975
@@ -4162,7 +4110,7 @@ msgstr "Data publikacji"
 
 #: src/scenes/blog.rb:1984
 msgctxt "Blog"
-msgid "Allow users to comment this post"
+msgid "Allow users to comment on this post"
 msgstr "Pozwól na komentowanie tego wpisu"
 
 #: src/scenes/blog.rb:1990
@@ -4182,7 +4130,7 @@ msgstr "Tag do dodania"
 
 #: src/scenes/blog.rb:2014
 msgctxt "Blog"
-msgid "This tag does not exist, do you want to create it now?"
+msgid "This tag does not exist. Do you want to create it now?"
 msgstr "Taki tag nie istnieje. Czy chcesz go utworzyć?"
 
 #: src/scenes/blog.rb:2029
@@ -4202,7 +4150,7 @@ msgstr "Nie wybrano daty publikacji"
 
 #: src/scenes/blog.rb:2139
 msgctxt "Blog"
-msgid "Selected publication date that is in the past"
+msgid "The selected publication date is in the past"
 msgstr "Wybrano datę publikacji z przeszłości"
 
 #: src/scenes/blog.rb:2200
@@ -4212,7 +4160,7 @@ msgstr "Wpis został dodany."
 
 #: src/scenes/blog.rb:2210
 msgctxt "Blog"
-msgid "There are currently no tags created, please add a new one."
+msgid "No tags have been created yet. Please add a new one."
 msgstr "Obecnie nie ma utworzonych żadnych tagów, dodaj nowy z poziomu menu."
 
 #: src/scenes/blog.rb:2213
@@ -4342,12 +4290,12 @@ msgstr ""
 
 #: src/scenes/blog.rb:2501
 msgctxt "Blog"
-msgid "Only first level subdomains are allowed"
+msgid "Only first-level subdomains are allowed"
 msgstr "Tylko domeny pierwszego poziomu są dozwolone"
 
 #: src/scenes/blog.rb:2505
 msgctxt "Blog"
-msgid "Blog subdomain must be at least 3 characters long"
+msgid "The blog subdomain must be at least 3 characters long"
 msgstr "Subdomena bloga musi zawierać przynajmniej trzy znaki"
 
 #: src/scenes/blog.rb:2510
@@ -4362,11 +4310,7 @@ msgstr "Wprowadzona domena jest niepoprawna"
 
 #: src/scenes/blog.rb:2520
 msgctxt "Blog"
-msgid ""
-"Warning! If you change your blog URL, some links may stop working. If you "
-"directly linked posts or other resources on your blog, they would no longer "
-"be available at previous URLs. In such case you will be required to fix them "
-"manually. Are you sure you want to continue?"
+msgid "Warning! If you change your blog URL, some links may stop working. Direct links to posts or other resources on your blog will no longer work at their previous URLs. You will need to update them manually. Are you sure you want to continue?"
 msgstr ""
 "Uwaga! Jeśli zmienisz adres URL swojego bloga, niektóre linki mogą przestać "
 "działać. Jeśli bezpośrednio wskazano w odnośnikach posty lub inne zasoby na "
@@ -4380,33 +4324,7 @@ msgstr "Domena bloga została zmieniona"
 
 #: src/scenes/blog.rb:2547
 msgctxt "Blog"
-msgid ""
-"You should now configure your purchased domain to redirect to Elten blogging "
-"server. Below are the necessary details. If you have any problems, please "
-"feel free to ask questions in the forum.\n"
-"      \n"
-"      Wherever possible, we recommend that you use the CNAME record, as it "
-"does not need to be edited if the IP address of the server hosting your blog "
-"changes. Your blog's IP address may change, for example, due to a Elten "
-"Blogging Server migration. By configuring your domain's CNAME record, you "
-"don't need to do anything else.\n"
-"      To do this, please point your cname record to destination \"%{host}."
-"\"\n"
-"      \n"
-"      Unfortunately, many domain registrars do not support the CNAME record "
-"for top-level domains, so you may want to use the A record instead.\n"
-"      In such a case, please point the A record to IP address:\n"
-"%{ip}\n"
-".\n"
-"\n"
-"Please note that redirecting your domain is not aliasing and setting aliases "
-"or HTTP 301/ 3xx redirections will not work.\n"
-"\n"
-"You can get detailed description from your domain provider, for example at:\n"
-"https://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-"
-"Familiar-with-DNS\n"
-"\n"
-"Once completed, please continue."
+msgid "Configure your domain to point to the Elten Blogging server using the details below. If you have any problems, ask for help on the forum.\n\nWhere possible, we recommend using a CNAME record because it does not need to be updated if the IP address of the server hosting your blog changes, for example during an Elten Blogging server migration. Point the CNAME record to %{host}.\n\nMany domain registrars do not support CNAME records for apex domains. In that case, use an A record and point it to the following IP address:\n%{ip}\n\nPointing a domain is not the same as configuring an alias or an HTTP 301/3xx redirect; aliases and HTTP redirects will not work.\n\nDetailed instructions are available from your domain provider, for example at:\nhttps://support.us.ovhcloud.com/hc/en-us/articles/115001994890-Getting-Familiar-with-DNS\n\nOnce you have finished, continue."
 msgstr ""
 "Powinieneś teraz skonfigurować zakupioną domenę, aby przekierować ją na "
 "serwer blogowy Eltena. Poniżej znajdują się niezbędne szczegóły. Jeśli masz "
@@ -4443,14 +4361,12 @@ msgstr "Ustawianie domeny"
 
 #: src/scenes/blog.rb:2565
 msgctxt "Blog"
-msgid "Ready, take me next"
+msgid "Done, continue"
 msgstr "Gotowe, idźmy dalej"
 
 #: src/scenes/blog.rb:2582
 msgctxt "Blog"
-msgid ""
-"Your domain is not pointing to Elten Blogs, please try again or wait a while "
-"to refresh DNS. It may take up to 24 hours to perform full DNS update."
+msgid "Your domain does not point to Elten Blogs. Try again, or wait for the DNS changes to propagate. Full DNS propagation may take up to 24 hours."
 msgstr ""
 "Twoja domena nie wskazuje na serwer blogowy Eltena, spróbuj ponownie lub "
 "poczekaj chwilę, aby odświeżyć DNS. Wykonanie pełnej aktualizacji DNS może "
@@ -4458,8 +4374,7 @@ msgstr ""
 
 #: src/scenes/blog.rb:2584
 msgctxt "Blog"
-msgid ""
-"Your domain is pointing to Elten blogs, but www prefix is not. Please fix it."
+msgid "Your domain points to Elten Blogs, but the www subdomain does not. Please fix it."
 msgstr "Twoja domena wskazuje na Eltenowe blogi, ale alias www nie."
 
 #: src/scenes/calendar.rb:9 src/scenes/calendar.rb:399
@@ -4570,7 +4485,7 @@ msgstr "Wpisz nazwę wydarzenia"
 
 #: src/scenes/calendar.rb:109
 msgctxt "Calendar"
-msgid "Select both the start and end date"
+msgid "Select both a start date and an end date"
 msgstr "Wybierz daty rozpoczęcia i zakończenia"
 
 #: src/scenes/calendar.rb:128
@@ -4625,7 +4540,7 @@ msgstr "Nadchodzące wydarzenia"
 
 #: src/scenes/calendar.rb:290 src/scenes/calendar.rb:521
 msgctxt "Calendar"
-msgid "Calendars Management"
+msgid "Calendar management"
 msgstr "Zarządzanie kalendarzami"
 
 #: src/scenes/calendar.rb:304
@@ -4764,7 +4679,7 @@ msgstr "Wpisz nazwę kalendarza"
 
 #: src/scenes/calendar.rb:636
 msgctxt "Calendar"
-msgid "Do you really want to delete calendar %{name} and all its events?"
+msgid "Do you really want to delete the calendar %{name} and all its events?"
 msgstr ""
 "Czy na pewno chcesz usunąć kalendarz %{name} wraz ze wszystkimi jego "
 "wydarzeniami?"
@@ -4774,7 +4689,7 @@ msgstr ""
 #| msgctxt "Calendar"
 #| msgid "Do you really want to delete %{name}?"
 msgctxt "Calendar"
-msgid "Do you really want to leave calendar %{name}?"
+msgid "Do you really want to leave the calendar %{name}?"
 msgstr "Czy na pewno chcesz usunąć wydarzenie „%{name}”?"
 
 #: src/scenes/calendar.rb:658
@@ -4969,12 +4884,12 @@ msgstr "Zamknij"
 
 #: src/scenes/conference.rb:47
 msgctxt "Conference"
-msgid "Use arrows to move in the channel space"
+msgid "Use the arrow keys to move around the channel space"
 msgstr "Użyj strzałek, aby poruszać się w przestrzeni kanału"
 
 #: src/scenes/conference.rb:48
 msgctxt "Conference"
-msgid "Use shift with left/right arrows to rotate"
+msgid "Use Shift+Left/Right Arrow to rotate"
 msgstr "Użyj shift i strzałek lewo/prawo, aby się obracać"
 
 #: src/scenes/conference.rb:59
@@ -5070,7 +4985,7 @@ msgstr "Odczytaj aktualną pozycję"
 
 #: src/scenes/conference.rb:145
 msgctxt "Conference"
-msgid "Hold spacebar to whisper to user"
+msgid "Hold the Space bar to whisper to the user"
 msgstr "Przytrzymaj spację, aby wyszeptać do użytkownika"
 
 #: src/scenes/conference.rb:149
@@ -5155,8 +5070,8 @@ msgstr "OK"
 
 #: src/scenes/conference.rb:259
 msgctxt "Conference"
-msgid "%{user} has rolled %{value} dot on a %{count}-sided dice"
-msgid_plural "%{user} has rolled %{value} dots on a %{count}-sided dice"
+msgid "%{user} has rolled a %{value} on a %{count}-sided die"
+msgid_plural "%{user} has rolled a %{value} on a %{count}-sided die"
 msgstr[0] "%{user} wyrzuca %{value} oczko na %{count}-ściennej kostce"
 msgstr[1] "%{user} wyrzuca %{value} oczka na %{count}-ściennej kostce"
 msgstr[2] "%{user} wyrzuca %{value} oczek na %{count}-ściennej kostce"
@@ -5226,7 +5141,7 @@ msgstr "Obserwuj"
 
 #: src/scenes/conference.rb:406
 msgctxt "Conference"
-msgid "Channel followed"
+msgid "You are now following this channel"
 msgstr "Kanał jest teraz obserwowany"
 
 #: src/scenes/conference.rb:411
@@ -5236,7 +5151,7 @@ msgstr "Przestań obserwować"
 
 #: src/scenes/conference.rb:413
 msgctxt "Conference"
-msgid "Channel unfollowed"
+msgid "You are no longer following this channel"
 msgstr "Kanał nie jest już obserwowany"
 
 #: src/scenes/conference.rb:419 src/scenes/conference.rb:443
@@ -5261,7 +5176,7 @@ msgstr "Język"
 
 #: src/scenes/conference.rb:424
 msgctxt "Conference"
-msgid "Followers count: "
+msgid "Number of followers: "
 msgstr "Liczba śledzących: "
 
 #: src/scenes/conference.rb:425
@@ -5276,7 +5191,7 @@ msgstr "Na tym kanale jest włączona poczekalnia."
 
 #: src/scenes/conference.rb:428
 msgctxt "Conference"
-msgid "Room id"
+msgid "Room ID"
 msgstr "ID pokoju"
 
 #: src/scenes/conference.rb:429
@@ -5296,7 +5211,7 @@ msgstr "Rozmiar ramki"
 
 #: src/scenes/conference.rb:434 src/scenes/conference.rb:585
 msgctxt "Conference"
-msgid "Space Virtualization"
+msgid "Spatial audio mode"
 msgstr "Wirtualizacja przestrzeni"
 
 #: src/scenes/conference.rb:441 src/scenes/conference.rb:585
@@ -5497,7 +5412,7 @@ msgstr "Uczyń ten kanał ukrytym"
 
 #: src/scenes/conference.rb:595
 msgctxt "Conference"
-msgid "Store as permanent channel"
+msgid "Make this a permanent channel"
 msgstr "Zachowaj jako kanał stały"
 
 #: src/scenes/conference.rb:596
@@ -5643,7 +5558,7 @@ msgstr "Nazwa pliku"
 
 #: src/scenes/conference.rb:901 src/scenes/conference.rb:928
 msgctxt "Conference"
-msgid "Saving began"
+msgid "Saving started"
 msgstr "Rozpoczęto zapisywanie"
 
 #: src/scenes/conference.rb:910 src/scenes/conference.rb:937
@@ -5670,12 +5585,12 @@ msgstr "Prawy"
 
 #: src/scenes/conference.rb:975
 msgctxt "Conference"
-msgid "Set push to talk shortcut"
+msgid "Set push-to-talk shortcut"
 msgstr "Ustaw skrót dla funkcji Naciśnij i mów"
 
 #: src/scenes/conference.rb:977
 msgctxt "Conference"
-msgid "Push to talk shortcut"
+msgid "Push-to-talk shortcut"
 msgstr "Skrót dla funkcji Naciśnij i Mów"
 
 #: src/scenes/conference.rb:986
@@ -5731,18 +5646,18 @@ msgstr "Status"
 
 #: src/scenes/conference.rb:1091
 msgctxt "Conference"
-msgid "Remove soundcard stream"
+msgid "Remove sound card stream"
 msgstr "Usuń strumień karty dźwiękowej"
 
 #: src/scenes/conference.rb:1104
 msgctxt "Conference"
-msgid "Stream from soundcard"
+msgid "Stream from sound card"
 msgstr "Strumieniuj kartę dźwiękową"
 
 #: src/scenes/conference.rb:1109 src/scenes/conference.rb:1767
 #: src/scenes/conference.rb:1917
 msgctxt "Conference"
-msgid "Select soundcard to stream"
+msgid "Select sound card to stream"
 msgstr "Wybierz kartę dźwiękową do strumieniowania"
 
 #: src/scenes/conference.rb:1109 src/scenes/conference.rb:1767
@@ -5753,7 +5668,7 @@ msgstr "Urządzenie loopback"
 
 #: src/scenes/conference.rb:1110 src/scenes/conference.rb:1768
 msgctxt "Conference"
-msgid "Turn on the listening"
+msgid "Monitor this input"
 msgstr "Włącz odsłuch"
 
 #: src/scenes/conference.rb:1111
@@ -5865,7 +5780,7 @@ msgstr "Strumieniowanie"
 
 #: src/scenes/conference.rb:1271
 msgctxt "Conference"
-msgid "Change volumes"
+msgid "Adjust volumes"
 msgstr "Zmiana głośności"
 
 #: src/scenes/conference.rb:1275
@@ -5890,17 +5805,17 @@ msgstr "Zachowaj oddzielne strumienie (funkcja eksperymentalna)"
 
 #: src/scenes/conference.rb:1290
 msgctxt "Conference"
-msgid "Push to talk"
+msgid "Push-to-talk"
 msgstr "Naciśnij i Mów"
 
 #: src/scenes/conference.rb:1297
 msgctxt "Conference"
-msgid "Push to talk disabled"
+msgid "Push-to-talk disabled"
 msgstr "Wyłączono naciśnij i Mów"
 
 #: src/scenes/conference.rb:1299
 msgctxt "Conference"
-msgid "Push to talk enabled"
+msgid "Push-to-talk enabled"
 msgstr "Włączono naciśnij i Mów"
 
 #: src/scenes/conference.rb:1315
@@ -5915,17 +5830,17 @@ msgstr "Pokaż status"
 
 #: src/scenes/conference.rb:1322
 msgctxt "Conference"
-msgid "Change output soundcard"
+msgid "Change output sound card"
 msgstr "Zmień kartę dźwiękową wyjścia konferencji"
 
 #: src/scenes/conference.rb:1324
 msgctxt "Conference"
-msgid "Use Elten soundcard"
+msgid "Use Elten sound card"
 msgstr "Użyj karty dźwiękowej Eltena"
 
 #: src/scenes/conference.rb:1327
 msgctxt "Conference"
-msgid "Select soundcard"
+msgid "Select sound card"
 msgstr "Wybierz kartę dźwiękową"
 
 #: src/scenes/conference.rb:1328
@@ -6070,7 +5985,7 @@ msgstr "Pokaż źródła"
 
 #: src/scenes/conference.rb:1639
 msgctxt "Conference"
-msgid "Locally mute"
+msgid "Mute locally"
 msgstr "Wycisz lokalnie"
 
 #: src/scenes/conference.rb:1640
@@ -6080,12 +5995,12 @@ msgstr "Wyłącz lokalne wyciszenie"
 
 #: src/scenes/conference.rb:1645
 msgctxt "Conference"
-msgid "Locally unmuted"
+msgid "Unmuted locally"
 msgstr "Lokalne wyciszenie wyłączono"
 
 #: src/scenes/conference.rb:1647
 msgctxt "Conference"
-msgid "Locally muted"
+msgid "Muted locally"
 msgstr "Lokalnie wyciszono"
 
 #: src/scenes/conference.rb:1670 src/scenes/conference.rb:1849
@@ -6128,7 +6043,7 @@ msgstr "Adres URL strumienia"
 
 #: src/scenes/conference.rb:1762
 msgctxt "Conference"
-msgid "New soundcard stream"
+msgid "New sound card stream"
 msgstr "Nowy strumień z karty dźwiękowej"
 
 #: src/scenes/conference.rb:1814
@@ -6158,7 +6073,7 @@ msgstr "Dodaj strumień z Internetu"
 
 #: src/scenes/conference.rb:1912
 msgctxt "Conference"
-msgid "Add soundcard"
+msgid "Add sound card"
 msgstr "Dodaj kartę dźwiękową"
 
 #: src/scenes/conference.rb:1953 src/scenes/conference.rb:1967
@@ -6173,7 +6088,7 @@ msgstr "Stan"
 
 #: src/scenes/conference.rb:1953
 msgctxt "Conference"
-msgid "VST Plugins"
+msgid "VST plug-ins"
 msgstr "Wtyczki VST"
 
 #: src/scenes/conference.rb:1967
@@ -6298,7 +6213,7 @@ msgstr "Dodaj VST"
 
 #: src/scenes/conference.rb:2157
 msgctxt "Conference"
-msgid "Select VST version 2 file to be loaded"
+msgid "Select a VST2 plug-in file to load"
 msgstr "Wybierz plik VST2, który ma zostać załadowany"
 
 #: src/scenes/conference.rb:2163
@@ -6333,7 +6248,7 @@ msgstr "Zapisane łańcuchy"
 
 #: src/scenes/conference.rb:2303
 msgctxt "Conference"
-msgid "Are you sure you want to delete saved chain of name %{name}?"
+msgid "Are you sure you want to delete the saved chain named %{name}?"
 msgstr "Czy na pewno chcesz usunąć zapisany łańcuch o nazwie %{name}?"
 
 #: src/scenes/conference.rb:2309
@@ -6348,7 +6263,7 @@ msgstr "Łańcuch VST"
 
 #: src/scenes/conference.rb:2326
 msgctxt "Conference"
-msgid "Are you sure you want to apply chain of name %{name}?"
+msgid "Are you sure you want to apply the chain named %{name}?"
 msgstr "Czy na pewno chcesz zastosować łańcuch o nazwie %{name}?"
 
 #: src/scenes/conference.rb:2339
@@ -6383,17 +6298,17 @@ msgstr "Nowy Kontakt"
 
 #: src/scenes/contacts.rb:105
 msgctxt "Contacts"
-msgid "Enter the name of the user you want to add to your contacts' list."
+msgid "Enter the name of the user you want to add to your contact list."
 msgstr "Podaj nazwę użytkownika, którego chcesz dodać do swoich kontaktów."
 
 #: src/scenes/contacts.rb:125
 msgctxt "Contacts"
-msgid "Contact was added."
+msgid "The contact has been added."
 msgstr "Kontakt został dodany."
 
 #: src/scenes/contacts.rb:134
 msgctxt "Contacts"
-msgid "This user is already added to your contacts' list."
+msgid "This user is already in your contact list."
 msgstr "Ten użytkownik jest już dodany do twoich kontaktów."
 
 #: src/scenes/contacts.rb:137 src/scenes/contacts.rb:175
@@ -6403,17 +6318,17 @@ msgstr "Użytkownik o podanej nazwie nie istnieje."
 
 #: src/scenes/contacts.rb:152
 msgctxt "Contacts"
-msgid "Type a username which you want to remove from your contact list."
+msgid "Enter the username of the person you want to remove from your contact list."
 msgstr "Podaj nazwę użytkownika, którego chcesz usunąć ze swoich kontaktów."
 
 #: src/scenes/contacts.rb:163
 msgctxt "Contacts"
-msgid "Contact has been deleted."
+msgid "The contact has been deleted."
 msgstr "Kontakt został usunięty."
 
 #: src/scenes/contacts.rb:172
 msgctxt "Contacts"
-msgid "This user is not added to your contacts' list."
+msgid "This user is not in your contact list."
 msgstr "Ten użytkownik nie jest dodany do twoich kontaktów."
 
 #: src/scenes/debug.rb:9
@@ -6433,7 +6348,7 @@ msgstr "OK"
 
 #: src/scenes/documentation.rb:10
 msgctxt "Documentation"
-msgid "License agreement"
+msgid "Licence agreement"
 msgstr "Licencja Użytkownika programu Elten"
 
 #: src/scenes/documentation.rb:13
@@ -6536,12 +6451,7 @@ msgstr "Wiadomość"
 
 #: src/scenes/forgotpassword.rb:11
 msgctxt "ForgotPassword"
-msgid ""
-"If you lose your password, you can still reset it via the E-mail address "
-"provided  during the registration process. This way you shall generate the "
-"password reset  code which will be used to verify your identity. The code "
-"will be sent to your e- mail address. Warning! Two-factor authentication "
-"will be disabled on your  account. To continue, enter your username"
+msgid "If you forget your password, you can reset it using the email address you provided when registering. You can request a password reset code to verify your identity. The code will be sent to your email address. Warning: two-factor authentication will be disabled on your account. To continue, enter your username."
 msgstr ""
 "W wypadku utraty hasła nadal istnieje możliwość jego zresetowania poprzez "
 "weryfikację konta za pośrednictwem podanego adresu E-mail. Możesz "
@@ -6576,19 +6486,17 @@ msgstr "Reset hasła"
 
 #: src/scenes/forgotpassword.rb:50
 msgctxt "ForgotPassword"
-msgid "Please wait while the password reset key is being generated."
+msgid "Please wait while the password reset code is being generated."
 msgstr "Proszę czekać, trwa generowanie klucza resetowania hasła."
 
 #: src/scenes/forgotpassword.rb:60 src/scenes/forgotpassword.rb:107
 msgctxt "ForgotPassword"
-msgid "An unexpected error"
+msgid "Unexpected error"
 msgstr "Wystąpił nieoczekiwany błąd"
 
 #: src/scenes/forgotpassword.rb:62
 msgctxt "ForgotPassword"
-msgid ""
-"Password reset key has been sent to your specified E-mail address. To "
-"continue,  select the option for entering key."
+msgid "The password reset code has been sent to the email address you provided. To continue, select the option to enter the code."
 msgstr ""
 "Klucz resetowania hasła został wysłany na podany adres E-mail. Wybierz opcję "
 "wprowadzenia klucza, aby kontynuować."
@@ -6630,9 +6538,7 @@ msgstr "Proszę czekać, trwa zmiana hasła"
 
 #: src/scenes/forgotpassword.rb:109
 msgctxt "ForgotPassword"
-msgid ""
-"The password has been changed. You can log in to your account using the new "
-"data."
+msgid "You can log in to your account using your new credentials."
 msgstr ""
 "Hasło zostało zmienione. Możesz się teraz zalogować przy użyciu nowych "
 "danych."
@@ -6931,7 +6837,7 @@ msgstr "Administrator"
 
 #: src/scenes/forum.rb:685
 msgctxt "Forum"
-msgid "Founded at"
+msgid "Founded on"
 msgstr "Założona"
 
 #: src/scenes/forum.rb:688
@@ -6967,12 +6873,12 @@ msgstr "Całkowity rozmiar"
 
 #: src/scenes/forum.rb:727 src/scenes/forum.rb:4291
 msgctxt "Forum"
-msgid "Group regulations"
+msgid "Group rules"
 msgstr "Regulamin grupy"
 
 #: src/scenes/forum.rb:728
 msgctxt "Forum"
-msgid "Edit group regulations"
+msgid "Edit group rules"
 msgstr "Edytuj regulamin grupy"
 
 #: src/scenes/forum.rb:734
@@ -7007,12 +6913,12 @@ msgstr "Przyjmij zaproszenie"
 
 #: src/scenes/forum.rb:751
 msgctxt "Forum"
-msgid "Ask to be enrolled in this group"
+msgid "Request to join this group"
 msgstr "Poproś o zapisanie do grupy"
 
 #: src/scenes/forum.rb:756
 msgctxt "Forum"
-msgid "Do you wish to ask to be enrolled in %{groupname}"
+msgid "Do you want to request to join %{groupname}?"
 msgstr "Czy chcesz złożyć podanie do grupy %{groupname}?"
 
 #: src/scenes/forum.rb:758
@@ -7136,12 +7042,12 @@ msgstr "Wiadomość dnia zaktualizowana"
 
 #: src/scenes/forum.rb:900 src/scenes/forum.rb:1310 src/scenes/forum.rb:2909
 msgctxt "Forum"
-msgid "Regulations of group %{groupname}"
+msgid "Rules of group %{groupname}"
 msgstr "Regulamin grupy %{groupname}"
 
 #: src/scenes/forum.rb:914
 msgctxt "Forum"
-msgid "Regulations updated"
+msgid "Rules updated"
 msgstr "Regulamin został zmieniony"
 
 #: src/scenes/forum.rb:925
@@ -7206,7 +7112,7 @@ msgstr "Przejdź do zgłoszonego wpisu"
 
 #: src/scenes/forum.rb:964
 msgctxt "Forum"
-msgid "The searched thread has been already deleted."
+msgid "The thread you searched for has already been deleted."
 msgstr "Poszukiwany wątek został już usunięty."
 
 #: src/scenes/forum.rb:971 src/scenes/forum.rb:1014
@@ -7236,8 +7142,7 @@ msgstr "Przyczyna"
 
 #: src/scenes/forum.rb:1024
 msgctxt "Forum"
-msgid ""
-"Do you want to send information about status of this report to its author?"
+msgid "Do you want to send information about the status of this report to its author?"
 msgstr "Czy chcesz wysłać informację o statusie tego raportu do jego autora?"
 
 #: src/scenes/forum.rb:1035
@@ -7342,18 +7247,18 @@ msgstr "Uprawnienia użytkownika zostały zmienione."
 
 #: src/scenes/forum.rb:1182
 msgctxt "Forum"
-msgid "Resign moderation privileges"
+msgid "Give up moderator privileges"
 msgstr "Zrezygnuj z funkcji moderatora"
 
 #: src/scenes/forum.rb:1183
 msgctxt "Forum"
-msgid "Are you sure you want to resign moderation privileges in %{groupname}?"
+msgid "Are you sure you want to give up your moderator privileges in %{groupname}?"
 msgstr ""
 "Czy na pewno chcesz zrezygnować z funkcji moderatora grupy %{groupname}?"
 
 #: src/scenes/forum.rb:1190
 msgctxt "Forum"
-msgid "You have resigned moderation privileges."
+msgid "You have given up your moderator privileges."
 msgstr "Zrezygnowano z funkcji moderatora grupy."
 
 #: src/scenes/forum.rb:1200
@@ -7379,36 +7284,34 @@ msgstr "Odbierz temu użytkownikowi uprawnienia moderatora grupy"
 
 #: src/scenes/forum.rb:1207
 msgctxt "Forum"
-msgid "Pass administrative privileges"
+msgid "Transfer administrator privileges"
 msgstr "Przekaż swoje uprawnienia administracyjne temu użytkownikowi"
 
 #: src/scenes/forum.rb:1208
 msgctxt "Forum"
-msgid ""
-"Are you sure you want to resign your administrative privileges in %"
-"{groupname} and pass them to %{user}?"
+msgid "Are you sure you want to give up your administrator privileges in %{groupname} and transfer them to %{user}?"
 msgstr ""
 "Czy jesteś pewien, że chcesz się zrzec funkcji administratora grupy %"
 "{groupname} i przekazać ją użytkownikowi %{user}?"
 
 #: src/scenes/forum.rb:1216
 msgctxt "Forum"
-msgid "Enable inheritance of this users' role"
+msgid "Enable inheritance of this user's role"
 msgstr "Włącz dziedziczenie roli tego użytkownika"
 
 #: src/scenes/forum.rb:1217
 msgctxt "Forum"
-msgid "Disable inheritance of this users' role"
+msgid "Disable inheritance of this user's role"
 msgstr "Wyłącz dziedziczenia roli tego użytkownika"
 
 #: src/scenes/forum.rb:1237
 msgctxt "Forum"
-msgid "Ban in this group"
+msgid "Ban from this group"
 msgstr "Zbanuj tego użytkownika w tej grupie"
 
 #: src/scenes/forum.rb:1238
 msgctxt "Forum"
-msgid "Are you sure you want to ban %{user} in %{groupname}?"
+msgid "Are you sure you want to ban %{user} from %{groupname}?"
 msgstr ""
 "Czy na pewno chcesz zbanować użytkownika %{user} w grupie %{groupname}?"
 
@@ -7429,7 +7332,7 @@ msgstr "Odbanuj tego użytkownika w tej grupie"
 
 #: src/scenes/forum.rb:1247
 msgctxt "Forum"
-msgid "Are you sure you want to unban %{user} in %{groupname}?"
+msgid "Are you sure you want to unban %{user} from %{groupname}?"
 msgstr ""
 "Czy na pewno chcesz odbanować użytkownika %{user} w grupie %{groupname}?"
 
@@ -7440,7 +7343,7 @@ msgstr "Przyjmij"
 
 #: src/scenes/forum.rb:1251
 msgctxt "Forum"
-msgid "Do you want to accept request of user %{user}"
+msgid "Do you want to accept the request from %{user}?"
 msgstr "Czy chcesz przyjąć użytkownika %{user} do tej grupy?"
 
 #: src/scenes/forum.rb:1253
@@ -7450,7 +7353,7 @@ msgstr "Odrzuć"
 
 #: src/scenes/forum.rb:1254
 msgctxt "Forum"
-msgid "Do you want to refuse request of user %{user}"
+msgid "Do you want to reject the request from %{user}?"
 msgstr ""
 "Czy na pewno chcesz odmówić użytkownikowi %{user} dołączenia do tej grupy?"
 
@@ -7461,7 +7364,7 @@ msgstr "Anuluj zaproszenie"
 
 #: src/scenes/forum.rb:1258
 msgctxt "Forum"
-msgid "Are you sure you want to cancel invitation of %{user} to %{groupname}?"
+msgid "Are you sure you want to cancel %{user}'s invitation to %{groupname}?"
 msgstr ""
 "Czy na pewno chcesz anulować zaproszenie użytkownika %{user} do grupy %"
 "{groupname}?"
@@ -7488,12 +7391,12 @@ msgstr "Użytkownik został zaproszony"
 
 #: src/scenes/forum.rb:1311 src/scenes/forum.rb:2910
 msgctxt "Forum"
-msgid "I accept regulations of group %{groupname}"
+msgid "I accept the rules of the group %{groupname}"
 msgstr "Akceptuję regulamin grupy %{groupname}"
 
 #: src/scenes/forum.rb:1312 src/scenes/forum.rb:2911
 msgctxt "Forum"
-msgid "I decline regulations of group %{groupname}"
+msgid "I do not accept the rules of the group %{groupname}"
 msgstr "Nie akceptuję regulaminu grupy %{groupname}"
 
 #: src/scenes/forum.rb:1337 src/scenes/forum.rb:4227
@@ -7548,7 +7451,7 @@ msgstr "Grupach rekomendowanych"
 
 #: src/scenes/forum.rb:1372
 msgctxt "Forum"
-msgid "Not joined groups"
+msgid "Groups you have not joined"
 msgstr "Grupach, do których nie należę"
 
 #: src/scenes/forum.rb:1372
@@ -7643,12 +7546,12 @@ msgstr "Usuń ze śledzonych forów"
 
 #: src/scenes/forum.rb:1624
 msgctxt "Forum"
-msgid "Added to followed forums list."
+msgid "You are now following this forum."
 msgstr "Dodano do śledzonych forów."
 
 #: src/scenes/forum.rb:1631
 msgctxt "Forum"
-msgid "Removed from followed forums list."
+msgid "You are no longer following this forum."
 msgstr "Usunięto ze śledzonych forów."
 
 #: src/scenes/forum.rb:1649
@@ -7856,7 +7759,7 @@ msgstr "Wątek został oznaczony"
 
 #: src/scenes/forum.rb:2109 src/scenes/forum.rb:2507 src/scenes/forum.rb:3316
 msgctxt "Forum"
-msgid "Add to followed threads list"
+msgid "Follow this thread"
 msgstr "Dodaj do śledzonych wątków"
 
 #: src/scenes/forum.rb:2110 src/scenes/forum.rb:3317
@@ -7866,12 +7769,12 @@ msgstr "Usuń ze śledzonych wątków"
 
 #: src/scenes/forum.rb:2116 src/scenes/forum.rb:3323
 msgctxt "Forum"
-msgid "Added to the list of followed threads."
+msgid "You are now following this thread."
 msgstr "Dodano do śledzonych wątków."
 
 #: src/scenes/forum.rb:2123 src/scenes/forum.rb:3330
 msgctxt "Forum"
-msgid "Removed from followed threads list."
+msgid "You are no longer following this thread."
 msgstr "Usunięto ze śledzonych wątków."
 
 #: src/scenes/forum.rb:2132
@@ -7948,7 +7851,7 @@ msgstr "Podaj nową nazwę wątku"
 
 #: src/scenes/forum.rb:2185
 msgctxt "Forum"
-msgid "The forum name has been changed."
+msgid "The thread name has been changed."
 msgstr "Nazwa została zmieniona."
 
 #: src/scenes/forum.rb:2192
@@ -8018,7 +7921,7 @@ msgstr "Grupa administrowana przez %{founder}"
 
 #: src/scenes/forum.rb:2251
 msgctxt "Forum"
-msgid "Which group you want to offer this thread to?"
+msgid "Which group do you want to offer this thread to?"
 msgstr "Której grupie chcesz zaoferować ten wątek?"
 
 #: src/scenes/forum.rb:2257 src/scenes/forum.rb:2462
@@ -8126,7 +8029,7 @@ msgstr "Wybrane wątki zostały usunięte."
 
 #: src/scenes/forum.rb:2453
 msgctxt "Forum"
-msgid "Which group you want to offer these threads to?"
+msgid "Which group do you want to offer these threads to?"
 msgstr "Której grupie chcesz zaoferować te wątki?"
 
 #: src/scenes/forum.rb:2478 src/scenes/forum.rb:2505 src/scenes/forum.rb:2983
@@ -8218,7 +8121,7 @@ msgstr "Wybierz plik do załączenia"
 
 #: src/scenes/forum.rb:2600 src/scenes/forum.rb:2868
 msgctxt "Forum"
-msgid "This file has been already attached"
+msgid "This file has already been attached"
 msgstr "Ten plik został już dodany"
 
 #: src/scenes/forum.rb:2603 src/scenes/forum.rb:2871 src/scenes/forum.rb:3682
@@ -8324,12 +8227,12 @@ msgstr "Pokaż wzmiankę"
 
 #: src/scenes/forum.rb:3110
 msgctxt "Forum"
-msgid "Mention by %{user}"
+msgid "Mention from %{user}"
 msgstr "Wzmianka od %{user}"
 
 #: src/scenes/forum.rb:3112
 msgctxt "Forum"
-msgid "Send reply to mentioner"
+msgid "Reply to the user who mentioned you"
 msgstr "Odpowiedz na wzmiankę"
 
 #: src/scenes/forum.rb:3122 src/scenes/forum.rb:3123
@@ -8529,7 +8432,7 @@ msgstr "Umieść wpis nad"
 
 #: src/scenes/forum.rb:3442
 msgctxt "Forum"
-msgid "The post has been slided."
+msgid "The post has been repositioned."
 msgstr "Wpis został przesunięty."
 
 #: src/scenes/forum.rb:3460
@@ -8710,12 +8613,12 @@ msgstr "Ogólne"
 
 #: src/scenes/forum.rb:4240
 msgctxt "Forum"
-msgid "Change group parent"
+msgid "Change parent group"
 msgstr "Zmień grupę nadrzędną"
 
 #: src/scenes/forum.rb:4244
 msgctxt "Forum"
-msgid "Select group parent"
+msgid "Select parent group"
 msgstr "Wybierz grupę nadrzędną"
 
 #: src/scenes/forum.rb:4244 src/scenes/forum.rb:4263
@@ -8747,7 +8650,7 @@ msgstr "Utwórz kanał dla tej grupy w konferencjach"
 
 #: src/scenes/forum.rb:4290
 msgctxt "Forum"
-msgid "Regulations"
+msgid "Rules"
 msgstr "Regulamin"
 
 #: src/scenes/forum.rb:4294
@@ -8807,7 +8710,7 @@ msgstr "Pokaż wszystkie przyjęte zgłoszenia"
 
 #: src/scenes/forum.rb:4302
 msgctxt "Forum"
-msgid "Duration limit of audio posts in seconds, 0 for no limit"
+msgid "Maximum duration of audio posts in seconds; 0 means no limit"
 msgstr "Limit długości wpisów audio w sekundach, 0 oznacza brak limitu"
 
 #: src/scenes/honors.rb:27
@@ -8827,7 +8730,7 @@ msgstr "Odznaczenia użytkownika %{user}"
 
 #: src/scenes/honors.rb:35
 msgctxt "Honors"
-msgid "The user has been given no badges."
+msgid "The user has not been awarded any honors."
 msgstr "Użytkownik nie otrzymał żadnych odznaczeń."
 
 #: src/scenes/honors.rb:68 src/scenes/honors.rb:83 src/scenes/honors.rb:182
@@ -8837,12 +8740,12 @@ msgstr "Poziom"
 
 #: src/scenes/honors.rb:96
 msgctxt "Honors"
-msgid "Set as main honor"
+msgid "Set as primary honor"
 msgstr "Ustaw jako odznaczenie główne"
 
 #: src/scenes/honors.rb:102
 msgctxt "Honors"
-msgid "The badge has been set as default."
+msgid "The honor has been set as the primary honor."
 msgstr "Odznaczenie ustawiono jako domyślne."
 
 #: src/scenes/honors.rb:106
@@ -8852,7 +8755,7 @@ msgstr "Nadaj odznaczenie"
 
 #: src/scenes/honors.rb:107
 msgctxt "Honors"
-msgid "Who should be granted this badge?"
+msgid "Who should receive this honor?"
 msgstr "Komu nadać to odznaczenie?"
 
 #: src/scenes/honors.rb:114
@@ -8872,9 +8775,7 @@ msgstr "Usuń"
 
 #: src/scenes/honors.rb:125
 msgctxt "Honors"
-msgid ""
-"Are you sure you want to delete this badge? All users granted with this "
-"badge will loose it."
+msgid "Are you sure you want to delete this badge? All users who have been granted this badge will lose it."
 msgstr ""
 "Czy jesteś pewien, że chcesz usunąć to odznaczenie? Wszyscy użytkownicy nim "
 "odznaczeni, utracą je."
@@ -8936,7 +8837,7 @@ msgstr "Odznaczenie zostało dodane"
 
 #: src/scenes/iikeys.rb:4
 msgctxt "IIKeys"
-msgid "Navigate up or down on lists"
+msgid "Move up or down through lists"
 msgstr "Nawiguj w górę/dół po listach"
 
 #: src/scenes/iikeys.rb:5
@@ -8961,7 +8862,7 @@ msgstr "Aktywuj wybrany element"
 
 #: src/scenes/iikeys.rb:9
 msgctxt "IIKeys"
-msgid "Cancel speech and stop currently played audio"
+msgid "Cancel speech and stop the audio that is currently playing"
 msgstr "Anuluj wypowiedź i zatrzymaj aktualnie odtwarzany dźwięk"
 
 #: src/scenes/iikeys.rb:10
@@ -8991,14 +8892,12 @@ msgstr "Napisz na tablicy"
 
 #: src/scenes/iikeys.rb:32
 msgctxt "IIKeys"
-msgid "Invisible Interface Hotkeys"
+msgid "Invisible Interface keyboard shortcuts"
 msgstr "Skróty klawiszowe niewidzialnego interfejsu"
 
 #: src/scenes/install.rb:3
 msgctxt "Install"
-msgid ""
-"Elten installer will be downloaded from the server and started after Elten "
-"closes. Continue?"
+msgid "The Elten installer will be downloaded from the server and launched after Elten closes. Continue?"
 msgstr ""
 "Instalator Eltena zostanie pobrany z serwera i uruchomiony po zamknięciu "
 "programu. Kontynuować?"
@@ -9010,17 +8909,14 @@ msgstr "Nie udało się pobrać instalatora."
 
 #: src/scenes/install.rb:10
 msgctxt "Install"
-msgid "Installer downloaded. Elten will close and start setup."
+msgid "The installer has been downloaded. Elten will close and launch the installer."
 msgstr ""
 "Instalator został pobrany. Elten zostanie zamknięty, a następnie uruchomi "
 "się instalator."
 
 #: src/scenes/loading.rb:229
 msgctxt "Loading"
-msgid ""
-"Elten detected that you are using NVDA. To support some features of this "
-"screenreader, it is necessary to install Elten addon. Do you want to do it "
-"now?"
+msgid "Elten has detected that you are using NVDA. To support some features of this screen reader, the Elten add-on for NVDA must be installed. Do you want to install it now?"
 msgstr ""
 "Elten wykrył, że używasz czytnika ekranowego NVDA. By obsłużyć niektóre "
 "funkcje tego czytnika, w tym monitory brajlowskie, wymagana jest instalacja "
@@ -9029,10 +8925,7 @@ msgstr ""
 
 #: src/scenes/loading.rb:231
 msgctxt "Loading"
-msgid ""
-"New version of NVDA Elten addon is available. The version you're using is no "
-"longer supported in this Elten release and may cause some errors. Do you "
-"want to update it now?"
+msgid "A new version of the Elten add-on for NVDA is available. The version you are using is no longer supported by this Elten release and may cause errors. Do you want to update it now?"
 msgstr ""
 "Dostępna jest nowa wersja dodatku Eltena dla NVDA. Obecna wersja dodatku nie "
 "jest wspierana w tym wydaniu Eltena i może powodować błędy. Czy chcesz "
@@ -9040,24 +8933,14 @@ msgstr ""
 
 #: src/scenes/loading.rb:251
 msgctxt "Loading"
-msgid ""
-"Elten NVDA addon package is not available in this build. Install or update "
-"the Elten NVDA addon manually to enable full NVDA integration."
+msgid "The Elten add-on for NVDA is not available in this build. Install or update it manually to enable full NVDA integration."
 msgstr ""
 "Pakiet dodatku Elten dla NVDA nie jest dostępny w tej kompilacji. Aby "
 "włączyć pełną integrację z NVDA, zainstaluj lub zaktualizuj dodatek ręcznie."
 
 #: src/scenes/loading.rb:268
 msgctxt "Loading"
-msgid ""
-"Warning! Elten failed to verify server encryption key. It is possible that "
-"you are not connecting to Elten server but to one prepared by hackers. It is "
-"also possible that Elten Server key has changed. Any details should be "
-"provided on Elten Website Forum. If no information about key change was "
-"provided, it is very likely that you are vulnerable to hacker attack. In "
-"this cause any data that you will provide, including password, can be "
-"stolen. Are you sure you want to proceed with this connection? Select No to "
-"exit Elten."
+msgid "Warning! Elten failed to verify the server's encryption key. You may be connecting not to an Elten server, but to a server controlled by an attacker. The Elten server's key may also have changed. Details of any legitimate key change should be published on the Elten website or forum. If no such information has been published, this connection may be under attack. Any data you provide, including your password, could be stolen. Are you sure you want to continue with this connection? Select No to exit Elten."
 msgstr ""
 "Uwaga! Elten nie zweryfikował klucza szyfrowania serwera. Możliwe, że nie "
 "łączysz się z serwerem Eltena, ale z serwerem przygotowanym przez hakerów. "
@@ -9188,17 +9071,12 @@ msgstr "Hasło:"
 
 #: src/scenes/login.rb:54 src/scenes/login.rb:356
 msgctxt "Login"
-msgid "Enter pin code"
+msgid "Enter PIN"
 msgstr "Wprowadź kod pin"
 
 #: src/scenes/login.rb:70 src/scenes/login.rb:210
 msgctxt "Login"
-msgid ""
-"Do you want to enable auto-Login-key encryption? When encrypted, the Auto-"
-"Login Key will be readable only on this computer, and its copying or "
-"exporting will not allow other devices to access your account. You can "
-"create as many auto-login-keys as you wish for all other computers you are "
-"using."
+msgid "Do you want to enable auto-login key encryption? Once encrypted, the auto-login key can be read only on this computer. Copying or exporting it will not allow another device to access your account. You can create separate auto-login keys for any other computers you use."
 msgstr ""
 "Czy chcesz włączyć szyfrowanie klucza automatycznego logowania? Po "
 "zaszyfrowaniu klucz będzie można odczytać tylko na tym komputerze, a jego "
@@ -9218,19 +9096,14 @@ msgstr "Użyj kodu alternatywnego"
 
 #: src/scenes/login.rb:106
 msgctxt "Login"
-msgid ""
-"Two-factor authentication is enabled on this account. Select method to "
-"authenticate."
+msgid "Two-factor authentication is enabled on this account. Select an authentication method."
 msgstr ""
 "Dwuetapowe uwierzytelnianie jest włączone dla tego konta. Wybierz metodę "
 "weryfikacji."
 
 #: src/scenes/login.rb:130
 msgctxt "Login"
-msgid ""
-"Enter the code sent to you  by text message to allow this device to login. "
-"If you do not have access to the  phone number used, select the password "
-"reset option to disable two-factor  authentication."
+msgid "Enter the code sent to you by text message to allow this device to log in. If you cannot access the phone number used, select the password reset option to disable two-factor authentication."
 msgstr ""
 "Wprowadź kod wysłany na twój numer wiadomością SMS, aby zezwolić temu "
 "urządzeniu na zalogowanie. Jeśli nie masz dostępu do użytego numeru "
@@ -9249,7 +9122,7 @@ msgstr "Błąd weryfikacji."
 
 #: src/scenes/login.rb:152
 msgctxt "Login"
-msgid "The entered code is wrong, please try again"
+msgid "The code you entered is incorrect. Please try again."
 msgstr "Wprowadzony kod nie jest poprawny, spróbuj jeszcze raz"
 
 #: src/scenes/login.rb:186 src/scenes/login.rb:188 src/ui/dialogs.rb:17
@@ -9288,18 +9161,14 @@ msgstr ""
 
 #: src/scenes/login.rb:205
 msgctxt "Login"
-msgid ""
-"An error occurred while authenticating the identity. You might have provided "
-"an  incorrect password."
+msgid "An error occurred while verifying your identity. You may have entered an incorrect password."
 msgstr ""
 "Wystąpił błąd podczas uwierzytelniania tożsamości. Możliwe, że podane "
 "zostało błędne hasło."
 
 #: src/scenes/login.rb:221
 msgctxt "Login"
-msgid ""
-"Automatic login will be proceeding until you log out.Automatic login keys "
-"can be  managed from the My Account tab in the Community menu."
+msgid "Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
 msgstr ""
 "Automatyczne logowanie będzie ważne do momentu wylogowania się. Kluczami "
 "automatycznego logowania można zarządzać z poziomu zakładki Moje Konto w "
@@ -9307,10 +9176,7 @@ msgstr ""
 
 #: src/scenes/login.rb:223
 msgctxt "Login"
-msgid ""
-"Login data has been updated. Automatic login will be proceeding until you "
-"log  out. Automatic login keys can be managed from the My Account tab in the "
-"Community  menu."
+msgid "Login data has been updated. Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."
 msgstr ""
 "Dane logowania zostały zaktualizowane. Automatyczne logowanie będzie ważne "
 "do momentu wylogowania się. Kluczami automatycznego logowania można "
@@ -9318,7 +9184,7 @@ msgstr ""
 
 #: src/scenes/login.rb:234
 msgctxt "Login"
-msgid "To reenable auto log in feature, proceed to the general settings."
+msgid "To re-enable auto-login, go to General settings."
 msgstr ""
 "Aby włączyć ponownie możliwość automatycznego logowania, przejdź do ogólnych "
 "ustawień."
@@ -9426,16 +9292,12 @@ msgstr "Aktywacja nie powiodła się."
 
 #: src/scenes/login.rb:339
 msgctxt "Login"
-msgid "The entered activation code is wrong, please try again."
+msgid "The activation code you entered is incorrect. Please try again."
 msgstr "Wprowadzony kod aktywacyjny jest nieprawidłowy. Spróbuj ponownie."
 
 #: src/scenes/login.rb:353
 msgctxt "Login"
-msgid ""
-"Do you want to encrypt this key with a custom pin code? You will be prompted "
-"for this code everytime you start Elten to unlock your account, but it will "
-"not be saved on the server and will be valid only for the auto-login-key "
-"stored on this device."
+msgid "Do you want to encrypt this key with a custom PIN? You will be prompted for this PIN every time you start Elten to unlock your account. It will not be saved on the server and will apply only to the auto-login key stored on this device."
 msgstr ""
 "Czy chcesz zaszyfrować klucz z użyciem kodu pin? Będziesz proszony o ten kod "
 "przy każdorazowym uruchomieniu tej kopii programu. Kod ten nie zostanie "
@@ -9444,12 +9306,12 @@ msgstr ""
 
 #: src/scenes/login.rb:358
 msgctxt "Login"
-msgid "Enter pin code again"
+msgid "Enter PIN again"
 msgstr "Wprowadź kod pin ponownie"
 
 #: src/scenes/login.rb:363
 msgctxt "Login"
-msgid "The pin codes entered are different, please try again."
+msgid "The PINs you entered do not match. Please try again."
 msgstr "Wprowadzone kody pin są różne."
 
 #: src/scenes/main.rb:234 src/scenes/notifications.rb:47
@@ -9495,7 +9357,7 @@ msgstr "Etykieta"
 
 #: src/scenes/main.rb:435
 msgctxt "Main"
-msgid "Change hotkey"
+msgid "Change keyboard shortcut"
 msgstr "Zmień skrót klawiszowy"
 
 #: src/scenes/main.rb:436
@@ -9505,12 +9367,12 @@ msgstr "Brak"
 
 #: src/scenes/main.rb:449
 msgctxt "Main"
-msgid "Hotkey for action %{label}"
+msgid "Keyboard shortcut for action %{label}"
 msgstr "Skrót klawiszowy akcji %{label}"
 
 #: src/scenes/main.rb:463
 msgctxt "Main"
-msgid "This hotkey is already used by action %{action}"
+msgid "This keyboard shortcut is already used by action %{action}"
 msgstr "Ten skrót klawiszowy jest już używany przez akcję %{action}"
 
 #: src/scenes/main.rb:470
@@ -9782,12 +9644,12 @@ msgstr "Usuń konwersacje z tym korespondentem"
 
 #: src/scenes/messages.rb:269
 msgctxt "Messages"
-msgid "Set all messages as a default view"
+msgid "Set all messages as the default view"
 msgstr "Ustaw wszystkie wiadomości jako widok domyślny"
 
 #: src/scenes/messages.rb:270
 msgctxt "Messages"
-msgid "Set subjects as a default view"
+msgid "Set subjects as the default view"
 msgstr "Ustaw listę tematów jako widok domyślny"
 
 #: src/scenes/messages.rb:275
@@ -9870,14 +9732,14 @@ msgstr "Konwersacja została zmodyfikowana"
 
 #: src/scenes/messages.rb:410
 msgctxt "Messages"
-msgid "Are you sure you want to delete all messages with user %{user}"
+msgid "Are you sure you want to delete all messages exchanged with %{user}?"
 msgstr ""
 "Czy jesteś pewien, że chcesz usunąć wszystkie wiadomości wymienione z "
 "użytkownikiem %{user}?"
 
 #: src/scenes/messages.rb:417
 msgctxt "Messages"
-msgid "All conversations with user have been deleted."
+msgid "All conversations with the user have been deleted."
 msgstr "Wszystkie konwersacje z użytkownikiem zostały usunięte."
 
 #: src/scenes/messages.rb:448
@@ -9912,9 +9774,7 @@ msgstr "Wyślij nową wiadomość w tej konwersacji"
 
 #: src/scenes/messages.rb:518
 msgctxt "Messages"
-msgid ""
-"Are you sure you want to delete conversation %{conversationname} with user %"
-"{user}"
+msgid "Are you sure you want to delete the conversation %{conversationname} with %{user}?"
 msgstr ""
 "Czy na pewno chcesz usunąć konwersację %{conversationname} z użytkownikiem %"
 "{user}?"
@@ -9976,7 +9836,7 @@ msgstr "Ankiety"
 
 #: src/scenes/messages.rb:725 src/scenes/messages.rb:1064
 msgctxt "Messages"
-msgid "Message has been sent"
+msgid "The message has been sent"
 msgstr "Wiadomość została wysłana"
 
 #: src/scenes/messages.rb:737
@@ -10115,7 +9975,7 @@ msgid "Do you want to send this message as e-mail?"
 msgstr "Czy chcesz wysłać tę wiadomość jako E-mail?"
 
 #: src/scenes/messages.rb:1080 src/scenes/users.rb:27
-msgid "You haven't permissions to do this"
+msgid "You do not have permission to do this"
 msgstr "Nie masz odpowiednich uprawnień, by wykonać tę operację"
 
 #: src/scenes/notes.rb:24
@@ -10175,12 +10035,12 @@ msgstr "Z kim chcesz współdzielić tę notatkę?"
 
 #: src/scenes/notes.rb:106
 msgctxt "Notes"
-msgid "User cannot be found"
+msgid "The user cannot be found"
 msgstr "Użytkownik nie istnieje"
 
 #: src/scenes/notes.rb:114
 msgctxt "Notes"
-msgid "From now on you share this note with %{user}"
+msgid "You are now sharing this note with %{user}"
 msgstr "Od teraz współdzielisz tę notatkę z %{user}"
 
 #: src/scenes/notes.rb:136
@@ -10200,7 +10060,7 @@ msgstr "Czy chcesz przestać współdzielić tę notatkę z %{user}?"
 
 #: src/scenes/notes.rb:170
 msgctxt "Notes"
-msgid "You no longer share this note with %{user}"
+msgid "You are no longer sharing this note with %{user}"
 msgstr "Nie współdzielisz już tej notatki z %{user}"
 
 #: src/scenes/notes.rb:193
@@ -10210,9 +10070,7 @@ msgstr "Czy jesteś pewien, że chcesz usunąć %{name}?"
 
 #: src/scenes/notes.rb:195
 msgctxt "Notes"
-msgid ""
-"Do you really want to end sharing %{name}? It will be deleted from your "
-"notes list."
+msgid "Do you really want to stop sharing %{name}? It will be deleted from your list of notes."
 msgstr ""
 "Czy na pewno chcesz wypisać się z notatki %{name}? Zostanie ona usunięta z "
 "Twojej listy notatek."
@@ -10387,7 +10245,7 @@ msgstr "Wielokrotnego wyboru"
 
 #: src/scenes/polls.rb:198
 msgctxt "Polls"
-msgid "Edit box"
+msgid "Text field"
 msgstr "Pole tekstowe"
 
 #: src/scenes/polls.rb:198
@@ -10397,12 +10255,12 @@ msgstr "Metoda odpowiadania"
 
 #: src/scenes/polls.rb:199
 msgctxt "Polls"
-msgid "Limit count of answers that can be checked"
+msgid "Limit the number of answers that can be selected"
 msgstr "Ogranicz liczbę odpowiedzi, które można zaznaczyć"
 
 #: src/scenes/polls.rb:200
 msgctxt "Polls"
-msgid "Count of answers that can be checked"
+msgid "Maximum number of answers that can be selected"
 msgstr "Liczba odpowiedzi, które można zaznaczyć"
 
 #: src/scenes/polls.rb:202 src/scenes/polls.rb:564
@@ -10467,8 +10325,8 @@ msgstr "Pytanie wielokrotnego wyboru"
 
 #: src/scenes/polls.rb:365
 msgctxt "Polls"
-msgid "Up to %{limit}-choice question"
-msgid_plural "Up to %{limit}-choices question"
+msgid "Question allowing up to %{limit} choices"
+msgid_plural "Questions allowing up to %{limit} choices"
 msgstr[0] "Pytanie wielokrotnego wyboru z maksymalnie %{limit} odpowiedzią"
 msgstr[1] "Pytanie wielokrotnego wyboru z maksymalnie %{limit} odpowiedziami"
 msgstr[2] "Pytanie wielokrotnego wyboru z maksymalnie %{limit} odpowiedziami"
@@ -10560,12 +10418,12 @@ msgstr "Kurier"
 
 #: src/scenes/premiumpackages.rb:32
 msgctxt "PremiumPackages"
-msgid "Following forums in not moderated groups"
+msgid "Following forums in groups you do not moderate"
 msgstr "Śledzenie forów w grupach nie moderowanych"
 
 #: src/scenes/premiumpackages.rb:33
 msgctxt "PremiumPackages"
-msgid "Disabling signatures visibility"
+msgid "Ability to hide signatures"
 msgstr "Wyłączanie widoczności sygnatur"
 
 #: src/scenes/premiumpackages.rb:34
@@ -10575,7 +10433,7 @@ msgstr "Oznaczanie wątków i zakładki"
 
 #: src/scenes/premiumpackages.rb:35
 msgctxt "PremiumPackages"
-msgid "Private messages protection against erroneous removal"
+msgid "Protection of private messages against accidental deletion"
 msgstr "Ochrona prywatnych wiadomości przed omyłkowym usunięciem"
 
 #: src/scenes/premiumpackages.rb:36
@@ -10585,7 +10443,7 @@ msgstr "Historia wzmianek i odpowiadanie na wzmianki"
 
 #: src/scenes/premiumpackages.rb:37
 msgctxt "PremiumPackages"
-msgid "Groups pinning"
+msgid "Pinning groups"
 msgstr "Przypinanie grup"
 
 #: src/scenes/premiumpackages.rb:38
@@ -10595,7 +10453,7 @@ msgstr "Śledzenie wpisów na blogach"
 
 #: src/scenes/premiumpackages.rb:39
 msgctxt "PremiumPackages"
-msgid "Extended limit of attachment size in private messages to 32MB"
+msgid "Larger private-message attachments, up to 32 MB"
 msgstr ""
 "Rozszerzony limit wielkości załącznika w wiadomościach prywatnych do 32MB"
 
@@ -10621,13 +10479,13 @@ msgstr "Audiofil"
 
 #: src/scenes/premiumpackages.rb:47
 msgctxt "PremiumPackages"
-msgid "Lifting the 2-minute limit for private voice messages"
+msgid "Removal of the two-minute limit for private voice messages"
 msgstr ""
 "Zniesienie 2-minutowego limitu długości prywatnych wiadomości głosowych"
 
 #: src/scenes/premiumpackages.rb:48
 msgctxt "PremiumPackages"
-msgid "Lifting the 32kbps quality limit in private voice messages"
+msgid "Removal of the 32 kbps quality limit for private voice messages"
 msgstr "Zniesienie limitu jakości 32kbps w prywatnych wiadomościach głosowych"
 
 #: src/scenes/premiumpackages.rb:49
@@ -10672,7 +10530,7 @@ msgstr "Skryba"
 
 #: src/scenes/premiumpackages.rb:61
 msgctxt "PremiumPackages"
-msgid "Creation of second and following blogs"
+msgid "Creation of additional blogs"
 msgstr "Tworzenie drugiego i następnych blogów"
 
 #: src/scenes/premiumpackages.rb:62
@@ -10687,7 +10545,7 @@ msgstr "Sprawdzanie pisowni"
 
 #: src/scenes/premiumpackages.rb:64
 msgctxt "PremiumPackages"
-msgid "Changing of blog address"
+msgid "Changing the blog address"
 msgstr "Zmiana adresu bloga"
 
 #: src/scenes/premiumpackages.rb:65
@@ -10722,7 +10580,7 @@ msgstr "Transmisja konferencji do serwerów shoutcast"
 
 #: src/scenes/premiumpackages.rb:74
 msgctxt "PremiumPackages"
-msgid "Setting VST plugins on specific users"
+msgid "Applying VST plug-ins to individual users"
 msgstr "Ustawianie wtyczek VST dla określonych użytkowników"
 
 #: src/scenes/premiumpackages.rb:75
@@ -10741,16 +10599,14 @@ msgstr ""
 
 #: src/scenes/premiumpackages.rb:77
 msgctxt "PremiumPackages"
-msgid ""
-"Setting different output soundcard for conferences than the one selected in "
-"Elten"
+msgid "Selecting a separate output sound card for conferences"
 msgstr ""
 "Ustawienie innej wyjściowej karty dźwiękowej dla konferencji niż ta wybrana "
 "w Eltenie"
 
 #: src/scenes/premiumpackages.rb:78
 msgctxt "PremiumPackages"
-msgid "Changing channels dimensions"
+msgid "Changing channel dimensions"
 msgstr "Zmiana rozmiaru kanałów"
 
 #: src/scenes/premiumpackages.rb:82
@@ -10760,7 +10616,7 @@ msgstr "Pakiet orkiestrowy"
 
 #: src/scenes/premiumpackages.rb:83
 msgctxt "PremiumPackages"
-msgid "Includes profits from courier, audiophile, scribe and director"
+msgid "Includes the benefits of Courier, Audiophile, Scribe and Director"
 msgstr "Obejmuje zawartość kuriera, audiofila, skryby i reżysera"
 
 #: src/scenes/premiumpackages.rb:87
@@ -10770,24 +10626,24 @@ msgstr "Pakiet sponsorski"
 
 #: src/scenes/premiumpackages.rb:88
 msgctxt "PremiumPackages"
-msgid "Includes profits from all other packages, including future packages"
+msgid "Includes the benefits of all other packages, including future packages"
 msgstr ""
 "Obejmuje zawartość wszystkich innych pakietów, w tym przyszłych pakietów "
 "wprowadzonych w czasie trwania subskrypcji"
 
 #: src/scenes/premiumpackages.rb:89
 msgctxt "PremiumPackages"
-msgid "Special assigning of user on lists and forum"
+msgid "Special recognition for the user in lists and on the forum"
 msgstr "Specjalne oznaczanie użytkownika na listach i forum"
 
 #: src/scenes/premiumpackages.rb:90
 msgctxt "PremiumPackages"
-msgid "Entry in the list of sponsors"
+msgid "Listing in the sponsors list"
 msgstr "Wpis na listę sponsorów"
 
 #: src/scenes/premiumpackages.rb:96
 msgctxt "PremiumPackages"
-msgid "Show profits"
+msgid "Show benefits"
 msgstr "Pokaż zawartość"
 
 #: src/scenes/premiumpackages.rb:101 src/scenes/premiumpackages.rb:146
@@ -10852,7 +10708,7 @@ msgstr "Wybierz walutę."
 
 #: src/scenes/premiumpackages.rb:151
 msgctxt "PremiumPackages"
-msgid "Profits of package %{name}"
+msgid "Benefits of the %{name} package"
 msgstr "Zawartość pakietu %{name}"
 
 #: src/scenes/premiumpackages.rb:156
@@ -10885,7 +10741,7 @@ msgstr ""
 
 #: src/scenes/premiumpackages.rb:254
 msgctxt "PremiumPackages"
-msgid "This package is currently unavailable. Try to buy it in the next month."
+msgid "This package is currently unavailable. Try to buy it next month."
 msgstr ""
 "Ten pakiet jest obecnie niedostępny. Spróbuj go kupić w przyszłym miesiącu."
 
@@ -10901,7 +10757,7 @@ msgstr "Jeden miesiąc"
 
 #: src/scenes/premiumpackages.rb:259
 msgctxt "PremiumPackages"
-msgid "How long do you want to buy this package for?"
+msgid "For how long do you want to buy this package?"
 msgstr "Na jaki okres chcesz zakupić ten pakiet?"
 
 #: src/scenes/premiumpackages.rb:264
@@ -10945,12 +10801,12 @@ msgstr "Tradycyjny przelew bankowy"
 
 #: src/scenes/premiumpackages.rb:292
 msgctxt "PremiumPackages"
-msgid "Paypal (using Paypal account or credit/debit card)"
+msgid "PayPal (using a PayPal account or credit/debit card)"
 msgstr "Paypal (używając konta Paypal lub karty kredytowej/debetowej)"
 
 #: src/scenes/premiumpackages.rb:293
 msgctxt "PremiumPackages"
-msgid "Przelewy24 (fast transfer from polish banks)"
+msgid "Przelewy24 (fast transfer from Polish banks)"
 msgstr "Przelewy24 (szybkie przelewy z polskich banków)"
 
 #: src/scenes/premiumpackages.rb:296
@@ -11015,17 +10871,7 @@ msgstr ""
 
 #: src/scenes/premiumpackages.rb:324
 msgctxt "PremiumPackages"
-msgid ""
-"National transfer details (from Poland):\n"
-"%{holder}\n"
-"Address: %{address}\n"
-"Account number: %{placcount}\n"
-"\n"
-"Additional data for foreign transfers:\n"
-"IBAN number: %{iban}\n"
-"BIC / SWIFT: %{swift}\n"
-"Bank address: %{bankaddress}\n"
-"Sort code: %{sortcode}"
+msgid "Domestic bank transfer details (from Poland):\n%{holder}\nAddress: %{address}\nAccount number: %{placcount}\n\nAdditional data for foreign transfers:\nIBAN: %{iban}\nBIC / SWIFT: %{swift}\nBank address: %{bankaddress}\nSort code: %{sortcode}"
 msgstr ""
 "Dane do przelewu krajowego (z Polski):\n"
 "%{holder}\n"
@@ -11054,30 +10900,26 @@ msgstr "Ile kodów premium chciałbyś kupić?"
 
 #: src/scenes/premiumpackages.rb:370 src/scenes/premiumpackages.rb:407
 msgctxt "PremiumPackages"
-msgid ""
-"You will be charged a %{amount} commission for the selected payment method. "
-"Do you want to continue?"
+msgid "You will be charged a processing fee of %{amount} for the selected payment method."
 msgstr ""
 "Naliczona zostanie prowizja w kwocie  %{amount} za wybraną metodę płatności. "
 "Czy chcesz kontynuować?"
 
 #: src/scenes/premiumpackages.rb:408
 msgctxt "PremiumPackages"
-msgid "Enter blik code"
+msgid "Enter the BLIK code"
 msgstr "Wprowadź kod blik"
 
 #: src/scenes/premiumpackages.rb:415
 msgctxt "PremiumPackages"
-msgid ""
-"Payment has been ordered. Additional confirmation may be required. The order "
-"will be processed once the payment is complete."
+msgid "The payment has been initiated. Additional confirmation may be required. The order will be processed once the payment is complete."
 msgstr ""
 "Płatność została zlecona. Może być wymagane dodatkowe potwierdzenie. "
 "Zamówienie zostanie zrealizowane po zakończeniu płatności."
 
 #: src/scenes/premiumpackages.rb:420
 msgctxt "PremiumPackages"
-msgid "Type code to activate this package"
+msgid "Enter the code to activate this package"
 msgstr "Wpisz kod, aby aktywować ten pakiet"
 
 #: src/scenes/premiumpackages.rb:427
@@ -11087,14 +10929,12 @@ msgstr "Kodu nie znaleziono."
 
 #: src/scenes/premiumpackages.rb:429
 msgctxt "PremiumPackages"
-msgid "This code has been already used."
+msgid "This code has already been used."
 msgstr "Ten kod został już wykorzystany."
 
 #: src/scenes/premiumpackages.rb:438
 msgctxt "PremiumPackages"
-msgid ""
-"The package %{name} will be active until %{time}. This code will be used up "
-"and you will not be able to use it again. Do you want to continue?"
+msgid "The package %{name} will be active until %{time}. This code will be redeemed and you will not be able to use it again. Do you want to continue?"
 msgstr ""
 "Pakiet %{name} będzie aktywny do %{time}. Ten kod zostanie wykorzystany i "
 "nie będzie można go ponownie użyć. Czy chcesz kontynuować?"
@@ -11206,7 +11046,7 @@ msgstr "Co chcesz zrobić z programem %{name}?"
 
 #: src/scenes/programs.rb:77
 msgctxt "Programs"
-msgid "Uninstall program %{name}? Program data will be kept."
+msgid "Uninstall the program %{name}? The program data will be kept."
 msgstr "Czy odinstalować program %{name}? Jego dane zostaną zachowane."
 
 #: src/scenes/programs.rb:79
@@ -11216,7 +11056,7 @@ msgstr "Program został odinstalowany."
 
 #: src/scenes/programs.rb:83
 msgctxt "Programs"
-msgid "Remove program %{name} and all its data?"
+msgid "Remove the program %{name} and all its data?"
 msgstr "Czy usunąć program %{name} wraz ze wszystkimi jego danymi?"
 
 #: src/scenes/programs.rb:85
@@ -11526,13 +11366,13 @@ msgstr "Nie udało się zainstalować niektórych aktualizacji: %{names}"
 
 #: src/scenes/programs.rb:365
 msgctxt "Programs"
-msgid "Programs list could not be loaded."
+msgid "The list of programs could not be loaded."
 msgstr "Nie udało się załadować listy programów."
 
 #: src/scenes/programs.rb:419 src/scenes/programs.rb:439
 #: src/scenes/programs.rb:494
 msgctxt "Programs"
-msgid "Installation canceled."
+msgid "Installation cancelled."
 msgstr "Instalacja anulowana."
 
 #: src/scenes/programs.rb:435 src/scenes/programs.rb:490
@@ -11562,9 +11402,7 @@ msgstr "Plik pakietu: %{file}"
 
 #: src/scenes/registration.rb:15
 msgctxt "Registration"
-msgid ""
-"Accounts registrations are not possible with direct code execution, please "
-"use an official Elten launcher."
+msgid "Account registration is not available when running the code directly. Please use an official Elten launcher."
 msgstr ""
 "Rejestrowanie kont nie jest możliwe podczas bezpośredniego wykonywania kodu. "
 "Użyj oficjalnego launchera."
@@ -11595,15 +11433,12 @@ msgstr "Wystąpił błąd połączenia z serwerem."
 
 #: src/scenes/registration.rb:42
 msgctxt "Registration"
-msgid "User with this name already exists."
+msgid "A user with this name already exists."
 msgstr "Konto o podanym loginie już istnieje."
 
 #: src/scenes/registration.rb:56
 msgctxt "Registration"
-msgid ""
-"Enter your password. It is recommended to use a strong password, which "
-"consists  of numbers and letters. Maximum length of the password is 256 "
-"characters."
+msgid "Enter your password. We recommend using a strong password consisting of letters and numbers. The maximum password length is 256 characters."
 msgstr ""
 "Podaj swoje hasło. Zalecane jest silne hasło. Hasło takie składa się z liter "
 "i cyfr. Długość hasła powinna być krótsza niż dwieście pięćdziesiąt sześć "
@@ -11611,7 +11446,7 @@ msgstr ""
 
 #: src/scenes/registration.rb:58
 msgctxt "Registration"
-msgid "Reenter your password"
+msgid "Re-enter your password"
 msgstr "Powtórz hasło"
 
 #: src/scenes/registration.rb:61
@@ -11621,34 +11456,28 @@ msgstr "Podane hasła są różne"
 
 #: src/scenes/registration.rb:69
 msgctxt "Registration"
-msgid ""
-"Enter your e-mail address. It will be used in case you forget your password "
-"and  to send important information."
+msgid "Enter your email address. It will be used to reset a forgotten password and to send you important information."
 msgstr ""
 "Podaj swój adres mailowy. Będzie on używany w przypadku zapomnienia hasła i "
 "do wysyłania najważniejszych informacji."
 
 #: src/scenes/registration.rb:84
 msgctxt "Registration"
-msgid ""
-"Registration is successful, thank you. You can log in using your username "
-"and  password."
+msgid "Registration was successful. Thank you. You can log in using your username and password."
 msgstr ""
 "Rejestracja powiodła się, dziękujemy. Możesz teraz się zalogować, używając "
 "podanych danych."
 
 #: src/scenes/registration.rb:86
 msgctxt "Registration"
-msgid ""
-"Registration is successful, thank you. An activation code has been sent to "
-"your e-mail address. You will need to enter it during login."
+msgid "Registration was successful. Thank you. An activation code has been sent to your email address. You will need to enter it when logging in."
 msgstr ""
 "Rejestracja zakończyła się pomyślnie, dziękujemy. Kod aktywacyjny został "
 "wysłany na twój adres e-mail. Trzeba będzie go wprowadzić podczas logowania."
 
 #: src/scenes/registration.rb:92
 msgctxt "Registration"
-msgid "Account with the specified username already exists."
+msgid "An account with the specified username already exists."
 msgstr "Konto o podanym loginie już istnieje."
 
 #: src/scenes/registration.rb:94
@@ -11682,7 +11511,7 @@ msgstr "Automatycznie minimalizuj okno Eltena do zasobnika systemowego"
 
 #: src/scenes/settings.rb:134
 msgctxt "Settings"
-msgid "Enable auto log in"
+msgid "Enable auto-login"
 msgstr "Włącz automatyczne logowanie"
 
 #: src/scenes/settings.rb:135
@@ -11732,12 +11561,12 @@ msgstr "Interfejs"
 
 #: src/scenes/settings.rb:142
 msgctxt "Settings"
-msgid "Play sounds of sound themes"
+msgid "Play sounds from sound themes"
 msgstr "Odtwarzaj dźwięki tematu dźwiękowego"
 
 #: src/scenes/settings.rb:143
 msgctxt "Settings"
-msgid "Soundtheme volume"
+msgid "Sound theme volume"
 msgstr "Głośność tematu dźwiękowego"
 
 #: src/scenes/settings.rb:144
@@ -11777,7 +11606,7 @@ msgstr "Tylko głos"
 
 #: src/scenes/settings.rb:148
 msgctxt "Settings"
-msgid "Control types announcement"
+msgid "Announce control types"
 msgstr "Sposób informowania o typie kontrolek"
 
 #: src/scenes/settings.rb:149
@@ -11797,12 +11626,12 @@ msgstr "Kołowy"
 
 #: src/scenes/settings.rb:150
 msgctxt "Settings"
-msgid "The display method of selection lists"
+msgid "Selection-list navigation mode"
 msgstr "Sposób wyświetlania list wyboru"
 
 #: src/scenes/settings.rb:151
 msgctxt "Settings"
-msgid "Round up the forms"
+msgid "Wrap focus within forms"
 msgstr "Zapętlaj formularze"
 
 #: src/scenes/settings.rb:152
@@ -11867,7 +11696,7 @@ msgstr "Włącz"
 
 #: src/scenes/settings.rb:155
 msgctxt "Settings"
-msgid "Use MacOS-style character navigation in text fields"
+msgid "Use macOS-style character navigation in text fields"
 msgstr ""
 "Używaj stylu systemu MacOS do nawigowania po znakach w polach tekstowych"
 
@@ -11901,9 +11730,7 @@ msgstr "Włącz automatyczne czyszczenie wyjścia"
 
 #: src/scenes/settings.rb:183
 msgctxt "Settings"
-msgid ""
-"Use a voice dictionary when processing characters (requires NVDA addon when "
-"using NVDA as a speech output)"
+msgid "Use a voice dictionary when processing characters (requires the NVDA add-on when using NVDA for speech output)"
 msgstr ""
 "Używaj słownika głosu podczas przetwarzania znaków (wymaga dodatku dla NVDA, "
 "jeśli używane jest NVDA jako wyjście mowy)"
@@ -12065,12 +11892,12 @@ msgstr "Użyj bilinearnej interpolacji HRTF"
 
 #: src/scenes/settings.rb:312
 msgctxt "Settings"
-msgid "Session refresh time in seconds"
+msgid "Session refresh interval in seconds"
 msgstr "Czas odświeżenia sesji w sekundach"
 
 #: src/scenes/settings.rb:313
 msgctxt "Settings"
-msgid "Disable concurrent requests (HTTP2)"
+msgid "Disable concurrent requests (HTTP/2)"
 msgstr "Wyłącz współbieżne zapytania (HTTP2)"
 
 #: src/scenes/settings.rb:314
@@ -12106,7 +11933,7 @@ msgstr "Maksymalna wielkość danych pakietu UDP"
 
 #: src/scenes/settings.rb:317
 msgctxt "Settings"
-msgid "Conferences audio buffer in frames"
+msgid "Conference audio buffer in frames"
 msgstr "Wielkość bufora audio w konferencjach, w ramkach"
 
 #: src/scenes/settings.rb:318
@@ -12156,27 +11983,27 @@ msgstr "Oznaczenie formularza"
 
 #: src/scenes/sounds.rb:24
 msgctxt "Sounds"
-msgid "Marker of a listbox"
+msgid "Marker for a list box"
 msgstr "Oznaczenie listy"
 
 #: src/scenes/sounds.rb:25
 msgctxt "Sounds"
-msgid "Marker of a multiselect listbox"
+msgid "Marker for a multi-select list box"
 msgstr "Oznaczenie listy wielokrotnego wyboru"
 
 #: src/scenes/sounds.rb:26
 msgctxt "Sounds"
-msgid "Focus move on a listbox"
+msgid "Focus moved in a list box"
 msgstr "Zmiana obiektu na liście"
 
 #: src/scenes/sounds.rb:27
 msgctxt "Sounds"
-msgid "Border of a listbox"
+msgid "Border of a list box"
 msgstr "Granica listy"
 
 #: src/scenes/sounds.rb:28
 msgctxt "Sounds"
-msgid "Expandable item on a listbox"
+msgid "Expandable item in a list box"
 msgstr "Rozwijalny obiekt na liście"
 
 #: src/scenes/sounds.rb:29
@@ -12196,52 +12023,52 @@ msgstr "Wybór obiektu"
 
 #: src/scenes/sounds.rb:32
 msgctxt "Sounds"
-msgid "Ticked item on a listbox"
+msgid "Ticked item in a list box"
 msgstr "Oznaczony obiekt na liście"
 
 #: src/scenes/sounds.rb:33
 msgctxt "Sounds"
-msgid "Unticked item on a listbox"
+msgid "Unticked item in a list box"
 msgstr "Odznaczony obiekt na liście"
 
 #: src/scenes/sounds.rb:34
 msgctxt "Sounds"
-msgid "New or updated item on a listbox"
+msgid "New or updated item in a list box"
 msgstr "Nowy lub zaktualizowany obiekt na liście"
 
 #: src/scenes/sounds.rb:35
 msgctxt "Sounds"
-msgid "Item with attachment on a listbox"
+msgid "Item with an attachment in a list box"
 msgstr "Obiekt z załącznikiem na liście"
 
 #: src/scenes/sounds.rb:36
 msgctxt "Sounds"
-msgid "Closed item on a listbox"
+msgid "Closed item in a list box"
 msgstr "Zamknięty obiekt na liście"
 
 #: src/scenes/sounds.rb:37
 msgctxt "Sounds"
-msgid "Item containing other items on a listbox"
+msgid "Item containing other items in a list box"
 msgstr "Obiekt zawierający inne obiekty na liście"
 
 #: src/scenes/sounds.rb:38
 msgctxt "Sounds"
-msgid "Future item on a listbox"
+msgid "Future item in a list box"
 msgstr "Zaplanowany obiekt na liście"
 
 #: src/scenes/sounds.rb:39
 msgctxt "Sounds"
-msgid "Liked item on a listbox"
+msgid "Liked item in a list box"
 msgstr "Polubiony obiekt na liście"
 
 #: src/scenes/sounds.rb:40
 msgctxt "Sounds"
-msgid "Pinned item on a listbox"
+msgid "Pinned item in a list box"
 msgstr "Przypięty obiekt na liście"
 
 #: src/scenes/sounds.rb:41
 msgctxt "Sounds"
-msgid "Item with restricted access on a listbox"
+msgid "Item with restricted access in a list box"
 msgstr "Element z ograniczonym dostępem na liście"
 
 #: src/scenes/sounds.rb:42
@@ -12256,72 +12083,72 @@ msgstr "Użytkownik będący sponsorem"
 
 #: src/scenes/sounds.rb:44
 msgctxt "Sounds"
-msgid "Compressed file on a files tree"
+msgid "Compressed file in a file tree"
 msgstr "Skompresowany plik na drzewie plików"
 
 #: src/scenes/sounds.rb:45
 msgctxt "Sounds"
-msgid "Audio file on a files tree"
+msgid "Audio file in a file tree"
 msgstr "Plik audio na drzewie plików"
 
 #: src/scenes/sounds.rb:46
 msgctxt "Sounds"
-msgid "Directory on a files tree"
+msgid "Directory in a file tree"
 msgstr "Folder na drzewie plików"
 
 #: src/scenes/sounds.rb:47
 msgctxt "Sounds"
-msgid "Document on a files tree"
+msgid "Document in a file tree"
 msgstr "Dokument na drzewie plików"
 
 #: src/scenes/sounds.rb:48
 msgctxt "Sounds"
-msgid "Text file on a files tree"
+msgid "Text file in a file tree"
 msgstr "Plik tekstowy na drzewie plików"
 
 #: src/scenes/sounds.rb:49
 msgctxt "Sounds"
-msgid "Marker of an editbox with audio in a form"
+msgid "Marker for a text field with audio in a form"
 msgstr "Oznaczenie pola edycji z treścią głosową w formularzu"
 
 #: src/scenes/sounds.rb:50
 msgctxt "Sounds"
-msgid "Marker of an editbox in a form"
+msgid "Marker for a text field in a form"
 msgstr "Oznaczenie pola tekstowego"
 
 #: src/scenes/sounds.rb:51
 msgctxt "Sounds"
-msgid "A piece of text in an editbox has beenselected"
+msgid "A piece of text in a text field has been selected"
 msgstr "Zaznaczenie tekstu w polu tekstowym"
 
 #: src/scenes/sounds.rb:52
 msgctxt "Sounds"
-msgid "A piece of text in an editbox has been unselected"
+msgid "A piece of text in a text field has been unselected"
 msgstr "Odznaczenie tekstu w polu tekstowym"
 
 #: src/scenes/sounds.rb:53
 msgctxt "Sounds"
-msgid "Capitalized letter in an editbox"
+msgid "Uppercase letter in a text field"
 msgstr "Wielka litera"
 
 #: src/scenes/sounds.rb:54
 msgctxt "Sounds"
-msgid "Delete of a text in an editbox"
+msgid "Text deleted from a text field"
 msgstr "Usunięcie tekstu"
 
 #: src/scenes/sounds.rb:55
 msgctxt "Sounds"
-msgid "End of line in an editbox"
+msgid "End of line in a text field"
 msgstr "Koniec linii"
 
 #: src/scenes/sounds.rb:56
 msgctxt "Sounds"
-msgid "Password character in an editbox"
+msgid "Password character in a text field"
 msgstr "Znak w polu hasła"
 
 #: src/scenes/sounds.rb:57
 msgctxt "Sounds"
-msgid "Space in an editbox"
+msgid "Space in a text field"
 msgstr "Spacja"
 
 #: src/scenes/sounds.rb:58
@@ -12346,7 +12173,7 @@ msgstr "Wzmianka na tablicy"
 
 #: src/scenes/sounds.rb:62
 msgctxt "Sounds"
-msgid "User signed in or Elten window focused"
+msgid "User signed in or the Elten window received focus"
 msgstr "Użytkownik zalogowany lub okno Eltena przywrócone"
 
 #: src/scenes/sounds.rb:63
@@ -12441,7 +12268,7 @@ msgstr "Powiadomienie: monitor online"
 
 #: src/scenes/sounds.rb:81
 msgctxt "Sounds"
-msgid "Notification: new user joined followed conference channel"
+msgid "Notification: a new user joined a conference channel you follow"
 msgstr ""
 "Powiadomienie: nowy użytkownik dołączył do śledzonego kanału konferencyjnego"
 
@@ -12477,12 +12304,12 @@ msgstr "Szept na konferencji"
 
 #: src/scenes/sounds.rb:92
 msgctxt "Sounds"
-msgid "Push To Talk enabled in conferences"
+msgid "Push-to-talk enabled in conferences"
 msgstr "Naciśnij i Mów włączony w konferencjach"
 
 #: src/scenes/sounds.rb:93
 msgctxt "Sounds"
-msgid "Push To Talk disabled in conferences"
+msgid "Push-to-talk disabled in conferences"
 msgstr "Naciśnij i Mów wyłączony w konferencjach"
 
 #: src/scenes/sounds.rb:94
@@ -12552,12 +12379,12 @@ msgstr "Sygnał"
 
 #: src/scenes/sounds.rb:113 src/scenes/sounds.rb:197
 msgctxt "Sounds"
-msgid "Type name of the sound theme"
+msgid "Enter a name for the sound theme"
 msgstr "Wpisz nazwę tematu dźwiękowego"
 
 #: src/scenes/sounds.rb:138
 msgctxt "Sounds"
-msgid "Sounds guide, press space to play"
+msgid "Sound guide; press Space to play"
 msgstr "Przewodnik po dźwiękach (wciśnij spację, by odtworzyć)"
 
 #: src/scenes/sounds.rb:139
@@ -12622,12 +12449,12 @@ msgstr "Wybierz nowy dźwięk"
 
 #: src/scenes/sounds.rb:214
 msgctxt "Sounds"
-msgid "The sound must not last longer than 5 minutes"
+msgid "The sound must be no longer than five minutes"
 msgstr "Dźwięk nie może trwać dłużej, niż 5 minut"
 
 #: src/scenes/sounds.rb:229
 msgctxt "Sounds"
-msgid "Where to save this theme"
+msgid "Where do you want to save this theme?"
 msgstr "Gdzie zapisać ten temat"
 
 #: src/scenes/sounds.rb:242
@@ -12660,9 +12487,7 @@ msgstr ""
 
 #: src/scenes/sounds.rb:319
 msgctxt "Sounds"
-msgid ""
-"Sound theme ID. This ID will be used to track updates of this sound theme. "
-"Keep the current ID if you want to update existing sound theme."
+msgid "Sound theme ID. This ID will be used to track updates to this sound theme. Keep the current ID if you want to update the existing sound theme."
 msgstr ""
 "Identyfikator tematu dźwiękowego. Ten identyfikator będzie używany do "
 "śledzenia aktualizacji tego tematu. Zachowaj bieżący identyfikator, jeśli "
@@ -12670,7 +12495,7 @@ msgstr ""
 
 #: src/scenes/sounds.rb:335 src/scenes/sounds.rb:342
 msgctxt "Sounds"
-msgid "Sound theme with that ID already exists."
+msgid "A sound theme with that ID already exists."
 msgstr "Temat dźwiękowy o tym identyfikatorze już istnieje."
 
 #: src/scenes/sounds.rb:359
@@ -12765,7 +12590,7 @@ msgstr "Używane przez"
 
 #: src/scenes/soundthemes.rb:133
 msgctxt "Soundthemes"
-msgid "Select theme to download"
+msgid "Select the theme to download"
 msgstr "Wybierz temat do pobrania"
 
 #: src/scenes/soundthemes.rb:133
@@ -12780,13 +12605,12 @@ msgstr "Pobierz"
 
 #: src/scenes/soundthemes.rb:148 src/scenes/soundthemes.rb:188
 msgctxt "SoundThemes"
-msgid ""
-"Do you want to download theme %{name}? Need to download %{size} of data."
+msgid "Do you want to download the theme %{name}? You will need to download %{size} of data."
 msgstr "Czy chcesz pobrać temat %{name}? Pobrane zostanie %{size} danych."
 
 #: src/scenes/soundthemes.rb:157
 msgctxt "SoundThemes"
-msgid "Are you sure you want to delete sound theme %{name} from the server?"
+msgid "Are you sure you want to delete the sound theme %{name} from the server?"
 msgstr "Czy na pewno chcesz usunąć temat dźwiękowy %{name} z serwera?"
 
 #: src/scenes/speedtest.rb:9
@@ -12811,12 +12635,12 @@ msgstr "Lista blogów"
 
 #: src/scenes/speedtest.rb:9
 msgctxt "SpeedTest"
-msgid "Unit to test"
+msgid "Component to test"
 msgstr "Moduł do przetestowania"
 
 #: src/scenes/speedtest.rb:9
 msgctxt "SpeedTest"
-msgid "Number of attempts to perform"
+msgid "Number of test runs"
 msgstr "Ilość zapytań"
 
 #: src/scenes/speedtest.rb:9
@@ -12826,7 +12650,7 @@ msgstr "Start"
 
 #: src/scenes/speedtest.rb:27
 msgctxt "SpeedTest"
-msgid "Performing test, please wait"
+msgid "Test in progress. Please wait."
 msgstr "Testowanie, proszę czekać"
 
 #: src/scenes/speedtest.rb:42
@@ -12846,7 +12670,7 @@ msgstr "Czas maksymalny"
 
 #: src/scenes/speedtest.rb:45
 msgctxt "SpeedTest"
-msgid "Errors count"
+msgid "Number of errors"
 msgstr "Liczba błędów"
 
 #: src/scenes/speedtest.rb:51
@@ -12870,9 +12694,7 @@ msgstr ""
 
 #: src/scenes/update.rb:19
 msgctxt "Update"
-msgid ""
-"A new version of this program is available. Do you want to download and "
-"instal it?"
+msgid "A new version of this program is available. Do you want to download and install it?"
 msgstr ""
 "Dostępna jest nowa wersja programu. Czy chcesz ją pobrać i zainstalować?"
 
@@ -12891,9 +12713,7 @@ msgstr "Nie udało się zainstalować niektórych aktualizacji: %{names}"
 
 #: src/scenes/update.rb:52
 msgctxt "Update"
-msgid ""
-"The update has been downloaded. To install it, the program must be "
-"restarted.  Press enter to continue or escape to cancel."
+msgid "The update has been downloaded. To install it, the program must be restarted. Press Return to continue or Esc to cancel."
 msgstr ""
 "Aktualizacja została pobrana. Aby ją zainstalować, program musi zostać "
 "uruchomiony ponownie. Naciśnij enter, aby kontynuować lub escape, aby "
@@ -12901,16 +12721,14 @@ msgstr ""
 
 #: src/scenes/update.rb:66
 msgctxt "Update"
-msgid "Now, the update will be installed. The program will restart."
+msgid "The update will now be installed. The program will restart."
 msgstr ""
 "Aktualizacja zostanie teraz zainstalowana. Program zostanie uruchomiony "
 "ponownie."
 
 #: src/scenes/update.rb:90
 msgctxt "Update"
-msgid ""
-"The program will be now reverted to the latest stable version. Elten will "
-"restart.  It may take several minutes."
+msgid "The program will now be reverted to the latest stable version. Elten will restart. This may take several minutes."
 msgstr ""
 "Program zostanie przywrócony do ostatniej wersji stabilnej. Elten zostanie "
 "uruchomiony ponownie. To może potrwać kilka minut."
@@ -12931,12 +12749,12 @@ msgid "Recently registered users"
 msgstr "Ostatnio zarejestrowani użytkownicy"
 
 #: src/scenes/usersaddedmetocontacts.rb:13
-msgid "UsersAddedMeToThis section is unavailable for guests"
+msgid "This section is unavailable to guests"
 msgstr "Ta sekcja nie jest dostępna z poziomu konta gościa"
 
 #: src/scenes/usersaddedmetocontacts.rb:28
 msgctxt "UsersAddedMeToContacts"
-msgid "Users who added me to their contacts list"
+msgid "Users who added me to their contact list"
 msgstr "Użytkownicy, którzy dodali mnie do swoich kontaktów"
 
 #: src/scenes/usersearch.rb:11
@@ -13001,12 +12819,12 @@ msgstr "%{date}, %{note}"
 
 #: src/ui/controls/calendar_grid.rb:84
 msgctxt "Calendar"
-msgid "Use left and right arrows to move by days"
+msgid "Use the Left and Right Arrow keys to move by days"
 msgstr "Użyj strzałek w lewo i w prawo, aby przechodzić między dniami"
 
 #: src/ui/controls/calendar_grid.rb:85
 msgctxt "Calendar"
-msgid "Use up and down arrows to move by weeks"
+msgid "Use the Up and Down Arrow keys to move by weeks"
 msgstr "Użyj strzałek w górę i w dół, aby przechodzić między tygodniami"
 
 #: src/ui/controls/calendar_grid.rb:86
@@ -13291,7 +13109,7 @@ msgstr "Menu kontekstowe"
 
 #: src/ui/controls/edit_box.rb:614 src/ui/controls/edit_box.rb:1472
 msgctxt "EAPI_Form"
-msgid "Edit box"
+msgid "Text field"
 msgstr "Edycja"
 
 #: src/ui/controls/edit_box.rb:615 src/ui/controls/files_tree.rb:231
@@ -13349,7 +13167,7 @@ msgstr "cofnięto"
 
 #: src/ui/controls/edit_box.rb:746
 msgctxt "EAPI_Form"
-msgid "Repeated"
+msgid "Redone"
 msgstr "Powtórzono"
 
 #: src/ui/controls/edit_box.rb:749
@@ -13384,7 +13202,7 @@ msgstr "Ramka"
 
 #: src/ui/controls/edit_box.rb:1756
 msgctxt "EAPI_Form"
-msgid "Use h or numbers from 1 to 6 to navigate to the next header"
+msgid "Use H or the number keys 1 to 6 to navigate to the next heading"
 msgstr "Użyj h lub cyfr od 1 do 6, aby przejść do następnego nagłówka"
 
 #: src/ui/controls/edit_box.rb:1757
@@ -13451,7 +13269,7 @@ msgstr "Utwórz"
 
 #: src/ui/controls/files_tree.rb:236
 msgctxt "EAPI_Form"
-msgid "Files Tree"
+msgid "File tree"
 msgstr "Drzewo plików"
 
 #: src/ui/controls/files_tree.rb:352
@@ -13501,7 +13319,7 @@ msgstr "Wszystkie tagi"
 
 #: src/ui/controls/list_box.rb:701
 msgctxt "EAPI_Form"
-msgid "You can heck only %{count} item"
+msgid "You can check only %{count} item"
 msgid_plural "You can check only %{count} items"
 msgstr[0] "Możesz zaznaczyć tylko %{count} element"
 msgstr[1] "Możesz zaznaczyć tylko %{count} elementy"
@@ -13514,7 +13332,7 @@ msgstr "Nieoznaczone"
 
 #: src/ui/controls/list_box.rb:756
 msgctxt "EAPI_Form"
-msgid "Multiselection list"
+msgid "Multi-select list"
 msgstr "Lista wielokrotnego wyboru"
 
 #: src/ui/controls/list_box.rb:764 src/ui/controls/list_box.rb:766
@@ -13534,24 +13352,24 @@ msgstr "Pusta lista"
 
 #: src/ui/controls/list_box.rb:871
 msgctxt "EAPI_Form"
-msgid "Use space to select or unselect items"
+msgid "Press Space to select or deselect items"
 msgstr "Użyj spacji, aby zaznaczyć lub odznaczyć elementy"
 
 #: src/ui/controls/list_box.rb:874
 msgctxt "EAPI_Form"
-msgid "Use shift with up/down arrows to filter content by tags"
+msgid "Press Shift+Up/Down Arrow to filter content by tags"
 msgstr ""
 "Użyj klawisza Shift ze strzałkami w górę / w dół, aby filtrować zawartość "
 "według tagów"
 
 #: src/ui/controls/list_box.rb:876
 msgctxt "EAPI_Form"
-msgid "Press CTRL + up arrow to read item index"
+msgid "Press Ctrl+Up Arrow to hear the item number"
 msgstr "Wciśnij Control oraz strzałkę w górę, aby odczytać numer elementu"
 
 #: src/ui/controls/list_box.rb:877
 msgctxt "EAPI_Form"
-msgid "Press CTRL + down arrow to read count of items"
+msgid "Press Ctrl+Down Arrow to hear the number of items"
 msgstr "Wciśnij Control oraz strzałkę w dół, aby odczytać liczbę elementów"
 
 #: src/ui/controls/opus_record_button.rb:32
@@ -13635,9 +13453,7 @@ msgstr "Wznów nagrywanie"
 
 #: src/ui/controls/opus_record_button.rb:132
 msgctxt "EAPI_Form"
-msgid ""
-"The encoder settings will not apply to the current record. Are you sure you "
-"want to continue?"
+msgid "The encoder settings will not apply to the current recording. Are you sure you want to continue?"
 msgstr ""
 "Nowe ustawienia kodeka nie wpłyną na bieżące nagranie. Czy chcesz "
 "kontynuować?"
@@ -13770,10 +13586,7 @@ msgstr "Czas rozdziału (hh:mm:ss.uuu)"
 
 #: src/ui/controls/opus_record_button.rb:339
 msgctxt "EAPI_Form"
-msgid ""
-"Wrong time format, the proper format is two hours digits, colon, two minutes "
-"digits, colon, two seconds digits and, optionally, three milliseconds digits "
-"preceeded by dot"
+msgid "Invalid time format. Use hh:mm:ss.uuu: two digits each for hours, minutes and seconds, optionally followed by a full stop and three digits for milliseconds."
 msgstr ""
 "Nieprawidłowy format czasu, prawidłowy format to dwie cyfry godzin, "
 "dwukropek, dwie cyfry minut, dwukropek, dwie cyfry sekund i opcjonalnie trzy "
@@ -13781,17 +13594,17 @@ msgstr ""
 
 #: src/ui/controls/opus_record_button.rb:356
 msgctxt "EAPI_Form"
-msgid "Add new chapter manually"
+msgid "Add a new chapter manually"
 msgstr "Dodaj nowy rozdział ręcznie"
 
 #: src/ui/controls/opus_record_button.rb:357
 msgctxt "EAPI_Form"
-msgid "Add chapters with playback"
+msgid "Add chapters during playback"
 msgstr "Dodawanie rozdziałów podczas odtwarzania"
 
 #: src/ui/controls/opus_record_button.rb:359
 msgctxt "EAPI_Form"
-msgid "Chapters editor, use context menu to add chapters"
+msgid "Chapter editor; use the context menu to add chapters"
 msgstr ""
 "Edytor rozdziałów, użyj menu kontekstowego w celu dodawania rozdziałów w "
 "trakcie odtwarzania"
@@ -13878,12 +13691,12 @@ msgstr "Zapisz plik"
 
 #: src/ui/controls/player.rb:425
 msgctxt "EAPI_Form"
-msgid "Use spacebar to toggle pause"
+msgid "Press the Space bar to play or pause"
 msgstr "Naciśnij spację, aby przełączyć pauzę"
 
 #: src/ui/controls/player.rb:426
 msgctxt "EAPI_Form"
-msgid "Use left/right arrows to slide"
+msgid "Use the Left/Right Arrow keys to seek"
 msgstr "Do przewijania należy używać strzałek w lewo/w prawo"
 
 #: src/ui/controls/player.rb:427
@@ -13893,40 +13706,39 @@ msgstr "Użyj strzałek góra/dół, aby zmienić głośność odtwarzania"
 
 #: src/ui/controls/player.rb:428
 msgctxt "EAPI_Form"
-msgid "Use SHIFT with left/right arrows to change panning"
+msgid "Use Shift+Left/Right Arrow to change panning"
 msgstr "Użyj SHIFT ze strzałkami w lewo/prawo, aby zmienić pozycję dźwięku"
 
 #: src/ui/controls/player.rb:429
 msgctxt "EAPI_Form"
-msgid "Use SHIFT with up/down arrows to change pitch"
+msgid "Use Shift+Up/Down Arrow to change pitch"
 msgstr "Użyj SHIFT i strzałek góra/dół, aby zmienić wysokość dźwięku"
 
 #: src/ui/controls/player.rb:430
 msgctxt "EAPI_Form"
-msgid "Use CTRL with up/down arrows to change tempo"
+msgid "Use Ctrl+Up/Down Arrow to change tempo"
 msgstr "Użyj CTRL ze strzałkami w górę / w dół, aby zmienić tempo"
 
 #: src/ui/controls/player.rb:431
 msgctxt "EAPI_Form"
-msgid "Use backspace to return to the default settings"
+msgid "Press Backspace to restore the default settings"
 msgstr "Użyj backspace, aby powrócić do ustawień domyślnych"
 
 #: src/ui/controls/player.rb:432
 msgctxt "EAPI_Form"
-msgid "Use home or end to move to the beginning or ending of a track"
+msgid "Press Home or End to move to the beginning or end of the track"
 msgstr "Użyj home lub end, aby przejść do początku lub końca ścieżki"
 
 #: src/ui/controls/player.rb:433
 msgctxt "EAPI_Form"
-msgid "Use page up or page down to navigate to the previous or next chapter"
+msgid "Press Page Up or Page Down to move to the previous or next chapter"
 msgstr ""
 "Użyj przycisków page up lub page down, aby przejść do poprzedniego lub "
 "następnego rozdziału"
 
 #: src/ui/controls/table_box.rb:205
 msgctxt "EAPI_Form"
-msgid ""
-"Use SHIFT with left/right arrows to select the column you want to navigate by"
+msgid "Use Shift+Left/Right Arrow to select the column you want to navigate by"
 msgstr ""
 "Użyj SHIFT oraz strzałek w lewo/w prawo, aby wybrać kolumnę, po której "
 "chcesz nawigować"
@@ -13938,7 +13750,7 @@ msgstr "Podaj ścieżkę"
 
 #: src/ui/form.rb:429
 msgctxt "EAPI_Form"
-msgid "Press up or down arrow to select contact"
+msgid "Press the Up or Down Arrow key to select a contact"
 msgstr "Naciśnij strzałkę w górę lub w dół, aby wybrać kontakt"
 
 #: src/ui/form.rb:431
@@ -13948,7 +13760,7 @@ msgstr "Wybierz kontakt"
 
 #: src/ui/form.rb:453
 msgctxt "EAPI_Form"
-msgid "User does not exist"
+msgid "The user does not exist"
 msgstr "Użytkownik nie istnieje"
 
 #: src/ui/input.rb:574

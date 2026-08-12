@@ -366,7 +366,7 @@ while name==""
     s=p_("EAPI_Form", "Create")
     menu.submenu(s) {|m|createpr.call(m)}
     else
-  s=@header+" - "+p_("EAPI_Form", "Files Tree")+" ("+_("Context menu")+")"
+  s=@header+" - "+p_("EAPI_Form", "File tree")+" ("+_("Context menu")+")"
   menu.submenu(s){|m|
   filepr.call(m)
   editpr.call(m)

@@ -13,7 +13,7 @@ class Scene_Admins
     begin
         case cat
     when 0
-        @selt=[p_("Admins", "Council of elders"), p_("Admins", "Developers"), p_("Admins", "Translators"), p_("Admins", "Community Administrators"), p_("Admins", "Recommended groups Moderators"), p_("Admins", "Sponsors")]
+        @selt=[p_("Admins", "Council of elders"), p_("Admins", "Developers"), p_("Admins", "Translators"), p_("Admins", "Community Administrators"), p_("Admins", "Moderators of recommended groups"), p_("Admins", "Sponsors")]
     @users=[]
     when 1
       @users = EltenLink::Admins.users(elten_link, "elders")

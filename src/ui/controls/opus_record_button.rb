@@ -130,7 +130,7 @@ set_source(file)
       end
     }
     @btn_encoder.on(:press) {
-    if @status==0 or @current_filename!=@filename or confirm(p_("EAPI_Form", "The encoder settings will not apply to the current record. Are you sure you want to continue?"))
+    if @status==0 or @current_filename!=@filename or confirm(p_("EAPI_Form", "The encoder settings will not apply to the current recording. Are you sure you want to continue?"))
       show_encodersettings
       @form.focus
       end
@@ -337,7 +337,7 @@ chaps[index]=[fedt_time.text, fedt_name.text]
 setchaps.call(chaps)
 frm.resume
 else
-  speak(p_("EAPI_Form", "Wrong time format, the proper format is two hours digits, colon, two minutes digits, colon, two seconds digits and, optionally, three milliseconds digits preceeded by dot"))
+  speak(p_("EAPI_Form", "Invalid time format. Use hh:mm:ss.uuu: two digits each for hours, minutes and seconds, optionally followed by a full stop and three digits for milliseconds."))
   end
 }
 fbtn_cancel.on(:press) {frm.resume}
@@ -354,10 +354,10 @@ lst_chapters.focus
   tbld.call
   }
   lst_chapters.bind_context{|menu|
-  menu.option(p_("EAPI_Form", "Add new chapter manually"), nil, "n") {editchap.call(-1)}
-  menu.option(p_("EAPI_Form", "Add chapters with playback"), nil, "N") {
+  menu.option(p_("EAPI_Form", "Add a new chapter manually"), nil, "n") {editchap.call(-1)}
+  menu.option(p_("EAPI_Form", "Add chapters during playback"), nil, "N") {
   frm = Form.new([
-  fpl=Player.new(@current_filename,label: p_("EAPI_Form", "Chapters editor, use context menu to add chapters"),autoplay: true,quiet: true),
+  fpl=Player.new(@current_filename,label: p_("EAPI_Form", "Chapter editor; use the context menu to add chapters"),autoplay: true,quiet: true),
   fbtn_close = Button.new(_("Close"))
   ], index: 0, silent: false, quiet: true)
   frm.bind_context{|menu|

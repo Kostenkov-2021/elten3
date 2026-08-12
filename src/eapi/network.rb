@@ -68,7 +68,7 @@ return response
 end
 
 def download_file(source, destination, use_waiting: true, can_cancel: true, override: false)
-  return if override==false and FileTest.exists?(destination) and !confirm(p_("EAPI_Network", "The file already exists. Do you want to override it?"))
+  return if override==false and FileTest.exists?(destination) and !confirm(p_("EAPI_Network", "The file already exists. Do you want to overwrite it?"))
           Log.debug("Downloading file #{source}")
                               play_sound("signal") if $netsignal
           result = nil

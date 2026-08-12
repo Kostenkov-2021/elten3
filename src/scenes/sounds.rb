@@ -21,45 +21,45 @@ class Scene_Sounds
 'menu_open' => p_("Sounds", "Menu opened"),
 'menu_close' => p_("Sounds", "Menu closed"),
 'form_marker' => p_("Sounds", "Marker of a form"),
-'listbox_marker' => p_("Sounds", "Marker of a listbox"),
-'listbox_multimarker' => p_("Sounds", "Marker of a multiselect listbox"),
-'listbox_focus' => p_("Sounds", "Focus move on a listbox"),
-'border' => p_("Sounds", "Border of a listbox"),
-'listbox_itemsubmenu' => p_("Sounds", "Expandable item on a listbox"),
+'listbox_marker' => p_("Sounds", "Marker for a list box"),
+'listbox_multimarker' => p_("Sounds", "Marker for a multi-select list box"),
+'listbox_focus' => p_("Sounds", "Focus moved in a list box"),
+'border' => p_("Sounds", "Border of a list box"),
+'listbox_itemsubmenu' => p_("Sounds", "Expandable item in a list box"),
 'listbox_treeexpand' => p_("Sounds", "Item expanded"),
 'listbox_treecollapse' => p_("Sounds", "Item collapsed"),
 'listbox_select' => p_("Sounds", "Item selected"),
-'listbox_statechecked' => p_("Sounds", "Ticked item on a listbox"),
-'listbox_stateunchecked' => p_("Sounds", "Unticked item on a listbox"),
-'listbox_itemnew' => p_("Sounds", "New or updated item on a listbox"),
-'listbox_itemattachment' => p_("Sounds", "Item with attachment on a listbox"),
-'listbox_itemclosed' => p_("Sounds", "Closed item on a listbox"),
-'listbox_itemcontaining' => p_("Sounds", "Item containing other items on a listbox"),
-'listbox_itemfuture' => p_("Sounds", "Future item on a listbox"),
-'listbox_itemliked' => p_("Sounds", "Liked item on a listbox"),
-'listbox_itempinned' => p_("Sounds", "Pinned item on a listbox"),
-'listbox_itemrestricted' => p_("Sounds", "Item with restricted access on a listbox"),
+'listbox_statechecked' => p_("Sounds", "Ticked item in a list box"),
+'listbox_stateunchecked' => p_("Sounds", "Unticked item in a list box"),
+'listbox_itemnew' => p_("Sounds", "New or updated item in a list box"),
+'listbox_itemattachment' => p_("Sounds", "Item with an attachment in a list box"),
+'listbox_itemclosed' => p_("Sounds", "Closed item in a list box"),
+'listbox_itemcontaining' => p_("Sounds", "Item containing other items in a list box"),
+'listbox_itemfuture' => p_("Sounds", "Future item in a list box"),
+'listbox_itemliked' => p_("Sounds", "Liked item in a list box"),
+'listbox_itempinned' => p_("Sounds", "Pinned item in a list box"),
+'listbox_itemrestricted' => p_("Sounds", "Item with restricted access in a list box"),
 'user_online' => p_("Sounds", "Online user"),
 'user_sponsor' => p_("Sounds", "User being a sponsor"),
-'file_archive' => p_("Sounds", "Compressed file on a files tree"),
-'file_audio' => p_("Sounds", "Audio file on a files tree"),
-'file_dir' => p_("Sounds", "Directory on a files tree"),
-'file_document' => p_("Sounds", "Document on a files tree"),
-'file_text' => p_("Sounds", "Text file on a files tree"),
-'editbox_audiomarker' => p_("Sounds", "Marker of an editbox with audio in a form"),
-'editbox_marker' => p_("Sounds", "Marker of an editbox in a form"),
-'editbox_textselected' => p_("Sounds", "A piece of text in an editbox has beenselected"),
-'editbox_textunselected' => p_("Sounds", "A piece of text in an editbox has been unselected"),
-'editbox_bigletter' => p_("Sounds", "Capitalized letter in an editbox"),
-'editbox_delete' => p_("Sounds", "Delete of a text in an editbox"),
-'editbox_endofline' => p_("Sounds", "End of line in an editbox"),
-'editbox_passwordchar' => p_("Sounds", "Password character in an editbox"),
-'editbox_space' => p_("Sounds", "Space in an editbox"),
+'file_archive' => p_("Sounds", "Compressed file in a file tree"),
+'file_audio' => p_("Sounds", "Audio file in a file tree"),
+'file_dir' => p_("Sounds", "Directory in a file tree"),
+'file_document' => p_("Sounds", "Document in a file tree"),
+'file_text' => p_("Sounds", "Text file in a file tree"),
+'editbox_audiomarker' => p_("Sounds", "Marker for a text field with audio in a form"),
+'editbox_marker' => p_("Sounds", "Marker for a text field in a form"),
+'editbox_textselected' => p_("Sounds", "A piece of text in a text field has been selected"),
+'editbox_textunselected' => p_("Sounds", "A piece of text in a text field has been unselected"),
+'editbox_bigletter' => p_("Sounds", "Uppercase letter in a text field"),
+'editbox_delete' => p_("Sounds", "Text deleted from a text field"),
+'editbox_endofline' => p_("Sounds", "End of line in a text field"),
+'editbox_passwordchar' => p_("Sounds", "Password character in a text field"),
+'editbox_space' => p_("Sounds", "Space in a text field"),
 'button_marker' => p_("Sounds", "Marker of a button in a form"),
 'checkbox_marker' => p_("Sounds", "Marker of a checkbox in a form"),
 'feed_update' => p_("Sounds", "Feed updated"),
 'feed_mention' => p_("Sounds", "Mentioned in a feed"),
-'login' => p_("Sounds", "User signed in or Elten window focused"),
+'login' => p_("Sounds", "User signed in or the Elten window received focus"),
 'logout' => p_("Sounds", "User signed out or Elten closed"),
 'minimize' => p_("Sounds", "Elten minimized into tray"),
 'messages_update' => p_("Sounds", "Messages window updated"),
@@ -78,7 +78,7 @@ class Scene_Sounds
 'notification_mention' => p_("Sounds", "Notification: new mention"),
 'notification_message' => p_("Sounds", "Notification: new message"),
 'notification_monitor' => p_("Sounds", "Notification: online monitor"),
-'notification_userjoin' => p_("Sounds", "Notification: new user joined followed conference channel"),
+'notification_userjoin' => p_("Sounds", "Notification: a new user joined a conference channel you follow"),
 'conference_userjoin' => p_("Sounds", "New user joined conference"),
 'conference_userleave' => p_("Sounds", "User left conference"),
 'conference_userknock' => p_("Sounds", "User knocking to the conference"),
@@ -89,8 +89,8 @@ class Scene_Sounds
 #'conference_cardshuffle' => p_("Sounds", "Shuffled a deck in conference"),
 #'conference_cardplace' => p_("Sounds", "Card placed in conference"),
 'conference_whisper' => p_("Sounds", "Whisper in the conference"),
-'conference_pushin' => p_("Sounds", "Push To Talk enabled in conferences"),
-'conference_pushout' => p_("Sounds", "Push To Talk disabled in conferences"),
+'conference_pushin' => p_("Sounds", "Push-to-talk enabled in conferences"),
+'conference_pushout' => p_("Sounds", "Push-to-talk disabled in conferences"),
 'conference_speechrequest' => p_("Sounds", "Speech requested in conferences"),
 'conference_speechallow' => p_("Sounds", "Speech allowed in conferences"),
 'conference_speechdeny' => p_("Sounds", "Speech denied in conferences"),
@@ -110,7 +110,7 @@ class Scene_Sounds
         @name=@theme.name
         @changed=false
       else
-        @name=input_text(p_("Sounds", "Type name of the sound theme"), flags: 0, text: "by #{Session.name}", escapable: true)
+        @name=input_text(p_("Sounds", "Enter a name for the sound theme"), flags: 0, text: "by #{Session.name}", escapable: true)
         path=""
                 return $scene=Scene_SoundThemes.new if @name==nil
                         @name=@name[0..255] if @name.size>255
@@ -135,7 +135,7 @@ class Scene_Sounds
           @snd.push(Struct_Sounds_Sound.new(file,@soundnames[file],@theme))
     end
     return $scene=Scene_Main.new if @snd.size==0
-    h=p_("Sounds", "Sounds guide, press space to play")
+    h=p_("Sounds", "Sound guide; press Space to play")
     h=p_("Sounds", "Editing sound theme %{theme}")%{:theme=>@name} if @theme!=nil
     @fields = [
     @sel=ListBox.new(@snd.map{|o| o.description}, header: h, index: 0, flags: ListBox::Flags::Silent),
@@ -194,7 +194,7 @@ class Scene_Sounds
     }
     @btn_extract.on(:press) {extract}
     @btn_rename.on(:press) {
-    newname=input_text(p_("Sounds", "Type name of the sound theme"), flags: 0, text: @name, escapable: true)
+    newname=input_text(p_("Sounds", "Enter a name for the sound theme"), flags: 0, text: @name, escapable: true)
     loop_update
     if newname!=nil
       @name=newname
@@ -211,7 +211,7 @@ if file!=nil
   if snd.length>0 && snd.length<300
   @snd[@sel.index].newfile=file
 else
-  alert(p_("Sounds", "The sound must not last longer than 5 minutes"))
+  alert(p_("Sounds", "The sound must be no longer than five minutes"))
   end
     snd.close
   @form.hide(@btn_export)
@@ -226,7 +226,7 @@ save
   @form.focus
     }
     @btn_export.on(:press) {
-    loc=get_file(p_("Sounds", "Where to save this theme"), path: EltenPath.join(Dirs.user, "Documents"), save: true)
+    loc=get_file(p_("Sounds", "Where do you want to save this theme?"), path: EltenPath.join(Dirs.user, "Documents"), save: true)
   if loc!=nil
     export_theme_zip(EltenPath.join(loc, File.basename(@theme.file, ".elsnd")+".zip"))
   end
@@ -316,7 +316,7 @@ cnt=""
         return
       end
 id=File.basename(@file, ".elsnd")
-id=input_text(p_("Sounds", "Sound theme ID. This ID will be used to track updates of this sound theme. Keep the current ID if you want to update existing sound theme."), flags: 0, text: id, escapable: true)
+id=input_text(p_("Sounds", "Sound theme ID. This ID will be used to track updates to this sound theme. Keep the current ID if you want to update the existing sound theme."), flags: 0, text: id, escapable: true)
 if id==nil || id==""
 @form.focus
 return
@@ -332,14 +332,14 @@ id=id.delspecial
       end
       for st in std
         if st.file.downcase==id.downcase+".elsnd" && st.user!=Session.name
-alert(p_("Sounds", "Sound theme with that ID already exists."))
+alert(p_("Sounds", "A sound theme with that ID already exists."))
 @form.focus
 return
   end
     end
 if id.downcase!=File.basename(@file, ".elsnd").downcase
   if FileTest.exists?(EltenPath.join(Dirs.soundthemes, "#{id}.elsnd"))
-    alert(p_("Sounds", "Sound theme with that ID already exists."))
+    alert(p_("Sounds", "A sound theme with that ID already exists."))
 @form.focus
 return
 else

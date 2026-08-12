@@ -162,7 +162,7 @@ def make_window
         langs=langsmapping.map{|l|Lists.langs[l[0..1].downcase]['name']+" ("+Lists.langs[l[0..1].downcase]['nativeName']+")"}  
       make_setting(p_("Settings", "Language"), langs, "Interface", "Language", langsmapping)
                             make_setting(p_("Settings", "Automatically minimize Elten Window to system tray"), :bool, "Interface", "HideWindow") if tray_supported?
-                                        make_setting(p_("Settings", "Enable auto log in"), :bool, "Login", "EnableAutoLogin")
+                                        make_setting(p_("Settings", "Enable auto-login"), :bool, "Login", "EnableAutoLogin")
         make_setting(p_("Settings", "Automatically start Elten after I log on to Windows"), :bool, "System", "AutoStart") if tray_supported?
         make_setting(p_("Settings", "Check for updates at startup"), :bool, "Updates", "CheckAtStartup")
         make_setting(p_("Settings", "Updates branch"), [p_("Settings", "Auto"),p_("Settings", "Stable"), p_("Settings", "RC"), p_("Settings", "Beta")], "Updates", "Branch", ["auto","stable","rc","beta"])
@@ -170,19 +170,19 @@ def make_window
       end
       def load_interface
         setting_category(p_("Settings", "Interface"))
-                make_setting(p_("Settings", "Play sounds of sound themes"), :bool, "Interface", "SoundThemeActivation")
-                make_setting(p_("Settings", "Soundtheme volume"), (5..100).to_a.reverse.map{|x|x.to_s+"%"}, "Interface", "MainVolume", (5..100).to_a.reverse)
+                make_setting(p_("Settings", "Play sounds from sound themes"), :bool, "Interface", "SoundThemeActivation")
+                make_setting(p_("Settings", "Sound theme volume"), (5..100).to_a.reverse.map{|x|x.to_s+"%"}, "Interface", "MainVolume", (5..100).to_a.reverse)
                  make_setting(p_("Settings", "Manage sound themes"), :custom, Proc.new{insert_scene(Scene_SoundThemes.new)})
                  make_setting(p_("Settings", "Use Stereo positioning for user interface"), :bool,"Interface", "UsePan")
                                                   make_setting(p_("Settings", "Use background sounds in menu and dialog windows"), :bool, "Interface", "BGSounds")
                  make_setting(p_("Settings", "Display context menu in menu bar"), :bool, "Interface", "ContextMenuBar")
-                 make_setting(p_("Settings", "Control types announcement"), [p_("Settings", "Voice and sound"),p_("Settings", "Sound only"), p_("Settings", "Voice only")], "Interface", "ControlsPresentation", ["voice_and_sound", "sound_only", "voice_only"])
+                 make_setting(p_("Settings", "Announce control types"), [p_("Settings", "Voice and sound"),p_("Settings", "Sound only"), p_("Settings", "Voice only")], "Interface", "ControlsPresentation", ["voice_and_sound", "sound_only", "voice_only"])
                     make_setting(p_("Settings", "Wrap long lines in text fields"), :bool, "Interface", "LineWrapping")
-            make_setting(p_("Settings", "The display method of selection lists"), [p_("Settings", "Linear"),p_("Settings", "Circular")], "Interface", "ListType", ["linear", "circular"])
-            make_setting(p_("Settings", "Round up the forms"), :bool, "Interface", "RoundUpForms")                    
+            make_setting(p_("Settings", "Selection-list navigation mode"), [p_("Settings", "Linear"),p_("Settings", "Circular")], "Interface", "ListType", ["linear", "circular"])
+            make_setting(p_("Settings", "Wrap focus within forms"), :bool, "Interface", "RoundUpForms")
             make_setting(p_("Settings", "Automatically play audio content"), [p_("Settings", "Always"),p_("Settings", "Only when transcription is not available"), p_("Settings", "Never")], "Interface", "AutoPlay", ["always", "without_transcription", "never"])
             make_setting(p_("Settings", "Keyboard scheme"), [p_("Settings", "Default"), p_("Settings", "Windows"), p_("Settings", "macOS")], "Interface", "KeyboardScheme", ["default", "windows", "macos"])
-            make_setting(p_("Settings", "Use MacOS-style character navigation in text fields"), [p_("Settings", "System Default"), p_("Settings", "Disable"), p_("Settings", "Enable")], "Interface", "MacOSCharacterNavigation", ["default", "disabled", "enabled"])
+            make_setting(p_("Settings", "Use macOS-style character navigation in text fields"), [p_("Settings", "System Default"), p_("Settings", "Disable"), p_("Settings", "Enable")], "Interface", "MacOSCharacterNavigation", ["default", "disabled", "enabled"])
             on_load {
             @form.fields[1].on(:change) {
             if @form.fields[1].checked
@@ -218,7 +218,7 @@ def make_window
           p_("Settings", "Notification focus after returning to the main window"),
           [
             p_("Settings", "Keep the previously selected tab"),
-            p_("Settings", "Switch only when new notifications arrived"),
+            p_("Settings", "Switch only when new notifications arrive"),
             p_("Settings", "Switch whenever unread notifications are present")
           ],
           "MainWindow",
@@ -248,7 +248,7 @@ def make_window
         make_setting(p_("Settings", "Speech volume"), (5..100).to_a.reverse.map{|x|x.to_s+"%"}, "Voice", "Volume", (5..100).to_a.reverse)
         make_setting(p_("Settings", "Speech pitch"), (0..100).to_a.reverse.map{|x|x.to_s+"%"}, "Voice", "Pitch", (0..100).to_a.reverse)
         make_setting(p_("Settings", "Enable braille output"), :bool, "Interface", "EnableBraille") if SpeechOutput.list.any?{|output| output.braille_supported?}
-        make_setting(p_("Settings", "Use a voice dictionary when processing characters (requires NVDA addon when using NVDA as a speech output)"), :bool, "Voice", "UseVoiceDictionary")
+        make_setting(p_("Settings", "Use a voice dictionary when processing characters (requires the NVDA add-on when using NVDA for speech output)"), :bool, "Voice", "UseVoiceDictionary")
                         make_setting(p_("Settings", "Typing echo"), [p_("Settings", "Characters"),p_("Settings", "Words"),p_("Settings", "Characters and words"),p_("Settings", "None")], "Interface", "TypingEcho", ["characters", "words", "characters_and_words", "none"])
         on_load {
         voice_output=Proc.new {
@@ -377,12 +377,12 @@ def make_window
           setting_category(p_("Settings", "Advanced"))
     make_setting(p_("Settings", "Enable FX effects"), :bool, "Advanced", "UseFX")
     make_setting(p_("Settings", "Use bilinear HRTF interpolation"), :bool, "Advanced", "UseBilinearHRTF")
-    make_setting(p_("Settings", "Session refresh time in seconds"), :number, "Advanced", "AgentSessionTime")
-    make_setting(p_("Settings", "Disable concurrent requests (HTTP2)"), :bool, "Advanced", "DisableHTTP2")
+    make_setting(p_("Settings", "Session refresh interval in seconds"), :number, "Advanced", "AgentSessionTime")
+    make_setting(p_("Settings", "Disable concurrent requests (HTTP/2)"), :bool, "Advanced", "DisableHTTP2")
     make_setting(p_("Settings", "Recover responses after request timeout"), [p_("Settings", "Disabled"), p_("Settings", "Mutating requests"), p_("Settings", "All requests")], "Advanced", "RequestResponseCacheMode", ["disabled", "mutating", "all"])
     make_setting(p_("Settings", "Use only TCP packets in conferences"), :bool, "Advanced", "ConferencesTCPOnly")
     make_setting(p_("Settings", "Maximum UDP packet payload size"), :number, "Advanced", "UDPMaxPacketSize")
-    make_setting(p_("Settings", "Conferences audio buffer in frames"), :number, "Advanced", "ConferencesAudioBuffer")
+    make_setting(p_("Settings", "Conference audio buffer in frames"), :number, "Advanced", "ConferencesAudioBuffer")
     make_setting(p_("Settings", "Conference buffer cut-off threshold in milliseconds"), :number, "Advanced", "ConferencesAudioBufferCutOff")
     end
     def main

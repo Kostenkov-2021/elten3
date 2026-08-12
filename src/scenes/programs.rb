@@ -74,13 +74,13 @@ when 1
        menu.option(p_("Programs", "Uninstall"), nil, :del) {
          case selector([p_("Programs", "Uninstall program"), p_("Programs", "Remove program and data"), _("Cancel")], header: p_("Programs", "What do you want to do with %{name}?")%{:name=>program.name}, cancel_index: 2, flags: 1)
          when 0
-           confirm(p_("Programs", "Uninstall program %{name}? Program data will be kept.")%{:name=>program.name}) {
+           confirm(p_("Programs", "Uninstall the program %{name}? The program data will be kept.")%{:name=>program.name}) {
              remove_program_entry(program, remove_data: false)
              alert(p_("Programs", "Program uninstalled."))
              @refresh=true
            }
          when 1
-           confirm(p_("Programs", "Remove program %{name} and all its data?")%{:name=>program.name}) {
+           confirm(p_("Programs", "Remove the program %{name} and all its data?")%{:name=>program.name}) {
              remove_program_entry(program, remove_data: true)
              alert(p_("Programs", "Program and data removed."))
              @refresh=true
@@ -362,7 +362,7 @@ when 1
        EltenLink::Apps.list(elten_link, os: platform_target)
      rescue EltenLink::Error => e
        Log.warning("Apps list failed: #{e.message}")
-       alert(p_("Programs", "Programs list could not be loaded."))
+       alert(p_("Programs", "The list of programs could not be loaded."))
        []
      end
 
@@ -416,7 +416,7 @@ when 1
          download_file(package_url, tempfile, use_waiting: false, can_cancel: true, override: true)
          if !FileTest.exists?(tempfile)
            waiting_end
-           alert(p_("Programs", "Installation canceled.")) if ask
+           alert(p_("Programs", "Installation cancelled.")) if ask
            return false
          end
          waiting_end
@@ -436,7 +436,7 @@ when 1
          setlocale(Configuration.language)
          true
        else
-         alert(p_("Programs", "Installation canceled.")) if ask
+         alert(p_("Programs", "Installation cancelled.")) if ask
          false
        end
      end
@@ -491,7 +491,7 @@ when 1
          setlocale(Configuration.language)
          @refresh=true
        else
-         alert(p_("Programs", "Installation canceled."))
+         alert(p_("Programs", "Installation cancelled."))
        end
      end
 

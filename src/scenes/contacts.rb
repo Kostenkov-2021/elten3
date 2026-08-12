@@ -105,7 +105,7 @@ loop_update
           def main
                         user = @user
             while user==""
-              user = input_text(p_("Contacts", "Enter the name of the user you want to add to your contacts' list."), flags: 0, text: "", escapable: true)
+              user = input_text(p_("Contacts", "Enter the name of the user you want to add to your contact list."), flags: 0, text: "", escapable: true)
             end
             if user==nil
               $scene=Scene_Contacts.new
@@ -125,7 +125,7 @@ loop_update
             end
             case err
             when 0
-              alert(p_("Contacts", "Contact was added."))
+              alert(p_("Contacts", "The contact has been added."))
               $scene = @scene
               when -1
                 alert(_("Database Error"))
@@ -134,7 +134,7 @@ loop_update
                   alert(_("Token expired"))
                   $scene = Scene_Loading.new
                   when -3
-                    alert(p_("Contacts", "This user is already added to your contacts' list."))
+                    alert(p_("Contacts", "This user is already in your contact list."))
                     $scene = @scene
                     when -5
                       alert(p_("Contacts", "This user does not exist."))
@@ -152,7 +152,7 @@ loop_update
           def main
             user = @user
             while user==""
-              user = input_text(p_("Contacts", "Type a username which you want to remove from your contact list."))
+              user = input_text(p_("Contacts", "Enter the username of the person you want to remove from your contact list."))
             end
                         begin
                           EltenLink::Contacts.delete(elten_link, user)
@@ -163,7 +163,7 @@ loop_update
                         end
             case err
             when 0
-              alert(p_("Contacts", "Contact has been deleted."))
+              alert(p_("Contacts", "The contact has been deleted."))
               $scene = @scene
               when -1
                 alert(_("Database Error"))
@@ -172,7 +172,7 @@ loop_update
                   alert(_("Token expired"))
                   $scene = Scene_Loading.new
                   when -3
-                    alert(p_("Contacts", "This user is not added to your contacts' list."))
+                    alert(p_("Contacts", "This user is not in your contact list."))
                     $scene = @scene
                     when -5
                       alert(p_("Contacts", "This user does not exist."))

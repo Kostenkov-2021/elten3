@@ -427,7 +427,7 @@ loop_update
 
   def input_user(header="", escapable: true)
     edt = EditBox.new(header, quiet: true)
-    edt.add_tip(p_("EAPI_Form", "Press up or down arrow to select contact"))
+    edt.add_tip(p_("EAPI_Form", "Press the Up or Down Arrow key to select a contact"))
     edt.bind_context {|menu|
     menu.option(p_("EAPI_Form", "Select contact")) {
     s=selectcontact
@@ -451,7 +451,7 @@ s=selectcontact
         if user_exists(usr)
           return usr
         else
-          alert(p_("EAPI_Form", "User does not exist"))
+          alert(p_("EAPI_Form", "The user does not exist"))
           end
         end
       end

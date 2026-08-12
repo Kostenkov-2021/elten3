@@ -8,7 +8,7 @@ class Scene_ForgotPassword
   def main
     @user=""
     loop do    
-    @user=input_text(p_("ForgotPassword", "If you lose your password, you can still reset it via the E-mail address provided  during the registration process. This way you shall generate the password reset  code which will be used to verify your identity. The code will be sent to your e- mail address. Warning! Two-factor authentication will be disabled on your  account. To continue, enter your username"),flags: 0,text: "",escapable: true)
+    @user=input_text(p_("ForgotPassword", "If you forget your password, you can reset it using the email address you provided when registering. You can request a password reset code to verify your identity. The code will be sent to your email address. Warning: two-factor authentication will be disabled on your account. To continue, enter your username."),flags: 0,text: "",escapable: true)
     return $scene=Scene_Loading.new if @user==nil
     @user=finduser(@user) if finduser(@user).downcase==@user.downcase
           break
@@ -47,7 +47,7 @@ loop do
   end
     end
   def request
-        alert(p_("ForgotPassword", "Please wait while the password reset key is being generated."))
+        alert(p_("ForgotPassword", "Please wait while the password reset code is being generated."))
     begin
       EltenLink::Accounts.request_password_reset(elten_link, user: @user, mail: @mail)
       ok=true
@@ -57,9 +57,9 @@ loop do
     end
     speech_wait
     if !ok
-      alert(p_("ForgotPassword", "An unexpected error"))
+      alert(p_("ForgotPassword", "Unexpected error"))
     else
-      alert(p_("ForgotPassword", "Password reset key has been sent to your specified E-mail address. To continue,  select the option for entering key."))
+      alert(p_("ForgotPassword", "The password reset code has been sent to the email address you provided. To continue, select the option to enter the code."))
     end
     speech_wait
   end
@@ -104,9 +104,9 @@ rescue EltenLink::Error => e
 end
 speech_wait
 if !ok
-  alert(p_("ForgotPassword", "An unexpected error"))
+  alert(p_("ForgotPassword", "Unexpected error"))
 else
-  alert(p_("ForgotPassword", "The password has been changed. You can log in to your account using the new data."))
+  alert(p_("ForgotPassword", "You can log in to your account using your new credentials."))
 end
 speech_wait
 return

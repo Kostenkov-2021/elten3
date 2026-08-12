@@ -480,7 +480,7 @@ def accontext(menu)
   acsel_load
   end
   }
-  menu.option(p_("Main", "Change hotkey"), nil, "k") {
+  menu.option(p_("Main", "Change keyboard shortcut"), nil, "k") {
   s=[p_("Main", "None")]
   k=[0]
   for i in 1..11
@@ -494,7 +494,7 @@ def accontext(menu)
     k.push(-(i+12))
   end
   ind=k.find_index(@actions[qacindex].key)||0
-  sel = ListBox.new(s, header: p_("Main", "Hotkey for action %{label}")%{:label=>@actions[qacindex].label}, index: ind, flags: 0, quiet: false)
+  sel = ListBox.new(s, header: p_("Main", "Keyboard shortcut for action %{label}")%{:label=>@actions[qacindex].label}, index: ind, flags: 0, quiet: false)
   loop {
   loop_update
   sel.update
@@ -508,7 +508,7 @@ if c==nil || c==@actions[qacindex] || key==0
   acsel_load
   break
 else
-  alert(p_("Main", "This hotkey is already used by action %{action}")%{:action=>c.label}, false)
+  alert(p_("Main", "This keyboard shortcut is already used by action %{action}")%{:action=>c.label}, false)
   end
 end
 }
@@ -533,9 +533,9 @@ qacdown
   menu.option(p_("Main", "Delete"), nil, :del) {
   ac=0
   if @actions[qacindex].key==0 || @actions[qacindex].show==false
-      ac=confirm(p_("Main", "Are you sure you want to delete quick action %{action}?")%{ :action => @actions[qacindex].label}) ? 1 : 0
+      ac=confirm(p_("Main", "Are you sure you want to delete the quick action %{action}?")%{ :action => @actions[qacindex].label}) ? 1 : 0
     else
-      ac=selector([_("Cancel"), p_("Main", "Delete"), p_("Main", "Hide this action")], header: p_("Main", "If you delete action %{action}, you will also delete the keyboard shortcut assigned to it. If you want to keep the keyboard shortcut, you can hide this action. You can show or remove hidden actions at any time.")%{ :action => @actions[qacindex].label}, start_index: 0, cancel_index: 0, flags: 1)
+      ac=selector([_("Cancel"), p_("Main", "Delete"), p_("Main", "Hide this action")], header: p_("Main", "If you delete the action %{action}, you will also delete the keyboard shortcut assigned to it. If you want to keep the keyboard shortcut, you can hide this action. You can show or remove hidden actions at any time.")%{ :action => @actions[qacindex].label}, start_index: 0, cancel_index: 0, flags: 1)
       end
       if ac==1
           QuickActions.delete(qacindex)

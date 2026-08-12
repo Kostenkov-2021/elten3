@@ -103,7 +103,7 @@ menu.option(p_("Notes", "Share")) {
         user=EltenLink.legacy_line_to_text(inpt.text).delete("\r\n")
                 user=finduser(user) if finduser(user).upcase==user.upcase
                 if user_exists(user) == false
-          alert(p_("Notes", "User cannot be found"))
+          alert(p_("Notes", "The user cannot be found"))
         else
           begin
             EltenLink::Notes.add_share(elten_link, note, user)
@@ -111,7 +111,7 @@ menu.option(p_("Notes", "Share")) {
             Log.warning("Note share add failed: #{e.message}")
             alert(_("Error"))
           else
-            speak(p_("Notes", "From now on you share this note with %{user}")%{:user=>user})
+            speak(p_("Notes", "You are now sharing this note with %{user}")%{:user=>user})
             speech_wait
             shares.push(user)
             sharest=shares
@@ -167,7 +167,7 @@ end
             Log.warning("Note share delete failed: #{e.message}")
             alert(_("Error"))
           else
-            speak(p_("Notes", "You no longer share this note with %{user}")%{:user=>user})
+            speak(p_("Notes", "You are no longer sharing this note with %{user}")%{:user=>user})
                         shares.delete(user)
             sharest=shares
 @form.fields[2].index-=1
@@ -192,7 +192,7 @@ def delete(note)
 if note.author==Session.name
   cnf=p_("Notes", "Do you really want to delete %{name}?")%{:name => note.name}
   else
-  cnf=p_("Notes", "Do you really want to end sharing %{name}? It will be deleted from your notes list.")%{:name => note.name}
+  cnf=p_("Notes", "Do you really want to stop sharing %{name}? It will be deleted from your list of notes.")%{:name => note.name}
   end
   if !confirm(cnf)
     return false

@@ -134,10 +134,10 @@ module EltenAPI
   when :donotdisturb
     if $donotdisturb!=true
       $donotdisturb=true
-      alert(p_("EAPI_Common", "Do not disturb on"))
+      alert(p_("EAPI_Common", "Do not disturb is on"))
     else
       $donotdisturb=false
-      alert(p_("EAPI_Common", "Do not disturb off"))
+      alert(p_("EAPI_Common", "Do not disturb is off"))
     end
     when :conference_streaming
       if Conference.opened?
@@ -311,9 +311,9 @@ end
 [:conference_streaming, p_("EAPI_QuickActions", "Conferences: stream audio file"), [], 0, false],
 [:conference_setvolumes, p_("EAPI_QuickActions", "Conferences: set volumes"), [], 0, false],
 [:conference_mutemic, p_("EAPI_QuickActions", "Conferences: mute microphone"), [], 0, false],
-[:conference_pushtotalk, p_("EAPI_QuickActions", "Conferences: switch push to talk"), [], 0, false],
-[:conference_diceroll, p_("EAPI_QuickActions", "Conferences: roll a 6-sided dice"), [], 0, false],
-[:conference_dicerollcustom, p_("EAPI_QuickActions", "Conferences: roll a custom dice"), [], 0, false],
+[:conference_pushtotalk, p_("EAPI_QuickActions", "Conferences: switch push-to-talk"), [], 0, false],
+[:conference_diceroll, p_("EAPI_QuickActions", "Conferences: roll a 6-sided die"), [], 0, false],
+[:conference_dicerollcustom, p_("EAPI_QuickActions", "Conferences: roll a custom die"), [], 0, false],
 [:alarm, p_("EAPI_QuickActions", "Add alarm"), [], 0, false],
         ]
         for ac in @@addprocs

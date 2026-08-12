@@ -10,7 +10,7 @@ class Scene_Users_AddedMeToContacts
     end
   def main
     unless Session.logged?
-      alert(_("UsersAddedMeToThis section is unavailable for guests"))
+      alert(_("This section is unavailable to guests"))
       $scene=Scene_Main.new
       return
       end
@@ -25,7 +25,7 @@ class Scene_Users_AddedMeToContacts
     for i in 0..usr.size - 1
       selt[i] = user_with_status(usr[i])
       end
-    header=p_("UsersAddedMeToContacts", "Users who added me to their contacts list")
+    header=p_("UsersAddedMeToContacts", "Users who added me to their contact list")
     header="" if @new==true
       @sel = ListBox.new(selt,header: header, index: 0, flags: 0, quiet: false)
       apply_user_status_states(@sel, usr)

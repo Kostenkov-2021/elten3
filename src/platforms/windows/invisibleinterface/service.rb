@@ -232,7 +232,7 @@ module EltenAPI
           case event[0]
           when :hotkey_errors
             Log.error("#{event[1]} errors while registering Invisible Interface hotkeys")
-            alert(p_("EAPI_UI", "Errors occurred while trying to register keys for invisible interface. Please make sure that other apps do not use the keys specified. You can change modifier keys of invisible interface using settings window.")) rescue nil
+            alert(p_("EAPI_UI", "Errors occurred while trying to register keyboard shortcuts for the Invisible Interface. Make sure that the specified shortcuts are not used by other applications. You can change the Invisible Interface modifier keys in the Settings window.")) rescue nil
           when :modifiers_selected
             Log.info("Invisible Interface modifiers selected: #{event[1]}")
           end
@@ -567,8 +567,8 @@ module EltenAPI
             conference.muted = !conference.muted
             say(conference.muted ? p_("Conference", "Microphone muted") : p_("Conference", "Microphone unmuted"))
           }],
-          [p_("Conference", "Roll a 6-sided dice"), Proc.new { conference.diceroll(6) }],
-          [p_("Conference", "Roll a custom dice"), Proc.new { open_dice_category }]
+          [p_("Conference", "Roll a 6-sided die"), Proc.new { conference.diceroll(6) }],
+          [p_("Conference", "Roll a custom die"), Proc.new { open_dice_category }]
         ]
         if !conference.streaming?
           opts << [p_("Conference", "Stream audio file"), Proc.new {
@@ -582,7 +582,7 @@ module EltenAPI
         else
           opts << [p_("Conference", "Remove audio stream"), Proc.new { conference.remove_stream }]
         end
-        opts << [conference.pushtotalk == true ? p_("Conference", "Disable push to talk") : p_("Conference", "Enable push to talk"), Proc.new { conference.pushtotalk = !conference.pushtotalk }]
+        opts << [conference.pushtotalk == true ? p_("Conference", "Disable push-to-talk") : p_("Conference", "Enable push-to-talk"), Proc.new { conference.pushtotalk = !conference.pushtotalk }]
         opts << [p_("Conference", "Show chat history"), Proc.new { open_chat_history }]
         opts << [p_("Conference", "Post in chat"), Proc.new { open_chat_dialog }]
         conference.transmitters.each { |id, transmitter| opts << [transmitter.username, Proc.new { open_user_category(id, transmitter) }] }

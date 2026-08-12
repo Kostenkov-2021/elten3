@@ -32,7 +32,7 @@ class Scene_Honors
       header=p_("Honors", "Badges of %{user}")%{:user=>@user}
     end
     if @user!=nil and @honors==[]
-      alert(p_("Honors", "The user has been given no badges."))
+      alert(p_("Honors", "The user has not been awarded any honors."))
       $scene=Scene_Main.new
       return
       end
@@ -93,18 +93,18 @@ else
     end
   def context(menu)
     if @sel.index!=@sel.options.size-1
-   menu.option(p_("Honors", "Set as main honor")) {
+   menu.option(p_("Honors", "Set as primary honor")) {
                   begin
                     EltenLink::Honors.set_main(elten_link, @honors[@sel.index])
                   rescue EltenLink::Error
                     alert(_("Error"))
                   else
-                    alert(p_("Honors", "The badge has been set as default."))
+                    alert(p_("Honors", "The honor has been set as the primary honor."))
                     end
    }
 if Session.moderator==1
    menu.option(p_("Honors", "Grant a badge")) {
-                            user=input_user(p_("Honors", "Who should be granted this badge?"))
+                            user=input_user(p_("Honors", "Who should receive this honor?"))
                           if user!=nil
                               begin
                                 EltenLink::Honors.award(elten_link, user: user, honor: @honors[@sel.index])
@@ -122,7 +122,7 @@ if Session.moderator==1
                              loop_update
    }
    menu.option(p_("Honors", "Delete")) {
-                                 confirm(p_("Honors", "Are you sure you want to delete this badge? All users granted with this badge will loose it.")) {
+                                 confirm(p_("Honors", "Are you sure you want to delete this badge? All users who have been granted this badge will lose it.")) {
                               begin
                                 EltenLink::Honors.delete(elten_link, @honors[@sel.index])
                               rescue EltenLink::Error

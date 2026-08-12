@@ -422,15 +422,15 @@ h=d/3600
     end
   def tips
     tips=[]
-    tips.push(p_("EAPI_Form", "Use spacebar to toggle pause"))
-    tips.push(p_("EAPI_Form", "Use left/right arrows to slide"))
+    tips.push(p_("EAPI_Form", "Press the Space bar to play or pause"))
+    tips.push(p_("EAPI_Form", "Use the Left/Right Arrow keys to seek"))
     tips.push(p_("EAPI_Form", "Use up/down arrows to change playback volume"))
-    tips.push(p_("EAPI_Form", "Use SHIFT with left/right arrows to change panning"))
-    tips.push(p_("EAPI_Form", "Use SHIFT with up/down arrows to change pitch"))
-    tips.push(p_("EAPI_Form", "Use CTRL with up/down arrows to change tempo").sub(/CTRL/i, main_modifier_name))
-    tips.push(p_("EAPI_Form", "Use backspace to return to the default settings"))
-    tips.push(p_("EAPI_Form", "Use home or end to move to the beginning or ending of a track"))
-    tips.push(p_("EAPI_Form", "Use page up or page down to navigate to the previous or next chapter"))
+    tips.push(p_("EAPI_Form", "Use Shift+Left/Right Arrow to change panning"))
+    tips.push(p_("EAPI_Form", "Use Shift+Up/Down Arrow to change pitch"))
+    tips.push(p_("EAPI_Form", "Use Ctrl+Up/Down Arrow to change tempo").sub(/CTRL/i, main_modifier_name))
+    tips.push(p_("EAPI_Form", "Press Backspace to restore the default settings"))
+    tips.push(p_("EAPI_Form", "Press Home or End to move to the beginning or end of the track"))
+    tips.push(p_("EAPI_Form", "Press Page Up or Page Down to move to the previous or next chapter"))
     return tips
     end
 end

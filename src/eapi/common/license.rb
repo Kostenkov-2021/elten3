@@ -15,10 +15,10 @@ module EltenAPI
     @rules = _doc('rules')
     @privacypolicy = _doc('privacypolicy')
 form = Form.new([
-EditBox.new(p_("EAPI_Common", "License agreement"),type: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly|EditBox::Flags::MarkDown,text: @license,quiet: true),
+EditBox.new(p_("EAPI_Common", "Licence agreement"),type: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly|EditBox::Flags::MarkDown,text: @license,quiet: true),
 EditBox.new(p_("EAPI_Common", "Terms and Conditions"),type: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly|EditBox::Flags::MarkDown,text: @rules,quiet: true),
 EditBox.new(p_("EAPI_Common", "Privacy Policy"),type: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly|EditBox::Flags::MarkDown,text: @privacypolicy,quiet: true),
-Button.new(p_("EAPI_Common", "I accept Elten license agreement, Terms and Conditions and Privacy Policy")),Button.new(p_("EAPI_Common", "I do not accept, exit"))])
+Button.new(p_("EAPI_Common", "I accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy")),Button.new(p_("EAPI_Common", "Decline and exit"))])
 loop do
   loop_update
   form.update
@@ -36,7 +36,7 @@ loop do
         form.index+=1
         form.focus
         else
-    q = confirm(p_("EAPI_Common", "Do you accept Elten license agreement, terms and conditions and privacy policy?"))
+    q = confirm(p_("EAPI_Common", "Do you accept the Elten Licence Agreement, Terms and Conditions and Privacy Policy?"))
     if q == 0
       exit
     else

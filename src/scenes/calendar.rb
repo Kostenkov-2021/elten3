@@ -106,7 +106,7 @@ module CalendarSceneHelpers
         if lst_range.index == 2 &&
             (btn_start.year.to_i <= 0 || btn_start.month.to_i <= 0 || btn_start.day.to_i <= 0 ||
              btn_end.year.to_i <= 0 || btn_end.month.to_i <= 0 || btn_end.day.to_i <= 0)
-          alert(p_("Calendar", "Select both the start and end date"))
+          alert(p_("Calendar", "Select both a start date and an end date"))
           next
         end
         begin
@@ -292,7 +292,7 @@ class Scene_Calendar
     menu.option(p_("Calendar", "Upcoming events"), nil, "u") do
       $scene = Scene_Calendar_Upcoming.new(@filter_calendar_id, @grid.date)
     end
-    menu.option(p_("Calendar", "Calendars Management"), nil, "c") do
+    menu.option(p_("Calendar", "Calendar management"), nil, "c") do
       $scene = Scene_Calendar_Management.new(@filter_calendar_id, @grid.date)
     end
     menu.option(_("Refresh"), nil, "r") do
@@ -548,7 +548,7 @@ class Scene_Calendar_Management
         calendar_label(calendar)
       end
     end
-    @sel = ListBox.new(labels, header: p_("Calendar", "Calendars Management"), index: index, quiet: false)
+    @sel = ListBox.new(labels, header: p_("Calendar", "Calendar management"), index: index, quiet: false)
     @sel.bind_context { |menu| context(menu) }
   end
 
@@ -666,7 +666,7 @@ class Scene_Calendar_Management
   end
 
   def delete_calendar(calendar)
-    return if !confirm(p_("Calendar", "Do you really want to delete calendar %{name} and all its events?") % { name: calendar.name })
+    return if !confirm(p_("Calendar", "Do you really want to delete the calendar %{name} and all its events?") % { name: calendar.name })
 
     EltenLink::Calendars.delete(elten_link, calendar)
     play_sound("editbox_delete")
@@ -677,7 +677,7 @@ class Scene_Calendar_Management
   end
 
   def leave_calendar(calendar)
-    return if !confirm(p_("Calendar", "Do you really want to leave calendar %{name}?") % { name: calendar.name })
+    return if !confirm(p_("Calendar", "Do you really want to leave the calendar %{name}?") % { name: calendar.name })
 
     EltenLink::Calendars.delete_membership(elten_link, calendar)
     play_sound("editbox_delete")

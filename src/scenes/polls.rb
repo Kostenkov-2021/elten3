@@ -195,9 +195,9 @@ if @fields[9].pressed? or key_pressed?(:key_escape)
               @question=["",0] if @question==nil
        @qfields=[
        edt_title = EditBox.new(p_("Polls", "Question"),text: @question[0],quiet: true),
-       lst_type=ListBox.new([p_("Polls", "Single choice"),p_("Polls", "Multiple choice"),p_("Polls", "Edit box")],header: p_("Polls", "Question type"),index: @question[1]),
-       chk_limit = CheckBox.new(p_("Polls", "Limit count of answers that can be checked")),
-       edt_limit = EditBox.new(p_("Polls", "Count of answers that can be checked"), type: EditBox::Flags::Numbers, text: "2"),
+       lst_type=ListBox.new([p_("Polls", "Single choice"),p_("Polls", "Multiple choice"),p_("Polls", "Text field")],header: p_("Polls", "Question type"),index: @question[1]),
+       chk_limit = CheckBox.new(p_("Polls", "Limit the number of answers that can be selected")),
+       edt_limit = EditBox.new(p_("Polls", "Maximum number of answers that can be selected"), type: EditBox::Flags::Numbers, text: "2"),
       
        lst_answers = ListBox.new(@question[2..-1]||[],header: p_("Polls", "Answers")),
        btn_save = Button.new(_("Save")),
@@ -362,7 +362,7 @@ for q in @questions
     elsif q[1]<=-1
       multi=true
       limit=-q[1]
-      comment=np_("Polls", "Up to %{limit}-choice question", "Up to %{limit}-choices question", limit)%{:limit=>limit}
+      comment=np_("Polls", "Question allowing up to %{limit} choices", "Questions allowing up to %{limit} choices", limit)%{:limit=>limit}
     end
     flags=0
     flags|=ListBox::Flags::MultiSelection if multi

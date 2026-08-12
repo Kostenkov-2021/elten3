@@ -51,7 +51,7 @@ else
     suc=false
     while suc==false and tokenenc>=1
     pin=""
-    pin=input_text(p_("Login", "Enter pin code"),flags: EditBox::Flags::Password,text: "",escapable: true) if tokenenc==2
+    pin=input_text(p_("Login", "Enter PIN"),flags: EditBox::Flags::Password,text: "",escapable: true) if tokenenc==2
       if pin==nil
        @skipauto=true
        return
@@ -67,7 +67,7 @@ else
       end
   if tokenenc==-1 && autologin_key_encryption_supported?
     otoken=token
-    if !confirm(p_("Login", "Do you want to enable auto-Login-key encryption? When encrypted, the Auto-Login Key will be readable only on this computer, and its copying or exporting will not allow other devices to access your account. You can create as many auto-login-keys as you wish for all other computers you are using."))
+    if !confirm(p_("Login", "Do you want to enable auto-login key encryption? Once encrypted, the auto-login key can be read only on this computer. Copying or exporting it will not allow another device to access your account. You can create separate auto-login keys for any other computers you use."))
             tokenenc=0
                 else
       tokenenc=1
@@ -103,7 +103,7 @@ end
 suc=true
 rescue EltenLink::Error => e
 if e.code.to_s=="auth.two_factor_required"
-  meth = selector([p_("Login", "Authenticate using SMS"), p_("Login", "Authenticate using backup code"), _("Cancel")], header: p_("Login", "Two-factor authentication is enabled on this account. Select method to authenticate."), start_index: 0, cancel_index: 2, flags: 1)
+  meth = selector([p_("Login", "Authenticate using SMS"), p_("Login", "Authenticate using backup code"), _("Cancel")], header: p_("Login", "Two-factor authentication is enabled on this account. Select an authentication method."), start_index: 0, cancel_index: 2, flags: 1)
 if meth==0
   phone_error=nil
   begin
@@ -127,7 +127,7 @@ if meth==2
   break
   end
 if meth==0
-  label=p_("Login", "Enter the code sent to you  by text message to allow this device to login. If you do not have access to the  phone number used, select the password reset option to disable two-factor  authentication.")
+  label=p_("Login", "Enter the code sent to you by text message to allow this device to log in. If you cannot access the phone number used, select the password reset option to disable two-factor authentication.")
 else
   label = p_("Login", "Enter backup code")
   end
@@ -149,7 +149,7 @@ while tries<3
     return $scene=Scene_Loading.new
     break
     else
-      label=p_("Login", "The entered code is wrong, please try again")
+      label=p_("Login", "The code you entered is incorrect. Please try again.")
     end
   else
         break
@@ -202,12 +202,12 @@ loop_update
             begin
               token=EltenLink::Authentication.auto_login_token(elten_link, name: name, password: password, computer: $computer, appid: $appid)
             rescue EltenLink::Error
-              alert(p_("Login", "An error occurred while authenticating the identity. You might have provided an  incorrect password."))
+              alert(p_("Login", "An error occurred while verifying your identity. You may have entered an incorrect password."))
               password = ""
             else
               tokenenc=0
               if autologin_key_encryption_supported?
-                confirm(p_("Login", "Do you want to enable auto-Login-key encryption? When encrypted, the Auto-Login Key will be readable only on this computer, and its copying or exporting will not allow other devices to access your account. You can create as many auto-login-keys as you wish for all other computers you are using.")) {
+                confirm(p_("Login", "Do you want to enable auto-login key encryption? Once encrypted, the auto-login key can be read only on this computer. Copying or exporting it will not allow another device to access your account. You can create separate auto-login keys for any other computers you use.")) {
                 pin=makepin
                 token=crypt(token,pin)
                 tokenenc=1
@@ -218,9 +218,9 @@ loop_update
                             autologin=3
                       write_logindata(autologin, name, token, tokenenc)
                                           if oautologin.to_i==1 or oautologin.to_i==2
-              alert(p_("Login", "Automatic login will be proceeding until you log out.Automatic login keys can be  managed from the My Account tab in the Community menu."))
+              alert(p_("Login", "Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."))
             else
-              alert(p_("Login", "Login data has been updated. Automatic login will be proceeding until you log  out. Automatic login keys can be managed from the My Account tab in the Community  menu."))
+              alert(p_("Login", "Login data has been updated. Automatic login will remain enabled until you log out. You can manage automatic login keys on the My Account tab in the Community menu."))
               end
          speech_wait
          break   
@@ -231,7 +231,7 @@ loop_update
          writeconfig("Login", "EnableAutoLogin", false)
          load_configuration
          delete_logindata
-         alert(p_("Login", "To reenable auto log in feature, proceed to the general settings."))
+         alert(p_("Login", "To re-enable auto-login, go to General settings."))
          end
        break
         end
@@ -336,7 +336,7 @@ end
                   alert(p_("Login", "Activation failed."))
                   return false
                 else
-                  label=p_("Login", "The entered activation code is wrong, please try again.")
+                  label=p_("Login", "The activation code you entered is incorrect. Please try again.")
                 end
               else
                 alert(e.message)
@@ -350,17 +350,17 @@ end
         return nil if !autologin_key_encryption_supported?
         pin=""
         while pin==""
-          if !confirm(p_("Login", "Do you want to encrypt this key with a custom pin code? You will be prompted for this code everytime you start Elten to unlock your account, but it will not be saved on the server and will be valid only for the auto-login-key stored on this device."))
+          if !confirm(p_("Login", "Do you want to encrypt this key with a custom PIN? You will be prompted for this PIN every time you start Elten to unlock your account. It will not be saved on the server and will apply only to the auto-login key stored on this device."))
             return nil
           else
-            p1=input_text(p_("Login", "Enter pin code"),flags: EditBox::Flags::Password,text: "",escapable: true)
+            p1=input_text(p_("Login", "Enter PIN"),flags: EditBox::Flags::Password,text: "",escapable: true)
             next if p1==nil
-            p2=input_text(p_("Login", "Enter pin code again"),flags: EditBox::Flags::Password,text: "",escapable: true)
+            p2=input_text(p_("Login", "Enter PIN again"),flags: EditBox::Flags::Password,text: "",escapable: true)
             next if p2==nil
             if p1==p2
               return p1
             else
-              alert(p_("Login", "The pin codes entered are different, please try again."))
+              alert(p_("Login", "The PINs you entered do not match. Please try again."))
               end
             end
           end

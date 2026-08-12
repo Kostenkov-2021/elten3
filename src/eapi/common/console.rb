@@ -154,7 +154,7 @@ loop_update
             form.fields[0].set_text(container.codes[0])
             form.focus
           }
-          menu.submenu(p_("EAPI_Common", "Last codes")) { |m|
+          menu.submenu(p_("EAPI_Common", "Code history")) { |m|
             for c in container.codes
               menu.option(c[0...100], c) { |c|
                 form.fields[0].set_text(c)

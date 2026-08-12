@@ -29,7 +29,7 @@ when "audiophile"
 when "director"
         package_name=p_("EAPI_Common", "Director")
       end
-      confirm(p_("EAPI_Common", "This feature requires %{package} premium package. Would you like to see the premium packages available?")%{:package=>package_name}) {insert_scene(Scene_PremiumPackages.new)
+      confirm(p_("EAPI_Common", "This feature requires the %{package} premium package. Would you like to see the available premium packages?")%{:package=>package_name}) {insert_scene(Scene_PremiumPackages.new)
       }
       return false
       end

@@ -285,7 +285,7 @@ def load_languages
 def load_privacy
   setting_category(p_("Account", "Privacy"))
   make_setting(p_("Account", "Hide my profile for strangers"), :bool, "publicprofile")
-  make_setting(p_("Account", "Prevent banned users from writing me private messages"), :bool, "preventbanned")
+  make_setting(p_("Account", "Prevent banned users from sending me private messages"), :bool, "preventbanned")
   make_setting(p_("Account", "Accept incoming voice calls"), [p_("Account", "Never"), p_("Account", "Only from my friends"), p_("Account", "From all users")], "calls")
   make_setting(p_("Account", "Black list"), :custom, Proc.new{insert_scene(Scene_Account_BlackList.new)})
   end
@@ -297,7 +297,7 @@ def load_signs
 end
 def load_notifications_settings
   setting_category(p_("Account", "Notifications"))
-  cats=[p_("Account", "Messages"),p_("Account", "Posts in followed threads"),p_("Account", "Posts on the followed blogs"),p_("Account", "Comments on your blog"),p_("Account", "Threads on followed forums"),p_("Account", "Posts on followed forums"),p_("Account", "New friends"),p_("Account", "Friends' birthday"),p_("Account", "Mentions"),p_("Account", "Followed blog posts"), p_("Account", "Blog followers"), p_("Account", "Blog mentions"), p_("Account", "Awaiting group invitations")]
+  cats=[p_("Account", "Messages"),p_("Account", "Posts in followed threads"),p_("Account", "Posts on the followed blogs"),p_("Account", "Comments on your blog"),p_("Account", "Threads on followed forums"),p_("Account", "Posts on followed forums"),p_("Account", "New friends"),p_("Account", "Friends' birthdays"),p_("Account", "Mentions"),p_("Account", "Followed blog posts"), p_("Account", "Blog followers"), p_("Account", "Blog mentions"), p_("Account", "Awaiting group invitations")]
   sets = ["wn_messages", "wn_followedthreads", "wn_followedblogs", "wn_blogcomments", "wn_followedforums", "wn_followedforumsthreads", "wn_friends", "wn_birthday", "wn_mentions", "wn_followedblogposts", "wn_blogfollowers","wn_blogmentions", "wn_groupinvitations"]
   for i in 0...sets.size
     make_setting(cats[i], :whatsnew_delivery, sets[i])
@@ -381,7 +381,7 @@ def load_notifications_settings
     return
   end
   if password != repeatpassword
-    alert(p_("Account", "Fields: New Password and Repeat New Password have different values."))
+    alert(p_("Account", "The passwords do not match."))
     main
   end
   begin
@@ -425,7 +425,7 @@ class Scene_Account_Mail
     if e.code.to_s == "auth.invalid_password"
       alert(p_("Account", "The old password is incorrect."))
     elsif e.code.to_s == "accounts.mail_events_enabled"
-      alert(p_("Account", "Error, you must disable mail events reporting first."))
+      alert(p_("Account", "Error: you must disable email event reporting first."))
       speech_wait
     else
       alert(e.message)
@@ -447,7 +447,7 @@ end
         begin
           al=EltenLink::Accounts.auto_logins(elten_link, password)
         rescue EltenLink::Error
-          alert(p_("Account", "An error occurred while authenticating the account. You might have provided an  incorrect password."))
+          alert(p_("Account", "An error occurred while verifying your account. You may have entered an incorrect password."))
         else
           break
           end
@@ -459,7 +459,7 @@ selt=[]
 for s in als
   selt.push([s[2],s[1],s[0]])
 end
-@sel=TableBox.new(selh,selt,index: 0,header: p_("Account", "Auto log in tokens"), quiet: false)
+@sel=TableBox.new(selh,selt,index: 0,header: p_("Account", "Auto-login tokens"), quiet: false)
 @sel.bind_context{|menu|
     menu.option(p_("Account", "Log out all sessions"), nil, :del) {
           globallogout
@@ -477,7 +477,7 @@ loop do
 $scene=Scene_Main.new
   end
 def globallogout
-  confirm(p_("Account", "Are you sure you want to remove all auto log in tokens and log out all sessions?  You will be logged off immediately.")) do
+  confirm(p_("Account", "Are you sure you want to remove all auto-login tokens and log out of all sessions? You will be logged out immediately.")) do
         loop do
       password=input_text(p_("Account", "Enter your password."),flags: EditBox::Flags::Password,text: "",escapable: true)
       if password==nil
@@ -489,7 +489,7 @@ def globallogout
         begin
           EltenLink::Accounts.global_logout(elten_link, password)
         rescue EltenLink::Error
-          alert(p_("Account", "An error occurred while authenticating the account. You might have provided an  incorrect password."))
+          alert(p_("Account", "An error occurred while verifying your account. You may have entered an incorrect password."))
         else
           Session.name=nil
           Session.token=nil
@@ -571,7 +571,7 @@ loop_update
               alert(_("Error"))
             else
               play_sound("editbox_delete")
-              alert(p_("Account", "A user has been removed from the black list."))
+              alert(p_("Account", "The user has been removed from the blacklist."))
             end
             speech_wait
             @blacklist.delete_at(@sel.index)
@@ -598,7 +598,7 @@ loop_update
         begin
           lg=EltenLink::Accounts.last_logins(elten_link, password)
         rescue EltenLink::Error
-          alert(p_("Account", "An error occurred while authenticating the account. You might have provided an  incorrect password."))
+          alert(p_("Account", "An error occurred while verifying your account. You may have entered an incorrect password."))
         else
           break
           end
@@ -631,7 +631,7 @@ class Scene_Account_MailEvents
             return $scene=Scene_Main.new
           end
 if !state.verified
-  confirm(p_("Account", "If you wish, you can configure Elten to report any changes and logins  on your account from new devices to you by E-mail. To do this, you must verify your E-mail address. Do you want to do it now?")) {
+  confirm(p_("Account", "You can configure Elten to notify you by email about changes to your account and logins from new devices. To do so, you must verify your email address. Do you want to verify it now?")) {
   begin
     EltenLink::Accounts.verify_mail_events(elten_link, @password)
   rescue EltenLink::Error
@@ -652,7 +652,7 @@ if !state.verified
 else
 enb=state.enabled ? 1 : 0
 opt=(enb==0)?p_("Account", "Enable mail events reporting"):p_("Account", "Disable mail events reporting")
-h=(enb==0)?p_("Account", "Mail events reporting is disabled. If you wish, you can enable it to receive information about changes made on your account and logins from new devices via E-mail"):p_("Account", "Mail events reporting is enabled.")
+h=(enb==0)?p_("Account", "Email event reporting is disabled. If you wish, you can enable it to receive information about changes to your account and logins from new devices by email."):p_("Account", "Mail events reporting is enabled.")
 @sel=ListBox.new([opt,_("Exit")],header: h,index: 0,flags: ListBox::Flags::AnyDir,quiet: false)
 loop do
   loop_update
@@ -685,19 +685,19 @@ end
   class Scene_Account_Archive
     def main
       notification = p_("Account", "Archiving your account will have the following effects:
-* An indication that the account is archived will be placed next to all posts on the forum.
-* The account will not be displayed in the users lists.
+* An indication that the account is archived will appear next to all of its forum posts.
+* The account will not appear in user lists.
 * The account will be removed from all contact lists.
 * Users will not be able to send private messages to this account.
-* The profile (including status, visiting card and signature) will be removed from the server
-* You will be opted out off all groups you are not moderating or banned in
-* You will be opted out of all messages conversations
-* All information about threads followed by you, your pinned groups or marked threads will be removed
+* The profile, including the status, bio and signature, will be removed from the server.
+* You will leave all groups that you do not moderate and from which you are not banned.
+* You will leave all message conversations.
+* All information about threads you follow, groups you have pinned and threads you have marked will be removed.
 
-Attention.
-Archiving an account does not mean deleting or hiding associated blogs or notes, this must be done manually before archiving.
+Warning:
+Archiving an account does not delete or hide its blogs or notes. You must do this manually before archiving the account.
 
-The account will be automatically unarchived the next time you log in, but removed data will not be restored..")
+The account will be unarchived automatically the next time you log in, but the removed data will not be restored.")
 
 form = Form.new([
 txt_info = EditBox.new(p_("Account", "Information"), type: EditBox::Flags::ReadOnly, text: notification),
@@ -765,7 +765,7 @@ if password!=nil
   rescue EltenLink::Error
     alert(_("Error"))
   else
-    alert(p_("Account", "Data export enqueued"))
+    alert(p_("Account", "Data export queued for processing"))
   end
   $scene = Scene_Account_Export.new
   form.resume
