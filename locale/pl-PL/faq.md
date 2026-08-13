@@ -6,8 +6,8 @@ Za projekt w sensie prawnym odpowiada powołana przez autora Fundacja Prowadnica
 O Fundacji można więcej przeczytać na jej stronie Internetowej [prowadnica.org](https://prowadnica.org).
 
 ## Czy istnieje lub powstanie Elten na inne platformy sprzętowe?
-W chwili obecnej Elten dostępny jest tylko dla systemu Windows oraz jako klient wiadomości dla systemu Android/iOS dla posiadaczy pakietu sponsorskiego. Aby uzyskać wersję dla Androida/iOS należy skontaktować się z autorem projektu. Przekazane zostały informacje o powodzeniu w uruchomieniu programu z użyciem emulatora Wine, ale metoda ta nie jest oficjalnie wspierana i nie możemy ręczyć za poprawne funkcjonowanie programu.
-Planowane jest stworzenie publicznej wersji mobilnej na systemy iOS oraz Android, ale obecnie nie możemy podać żadnych terminów.
+Elten dostępny jest dla systemu Windows, MacOS oraz GNU/Linux. Dedykowana aplikacja dostępna jest dla systemu iOS i Android. Można z niego korzystać także poprzez stronę Internetową, tam także dostępne są wszystkie pobierania.
+https://elten.link
 
 ## W jaki sposób mogę skontaktować się z administracją lub twórcą Eltena?
 Informacje o osobach administrujących portalem lub jego częściami można odnaleźć w menu, "Społeczność", "Użytkownicy", "Administracja i autorzy". Z tego miejsca można wysłać do odpowiednich użytkowników wiadomość prywatną.
@@ -26,10 +26,9 @@ Aby dostać się do tego folderu, najłatwiej wcisnąć kombinację klawiszy WIN
 
 ## Jak stworzyć temat dźwiękowy?
 Własny temat dźwiękowy można utworzyć z poziomu menu, "Narzędzia", "Tematy dźwiękowe", wybierając opcję "Nowy" z menu kontekstowego. Zostanie zaprezentowana lista dźwięków, które można dowolnie edytować.
-Utworzony w ten sposób temat można wysłać do członków Rady starszych celem jego zaakceptowania i umieszczenia w serwerowym repozytorium, można także wykorzystywać go jedynie prywatnie lub dzielić się nim innymi drogami.
 
-## Czy Elten wspiera inne czytniki ekranu, niż NVDA?
-Elten nie wspiera innych czytników ekranu. Możliwe jest jednak wykorzystywanie syntezatorów SAPI5.
+## Na systemie Windows czy Elten wspiera inne czytniki ekranu, niż NVDA?
+Na systemie Windows Elten nie wspiera innych czytników ekranu. Możliwe jest jednak wykorzystywanie syntezatorów SAPI5.
 
 ## Jak można wspomóc projekt?
 Wsparcie projektu można podzielić na materialne i niematerialne.
@@ -52,10 +51,6 @@ Przed każdym wydaniem stabilnej wersji Eltena odbywa się faza testów, w któr
 Warto zauważyć, że wiele propozycji z wersji beta nie przechodzi tej fazy weryfikacji i pod wpływem oceny przez testerów, jest całkowicie zmieniana lub odrzucana.
 Przed zainstalowaniem wersji beta należy mieć na względzie, że jest to oprogramowanie nieprzetestowane, w którym będą występować liczne błędy. Nie zaleca się dołączania do betatestów mniej technicznym użytkownikom.
 Informacje o betatestach są publikowane na polskich oraz angielskich oficjalnych forach, tam także znajdują się informacje o zapisach do nich.
-
-## Jak utworzyć przenośną wersję Eltena?
-Wersję przenośną można utworzyć z poziomu menu, "Narzędzia", "Utwórz wersję przenośną". W tym samym miejscu można zdecydować, czy skopiować do tworzonej wersji aktualne ustawienia.
-Należy pamiętać, że wersji przenośnej nie można aktualizować.
 
 ## Menu a menu kontekstowe, czym się różnią?
 Menu kontekstowe zawiera opcje skojarzone z obecnie zaznaczoną kontrolką. Przykładowo na liście forów, znajdą się w nim opcje dotyczące zaznaczonego forum. Menu kontekstowe jest otwierane klawiszem menu kontekstowego oraz, domyślnie, skrótem SHIFT+F10, przypisanym poprzez szybką akcję. Skrót ten można zmienić lub usunąć.

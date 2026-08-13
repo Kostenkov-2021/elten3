@@ -6,8 +6,9 @@ In the legal sense, the project is the responsibility of the "Fundacja Prowadnic
 You can read more about the Foundation on its website (only in poloish) [prowadnica.org](https://prowadnica.org).
 
 ## Is there or will there be an Elten for other hardware platforms?
-At the moment Elten is only available for Windows and as a messaging client for Android/iOS for sponsors. To get the Android/iOS version, please contact with the developer. There have been reports of success in running the program using the Wine emulator, but this method is not officially supported and we cannot vouch for the correct functioning of it.
-There are plans to develop a public mobile version for iOS and Android, but we cannot provide any dates at this time.
+Elten is available for Windows, MacOS, GNU/Linux and, as a separate app, for iOS and Android, as well as through its web interface.
+More details can be found on its website:
+https://elten.link
 
 ## How can I contact the administration or the developer of Elten?
 Information about the people who administer the portal or parts of it can be found in the menu, "Community", "Users", "Administration and authors". From here, you can send the relevant users a private message.
@@ -26,10 +27,9 @@ To get to this folder, the easiest way is to press WINDOWS+R, type "%appdata%" i
 
 ## How do I create a sound theme?
 You can create your own sound theme from the menu, "Tools", "Sound themes", by selecting "New" from the context menu. A list of sounds will be presented, which can be freely edited.
-The theme created in this way can be sent to the members of the Elder Council for approval and placement in the server repository, or it can only be used privately or shared through other means.
 
-## Does Elten support screen readers other than NVDA?
-Elten does not support other screen readers. However, it is possible to use SAPI5 synthesisers.
+## Does Elten support screen readers other than NVDA on Windows?
+On Windows, Elten does not support other screen readers. However, it is possible to use SAPI5 synthesisers.
 
 ## How can the project be supported?
 Support for the project can be divided into tangible and intangible.
@@ -52,10 +52,6 @@ Before each release of a stable version of Elten, there is a testing phase in wh
 It is worth noting that many beta proposals do not pass this verification phase and, under the influence of the testers' evaluation, are completely changed or rejected.
 Before installing a beta version, it should be borne in mind that it is untested software in which numerous bugs will be present. It is not recommended that less technical users join the beta test.
 Information about the beta tests is published in the Polish and English official forums, where you can also find information about signing up for them.
-
-## How do I create a portable version of Elten?
-A portable version can be created from the menu, "Tools", "Create portable version". In the same place, you can decide whether to copy the current settings into the version to be created.
-Please note that the portable version cannot be updated.
 
 ## Menus versus context menus, what is the difference?
 The context menu contains the options associated with the currently selected control. For example, in the list of forums, it will contain the options for the selected forum. The context menu is opened using the applications key and, by default, the SHIFT+F10 shortcut assigned via a quick action. This shortcut can be changed or deleted.

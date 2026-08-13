@@ -6,8 +6,9 @@ Rechtlich gesehen liegt die Verantwortung für das Projekt bei der "Fundacja Pro
 Weitere Informationen über die Stiftung finden Sie auf ihrer Website (nur auf Polnisch) [prowadnica.org] (https://prowadnica.org).
 
 ## Gibt es Elten auch für andere Hardware-Plattformen oder wird es sie geben?
-Zurzeit ist Elten nur für Windows verfügbar. Es gibt Berichte über die erfolgreiche Ausführung des Programms mit dem Wine-Emulator, aber diese Methode wird nicht offiziell unterstützt, und wir können nicht für ihre korrekte Funktion bürgen.
-Es ist geplant, eine mobile Version für iOS und Android zu entwickeln, aber wir können zum jetzigen Zeitpunkt noch keine Termine nennen.
+Elten is available for Windows, MacOS, GNU/Linux and, as a separate app, for iOS and Android, as well as through its web interface.
+More details can be found on its website:
+https://elten.link
 
 ## Wie kann ich die Verwaltung oder den Entwickler von Elten kontaktieren?
 Informationen über die Personen, die das Portal oder Teile davon verwalten, finden Sie im Menü "Community", "Nutzer", "Administratoren und Autoren". Von hier aus können Sie den betreffenden Benutzern eine private Nachricht senden.
@@ -26,10 +27,9 @@ Um zu diesem Ordner zu gelangen, drücken Sie am einfachsten WINDOWS+R, geben "%
 
 ## Wie erstelle ich ein Audiothema?
 Sie können Ihr eigenes Audiothema über das Menü "Tools", "audiothemen" erstellen, indem Sie "Neu" aus dem Kontextmenü wählen. Es wird eine Liste von Klängen angezeigt, die frei bearbeitet werden können.
-Das auf diese Weise erstellte Thema kann an die Mitglieder des Ältestenrats zur Genehmigung und Aufnahme in das Server-Repository geschickt werden, oder es kann nur privat verwendet oder auf anderem Wege weitergegeben werden.
 
-## Unterstützt Elten auch andere Bildschirmleser als NVDA?
-Elten unterstützt keine anderen Bildschirmleser. Es ist jedoch möglich, SAPI5-Synthesizer zu verwenden.
+## Does Elten support screen readers other than NVDA on Windows?
+On Windows, Elten does not support other screen readers. However, it is possible to use SAPI5 synthesisers.
 
 ## Wie kann das Projekt unterstützt werden?
 Die Unterstützung für das Projekt kann in materielle und immaterielle Unterstützung unterteilt werden.
@@ -52,10 +52,6 @@ Vor jeder Veröffentlichung einer stabilen Version von Elten gibt es eine Testph
 Es ist erwähnenswert, dass viele Beta-Vorschläge diese Überprüfungsphase nicht bestehen und unter dem Einfluss der Bewertung der Tester vollständig geändert oder abgelehnt werden.
 Bevor Sie eine Betaversion installieren, sollten Sie bedenken, dass es sich um eine ungetestete Software handelt, die noch zahlreiche Fehler enthalten wird. Es wird nicht empfohlen, dass technisch weniger versierte Benutzer am Betatest teilnehmen.
 Informationen über die Betatests werden in den offiziellen polnischen und englischen Foren veröffentlicht, wo Sie auch Informationen über die Anmeldung finden können.
-
-## Wie kann ich eine portable Version von Elten erstellen?
-Eine portable Version kann über das Menü "Tools", "Portable Version erstellen" erstellt werden. An der gleichen Stelle können Sie entscheiden, ob die aktuellen Einstellungen in die zu erstellende Version kopiert werden sollen.
-Bitte beachten Sie, dass die portable Version nicht aktualisiert werden kann.
 
 ## Menüs versus Kontextmenüs, was ist der Unterschied?
 Das Kontextmenü enthält die Optionen, die mit dem aktuell ausgewählten Steuerelement verbunden sind. Zum Beispiel enthält es in der Liste der Foren die Optionen für das ausgewählte Forum. Das Kontextmenü wird mit der Anwendungstaste und standardmäßig mit der Tastenkombination SHIFT+F10 geöffnet, die über eine Schnellaktion zugewiesen wurde. Dieser Shortcut kann geändert oder gelöscht werden.
