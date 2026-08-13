@@ -71,11 +71,14 @@ class Scene_Main
         focused_notifications = previous_section == :notifications
         had_notifications = notifications_visible?
         active = main_window_active?
+        minimized = main_window_minimized?
         notifications_load(false)
         @focus_notifications_when_active = true if !had_notifications && notifications_visible? && !active
         if focused_notifications
           if @skip_next_notifications_change_say == true
             @skip_next_notifications_change_say = false
+          elsif minimized
+            @focus_notifications_when_active = true
           else
             announce_after_notifications_reload(previous_section)
           end
@@ -217,9 +220,16 @@ rescue Exception
   true
 end
 
+def main_window_minimized?
+  EltenWindow.minimized?
+rescue Exception
+  false
+end
+
 def focus_deferred_notifications_if_active
   return if @focus_notifications_when_active != true
   return if !notifications_visible? || @notifications_sel == nil
+  return if main_window_minimized?
   return if !main_window_active?
 
   @focus_notifications_when_active = false
