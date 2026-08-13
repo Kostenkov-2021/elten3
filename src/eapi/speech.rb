@@ -191,6 +191,13 @@ end
                                speech_output.index
                                end
 
+# Determines whether the current speech output supports index tracking.
+#
+# @return [Boolean] true when speech indexes are supported
+def speech_indexes_supported?
+  speech_output.indexed_supported?
+end
+
 # Determines if the speech is used
 #
 # @return [Boolean] if the speech is ued, returns true, otherwise the return value is false
