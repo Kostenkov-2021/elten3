@@ -108,6 +108,24 @@ module EltenLink
         )
       end
 
+      def posted_in_threads(client, threads:)
+        thread_ids = Array(threads).flatten.map(&:to_i).select(&:positive?).uniq.sort
+        raise ArgumentError, "threads must contain at least one positive identifier" if thread_ids.empty?
+
+        params = thread_ids.length == 1 ? { "thread" => thread_ids.first } : { "threads" => thread_ids }
+        data = client.api_data("GET", "/api/v1/forum/authored-threads", params)
+        statuses = data["threads"].to_a.each_with_object({}) do |row, result|
+          result[row["thread"].to_i] = truthy?(row["posted"])
+        end
+        thread_ids.each_with_object({}) do |thread_id, result|
+          result[thread_id] = statuses.fetch(thread_id, false)
+        end
+      end
+
+      def posted_in_thread?(client, thread_id:)
+        posted_in_threads(client, threads: thread_id).fetch(thread_id.to_i, false)
+      end
+
       def search(client, query:, type: nil, transcriptions: false)
         data = client.api_data("GET", "/api/v1/forum", clean_hash(
           "query" => query,
