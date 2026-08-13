@@ -2860,6 +2860,19 @@ end
 
 class Scene_Forum_Thread
   include ForumSceneClient
+
+  FORUM_SIGNATURE_MODE_KEY = "ForumSignatureMode"
+  SIGNATURE_MODE_NONE = "none"
+  SIGNATURE_MODE_SOUND = "sound"
+  SIGNATURE_MODE_TEXT = "text"
+  SIGNATURE_MODE_HIDDEN = "hidden"
+  SIGNATURE_MODES = [
+    SIGNATURE_MODE_NONE,
+    SIGNATURE_MODE_SOUND,
+    SIGNATURE_MODE_TEXT,
+    SIGNATURE_MODE_HIDDEN
+  ].freeze
+
   def initialize(thread, param = nil, cat = 0, query = "", mention = nil, scene=nil, tag=nil)
     @threadclass=thread
     @param = param
@@ -3036,6 +3049,7 @@ loop do
     @fields = []
     @closed_thread_reply_button = nil
     return if @posts == nil
+    signature_mode = effective_forum_signature_mode
     for i in 0...@posts.size
       post = @posts[i]
       index = i * 3 if index == -1 and @param == -3 and @query.is_a?(Struct_Forum_SearchQuery) and post.post.downcase.include?(@query.phrase.downcase) && @query.phrase_in.include?(:content)
@@ -3049,7 +3063,8 @@ loop do
       label=post.authorname
       label+=" (#{p_("Forum", "Banned")})" if post.banned
       label+=" (#{p_("Forum", "Account archived")})" if post.archived
-      post_field = EditBox.new(label, type: flags, text: generate_posttext(post), quiet: true)
+      post_field = EditBox.new(label, type: flags, text: "", quiet: true)
+      update_post_field(post_field, post, signature_mode)
       post_field.audio_url = post.audio_url if post.respond_to?(:audio_url) && post.audio_url.to_s != ""
       @fields += [post_field, nil, nil]
 if @sponsors.include?(post.author)
@@ -3115,7 +3130,38 @@ end
     @form.bind_context(p_("Forum", "Forum")) {|menu|context(menu)}
   end
   
-  def generate_posttext(post)
+  def forum_signature_mode
+    mode = LocalConfig[FORUM_SIGNATURE_MODE_KEY, "", type: :string]
+    return mode if SIGNATURE_MODES.include?(mode)
+
+    mode = if LocalConfig["ForumHideSignatures", type: :bool]
+      SIGNATURE_MODE_HIDDEN
+    elsif speech_indexes_supported?
+      SIGNATURE_MODE_SOUND
+    else
+      SIGNATURE_MODE_TEXT
+    end
+    LocalConfig[FORUM_SIGNATURE_MODE_KEY] = mode
+    mode
+  end
+
+  def effective_forum_signature_mode
+    mode = forum_signature_mode
+    return SIGNATURE_MODE_NONE if mode == SIGNATURE_MODE_HIDDEN && !holds_premiumpackage("courier")
+    return SIGNATURE_MODE_TEXT if mode == SIGNATURE_MODE_SOUND && !speech_indexes_supported?
+    mode
+  end
+
+  def forum_signature_mode_labels
+    [
+      p_("Forum", "None"),
+      p_("Forum", "Sound"),
+      p_("Forum", "Text information"),
+      p_("Forum", "Hide signatures")
+    ]
+  end
+
+  def forum_post_parts(post, signature_mode)
     add = ""
     i = @posts.find_index(post)||0
     if post.edited
@@ -3129,13 +3175,39 @@ end
     if post.likes > 0
       segments.push(np_("Forum", "%{count} user likes this post", "%{count} users like this post", post.likes)%{:count=>post.likes.to_s})
     end
-    if !(LocalConfig["ForumHideSignatures", type: :bool] && holds_premiumpackage("courier"))
-      segments.push(post.signature)
+    signature = forum_post_segment(post.signature)
+    if signature != "" && signature_mode != SIGNATURE_MODE_HIDDEN
+      if signature_mode == SIGNATURE_MODE_TEXT
+        signature = p_("Forum", "Signature: %{signature}") % { :signature => signature }
+      end
+      segments.push(signature)
     end
-    segments.push(post.date)
-    segments.push(add)
-    segments.push((i + 1).to_s + "/" + @posts.size.to_s)
-    segments.map { |segment| forum_post_segment(segment) }.reject { |segment| segment == "" }.join("\r\n")
+    footer = [post.date, add, (i + 1).to_s + "/" + @posts.size.to_s]
+    [segments, footer]
+  end
+
+  def generate_posttext(post, signature_mode=effective_forum_signature_mode)
+    segments, footer = forum_post_parts(post, signature_mode)
+    (segments + footer).map { |segment| forum_post_segment(segment) }.reject { |segment| segment == "" }.join("\r\n")
+  end
+
+  def update_post_field(field, post, signature_mode=effective_forum_signature_mode)
+    field.set_text(generate_posttext(post, signature_mode))
+    return field if signature_mode != SIGNATURE_MODE_SOUND
+
+    signature = forum_post_segment(post.signature).gsub("\r\n", "\n")
+    return field if signature == ""
+
+    _segments, footer = forum_post_parts(post, signature_mode)
+    footer = footer.map { |segment| forum_post_segment(segment).gsub("\r\n", "\n") }.reject { |segment| segment == "" }.join("\n")
+    text = field.text_range_exclusive(0, field.text_len)
+    index = text.rindex(signature + "\n" + footer)
+    if index == nil
+      field.set_text(generate_posttext(post, SIGNATURE_MODE_TEXT))
+      return field
+    end
+    field.add_speak_callback(index) { play_sound("editbox_signature") }
+    field
   end
 
   def forum_post_segment(text)
@@ -3256,7 +3328,7 @@ if forum_attempt(nil) {
     post.likes-=1
     alert(p_("forum", "This post is no longer liked"))
   end
-  @form.fields[@form.index/3*3].set_text(generate_posttext(post))
+  update_post_field(@form.fields[@form.index/3*3], post)
 end
 }
 end
@@ -3433,14 +3505,22 @@ if post.edited && !post.locked
         end
       end
     }
-          s=p_("Forum", "Hide signatures")
-  s=p_("Forum", "Show signatures") if LocalConfig["ForumHideSignatures", type: :bool]
-  menu.option(s) {
-  if requires_premiumpackage("courier")
-  LocalConfig["ForumHideSignatures"] = !LocalConfig["ForumHideSignatures", type: :bool]
-refresh
-end  
-}
+    menu.option(p_("Forum", "Signature notifications")) {
+      current_mode = forum_signature_mode
+      selected = selector(
+        forum_signature_mode_labels,
+        header: p_("Forum", "Signature notifications"),
+        start_index: SIGNATURE_MODES.index(current_mode) || 0,
+        cancel_index: -1
+      )
+      if selected != nil && selected >= 0
+        mode = SIGNATURE_MODES[selected]
+        if mode != SIGNATURE_MODE_HIDDEN || requires_premiumpackage("courier")
+          LocalConfig[FORUM_SIGNATURE_MODE_KEY] = mode
+          refresh
+        end
+      end
+    }
     if @form.index < @postscount * 3 && (((Session.moderator == 1 && @threadclass.forum.group.recommended) || (@threadclass != nil && @threadclass.forum.group.role == 2)) || (@posts[@form.index / 3].author == Session.name && @threadclass.forum.group.role==1))
       post=@posts[@form.index/3]
       menu.submenu(p_("Forum", "Moderation")) { |m|

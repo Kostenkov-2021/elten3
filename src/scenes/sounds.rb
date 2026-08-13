@@ -54,6 +54,7 @@ class Scene_Sounds
 'editbox_delete' => p_("Sounds", "Text deleted from a text field"),
 'editbox_endofline' => p_("Sounds", "End of line in a text field"),
 'editbox_passwordchar' => p_("Sounds", "Password character in a text field"),
+'editbox_signature' => p_("Sounds", "Signature in a text field"),
 'editbox_space' => p_("Sounds", "Space in a text field"),
 'button_marker' => p_("Sounds", "Marker of a button in a form"),
 'checkbox_marker' => p_("Sounds", "Marker of a checkbox in a form"),
