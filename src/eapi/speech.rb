@@ -616,6 +616,7 @@ class SpeechSequence
       @indexed_commands={}
       @initial_commands=[]
       index=0
+      pending_commands=[]
       @commands.each do |command|
         if command.is_a?(SpeechCommands::SpeechCommand)
           if command.immediate?
@@ -625,13 +626,22 @@ class SpeechSequence
               index+=1
               @indexes.push(index)
               @texts.push(text)
+              if pending_commands.size>0
+                @indexed_commands[index]=pending_commands
+                pending_commands=[]
+              end
             end
           else
+            text=command.speech_text.to_s
+            if text==""
+              pending_commands.push(command)
+              next
+            end
             index+=1
             @indexes.push(index)
-            @texts.push(command.speech_text.to_s)
-            @indexed_commands[index]||=[]
-            @indexed_commands[index].push(command)
+            @texts.push(text)
+            @indexed_commands[index]=pending_commands+[command]
+            pending_commands=[]
           end
         else
           text=command.to_s
@@ -639,7 +649,17 @@ class SpeechSequence
           index+=1
           @indexes.push(index)
           @texts.push(text)
+          if pending_commands.size>0
+            @indexed_commands[index]=pending_commands
+            pending_commands=[]
+          end
         end
+      end
+      if pending_commands.size>0
+        index+=1
+        @indexes.push(index)
+        @texts.push("")
+        @indexed_commands[index]=pending_commands
       end
       @textcache=nil
       @speech_text_cache=nil
