@@ -16,6 +16,7 @@ end
 
 begin
 Dirs.eltendata = EltenBoot.early_datadir if defined?(EltenBoot)
+EltenAPI::WelcomeWizardLaunch.capture_initial_state(EltenPath.join(Dirs.eltendata, "elten.ini"))
 FileUtils.mkdir_p(Dirs.eltendata)
 end
 

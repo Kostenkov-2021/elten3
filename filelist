@@ -137,6 +137,7 @@ src/scenes/forum.rb
 src/scenes/main.rb
 src/scenes/login.rb
 src/scenes/registration.rb
+src/scenes/welcome_wizard.rb
 src/scenes/loading.rb
 src/eapi/documents.rb
 src/platforms/windows/eapi/sapi.rb :windows

@@ -35,6 +35,14 @@ class Scene_Main
       $scene=Scene_Loading.new
       return
     end
+    if Session.logged?
+      welcome_wizard_mode = EltenAPI::WelcomeWizardLaunch.consume
+      if welcome_wizard_mode != nil
+        Log.info("Starting welcome wizard in #{welcome_wizard_mode} mode")
+        $scene = Scene_WelcomeWizard.new(welcome_wizard_mode == :first_run)
+        return
+      end
+    end
     dialog_close if dialog_opened
     waiting_end if $waitingopened
     $silentstart=false

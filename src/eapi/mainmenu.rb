@@ -126,6 +126,10 @@ module GlobalMenu
    m.scene(p_("MainMenu", "&Privacy policy"), Scene_Documentation, "privacypolicy")
    m.scene(p_("MainMenu", "Infor&mation about migration to Elten version 2.4"), Scene_Documentation, "migration24")
    m.scene(p_("MainMenu", "List of &Invisible Interface keyboard shortcuts"), Scene_IIKeys)
+   m.submenu(p_("MainMenu", "Welcome &wizards")) {|m|
+       m.scene(p_("MainMenu", "&First run wizard"), Scene_WelcomeWizard, true, true)
+       m.scene(p_("MainMenu", "&Update to Elten 3.0 wizard"), Scene_WelcomeWizard, false, true)
+}
     }
     @menu.submenu(p_("MainMenu", "&Quit")) {|m|
     if tray_supported?

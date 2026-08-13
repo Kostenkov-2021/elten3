@@ -3,8 +3,35 @@
 # Elten is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License, version 3.
 
 module EltenAPI
+  module WelcomeWizardLaunch
+    class << self
+      def capture_initial_state(path)
+        return @pending if @initial_state_captured
+
+        @initial_state_captured = true
+        if !File.file?(path)
+          @pending = :first_run
+          Log.info("Welcome wizard queued for a new installation") if defined?(Log)
+        end
+        @pending
+      end
+
+      def upgrade_detected
+        @pending = :upgrade
+        Log.info("Welcome wizard queued after configuration upgrade") if defined?(Log)
+        @pending
+      end
+
+      def consume
+        pending = @pending
+        @pending = nil
+        pending
+      end
+    end
+  end
+
   module ConfigurationMigrations
-    CURRENT_VERSION = 1
+    CURRENT_VERSION = 2
 
     BOOLEAN_KEYS = [
       ["Interface", "DisableFeedNotifications"],
@@ -97,6 +124,7 @@ module EltenAPI
       return false if version >= CURRENT_VERSION
 
       migrate_configuration_to_version_1(path) if version < 1
+      migrate_configuration_to_version_2(path) if version < 2
       writeini(path, "Elten", "ConfigurationVersion", CURRENT_VERSION)
       true
     end
@@ -108,6 +136,15 @@ module EltenAPI
       VALUE_MAPPINGS.each do |(group, key), mapping|
         migrate_configuration_value(path, group, key, mapping)
       end
+    end
+
+    def migrate_configuration_to_version_2(path)
+      current = readini(path, "Advanced", "AgentSessionTime", "$DEFAULT")
+      return if current == "$DEFAULT"
+
+      writeini(path, "Advanced", "SessionRefreshInterval", current)
+      writeini(path, "Advanced", "AgentSessionTime", nil)
+      WelcomeWizardLaunch.upgrade_detected
     end
 
     def migrate_configuration_value(path, group, key, mapping)

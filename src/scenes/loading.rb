@@ -75,7 +75,7 @@ FileUtils.rm_rf(EltenPath.join(Dirs.eltendata, "apps", "inis")) if FileTest.exis
 FileUtils.rm_rf(EltenPath.join(Dirs.eltendata, "bin")) if FileTest.exists?(EltenPath.join(Dirs.eltendata, "bin"))
 if FileTest.exists?(EltenPath.join(Dirs.eltendata, "config"))
 v={
-'Advanced'=>[['KeyUpdateTime'], ['RefreshTime'], ['SyncTime'], ['AgentRefreshTime']],
+'Advanced'=>[['KeyUpdateTime'], ['RefreshTime'], ['SyncTime'], ['AgentRefreshTime'], ['AgentSessionTime']],
 'Interface' => [['ListType'], ['SoundThemeActivation'], ['TypingEcho'], ['HideWindow'], ['MainVolume'], ['SayTimePeriod','Clock'], ['SayTimeType','Clock'], ['LineWrapping'], ['SoundCard', 'SoundCard'], ['Microphone', 'SoundCard']],
 'Language' => [['Language','Interface']],
 'Login' => [['AutoLogin'], ['Name'], ['Token'], ['TokenEncrypted']],
