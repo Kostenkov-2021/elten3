@@ -527,20 +527,22 @@ module EltenLink
         true
       end
 
-      def create_forum(client, group_id:, name:, description: nil, type: 0)
+      def create_forum(client, group_id:, name:, description: nil, type: 0, private: false)
         data = client.api_data("POST", "/api/v1/forum/group/#{group_id.to_i}/forums", clean_hash(
           "name" => name,
           "description" => description,
-          "type" => type
+          "type" => type,
+          "private" => truth_param(private)
         ))
         data["forumid"].to_i
       end
 
-      def update_forum(client, forumid:, name: nil, description: nil, type: nil)
+      def update_forum(client, forumid:, name: nil, description: nil, type: nil, private: nil)
         client.api_data("PATCH", "/api/v1/forum/forum/#{forumid.to_i}", clean_hash(
           "name" => name,
           "description" => description,
-          "type" => type
+          "type" => type,
+          "private" => private.nil? ? nil : truth_param(private)
         ))
         true
       end
@@ -664,6 +666,7 @@ module EltenLink
           forum.group = group_by_id[row["group_id"].to_i] || Struct_Forum_Group.new(0)
           forum.description = row["description"].to_s
           forum.closed = truthy?(row["closed"])
+          forum.private = truthy?(row["private"])
           forum.followed = truthy?(row["followed"])
           forum.threads = row["threads"].to_i
           forum.posts = row["posts"].to_i

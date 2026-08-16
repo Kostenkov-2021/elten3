@@ -1730,22 +1730,22 @@ form.focus
       }
       if @sforums.size > 0
         m.option(p_("Forum", "Edit forum"), nil, "e") {
-          form = Form.new([EditBox.new(p_("Forum", "Forum name"), type: 0, text: @sforums[@frmsel.index].fullname, quiet: true), EditBox.new(p_("Forum", "Forum description"), type: EditBox::Flags::MultiLine, text: @sforums[@frmsel.index].description, quiet: true), ListBox.new([p_("Forum", "Text forum"), p_("Forum", "Voice forum"), p_("Forum", "Mixed forum")], header: p_("Forum", "Forum type"), index: @sforums[@frmsel.index].type), nil, Button.new(_("Cancel"))])
+          form = Form.new([EditBox.new(p_("Forum", "Forum name"), type: 0, text: @sforums[@frmsel.index].fullname, quiet: true), EditBox.new(p_("Forum", "Forum description"), type: EditBox::Flags::MultiLine, text: @sforums[@frmsel.index].description, quiet: true), ListBox.new([p_("Forum", "Text forum"), p_("Forum", "Voice forum"), p_("Forum", "Mixed forum")], header: p_("Forum", "Forum type"), index: @sforums[@frmsel.index].type), ListBox.new([p_("Forum", "Public (visible according to the group settings)"), p_("Forum", "Private (visible only to group members)")], header: p_("Forum", "Forum visibility"), index: @sforums[@frmsel.index].private ? 1 : 0), nil, Button.new(_("Cancel"))])
           loop do
             loop_update
             form.update
-            if form.fields[3] == nil and form.fields[0].text != ""
-              form.fields[3] = Button.new(_("Save"))
-            elsif form.fields[3] != nil and form.fields[0].text == ""
-              form.fields[3] = nil
+            if form.fields[4] == nil and form.fields[0].text != ""
+              form.fields[4] = Button.new(_("Save"))
+            elsif form.fields[4] != nil and form.fields[0].text == ""
+              form.fields[4] = nil
             end
-            if form.fields[3] != nil and form.fields[3].pressed?
+            if form.fields[4] != nil and form.fields[4].pressed?
               description = nil
               if form.fields[1].text != ""
                 description = form.fields[1].text
               end
               if forum_attempt(nil) {
-                EltenLink::Forum.update_forum(elten_link, forumid: @sforums[@frmsel.index].id, name: form.fields[0].text, type: form.fields[2].index, description: description)
+                EltenLink::Forum.update_forum(elten_link, forumid: @sforums[@frmsel.index].id, name: form.fields[0].text, type: form.fields[2].index, description: description, private: form.fields[3].index == 1)
               }
                 alert(_("Saved"))
               end
@@ -1757,7 +1757,7 @@ form.focus
 @grpsetindex=@group
 break
             end
-            break if key_pressed?(:key_escape) or form.fields[4].pressed?
+            break if key_pressed?(:key_escape) or form.fields[5].pressed?
           end
           loop_update
           @frmsel.focus
@@ -4228,6 +4228,7 @@ class Struct_Forum_Forum
   attr_accessor :followed
   attr_accessor :description
   attr_accessor :closed
+  attr_accessor :private
 
   def initialize(id = 0)
     @id = id.to_i
@@ -4240,6 +4241,7 @@ class Struct_Forum_Forum
     @followed = false
     @description = ""
     @closed=false
+    @private=false
   end
 
 end
