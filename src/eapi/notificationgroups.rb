@@ -398,7 +398,7 @@ module NotificationGroups
     when "followedblog", "blogcomment", "followedblogpost", "blogmention"
       Proc.new { open_blog_post(payload, cat.to_s) }
     when "blogfollower"
-      Proc.new { insert_scene(Scene_Blog_Followers.new(nil), true) }
+      Proc.new { insert_scene(Scene_Blog_Followers.new(nil), true, return_to_main: true) }
     when "friend"
       Proc.new { insert_scene(Scene_Users_AddedMeToContacts.new(true), true) }
     when "birthday"
