@@ -1664,7 +1664,7 @@ form.focus
             s = p_("Forum", "Follow this forum")
       s = p_("Forum", "Unfollow this forum") if @sforums.size > 0 and @sforums[@frmsel.index].followed == true
       menu.option(s, nil, "l") {
-      if @sforums[@frmsel.index].group.role==2 || requires_premiumpackage("courier")
+      if @sforums[@frmsel.index].followed || @sforums[@frmsel.index].group.role==2 || requires_premiumpackage("courier")
         if @sforums[@frmsel.index].followed == false
           if forum_attempt(nil) {
             EltenLink::Forum.follow_forum(elten_link, forumid: @sforums[@frmsel.index].id)
