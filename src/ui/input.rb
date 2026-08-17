@@ -109,12 +109,12 @@ Bass::BASS_ChannelSetAttribute.call(stream, 2, volume.to_f/100.0)
       return context_menu_pressed? if [:key_context_menu, :context_menu, :context_menu_key].include?(key)
       return enter_pressed? if [:key_enter, :enter].include?(key)
       return main_modifier_pressed? if main_modifier_key?(key)
-      raw_key_pressed?(key)
+      raw_key_pressed?(key, repeat: repeat)
     end
 
     def arrow_pressed?(code, repeat=false)
       return false if modifier_held?(:command)
-      raw_key_pressed?(code)
+      raw_key_pressed?(code, repeat: repeat)
     end
 
     def key_held?(key)
@@ -189,8 +189,8 @@ Bass::BASS_ChannelSetAttribute.call(stream, 2, volume.to_f/100.0)
       parts.join("+")
     end
 
-    def raw_key_pressed?(key)
-      raw_key_state?(key, :pressed)
+    def raw_key_pressed?(key, repeat: false)
+      raw_key_state?(key, :pressed, repeat: repeat)
     end
 
     def raw_key_held?(key)
@@ -305,13 +305,14 @@ Bass::BASS_ChannelSetAttribute.call(stream, 2, volume.to_f/100.0)
       ""
     end
 
-    def raw_key_state?(key, state)
+    def raw_key_state?(key, state, repeat: false)
       ensure_keyboard_state
       code = EltenAPI::KeyboardScheme.key_code(key)
       code, shift = keyboard_code(key) if code == nil
       return false if code == nil || code == 0
       return false if shift && !EltenAPI::KeyboardState.held?(EltenAPI::KeyboardScheme.key_code(:shift))
       return true if state == :held && EltenWindow.keyboard_key_held?(code)
+      return EltenAPI::KeyboardState.pressed?(code, repeat: repeat) if state == :pressed
       EltenAPI::KeyboardState.public_send("#{state}?", code)
     rescue Exception
       false

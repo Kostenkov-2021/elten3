@@ -182,11 +182,13 @@ module EltenAPI
   end
 
   module KeyboardState
-    Result = Struct.new(:pressed, :held, :released, :first_pressed, :repeated, :state, :press_states, keyword_init: true)
+    Result = Struct.new(:pressed, :repeat_pressed, :held, :released, :first_pressed, :repeated, :state, :press_states, keyword_init: true)
 
     MODIFIER_KEYS = [:shift, :control, :option, :caps_lock, :command_left, :command_right, :context_menu, :control_left, :control_right].map { |key| KeyboardScheme.key_code(key) }.freeze
     DEFAULT_REPEAT_DELAY = 0.45
     DEFAULT_REPEAT_INTERVAL = 1.0 / 30.0
+    CONTINUOUS_REPEAT_DELAY = 0.2
+    CONTINUOUS_REPEAT_INTERVAL = 1.0 / 75.0
 
     class << self
       def update(raw_state:, events: [], synthetic_keys: [], active: true, now: nil, pressed_implies_held: true, synthesize_repeats: true)
@@ -235,6 +237,7 @@ module EltenAPI
         released = Array.new(256, false)
         first_pressed = Array.new(256, false)
         repeated = Array.new(256, false)
+        repeat_pressed = Array.new(256, false)
         frame_active = false
 
         for key in 0..255
@@ -245,23 +248,33 @@ module EltenAPI
           if event_released[key] || (was_down && !is_down)
             released[key] = true
             @next_repeat[key] = 0.0
+            @continuous_repeat_at[key] = 0.0
           end
 
           if event_pressed[key] && !was_down
             pressed[key] = true
             first_pressed[key] = true
             @next_repeat[key] = is_down ? now + @repeat_delay : 0.0
+            repeat_pressed[key] = true
+            @continuous_repeat_at[key] = is_down ? now + @continuous_repeat_delay : 0.0
           elsif is_down && !was_down
             pressed[key] = true
             first_pressed[key] = true
             @next_repeat[key] = now + @repeat_delay
+            repeat_pressed[key] = true
+            @continuous_repeat_at[key] = now + @continuous_repeat_delay
           elsif is_down && repeatable_key?(key)
             if event_repeated[key] || (synthesize_repeats && now >= @next_repeat[key].to_f)
               repeated[key] = true
               @next_repeat[key] = next_repeat_time(now, @next_repeat[key].to_f)
             end
+            if now >= @continuous_repeat_at[key].to_f
+              repeat_pressed[key] = true
+              @continuous_repeat_at[key] = next_repeat_time(now, @continuous_repeat_at[key].to_f, @continuous_repeat_interval)
+            end
           elsif !is_down
             @next_repeat[key] = 0.0
+            @continuous_repeat_at[key] = 0.0
           end
         end
 
@@ -279,7 +292,7 @@ module EltenAPI
             end
           end
           held[key] = true if pressed_implies_held == true && action_pressed[key] == true
-          frame_active = true if action_pressed[key] == true || released[key] == true || first_pressed[key] == true || repeated[key] == true
+          frame_active = true if action_pressed[key] == true || repeat_pressed[key] == true || released[key] == true || first_pressed[key] == true || repeated[key] == true
         end
 
         @held = held.dup
@@ -287,6 +300,7 @@ module EltenAPI
         @current_active = frame_active
         @current = Result.new(
           pressed: action_pressed,
+          repeat_pressed: repeat_pressed,
           held: held,
           released: released,
           first_pressed: first_pressed,
@@ -304,9 +318,10 @@ module EltenAPI
         @current ||= reset_result
       end
 
-      def pressed?(key)
+      def pressed?(key, repeat: false)
         code = key.to_i & 0xff
-        current.pressed[code] == true
+        state = current
+        repeat == true ? state.repeat_pressed[code] == true : state.pressed[code] == true
       rescue Exception
         false
       end
@@ -375,6 +390,7 @@ module EltenAPI
         @current_active = false
         @current = Result.new(
           pressed: empty.dup,
+          repeat_pressed: empty.dup,
           held: held,
           released: empty.dup,
           first_pressed: empty.dup,
@@ -389,6 +405,7 @@ module EltenAPI
         initialize_state
         @held = Array.new(256, false)
         @next_repeat = Array.new(256, 0.0)
+        @continuous_repeat_at = Array.new(256, 0.0)
         @last_pressed_tick = Array.new(256, -1000)
         @tick_serial = 0
         @held_any = false
@@ -402,12 +419,15 @@ module EltenAPI
       def initialize_state
         @held ||= Array.new(256, false)
         @next_repeat ||= Array.new(256, 0.0)
+        @continuous_repeat_at ||= Array.new(256, 0.0)
         @last_pressed_tick ||= Array.new(256, -1000)
         @tick_serial ||= 0
         @held_any = @held.include?(true) if @held_any == nil
         @current_active = false if @current_active == nil
         @repeat_delay ||= DEFAULT_REPEAT_DELAY
         @repeat_interval ||= DEFAULT_REPEAT_INTERVAL
+        @continuous_repeat_delay ||= CONTINUOUS_REPEAT_DELAY
+        @continuous_repeat_interval ||= CONTINUOUS_REPEAT_INTERVAL
       end
 
       def reset_result
@@ -417,6 +437,7 @@ module EltenAPI
         @current_active = false
         Result.new(
           pressed: empty.dup,
+          repeat_pressed: empty.dup,
           held: empty.dup,
           released: empty.dup,
           first_pressed: empty.dup,
@@ -447,10 +468,10 @@ module EltenAPI
         !MODIFIER_KEYS.include?(key.to_i)
       end
 
-      def next_repeat_time(now, previous)
+      def next_repeat_time(now, previous, interval = @repeat_interval)
         target = previous.to_f
         target = now if target <= 0.0 || target < now - 1.0
-        target += @repeat_interval while target <= now
+        target += interval while target <= now
         target
       end
 
