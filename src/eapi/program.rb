@@ -367,6 +367,24 @@ module Programs
       nil
     end
 
+    def create_spatial_sound(position:, sample: false, loop: false, interpolation: :bilinear, effect_buffer: nil, effect_buffer_seconds: nil)
+      options = { :sample => sample, :loop => loop }
+      if effect_buffer == nil && effect_buffer_seconds == nil
+        options[:effect_buffer] = :interactive
+      else
+        options[:effect_buffer] = effect_buffer if effect_buffer != nil
+        options[:effect_buffer_seconds] = effect_buffer_seconds if effect_buffer_seconds != nil
+      end
+      sound = create_sound(**options)
+      return nil if sound == nil
+      sound.spatialize(position: position, interpolation: interpolation)
+      sound
+    rescue Exception => e
+      Log.warning("Program spatial sound asset #{@name} failed: #{e.class}: #{e.message}")
+      sound.close rescue nil
+      nil
+    end
+
     def play(volume: 100, pitch: 100, pan: 50, ignore_elten_volume: false)
       return false if !defined?(Bass)
       stream = create_bass_stream
@@ -627,6 +645,19 @@ module Programs
       options[:effect_buffer] = effect_buffer if effect_buffer != nil
       options[:effect_buffer_seconds] = effect_buffer_seconds if effect_buffer_seconds != nil
       asset.create_sound(**options)
+    end
+
+    def create_spatial_sound_from_asset(name, position:, sample: false, loop: false, interpolation: :bilinear, effect_buffer: nil, effect_buffer_seconds: nil)
+      asset = sound_asset(name)
+      return nil if asset == nil
+      asset.create_spatial_sound(
+        position: position,
+        sample: sample,
+        loop: loop,
+        interpolation: interpolation,
+        effect_buffer: effect_buffer,
+        effect_buffer_seconds: effect_buffer_seconds
+      )
     end
 
     def language_data(code)
@@ -2183,6 +2214,19 @@ class Program
       @app_runtime.create_sound_from_asset(name, **options)
     end
 
+    def create_spatial_sound_from_asset(name, position:, sample: false, loop: false, interpolation: :bilinear, effect_buffer: nil, effect_buffer_seconds: nil)
+      return nil if @app_runtime == nil
+      @app_runtime.create_spatial_sound_from_asset(
+        name,
+        position: position,
+        sample: sample,
+        loop: loop,
+        interpolation: interpolation,
+        effect_buffer: effect_buffer,
+        effect_buffer_seconds: effect_buffer_seconds
+      )
+    end
+
     def play_app_sound(name, volume: 100, pitch: 100, pan: 50, ignore_elten_volume: false)
       @app_runtime != nil && @app_runtime.play_app_sound(name, volume: volume, pitch: pitch, pan: pan, ignore_elten_volume: ignore_elten_volume)
     end
@@ -2264,6 +2308,18 @@ class Program
     options[:effect_buffer] = effect_buffer if effect_buffer != nil
     options[:effect_buffer_seconds] = effect_buffer_seconds if effect_buffer_seconds != nil
     self.class.create_sound_from_asset(name, **options)
+  end
+
+  def create_spatial_sound_from_asset(name, position:, sample: false, loop: false, interpolation: :bilinear, effect_buffer: nil, effect_buffer_seconds: nil)
+    self.class.create_spatial_sound_from_asset(
+      name,
+      position: position,
+      sample: sample,
+      loop: loop,
+      interpolation: interpolation,
+      effect_buffer: effect_buffer,
+      effect_buffer_seconds: effect_buffer_seconds
+    )
   end
 
   def play_app_sound(name, volume: 100, pitch: 100, pan: 50, ignore_elten_volume: false)

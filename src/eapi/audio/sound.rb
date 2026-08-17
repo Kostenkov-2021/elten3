@@ -333,7 +333,7 @@ class SoundEffect
 end
 
 class Sound
-  attr_reader :file, :channel, :source_channel, :sample_handle, :kind, :basefrequency, :effects, :effect_buffer, :effect_buffer_seconds
+  attr_reader :file, :channel, :source_channel, :sample_handle, :kind, :basefrequency, :effects, :effect_buffer, :effect_buffer_seconds, :spatial_effect
 
   SAMPLE_FLOAT = 0x100
   BASS_STREAM_DECODE = 0x200000
@@ -556,9 +556,51 @@ class Sound
   def effect_remove(effect)
     removed = false
     @effects_mutex.synchronize { removed = @effects.delete(effect) != nil }
+    @spatial_effect = nil if removed && @spatial_effect.equal?(effect)
     effect.close if removed && effect.respond_to?(:close)
     rebuild_effect_pipeline
     removed
+  end
+
+  def spatialize(position: nil, interpolation: :bilinear)
+    fail(RuntimeError, "Audio3DEffect is unavailable") if !defined?(::Audio3DEffect)
+    position = Audio3DEffect::ORIGIN if position == nil
+    if @spatial_effect == nil || !@effects.include?(@spatial_effect)
+      effect = Audio3DEffect.new(position: position, interpolation: interpolation)
+      effect_add(effect)
+      @spatial_effect = effect
+    else
+      @spatial_effect.position = position
+      @spatial_effect.interpolation = interpolation
+    end
+    self
+  end
+
+  def spatial?
+    @spatial_effect != nil && @effects.include?(@spatial_effect)
+  end
+
+  def spatial_position
+    spatial? ? @spatial_effect.position : nil
+  end
+
+  def spatial_position=(position)
+    spatial? ? @spatial_effect.position = position : spatialize(position: position)
+    position
+  end
+
+  def spatial_interpolation
+    spatial? ? @spatial_effect.interpolation : nil
+  end
+
+  def spatial_interpolation=(interpolation)
+    spatial? ? @spatial_effect.interpolation = interpolation : spatialize(interpolation: interpolation)
+    interpolation
+  end
+
+  def despatialize
+    effect_remove(@spatial_effect) if spatial?
+    self
   end
 
   def close
@@ -578,6 +620,7 @@ class Sound
     @processing_channel = 0
     @processing_frequency = nil
     @processing_channels = 0
+    @spatial_effect = nil
     @@finalizers.delete(@finalizer_id)
     nil
   end
