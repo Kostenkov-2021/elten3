@@ -1156,9 +1156,8 @@ module EltenWindow
       press_state = capture_key_event_state if down
       window_state_monitor.synchronize do
         @right_alt_down = down if key == VK_MENU && extended_key_message?(lparam)
-        if @altgr_character_input == true && altgr_control_key?(key)
+        if @altgr_character_input == true && altgr_modifier_key?(key)
           if down == false
-            @altgr_character_input = false
             next
           elsif @right_alt_down == true
             next
@@ -1220,12 +1219,12 @@ module EltenWindow
     def begin_altgr_character_input
       @altgr_character_input = true
       @key_event_queue ||= []
-      @key_event_queue.delete_if { |key, _event, _press_state| altgr_control_key?(key) }
+      @key_event_queue.delete_if { |key, _event, _press_state| altgr_modifier_key?(key) }
     end
 
     def normalize_altgr_keyboard_state(state)
       return state if @altgr_character_input != true
-      [VK_CONTROL, VK_LCONTROL].each do |key|
+      [VK_CONTROL, VK_LCONTROL, VK_MENU].each do |key|
         state.setbyte(key, state.getbyte(key).to_i & 0x7f)
       end
       state
@@ -1233,7 +1232,7 @@ module EltenWindow
 
     def normalize_altgr_key_events(events)
       return events if @altgr_character_input != true
-      events.reject { |key, _event, _press_state| altgr_control_key?(key) }
+      events.reject { |key, _event, _press_state| altgr_modifier_key?(key) }
     end
 
     def clear_finished_altgr_character_input
@@ -1244,8 +1243,8 @@ module EltenWindow
       @altgr_character_input = false if !control_down
     end
 
-    def altgr_control_key?(key)
-      key.to_i == VK_CONTROL || key.to_i == VK_LCONTROL
+    def altgr_modifier_key?(key)
+      key.to_i == VK_CONTROL || key.to_i == VK_LCONTROL || key.to_i == VK_MENU
     end
 
     def menu_message?(message, wparam)
