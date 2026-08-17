@@ -39,7 +39,7 @@ module Programs
   end
 
   class Manifest
-    attr_reader :id, :name, :version, :build_id, :elten_api_version, :author, :main, :main_class, :platforms, :menu, :gems, :raw
+    attr_reader :id, :name, :version, :build_id, :elten_api_version, :author, :main, :main_class, :platforms, :menu, :gems, :required_assets, :raw
 
     def initialize(raw, source)
       @raw = raw.is_a?(Hash) ? raw : {}
@@ -55,7 +55,12 @@ module Programs
       @platforms = Array(@raw["platforms"]).map { |platform| platform.to_s.downcase.strip }.reject { |platform| platform == "" }
       @menu = @raw["menu"].is_a?(Hash) ? @raw["menu"] : {}
       @gems = Array(@raw["gems"]).map { |gem| gem.is_a?(Hash) ? gem["name"].to_s : gem.to_s }.reject { |gem| gem == "" }
+      @required_assets = normalize_required_assets(@raw["required_assets"])
       validate
+    end
+
+    def required_asset_names(type)
+      @required_assets[type.to_s] || []
     end
 
     def menu_label
@@ -124,6 +129,20 @@ module Programs
       return nil if text == "" || text == "0"
 
       text
+    end
+
+    def normalize_required_assets(value)
+      return {}.freeze if value == nil
+      value = { "sounds" => value } if value.is_a?(Array)
+      raise ProgramError, "Invalid required_assets in #{@source}" if !value.is_a?(Hash)
+      assets = {}
+      value.each do |type, names|
+        type = type.to_s.strip
+        raise ProgramError, "Empty required asset type in #{@source}" if type == ""
+        names = names.is_a?(Array) ? names : [names]
+        assets[type] = names.map { |name| name.to_s.strip }.reject { |name| name == "" }.uniq.freeze
+      end
+      assets.freeze
     end
 
     def validate
@@ -628,6 +647,30 @@ module Programs
       @sound_assets[name.to_s]
     end
 
+    def required_assets
+      @manifest.required_assets
+    end
+
+    def missing_required_assets
+      missing = {}
+      required_assets.each do |type, names|
+        absent = names.reject { |name| required_asset_available?(type, name) }
+        missing[type] = absent if !absent.empty?
+      end
+      missing
+    end
+
+    def required_assets_available?
+      missing_required_assets.empty?
+    end
+
+    def validate_required_assets!
+      missing = missing_required_assets
+      return true if missing.empty?
+      details = missing.map { |type, names| "#{type}: #{names.join(', ')}" }.join("; ")
+      raise ProgramError, "Program #{@manifest.name} is missing required assets (#{details})"
+    end
+
     def sound_asset_path(name)
       asset = sound_asset(name)
       asset == nil ? nil : asset.path
@@ -755,6 +798,27 @@ module Programs
       end
     rescue Exception => e
       Log.warning("Cannot collect program sound assets for #{@entry_id}: #{e.class}: #{e.message}")
+    end
+
+    def required_asset_available?(type, name)
+      case type.to_s
+      when "sounds"
+        return true if sound_asset(name) != nil
+        extension = File.extname(name).downcase
+        extension != "" && sound_asset(File.basename(name, extension)) != nil
+      when "files"
+        logical = normalize_name(name)
+        @virtual_files.key?(logical) || begin
+          path = physical_path(logical)
+          path != nil && File.file?(path)
+        end
+      when "languages"
+        language_data(name) != nil
+      when "native"
+        native_for(name) != nil
+      else
+        false
+      end
     end
 
     def candidate_names(name)
@@ -1882,6 +1946,7 @@ module Programs
       )
       load_runtime_locale(runtime)
       (source[:sound_files] || {}).each { |name, data| runtime.add_sound_asset(name, :data => data) }
+      runtime.validate_required_assets!
       runtime.load_main
       main_class = resolve_main_class(runtime)
       bind_manifest(main_class, runtime)
@@ -2243,6 +2308,22 @@ class Program
       @app_runtime == nil ? nil : @app_runtime.sound_asset(name)
     end
 
+    def required_assets
+      @app_runtime == nil ? {} : @app_runtime.required_assets
+    end
+
+    def missing_required_assets
+      @app_runtime == nil ? {} : @app_runtime.missing_required_assets
+    end
+
+    def required_assets_available?
+      @app_runtime == nil || @app_runtime.required_assets_available?
+    end
+
+    def validate_required_assets!
+      @app_runtime == nil ? true : @app_runtime.validate_required_assets!
+    end
+
     def sound_asset_path(name)
       @app_runtime == nil ? nil : @app_runtime.sound_asset_path(name)
     end
@@ -2361,6 +2442,22 @@ class Program
 
   def sound_asset(name)
     self.class.sound_asset(name)
+  end
+
+  def required_assets
+    self.class.required_assets
+  end
+
+  def missing_required_assets
+    self.class.missing_required_assets
+  end
+
+  def required_assets_available?
+    self.class.required_assets_available?
+  end
+
+  def validate_required_assets!
+    self.class.validate_required_assets!
   end
 
   def sound_asset_path(name)
