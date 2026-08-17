@@ -333,19 +333,28 @@ class SoundEffect
 end
 
 class Sound
-  attr_reader :file, :channel, :source_channel, :sample_handle, :kind, :basefrequency, :effects
+  attr_reader :file, :channel, :source_channel, :sample_handle, :kind, :basefrequency, :effects, :effect_buffer_seconds
 
   SAMPLE_FLOAT = 0x100
   BASS_STREAM_DECODE = 0x200000
   BASS_UNICODE = 0x80000000
+  BASS_SAMPLE_LOOP = 4
+  BASS_DATA_AVAILABLE = 0
+  BASS_CONFIG_UPDATE_PERIOD = 1
+  BASS_ACTIVE_STOPPED = 0
   FRAME_MILLISECONDS = 20
+  FLOAT_SAMPLE_BYTES = 4
+  EFFECT_QUEUE_POLL_SECONDS = FRAME_MILLISECONDS / 2000.0
   @@finalizers = {}
 
-  def initialize(file = nil, sample: false, loop: false, stream: nil)
+  # A numeric effect_buffer_seconds opts into bounded low-latency effect processing.
+  # Nil preserves the original eager buffering behavior.
+  def initialize(file = nil, sample: false, loop: false, stream: nil, effect_buffer_seconds: nil)
     @file = file
     @stream_data = stream
     @sample = sample == true
     @looper = loop == true
+    self.effect_buffer_seconds = effect_buffer_seconds
     @closed = false
     @sample_handle = 0
     @source_channel = 0
@@ -367,7 +376,7 @@ class Sound
     open_direct
     @basefrequency = frequency
     Bass::BASS_ChannelFlags.call(@channel, BASS_STREAM_DECODE, BASS_STREAM_DECODE) if @channel.to_i != 0
-    Bass::BASS_ChannelFlags.call(@channel, 4, 4) if @looper && @channel.to_i != 0
+    Bass::BASS_ChannelFlags.call(@channel, BASS_SAMPLE_LOOP, BASS_SAMPLE_LOOP) if @looper && @channel.to_i != 0
     @finalizer_id = object_id
     update_finalizer
     ObjectSpace.define_finalizer(self, self.class.finalizer(@finalizer_id))
@@ -398,6 +407,10 @@ class Sound
 
   def self.free_stream_handle(handle)
     Bass::BASS_StreamFree.call(handle)
+  end
+
+  def effect_buffer_seconds=(value)
+    @effect_buffer_seconds = normalize_effect_buffer_seconds(value)
   end
 
   def open_direct
@@ -432,6 +445,7 @@ class Sound
       update_finalizer
       return
     end
+    Bass::BASS_ChannelFlags.call(@source_channel, BASS_SAMPLE_LOOP, BASS_SAMPLE_LOOP) if @looper
     self.position = position if position > 0
     @basefrequency = frequency
     @processing_frequency = pipeline_output_frequency
@@ -605,7 +619,7 @@ class Sound
   def new_channel
     return nil if @kind != :sample || @sample_handle.to_i == 0
     @channel = Bass::BASS_SampleGetChannel.call(@sample_handle, 0)
-    Bass::BASS_ChannelFlags.call(@channel, 4, 4) if @looper
+    Bass::BASS_ChannelFlags.call(@channel, BASS_SAMPLE_LOOP, BASS_SAMPLE_LOOP) if @looper
     update_finalizer
     @channel
   end
@@ -815,7 +829,10 @@ class Sound
     freq = frequency if freq <= 0
     freq = 1 if freq <= 0
     frame_samples = [(freq * FRAME_MILLISECONDS / 1000.0).to_i, 1].max
-    frame_bytes = frame_samples * source_channels * 4
+    frame_bytes = frame_samples * source_channels * FLOAT_SAMPLE_BYTES
+    output_channels = @playback_channels.to_i
+    output_channels = source_channels if output_channels <= 0
+    output_frame_bytes = frame_samples * output_channels * FLOAT_SAMPLE_BYTES
     buffer = "\0".b * frame_bytes
     loop do
       break if closed? || !@pipeline
@@ -823,8 +840,14 @@ class Sound
         sleep(FRAME_MILLISECONDS / 1000.0)
         next
       end
+      if effect_queue_full?(output_frame_bytes, freq, output_channels)
+        start_effect_output if @effect_buffer_seconds != nil
+        sleep(EFFECT_QUEUE_POLL_SECONDS)
+        next
+      end
       read = Bass::BASS_ChannelGetData.call(read_channel, buffer, frame_bytes)
       if read.to_i <= 0
+        start_effect_output if @effect_buffer_seconds != nil
         @processing_playing = false if read.to_i == -1 || read.to_i == 0
         sleep(FRAME_MILLISECONDS / 1000.0)
         next
@@ -840,8 +863,10 @@ class Sound
       if audio.bytesize > 0
         written = Bass::BASS_StreamPutData.call(@playback_channel, audio, audio.bytesize)
         if written.to_i > 0 && @playback_channel.to_i != 0
-          @processing_output_started = true
-          Bass::BASS_ChannelPlay.call(@playback_channel, 0)
+          if @effect_buffer_seconds == nil
+            @processing_output_started = true
+            Bass::BASS_ChannelPlay.call(@playback_channel, 0)
+          end
         end
       end
     end
@@ -851,5 +876,47 @@ class Sound
 
   def reset_effects
     @effects_mutex.synchronize { @effects.each { |effect| effect.reset if effect.respond_to?(:reset) } }
+  end
+
+  def effect_queue_full?(next_frame_bytes, frequency, channels)
+    seconds = @effect_buffer_seconds
+    return false if seconds == nil || @playback_channel.to_i == 0
+
+    pending_bytes = effect_pending_bytes
+    bytes_per_second = [frequency.to_i, 1].max * [channels.to_i, 1].max * FLOAT_SAMPLE_BYTES
+    update_milliseconds = Bass::BASS_GetConfig.call(BASS_CONFIG_UPDATE_PERIOD).to_i
+    minimum_seconds = ([update_milliseconds, 0].max + FRAME_MILLISECONDS) / 1000.0
+    limit_seconds = [seconds, minimum_seconds].max
+    limit_bytes = [(limit_seconds * bytes_per_second).round, next_frame_bytes.to_i].max
+    pending_bytes + next_frame_bytes.to_i > limit_bytes
+  rescue Exception
+    false
+  end
+
+  def effect_pending_bytes
+    queued = Bass::BASS_StreamPutData.call(@playback_channel, nil, 0).to_i
+    buffered = Bass::BASS_ChannelGetData.call(@playback_channel, nil, BASS_DATA_AVAILABLE).to_i
+    [queued, 0].max + [buffered, 0].max
+  end
+
+  def start_effect_output
+    return if @playback_channel.to_i == 0
+    if @processing_output_started
+      active = Bass::BASS_ChannelIsActive.call(@playback_channel).to_i
+      return if active != BASS_ACTIVE_STOPPED
+    end
+    @processing_output_started = Bass::BASS_ChannelPlay.call(@playback_channel, 0).to_i != 0
+  rescue Exception
+    @processing_output_started = false
+  end
+
+  def normalize_effect_buffer_seconds(value)
+    return nil if value == nil
+
+    seconds = Float(value)
+    raise ArgumentError if !seconds.finite? || seconds <= 0.0
+    seconds
+  rescue ArgumentError, TypeError
+    raise ArgumentError, "effect_buffer_seconds must be nil or a positive finite number"
   end
 end
