@@ -332,33 +332,30 @@ module Programs
       @data.to_s.b
     end
 
-    def create_sound(sample: false, loop: false, effect_buffer_seconds: nil)
+    def create_sound(sample: false, loop: false, effect_buffer: nil, effect_buffer_seconds: nil)
       return nil if !defined?(::Sound)
       sound = nil
       if sample == true || (@physical_path != nil && File.file?(@physical_path))
         source = path
         return nil if source == nil || source.to_s == ""
-        if effect_buffer_seconds == nil
+        if effect_buffer == nil && effect_buffer_seconds == nil
           sound = ::Sound.new(source, sample: sample, loop: loop)
         else
-          sound = ::Sound.new(
-            source,
-            sample: sample,
-            loop: loop,
-            effect_buffer_seconds: effect_buffer_seconds
-          )
+          options = { :sample => sample, :loop => loop }
+          options[:effect_buffer] = effect_buffer if effect_buffer != nil
+          options[:effect_buffer_seconds] = effect_buffer_seconds if effect_buffer_seconds != nil
+          sound = ::Sound.new(source, **options)
         end
       else
         source = @data.to_s.b
         return nil if source.bytesize == 0
-        if effect_buffer_seconds == nil
+        if effect_buffer == nil && effect_buffer_seconds == nil
           sound = ::Sound.new(stream: source.dup.b, loop: loop)
         else
-          sound = ::Sound.new(
-            stream: source.dup.b,
-            loop: loop,
-            effect_buffer_seconds: effect_buffer_seconds
-          )
+          options = { :stream => source.dup.b, :loop => loop }
+          options[:effect_buffer] = effect_buffer if effect_buffer != nil
+          options[:effect_buffer_seconds] = effect_buffer_seconds if effect_buffer_seconds != nil
+          sound = ::Sound.new(**options)
         end
       end
       return sound if sound.opened?
@@ -622,15 +619,14 @@ module Programs
       asset == nil ? nil : asset.data
     end
 
-    def create_sound_from_asset(name, sample: false, loop: false, effect_buffer_seconds: nil)
+    def create_sound_from_asset(name, sample: false, loop: false, effect_buffer: nil, effect_buffer_seconds: nil)
       asset = sound_asset(name)
       return nil if asset == nil
-      return asset.create_sound(sample: sample, loop: loop) if effect_buffer_seconds == nil
-      asset.create_sound(
-        sample: sample,
-        loop: loop,
-        effect_buffer_seconds: effect_buffer_seconds
-      )
+      return asset.create_sound(sample: sample, loop: loop) if effect_buffer == nil && effect_buffer_seconds == nil
+      options = { :sample => sample, :loop => loop }
+      options[:effect_buffer] = effect_buffer if effect_buffer != nil
+      options[:effect_buffer_seconds] = effect_buffer_seconds if effect_buffer_seconds != nil
+      asset.create_sound(**options)
     end
 
     def language_data(code)
@@ -2178,15 +2174,13 @@ class Program
       @app_runtime == nil ? nil : @app_runtime.sound_asset_data(name)
     end
 
-    def create_sound_from_asset(name, sample: false, loop: false, effect_buffer_seconds: nil)
+    def create_sound_from_asset(name, sample: false, loop: false, effect_buffer: nil, effect_buffer_seconds: nil)
       return nil if @app_runtime == nil
-      return @app_runtime.create_sound_from_asset(name, sample: sample, loop: loop) if effect_buffer_seconds == nil
-      @app_runtime.create_sound_from_asset(
-        name,
-        sample: sample,
-        loop: loop,
-        effect_buffer_seconds: effect_buffer_seconds
-      )
+      return @app_runtime.create_sound_from_asset(name, sample: sample, loop: loop) if effect_buffer == nil && effect_buffer_seconds == nil
+      options = { :sample => sample, :loop => loop }
+      options[:effect_buffer] = effect_buffer if effect_buffer != nil
+      options[:effect_buffer_seconds] = effect_buffer_seconds if effect_buffer_seconds != nil
+      @app_runtime.create_sound_from_asset(name, **options)
     end
 
     def play_app_sound(name, volume: 100, pitch: 100, pan: 50, ignore_elten_volume: false)
@@ -2264,14 +2258,12 @@ class Program
     self.class.sound_asset_data(name)
   end
 
-  def create_sound_from_asset(name, sample: false, loop: false, effect_buffer_seconds: nil)
-    return self.class.create_sound_from_asset(name, sample: sample, loop: loop) if effect_buffer_seconds == nil
-    self.class.create_sound_from_asset(
-      name,
-      sample: sample,
-      loop: loop,
-      effect_buffer_seconds: effect_buffer_seconds
-    )
+  def create_sound_from_asset(name, sample: false, loop: false, effect_buffer: nil, effect_buffer_seconds: nil)
+    return self.class.create_sound_from_asset(name, sample: sample, loop: loop) if effect_buffer == nil && effect_buffer_seconds == nil
+    options = { :sample => sample, :loop => loop }
+    options[:effect_buffer] = effect_buffer if effect_buffer != nil
+    options[:effect_buffer_seconds] = effect_buffer_seconds if effect_buffer_seconds != nil
+    self.class.create_sound_from_asset(name, **options)
   end
 
   def play_app_sound(name, volume: 100, pitch: 100, pan: 50, ignore_elten_volume: false)

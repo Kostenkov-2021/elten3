@@ -333,7 +333,7 @@ class SoundEffect
 end
 
 class Sound
-  attr_reader :file, :channel, :source_channel, :sample_handle, :kind, :basefrequency, :effects, :effect_buffer_seconds
+  attr_reader :file, :channel, :source_channel, :sample_handle, :kind, :basefrequency, :effects, :effect_buffer, :effect_buffer_seconds
 
   SAMPLE_FLOAT = 0x100
   BASS_STREAM_DECODE = 0x200000
@@ -345,16 +345,17 @@ class Sound
   FRAME_MILLISECONDS = 20
   FLOAT_SAMPLE_BYTES = 4
   EFFECT_QUEUE_POLL_SECONDS = FRAME_MILLISECONDS / 2000.0
+  INTERACTIVE_EFFECT_BUFFER_SECONDS = FRAME_MILLISECONDS / 1000.0
   @@finalizers = {}
 
-  # A numeric effect_buffer_seconds opts into bounded low-latency effect processing.
-  # Nil preserves the original eager buffering behavior.
-  def initialize(file = nil, sample: false, loop: false, stream: nil, effect_buffer_seconds: nil)
+  # :interactive selects a safe bounded buffer. Nil and :eager preserve eager buffering.
+  # effect_buffer_seconds remains available for advanced callers.
+  def initialize(file = nil, sample: false, loop: false, stream: nil, effect_buffer: nil, effect_buffer_seconds: nil)
     @file = file
     @stream_data = stream
     @sample = sample == true
     @looper = loop == true
-    self.effect_buffer_seconds = effect_buffer_seconds
+    configure_effect_buffer(effect_buffer, effect_buffer_seconds)
     @closed = false
     @sample_handle = 0
     @source_channel = 0
@@ -410,7 +411,13 @@ class Sound
   end
 
   def effect_buffer_seconds=(value)
+    @effect_buffer = nil
     @effect_buffer_seconds = normalize_effect_buffer_seconds(value)
+  end
+
+  def effect_buffer=(value)
+    @effect_buffer = normalize_effect_buffer(value)
+    @effect_buffer_seconds = @effect_buffer == :interactive ? INTERACTIVE_EFFECT_BUFFER_SECONDS : nil
   end
 
   def open_direct
@@ -918,5 +925,20 @@ class Sound
     seconds
   rescue ArgumentError, TypeError
     raise ArgumentError, "effect_buffer_seconds must be nil or a positive finite number"
+  end
+
+  def normalize_effect_buffer(value)
+    return nil if value == nil
+
+    preset = value.respond_to?(:to_sym) ? value.to_sym : nil
+    return preset if [:eager, :interactive].include?(preset)
+    raise ArgumentError, "effect_buffer must be nil, :eager, or :interactive"
+  end
+
+  def configure_effect_buffer(preset, seconds)
+    if preset != nil && seconds != nil
+      raise ArgumentError, "effect_buffer and effect_buffer_seconds cannot be used together"
+    end
+    preset == nil ? self.effect_buffer_seconds = seconds : self.effect_buffer = preset
   end
 end
