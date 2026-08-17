@@ -97,6 +97,66 @@ if key_held?(0x10) and key_held?(84) and key_held?(78)
       end
     end
 
+    def display_text(text, header: "", markdown: false, escapable: true)
+      flags = EltenAPI::Controls::EditBox::Flags::ReadOnly | EltenAPI::Controls::EditBox::Flags::MultiLine
+      flags |= EltenAPI::Controls::EditBox::Flags::MarkDown if markdown == true
+      input_text(header, flags: flags, text: text.to_s, escapable: escapable)
+    end
+
+    def display_table(columns, rows, header: "", start_index: 0, quiet: false, flags: 0)
+      columns = Array(columns)
+      rows = Array(rows).map { |row| Array(row) }
+      raise ArgumentError, "columns cannot be empty" if columns.empty?
+      dialog_open
+      begin
+        table = EltenAPI::Controls::TableBox.new(
+          columns,
+          rows,
+          index: start_index,
+          header: header,
+          quiet: quiet,
+          flags: flags
+        )
+        table.focus
+        loop do
+          loop_update
+          table.update
+          return rows.empty? ? nil : table.index if key_pressed?(:key_enter)
+          return nil if key_pressed?(:key_escape) || key_pressed?(:key_alt)
+        end
+      ensure
+        dialog_close
+        loop_update
+      end
+    end
+
+    def select_action(actions, header: "", start: nil, cancel: nil, flags: 0, cancel_key: nil, focus_on_tab: true)
+      entries = if actions.respond_to?(:each_pair)
+        actions.map { |key, label| [key, label] }
+      else
+        Array(actions).map { |entry| entry.is_a?(Array) ? [entry[0], entry[1]] : [entry, entry.to_s] }
+      end
+      raise ArgumentError, "actions cannot be empty" if entries.empty?
+      start_index = if start.is_a?(Integer)
+        [[start, 0].max, entries.size - 1].min
+      else
+        entries.index { |key, _label| key == start } || 0
+      end
+      cancelled_index = entries.size
+      selected = selector(
+        entries.map { |_key, label| label },
+        header: header,
+        start_index: start_index,
+        cancel_index: cancelled_index,
+        flags: flags,
+        cancel_key: cancel_key,
+        focus_on_tab: focus_on_tab
+      )
+      return cancel if selected == nil || selected == cancelled_index
+      entry = entries[selected]
+      entry == nil ? cancel : entry[0]
+    end
+
     def menuselector(options)
       dis=[]
       for i in 0..options.size-1
