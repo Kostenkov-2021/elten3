@@ -191,6 +191,8 @@ class Runner
     @timed_flags = {}
     @tick_handlers = []
     @next_tick_callbacks = []
+    @stop_handlers = []
+    @managed_resources = EltenAPI::Resources::Registry.new
     @running = false
     @result = nil
     @next_tick_at = nil
@@ -258,21 +260,41 @@ class Runner
     self
   end
 
+  def on_stop(&block)
+    raise ArgumentError, "block is required" if block == nil
+    @stop_handlers << block
+    self
+  end
+
+  def manage(resource, release: :close, &block)
+    @managed_resources = EltenAPI::Resources::Registry.new if @managed_resources.closed?
+    @managed_resources.manage(resource, release: release, &block)
+  end
+
+  def release(resource, close: false)
+    @managed_resources.release(resource, close: close)
+  end
+
   def run(&block)
     on_tick(&block) if block != nil
     raise RuntimeError, "Runner has no handlers" if @tick_handlers.empty? && @timers.empty? && @key_handlers.empty? && @action_handlers.empty?
     @running = true
     @result = nil
     @next_tick_at = monotonic_time
-    while @running == true
-      loop_update
-      time = monotonic_time
-      process_key_handlers(time)
-      process_action_handlers(time) if @running == true
-      process_timers(time) if @running == true
-      process_tick(time) if @running == true
+    begin
+      while @running == true
+        loop_update
+        time = monotonic_time
+        process_key_handlers(time)
+        process_action_handlers(time) if @running == true
+        process_timers(time) if @running == true
+        process_tick(time) if @running == true
+      end
+      @result
+    ensure
+      @running = false
+      finish_run
     end
-    @result
   end
 
   def stop(result = nil)
@@ -286,6 +308,16 @@ class Runner
   end
 
   private
+
+  def finish_run
+    time = monotonic_time
+    @stop_handlers.each do |handler|
+      invoke_callback(handler, time)
+    rescue Exception => e
+      Log.warning("Runner stop handler failed: #{e.class}: #{e.message}") if defined?(Log)
+    end
+    @managed_resources.close
+  end
 
   def add_timer(interval, repeat:, immediate: false, phase: :timer, dynamic: false, &block)
     timer = Timer.new(interval, repeat: repeat, immediate: immediate, phase: phase, dynamic: dynamic, &block)

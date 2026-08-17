@@ -482,6 +482,7 @@ module Programs
       @native_materialized = false
       @sound_assets = {}
       @sound_pool = nil
+      @managed_resources = EltenAPI::Resources::Registry.new
       @language_files = {}
       language_files.each { |code, data| @language_files[normalize_language_code(code)] = data.to_s.b }
       @namespace = Programs.namespace_for(manifest)
@@ -748,6 +749,25 @@ module Programs
       nil
     end
 
+    def managed_resources
+      if @managed_resources == nil || @managed_resources.closed?
+        @managed_resources = EltenAPI::Resources::Registry.new
+      end
+      @managed_resources
+    end
+
+    def manage(resource, release: :close, &block)
+      managed_resources.manage(resource, release: release, &block)
+    end
+
+    def release(resource, close: false)
+      @managed_resources != nil && @managed_resources.release(resource, close: close)
+    end
+
+    def close_managed_resources
+      @managed_resources == nil ? 0 : @managed_resources.close
+    end
+
     def language_data(code)
       code = normalize_language_code(code)
       data = @language_files[code]
@@ -993,6 +1013,7 @@ module Programs
 
     def unregister_runtime(runtime, reason = :unload)
       return if runtime == nil
+      runtime.close_managed_resources if runtime.respond_to?(:close_managed_resources)
       runtime.close_sound_pool if runtime.respond_to?(:close_sound_pool)
       Extensions.unregister_runtime(runtime, reason) if defined?(Extensions)
       @@runtimes.delete(runtime.entry_id) if @@runtimes[runtime.entry_id].equal?(runtime)
@@ -2377,6 +2398,23 @@ class Program
       @app_runtime.close_sound_pool if @app_runtime != nil
     end
 
+    def managed_resources
+      @app_runtime == nil ? nil : @app_runtime.managed_resources
+    end
+
+    def manage(resource, release: :close, &block)
+      raise Programs::ProgramError, "Managed resources require an application runtime" if @app_runtime == nil
+      @app_runtime.manage(resource, release: release, &block)
+    end
+
+    def release(resource, close: false)
+      @app_runtime != nil && @app_runtime.release(resource, close: close)
+    end
+
+    def close_managed_resources
+      @app_runtime == nil ? 0 : @app_runtime.close_managed_resources
+    end
+
     def play_app_sound(name, volume: 100, pitch: 100, pan: 50, ignore_elten_volume: false)
       @app_runtime != nil && @app_runtime.play_app_sound(name, volume: volume, pitch: pitch, pan: pan, ignore_elten_volume: ignore_elten_volume)
     end
@@ -2510,9 +2548,33 @@ class Program
     self.class.play_app_sound(name, volume: volume, pitch: pitch, pan: pan, ignore_elten_volume: ignore_elten_volume)
   end
 
+  def managed_resources
+    @managed_resources ||= EltenAPI::Resources::Registry.new
+  end
+
+  def manage(resource, release: :close, &block)
+    @managed_resources = nil if @managed_resources != nil && @managed_resources.closed?
+    managed_resources.manage(resource, release: release, &block)
+  end
+
+  def release(resource, close: false)
+    @managed_resources != nil && @managed_resources.release(resource, close: close)
+  end
+
+  def close_managed_resources
+    return 0 if @managed_resources == nil
+    resources = @managed_resources
+    @managed_resources = nil
+    resources.close
+  end
+
   def finish(v = nil)
-    close
-    self.class.close_sound_pool
+    begin
+      close
+    ensure
+      close_managed_resources
+      self.class.close_sound_pool
+    end
     Log.info("Program exited #{self.class}")
     alert(p_("Program", "The program has been closed."))
     $scene = Scene_Main.new
