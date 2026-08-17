@@ -471,6 +471,10 @@ class Sound
     status.playing?
   end
 
+  def finished?
+    closed? || status.stopped?
+  end
+
   def channels
     info_values[1].to_i
   end

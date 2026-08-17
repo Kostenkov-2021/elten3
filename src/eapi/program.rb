@@ -462,6 +462,7 @@ module Programs
       @native_loaded = {}
       @native_materialized = false
       @sound_assets = {}
+      @sound_pool = nil
       @language_files = {}
       language_files.each { |code, data| @language_files[normalize_language_code(code)] = data.to_s.b }
       @namespace = Programs.namespace_for(manifest)
@@ -658,6 +659,50 @@ module Programs
         effect_buffer: effect_buffer,
         effect_buffer_seconds: effect_buffer_seconds
       )
+    end
+
+    def sound_pool(max_voices: SoundPool::DEFAULT_MAX_VOICES)
+      if @sound_pool == nil || @sound_pool.closed?
+        @sound_pool = SoundPool.new(max_voices: max_voices)
+      else
+        @sound_pool.max_voices = max_voices
+      end
+      @sound_pool
+    end
+
+    def play_sound_from_asset(name, volume: 1.0, sample: false, loop: false, spatial: nil, interpolation: :bilinear, effect_buffer: nil, effect_buffer_seconds: nil, max_voices: SoundPool::DEFAULT_MAX_VOICES)
+      if spatial == nil
+        sound = create_sound_from_asset(
+          name,
+          sample: sample,
+          loop: loop,
+          effect_buffer: effect_buffer,
+          effect_buffer_seconds: effect_buffer_seconds
+        )
+      else
+        sound = create_spatial_sound_from_asset(
+          name,
+          position: spatial,
+          sample: sample,
+          loop: loop,
+          interpolation: interpolation,
+          effect_buffer: effect_buffer,
+          effect_buffer_seconds: effect_buffer_seconds
+        )
+      end
+      return nil if sound == nil
+      sound.volume = volume.to_f
+      sound_pool(max_voices: max_voices).play(sound)
+    rescue Exception => e
+      Log.warning("Managed program sound #{name} failed: #{e.class}: #{e.message}")
+      sound.close rescue nil
+      nil
+    end
+
+    def close_sound_pool
+      @sound_pool.close if @sound_pool != nil
+      @sound_pool = nil
+      nil
     end
 
     def language_data(code)
@@ -884,6 +929,7 @@ module Programs
 
     def unregister_runtime(runtime, reason = :unload)
       return if runtime == nil
+      runtime.close_sound_pool if runtime.respond_to?(:close_sound_pool)
       Extensions.unregister_runtime(runtime, reason) if defined?(Extensions)
       @@runtimes.delete(runtime.entry_id) if @@runtimes[runtime.entry_id].equal?(runtime)
       @@runtime_by_prefix.delete(runtime.virtual_prefix)
@@ -2227,6 +2273,29 @@ class Program
       )
     end
 
+    def sound_pool(max_voices: SoundPool::DEFAULT_MAX_VOICES)
+      @app_runtime == nil ? nil : @app_runtime.sound_pool(max_voices: max_voices)
+    end
+
+    def play_sound_from_asset(name, volume: 1.0, sample: false, loop: false, spatial: nil, interpolation: :bilinear, effect_buffer: nil, effect_buffer_seconds: nil, max_voices: SoundPool::DEFAULT_MAX_VOICES)
+      return nil if @app_runtime == nil
+      @app_runtime.play_sound_from_asset(
+        name,
+        volume: volume,
+        sample: sample,
+        loop: loop,
+        spatial: spatial,
+        interpolation: interpolation,
+        effect_buffer: effect_buffer,
+        effect_buffer_seconds: effect_buffer_seconds,
+        max_voices: max_voices
+      )
+    end
+
+    def close_sound_pool
+      @app_runtime.close_sound_pool if @app_runtime != nil
+    end
+
     def play_app_sound(name, volume: 100, pitch: 100, pan: 50, ignore_elten_volume: false)
       @app_runtime != nil && @app_runtime.play_app_sound(name, volume: volume, pitch: pitch, pan: pan, ignore_elten_volume: ignore_elten_volume)
     end
@@ -2322,12 +2391,31 @@ class Program
     )
   end
 
+  def sound_pool(max_voices: SoundPool::DEFAULT_MAX_VOICES)
+    self.class.sound_pool(max_voices: max_voices)
+  end
+
+  def play_sound_from_asset(name, volume: 1.0, sample: false, loop: false, spatial: nil, interpolation: :bilinear, effect_buffer: nil, effect_buffer_seconds: nil, max_voices: SoundPool::DEFAULT_MAX_VOICES)
+    self.class.play_sound_from_asset(
+      name,
+      volume: volume,
+      sample: sample,
+      loop: loop,
+      spatial: spatial,
+      interpolation: interpolation,
+      effect_buffer: effect_buffer,
+      effect_buffer_seconds: effect_buffer_seconds,
+      max_voices: max_voices
+    )
+  end
+
   def play_app_sound(name, volume: 100, pitch: 100, pan: 50, ignore_elten_volume: false)
     self.class.play_app_sound(name, volume: volume, pitch: pitch, pan: pan, ignore_elten_volume: ignore_elten_volume)
   end
 
   def finish(v = nil)
     close
+    self.class.close_sound_pool
     Log.info("Program exited #{self.class}")
     alert(p_("Program", "The program has been closed."))
     $scene = Scene_Main.new
