@@ -221,9 +221,28 @@ class Runner
     self
   end
 
-  def on_action(name, repeat: false, &block)
+  def on_action(name, repeat: false, guard: nil, cooldown: nil, initially_blocked_for: 0.0, &block)
     raise ArgumentError, "block is required" if block == nil
-    @action_handlers << { :name => name.to_sym, :repeat => repeat == true, :block => block }
+    limiter = action_limiter(cooldown)
+    if limiter == nil && guard != nil && guard.respond_to?(:use)
+      limiter = guard
+      guard = nil
+    end
+    validate_action_guard(guard)
+    initial_delay = initially_blocked_for.to_f
+    raise ArgumentError, "initially_blocked_for must be a non-negative finite number" if !initial_delay.finite? || initial_delay < 0.0
+    if initial_delay > 0.0
+      limiter ||= Cooldown.new
+      raise ArgumentError, "action limiter cannot be blocked initially" if !limiter.respond_to?(:block_for)
+      limiter.block_for(initial_delay)
+    end
+    @action_handlers << {
+      :name => name.to_sym,
+      :repeat => repeat == true,
+      :guard => guard,
+      :limiter => limiter,
+      :block => block
+    }
     self
   end
 
@@ -309,6 +328,39 @@ class Runner
 
   private
 
+  def action_limiter(value)
+    return nil if value == nil
+    return self.cooldown(value) if value.is_a?(Symbol) || value.is_a?(String)
+    if value.is_a?(Numeric)
+      interval = value.to_f
+      raise ArgumentError, "cooldown must be a non-negative finite number" if !interval.finite? || interval < 0.0
+      return Cooldown.new(interval)
+    end
+    return value if value.respond_to?(:use)
+    raise ArgumentError, "cooldown must be a number, name, or limiter"
+  end
+
+  def validate_action_guard(guard)
+    return if guard == nil || guard.respond_to?(:call) || guard.respond_to?(:allow?)
+    raise ArgumentError, "guard must be callable or respond to #allow?"
+  end
+
+  def action_guard_allows?(guard, time, name)
+    return true if guard == nil
+    callable = guard.respond_to?(:allow?) ? guard.method(:allow?) : guard
+    result = case callable.arity
+    when 0
+      callable.call
+    when 1
+      callable.call(self)
+    when 2
+      callable.call(self, time)
+    else
+      callable.call(self, time, name)
+    end
+    result != nil && result != false
+  end
+
   def finish_run
     time = monotonic_time
     @stop_handlers.each do |handler|
@@ -346,6 +398,8 @@ class Runner
       next if action == nil
       pressed = handler[:repeat] == true ? action.held?(self) : action.pressed?(self)
       next if pressed != true
+      next if !action_guard_allows?(handler[:guard], time, handler[:name])
+      next if handler[:limiter] != nil && !handler[:limiter].use(time)
       invoke_callback(handler[:block], time, handler[:name])
       break if @running != true
     end
