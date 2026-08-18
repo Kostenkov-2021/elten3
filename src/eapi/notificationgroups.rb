@@ -23,7 +23,7 @@ module NotificationGroups
     "followedforumpost" => "followedforum"
   }.freeze
 
-  NotificationGroup = Struct.new(:key, :cat, :label, :category, :date, :revoked, :ids, :payload, :virtual, :action, keyword_init: true) do
+  NotificationGroup = Struct.new(:key, :cat, :label, :category, :date, :revoked, :ids, :payload, :payloads, :fallback_text, :virtual, :action, keyword_init: true) do
     def virtual?
       virtual == true
     end
@@ -117,6 +117,8 @@ module NotificationGroups
       next if include_revoked != true && notification.revoked
 
       change_time = notification_change_time(notification)
+      payload = notification.payload
+      payload = {} unless payload.is_a?(Hash)
       key = [notification.revoked ? "revoked" : "active", notification.cat, group_key(notification)].join("\u001F")
       group = by_key[key]
       if group == nil
@@ -127,20 +129,32 @@ module NotificationGroups
           date: change_time,
           revoked: notification.revoked,
           ids: [],
-          payload: notification.payload || {},
+          payload: payload,
+          payloads: [],
+          fallback_text: "",
           virtual: false,
           action: nil
         )
         by_key[key] = group
       end
       group.ids << notification.id if notification.id.to_i > 0
-      if change_time >= group.date.to_i
-        group.date = change_time
-        group.payload = notification.payload || {}
-      end
+      group.payloads << {
+        date: change_time,
+        id: notification.id.to_i,
+        payload: payload,
+        fallback_text: notification_fallback_text(notification)
+      }
     end
 
     by_key.values.each do |group|
+      entries = group.payloads.sort_by { |entry| [-entry[:date].to_i, -entry[:id].to_i] }
+      latest = entries.first
+      if latest != nil
+        group.date = latest[:date]
+        group.payload = latest[:payload]
+        group.fallback_text = latest[:fallback_text]
+      end
+      group.payloads = entries.map { |entry| entry[:payload] }
       group.action = action_for(group.cat, group.payload)
       group.label = group_label(group)
     end
@@ -323,10 +337,11 @@ module NotificationGroups
   end
 
   def group_description(group)
-    title = title_for(group.cat, group.payload)
-    title = group.payload["title"].to_s if title.to_s.empty? && group.payload.is_a?(Hash)
-    title = group.payload["threadname"].to_s if title.to_s.empty? && group.payload.is_a?(Hash)
-    title = group.payload["user"].to_s if title.to_s.empty? && group.payload.is_a?(Hash)
+    title = title_for(group.cat, group.payload, count: group_count(group), payloads: group.payloads)
+    title = single_line_notification_text(group.fallback_text) if title.to_s.empty?
+    title = single_line_notification_text(group.payload["title"]) if title.to_s.empty? && group.payload.is_a?(Hash)
+    title = single_line_notification_text(group.payload["threadname"]) if title.to_s.empty? && group.payload.is_a?(Hash)
+    title = single_line_notification_text(group.payload["user"]) if title.to_s.empty? && group.payload.is_a?(Hash)
     title = p_("Notifications", "Notification") if title.to_s.empty?
     title
   end
@@ -374,46 +389,277 @@ module NotificationGroups
     end
   end
 
-  def title_for(cat, payload)
+  def title_for(cat, payload, count: 1, payloads: nil)
     payload = {} unless payload.is_a?(Hash)
+    payloads = notification_payloads(payload, payloads)
     case cat.to_s
     when "message"
-      message_title(payload)
-    when "followedthread", "followedforum", "followedforumpost"
-      payload["threadname"].to_s
+      message_title(payload, count: count, payloads: payloads)
+    when "followedthread"
+      followed_thread_title(payload, count: count, payloads: payloads)
+    when "followedforum"
+      followed_forum_thread_title(payload, payloads: payloads)
+    when "followedforumpost"
+      followed_forum_post_title(payload, count: count, payloads: payloads)
     when "mention"
-      author = payload["author"].to_s
-      thread = payload["threadname"].to_s
-      message = payload["message"].to_s
-      [thread, author, message].reject(&:empty?).join(" - ")
-    when "followedblog", "blogcomment", "followedblogpost"
-      blog_post_title(payload)
+      forum_mention_title(payload, payloads: payloads)
+    when "followedblog"
+      followed_blog_title(payload, payloads: payloads)
+    when "blogcomment"
+      blog_comment_title(payload, count: count, payloads: payloads, followed: false)
+    when "followedblogpost"
+      blog_comment_title(payload, count: count, payloads: payloads, followed: true)
     when "blogmention"
-      [blog_post_title(payload), payload["author"].to_s, payload["message"].to_s].reject(&:empty?).join(" - ")
+      blog_mention_title(payload, payloads: payloads)
     when "blogfollower"
-      [payload["user"].to_s, blog_display_name(payload)].reject(&:empty?).join(" - ")
-    when "friend", "mtr"
-      payload["user"].to_s
+      blog_follower_title(payload, count: count, payloads: payloads)
+    when "friend"
+      contact_title(payload, payloads: payloads)
+    when "birthday"
+      birthday_title(payload, payloads: payloads)
     when "groupinvitation"
-      payload["groupname"].to_s
+      group_invitation_title(payload, payloads: payloads)
+    when "mtr"
+      monitor_title(payload, count: count, payloads: payloads)
     when "program_updates"
       program_updates_title(payload)
     when "update"
       update_title(payload)
     else
-      payload["alert"].to_s
+      ""
     end
   end
 
-  def message_title(payload)
-    participant = message_participant(payload)
-    title = payload["groupname"].to_s
-    title = participant if title.empty?
-    return title unless messages_grouped_by_subject?
+  def message_title(payload, count: 1, payloads: nil)
+    payloads = notification_payloads(payload, payloads)
+    senders = payload_name_list(payloads, "sender")
+    return "" if senders.empty?
 
-    subject = payload["subject"].to_s
-    subject = p_("Notifications", "No subject") if subject.empty?
-    [title, subject].reject(&:empty?).join(": ")
+    group = first_payload_value(payload, payloads, "groupname")
+    subject = display_message_subject(first_payload_value(payload, payloads, "subject")) if messages_grouped_by_subject?
+    if !subject.to_s.empty?
+      if !group.empty?
+        return np_("Notifications", "%{sender} sent a new message to %{group}: %{subject}", "%{sender} sent new messages to %{group}: %{subject}", count) % { sender: senders, group: group, subject: subject }
+      end
+      return np_("Notifications", "%{sender} sent a new message: %{subject}", "%{sender} sent new messages: %{subject}", count) % { sender: senders, subject: subject }
+    end
+
+    if !group.empty?
+      return np_("Notifications", "%{sender} sent a new message to %{group}", "%{sender} sent new messages to %{group}", count) % { sender: senders, group: group }
+    end
+    np_("Notifications", "%{sender} sent a new message", "%{sender} sent new messages", count) % { sender: senders }
+  end
+
+  def followed_thread_title(payload, count: 1, payloads: nil)
+    payloads = notification_payloads(payload, payloads)
+    thread = first_payload_value(payload, payloads, "threadname")
+    return "" if thread.empty?
+
+    authors = payload_name_list(payloads, "author")
+    if !authors.empty?
+      return np_("Notifications", "%{thread}: new post by %{authors} in a thread you follow", "%{thread}: new posts by %{authors} in a thread you follow", count) % { thread: thread, authors: authors }
+    end
+    np_("Notifications", "%{thread}: new post in a thread you follow", "%{thread}: new posts in a thread you follow", count) % { thread: thread }
+  end
+
+  def followed_forum_thread_title(payload, payloads: nil)
+    payloads = notification_payloads(payload, payloads)
+    thread = first_payload_value(payload, payloads, "threadname")
+    return "" if thread.empty?
+
+    forum = first_payload_value(payload, payloads, "forumname")
+    authors = payload_name_list(payloads, "author")
+    if !forum.empty? && !authors.empty?
+      return p_("Notifications", "%{thread}: new thread started by %{authors} in %{forum}, a forum you follow") % { forum: forum, authors: authors, thread: thread }
+    elsif !forum.empty?
+      return p_("Notifications", "%{thread}: new thread in %{forum}, a forum you follow") % { forum: forum, thread: thread }
+    elsif !authors.empty?
+      return p_("Notifications", "%{thread}: new thread started by %{authors} in a forum you follow") % { authors: authors, thread: thread }
+    end
+    p_("Notifications", "%{thread}: new thread in a forum you follow") % { thread: thread }
+  end
+
+  def followed_forum_post_title(payload, count: 1, payloads: nil)
+    payloads = notification_payloads(payload, payloads)
+    thread = first_payload_value(payload, payloads, "threadname")
+    return "" if thread.empty?
+
+    forum = first_payload_value(payload, payloads, "forumname")
+    authors = payload_name_list(payloads, "author")
+    if !forum.empty? && !authors.empty?
+      return np_("Notifications", "%{thread}: new post by %{authors} in %{forum}, a forum you follow", "%{thread}: new posts by %{authors} in %{forum}, a forum you follow", count) % { forum: forum, authors: authors, thread: thread }
+    elsif !forum.empty?
+      return np_("Notifications", "%{thread}: new post in %{forum}, a forum you follow", "%{thread}: new posts in %{forum}, a forum you follow", count) % { forum: forum, thread: thread }
+    elsif !authors.empty?
+      return np_("Notifications", "%{thread}: new post by %{authors} in a forum you follow", "%{thread}: new posts by %{authors} in a forum you follow", count) % { thread: thread, authors: authors }
+    end
+    np_("Notifications", "%{thread}: new post in a forum you follow", "%{thread}: new posts in a forum you follow", count) % { thread: thread }
+  end
+
+  def forum_mention_title(payload, payloads: nil)
+    payloads = notification_payloads(payload, payloads)
+    author = first_payload_value(payload, payloads, "author")
+    return "" if author.empty?
+
+    thread = first_payload_value(payload, payloads, "threadname")
+    message = first_payload_value(payload, payloads, "message")
+    if !thread.empty?
+      return p_("Notifications", "%{author} sent you a forum mention in %{thread}") % { author: author, thread: thread } if message.empty?
+      return p_("Notifications", "%{author} sent you a forum mention in %{thread}: %{message}") % { author: author, thread: thread, message: message }
+    end
+    return p_("Notifications", "%{author} sent you a forum mention") % { author: author } if message.empty?
+    p_("Notifications", "%{author} sent you a forum mention: %{message}") % { author: author, message: message }
+  end
+
+  def followed_blog_title(payload, payloads: nil)
+    payloads = notification_payloads(payload, payloads)
+    blog = first_blog_display_name(payload, payloads)
+    post = first_payload_value(payload, payloads, "title")
+    return "" if blog.empty? || post.empty?
+
+    p_("Notifications", "%{blog}, a blog you follow, has a new post: %{post}") % { blog: blog, post: post }
+  end
+
+  def blog_comment_title(payload, count: 1, payloads: nil, followed: false)
+    payloads = notification_payloads(payload, payloads)
+    blog = first_blog_display_name(payload, payloads)
+    post = first_payload_value(payload, payloads, "title")
+    return "" if blog.empty? || post.empty?
+
+    authors = payload_name_list(payloads, "author")
+    if followed
+      if !authors.empty?
+        return np_("Notifications", "%{post}, a post you follow on %{blog}, has a new comment from %{authors}", "%{post}, a post you follow on %{blog}, has new comments from %{authors}", count) % { blog: blog, authors: authors, post: post }
+      end
+      return np_("Notifications", "%{post}, a post you follow on %{blog}, has a new comment", "%{post}, a post you follow on %{blog}, has new comments", count) % { blog: blog, post: post }
+    end
+
+    if !authors.empty?
+      return np_("Notifications", "%{post}, your post on %{blog}, has a new comment from %{authors}", "%{post}, your post on %{blog}, has new comments from %{authors}", count) % { blog: blog, authors: authors, post: post }
+    end
+    np_("Notifications", "%{post}, your post on %{blog}, has a new comment", "%{post}, your post on %{blog}, has new comments", count) % { blog: blog, post: post }
+  end
+
+  def blog_mention_title(payload, payloads: nil)
+    payloads = notification_payloads(payload, payloads)
+    author = first_payload_value(payload, payloads, "author")
+    post = first_payload_value(payload, payloads, "title")
+    return "" if author.empty? || post.empty?
+
+    message = first_payload_value(payload, payloads, "message")
+    return p_("Notifications", "%{author} sent you a blog mention in %{post}") % { author: author, post: post } if message.empty?
+    p_("Notifications", "%{author} sent you a blog mention in %{post}: %{message}") % { author: author, post: post, message: message }
+  end
+
+  def blog_follower_title(payload, count: 1, payloads: nil)
+    payloads = notification_payloads(payload, payloads)
+    blog = first_blog_display_name(payload, payloads)
+    users = payload_name_list(payloads, "user")
+    return "" if blog.empty? || users.empty?
+
+    np_("Notifications", "Blog %{blog} has a new follower: %{users}", "Blog %{blog} has new followers: %{users}", count) % { blog: blog, users: users }
+  end
+
+  def contact_title(payload, payloads: nil)
+    user = first_payload_value(payload, notification_payloads(payload, payloads), "user")
+    return "" if user.empty?
+
+    p_("Notifications", "%{user} added you to their contacts") % { user: user }
+  end
+
+  def birthday_title(payload, payloads: nil)
+    user = first_payload_value(payload, notification_payloads(payload, payloads), "user")
+    return "" if user.empty?
+
+    p_("Notifications", "It is %{user}'s birthday today") % { user: user }
+  end
+
+  def group_invitation_title(payload, payloads: nil)
+    payloads = notification_payloads(payload, payloads)
+    group = first_payload_value(payload, payloads, "groupname")
+    return "" if group.empty?
+
+    inviter = first_payload_value(payload, payloads, "inviter")
+    if !inviter.empty?
+      return p_("Notifications", "%{inviter} invited you to join the group %{group}") % { inviter: inviter, group: group }
+    end
+    p_("Notifications", "You have been invited to join the group %{group}") % { group: group }
+  end
+
+  def monitor_title(payload, count: 1, payloads: nil)
+    user = first_payload_value(payload, notification_payloads(payload, payloads), "user")
+    return "" if user.empty?
+
+    np_("Notifications", "%{user} came online", "%{user} came online more than once", count) % { user: user }
+  end
+
+  def notification_payloads(payload, payloads)
+    values = Array(payloads).select { |value| value.is_a?(Hash) }
+    values = [payload] if values.empty? && payload.is_a?(Hash)
+    values
+  end
+
+  def first_payload_value(payload, payloads, key)
+    (notification_payloads(payload, payloads) + [payload]).each do |value|
+      text = single_line_notification_text(value[key])
+      return text unless text.empty?
+    end
+    ""
+  end
+
+  def first_blog_display_name(payload, payloads)
+    name = first_payload_value(payload, payloads, "blogname")
+    name.empty? ? first_payload_value(payload, payloads, "blog") : name
+  end
+
+  def payload_name_list(payloads, key)
+    values = []
+    incomplete = false
+    payloads.each do |payload|
+      name = single_line_notification_text(payload[key])
+      if name.empty?
+        incomplete = true
+      else
+        values << name
+      end
+    end
+    format_notification_name_list(values, include_others: incomplete && !values.empty?)
+  end
+
+  def format_notification_name_list(values, include_others: false, limit: 4)
+    names = []
+    seen = {}
+    Array(values).each do |value|
+      name = single_line_notification_text(value)
+      next if name.empty?
+
+      key = name.downcase
+      next if seen[key]
+
+      seen[key] = true
+      names << name
+    end
+    more = include_others || names.size > limit.to_i
+    names = names.first(limit.to_i)
+    return "" if names.empty?
+    return "#{names.join(", ")} #{p_("Notifications", "and others")}" if more
+    return names[0] if names.size == 1
+
+    "#{names[0...-1].join(", ")} #{p_("Notifications", "and")} #{names[-1]}"
+  end
+
+  def display_message_subject(value)
+    single_line_notification_text(value).sub(/\A(?:re:\s*)+/i, "").strip
+  end
+
+  def single_line_notification_text(value)
+    value.to_s.gsub(/[\r\n\t]+/, " ").gsub(/ {2,}/, " ").strip
+  end
+
+  def notification_fallback_text(notification)
+    text = notification.notification.to_s if notification.respond_to?(:notification)
+    text = notification.alert.to_s if text.to_s.empty? && notification.respond_to?(:alert)
+    single_line_notification_text(text)
   end
 
   def blog_post_title(payload)
@@ -424,25 +670,29 @@ module NotificationGroups
   end
 
   def blog_display_name(payload)
-    name = payload["blogname"].to_s
-    name.empty? ? payload["blog"].to_s : name
+    name = single_line_notification_text(payload["blogname"])
+    name.empty? ? single_line_notification_text(payload["blog"]) : name
   end
 
   def update_title(payload)
-    version = payload["version"].to_s
-    return p_("Notifications", "Update available") if version.empty?
+    version = single_line_notification_text(payload["version"])
+    return p_("Notifications", "A new Elten version is available") if version.empty?
 
-    p_("Notifications", "Update available (%{version})") % { version: version }
+    p_("Notifications", "A new Elten version is available: %{version}") % { version: version }
   end
 
   def program_updates_title(payload)
     count = payload["count"].to_i
-    names = Array(payload["names"]).map(&:to_s).reject(&:empty?)
-    if count == 1 && names[0].to_s != ""
-      p_("Notifications", "Program update available: %{name}") % { name: names[0] }
-    else
-      p_("Notifications", "%{count} program updates available") % { count: count }
+    count = 1 if count <= 0
+    known_names = Array(payload["names"])
+      .map { |name| single_line_notification_text(name) }
+      .reject(&:empty?)
+      .uniq { |name| name.downcase }
+    names = format_notification_name_list(known_names, include_others: count > known_names.size)
+    if names.empty?
+      return np_("Notifications", "A program update is available", "Program updates are available", count)
     end
+    np_("Notifications", "A program update is available: %{programs}", "Program updates are available: %{programs}", count) % { programs: names }
   end
 
   def action_for(cat, payload)
