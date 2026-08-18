@@ -52,6 +52,11 @@ def make_setting(label, type, section, config=nil, mapping=nil, multi=false)
   mapping=mapping.map{|x|x.to_s} if mapping!=nil
   @settings.last.push([label, type, section, config, mapping, multi])
 end
+def make_order_setting(label, options, section, config, mapping)
+  return if @settings.size==0
+  raise ArgumentError, "Ordered setting options and mapping must have the same size" if options.size!=mapping.size
+  @settings.last.push([label, :order, section, config, mapping.map{|x|x.to_s}, false, options])
+end
 def make_bound_setting(label, type, key, getter, setter, mapping=nil, multi=false)
   @bound_settings[key.to_s]=[getter,setter]
   make_setting(label,type,:extension_setting,key.to_s,mapping,multi)
@@ -63,6 +68,10 @@ def save_category
     index=i-1
     field=@form.fields[index]
     next if field==nil
+    if setting[1]==:order
+      setcurrentconfig(setting[2], setting[3], field.params[:setting_order].join(","))
+      next
+    end
     val=field.value
     val=val.to_i if setting[1]==:number
     val=val ? "true" : "false" if setting[1]==:bool
@@ -87,7 +96,7 @@ def show_category(id)
   @form.fields[1...-3]=[]
   f=[]
 for s in @settings[id][2..-1]
-  label, type, section, config, mapping, multi = s
+  label, type, section, config, mapping, multi, order_options = s
   field=nil
   case type
   when :text
@@ -100,6 +109,8 @@ for s in @settings[id][2..-1]
         field=Button.new(label)
         proc=section
                 field.on(:press, 0, true, &proc)
+      when :order
+        field=make_order_setting_field(label, order_options, section, config, mapping)
               else
                 index=0
                 if multi==false
@@ -150,6 +161,55 @@ def make_window
   @form.fields[1]=Button.new(_("Apply"))
   @form.fields[2]=Button.new(_("Save"))
   @form.fields[3]=Button.new(_("Cancel"))
+  end
+  def normalize_setting_order(value, mapping)
+    available = mapping.map{|item|item.to_s}
+    requested = value.is_a?(Array) ? value.map{|item|item.to_s} : value.to_s.split(",")
+    normalized = []
+    requested.each do |item|
+      normalized.push(item) if available.include?(item) && !normalized.include?(item)
+    end
+    normalized.concat(available-normalized)
+  end
+  def make_order_setting_field(label, options, section, config, mapping)
+    order = normalize_setting_order(currentconfig(section, config), mapping)
+    labels = {}
+    mapping.each_with_index{|value,index|labels[value.to_s]=options[index]}
+    field = ListBox.new(order.map{|value|labels[value]}, header: label, index: 0, flags: 0)
+    field.params[:setting_order]=order
+    field.params[:setting_order_labels]=labels
+    field.add_tip(p_("Settings", "Use Shift with up/down arrows to move items"))
+    field.bind_context do |menu|
+      menu.option(p_("Settings", "Move up")){move_order_setting(field,-1)} if field.index>0
+      menu.option(p_("Settings", "Move down")){move_order_setting(field,1)} if field.index<order.size-1
+    end
+    field
+  end
+  def order_setting_field?(field)
+    field!=nil && field.respond_to?(:params) && field.params[:setting_order].is_a?(Array)
+  end
+  def move_order_setting(field, offset)
+    return false if !order_setting_field?(field)
+    order=field.params[:setting_order]
+    old_index=field.index
+    new_index=old_index+offset.to_i
+    return false if new_index<0 || new_index>=order.size
+    order[old_index],order[new_index]=order[new_index],order[old_index]
+    labels=field.params[:setting_order_labels]
+    field.options=order.map{|value|labels[value]}
+    field.index=new_index
+    field.say_option
+    true
+  end
+  def update_order_setting
+    field=@form.fields[@form.index]
+    return if !order_setting_field?(field) || !key_held?(0x10)
+    move_order_setting(field,-1) if key_pressed?(:key_up)
+    move_order_setting(field,1) if key_pressed?(:key_down)
+  end
+  def notification_type_order_labels(order)
+    helper = Object.new.extend(NotificationGroups)
+    order.map { |type| helper.category_label(type) }
   end
   def load_general
     setting_category(p_("Settings", "General"))
@@ -204,6 +264,8 @@ def make_window
         setcurrentconfig("MainWindow", "Tabs", Configuration.maintabs.join(","))
         setcurrentconfig("MainWindow", "ShowNotificationsWhenEmpty", Configuration.showemptynotifications.to_s)
         setcurrentconfig("MainWindow", "NotificationFocus", Configuration.mainnotificationfocus.to_s)
+        setcurrentconfig("MainWindow", "NotificationSort", Configuration.mainnotificationsort.to_s)
+        setcurrentconfig("MainWindow", "NotificationTypeOrder", Configuration.mainnotificationtypeorder.join(","))
         setting_category(p_("Settings", "Main window"))
         make_setting(
           p_("Settings", "Tabs visible in the main window"),
@@ -225,6 +287,21 @@ def make_window
           "NotificationFocus",
           ["keep_current", "new_notifications", "unread_notifications"]
         )
+        make_setting(
+          p_("Settings", "Notification sorting"),
+          [p_("Settings", "By time"), p_("Settings", "By type, then by time")],
+          "MainWindow",
+          "NotificationSort",
+          ["time", "type"]
+        )
+        notification_types=NotificationGroups.default_notification_type_order
+        make_order_setting(
+          p_("Settings", "Notification type order"),
+          notification_type_order_labels(notification_types),
+          "MainWindow",
+          "NotificationTypeOrder",
+          notification_types
+        )
         make_setting(p_("Settings", "Disable feed notifications"), :bool, "Interface", "DisableFeedNotifications")
         make_setting(p_("Settings", "Reset quick actions"), :custom, Proc.new {
           confirm(p_("Settings", "Are you sure you want to restore default quick actions?")) {
@@ -237,6 +314,12 @@ def make_window
             end
           }
         })
+        on_load do
+          @form.fields[4].on(:move) do
+            @form.fields[4].index == 1 ? @form.show(5) : @form.hide(5)
+          end
+          @form.fields[4].trigger(:move)
+        end
       end
       def load_voice
         setting_category(p_("Settings", "Voice"))
@@ -400,6 +483,7 @@ def make_window
         loop do
           loop_update
           @form.update
+          update_order_setting
           show_category(@form.fields[0].index) if @category!=@form.fields[0].index
           if @form.fields[-3].pressed?
             speak(_("Saved")) if apply_settings

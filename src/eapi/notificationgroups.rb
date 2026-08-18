@@ -2,6 +2,27 @@
 # Copyright (C) 2014-2026 Dawid Pieper
 
 module NotificationGroups
+  NOTIFICATION_TYPE_ORDER = %w[
+    message
+    followedthread
+    followedforum
+    mention
+    friend
+    birthday
+    followedblog
+    blogcomment
+    followedblogpost
+    blogfollower
+    blogmention
+    groupinvitation
+    mtr
+    program_updates
+    update
+  ].freeze
+  NOTIFICATION_TYPE_ALIASES = {
+    "followedforumpost" => "followedforum"
+  }.freeze
+
   NotificationGroup = Struct.new(:key, :cat, :label, :category, :date, :revoked, :ids, :payload, :virtual, :action, keyword_init: true) do
     def virtual?
       virtual == true
@@ -12,6 +33,26 @@ module NotificationGroups
   @@virtual_notification_groups = []
   @@virtual_notification_seen_at = {}
   @@virtual_notification_mutex = Mutex.new
+
+  def self.default_notification_type_order
+    NOTIFICATION_TYPE_ORDER.dup
+  end
+
+  def self.notification_type_key(cat)
+    key = cat.to_s
+    key = NOTIFICATION_TYPE_ALIASES[key] if NOTIFICATION_TYPE_ALIASES.key?(key)
+    NOTIFICATION_TYPE_ORDER.include?(key) ? key : nil
+  end
+
+  def self.normalize_notification_type_order(order)
+    values = order.is_a?(String) ? order.split(",") : Array(order)
+    normalized = []
+    values.each do |value|
+      key = value.to_s
+      normalized << key if NOTIFICATION_TYPE_ORDER.include?(key) && !normalized.include?(key)
+    end
+    normalized.concat(NOTIFICATION_TYPE_ORDER - normalized)
+  end
 
   def self.virtual_notification_groups
     @@virtual_notification_mutex.synchronize do
@@ -200,6 +241,22 @@ module NotificationGroups
 
   def sort_notification_groups(groups)
     groups.sort_by { |group| [group.revoked ? 1 : 0, -group.date.to_i, group.category.to_s, group.label.to_s] }
+  end
+
+  def sort_main_notification_groups(groups, sort_mode: :time, type_order: NotificationGroups.default_notification_type_order)
+    return sort_notification_groups(groups) if sort_mode.to_sym != :type
+
+    sort_notification_groups_by_type(groups, type_order)
+  end
+
+  def sort_notification_groups_by_type(groups, type_order)
+    order = NotificationGroups.normalize_notification_type_order(type_order)
+    ranks = order.each_with_index.to_h
+    fallback_rank = order.size
+    groups.sort_by do |group|
+      type_key = NotificationGroups.notification_type_key(group.cat)
+      [group.revoked ? 1 : 0, ranks.fetch(type_key, fallback_rank), -group.date.to_i, group.category.to_s, group.label.to_s]
+    end
   end
 
   def limit_visible_notification_groups(groups, revoked_limit: 20)
