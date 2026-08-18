@@ -210,6 +210,7 @@ src/ui/controls/map.rb
 src/ui/controls/opus_record_button.rb
 src/ui/controls/date_button.rb
 src/ui/controls/__controls.rb
+src/eapi/tasks.rb
 src/eapi/dictionary.rb
 src/eapi/notifications.rb
 src/platforms/windows/invisibleinterface/nativedialogs.rb :windows
