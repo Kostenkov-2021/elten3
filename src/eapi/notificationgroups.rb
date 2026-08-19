@@ -23,7 +23,7 @@ module NotificationGroups
     "followedforumpost" => "followedforum"
   }.freeze
 
-  NotificationGroup = Struct.new(:key, :cat, :label, :category, :date, :revoked, :ids, :payload, :payloads, :fallback_text, :virtual, :action, keyword_init: true) do
+  NotificationGroup = Struct.new(:key, :cat, :label, :category, :date, :revoked, :ids, :payload, :payloads, :fallback_text, :event_count, :virtual, :action, keyword_init: true) do
     def virtual?
       virtual == true
     end
@@ -146,8 +146,10 @@ module NotificationGroups
       }
     end
 
-    by_key.values.each do |group|
+    groups = unify_overlapping_notification_groups(by_key.values)
+    groups.each do |group|
       entries = group.payloads.sort_by { |entry| [-entry[:date].to_i, -entry[:id].to_i] }
+      group.event_count ||= entries.length
       latest = entries.first
       if latest != nil
         group.date = latest[:date]
@@ -158,6 +160,113 @@ module NotificationGroups
       group.action = action_for(group.cat, group.payload)
       group.label = group_label(group)
     end
+  end
+
+  def unify_overlapping_notification_groups(groups)
+    groups = groups.dup
+    unify_followed_forum_groups(groups)
+    unify_blog_comment_groups(groups)
+    groups
+  end
+
+  def unify_followed_forum_groups(groups)
+    buckets = groups.select { |group| %w[followedthread followedforum followedforumpost].include?(group.cat.to_s) }
+      .group_by { |group| [group.revoked == true, forum_thread_id(group)] }
+
+    buckets.each do |(_revoked, thread_id), related|
+      next unless thread_id.to_i > 0
+
+      followed_thread = related.find { |group| group.cat.to_s == "followedthread" }
+      next if followed_thread == nil
+
+      related.select { |group| group.cat.to_s == "followedforumpost" }.each do |followed_forum_post|
+        original_count = followed_forum_post.payloads.length
+        remove_exact_duplicate_entries(followed_thread, followed_forum_post, "postid")
+        if followed_forum_post.payloads.empty?
+          groups.delete(followed_forum_post)
+        elsif unreliable_entry_identity?(followed_thread, followed_forum_post, identity_field: "postid")
+          followed_forum_post.event_count = original_count
+          merge_parallel_groups(followed_thread, followed_forum_post)
+          groups.delete(followed_forum_post)
+        end
+      end
+
+      related.select { |group| group.cat.to_s == "followedforum" }.each do |followed_forum|
+        remove_exact_duplicate_entries(followed_thread, followed_forum, "postid")
+        groups.delete(followed_forum) if followed_forum.payloads.empty?
+      end
+    end
+  end
+
+  def unify_blog_comment_groups(groups)
+    buckets = groups.select { |group| %w[blogcomment followedblogpost].include?(group.cat.to_s) }
+      .group_by { |group| [group.revoked == true, blog_post_identity(group)] }
+
+    buckets.each do |(_revoked, identity), related|
+      next if identity == nil
+
+      own_post = related.find { |group| group.cat.to_s == "blogcomment" }
+      followed_post = related.find { |group| group.cat.to_s == "followedblogpost" }
+      next if own_post == nil || followed_post == nil
+
+      merge_parallel_groups(own_post, followed_post)
+      groups.delete(followed_post)
+    end
+  end
+
+  def forum_thread_id(group)
+    group.payloads.each do |entry|
+      thread_id = notification_entry_payload(entry)["threadid"].to_i
+      return thread_id if thread_id > 0
+    end
+    0
+  end
+
+  def blog_post_identity(group)
+    group.payloads.each do |entry|
+      payload = notification_entry_payload(entry)
+      blog = payload["blog"].to_s.downcase
+      post_id = payload["postid"].to_i
+      return [blog, post_id] if !blog.empty? && post_id > 0
+    end
+    nil
+  end
+
+  def remove_exact_duplicate_entries(winner, duplicate, identity_field)
+    winner_identities = winner.payloads.filter_map do |entry|
+      identity = notification_entry_payload(entry)[identity_field].to_i
+      identity if identity > 0
+    end
+    return if winner_identities.empty?
+
+    removed, remaining = duplicate.payloads.partition do |entry|
+      identity = notification_entry_payload(entry)[identity_field].to_i
+      identity > 0 && winner_identities.include?(identity)
+    end
+    return if removed.empty?
+
+    winner.ids.concat(removed.map { |entry| entry[:id].to_i }.select { |id| id > 0 }).uniq!
+    duplicate.payloads = remaining
+    duplicate.ids = remaining.map { |entry| entry[:id].to_i }.select { |id| id > 0 }.uniq
+  end
+
+  def unreliable_entry_identity?(*groups, identity_field:)
+    groups.any? do |group|
+      group.payloads.any? { |entry| notification_entry_payload(entry)[identity_field].to_i <= 0 }
+    end
+  end
+
+  def merge_parallel_groups(winner, duplicate)
+    winner_count = winner.event_count.to_i > 0 ? winner.event_count.to_i : winner.payloads.length
+    duplicate_count = duplicate.event_count.to_i > 0 ? duplicate.event_count.to_i : duplicate.payloads.length
+    winner.event_count = [winner_count, duplicate_count].max
+    winner.ids.concat(duplicate.ids).uniq!
+    winner.payloads.concat(duplicate.payloads)
+  end
+
+  def notification_entry_payload(entry)
+    payload = entry[:payload]
+    payload.is_a?(Hash) ? payload : {}
   end
 
   def collect_virtual_notification_groups
@@ -304,6 +413,9 @@ module NotificationGroups
   def group_count(group)
     virtual_count = group.payload["count"].to_i if group.virtual? && group.payload.is_a?(Hash)
     return virtual_count if virtual_count != nil && virtual_count > 0
+
+    event_count = group.event_count.to_i if group.respond_to?(:event_count)
+    return event_count if event_count != nil && event_count > 0
 
     [group.ids.size, 1].max
   end
