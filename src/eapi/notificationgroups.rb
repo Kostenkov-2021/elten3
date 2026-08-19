@@ -22,6 +22,7 @@ module NotificationGroups
   NOTIFICATION_TYPE_ALIASES = {
     "followedforumpost" => "followedforum"
   }.freeze
+  NOTIFICATION_HISTORY_LIMIT = 100
 
   NotificationGroup = Struct.new(:key, :cat, :label, :category, :date, :revoked, :ids, :payload, :payloads, :fallback_text, :event_count, :virtual, :action, keyword_init: true) do
     def virtual?
@@ -382,7 +383,7 @@ module NotificationGroups
     end
   end
 
-  def limit_visible_notification_groups(groups, revoked_limit: 20)
+  def limit_visible_notification_groups(groups, revoked_limit: NOTIFICATION_HISTORY_LIMIT)
     revoked_count = 0
     groups.to_a.select do |group|
       next true if !group.revoked
