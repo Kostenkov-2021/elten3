@@ -42,6 +42,7 @@ class Sapi < SpeechOutput
       @voice ||= begin
         instance = WIN32OLE.new("SAPI.SpVoice")
         instance.Priority = SPVPRI_NORMAL rescue nil
+        negotiate_native_audio_format(instance)
         @voice_id = instance.Voice.Id.to_s rescue nil
         instance
       end
@@ -172,6 +173,7 @@ class Sapi < SpeechOutput
       end
       begin
         voice.Voice = selected
+        negotiate_native_audio_format
         voice.Speak("", SPF_IS_NOT_XML)
       rescue Exception
         unless defined?(SapiBridge) && SapiBridge.set_voice(selected.Id.to_s)
@@ -230,6 +232,7 @@ class Sapi < SpeechOutput
         end
         bridge_ok = SapiBridge.set_output(output.Id.to_s) if defined?(SapiBridge) && @voice_backend == :bridge && output != nil
       end
+      negotiate_native_audio_format if @voice_backend != :bridge
       (@voice_backend == :bridge ? bridge_ok : native_ok) ? 0 : 1
     rescue Exception
       1
@@ -425,6 +428,13 @@ class Sapi < SpeechOutput
     end
 
     private
+
+    def negotiate_native_audio_format(target=voice)
+      return if target == nil
+      target.AllowAudioOutputFormatChangesOnNextSet = true
+      target.AudioOutputStream = target.AudioOutputStream
+    rescue Exception
+    end
 
     def speak_with_flags(text, flags)
       @paused = false
