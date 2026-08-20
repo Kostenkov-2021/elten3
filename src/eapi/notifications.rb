@@ -415,7 +415,6 @@ module EltenAPI
           @call_id = nil
           @call_caller = nil
           enqueue_event("func" => "call_stop", "call_id" => call_id, "caller" => caller)
-          request_missed_call_status(key, call_id, caller)
         end
       end
 

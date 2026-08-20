@@ -122,7 +122,12 @@ end
               @@call = CallWindow.new(d['call_id'], d['caller'], d['channel'], d['password']) if @@call==nil || @@call.id!=d['call_id']
            elsif d['func']=='call_stop'
               call_sound_stop
+              missed_call = @@call if @@call != nil && @@call.id == d['call_id'] && !@@call.handled?
               @@call=nil
+              if missed_call != nil && missed_call.caller != nil
+                @@missedcalls_window ||= MissedCallsWindow.new
+                @@missedcalls_window.add_caller(missed_call.caller)
+              end
               $focus=true
            elsif d['func']=='missed_call'
              if d['caller']!=nil
