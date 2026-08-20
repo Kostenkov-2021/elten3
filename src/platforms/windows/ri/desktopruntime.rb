@@ -581,7 +581,7 @@ module EltenWindow
       if defined?(EltenTray) && message == EltenTray::CALLBACK_MESSAGE
         return 0 if EltenTray.handle_callback(wparam, lparam)
       end
-      return 0 if close_message?(message, wparam)
+      return 0 if close_message?(message, wparam, lparam)
       minimize_message(message, wparam)
       record_key_message(message, wparam, lparam)
       if character_message?(message)
@@ -985,6 +985,7 @@ module EltenWindow
       window_state_monitor.synchronize do
         @key_event_queue ||= []
         @key_event_queue.clear
+        @key_message_down = Array.new(256, false)
         @right_alt_down = false
         @altgr_character_input = false
       end
@@ -1088,12 +1089,13 @@ module EltenWindow
       message == WM_CHAR || message == WM_DEADCHAR || message == WM_UNICHAR
     end
 
-    def close_message?(message, wparam)
+    def close_message?(message, wparam, lparam = 0)
       if message == WM_CLOSE
         window_state_monitor.synchronize { @close_requested = true }
         return true
       end
       if message == WM_SYSKEYDOWN && wparam.to_i == VK_F4
+        return true if repeated_key_message?(lparam)
         return true if activation_input_blocked?
         window_state_monitor.synchronize { @close_requested = true }
         return true
@@ -1155,6 +1157,9 @@ module EltenWindow
       event = down && repeated_key_message?(lparam) ? :repeat : down
       press_state = capture_key_event_state if down
       window_state_monitor.synchronize do
+        @key_message_down ||= Array.new(256, false)
+        next if event == :repeat && @key_message_down[key] != true
+        @key_message_down[key] = down
         @right_alt_down = down if key == VK_MENU && extended_key_message?(lparam)
         if @altgr_character_input == true && altgr_modifier_key?(key)
           if down == false

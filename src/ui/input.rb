@@ -232,7 +232,7 @@ Bass::BASS_ChannelSetAttribute.call(stream, 2, volume.to_f/100.0)
     end
 
     def enter_pressed?
-    raw_key_pressed?(:key_enter)
+    raw_key_first_pressed?(:key_enter)
     end
 
     def main_modifier_pressed?
