@@ -915,9 +915,23 @@ if (((@sgroups[@grpsel.index - @grpheadindex].role==1 || (@sgroups[@grpsel.index
   
   def groupmotd(group)
     text = forum_fetch("", nil) { EltenLink::Forum.group_motd(elten_link, group_id: group.id) }
-    group.hasnewmotd=false if text != ""
+    mark_group_motd_read_locally(group) if text != ""
     return text
     end
+
+  def mark_group_motd_read_locally(group)
+    group_id = group.id.to_i
+    groups = [group]
+    groups.concat(@groups.to_a)
+    groups.concat(@sgroups.to_a)
+    groups.concat(@forums.to_a.map { |forum| forum.group })
+    groups.concat(@threads.to_a.map { |thread| thread.forum.group })
+    groups.concat(@sthreads.to_a.map { |thread| thread.forum.group })
+    groups.compact.each do |candidate|
+      candidate.hasnewmotd = false if candidate.id.to_i == group_id
+    end
+  end
+
 def groupmotddlg(group, editable=true)
 motd = groupmotd(group)
       fields=[
