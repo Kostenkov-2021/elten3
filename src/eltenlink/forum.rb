@@ -730,14 +730,14 @@ module EltenLink
       def forum_post_date(value)
         text = value.to_s
         return "" if text.empty?
-        return text unless text.match?(/\A\d+\z/)
+        return text.sub(/\A(\d{4}-\d{2}-\d{2} \d{2}:\d{2}):\d{2}\z/) { Regexp.last_match(1) } unless text.match?(/\A\d+\z/)
 
         timestamp = text.to_i
         return "" if timestamp <= 0
 
-        format_date(Time.at(timestamp))
+        format_date(Time.at(timestamp), false, false)
       rescue StandardError
-        Time.at(timestamp).strftime("%Y-%m-%d %H:%M:%S")
+        Time.at(timestamp).strftime("%Y-%m-%d %H:%M")
       end
 
       def build_bookmark(row)
