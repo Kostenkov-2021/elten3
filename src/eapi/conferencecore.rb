@@ -1169,12 +1169,16 @@ def playing?
 end
 def play
 return if @mixer==nil || @mixer==0
-Bass::BASS_Mixer_StreamAddChannel.call(@mixer, @stream, 0)
-@paused=false
+if @paused
+  flags = Bass::BASS_Mixer_ChannelFlags.call(@stream, 0, Bass::BASS_MIXER_CHAN_PAUSE)
+  @paused=false if flags!=-1 && flags!=0xffffffff
+else
+  @paused=false if Bass::BASS_Mixer_StreamAddChannel.call(@mixer, @stream, 0)!=0
+end
 end
 def pause
-Bass::BASS_Mixer_ChannelRemove.call(@stream)
-@paused=true
+flags = Bass::BASS_Mixer_ChannelFlags.call(@stream, Bass::BASS_MIXER_CHAN_PAUSE, Bass::BASS_MIXER_CHAN_PAUSE)
+@paused=true if flags!=-1 && flags!=0xffffffff
 end
 end
 

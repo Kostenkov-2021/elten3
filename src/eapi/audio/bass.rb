@@ -74,6 +74,7 @@ module Bass
   BASS_UNICODE = 0x80000000
   BASS_STREAM_DECODE = 0x200000
   BASS_STREAM_AUTOFREE = 0x40000
+  BASS_MIXER_CHAN_PAUSE = 0x20000
 
   def self.optional_dlopen(lib)
     EltenRuntimePaths.dlopen(lib)
@@ -154,6 +155,7 @@ module Bass
   BASS_Mixer_StreamCreate = Fiddle::Function.new(BASSMIX["BASS_Mixer_StreamCreate"], [F_UINT, F_UINT, F_UINT], F_UINT, BASS_ABI)
   BASS_Mixer_StreamAddChannel = Fiddle::Function.new(BASSMIX["BASS_Mixer_StreamAddChannel"], [F_UINT, F_UINT, F_UINT], F_INT, BASS_ABI)
   BASS_Mixer_ChannelRemove = Fiddle::Function.new(BASSMIX["BASS_Mixer_ChannelRemove"], [F_UINT], F_INT, BASS_ABI)
+  BASS_Mixer_ChannelFlags = Fiddle::Function.new(BASSMIX["BASS_Mixer_ChannelFlags"], [F_UINT, F_UINT, F_UINT], F_UINT, BASS_ABI)
   BASS_Mixer_ChannelGetData = Fiddle::Function.new(BASSMIX["BASS_Mixer_ChannelGetData"], [F_UINT, F_PTR, F_UINT], F_INT, BASS_ABI)
   BASS_Split_StreamCreate = Fiddle::Function.new(BASSMIX["BASS_Split_StreamCreate"], [F_UINT, F_UINT, F_PTR], F_UINT, BASS_ABI)
   BASS_VST_ChannelSetDSP = optional_fiddle(BASSVST, "BASS_VST_ChannelSetDSP", [F_UINT, F_PTR, F_UINT, F_INT], F_UINT)
