@@ -12,6 +12,10 @@ Elten 3 is an in-process application. The interface, EltenLink client and long-r
 
 Platform integration is implemented through Ruby adapters, Fiddle bindings and focused bundled native libraries where necessary.
 
+### Cross-architecture SAPI on Windows
+
+SAPI voice and output discovery remains in Ruby through the native Windows API. Because a COM voice engine must match its host process architecture, an x64 Elten uses `bin/ext/windows/EltenSapiBridge32.exe` for x86 voices, while ARM64 may use both `EltenSapiBridge64.exe` and `EltenSapiBridge32.exe`. A bridge is started only after native voice activation fails and is closed when SAPI is no longer the active output; a missing executable silently disables only that compatibility path.
+
 ### Threads and interaction ownership
 
 Elten has several distinct thread roles which should not be confused:

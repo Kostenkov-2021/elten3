@@ -109,6 +109,7 @@ rescue Exception => error
             Programs::Extensions.shutdown(:client_shutdown) if defined?(Programs::Extensions)
             if $immediateexit!=true
   ActivityReports.shutdown
+  Sapi.shutdown if defined?(Sapi)
   NVDA.join if defined?(NVDA)
   NVDA.destroy if defined?(NVDA)
     EltenAPI::InvisibleInterface.stop if defined?(EltenAPI::InvisibleInterface)

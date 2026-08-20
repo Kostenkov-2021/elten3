@@ -70,6 +70,10 @@ tools\build-windows-arm64.bat
 tools\build-windows-x86.bat
 ```
 
+The x64 and x86 builds also produce `EltenSapiBridge64.exe` and `EltenSapiBridge32.exe` respectively. CMake writes them to `bin\ext\windows\` for source runs and copies them to `build\release\windows\bin\ext\windows\`. Build x86 for an x64 source run, and both x64 and x86 for ARM64; `tools\build-windows.bat` builds the complete set.
+
+The helpers are optional when running directly from source. Without compiling them, Elten still starts normally; the only resulting constraint is that SAPI voices requiring another process architecture are unavailable.
+
 The x86 target is deprecated. `tools\build-windows.bat` is the multi-architecture release helper. Individual launchers are written to `build\release\windows\`.
 
 Additional CMake arguments may be passed to the per-architecture scripts. Release builds may also provide `--build-id`; ordinary contributor builds may leave it unset.

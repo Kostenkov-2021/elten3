@@ -141,9 +141,10 @@ src/scenes/registration.rb
 src/scenes/welcome_wizard.rb
 src/scenes/loading.rb
 src/eapi/documents.rb
+src/platforms/windows/eapi/childprocess.rb :windows
+src/platforms/windows/eapi/sapi_bridge.rb :windows
 src/platforms/windows/eapi/sapi.rb :windows
 src/platforms/windows/eapi/spellcheck.rb :windows
-src/platforms/windows/eapi/childprocess.rb :windows
 src/platforms/osx/eapi/spellcheck.rb :osx
 src/platforms/linux/eapi/spellcheck.rb :linux
 src/platforms/osx/eapi/childprocess.rb :osx

@@ -696,6 +696,37 @@ else()
     "${ELTEN_EMBEDDED_CPP}"
   )
 
+  set(ELTEN_SAPI_BRIDGE_TARGET "")
+  if(ELTEN_LAUNCHER_ARCH STREQUAL "x86")
+    set(ELTEN_SAPI_BRIDGE_TARGET EltenSapiBridge32)
+  elseif(ELTEN_LAUNCHER_ARCH STREQUAL "x64")
+    set(ELTEN_SAPI_BRIDGE_TARGET EltenSapiBridge64)
+  endif()
+  if(ELTEN_SAPI_BRIDGE_TARGET)
+    add_executable(${ELTEN_SAPI_BRIDGE_TARGET}
+      "ext/windows/EltenSapiBridge/EltenSapiBridge.cpp"
+    )
+    target_compile_definitions(${ELTEN_SAPI_BRIDGE_TARGET} PRIVATE
+      NOMINMAX
+      WIN32_LEAN_AND_MEAN
+    )
+    target_link_libraries(${ELTEN_SAPI_BRIDGE_TARGET} PRIVATE
+      ole32
+      sapi
+    )
+    set_target_properties(${ELTEN_SAPI_BRIDGE_TARGET} PROPERTIES
+      RUNTIME_OUTPUT_DIRECTORY "${CMAKE_SOURCE_DIR}/bin/ext/windows"
+    )
+    add_custom_command(TARGET ${ELTEN_SAPI_BRIDGE_TARGET} POST_BUILD
+      COMMAND "${CMAKE_COMMAND}" -E make_directory "${ELTEN_PACKAGE_ROOT}/bin/ext/windows"
+      COMMAND "${CMAKE_COMMAND}" -E copy_if_different
+        "$<TARGET_FILE:${ELTEN_SAPI_BRIDGE_TARGET}>"
+        "${ELTEN_PACKAGE_ROOT}/bin/ext/windows/$<TARGET_FILE_NAME:${ELTEN_SAPI_BRIDGE_TARGET}>"
+      VERBATIM
+    )
+    add_dependencies(EltenLauncher ${ELTEN_SAPI_BRIDGE_TARGET})
+  endif()
+
   target_compile_definitions(EltenLauncher PRIVATE
     ELTEN_LAUNCHER_ARCH="${ELTEN_LAUNCHER_ARCH}"
     ELTEN_RUNTIME_DIR_NAME="${ELTEN_RUNTIME_ARCH_DIR}"
@@ -787,4 +818,11 @@ foreach(config DEBUG RELEASE RELWITHDEBINFO MINSIZEREL)
       RUNTIME_OUTPUT_DIRECTORY_${config} "${ELTEN_PACKAGE_ROOT}"
     )
   endif()
+  foreach(bridge_target EltenSapiBridge32 EltenSapiBridge64)
+    if(TARGET ${bridge_target})
+      set_target_properties(${bridge_target} PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY_${config} "${CMAKE_SOURCE_DIR}/bin/ext/windows"
+      )
+    endif()
+  endforeach()
 endforeach()
