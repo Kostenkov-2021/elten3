@@ -9,6 +9,7 @@ class Scene_Settings
     @settings=[]
     @values={}
     @bound_settings={}
+    @speaker_preview_restorer=nil
   end
   def currentconfig(group, key)
     if group==:extension_setting
@@ -30,15 +31,28 @@ class Scene_Settings
   def setcurrentconfig(group,key,val)
 @values[[group,key]]=val.to_s
 end
-def speaker_waiter
- loop do
-   loop_update
-   if key_any_pressed?
-     speech_stop
-     end
-   break if speech_actived==false
-   end
+def start_speaker_preview(&restorer)
+  restore_speaker_preview
+  @speaker_preview_restorer=restorer
+end
+def restore_speaker_preview
+  restorer=@speaker_preview_restorer
+  @speaker_preview_restorer=nil
+  restorer.call if restorer!=nil
+end
+def stop_speaker_preview
+  return if @speaker_preview_restorer==nil
+  speech_stop
+  restore_speaker_preview
+end
+def update_speaker_preview
+  return if @speaker_preview_restorer==nil
+  if key_any_pressed?
+    stop_speaker_preview
+  elsif speech_actived==false
+    restore_speaker_preview
   end
+end
   def setting_category(cat)
     @settings.push([cat, nil])
     @form.fields[0].options.push(cat)
@@ -90,6 +104,7 @@ def save_category
   end
 def show_category(id)
   return if @form==nil or @settings[id]==nil
+  stop_speaker_preview
   save_category if @category!=nil
   @category=id
   @form.show_all
@@ -136,6 +151,7 @@ end
 @settings[id][1].call if @settings[id][1]!=nil
 end
 def apply_settings
+  stop_speaker_preview
   save_category
   begin
     for k in @values.keys
@@ -347,40 +363,48 @@ def make_window
         @form.fields[1].trigger(:move)
         @form.fields[1].on(:move) {
         speech_stop
+          restore_speaker_preview
           output=voice_output.call
           vc=Configuration.voice
+          start_speaker_preview {
+            Configuration.voice=vc
+            SpeechOutput.apply_current_voice
+          }
           Configuration.voice=voicesmapping[@form.fields[1].index].to_s
           output.apply_voice(Configuration.voice) if output!=nil
           @form.fields[1].say_option
-          speaker_waiter
-          Configuration.voice=vc
-          SpeechOutput.apply_current_voice
         }
         @form.fields[2].on(:move) {
         speech_stop
+        restore_speaker_preview
         output=voice_output.call
+        start_speaker_preview {
+          SpeechOutput.current_output.set_rate(Configuration.voicerate) if SpeechOutput.current_output!=nil && SpeechOutput.current_output.rate_supported?
+        }
         output.set_rate(100-@form.fields[2].index) if output!=nil && output.rate_supported?
                 @form.fields[2].say_option
-                speaker_waiter
-                SpeechOutput.current_output.set_rate(Configuration.voicerate) if SpeechOutput.current_output!=nil && SpeechOutput.current_output.rate_supported?
         }
         @form.fields[3].on(:move) {
         speech_stop
+        restore_speaker_preview
         output=voice_output.call
+        start_speaker_preview {
+          SpeechOutput.current_output.set_volume(Configuration.voicevolume) if SpeechOutput.current_output!=nil && SpeechOutput.current_output.volume_supported?
+        }
         output.set_volume(100-@form.fields[3].index) if output!=nil && output.volume_supported?
         @form.fields[3].say_option
-        speaker_waiter
-        SpeechOutput.current_output.set_volume(Configuration.voicevolume) if SpeechOutput.current_output!=nil && SpeechOutput.current_output.volume_supported?
         }
         @form.fields[4].on(:move) {
         speech_stop
+        restore_speaker_preview
         output=voice_output.call
         next if output==nil || !output.pitch_supported?
         pt=Configuration.voicepitch
+        start_speaker_preview {
+          Configuration.voicepitch=pt
+        }
         Configuration.voicepitch=100-@form.fields[4].index
         @form.fields[4].say_option
-        speaker_waiter
-        Configuration.voicepitch=pt
         }
         }
       end
@@ -482,6 +506,7 @@ def make_window
         @form.focus
         loop do
           loop_update
+          update_speaker_preview
           @form.update
           update_order_setting
           show_category(@form.fields[0].index) if @category!=@form.fields[0].index
@@ -499,5 +524,7 @@ def make_window
           end
           break if $scene!=self
         end
+      ensure
+        stop_speaker_preview
       end
       end
