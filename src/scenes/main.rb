@@ -264,6 +264,7 @@ end
 
 def notifications_load(fc=false, focus_policy: :keep_current)
   previous_visible_time = @@notifications_last_visible_time.to_i
+  selected_notification_key = current_notification_group&.key
   @@notification_index=@notifications_sel.index if @notifications_sel!=nil
   if !main_tab_enabled?(:notifications)
     @notification_groups = []
@@ -289,7 +290,7 @@ def notifications_load(fc=false, focus_policy: :keep_current)
     focus_current_control if fc
     return
   end
-  @@notification_index = [[@@notification_index.to_i, 0].max, [@notification_groups.size - 1, 0].max].min
+  @@notification_index = notification_reload_index(@notification_groups, selected_notification_key, @@notification_index)
   @notifications_sel = TableBox.new(notification_columns, notification_rows(@notification_groups), index: @@notification_index, header: p_("Notifications", "Notifications"), quiet: true)
   apply_notification_group_states(@notifications_sel, @notification_groups)
   @notifications_sel.bind_context { |menu| notifications_context(menu) }
@@ -330,6 +331,12 @@ end
 def current_notification_group
   return nil if @notification_groups==nil || @notification_groups.empty? || @notifications_sel==nil
   @notification_groups[@notifications_sel.index]
+end
+
+def notification_reload_index(groups, selected_key, fallback_index)
+  matched_index = groups.to_a.index { |group| selected_key != nil && group.key == selected_key }
+  index = matched_index == nil ? fallback_index.to_i : matched_index
+  [[index, 0].max, [groups.to_a.size - 1, 0].max].min
 end
 
 def notifications_update
