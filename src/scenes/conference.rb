@@ -1557,11 +1557,17 @@ lst_whitelist.focus
   end
   dialog_close
 end
+def cancel_outgoing_call
+  call_id=@call_id
+  @call_id=nil
+  EltenAPI::EltenSRV.cancel_call(call_id, self) if call_id!=nil
+end
 def timeout_break
   if @timeoutthr!=nil
       @timeoutthr.exit
       @timeoutthr=nil
     end
+  cancel_outgoing_call
   end
   def self.custom_diceroll
       d=selector((1..100).to_a.map{|d|p_("Conference", "%{count}-sided")%{:count=>d.to_s}}, header: p_("Conference", "Which dice do you want to roll?"), start_index: @@lastdiceindex, cancel_index: -1, flags: 1)
