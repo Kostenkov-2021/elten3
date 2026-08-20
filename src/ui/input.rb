@@ -319,7 +319,9 @@ Bass::BASS_ChannelSetAttribute.call(stream, 2, volume.to_f/100.0)
     end
 
     def ensure_keyboard_state
-      key_update if @keyboard_state_initialized != true
+      if $keyboard_state_frame_serial != $input_frame_serial || $keyboard_state_frame_thread != Thread.current
+        key_update
+      end
     end
 
     def keyboard_input_idle?
@@ -378,7 +380,8 @@ Bass::BASS_ChannelSetAttribute.call(stream, 2, volume.to_f/100.0)
   # Updates the keyboard state
        def key_update
          $key_update_serial=($key_update_serial||0)+1
-         @keyboard_state_initialized = true
+         $keyboard_state_frame_serial = $input_frame_serial
+         $keyboard_state_frame_thread = Thread.current
       if !EltenWindow.keyboard_active?
         @@altdown=false
         @@altdowntime=0
@@ -501,7 +504,8 @@ if $setkeys.is_a?(Array)
 
                     def clear_keyboard_input_state
                       EltenAPI::KeyboardState.reset
-                      @keyboard_state_initialized = false
+                      $keyboard_state_frame_serial = nil
+                      $keyboard_state_frame_thread = nil
                       $getkeychar_cache_serial = nil
                       $getkeychar_cache = nil
                       EltenWindow.clear_input_state
