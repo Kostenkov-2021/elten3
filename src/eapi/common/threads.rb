@@ -14,9 +14,7 @@ module EltenAPI
             sleep(0.1)
               nvda = defined?(NVDA) ? NVDA : nil
               if nvda != nil && SpeechOutput.current_output != nvda
-                if !nvda.check and nvda.usable?
-nvda.stop
-end
+                nvda.check
                       end
               rescue Exception
         fail
