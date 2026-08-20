@@ -24,7 +24,7 @@ class Sapi < SpeechOutput
   SPF_PURGEBEFORESPEAK = 2
   SPF_IS_XML = 8
   SPF_IS_NOT_XML = 16
-  SPVPRI_OVER = 2
+  SPVPRI_NORMAL = 0
   STREAM_FORMAT_48KHZ_16BIT_MONO = 38
   STREAM_FREQUENCY = 48000
   STREAM_CHANNELS = 1
@@ -41,7 +41,7 @@ class Sapi < SpeechOutput
       return nil unless available?
       @voice ||= begin
         instance = WIN32OLE.new("SAPI.SpVoice")
-        instance.Priority = SPVPRI_OVER rescue nil
+        instance.Priority = SPVPRI_NORMAL rescue nil
         instance
       end
     rescue Exception
