@@ -249,7 +249,7 @@ speak(p_("Login", "Logged in as: %{user}")%{:user=>name}) if $silentstart != tru
 else
   speak(Session.greeting) if $silentstart != true
   end
-delay(0.1)
+EltenAPI::NotificationService.synchronize_runtime_state
 else
   case login_error&.code.to_s
   when "network_error", "timeout", "cancelled"
