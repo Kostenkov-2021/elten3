@@ -1192,9 +1192,8 @@ void CopyNativeCompanions(const Options &options, const fs::path &source, const 
 
         fs::path rootCopy = RuntimePackageRoot(options) / entry.path().filename();
         fs::path builtinCopy = RuntimePackageRoot(options) / "ruby_builtin_dlls" / entry.path().filename();
-        if (SameFileContent(entry.path(), builtinCopy)) {
-          if (SameFileContent(rootCopy, builtinCopy)) fs::remove(rootCopy, ec);
-        } else if (!fs::is_regular_file(rootCopy, ec)) {
+        if (SameFileContent(entry.path(), builtinCopy)) continue;
+        if (!fs::is_regular_file(rootCopy, ec)) {
           CopyIfChanged(entry.path(), rootCopy);
         } else if (!SameFileContent(entry.path(), rootCopy)) {
           CopyIfChanged(entry.path(), destination.parent_path() / entry.path().filename());
