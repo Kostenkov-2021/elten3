@@ -326,6 +326,8 @@ module EltenWindow
   DESTROY_WINDOW = Fiddle::Function.new(USER32["DestroyWindow"], [HANDLE], INT, ABI)
   DEF_WINDOW_PROC = Fiddle::Function.new(USER32["DefWindowProcW"], [HANDLE, INT, HANDLE, HANDLE], HANDLE, ABI)
   POST_QUIT_MESSAGE = Fiddle::Function.new(USER32["PostQuitMessage"], [INT], Fiddle::TYPE_VOID, ABI)
+  REGISTER_HOT_KEY = Fiddle::Function.new(USER32["RegisterHotKey"], [HANDLE, INT, INT, INT], INT, ABI)
+  UNREGISTER_HOT_KEY = Fiddle::Function.new(USER32["UnregisterHotKey"], [HANDLE, INT], INT, ABI)
   GET_FOREGROUND_WINDOW = Fiddle::Function.new(USER32["GetForegroundWindow"], [], HANDLE, ABI)
   GET_PARENT = Fiddle::Function.new(USER32["GetParent"], [HANDLE], HANDLE, ABI)
   IS_ICONIC = Fiddle::Function.new(USER32["IsIconic"], [HANDLE], INT, ABI)
@@ -362,9 +364,13 @@ module EltenWindow
   WM_SYSKEYUP = 0x0105
   WM_SYSCHAR = 0x0106
   WM_UNICHAR = 0x0109
+  WM_HOTKEY = 0x0312
   WM_APP = 0x8000
   WM_DISPATCH_ACTIONS = WM_APP + 0x51
   WM_REQUEST_EXIT = WM_APP + 0x52
+  RESTORE_HOTKEY_ID = 0x454C
+  RESTORE_HOTKEY_MODIFIERS = 0x0001 | 0x0002 | 0x0004 | 0x4000
+  VK_T = 0x54
   VK_CONTROL = 0x11
   VK_MENU = 0x12
   VK_F4 = 0x73
@@ -528,6 +534,7 @@ module EltenWindow
       @window_thread = Thread.current
       @window_thread_id = GET_CURRENT_THREAD_ID.call.to_i
       @message_loop_stopped = false
+      register_restore_hotkey
       message = "\0" * MSG_SIZE
       loop do
         result = GET_MESSAGE.call(message, 0, 0, 0).to_i
@@ -538,6 +545,7 @@ module EltenWindow
       end
       true
     ensure
+      unregister_restore_hotkey
       window_state_monitor.synchronize { @close_requested = true }
       fail_pending_window_actions(RuntimeError.new("Windows message loop has stopped"))
     end
@@ -557,6 +565,11 @@ module EltenWindow
       wparam = wparam.to_i
       lparam = lparam.to_i
       case message
+      when WM_HOTKEY
+        if wparam == RESTORE_HOTKEY_ID
+          EltenTray.request_restore("hotkey CTRL+ALT+SHIFT+T") if defined?(EltenTray)
+          return 0
+        end
       when WM_DISPATCH_ACTIONS
         service_window_requests(wparam)
         return 0
@@ -619,6 +632,10 @@ module EltenWindow
 
     def close_requested?
       window_state_monitor.synchronize { @close_requested == true }
+    end
+
+    def restore_hotkey_registered?
+      @restore_hotkey_registered == true
     end
 
     def consume_close_request
@@ -1052,6 +1069,30 @@ module EltenWindow
       true
     end
 
+    def register_restore_hotkey
+      hwnd = window_handle(nil, false)
+      @restore_hotkey_hwnd = hwnd
+      @restore_hotkey_registered = hwnd != 0 && REGISTER_HOT_KEY.call(hwnd, RESTORE_HOTKEY_ID, RESTORE_HOTKEY_MODIFIERS, VK_T) != 0
+      Log.warning("Could not register restore hotkey CTRL+ALT+SHIFT+T; using polling fallback") if !@restore_hotkey_registered && defined?(Log)
+      @restore_hotkey_registered
+    rescue Exception => e
+      @restore_hotkey_registered = false
+      Log.warning("Restore hotkey registration failed: #{e}") if defined?(Log)
+      false
+    end
+
+    def unregister_restore_hotkey
+      hwnd = @restore_hotkey_hwnd.to_i
+      UNREGISTER_HOT_KEY.call(hwnd, RESTORE_HOTKEY_ID) if @restore_hotkey_registered == true && hwnd != 0
+      @restore_hotkey_registered = false
+      @restore_hotkey_hwnd = nil
+      true
+    rescue Exception
+      @restore_hotkey_registered = false
+      @restore_hotkey_hwnd = nil
+      false
+    end
+
     def capture_keyboard_state
       state = capture_keyboard_state_raw
       window_state_monitor.synchronize do
@@ -1322,6 +1363,7 @@ module EltenTray
     end
 
     def restore_hotkey_pressed?
+      return false if defined?(EltenWindow) && EltenWindow.restore_hotkey_registered?
       ensure_api
       pressed = key_down?(0x11) && key_down?(0x12) && key_down?(0x10) && key_down?(0x54)
       triggered = pressed && @restore_hotkey_down != true
