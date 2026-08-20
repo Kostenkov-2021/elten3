@@ -2100,7 +2100,7 @@ class Scene_Conference_VSTS
       end
       end
   def refresh
-    @vsts=Conference.vsts(@userid)
+    @vsts=Conference.vsts(@userid) || []
     selt=[]
     if @vsts!=nil
       for v in @vsts
