@@ -198,7 +198,7 @@ module EltenAPI
       end
 
       if Session.moderator > 0
-        moderation_label = banned ? p_("EAPI_Common", "Unban") : p_("EAPI_Common", "Ban")
+        moderation_label = banned ? p_("EAPI_Common", "Unban globally") : p_("EAPI_Common", "Ban globally")
         actions << user_menu_action(moderation_label) do
           scene = banned ? Scene_Ban_Unban.new(user, Scene_Main.new) : Scene_Ban_Ban.new(user, Scene_Main.new)
           insert_scene(scene, true)
