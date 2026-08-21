@@ -233,7 +233,10 @@ class SapiBridge {
   HRESULT Initialize() {
     HRESULT result = CoCreateInstance(CLSID_SpVoice, nullptr, CLSCTX_INPROC_SERVER,
                                       IID_PPV_ARGS(&voice_));
-    if (SUCCEEDED(result)) voice_->SetPriority(SPVPRI_NORMAL);
+    if (SUCCEEDED(result)) {
+      voice_->SetPriority(SPVPRI_NORMAL);
+      NegotiateAudioFormat();
+    }
     return result;
   }
 
@@ -246,6 +249,7 @@ class SapiBridge {
     if (FAILED(result)) return result;
     result = voice_->SetVoice(token.Get());
     if (FAILED(result)) return result;
+    NegotiateAudioFormat();
     USHORT volume = 100;
     result = voice_->GetVolume(&volume);
     if (FAILED(result)) return result;
@@ -257,13 +261,19 @@ class SapiBridge {
   }
 
   HRESULT SetOutput(const std::string& id) {
-    if (id.empty()) return voice_->SetOutput(nullptr, FALSE);
-    if (id.find('\0') != std::string::npos) return E_INVALIDARG;
-    const std::wstring wide = WideFromUtf8(id);
-    if (wide.empty()) return E_INVALIDARG;
-    ComPtr<ISpObjectToken> token;
-    HRESULT result = FindToken(SPCAT_AUDIOOUT, wide, token);
-    return FAILED(result) ? result : voice_->SetOutput(token.Get(), TRUE);
+    HRESULT result = S_OK;
+    if (id.empty()) {
+      result = voice_->SetOutput(nullptr, FALSE);
+    } else {
+      if (id.find('\0') != std::string::npos) return E_INVALIDARG;
+      const std::wstring wide = WideFromUtf8(id);
+      if (wide.empty()) return E_INVALIDARG;
+      ComPtr<ISpObjectToken> token;
+      result = FindToken(SPCAT_AUDIOOUT, wide, token);
+      if (SUCCEEDED(result)) result = voice_->SetOutput(token.Get(), TRUE);
+    }
+    if (SUCCEEDED(result)) NegotiateAudioFormat();
+    return result;
   }
 
   HRESULT SetRate(std::uint32_t value) {
@@ -347,6 +357,11 @@ class SapiBridge {
   }
 
  private:
+  void NegotiateAudioFormat() {
+    ComPtr<ISpStreamFormat> stream;
+    if (SUCCEEDED(voice_->GetOutputStream(&stream))) voice_->SetOutput(stream.Get(), TRUE);
+  }
+
   ComPtr<ISpVoice> voice_;
 };
 
