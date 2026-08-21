@@ -227,6 +227,14 @@ module EltenLink
         true
       end
 
+      def set_threads_closed(client, thread_ids:, closed:)
+        client.api_data("PATCH", "/api/v1/forum/threads/closed", {
+          "threads" => thread_ids,
+          "closed" => truth_param(closed)
+        })
+        true
+      end
+
       def set_thread_pinned(client, thread_id:, pinned:)
         client.api_data("PATCH", "/api/v1/forum/#{thread_id.to_i}", { "pinned" => truth_param(pinned) })
         true

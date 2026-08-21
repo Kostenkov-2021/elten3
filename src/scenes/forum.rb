@@ -2462,56 +2462,40 @@ if forum_attempt(nil) {
 
   def moderation_mass_threads
     mthreads = @sthreads.select{|m|(Session.moderator == 1 && m.forum.group.recommended) || m.forum.group.role == 2}
-index = mthreads.find_index(@sthreads[@thrsel.index])||0
-form = Form.new([
-lst_threads = ListBox.new(mthreads.map{|m|m.name}, header: p_("Forum", "Threads"), index: index, flags: ListBox::Flags::MultiSelection),
-btn_move = Button.new(p_("Forum", "Move")),
-btn_offer = Button.new(p_("Forum", "Offer")),
-btn_delete = Button.new(p_("Forum", "Delete")),
-btn_cancel = Button.new(_("Cancel"))
-])
-form.cancel_button = btn_cancel
-btn_cancel.on(:press) {
-form.resume
-@thrsel.focus
-}
-btn_move.on(:press) {
-selected=lst_threads.multiselections.map{|i|mthreads[i]}
-if moderation_mass_threads_proceed(selected, :move)
-              form.resume
-  getcache
-              @lastthreadindex = @thrsel.index
-              threadsmain(@forum)
-            else
-              form.focus
-              end
-}
-btn_delete.on(:press) {
-selected=lst_threads.multiselections.map{|i|mthreads[i]}
-if moderation_mass_threads_proceed(selected, :delete)
-              form.resume
-  getcache
-              @lastthreadindex = @thrsel.index
-              threadsmain(@forum)
-              else
-              form.focus
-              end
-}
-btn_offer.on(:press) {
-selected=lst_threads.multiselections.map{|i|mthreads[i]}
-if moderation_mass_threads_proceed(selected, :offer)
-              form.resume
-  getcache
-              @lastthreadindex = @thrsel.index
-              threadsmain(@forum)
-              else
-              form.focus
-              end
-}
+    index = mthreads.find_index(@sthreads[@thrsel.index]) || 0
+    form = Form.new([
+      lst_threads = ListBox.new(mthreads.map(&:name), header: p_("Forum", "Threads"), index: index, flags: ListBox::Flags::MultiSelection),
+      btn_move = Button.new(p_("Forum", "Move")),
+      btn_offer = Button.new(p_("Forum", "Offer")),
+      btn_open = Button.new(p_("Forum", "Open threads")),
+      btn_close = Button.new(p_("Forum", "Close threads")),
+      btn_delete = Button.new(p_("Forum", "Delete")),
+      btn_cancel = Button.new(_("Cancel"))
+    ])
+    form.cancel_button = btn_cancel
+    btn_cancel.on(:press) {
+      form.resume
+      @thrsel.focus
+    }
+    proceed = Proc.new { |action|
+      selected = lst_threads.multiselections.map { |i| mthreads[i] }
+      if moderation_mass_threads_proceed(selected, action)
+        form.resume
+        getcache
+        @lastthreadindex = @thrsel.index
+        threadsmain(@forum)
+      else
+        form.focus
+      end
+    }
+    btn_move.on(:press) { proceed.call(:move) }
+    btn_offer.on(:press) { proceed.call(:offer) }
+    btn_open.on(:press) { proceed.call(:open) }
+    btn_close.on(:press) { proceed.call(:close) }
+    btn_delete.on(:press) { proceed.call(:delete) }
+    form.wait
+  end
 
-form.wait
-    end
-  
 def moderation_mass_threads_proceed(threads, action)
   if threads.size==0
     alert(p_("Forum", "No threads selected"))
@@ -2529,6 +2513,12 @@ def moderation_mass_threads_proceed(threads, action)
       when :offer
         header = np_("Forum", "%{count} thread to move", "%{count} threads to offer", threads.size)%{:count=>threads.size}
 label=p_("Forum", "Offer")
+      when :open
+        header = np_("Forum", "%{count} thread to open", "%{count} threads to open", threads.size)%{:count=>threads.size}
+        label=p_("Forum", "Open threads")
+      when :close
+        header = np_("Forum", "%{count} thread to close", "%{count} threads to close", threads.size)%{:count=>threads.size}
+        label=p_("Forum", "Close threads")
         end
 form = Form.new([
 lst_threads = ListBox.new(threads.map{|t|t.name}, header: header),
@@ -2587,6 +2577,15 @@ forum_fetch([], nil) { EltenLink::Forum.group_members(elten_link, group_id: @sth
                 ret=true
                 form.resume
                 end
+        end
+      when :open, :close
+        closed = action == :close
+        if forum_attempt(nil) {
+          EltenLink::Forum.set_threads_closed(elten_link, thread_ids: threads.map(&:id), closed: closed)
+        }
+        alert(closed ? p_("Forum", "Selected threads have been closed.") : p_("Forum", "Selected threads have been opened."))
+        ret=true
+        form.resume
               else
                 @thrsel.focus
                 end
@@ -2595,7 +2594,7 @@ forum_fetch([], nil) { EltenLink::Forum.group_members(elten_link, group_id: @sth
 form.wait
         return ret
     end  
-  
+
     def newthread
     type=@forumtype
     if type==2
