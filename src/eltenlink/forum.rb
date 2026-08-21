@@ -27,7 +27,7 @@ module EltenLink
   ForumUserPostsPage = Struct.new(:posts, :more, :next_before, keyword_init: true)
   ForumThreadStats = Struct.new(:followers, :mentions, :authors, :readers, :readers_below_half, :readers_above_90, :readers_all, keyword_init: true)
   ForumSearchResult = Struct.new(:thread, :count, keyword_init: true)
-  ForumMember = Struct.new(:user, :role, :inherit, keyword_init: true)
+  ForumMember = Struct.new(:user, :role, :inherit, :totime, keyword_init: true)
   ForumTag = Struct.new(:id, :label, :taglist, keyword_init: true)
   ForumGroupSize = Struct.new(:audio, :attachments, :text, keyword_init: true) do
     def total
@@ -414,7 +414,14 @@ module EltenLink
 
       def group_members(client, group_id:)
         data = client.api_data("GET", "/api/v1/forum/group/#{group_id.to_i}/members")
-        data["members"].to_a.map { |row| ForumMember.new(user: row["user"].to_s, role: row["role"].to_i, inherit: truthy?(row["inherit"])) }
+        data["members"].to_a.map do |row|
+          ForumMember.new(
+            user: row["user"].to_s,
+            role: row["role"].to_i,
+            inherit: truthy?(row["inherit"]),
+            totime: row["totime"].to_i
+          )
+        end
       end
 
       def group_most_active_members(client, group_id:)
@@ -472,10 +479,11 @@ module EltenLink
         data["role"].to_i
       end
 
-      def update_member(client, group_id:, user:, action:, inherit: nil)
+      def update_member(client, group_id:, user:, action:, inherit: nil, totime: nil)
         client.api_data("PATCH", "/api/v1/forum/group/#{group_id.to_i}/members/#{user.to_s.urlenc}", clean_hash(
           "action" => action,
-          "inherit" => inherit.nil? ? nil : truth_param(inherit)
+          "inherit" => inherit.nil? ? nil : truth_param(inherit),
+          "totime" => totime
         ))
         true
       end

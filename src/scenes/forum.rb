@@ -68,6 +68,29 @@ end
 
 class Scene_Forum
   include ForumSceneClient
+
+  def select_group_ban_expiry
+    duration = select_action(
+      [
+        [:indefinite, p_("Ban", "Indefinitely")],
+        [24 * 60 * 60, p_("Ban", "A day")],
+        [3 * 24 * 60 * 60, p_("Ban", "Three days")],
+        [7 * 24 * 60 * 60, p_("Ban", "A week")],
+        [2 * 7 * 24 * 60 * 60, p_("Ban", "2 weeks")],
+        [30 * 24 * 60 * 60, p_("Ban", "30 days")],
+        [3 * 30 * 24 * 60 * 60, p_("Ban", "90 days")],
+        [6 * 30 * 24 * 60 * 60, p_("Ban", "180 days")],
+        [365 * 24 * 60 * 60, p_("Ban", "A year")],
+        [5 * 365 * 24 * 60 * 60, p_("Ban", "5 years")]
+      ],
+      header: p_("Forum", "Ban duration"),
+      start: :indefinite,
+      cancel: nil
+    )
+    return nil if duration.nil?
+
+    duration == :indefinite ? 0 : Time.now.to_i + duration
+  end
   include ForumFeaturedThreads
   SORT_DEFAULT = "default"
   SORT_NAME_ASCENDING = "name_ascending"
@@ -1211,23 +1234,30 @@ loop do
       users=[]
       roles=[]
       inherits=[]
+      bantimes=[]
 rfr=Proc.new {
       members = forum_fetch([], nil) { EltenLink::Forum.group_members(elten_link, group_id: group.id) }
       selt = []
       users = []
       roles = []
       inherits=[]
+      bantimes=[]
       for member in members
         users.push(member.user)
         roles.push(member.role)
         inherits.push(member.inherit)
+        bantimes.push(member.totime)
         t = users.last
         if group.founder == users.last
           t += " (#{p_("Forum", "Administrator")})"
         elsif roles.last == 2
           t += " (#{p_("Forum", "Moderator")})"
         elsif roles.last == 3
-          t += " (#{p_("Forum", "Banned")})"
+          if bantimes.last.to_i.positive?
+            t += " (#{p_("Forum", "Banned until %{date}") % { date: format_date(Time.at(bantimes.last.to_i)) }})"
+          else
+            t += " (#{p_("Forum", "Banned indefinitely")})"
+          end
         elsif roles.last == 5
           t += " (#{p_("Forum", "Invited")})"
         elsif roles.last == 4
@@ -1249,9 +1279,9 @@ chpr=Proc.new{|cat|
 rfr.call
 sel.focus
 }
-chus=Proc.new{|cat|
+chus=Proc.new{|cat, totime = nil|
               if forum_attempt(nil) {
-                EltenLink::Forum.update_member(elten_link, group_id: group.id, user: users[sel.index], action: cat)
+                EltenLink::Forum.update_member(elten_link, group_id: group.id, user: users[sel.index], action: cat, totime: totime)
               }
                 alert(p_("Forum", "Privileges of this user have been changed."))
               end
@@ -1319,7 +1349,10 @@ if users[sel.index]!=Session.name
       when 1
                     if group.open && group.public
                       menu.option(p_("Forum", "Ban from this group")) {
-                                        confirm(p_("Forum", "Are you sure you want to ban %{user} from %{groupname}?")%{:user=>users[sel.index], :groupname=>group.name}) {chus.call("ban")}
+                        totime = select_group_ban_expiry
+                        unless totime.nil?
+                          confirm(p_("Forum", "Are you sure you want to ban %{user} from %{groupname}?")%{:user=>users[sel.index], :groupname=>group.name}) {chus.call("ban", totime)}
+                        end
                       }
                     else
                       menu.option(p_("Forum", "Kick")) {
