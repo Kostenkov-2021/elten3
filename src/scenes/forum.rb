@@ -1,5 +1,5 @@
 # A part of Elten - EltenLink / Elten Network desktop client.
-# Copyright (C) 2014-2025 Dawid Pieper
+# Copyright (C) 2014-2026 Dawid Pieper
 # Elten is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3. 
 # Elten is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 # You should have received a copy of the GNU General Public License along with Elten. If not, see <https://www.gnu.org/licenses/>. 
@@ -655,6 +655,22 @@ return result
     menu.option(p_("Forum", "Open")) {
       groupopen(@grpsel.index, type)
     }
+    if type == 0
+      thread_scope = case @grpsel.index
+      when @grpheadindex - 3
+        @threads.select(&:followed)
+      when @grpheadindex - 2
+        followed_forum_ids = @forums.select(&:followed).map(&:id)
+        @threads.select { |thread| followed_forum_ids.include?(thread.forum.id) }
+      when @grpheadindex - 1
+        @threads.select(&:marked)
+      end
+      if thread_scope != nil
+        menu.option(p_("Forum", "Search"), nil, "f") {
+          open_forum_search(thread_scope, @grpsel)
+        }
+      end
+    end
     if @grpsel.index == @grpheadindex + @sgroups.size + 9
       menu.option(p_("Forum", "Add received mentions to quick actions"), nil, "q") {
         if QuickActions.create(Scene_Forum, p_("Forum", "Received mentions"), [nil, Scene_Forum.mentions_target])
@@ -1468,6 +1484,8 @@ chk_transcriptions.checked=false if !requires_premiumpackage("courier")
             result.groupid=obj.id
             elsif obj.is_a?(Struct_Forum_Forum)
             result.forumid=obj.id
+            elsif obj.is_a?(Array)
+            result.threadids=obj.map { |thread| thread.id }.uniq
             end
         result.transcriptions=true if chk_transcriptions.checked
             form.resume
@@ -1475,6 +1493,16 @@ chk_transcriptions.checked=false if !requires_premiumpackage("courier")
     form.wait
     return result
     end
+
+  def open_forum_search(scope=nil, fallback_control=nil)
+    @query=searcher_getquery(scope)
+    if @query != nil
+      usequery
+      threadsmain(-3)
+    elsif fallback_control != nil
+      fallback_control.focus
+    end
+  end
 
   def forumsmain(group = -1)
     group = @group if group == -1
@@ -1710,15 +1738,11 @@ form.focus
         end
         end
       }
-            menu.option(p_("Forum", "Search"), nil, "f") {
-        @query=searcher_getquery(@sforums[@frmsel.index])
-        if @query != nil
-        usequery
-        threadsmain(-3)
-      else
-        @frmsel.focus
-      end
+      if @group != -5
+        menu.option(p_("Forum", "Search"), nil, "f") {
+          open_forum_search(@sforums[@frmsel.index], @frmsel)
         }
+      end
       menu.option(p_("Forum", "Mark this forum as read"), nil, "w") {
         if @sforums[@frmsel.index].posts - @sforums[@frmsel.index].readposts < 100 or confirm(p_("Forum", "All posts on this forum will be marked as read. Are you sure you want to continue?"))
           if forum_attempt(nil) {
@@ -2102,7 +2126,7 @@ threadopen(@thrsel.index)
   def threadopen(index)
     g=@sthreads[index].forum.group
     groupmotddlg(g, false) if g.hasnewmotd && (g.role == 1 || g.role == 2)
-            if @group == -5
+            if @group == -5 && @forum != -3
           $scene = Scene_Forum_Thread.new(@sthreads[index], -5, @cat, @query, nil, nil, @thrsel.tag)
         else
           if @forum == -7 or @forum==-11
@@ -2850,6 +2874,10 @@ if flp[0..3] != "OggS"
             @results.push(thread.id) if thread!=nil
         end
     elsif @query.is_a?(Struct_Forum_SearchQuery)
+            scoped_threads = nil
+            if @query.threadids != nil
+              scoped_threads = @query.threadids.each_with_object({}) { |threadid, result| result[threadid.to_i] = true }
+            end
             if @query.phrase_in.include?(:content)
       sr = forum_fetch([], nil) { EltenLink::Forum.search(elten_link, query: @query.phrase, transcriptions: @query.transcriptions) }
       ids += sr.map(&:thread)
@@ -2864,11 +2892,15 @@ if flp[0..3] != "OggS"
           suc_se=false
           suc_se=true if @query.phrase_in.include?(:name) && (phr=="" || thread.name.downcase.include?(phr))
           suc_se=true if ids.include?(thread.id)
-          suc_th=true if @query.thread_in.include?(:joined) && (thread.forum.group.role==1 || thread.forum.group.role==2)
-          suc_th=true if @query.thread_in.include?(:recommended) && thread.forum.group.recommended
-          suc_th=true if @query.thread_in.include?(:notjoined) && (thread.forum.group.role!=1 && thread.forum.group.role!=2)
-          suc_th=true if @query.groupid==thread.forum.group.id
-          suc_th=true if @query.forumid==thread.forum.id
+          if scoped_threads != nil
+            suc_th=scoped_threads.key?(thread.id)
+          else
+            suc_th=true if @query.thread_in.include?(:joined) && (thread.forum.group.role==1 || thread.forum.group.role==2)
+            suc_th=true if @query.thread_in.include?(:recommended) && thread.forum.group.recommended
+            suc_th=true if @query.thread_in.include?(:notjoined) && (thread.forum.group.role!=1 && thread.forum.group.role!=2)
+            suc_th=true if @query.groupid==thread.forum.group.id
+            suc_th=true if @query.forumid==thread.forum.id
+          end
           if suc_se && suc_th
           thread.id
         else
@@ -4376,13 +4408,14 @@ class Struct_Forum_Bookmark
   end
   
   class Struct_Forum_SearchQuery
-    attr_accessor :phrase, :phrase_in, :thread_in, :groupid, :forumid, :transcriptions
+    attr_accessor :phrase, :phrase_in, :thread_in, :groupid, :forumid, :threadids, :transcriptions
     def initialize(phrase)
       @phrase=phrase
       @thread_in=[:recommended, :joined]
       @phrase_in=[:title, :content]
       @groupid=nil
       @forumid=nil
+      @threadids=nil
       @transcriptions=false
       end
     end
