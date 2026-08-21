@@ -18,10 +18,14 @@ class SapiBridge
   STOP = 9
   STATUS = 10
   QUIT = 11
+  LIST_VOICES = 12
   PURGE_BEFORE_SPEAK = 2
   STATUS_MAX_AGE = 0.01
   SPEAK_START_GRACE = 0.25
   @manager_mutex = Mutex.new
+  @voices_mutex = Mutex.new
+
+  Voice = Struct.new(:id, :name, :language, :age, :gender, :vendor, :bitness, keyword_init: true)
 
   class Error < StandardError; end
   class CommandError < Error; end
@@ -190,6 +194,25 @@ class SapiBridge
       reader = PayloadReader.new(request(STATUS, "".b, 2.0))
       result = { :speaking => reader.uint32 != 0, :bookmark => reader.string }
       raise Error, "Trailing SAPI bridge status data" unless reader.done?
+      result
+    end
+
+    def voices
+      reader = PayloadReader.new(request(LIST_VOICES, "".b, 5.0))
+      count = reader.uint32
+      raise Error, "Invalid SAPI bridge voice count" if count > 16_384
+      result = Array.new(count) do
+        Voice.new(
+          :id => reader.string,
+          :name => reader.string,
+          :language => reader.string,
+          :age => reader.string,
+          :gender => reader.string,
+          :vendor => reader.string,
+          :bitness => bitness
+        )
+      end
+      raise Error, "Trailing SAPI bridge voice data" unless reader.done?
       result
     end
 
@@ -872,6 +895,12 @@ class SapiBridge
       call(nil) { |worker| worker.status }
     end
 
+    def voices
+      @voices_mutex.synchronize do
+        @voices ||= enumerate_voices.freeze
+      end
+    end
+
     def failed?
       call(false) { |worker| worker.failed? }
     end
@@ -893,6 +922,24 @@ class SapiBridge
 
     def manager_mutex
       @manager_mutex
+    end
+
+    def enumerate_voices
+      watchdog = Watchdog.new
+      bridge_candidates.flat_map do |bitness, path|
+        client = nil
+        begin
+          client = Client.new(path, bitness, watchdog)
+          client.voices
+        rescue Exception => e
+          Log.warning("Could not enumerate #{bitness}-bit SAPI voices: #{e.class}: #{e.message}") if defined?(Log)
+          []
+        ensure
+          client.close rescue nil if client != nil
+        end
+      end
+    ensure
+      watchdog.close rescue nil if watchdog != nil
     end
 
     def bridge_bitnesses

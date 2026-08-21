@@ -11,6 +11,7 @@
 
 #include <cstdint>
 #include <string>
+#include <utility>
 #include <vector>
 
 #define ELTEN_SAPI_BRIDGE_MAGIC 0xACEDFEEDu
@@ -35,6 +36,7 @@ enum class Command : std::uint8_t {
   Stop = 9,
   Status = 10,
   Quit = 11,
+  ListVoices = 12,
 };
 
 bool ReadAll(HANDLE handle, void* data, std::uint32_t size) {
@@ -179,6 +181,21 @@ std::wstring TokenId(ISpObjectToken* token) {
   return result;
 }
 
+std::wstring DataKeyString(ISpDataKey* key, const wchar_t* name) {
+  LPWSTR value = nullptr;
+  if (key == nullptr || FAILED(key->GetStringValue(name, &value)) || value == nullptr) return {};
+  std::wstring result;
+  CopySapiString(value, result);
+  CoTaskMemFree(value);
+  return result;
+}
+
+std::wstring TokenAttribute(ISpObjectToken* token, const wchar_t* name) {
+  ComPtr<ISpDataKey> attributes;
+  if (token == nullptr || FAILED(token->OpenKey(L"Attributes", &attributes))) return {};
+  return DataKeyString(attributes.Get(), name);
+}
+
 HRESULT Enumerate(const wchar_t* category_id, ComPtr<IEnumSpObjectTokens>& tokens) {
   ComPtr<ISpObjectTokenCategory> category;
   HRESULT result = CoCreateInstance(CLSID_SpObjectTokenCategory, nullptr, CLSCTX_INPROC_SERVER,
@@ -284,6 +301,49 @@ class SapiBridge {
     AppendString(out, Utf8FromWide(bookmark_value));
     CoTaskMemFree(bookmark);
     return result;
+  }
+
+  HRESULT ListVoices(std::vector<unsigned char>& out) {
+    struct VoiceInfo {
+      std::wstring id;
+      std::wstring name;
+      std::wstring language;
+      std::wstring age;
+      std::wstring gender;
+      std::wstring vendor;
+    };
+
+    ComPtr<IEnumSpObjectTokens> tokens;
+    HRESULT result = Enumerate(SPCAT_VOICES, tokens);
+    if (FAILED(result)) return result;
+    std::vector<VoiceInfo> voices;
+    for (;;) {
+      ComPtr<ISpObjectToken> token;
+      ULONG fetched = 0;
+      result = tokens->Next(1, &token, &fetched);
+      if (result == S_FALSE || fetched == 0) break;
+      if (FAILED(result)) return result;
+      VoiceInfo info;
+      info.id = TokenId(token.Get());
+      if (info.id.empty()) continue;
+      info.name = DataKeyString(token.Get(), nullptr);
+      info.language = TokenAttribute(token.Get(), L"Language");
+      info.age = TokenAttribute(token.Get(), L"Age");
+      info.gender = TokenAttribute(token.Get(), L"Gender");
+      info.vendor = TokenAttribute(token.Get(), L"Vendor");
+      voices.push_back(std::move(info));
+    }
+
+    AppendU32(out, static_cast<std::uint32_t>(voices.size()));
+    for (const VoiceInfo& info : voices) {
+      AppendString(out, Utf8FromWide(info.id));
+      AppendString(out, Utf8FromWide(info.name));
+      AppendString(out, Utf8FromWide(info.language));
+      AppendString(out, Utf8FromWide(info.age));
+      AppendString(out, Utf8FromWide(info.gender));
+      AppendString(out, Utf8FromWide(info.vendor));
+    }
+    return S_OK;
   }
 
  private:
@@ -397,6 +457,9 @@ int main() {
           break;
         case Command::Status:
           result = reader.Done() ? bridge.Status(response) : E_INVALIDARG;
+          break;
+        case Command::ListVoices:
+          result = reader.Done() ? bridge.ListVoices(response) : E_INVALIDARG;
           break;
         case Command::Quit:
           result = reader.Done() ? S_OK : E_INVALIDARG;

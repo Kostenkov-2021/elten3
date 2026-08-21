@@ -13,7 +13,7 @@ unless defined?(Fiddle)
 end
 
 class Sapi < SpeechOutput
-  Voice = Struct.new(:id, :name, :language, :age, :gender, :vendor) do
+  Voice = Struct.new(:id, :name, :language, :age, :gender, :vendor, :backend, :bitness) do
     def voiceid
       return "" if id == nil
       id.split(/[\\\/]/).last
@@ -162,32 +162,40 @@ class Sapi < SpeechOutput
     end
 
     def set_voice(index)
-      tokens = voice_tokens
-      return 1 if voice == nil || index.to_i < 0 || index.to_i >= tokens.size
-      selected = tokens[index.to_i]
+      available = available_voices
+      return 1 if voice == nil || index.to_i < 0 || index.to_i >= available.size
+      selected = available[index.to_i]
       previous = voice.Voice rescue nil
       if @voice_backend == :bridge
         SapiBridge.stop
       else
         voice.Speak("", SPF_ASYNC | SPF_PURGEBEFORESPEAK | SPF_IS_NOT_XML) rescue nil
       end
-      begin
-        voice.Voice = selected
-        negotiate_native_audio_format
-        voice.Speak("", SPF_IS_NOT_XML)
-      rescue Exception
-        unless defined?(SapiBridge) && SapiBridge.set_voice(selected.Id.to_s)
-          voice.Voice = previous rescue nil if previous != nil
-          return 1
-        end
+      if selected.backend == :bridge
+        return 1 unless defined?(SapiBridge) && SapiBridge.set_voice(selected.id.to_s)
         @voice_backend = :bridge
-        Log.debug("Queued SAPI bridge activation for #{selected.Id}") if defined?(Log)
+        Log.debug("Queued #{selected.bitness}-bit SAPI bridge activation for #{selected.id}") if defined?(Log)
       else
-        SapiBridge.release if defined?(SapiBridge)
-        @voice_backend = :native
+        token = voice_tokens.find { |candidate| candidate.Id.to_s.casecmp?(selected.id.to_s) }
+        return 1 if token == nil
+        begin
+          voice.Voice = token
+          negotiate_native_audio_format
+          voice.Speak("", SPF_IS_NOT_XML)
+        rescue Exception
+          unless defined?(SapiBridge) && SapiBridge.set_voice(selected.id.to_s)
+            voice.Voice = previous rescue nil if previous != nil
+            return 1
+          end
+          @voice_backend = :bridge
+          Log.debug("Queued SAPI bridge activation for #{selected.id}") if defined?(Log)
+        else
+          SapiBridge.release if defined?(SapiBridge)
+          @voice_backend = :native
+        end
       end
       @voice_index = index.to_i
-      @voice_id = selected.Id.to_s
+      @voice_id = selected.id.to_s
       reapply_device
       set_rate(@rate) if @rate != nil
       set_volume(@volume) if @volume != nil
@@ -277,14 +285,54 @@ class Sapi < SpeechOutput
           token.GetAttribute("Language").to_s,
           token.GetAttribute("Age").to_s,
           token.GetAttribute("Gender").to_s,
-          token.GetAttribute("Vendor").to_s
+          token.GetAttribute("Vendor").to_s,
+          :native,
+          nil
         )
       rescue Exception
         nil
       end.compact
     end
 
+    def bridge_voices
+      @bridge_voices ||= if defined?(SapiBridge)
+        SapiBridge.voices.map do |voice|
+          Voice.new(
+            voice.id,
+            voice.name,
+            voice.language,
+            voice.age,
+            voice.gender,
+            voice.vendor,
+            :bridge,
+            voice.bitness
+          )
+        end
+      else
+        []
+      end
+    rescue Exception => e
+      Log.warning("Could not load bridged SAPI voices: #{e.class}: #{e.message}") if defined?(Log)
+      []
+    end
+
+    def available_voices
+      seen = {}
+      (native_voices + bridge_voices).each_with_object([]) do |voice, result|
+        id = voice.id.to_s.downcase
+        next if id == "" || seen[id]
+        seen[id] = true
+        result << voice
+      end
+    end
+
     def voices
+      available_voices.map do |voice|
+        SpeechOutput::Voice.new(id: voice.voiceid, name: voice.name, output: self, native: voice)
+      end
+    end
+
+    def stream_voices
       native_voices.map do |voice|
         SpeechOutput::Voice.new(id: voice.voiceid, name: voice.name, output: self, native: voice)
       end
@@ -360,7 +408,7 @@ class Sapi < SpeechOutput
     def apply_voice(voice)
       voice = voice.to_s
       reset
-      native_voices.each_with_index do |sapi_voice, index|
+      available_voices.each_with_index do |sapi_voice, index|
         if sapi_voice.voiceid == voice
           set_voice(index)
           return true
@@ -370,7 +418,7 @@ class Sapi < SpeechOutput
     end
 
     def apply_default_voice(lcid = current_lcid)
-      native_voices.each_with_index do |sapi_voice, index|
+      available_voices.each_with_index do |sapi_voice, index|
         if sapi_voice.language.to_i(16) == lcid.to_i
           set_voice(index)
           return true
