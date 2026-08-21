@@ -292,7 +292,6 @@ def notifications_load(fc=false, focus_policy: :keep_current)
   end
   @@notification_index = notification_reload_index(@notification_groups, selected_notification_key, @@notification_index)
   @notifications_sel = TableBox.new(notification_columns, notification_rows(@notification_groups), index: @@notification_index, header: p_("Notifications", "Notifications"), quiet: true)
-  apply_notification_group_states(@notifications_sel, @notification_groups)
   @notifications_sel.bind_context { |menu| notifications_context(menu) }
   if jump_to_notifications
     @@focus = :notifications
