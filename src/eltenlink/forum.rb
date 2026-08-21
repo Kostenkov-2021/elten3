@@ -724,6 +724,8 @@ module EltenLink
         post.likes = row["likes"].to_i
         post.format = row["format"].to_i
         post.transcription = row["transcription"].to_s
+        post.banned = truthy?(row["banned"])
+        post.archived = truthy?(row["archived"])
         post
       end
 
