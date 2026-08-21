@@ -640,7 +640,7 @@ module EltenLink
           group.created = row["created"].to_i
           group.hasregulations = truthy?(row["hasregulations"])
           group.hasmotd = truthy?(row["hasmotd"])
-          group.hasnewmotd = truthy?(row["hasnewmotd"])
+          group.hasnewmotd = group.hasmotd && truthy?(row["hasnewmotd"])
           group.preventpolls = truthy?(row["preventpolls"])
           group.preventattachments = truthy?(row["preventattachments"])
           group.allowpostreporting = truthy?(row["allowpostreporting"])

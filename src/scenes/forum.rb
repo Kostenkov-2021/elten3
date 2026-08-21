@@ -915,11 +915,11 @@ if (((@sgroups[@grpsel.index - @grpheadindex].role==1 || (@sgroups[@grpsel.index
   
   def groupmotd(group)
     text = forum_fetch("", nil) { EltenLink::Forum.group_motd(elten_link, group_id: group.id) }
-    mark_group_motd_read_locally(group) if text != ""
+    update_group_motd_state_locally(group, has_motd: true, has_new_motd: false) if text != ""
     return text
     end
 
-  def mark_group_motd_read_locally(group)
+  def update_group_motd_state_locally(group, has_motd:, has_new_motd:)
     group_id = group.id.to_i
     groups = [group]
     groups.concat(@groups.to_a)
@@ -928,7 +928,10 @@ if (((@sgroups[@grpsel.index - @grpheadindex].role==1 || (@sgroups[@grpsel.index
     groups.concat(@threads.to_a.map { |thread| thread.forum.group })
     groups.concat(@sthreads.to_a.map { |thread| thread.forum.group })
     groups.compact.each do |candidate|
-      candidate.hasnewmotd = false if candidate.id.to_i == group_id
+      next if candidate.id.to_i != group_id
+
+      candidate.hasmotd = has_motd
+      candidate.hasnewmotd = has_new_motd
     end
   end
 
@@ -946,10 +949,12 @@ motd = groupmotd(group)
               form.update
               break if key_pressed?(:key_escape) or form.fields[2].pressed?
               if form.fields[1]!=nil && form.fields[1].pressed?
+                text = form.fields[0].text
                 if forum_attempt(nil) {
-                  EltenLink::Forum.update_group_motd(elten_link, group_id: group.id, text: form.fields[0].text)
+                  EltenLink::Forum.update_group_motd(elten_link, group_id: group.id, text: text)
                 }
-                  group.hasnewmotd=true
+                  has_motd = text != ""
+                  update_group_motd_state_locally(group, has_motd: has_motd, has_new_motd: has_motd)
                   alert(p_("Forum", "Message of the day updated"))
                                   break
                 end
