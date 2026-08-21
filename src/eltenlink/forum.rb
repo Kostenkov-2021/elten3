@@ -320,8 +320,16 @@ module EltenLink
         true
       end
 
-      def move_posts(client, post_ids:, thread_id:)
-        client.api_data("PATCH", "/api/v1/forum/posts/move", { "posts" => post_ids, "destination_thread" => thread_id })
+      def move_posts(client, post_ids:, thread_id: nil, before_post_id: nil)
+        if thread_id.nil? == before_post_id.nil?
+          raise ArgumentError, "exactly one post move destination is required"
+        end
+
+        client.api_data("PATCH", "/api/v1/forum/posts/move", clean_hash(
+          "posts" => post_ids,
+          "destination_thread" => thread_id,
+          "destination_post" => before_post_id
+        ))
         true
       end
 
@@ -332,6 +340,14 @@ module EltenLink
 
       def set_post_locked(client, post_id:, locked:)
         client.api_data("PATCH", "/api/v1/forum/post/#{post_id.to_i}/locked", { "locked" => truth_param(locked) })
+        true
+      end
+
+      def set_posts_locked(client, post_ids:, locked:)
+        client.api_data("PATCH", "/api/v1/forum/posts/locked", {
+          "posts" => post_ids,
+          "locked" => truth_param(locked)
+        })
         true
       end
 

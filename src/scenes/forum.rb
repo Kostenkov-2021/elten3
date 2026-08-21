@@ -3775,7 +3775,10 @@ if post.edited && !post.locked
     form = Form.new([
     lst_posts = ListBox.new(@posts.each_with_index.map{|ps,index|(index+1).to_s+": "+ps.author+": "+(ps.transcription.strip!="" ? ps.transcription[0...5000] : ps.post[0...5000])}, header: p_("Forum", "Posts"), index: @form.index/3, flags: ListBox::Flags::MultiSelection),
     edt_post = EditBox.new(p_("Forum", "Post content"), type: EditBox::Flags::ReadOnly, text: ""),
-    btn_move = Button.new(p_("Forum", "Move")),
+    btn_move = Button.new(p_("Forum", "Move to another forum")),
+    btn_reorder = Button.new(p_("Forum", "Move within this thread")),
+    btn_lock = Button.new(p_("Forum", "Lock post editing")),
+    btn_unlock = Button.new(p_("Forum", "Unlock post editing")),
     btn_delete = Button.new(p_("Forum", "Delete")),
 btn_cancel = Button.new(_("Cancel"))
     ])
@@ -3795,9 +3798,9 @@ end
     form.resume
     @form.focus
     }
-btn_move.on(:press) {
-selected=lst_posts.multiselections.map{|i|@posts[i]}
-if moderation_mass_posts_proceed(selected, :move)
+proceed = Proc.new { |action|
+  selected=lst_posts.multiselections.map{|i|@posts[i]}
+  if moderation_mass_posts_proceed(selected, action)
   form.resume
                     @lastpostindex = @form.index
                   main
@@ -3805,16 +3808,11 @@ if moderation_mass_posts_proceed(selected, :move)
               form.focus
   end
 }
-btn_delete.on(:press) {
-selected=lst_posts.multiselections.map{|i|@posts[i]}
-if moderation_mass_posts_proceed(selected, :delete)
-  form.resume
-                    @lastpostindex = @form.index
-                  main
-                  else
-              form.focus
-  end
-}
+btn_move.on(:press) {proceed.call(:move)}
+btn_reorder.on(:press) {proceed.call(:reorder)}
+btn_lock.on(:press) {proceed.call(:lock)}
+btn_unlock.on(:press) {proceed.call(:unlock)}
+btn_delete.on(:press) {proceed.call(:delete)}
     form.wait
     end
 
@@ -3827,8 +3825,17 @@ def moderation_mass_posts_proceed(posts, action)
   label = ""
   case action
   when :move
-    header = np_("Forum", "%{count} post to move", "%{count} posts to move", posts.size)%{:count=>posts.size}
-    label=p_("Forum", "Move")
+    header = np_("Forum", "%{count} post to move to another forum", "%{count} posts to move to another forum", posts.size)%{:count=>posts.size}
+    label=p_("Forum", "Move to another forum")
+    when :reorder
+      header = np_("Forum", "%{count} post to move within this thread", "%{count} posts to move within this thread", posts.size)%{:count=>posts.size}
+      label=p_("Forum", "Move within this thread")
+    when :lock
+      header = np_("Forum", "%{count} post to lock editing", "%{count} posts to lock editing", posts.size)%{:count=>posts.size}
+      label=p_("Forum", "Lock post editing")
+    when :unlock
+      header = np_("Forum", "%{count} post to unlock editing", "%{count} posts to unlock editing", posts.size)%{:count=>posts.size}
+      label=p_("Forum", "Unlock post editing")
     when :delete
       header = np_("Forum", "%{count} post to delete", "%{count} posts to delete", posts.size)%{:count=>posts.size}
       label=p_("Forum", "Delete")
@@ -3880,18 +3887,50 @@ when :move
               if forum_attempt(nil) {
                 EltenLink::Forum.move_posts(elten_link, post_ids: posts.map(&:id), thread_id: mthreads[destination].id)
               }
-            alert(p_("Forum", "The posts have been moved."))
-            ret=true
-            form.resume
+                alert(p_("Forum", "The posts have been moved."))
+                ret=true
+                form.resume
               end
             end
+  when :reorder
+    selected_ids = posts.map(&:id)
+    selected_lookup = selected_ids.to_h { |id| [id, true] }
+    positions = @posts.each_with_index.to_h { |post, index| [post.id, index] }
+    destinations = @posts.reject { |post| selected_lookup.key?(post.id) }
+    options = destinations.map do |post|
+      content = post.transcription.strip!="" ? post.transcription : post.post
+      (positions[post.id] + 1).to_s + ": " + post.author + ": " + content[0...5000] + ": " + post.date
+    end
+    options.push(p_("Forum", "Move to end"))
+    first_selected_index = selected_ids.filter_map { |id| positions[id] }.min || 0
+    start_index = destinations.index { |post| positions[post.id] >= first_selected_index } || destinations.size
+    destination = selector(options, header: p_("Forum", "Place posts above"), start_index: start_index, cancel_index: -1)
+    if destination != -1
+      before_post_id = destination < destinations.size ? destinations[destination].id : 0
+      if forum_attempt(nil) {
+        EltenLink::Forum.move_posts(elten_link, post_ids: selected_ids, before_post_id: before_post_id)
+      }
+        alert(p_("Forum", "The posts have been repositioned."))
+        ret=true
+        form.resume
+      end
+    end
+  when :lock, :unlock
+    locked = action == :lock
+    if forum_attempt(nil) {
+      EltenLink::Forum.set_posts_locked(elten_link, post_ids: posts.map(&:id), locked: locked)
+    }
+      alert(locked ? p_("Forum", "Editing of the selected posts has been locked.") : p_("Forum", "Editing of the selected posts has been unlocked."))
+      ret=true
+      form.resume
+    end
   when :delete
     if forum_attempt(nil) {
       EltenLink::Forum.delete_posts(elten_link, post_ids: posts.map(&:id))
     }
-  alert(p_("Forum", "The posts have been deleted."))
-            ret=true
-            form.resume
+      alert(p_("Forum", "The posts have been deleted."))
+      ret=true
+      form.resume
     end
       end
   }
