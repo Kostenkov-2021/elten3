@@ -43,6 +43,21 @@ module ForumSceneClient
     }.fetch(code.to_s, code.to_s)
   end
 
+  def forum_report_status_name(status)
+    case status.to_i
+    when 1
+      p_("Forum", "Accepted")
+    when 2
+      p_("Forum", "Rejected")
+    else
+      p_("Forum", "Solved")
+    end
+  end
+
+  def forum_report_resolution_options
+    [[2, p_("Forum", "Rejected")], [1, p_("Forum", "Accepted")]]
+  end
+
   def log_forum_error(error)
 
     details = [
@@ -127,6 +142,10 @@ class Scene_Forum
     { "type" => "mentions" }
   end
 
+  def self.group_reports_target(group_id, report_id=nil)
+    { "type" => "group_reports", "groupid" => group_id.to_i, "reportid" => report_id.to_i }
+  end
+
   def initialize(pre = nil, preparam = nil, cat = 0, query = "", tc=nil, tag=nil)
     @pre = pre
     @preparam = preparam
@@ -144,6 +163,10 @@ class Scene_Forum
 
   def mentions_target?(target)
     target.is_a?(Hash) && target["type"].to_s == "mentions"
+  end
+
+  def group_reports_target?(target)
+    target.is_a?(Hash) && target["type"].to_s == "group_reports" && target["groupid"].to_i.positive?
   end
 
   def forum_target_id(target)
@@ -253,6 +276,8 @@ class Scene_Forum
         return threadsmain(-11)
       elsif forum_target?(@preparam)
         return threadsmain(forum_target_id(@preparam))
+      elsif group_reports_target?(@preparam)
+        return open_group_reports_target(@preparam)
       elsif @preparam.is_a?(Integer)
 return forumsmain(@preparam)
       else
@@ -1074,7 +1099,17 @@ end
               details.join("\n")
             end
 
-            def groupreports(group)
+            def open_group_reports_target(target)
+              group=@groups.to_a.find{|candidate|candidate.id==target["groupid"].to_i}
+              if group==nil
+                alert(p_("Forum", "The group is no longer available."))
+              else
+                groupreports(group, target["reportid"].to_i)
+              end
+              $scene=Scene_Main.new if $scene==self
+            end
+
+            def groupreports(group, initial_report_id=nil)
               all=false
               reports=[]
               all_reports=[]
@@ -1085,16 +1120,7 @@ end
                             reports=all_reports.dup
                             reports=all_reports.select{|r|!r.solved} if all==false
                             selt = reports.map{|r|
-                                                        st=p_("Forum", "Solved")
-                            st=p_("Forum", "Unsolved") if !r.solved
-                            if r.solved
-                            case r.status
-                            when 1
-                              st=p_("Forum", "Rejected")
-                              when 2
-                              st=p_("Forum", "Accepted")
-                              end
-                              end
+                            st=r.solved ? forum_report_status_name(r.status) : p_("Forum", "Unsolved")
                             thrname=nil
                             thr=@threads.find{|t|t.id==r.thread}
                             thrname=thr.name if thr!=nil
@@ -1106,6 +1132,14 @@ end
                             reports.each_with_index{|report,i|sel.set_row_state(i, forum_solved_status) if report.solved}
 }
                           rfr.call
+                          if initial_report_id.to_i>0
+                            if reports.none?{|report|report.id==initial_report_id.to_i} && all_reports.any?{|report|report.id==initial_report_id.to_i}
+                              all=true
+                              rfr.call
+                            end
+                            report_index=reports.find_index{|report|report.id==initial_report_id.to_i}
+                            sel.index=report_index if report_index!=nil
+                          end
                           sel.bind_context{|menu|
                           report=reports[sel.index]
                           if report!=nil
@@ -1164,8 +1198,9 @@ rfr.call
            
            def groupreportresolver(group, report)
              return if group==nil || report==nil || group.role!=2
+                          statuses=forum_report_resolution_options
                           fields=[
-                          lst_status = ListBox.new([p_("Forum", "Rejected"), p_("Forum", "Accepted")], header: p_("Forum", "Status")),
+                          lst_status = ListBox.new(statuses.map{|status|status[1]}, header: p_("Forum", "Status")),
                           edt_reason = EditBox.new(p_("Forum", "Optional comment"), type: EditBox::Flags::MultiLine, text: "", quiet: true)
                           ]
                           if report.suggestion_range.to_s.split(",").uniq.size>1
@@ -1189,7 +1224,7 @@ rfr.call
                           form.accept_button=btn_resolve
                           if edt_suggestion!=nil
                             update_suggestion=Proc.new {
-                              accepted=lst_status.index==1
+                              accepted=statuses[lst_status.index][0]==1
                               accepted ? form.show(chk_suggestion) : form.hide(chk_suggestion)
                               chk_suggestion.checked=false if !accepted
                               accepted && chk_suggestion.checked && details!="" ? form.show(edt_suggestion) : form.hide(edt_suggestion)
@@ -1200,9 +1235,10 @@ rfr.call
                           end
                           btn_cancel.on(:press) {form.resume}
                           btn_resolve.on(:press) {
-                          use_suggestion=lst_status.index==1 && chk_suggestion!=nil && chk_suggestion.checked
+                          status=statuses[lst_status.index][0]
+                          use_suggestion=status==1 && chk_suggestion!=nil && chk_suggestion.checked
                           resolved=forum_attempt(nil) {
-                            EltenLink::Forum.resolve_report(elten_link, group_id: group.id, report_id: report.id, status: lst_status.index + 1, reason: edt_reason.text, use_suggestion: use_suggestion)
+                            EltenLink::Forum.resolve_report(elten_link, group_id: group.id, report_id: report.id, status: status, reason: edt_reason.text, use_suggestion: use_suggestion)
                           }
                           if resolved
                             getcache if use_suggestion
