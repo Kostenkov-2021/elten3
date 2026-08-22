@@ -429,8 +429,13 @@ module EltenLink
         data["original"].to_s
       end
 
-      def report_post(client, post_id:, comment:)
-        client.api_data("POST", "/api/v1/forum/post/#{post_id.to_i}/reports", { "comment" => comment })
+      def report_post(client, post_id:, comment:, suggestion: nil, suggestion_flags: nil, suggestion_range: nil)
+        client.api_data("POST", "/api/v1/forum/post/#{post_id.to_i}/reports", clean_hash(
+          "comment" => comment,
+          "suggestion" => suggestion,
+          "suggestion_flags" => suggestion_flags,
+          "suggestion_range" => suggestion_range
+        ))
         true
       end
 
@@ -587,10 +592,11 @@ module EltenLink
         data["reports"].to_a.map { |row| build_report(row) }
       end
 
-      def resolve_report(client, group_id:, report_id:, status:, reason: nil)
+      def resolve_report(client, group_id:, report_id:, status:, reason: nil, use_suggestion: false)
         client.api_data("PATCH", "/api/v1/forum/group/#{group_id.to_i}/reports/#{report_id.to_i}", clean_hash(
           "status" => status,
-          "reason" => reason
+          "reason" => reason,
+          "use_suggestion" => use_suggestion ? 1 : nil
         ))
         true
       end
@@ -726,6 +732,7 @@ module EltenLink
           group.preventpolls = truthy?(row["preventpolls"])
           group.preventattachments = truthy?(row["preventattachments"])
           group.allowpostreporting = truthy?(row["allowpostreporting"])
+          group.reportreasons = row["reportreasons"].to_a.map(&:to_s)
           group.audiolimit = row["audiolimit"].to_i
           group.blog = row["blog"].to_s
           group.showpostreports = row["showpostreports"].to_i
@@ -860,6 +867,12 @@ module EltenLink
         report.status = row["status"].to_i
         report.reason = row["reason"].to_s
         report.solutiontime = Time.at(row["solution_time"].to_i) if row["solution_time"].to_i.positive?
+        report.suggestion = row["suggestion"].to_s
+        report.suggestion = nil if report.suggestion.empty?
+        report.suggestion_flags = row["suggestion_flags"].to_h.transform_keys(&:to_s)
+        report.suggestion_range = row["suggestion_range"].to_s
+        report.suggestion_range = nil if report.suggestion_range.empty?
+        report.suggestion_used = truthy?(row["suggestion_used"])
         report
       end
 
