@@ -1310,6 +1310,18 @@ s.free
 @sources.delete(s)
 end
 end
+def toggle_source(source)
+return nil if !@sources.include?(source)
+@mutex.synchronize {
+source.toggle
+if !active_source?
+@bytes_remaining=0
+end
+}
+end
+def active_source?
+@sources.any?{|source|!source.toggleable? || source.playing?}
+end
 def set_user_position(x, y, dir)
 rx=0
 ry=0
@@ -1504,6 +1516,12 @@ end
 def get_source(ind, sub)
 return nil if @outstreams[ind]==nil
 return @outstreams[ind].sources[sub]
+end
+def toggle_source(source)
+outstream=@outstreams.find{|stream|stream.sources.include?(source)}
+return outstream.toggle_source(source) if outstream!=nil
+return nil if !@sources.include?(source)
+source.toggle
 end
 def pushtotalk
 return @pushtotalk
@@ -3004,14 +3022,14 @@ end
 end
 for s in @outstreams
 if s.encoder!=nil && !s.encoder.closed? && @bitrate!=0 && @stream_bitrate!=0
-mb=maxBytes
-mb*=(s.channels.to_f/@channels)
-mb+=s.bytes_remaining
+s.mutex.synchronize {
+if s.active_source? && s.output!=nil && s.output!=0 && s.channels>0 && @channels!=nil && @channels>0
+mb=(maxBytes*(s.channels.to_f/@channels)).to_i+s.bytes_remaining
+if mb>0
 buf="\0"*mb if mb>buf.bytesize
 sz=Bass::BASS_ChannelGetData.call(s.output, buf, mb)
-s.bytes_remaining=mb-sz
-if s.output!=nil && s.channels>0 && sz>0
-s.mutex.synchronize {
+s.bytes_remaining=sz>0 ? [mb-sz, 0].max : 0
+if sz>0
 if @stream_framesize>0 and s.channels!=nil
 fs=@stream_framesize*48*2*s.channels
 au=(s.buf||"").b+buf.byteslice(0...sz).b
@@ -3040,8 +3058,14 @@ s.buf.replace(au.byteslice(index..-1))
 else
 s.buf.clear
 end
-}
 end
+else
+s.bytes_remaining=0
+end
+else
+s.bytes_remaining=0
+end
+}
 end
 end
 if packets.size>0
