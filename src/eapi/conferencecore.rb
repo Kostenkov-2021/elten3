@@ -534,7 +534,7 @@ attr_reader :listener_x, :listener_y, :stream_x, :stream_y, :user_x, :user_y
 attr_reader :streamid, :userid, :username
 attr_accessor :name
 attr_reader :losses
-def initialize(channels, framesize, preskip, starttime, spatialization, position, x, y, streamid, name, userid, username, volume=nil)
+def initialize(channels, framesize, preskip, starttime, spatialization, position, x, y, streamid, name, userid, username, volume=nil, master_volume=100)
 @channels=channels
 @framesize=framesize
 @lastframetime=starttime
@@ -569,6 +569,7 @@ ch=2 if spatialization==1 || spatialization==2
 @hrtf_effect=nil
 @spatialization=spatialization
 @mutex = Mutex.new
+@master_volume=[[master_volume, 0].max, 100].min
 setvolume(volume)
 @sec=0
 @fsec=0
@@ -590,6 +591,11 @@ else
 end
 update_position
 end
+def master_volume=(volume)
+@master_volume=[[volume, 0].max, 100].min
+update_position
+@master_volume
+end
 def set_user_position(x,y)
 @user_x, @user_y = x, y
 update_position
@@ -604,8 +610,14 @@ def update_position
 @listener_x=@position.x
 @listener_y=@position.y
 @listener_dir = @position.dir
-if @spatialization==0 || @spatialization==1
-if @listener_y>0 && @listener_x>0
+vl=@volume/100.0
+if @volume>100
+vl=1+(@volume-100)/10.0
+end
+vl*=@master_volume/100.0
+vol=vl
+pos=nil
+if (@spatialization==0 || @spatialization==1) && @listener_y>0 && @listener_x>0
 if @stream_x>0
 @rx=(@stream_x-@listener_x)/8.0
 @ry=(@stream_y-@listener_y)/8.0
@@ -627,22 +639,15 @@ end
 pos=@rx
 pos=-1 if pos<-1
 pos=1 if pos>1
-vl=@volume/100.0
-if @volume>100
-vl=1+(@volume-100)/10.0
-end
 vol=(1-Math::sqrt((@ry.abs*0.5)**2+(@rx.abs*0.5)**2))*vl
 vol=0 if vol<0
+end
 @mutex.synchronize {
-if @spatialization==0
+if @spatialization==0 && pos!=nil
 Bass::BASS_ChannelSetAttribute.call(@stream, 3, pos)
 end
-if @spatialization==0 || @spatialization==1
 Bass::BASS_ChannelSetAttribute.call(@stream, 2, vol)
-end
 }
-end
-end
 end
 def set_hrtf(hrtf)
 @mutex.synchronize {
@@ -1263,7 +1268,7 @@ end
 class OutStream
 attr_accessor :x, :y, :frame_id, :bytes_remaining
 attr_reader :name, :id, :mutex, :buf, :channels, :output, :listener, :encoder, :sources, :locally_muted, :start_time
-def initialize(name, id, channels, x, y)
+def initialize(name, id, channels, x, y, master_volume=100)
 @name, @id, @x, @y = name.encode("UTF-8", invalid: :replace, undef: :replace), id, x, y
 @buf = ""
 @bytes_remaining=0
@@ -1282,6 +1287,8 @@ Bass::BASS_Mixer_StreamAddChannel.call(@output, @out, 0)
 @sources=[]
 @locally_muted=false
 @relvolume=1
+@master_volume=[[master_volume, 0].max, 100].min
+self.volume=100
 end
 def add_source(source)
 source.set_mixer(@mixer)
@@ -1290,16 +1297,19 @@ return source
 end
 def add_file(file)
 s=StreamSourceFile.new(file)
+s.volume=100
 add_source(s)
 return s
 end
 def add_url(url)
 s=StreamSourceURL.new(url)
+s.volume=100
 add_source(s)
 return s
 end
 def add_card(cardid)
 s=StreamSourceCard.new(cardid)
+s.volume=100
 add_source(s)
 return s
 end
@@ -1370,9 +1380,21 @@ vol=0 if vol<0
 @mutex.synchronize {
 Bass::BASS_ChannelSetAttribute.call(@out, 2, (vol/100.0))
 if !@locally_muted
-Bass::BASS_ChannelSetAttribute.call(@listener, 2, (vol/100.0*@relvolume))
+Bass::BASS_ChannelSetAttribute.call(@listener, 2, (vol/100.0*@master_volume/100.0*@relvolume))
 end
 }
+vol
+end
+def master_volume=(vol)
+vol=100 if vol>100
+vol=0 if vol<0
+@master_volume=vol
+unless @locally_muted
+current_volume=volume
+@mutex.synchronize {
+Bass::BASS_ChannelSetAttribute.call(@listener, 2, (current_volume/100.0*@master_volume/100.0*@relvolume))
+}
+end
 vol
 end
 def locally_muted=(mt)
@@ -1383,7 +1405,7 @@ Bass::BASS_ChannelSetAttribute.call(@listener, 2, 0)
 else
 vol=volume
 @mutex.synchronize {
-Bass::BASS_ChannelSetAttribute.call(@listener, 2, (vol/100.0*@relvolume))
+Bass::BASS_ChannelSetAttribute.call(@listener, 2, (vol/100.0*@master_volume/100.0*@relvolume))
 }
 end
 @locally_muted = (mt==true)
@@ -1662,21 +1684,21 @@ end
 end
 def add_file(file)
 s=StreamSourceFile.new(file)
-s.volume=@stream_volume
+s.volume=100
 @sources.push(s)
 s.set_mixer(@stream_mixer)
 return s
 end	
 def add_url(url)
 s=StreamSourceURL.new(url)
-s.volume=@stream_volume
+s.volume=100
 @sources.push(s)
 s.set_mixer(@stream_mixer)
 return s
 end	
 def add_card(cardid)
 s=StreamSourceCard.new(cardid)
-s.volume=@stream_volume
+s.volume=100
 @sources.push(s)
 s.set_mixer(@stream_mixer)
 return s
@@ -1697,7 +1719,7 @@ if file!=nil
 remove_stream if filestream!=nil
 @stream_mutex.synchronize {
 s=StreamSourceFile.new(file)
-s.volume=@stream_volume
+s.volume=100
 @sources.push(s)
 s.set_mixer(@stream_mixer)
 }
@@ -1781,30 +1803,23 @@ set_stream
 end
 end
 def stream_volume
-return @stream_volume if filestream==nil
-vol=0
-@stream_mutex.synchronize {
-vl=[0].pack("f")
-Bass::BASS_ChannelGetAttribute.call(filestream.stream, 2, vl)
-vol=(vl.unpack("f").first*100).round
-}
-return vol
+@stream_volume
 end
 def stream_volume=(vol)
-return if filestream==nil
 vol=100 if vol>100
 vol=0 if vol<0
-@stream_mutex.synchronize {
-Bass::BASS_ChannelSetAttribute.call(filestream.stream, 2, (vol/100.0))
 @stream_volume=vol
+@stream_mutex.synchronize {
+Bass::BASS_ChannelSetAttribute.call(@stream_mixer_listener, 2, (vol/100.0))
 }
+@streams.each_value{|stream|stream.master_volume=vol}
+@outstreams.each{|stream|stream.master_volume=vol}
 vol
 end
 def stream_add_empty(name="", x=0, y=0)
 id=@voip.stream_add(name, 2, x, y)
 return nil if id==nil
-s=OutStream.new(name, id, 2, x, y)
-s.volume=@stream_volume
+s=OutStream.new(name, id, 2, x, y, @stream_volume)
 streams_callback
 return s
 end
@@ -2442,6 +2457,7 @@ Bass::BASS_ChannelSetAttribute.call(@stream_mixer, 13, 0.1)
 @stream_mixer_listener = Bass::BASS_Split_StreamCreate.call(@stream_mixer, 0x200000, nil)
 Bass::BASS_ChannelSetAttribute.call(@stream_mixer_listener, 5, 1)
 Bass::BASS_ChannelSetAttribute.call(@stream_mixer_listener, 13, 0.1)
+Bass::BASS_ChannelSetAttribute.call(@stream_mixer_listener, 2, (@stream_volume/100.0))
 @stream_mixer_uploader = Bass::BASS_Split_StreamCreate.call(@stream_mixer, 0x200000, nil)
 Bass::BASS_ChannelSetAttribute.call(@stream_mixer_uploader, 5, 1)
 Bass::BASS_ChannelSetAttribute.call(@stream_mixer_uploader, 13, 0.1)
@@ -2808,7 +2824,7 @@ else
 log(-1, "Conference: registering new stream #{s['name']}")
 username=""
 username=@transmitters[s['user']].username if @transmitters[s['user']]!=nil
-@streams[sid] = Stream.new(s['channels'], params['channel']['stream_framesize'], @encoder.preskip, @starttime, params['channel']['spatialization'], @position, s['x'], s['y'], s['id'], s['name'], s['user'], username)
+@streams[sid] = Stream.new(s['channels'], params['channel']['stream_framesize'], @encoder.preskip, @starttime, params['channel']['spatialization'], @position, s['x'], s['y'], s['id'], s['name'], s['user'], username, nil, @stream_volume)
 @streams[sid].set_hrtf(@hrtf) if params['channel']['spatialization']==1 || params['channel']['spatialization']==2
 @streams[sid].set_mixer(@channel_mixer)
 @streams[sid].set_user_position(@transmitters[s['user']].transmitter_x, @transmitters[s['user']].transmitter_y) if @transmitters[s['user']]!=nil and @transmitters[s['user']].transmitter_x>0
