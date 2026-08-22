@@ -23,6 +23,12 @@ module EltenLink
   end
 
   ForumThreadPage = Struct.new(:time, :count, :read_posts, :followed, :posts, keyword_init: true)
+  ForumTrashThread = Struct.new(
+    :id, :name, :forum_fullname, :forum_id, :last_update, :trashed, :thread_trashed, :forum_trashed,
+    :contains_trashed_posts,
+    keyword_init: true
+  )
+  ForumTrashPage = Struct.new(:posts, :trashed, :thread_trashed, :forum_trashed, keyword_init: true)
   ForumUserPost = Struct.new(:post_id, :thread_id, :text, :transcription, :audio_url, :date, :format, keyword_init: true)
   ForumUserPostsPage = Struct.new(:posts, :more, :next_before, keyword_init: true)
   ForumThreadStats = Struct.new(:followers, :mentions, :authors, :readers, :readers_below_half, :readers_above_90, :readers_all, keyword_init: true)
@@ -82,6 +88,33 @@ module EltenLink
           read_posts: data["read_posts"].to_i,
           followed: truthy?(data["followed"]),
           posts: data["posts"].to_a.map { |row| build_post(row) }
+        )
+      end
+
+      def trash_threads(client, group_id:)
+        data = client.api_data("GET", "/api/v1/forum/group/#{group_id.to_i}/trash")
+        data["threads"].to_a.map do |row|
+          ForumTrashThread.new(
+            id: row["id"].to_i,
+            name: row["name"].to_s,
+            forum_fullname: row["fullname"].to_s,
+            forum_id: row["forumid"].to_i,
+            last_update: row["last_update"].to_i,
+            trashed: truthy?(row["trashed"]),
+            thread_trashed: truthy?(row["thread_trashed"]),
+            forum_trashed: truthy?(row["forum_trashed"]),
+            contains_trashed_posts: truthy?(row["contains_trashed_posts"])
+          )
+        end
+      end
+
+      def trash_thread(client, thread_id:)
+        data = client.api_data("GET", "/api/v1/forum/#{thread_id.to_i}/trash")
+        ForumTrashPage.new(
+          posts: data["posts"].to_a.map { |row| build_post(row) },
+          trashed: truthy?(data["trashed"]),
+          thread_trashed: truthy?(data["thread_trashed"]),
+          forum_trashed: truthy?(data["forum_trashed"])
         )
       end
 
@@ -212,8 +245,17 @@ module EltenLink
         true
       end
 
-      def delete_thread(client, thread_id:)
-        client.api_data("DELETE", "/api/v1/forum/#{thread_id.to_i}", {})
+      def delete_thread(client, thread_id:, permanent: false)
+        params = permanent ? { "delete_from_trash" => 1 } : {}
+        client.api_data("DELETE", "/api/v1/forum/#{thread_id.to_i}", params)
+        true
+      end
+
+      def restore_thread(client, thread_id:, forum_id: nil)
+        client.api_data("PATCH", "/api/v1/forum/#{thread_id.to_i}/untrash", clean_hash(
+          "recursive" => 1,
+          "forum" => forum_id.nil? ? nil : forum_id.to_i
+        ))
         true
       end
 
@@ -313,8 +355,16 @@ module EltenLink
         true
       end
 
-      def delete_post(client, post_id:)
-        client.api_data("DELETE", "/api/v1/forum/post/#{post_id.to_i}", {})
+      def delete_post(client, post_id:, permanent: false)
+        params = permanent ? { "delete_from_trash" => 1 } : {}
+        client.api_data("DELETE", "/api/v1/forum/post/#{post_id.to_i}", params)
+        true
+      end
+
+      def restore_post(client, post_id:, thread_id: nil)
+        client.api_data("PATCH", "/api/v1/forum/post/#{post_id.to_i}/untrash", clean_hash(
+          "destination_thread" => thread_id.nil? ? nil : thread_id.to_i
+        ))
         true
       end
 
@@ -758,6 +808,7 @@ module EltenLink
         post.transcription = row["transcription"].to_s
         post.banned = truthy?(row["banned"])
         post.archived = truthy?(row["archived"])
+        post.trashed = truthy?(row["trashed"]) if post.respond_to?(:trashed=)
         post
       end
 

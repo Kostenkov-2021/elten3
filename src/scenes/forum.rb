@@ -823,6 +823,11 @@ if (((@sgroups[@grpsel.index - @grpheadindex].role==1 || (@sgroups[@grpsel.index
             groupreports(@sgroups[@grpsel.index - @grpheadindex])
             }
             end
+      if forum_group_moderator?(g)
+        menu.option(p_("Forum", "Trash")) {
+          $scene = Scene_Forum_Trash.new(g, self)
+        }
+      end
             if @sgroups[@grpsel.index - @grpheadindex].hasmotd or @sgroups[@grpsel.index - @grpheadindex].role==2
                 s=p_("Forum", "Message of the day")
         s=p_("Forum", "Edit message of the day") if @sgroups[@grpsel.index - @grpheadindex].role==2
@@ -4278,6 +4283,344 @@ class Scene_Forum_UserPosts
   end
 end
 
+class Scene_Forum_Trash
+  include ForumSceneClient
+
+  def initialize(group, return_scene = nil)
+    @group = group
+    @return_scene = return_scene
+    @thread_index = 0
+    @post_index = 0
+  end
+
+  def main
+    unless load_threads
+      $scene = return_scene
+      return
+    end
+    rebuild_thread_list
+    threads_main
+  end
+
+  private
+
+  def threads_main
+    @thread_list.focus
+    loop do
+      loop_update
+      @thread_list.update
+      return if $scene != self
+
+      if key_pressed?(:key_escape) || (key_pressed?(:key_left) && !key_held?(0x10))
+        $scene = return_scene
+        return
+      end
+
+      thread = current_thread
+      if thread != nil && (key_pressed?(:key_enter) || (key_pressed?(:key_right) && !key_held?(0x10)))
+        open_thread(thread)
+        return if $scene != self
+      end
+    end
+  end
+
+  def posts_main(thread)
+    @current_thread = thread
+    return unless load_posts
+    return if @posts.empty?
+
+    @leave_posts = false
+    rebuild_post_list
+    @post_list.focus
+    loop do
+      loop_update
+      @post_list.update
+      break if @leave_posts
+      return if $scene != self
+
+      if key_pressed?(:key_escape) || (key_pressed?(:key_left) && !key_held?(0x10))
+        break
+      end
+      show_post if key_pressed?(:key_enter) && current_post != nil
+    end
+    @post_index = @post_list.index if @post_list != nil
+    @current_thread = nil
+  end
+
+  def load_threads
+    threads = forum_fetch(nil, p_("Forum", "Could not load the trash.")) {
+      EltenLink::Forum.trash_threads(elten_link, group_id: @group.id)
+    }
+    return false if threads == nil
+
+    @threads = threads
+    true
+  end
+
+  def load_posts
+    page = forum_fetch(nil, p_("Forum", "Could not load deleted posts.")) {
+      EltenLink::Forum.trash_thread(elten_link, thread_id: @current_thread.id)
+    }
+    return false if page == nil
+
+    @page = page
+    @posts = page.posts
+    true
+  end
+
+  def rebuild_thread_list(index = nil)
+    rows = @threads.map do |thread|
+      [
+        thread.name,
+        thread.forum_fullname,
+        thread.last_update.positive? ? format_date(Time.at(thread.last_update), false, false) : nil,
+        thread_state(thread)
+      ]
+    end
+    rows = [[p_("Forum", "The trash is empty."), nil, nil, nil]] if rows.empty?
+    index = @thread_list.index if index == nil && @thread_list != nil
+    index = @thread_index if index == nil
+    index = [[index.to_i, 0].max, rows.length - 1].min
+    @thread_list = TableBox.new(
+      [nil, p_("Forum", "Forum"), p_("Forum", "Last update"), p_("Forum", "State")],
+      rows,
+      index: index,
+      header: p_("Forum", "Trash: %{group}") % { group: @group.name },
+      quiet: true
+    )
+    @thread_list.bind_context(p_("Forum", "Trash")) { |menu| context_threads(menu) }
+  end
+
+  def rebuild_post_list(index = nil)
+    options = @posts.map { |post| post_label(post) }
+    index = @post_list.index if index == nil && @post_list != nil
+    index = @post_index if index == nil
+    index = [[index.to_i, 0].max, options.length - 1].min
+    @post_list = ListBox.new(
+      options,
+      header: p_("Forum", "Deleted posts in %{thread}") % { thread: @current_thread.name },
+      index: index,
+      flags: 0,
+      quiet: true
+    )
+    @posts.each_with_index do |post, post_index|
+      @post_list.set_item_audio(post_index, post.audio_url) unless post.audio_url.to_s.empty?
+    end
+    @post_list.bind_context(p_("Forum", "Trash")) { |menu| context_posts(menu) }
+  end
+
+  def thread_state(thread)
+    return p_("Forum", "Forum deleted") if thread.forum_trashed
+    return p_("Forum", "Thread deleted") if thread.thread_trashed
+
+    p_("Forum", "Contains deleted posts")
+  end
+
+  def post_text(post)
+    text = post.transcription.to_s.strip
+    text = post.post.to_s if text.empty?
+    text = p_("Forum", "Audio post") if text.strip.empty? && !post.audio_url.to_s.empty?
+    text = p_("Forum", "Empty post") if text.strip.empty?
+    text
+  end
+
+  def post_label(post)
+    label = "#{post.author}: #{post_text(post)[0...5000]}"
+    label += "\r\n#{post.date}" unless post.date.to_s.empty?
+    label
+  end
+
+  def show_post
+    post = current_post
+    return if post == nil
+
+    text = "#{post.author}\r\n#{post_text(post)}"
+    text += "\r\n\r\n#{post.date}" unless post.date.to_s.empty?
+    input_text(
+      p_("Forum", "Post by %{user}") % { user: post.author },
+      flags: EditBox::Flags::ReadOnly | EditBox::Flags::MultiLine,
+      text: text,
+      escapable: true
+    )
+    @post_list.focus
+  end
+
+  def context_threads(menu)
+    thread = current_thread
+    return if thread == nil
+
+    menu.option(p_("Forum", "Open")) { open_thread(thread) }
+    return unless thread.trashed
+
+    unless thread.forum_trashed
+      menu.option(p_("Forum", "Restore")) {
+        mutate(
+          p_("Forum", "Restore thread %{thread} together with all its posts?") % { thread: thread.name },
+          p_("Forum", "The thread has been restored."),
+          :refresh_threads
+        ) {
+          EltenLink::Forum.restore_thread(elten_link, thread_id: thread.id)
+        }
+      }
+    end
+    menu.option(p_("Forum", "Restore to...")) {
+      destination = select_destination_forum(thread)
+      if destination != nil
+        mutate(
+          p_("Forum", "Restore thread %{thread} together with all its posts to forum %{forum}?") % {
+            thread: thread.name,
+            forum: destination.fullname
+          },
+          p_("Forum", "The thread has been restored."),
+          :refresh_threads
+        ) {
+          EltenLink::Forum.restore_thread(elten_link, thread_id: thread.id, forum_id: destination.id)
+        }
+      end
+    }
+    menu.option(p_("Forum", "Delete permanently")) {
+      mutate(
+        p_("Forum", "Permanently delete thread %{thread} together with all its posts? This cannot be undone.") % {
+          thread: thread.name
+        },
+        p_("Forum", "The thread has been permanently deleted."),
+        :refresh_threads
+      ) {
+        EltenLink::Forum.delete_thread(elten_link, thread_id: thread.id, permanent: true)
+      }
+    }
+  end
+
+  def context_posts(menu)
+    post = current_post
+    return if post == nil
+
+    menu.option(p_("Forum", "Show post")) { show_post }
+    unless @page.trashed
+      menu.option(p_("Forum", "Restore")) {
+        mutate(
+          p_("Forum", "Restore this post by %{user}?") % { user: post.author },
+          p_("Forum", "The post has been restored."),
+          :refresh_posts
+        ) {
+          EltenLink::Forum.restore_post(elten_link, post_id: post.id)
+        }
+      }
+    end
+    menu.option(p_("Forum", "Restore to...")) {
+      destination = select_destination_thread
+      if destination != nil
+        mutate(
+          p_("Forum", "Restore this post by %{user} to thread %{thread}?") % {
+            user: post.author,
+            thread: destination.name
+          },
+          p_("Forum", "The post has been restored."),
+          :refresh_posts
+        ) {
+          EltenLink::Forum.restore_post(elten_link, post_id: post.id, thread_id: destination.id)
+        }
+      end
+    }
+    menu.option(p_("Forum", "Delete permanently")) {
+      mutate(
+        p_("Forum", "Permanently delete this post by %{user}? This cannot be undone.") % { user: post.author },
+        p_("Forum", "The post has been permanently deleted."),
+        :refresh_posts
+      ) {
+        EltenLink::Forum.delete_post(elten_link, post_id: post.id, permanent: true)
+      }
+    }
+  end
+
+  def mutate(question, success_message, refresh_method)
+    confirm(question) do
+      if forum_attempt(success_message) { yield }
+        send(refresh_method)
+      end
+    end
+  end
+
+  def open_thread(thread)
+    @thread_index = @thread_list.index
+    posts_main(thread)
+    refresh_threads if $scene == self
+  end
+
+  def refresh_threads
+    index = @thread_list.index
+    if load_threads
+      rebuild_thread_list(index)
+      @thread_list.focus
+    end
+  end
+
+  def refresh_posts
+    index = @post_list.index
+    return unless load_posts
+    if @posts.empty?
+      @leave_posts = true
+    else
+      rebuild_post_list(index)
+      @post_list.focus
+    end
+  end
+
+  def select_destination_forum(source)
+    forums = moderation_structure["forums"].to_a.select { |forum| forum_group_moderator?(forum.group) }
+    if forums.empty?
+      alert(p_("Forum", "No destination forums are available."))
+      return nil
+    end
+
+    selection = selector(
+      forums.map { |forum| "#{forum.fullname} (#{forum.group.name})" },
+      header: p_("Forum", "Select destination forum"),
+      start_index: forums.find_index { |forum| forum.id == source.forum_id } || 0,
+      cancel_index: -1
+    )
+    selection != nil && selection >= 0 ? forums[selection] : nil
+  end
+
+  def select_destination_thread
+    threads = moderation_structure["threads"].to_a.select do |thread|
+      thread.forum != nil && forum_group_moderator?(thread.forum.group)
+    end
+    if threads.empty?
+      alert(p_("Forum", "No destination threads are available."))
+      return nil
+    end
+
+    selection = selector(
+      threads.map { |thread| "#{thread.name} (#{thread.forum.fullname}, #{thread.forum.group.name})" },
+      header: p_("Forum", "Select destination thread"),
+      start_index: threads.find_index { |thread| thread.id == @current_thread.id } || 0,
+      cancel_index: -1
+    )
+    selection != nil && selection >= 0 ? threads[selection] : nil
+  end
+
+  def moderation_structure
+    Scene_Forum.getstruct
+  end
+
+  def current_thread
+    return nil if @threads.empty?
+
+    @threads[@thread_list.index]
+  end
+
+  def current_post
+    return nil if @posts.empty?
+
+    @posts[@post_list.index]
+  end
+
+  def return_scene
+    @return_scene ||= Scene_Forum.new
+  end
+end
+
 class Struct_Forum_Group
   attr_accessor :id
   attr_accessor :name
@@ -4423,6 +4766,7 @@ attr_accessor:transcription
   attr_accessor :audio_url
 attr_accessor :banned
 attr_accessor :archived
+attr_accessor :trashed
 
   def initialize(id = 0)
     @id = id
@@ -4442,6 +4786,7 @@ attr_accessor :archived
     @audio_url=""
     @banned=false
     @archived=false
+    @trashed=false
   end
 end
 
