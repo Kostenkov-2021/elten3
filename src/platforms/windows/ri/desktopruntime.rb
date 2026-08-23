@@ -650,6 +650,26 @@ module EltenWindow
       end
     end
 
+    def consume_quit_shortcut_request
+      window_state_monitor.synchronize do
+        requested = @quit_shortcut_requested == true
+        @quit_shortcut_requested = false
+        requested
+      end
+    rescue Exception
+      false
+    end
+
+    def consume_alt_quit_shortcut_request
+      window_state_monitor.synchronize do
+        requested = @alt_quit_shortcut_requested == true
+        @alt_quit_shortcut_requested = false
+        requested
+      end
+    rescue Exception
+      false
+    end
+
     def consume_minimize_request
       window_state_monitor.synchronize do
         if minimize_request_suppressed?
@@ -1136,19 +1156,23 @@ module EltenWindow
 
     def close_message?(message, wparam, lparam = 0)
       if message == WM_CLOSE
-        window_state_monitor.synchronize { @close_requested = true }
+        window_state_monitor.synchronize { @close_requested = true; @quit_shortcut_requested = true }
         return true
       end
       if message == WM_SYSKEYDOWN && wparam.to_i == VK_F4
         return true if repeated_key_message?(lparam)
         return true if activation_input_blocked?
-        window_state_monitor.synchronize { @close_requested = true }
+        window_state_monitor.synchronize do
+          @close_requested = true
+          @quit_shortcut_requested = true
+          @alt_quit_shortcut_requested = true
+        end
         return true
       end
       return false unless message == WM_SYSCOMMAND
       command = wparam.to_i & 0xfff0
       if command == SC_CLOSE
-        window_state_monitor.synchronize { @close_requested = true }
+        window_state_monitor.synchronize { @close_requested = true; @quit_shortcut_requested = true }
         return true
       end
       false

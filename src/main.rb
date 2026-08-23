@@ -8,8 +8,14 @@ class Object
   include EltenAPI
   end
 
-def mac_quit_shortcut_request
+def window_quit_shortcut_request
   EltenWindow.consume_quit_shortcut_request
+rescue Exception
+  false
+end
+
+def window_alt_quit_shortcut_request
+  EltenWindow.consume_alt_quit_shortcut_request
 rescue Exception
   false
 end
@@ -90,8 +96,15 @@ key_update
   retry
 rescue SystemExit
   if $immediateexit!=true
+  window_quit_requested = window_quit_shortcut_request
+  alt_quit_requested = window_alt_quit_shortcut_request
+  cancel_pending_alt_menu if alt_quit_requested
   loop_update
-  quit if key_held?(0x73) || mac_quit_shortcut_request
+  cancel_pending_alt_menu if alt_quit_requested
+  if key_held?(0x73) || window_quit_requested
+    EltenWindow.restore_from_tray if defined?(EltenWindow) && EltenWindow.respond_to?(:restore_from_tray)
+    quit
+  end
           play_sound("listbox_focus") if $exit==nil
   $toscene = true
     retry if $exit == nil

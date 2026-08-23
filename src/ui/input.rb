@@ -225,6 +225,11 @@ Bass::BASS_ChannelSetAttribute.call(stream, 2, volume.to_f/100.0)
     return l
     end
 
+    def cancel_pending_alt_menu
+      @@altdown=false
+      @@altdowntime=0
+    end
+
     def context_menu_pressed?
       return false if raw_key_held?(:key_alt) || raw_key_released?(:key_alt) || raw_key_first_pressed?(:key_alt)
       return false if modifier_held?(:control) || modifier_held?(:command) || raw_key_held?(:key_shift)
