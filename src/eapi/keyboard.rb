@@ -218,16 +218,30 @@ module EltenAPI
         @tick_serial += 1
         current_tick = @tick_serial
         now ||= monotonic_time
-        down = normalize_state(raw_state)
+        raw_down = normalize_state(raw_state)
+        down = raw_down.dup
         event_pressed = Array.new(256, false)
         event_released = Array.new(256, false)
         event_repeated = Array.new(256, false)
         press_states = Array.new(256)
 
+        if @suppressed_until_release_any == true
+          for key in 0..255
+            down[key] = false if @suppressed_until_release[key] == true
+          end
+        end
+
         Array(events).each do |event|
           key, state, press_state = event
           key = key.to_i
           next if key < 0 || key > 255
+          if @suppressed_until_release[key] == true
+            if state == false
+              @suppressed_until_release[key] = false
+              down[key] = false
+            end
+            next
+          end
           case state
           when true
             down[key] = true
@@ -245,9 +259,21 @@ module EltenAPI
           end
         end
 
+        if @suppressed_until_release_any == true
+          @suppressed_until_release_any = false
+          for key in 0..255
+            @suppressed_until_release[key] = false if @suppressed_until_release[key] == true && raw_down[key] != true
+            if @suppressed_until_release[key] == true
+              down[key] = false
+              @suppressed_until_release_any = true
+            end
+          end
+        end
+
         Array(synthetic_keys).each do |key|
           key = key.to_i
           next if key < 0 || key > 255
+          next if @suppressed_until_release[key] == true
           down[key] = true
           event_pressed[key] = true
         end
@@ -421,12 +447,29 @@ module EltenAPI
         true
       end
 
+      def suppress_held_until_release
+        initialize_state
+        for key in 0..255
+          next if @held[key] != true
+          @suppressed_until_release[key] = true
+          @suppressed_until_release_any = true
+          @held[key] = false
+          @next_repeat[key] = 0.0
+          @continuous_repeat_at[key] = 0.0
+          @last_pressed_tick[key] = -1000
+        end
+        @held_any = @held.include?(true)
+        true
+      end
+
       def reset
         initialize_state
         @held = Array.new(256, false)
         @next_repeat = Array.new(256, 0.0)
         @continuous_repeat_at = Array.new(256, 0.0)
         @last_pressed_tick = Array.new(256, -1000)
+        @suppressed_until_release = Array.new(256, false)
+        @suppressed_until_release_any = false
         @tick_serial = 0
         @held_any = false
         @current_active = false
@@ -441,6 +484,8 @@ module EltenAPI
         @next_repeat ||= Array.new(256, 0.0)
         @continuous_repeat_at ||= Array.new(256, 0.0)
         @last_pressed_tick ||= Array.new(256, -1000)
+        @suppressed_until_release ||= Array.new(256, false)
+        @suppressed_until_release_any = false if @suppressed_until_release_any == nil
         @tick_serial ||= 0
         @held_any = @held.include?(true) if @held_any == nil
         @current_active = false if @current_active == nil

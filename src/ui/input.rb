@@ -507,6 +507,13 @@ if $setkeys.is_a?(Array)
             return ([0, false])
           end
 
+                    def prepare_keyboard_scene_transition
+                      if EltenWindow.respond_to?(:keyboard_scene_transition_guard?) && EltenWindow.keyboard_scene_transition_guard?
+                        EltenAPI::KeyboardState.suppress_held_until_release
+                      end
+                      EltenAPI::KeyboardState.clear_current_frame
+                    end
+
                     def clear_keyboard_input_state(preserve_activation_guard: false)
                       EltenAPI::KeyboardState.reset
                       $keyboard_state_frame_serial = nil

@@ -794,6 +794,10 @@ module EltenWindow
       true
     end
 
+    def keyboard_scene_transition_guard?
+      true
+    end
+
     def take_character(multi = false)
       window_state_monitor.synchronize do
         @character_queue ||= []
