@@ -90,6 +90,7 @@ def initialize(options, header: "", index: 0, flags: 0, quiet: true)
 @limit=-1
 @item_states=[]
 @item_audio_urls=[]
+@item_audio_autoplay_values=[]
 @item_audio_entries={}
 @item_audio_autoplay=true
 @item_audio_space_mode=:pause
@@ -170,12 +171,13 @@ def request_select
   @requested_select=true
 end
 
-def prepend_options(opts, states=[], audio_urls=[])
+def prepend_options(opts, states=[], audio_urls=[], audio_autoplay=[])
   old_options=@options.dup
   old_grayed=@grayed.dup
   old_selected=@selected.dup
   old_states=@item_states.dup
   old_audio_urls=@item_audio_urls.dup
+  old_audio_autoplay=@item_audio_autoplay_values.dup
   old_audio_entries=@item_audio_entries.dup
   @item_audio_entries={}
   self.options=opts
@@ -183,7 +185,7 @@ def prepend_options(opts, states=[], audio_urls=[])
     set_item_states(i, states[i]) if states[i]!=nil
   end
   for i in 0...audio_urls.size
-    set_item_audio(i, audio_urls[i]) if audio_urls[i]!=nil && audio_urls[i].to_s!=""
+    set_item_audio(i, audio_urls[i], autoplay: audio_autoplay[i]!=false) if audio_urls[i]!=nil && audio_urls[i].to_s!=""
   end
   @options+=old_options
   @grayed+=old_grayed
@@ -191,6 +193,8 @@ def prepend_options(opts, states=[], audio_urls=[])
   @item_states+=old_states
   @item_audio_urls.fill(nil, @item_audio_urls.size...opts.size)
   @item_audio_urls+=old_audio_urls
+  @item_audio_autoplay_values.fill(nil, @item_audio_autoplay_values.size...opts.size)
+  @item_audio_autoplay_values+=old_audio_autoplay
   audio_offset=opts.size
   old_audio_entries.each{|i, entry|@item_audio_entries[i+audio_offset]=entry}
 end
@@ -251,9 +255,10 @@ def item_states_for(id)
   @item_states[id]
 end
 
-def set_item_audio(id, url)
+def set_item_audio(id, url, autoplay: true)
   return if id==nil || id<0
   @item_audio_urls||=[]
+  @item_audio_autoplay_values||=[]
   @item_audio_entries||={}
   old=@item_audio_urls[id]
   if url==nil || url.to_s==""
@@ -264,18 +269,22 @@ def set_item_audio(id, url)
     close_item_audio(id)
   end
   @item_audio_urls[id]=url.to_s
+  @item_audio_autoplay_values[id]=autoplay!=false
 end
 alias set_item_audio_url set_item_audio
 
 def clear_item_audio(id=nil)
   @item_audio_urls||=[]
+  @item_audio_autoplay_values||=[]
   @item_audio_entries||={}
   if id==nil
     @item_audio_entries.keys.each{|i|close_item_audio(i)}
     @item_audio_urls.clear
+    @item_audio_autoplay_values.clear
   else
     close_item_audio(id)
     @item_audio_urls[id]=nil
+    @item_audio_autoplay_values[id]=nil
   end
 end
 
@@ -286,6 +295,13 @@ end
 
 def item_audio?(id=self.index)
   item_audio_url(id)!=""
+end
+
+def item_audio_autoplay?(id=self.index)
+  return false unless item_audio?(id)
+  return false if @item_audio_autoplay==false
+  return true if @item_audio_autoplay_values==nil
+  @item_audio_autoplay_values[id]!=false
 end
 
 def close_item_audio(id)
@@ -442,7 +458,7 @@ def speak_item_option(id=self.index, base=nil, prefix="", include_selection=true
   text=speech_value_prepend(prefix, text)
   text=speech_value_gsub(text, /\[#{Regexp.escape(text_utf8(@tag))}\]/i, "") if @tag!=nil
   lspeak(text)
-  play_item_audio(id) if @item_audio_autoplay!=false
+  play_item_audio(id) if item_audio_autoplay?(id)
 end
 
 def option_speech_text(id=self.index, base=nil)
