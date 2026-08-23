@@ -15,38 +15,69 @@ def confirm(text="")
   text.gsub!("jesteĹ› pewien","jesteĹ› pewna") if Configuration.language=="pl-PL" and Session.gender==0
   dialog_open
   sel = ListBox.new([_("No"),_("Yes")],header: text,index: 0,flags: ListBox::Flags::AnyDir, quiet: false)
-    loop do
-        loop_update
-        sel.update
-        if key_pressed?(:key_escape)
-          loop_update
-          dialog_close
-          return false
+  tab_held_since = nil
+  easter_egg = false
+  loop do
+    loop_update
+    sel.update
+    sel.focus if key_first_pressed?(:key_tab)
+    if key_pressed?(:key_escape)
+      loop_update
+      dialog_close
+      return false
     end
-        if key_pressed?(:key_enter)
+    if key_pressed?(:key_enter)
       loop_update
       dialog_close
       if sel.options.size==2
         yield if sel.index==1 and block_given?
-      return sel.index==1
-    else
- if sel.index<=5
-   return false
- elsif sel.index <= 9
-   yield if block_given?
-   return true
- else
-   result=rand(2)==1
-   yield if result && block_given?
-   return result
-   end
-      end
-      end
-if key_held?(0x10) and key_held?(84) and key_held?(78)
-  sel = ListBox.new(["Hmmmm, nie, podziÄ™kujÄ™","CoĹ› ty, oszalaĹ‚eĹ›?","Nie ma mowy","Nigdy w ĹĽyciu","PogiÄ™Ĺ‚o ciÄ™? Jasne, ĹĽe nie","Chyba masz jakieĹ› zwidy jeĹ›li sÄ…dzisz, ĹĽe siÄ™ zgodzÄ™","W sumie, czemu nie","HMMM, kusi, pomyĹ›lmy, no ok, zgoda","Jasne, genialny pomysĹ‚","Jestem za","A ty zdecyduj"],header: "MoĹĽesz siÄ™ szybciej decydowaÄ‡? "+text,index: 0,flags: ListBox::Flags::AnyDir, quiet: false)
-  end
+        return sel.index==1
+      elsif sel.index<=5
+        return false
+      elsif sel.index<=9
+        yield if block_given?
+        return true
+      else
+        result=rand(2)==1
+        yield if result && block_given?
+        return result
       end
     end
+
+    next if easter_egg
+
+    if !key_held?(:key_tab)
+      tab_held_since = nil
+    elsif tab_held_since==nil
+      tab_held_since = loop_update_time
+    elsif loop_update_time-tab_held_since>=3.0
+      sel = ListBox.new(
+        confirmation_easter_egg_options,
+        header: p_("EAPI_UI_Confirmation", "Could you make up your mind a little faster? %{question}") % {question: text},
+        index: 0,
+        flags: ListBox::Flags::AnyDir,
+        quiet: false
+      )
+      easter_egg = true
+    end
+  end
+end
+
+def confirmation_easter_egg_options
+  [
+    p_("EAPI_UI_Confirmation", "Hmm... no, thank you."),
+    p_("EAPI_UI_Confirmation", "Have you lost your mind?"),
+    p_("EAPI_UI_Confirmation", "Not a chance."),
+    p_("EAPI_UI_Confirmation", "Not in this lifetime."),
+    p_("EAPI_UI_Confirmation", "Have you completely lost it? Of course not."),
+    p_("EAPI_UI_Confirmation", "You must be seeing things if you think I'll agree to that."),
+    p_("EAPI_UI_Confirmation", "Actually, why not?"),
+    p_("EAPI_UI_Confirmation", "Hmm... tempting. All right, I'm in."),
+    p_("EAPI_UI_Confirmation", "Absolutely. Brilliant idea!"),
+    p_("EAPI_UI_Confirmation", "Count me in."),
+    p_("EAPI_UI_Confirmation", "You decide.")
+  ]
+end
 
     # Creates a dialog with a listbox and returns the option selected by user
     #
