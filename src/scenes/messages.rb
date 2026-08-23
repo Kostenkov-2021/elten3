@@ -583,6 +583,7 @@ end
          states=[]
          audio_urls=[]
          audio_autoplay=[]
+         audio_completion_labels=[]
     for m in @messages
       if !curids.include?(m.id)
       if complete
@@ -597,6 +598,7 @@ end
             audio_urls[selt.size-1]=audio_url
             autoplay_audio=message_list_audio_autoplay?(m)
             audio_autoplay[selt.size-1]=autoplay_audio
+            audio_completion_labels[selt.size-1]=format_date(m.date) if autoplay_audio
             if !autoplay_audio
               text=message_list_content(m)
               subject=utf8(m.subject)
@@ -613,12 +615,12 @@ end
     head=p_("Messages", "Found items") if sp=='search'
     @sel_messages=ListBox.new(selt,header: head)
     states.each_with_index{|st,i|@sel_messages.set_item_states(i, st) if st!=nil}
-    audio_urls.each_with_index{|url,i|@sel_messages.set_item_audio(i, url, autoplay: audio_autoplay[i]!=false) if url!=nil && url.to_s!=""}
+    audio_urls.each_with_index{|url,i|@sel_messages.set_item_audio(i, url, autoplay: audio_autoplay[i]!=false, completion_label: audio_completion_labels[i]) if url!=nil && url.to_s!=""}
     @sel_messages.bind_context{|menu|context_messages(menu)}
         @form_messages=Form.new([@sel_messages,nil,nil,EditBox.new(p_("Messages", "Your reply"),type: EditBox::Flags::MultiLine,text: "",quiet: true),nil,Button.new(p_("Messages", "Compose"))],index: 0,silent: true)
   @form_messages.fields[3..5]=[nil,nil,nil] if !result.can_reply or @messages_sp=='flagged' or @messages_sp=='search'
   else
-    @sel_messages.prepend_options(selt, states, audio_urls, audio_autoplay)
+    @sel_messages.prepend_options(selt, states, audio_urls, audio_autoplay, audio_completion_labels)
     @sel_messages.index+=selt.size
   end
       end
