@@ -338,12 +338,23 @@ class Scene_WelcomeWizard
       p_("WelcomeWizard", "Open it with %{hotkey}, the shortcut of the Open context menu quick action.") % { hotkey: hotkey }
     end
     text += " " + opening if opening != nil
-    text += " " + p_("WelcomeWizard", "By default, the context menu is also placed as the first item of the main menu; you can turn that off in the program settings. Whenever an option seems to be missing, check the context menu first; that is usually where it lives.")
+    text += " " + p_("WelcomeWizard", "The context menu can also be placed as the first item of the main menu, so both menus are available after pressing Alt. Use the checkbox below to choose whether it should appear there; you can change this later in the program settings. Whenever an option seems to be missing, check the context menu first; that is usually where it lives.")
     tips_hotkey = quick_action_hotkey_label(:tips)
     if tips_hotkey != nil
       text += " " + p_("WelcomeWizard", "One more shortcut worth remembering is %{hotkey}: wherever you are, it reads the additional keyboard shortcuts and hints available for the control that currently has focus.") % { hotkey: tips_hotkey }
     end
-    add_info_page(:menus, p_("WelcomeWizard", "Finding your way around"), text)
+    current = Configuration.contextmenubar == true rescue true
+    add_page(:menus, p_("WelcomeWizard", "Finding your way around")) do
+      info = information_field(p_("WelcomeWizard", "Finding your way around"), text)
+      check = CheckBox.new(
+        p_("WelcomeWizard", "Display context menu in menu bar"),
+        checked: @state.key?(:context_menu_bar) ? @state[:context_menu_bar] == "true" : current
+      )
+      view([info, check]) do
+        selected = check.checked
+        selected == current ? @state.delete(:context_menu_bar) : @state[:context_menu_bar] = selected ? "true" : "false"
+      end
+    end
   end
 
   def context_menu_key_available?
@@ -1564,6 +1575,13 @@ class Scene_WelcomeWizard
     end
     lines.push(p_("WelcomeWizard", "Change how the notifications tab takes focus")) if @state[:notification_focus]
     lines.push(p_("WelcomeWizard", "Change how control types are announced")) if @state[:controls_presentation]
+    if @state[:context_menu_bar]
+      if @state[:context_menu_bar] == "true"
+        lines.push(p_("WelcomeWizard", "Show the context menu in the menu bar"))
+      else
+        lines.push(p_("WelcomeWizard", "Hide the context menu from the menu bar"))
+      end
+    end
     if @state[:hide_window]
       if @state[:hide_window] == "true"
         lines.push(p_("WelcomeWizard", "Enable minimising to the system tray"))
@@ -1667,6 +1685,7 @@ class Scene_WelcomeWizard
     changes.push(["MainWindow", "ShowNotificationsWhenEmpty", @state[:show_empty_notifications]]) if @state[:show_empty_notifications]
     changes.push(["MainWindow", "NotificationFocus", @state[:notification_focus]]) if @state[:notification_focus]
     changes.push(["Interface", "ControlsPresentation", @state[:controls_presentation]]) if @state[:controls_presentation]
+    changes.push(["Interface", "ContextMenuBar", @state[:context_menu_bar]]) if @state[:context_menu_bar]
     changes.push(["Interface", "HideWindow", @state[:hide_window]]) if @state[:hide_window]
     changes.push(["Interface", "DisableFeedNotifications", @state[:disable_feed_notifications]]) if @state[:disable_feed_notifications]
     return if changes.empty?
