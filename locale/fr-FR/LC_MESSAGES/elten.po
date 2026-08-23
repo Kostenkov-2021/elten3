@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Elten 3.0\n"
 "Report-Msgid-Bugs-To: dawidpieper@o2.pl\n"
 "POT-Creation-Date: 2026-08-13 12:31+0200\n"
-"PO-Revision-Date: 2026-08-22 22:23+0200\n"
+"PO-Revision-Date: 2026-08-23 22:00+0200\n"
 "Last-Translator: Julita Bartosiak <julita.bartosiak@o2.pl>\n"
 "Language-Team: \n"
 "Language: fr\n"
@@ -151,7 +151,6 @@ msgid "Load last code"
 msgstr "Charger le dernier code"
 
 #: src/eapi/common/console.rb:157
-#, fuzzy
 msgctxt "EAPI_Common"
 msgid "Code history"
 msgstr "Historique du code"
@@ -927,7 +926,7 @@ msgstr[1] "Connu par les utilisateurs %{count}"
 #: src/eapi/eltensrv/profiles.rb:91
 msgctxt "EAPI_Common"
 msgid "Forum posts"
-msgstr "postes du forum"
+msgstr "posts du forum"
 
 #: src/eapi/eltensrv/profiles.rb:92
 msgctxt "EAPI_Common"
@@ -1342,12 +1341,12 @@ msgstr "Messages"
 #: src/eapi/notificationgroups.rb:286
 msgctxt "Notifications"
 msgid "Followed threads"
-msgstr "Postes dans les fils suivis"
+msgstr "posts dans les fils suivis"
 
 #: src/eapi/notificationgroups.rb:288 src/eapi/notificationgroups.rb:290
 msgctxt "Notifications"
 msgid "Followed forums"
-msgstr "Postes sur les forums suivis"
+msgstr "Forums suivis"
 
 #: src/eapi/notificationgroups.rb:292
 msgctxt "Notifications"
@@ -1435,10 +1434,9 @@ msgid "%{count} program updates available"
 msgstr "%{count} mises à jour du programme disponibles"
 
 #: src/eapi/program.rb:1093
-#, fuzzy
 msgctxt "Program"
 msgid "Backtrace:"
-msgstr "Retour sur la piste :"
+msgstr "Backtrace :"
 
 #: src/eapi/program.rb:1095
 msgctxt "Program"
@@ -1889,13 +1887,11 @@ msgid "Rate"
 msgstr "Débit"
 
 #: src/eapi/speechtofile.rb:142
-#, fuzzy
 msgctxt "EAPI_SpeechToFile"
 msgid "Destination"
 msgstr "Destination"
 
 #: src/eapi/speechtofile.rb:143
-#, fuzzy
 msgctxt "EAPI_SpeechToFile"
 msgid "File format"
 msgstr "Format de fichier"
@@ -1967,7 +1963,6 @@ msgstr "Messages"
 
 #: src/platforms/windows/invisibleinterface/service.rb:307
 #: src/scenes/feedviewer.rb:41
-#, fuzzy
 msgctxt "FeedViewer"
 msgid "Feed"
 msgstr "fil d’actualité"
@@ -2056,10 +2051,9 @@ msgstr "Lancer un dé personnalisé"
 
 #: src/platforms/windows/invisibleinterface/service.rb:608
 #: src/scenes/conference.rb:1196
-#, fuzzy
 msgctxt "Conference"
 msgid "Stream audio file"
-msgstr "Fichier audio en streaming"
+msgstr "Diffuser un fichier audio"
 
 #: src/platforms/windows/invisibleinterface/service.rb:610
 #: src/scenes/conference.rb:877 src/scenes/conference.rb:1199
@@ -2115,10 +2109,9 @@ msgid "%{count}-sided"
 msgstr "%{count} côté"
 
 #: src/platforms/windows/invisibleinterface/service.rb:682
-#, fuzzy
 msgctxt "Conference"
 msgid "Chat"
-msgstr "Discussion"
+msgstr "Chat"
 
 #: src/platforms/windows/invisibleinterface/service.rb:693
 #, fuzzy
@@ -2201,10 +2194,9 @@ msgstr "Message de discussion"
 #: src/platforms/windows/invisibleinterface/service.rb:789
 #: src/platforms/windows/invisibleinterface/service.rb:792
 #: src/scenes/messages.rb:721
-#, fuzzy
 msgctxt "Messages"
 msgid "Failed to send message"
-msgstr "Échec pour envoyer un message"
+msgstr "Impossible d'envoyer le message"
 
 #: src/scenes/account.rb:126
 msgctxt "Account"
@@ -2360,7 +2352,6 @@ msgid "Hide my profile for strangers"
 msgstr "Masquer mon profil pour les étrangers"
 
 #: src/scenes/account.rb:288
-#, fuzzy
 msgctxt "Account"
 msgid "Prevent banned users from sending me private messages"
 msgstr "Empêcher les utilisateurs bannis de m'envoyer des messages privés"
@@ -2406,7 +2397,7 @@ msgstr "Statut affiché après votre nom sur toutes les listes d'utilisateurs"
 #: src/scenes/account.rb:295
 msgctxt "Account"
 msgid "Signature placed below all your forum posts"
-msgstr "Signature placée sous tous vos postes de forum"
+msgstr "Signature placée sous tous vos posts de forum"
 
 #: src/scenes/account.rb:296
 #, fuzzy
@@ -2444,16 +2435,14 @@ msgid "Comments on your blog"
 msgstr "Commentaires sur votre blog"
 
 #: src/scenes/account.rb:300
-#, fuzzy
 msgctxt "Account"
 msgid "Threads on followed forums"
-msgstr "Les thèmes des forums suivants"
+msgstr "Fils sur les forum suivis"
 
 #: src/scenes/account.rb:300
-#, fuzzy
 msgctxt "Account"
 msgid "Posts on followed forums"
-msgstr "PUBLICATIONS sur les forums suivis"
+msgstr "Posts sur les forums suivis"
 
 #: src/scenes/account.rb:300
 msgctxt "Account"
@@ -2461,7 +2450,6 @@ msgid "New friends"
 msgstr "Nouveaux amis"
 
 #: src/scenes/account.rb:300
-#, fuzzy
 msgctxt "Account"
 msgid "Friends' birthdays"
 msgstr "Anniversaires d'amis"
@@ -2487,7 +2475,6 @@ msgid "Blog mentions"
 msgstr "Mentions sur le blog"
 
 #: src/scenes/account.rb:300
-#, fuzzy
 msgctxt "Account"
 msgid "Awaiting group invitations"
 msgstr "Les invitations des groupes"
@@ -2551,7 +2538,6 @@ msgid "Activity statistics"
 msgstr "Statistiques d'activité"
 
 #: src/scenes/account.rb:320
-#, fuzzy
 msgctxt "Account"
 msgid "Export user data"
 msgstr "Exporter les données de l'utilisateur"
@@ -2776,7 +2762,7 @@ msgstr "Un an"
 #: src/scenes/account.rb:738
 msgctxt "AccountStatistics"
 msgid "Forum posts"
-msgstr "postes du forum"
+msgstr "posts du forum"
 
 #: src/scenes/account.rb:653
 msgctxt "AccountStatistics"
@@ -2812,7 +2798,6 @@ msgid "Activity statistics"
 msgstr "Statistiques d'activité"
 
 #: src/scenes/account.rb:677
-#, fuzzy
 msgctxt "AccountStatistics"
 msgid "Forum threads"
 msgstr "Fils de forum"
@@ -2913,7 +2898,6 @@ msgid "Close"
 msgstr "Fermer"
 
 #: src/scenes/account.rb:741
-#, fuzzy
 msgctxt "AccountStatistics"
 msgid "Most frequently used forums"
 msgstr "Forums les plus fréquemment utilisés"
@@ -2943,7 +2927,6 @@ msgid "No additional details are available for this year."
 msgstr "Aucun détail supplémentaire n'est disponible pour cette année."
 
 #: src/scenes/account.rb:791
-#, fuzzy
 msgctxt "AccountStatistics"
 msgid "Details"
 msgstr "Détails"
@@ -3007,7 +2990,6 @@ msgid "Mail events reporting is enabled."
 msgstr "Les rapports par e-mail sont actifs."
 
 #: src/scenes/account.rb:897
-#, fuzzy
 msgctxt "Account"
 msgid ""
 "Archiving your account will have the following effects:\n"
@@ -3033,7 +3015,7 @@ msgid ""
 msgstr ""
 "L’archivage de votre compte aura les effets suivants :\n"
 "* La mention indiquant que le compte est archivé apparaîtra à côté de tous "
-"ses messages sur le forum.\n"
+"vos posts sur le forum.\n"
 "* Le compte n’apparaîtra plus dans les listes d’utilisateurs.\n"
 "* Le compte sera retiré de toutes les listes de contacts.\n"
 "* Les utilisateurs ne pourront plus envoyer de messages privés à ce compte.\n"
@@ -3042,14 +3024,14 @@ msgstr ""
 "* Vous quitterez tous les groupes que vous ne modérez pas et dont vous "
 "n’êtes pas exclu.\n"
 "* Vous quitterez toutes les conversations privées.\n"
-"* Toutes les informations sur les sujets suivis, les groupes épinglés et les "
+"* Toutes les informations sur les fils suivis, les groupes épinglés et les "
 "sujets marqués seront supprimées.\n"
 "\n"
 "Avertissement :\n"
-"L’archivage d’un compte ne supprime ni ne masque ses blogs ou ses notes. "
+"L’archivage d’un compte ne supprime ni ne masque vos blogs ou votres notes. "
 "Vous devez le faire manuellement avant d’archiver le compte.\n"
 "\n"
-"Le compte sera automatiquement désarchivé lors de votre procanal connexion, "
+"Le compte sera automatiquement désarchivé lors de votre prochaine connexion, "
 "mais les données supprimées ne seront pas restaurées."
 
 #: src/scenes/account.rb:913
@@ -3122,7 +3104,6 @@ msgid "Download data export"
 msgstr "Télécharger l'exportation de données"
 
 #: src/scenes/account.rb:962
-#, fuzzy
 msgctxt "Account"
 msgid "Generate data export"
 msgstr "Générer l'exportation de données"
@@ -3133,13 +3114,11 @@ msgid "Close"
 msgstr "Fermer"
 
 #: src/scenes/account.rb:978
-#, fuzzy
 msgctxt "Account"
 msgid "Data export queued for processing"
-msgstr "Exportation de données en attente pour traitement"
+msgstr "Exportation de données mise en file d'attente pour traitement"
 
 #: src/scenes/account.rb:1013
-#, fuzzy
 msgctxt "Account"
 msgid "Destination"
 msgstr "Destination"
@@ -3150,7 +3129,6 @@ msgid "File name"
 msgstr "Nom de fichier"
 
 #: src/scenes/account.rb:1025
-#, fuzzy
 msgctxt "Account"
 msgid "Data export saved"
 msgstr "Exportation de données enregistrée"
@@ -3202,7 +3180,6 @@ msgid "This section is unavailable for guests"
 msgstr "Cette section n'est pas disponible pour les visiteurs."
 
 #: src/scenes/authentication.rb:24
-#, fuzzy
 msgctxt "Authentication"
 msgid ""
 "Two-factor authentication enables better account security by requiring the  "
@@ -3224,7 +3201,6 @@ msgid "Disable"
 msgstr "Désactiver"
 
 #: src/scenes/authentication.rb:26
-#, fuzzy
 msgctxt "Authentication"
 msgid "Generate backup codes"
 msgstr "Générer des codes de sauvegarde"
@@ -3252,7 +3228,6 @@ msgstr ""
 "Pologne"
 
 #: src/scenes/authentication.rb:37
-#, fuzzy
 msgctxt "Authentication"
 msgid ""
 "Two-factor authentication was introduced in Elten 2.28. After activating it, "
@@ -3260,8 +3235,8 @@ msgid ""
 "wish to continue anyway?"
 msgstr ""
 "L'authentification à deux facteurs a été introduite dans Elten 2.28. Après "
-"l'activation, vous ne pourrez plus vous connecter en utilisant les anciennes "
-"versions du programme. Voulez-vous continuer de toute façon?"
+"son activation, vous ne pourrez plus vous connecter en utilisant les "
+"anciennes versions du programme. Voulez-vous continuer de toute façon?"
 
 #: src/scenes/authentication.rb:38
 msgctxt "Authentication"
@@ -3419,10 +3394,9 @@ msgid "5 years"
 msgstr "5 ans"
 
 #: src/scenes/ban.rb:26
-#, fuzzy
 msgctxt "Ban"
 msgid "Ban time"
-msgstr "Heure d'interdiction"
+msgstr "Durée du ban"
 
 #: src/scenes/ban.rb:26
 msgctxt "Ban"
@@ -3676,7 +3650,6 @@ msgid "Mentioned by"
 msgstr "Mentionnée par"
 
 #: src/scenes/blog.rb:397 src/scenes/conference.rb:233
-#, fuzzy
 msgctxt "EAPI_Speech"
 msgid "Future"
 msgstr "Futur"
@@ -3883,7 +3856,7 @@ msgstr "Navigation"
 #: src/scenes/blog.rb:790
 msgctxt "Blog"
 msgid "Go to post"
-msgstr "Aller au poste"
+msgstr "Aller au post"
 
 #: src/scenes/blog.rb:794
 msgctxt "Blog"
@@ -4327,7 +4300,7 @@ msgstr "Bloquer les commentaires sur les articles plus anciens"
 #: src/scenes/blog.rb:1654
 msgctxt "Blog"
 msgid "Number of days after which commenting on a post will be disabled"
-msgstr "Jours après que les commentaires d'un poste soient désactivés"
+msgstr "Jours après que les commentaires d'un post soient désactivés"
 
 #: src/scenes/blog.rb:1655
 msgctxt "Blog"
@@ -4398,22 +4371,22 @@ msgstr "Utiliser des émoticônes"
 msgctxt "Blog"
 msgid "Full date and post name (https://example.com/2020/01/01/example-post)"
 msgstr ""
-"Date complète et nom d'article (https://example.com/2020/01/01/example-poste)"
+"Date complète et nom d'article (https://example.com/2020/01/01/example-post)"
 
 #: src/scenes/blog.rb:1722
 msgctxt "Blog"
 msgid "Month and post name (https://example.com/2020/01/example-post)"
-msgstr "Mois et nom d'article (https://example.com/2020/01/example-poste)"
+msgstr "Mois et nom d'article (https://example.com/2020/01/example-post)"
 
 #: src/scenes/blog.rb:1722
 msgctxt "Blog"
 msgid "Just a post id (https://example.com/posts/123/)"
-msgstr "Juste un identifiant d'article (https://example.com/postes/123/)"
+msgstr "Juste un identifiant d'article (https://example.com/posts/123/)"
 
 #: src/scenes/blog.rb:1722
 msgctxt "Blog"
 msgid "Just a post name (https://example.com/example-post/)"
-msgstr "Juste un nom d'article (https://example.com/example-poste/)"
+msgstr "Juste un nom d'article (https://example.com/example-post/)"
 
 #: src/scenes/blog.rb:1722
 msgctxt "Blog"
@@ -7181,26 +7154,26 @@ msgstr "Par nom (en ordre décroissant)"
 #: src/scenes/forum.rb:279
 msgctxt "Forum"
 msgid "By unread posts (ascending)"
-msgstr "Par postees non lus (en ordre croissant)"
+msgstr "Par posts non lus (en ordre croissant)"
 
 #: src/scenes/forum.rb:280
 msgctxt "Forum"
 msgid "By unread posts (descending)"
-msgstr "Par postees non lus (en ordre décroissant)"
+msgstr "Par posts non lus (en ordre décroissant)"
 
 #: src/scenes/forum.rb:394
 msgctxt "Forum"
 msgid "Followed thread"
 msgid_plural "Followed threads"
-msgstr[0] "Postes sur les forums suivis"
-msgstr[1] "Postes dans les fils suivis"
+msgstr[0] "posts sur les forums suivis"
+msgstr[1] "posts dans les fils suivis"
 
 #: src/scenes/forum.rb:394
 msgctxt "Forum"
 msgid "Followed forum"
 msgid_plural "Followed forums"
-msgstr[0] "Postes sur les forums suivis"
-msgstr[1] "Postes sur les forums suivis"
+msgstr[0] "Forum suivi"
+msgstr[1] "Forums suivis"
 
 #: src/scenes/forum.rb:394
 msgctxt "Forum"
@@ -7295,7 +7268,7 @@ msgstr "Fils"
 #: src/scenes/forum.rb:1523 src/scenes/forum.rb:2041
 msgctxt "Forum"
 msgid "posts"
-msgstr "postes"
+msgstr "posts"
 
 #: src/scenes/forum.rb:402 src/scenes/forum.rb:427 src/scenes/forum.rb:448
 #: src/scenes/forum.rb:470 src/scenes/forum.rb:490 src/scenes/forum.rb:510
@@ -7467,7 +7440,7 @@ msgstr "Taille du groupe"
 #: src/scenes/forum.rb:751
 msgctxt "Forum"
 msgid "Audio posts"
-msgstr "postes audio"
+msgstr "posts audio"
 
 #: src/scenes/forum.rb:752 src/scenes/forum.rb:2683 src/scenes/forum.rb:2983
 #: src/scenes/forum.rb:3073 src/scenes/forum.rb:3888
@@ -7521,7 +7494,6 @@ msgid "Group members"
 msgstr "Membres du groupe"
 
 #: src/scenes/forum.rb:797
-#, fuzzy
 msgctxt "Forum"
 msgid "Join"
 msgstr "Joindre"
@@ -7563,7 +7535,6 @@ msgid "Add this group to quick actions"
 msgstr "Ajouter ce groupe aux actions rapides"
 
 #: src/scenes/forum.rb:827 src/scenes/forum.rb:1091
-#, fuzzy
 msgctxt "Forum"
 msgid "Group"
 msgstr "Groupe"
@@ -7691,7 +7662,6 @@ msgid "Reported by"
 msgstr "Rapporté par"
 
 #: src/scenes/forum.rb:973 src/scenes/forum.rb:1091
-#, fuzzy
 msgctxt "Forum"
 msgid "Thread"
 msgstr "Fil"
@@ -7834,10 +7804,9 @@ msgid "New status"
 msgstr "Nouveau statut"
 
 #: src/scenes/forum.rb:1091
-#, fuzzy
 msgctxt "Forum"
 msgid "Time"
-msgstr "Heure"
+msgstr "Temps"
 
 #: src/scenes/forum.rb:1091
 msgctxt "Forum"
@@ -8044,7 +8013,6 @@ msgid "Are you sure you want to cancel %{user}'s invitation to %{groupname}?"
 msgstr "Voulez-vous vraiment annuler l'invitation de %{user} à %{groupname}?"
 
 #: src/scenes/forum.rb:1313
-#, fuzzy
 msgctxt "Forum"
 msgid "Invite"
 msgstr "Inviter"
@@ -8067,13 +8035,11 @@ msgid "The user has been invited"
 msgstr "L'utilisateur a été invité"
 
 #: src/scenes/forum.rb:1359 src/scenes/forum.rb:3019
-#, fuzzy
 msgctxt "Forum"
 msgid "I accept the rules of the group %{groupname}"
 msgstr "J'accepte les règles du groupe %{groupname}"
 
 #: src/scenes/forum.rb:1360 src/scenes/forum.rb:3020
-#, fuzzy
 msgctxt "Forum"
 msgid "I do not accept the rules of the group %{groupname}"
 msgstr "Je n'accepte pas les règles du groupe %{groupname}"
@@ -8129,19 +8095,16 @@ msgid "Titles"
 msgstr "Titres"
 
 #: src/scenes/forum.rb:1420
-#, fuzzy
 msgctxt "Forum"
 msgid "Joined groups"
 msgstr "Groupes rejoints"
 
 #: src/scenes/forum.rb:1420
-#, fuzzy
 msgctxt "Forum"
 msgid "Recommended groups"
 msgstr "Groupes recommandés"
 
 #: src/scenes/forum.rb:1420
-#, fuzzy
 msgctxt "Forum"
 msgid "Groups you have not joined"
 msgstr "Groupes que vous n'avez pas rejoints"
@@ -8153,10 +8116,9 @@ msgid "of threads in"
 msgstr "de fils en"
 
 #: src/scenes/forum.rb:1421
-#, fuzzy
 msgctxt "Forum"
 msgid "Include transcriptions of audio posts"
-msgstr "Inclure des transcriptions de messages audio"
+msgstr "Inclure des transcriptions de posts audio"
 
 #: src/scenes/forum.rb:1524
 msgctxt "Forum"
@@ -8283,7 +8245,6 @@ msgid "Add this forum to quick actions"
 msgstr "Ajouter ce forum aux actions rapides"
 
 #: src/scenes/forum.rb:1716
-#, fuzzy
 msgctxt "Forum"
 msgid "Forum added to quick actions"
 msgstr "Forum ajouté aux actions rapides"
@@ -8319,7 +8280,6 @@ msgid "Voice forum"
 msgstr "Forum audio"
 
 #: src/scenes/forum.rb:1733 src/scenes/forum.rb:1829
-#, fuzzy
 msgctxt "Forum"
 msgid "Mixed forum"
 msgstr "Forum mixte"
@@ -8399,7 +8359,7 @@ msgstr "Forum créé"
 #: src/scenes/forum.rb:2001
 msgctxt "Forum"
 msgid "No new posts in followed threads"
-msgstr "Pas de nouveaux postes dans les fils suivis."
+msgstr "Pas de nouveaux posts dans les fils suivis."
 
 #: src/scenes/forum.rb:2005
 msgctxt "Forum"
@@ -8409,7 +8369,7 @@ msgstr "Pas de nouveaux fils sur les forums suivis"
 #: src/scenes/forum.rb:2009
 msgctxt "Forum"
 msgid "No new posts on the followed forums"
-msgstr "Pas de nouveaux postes sur les forums suivis"
+msgstr "Pas de nouveaux posts sur les forums suivis"
 
 #: src/scenes/forum.rb:2013
 msgctxt "Forum"
@@ -8512,17 +8472,17 @@ msgstr "Lecteurs: %{count_readers}"
 #: src/scenes/forum.rb:2188
 msgctxt "Forum"
 msgid "Users that have read less than 50 percent of posts: %{count_readers}"
-msgstr "Utilisateurs ayant lu moins de 50 % des postes : %{count_readers}"
+msgstr "Utilisateurs ayant lu moins de 50 % des posts : %{count_readers}"
 
 #: src/scenes/forum.rb:2189
 msgctxt "Forum"
 msgid "Users that have read over 90 percent of posts: %{count_readers}"
-msgstr "Utilisateurs qui ont lu plus de 90% des postes:% {count_readers}"
+msgstr "Utilisateurs qui ont lu plus de 90% des posts:% {count_readers}"
 
 #: src/scenes/forum.rb:2190
 msgctxt "Forum"
 msgid "Users that have read all posts: %{count_readers}"
-msgstr "Utilisateurs qui ont lu tous les postes:% {count_readers}"
+msgstr "Utilisateurs qui ont lu tous les posts:% {count_readers}"
 
 #: src/scenes/forum.rb:2192
 msgctxt "Forum"
@@ -8621,10 +8581,9 @@ msgid "Offer this thread to another group"
 msgstr "Offrez ce fil à un autre groupe"
 
 #: src/scenes/forum.rb:2298 src/scenes/forum.rb:2496
-#, fuzzy
 msgctxt "Forum"
 msgid "Group founded by %{founder}"
-msgstr "Groupe fondé par %{founder}"
+msgstr "Groupe créé par %{founder}"
 
 #: src/scenes/forum.rb:2299
 #, fuzzy
@@ -8718,15 +8677,13 @@ msgid "No threads selected"
 msgstr "Aucun sujet sélectionné"
 
 #: src/scenes/forum.rb:2442 src/scenes/forum.rb:2448
-#, fuzzy
 msgctxt "Forum"
 msgid "%{count} thread to move"
 msgid_plural "%{count} threads to move"
-msgstr[0] "Fil %{count} pour se déplacer"
-msgstr[1] "Fils %{count} pour se déplacer"
+msgstr[0] "Fil %{count} pour déplacer"
+msgstr[1] "Fils %{count} pour déplacer"
 
 #: src/scenes/forum.rb:2445
-#, fuzzy
 msgctxt "Forum"
 msgid "%{count} thread to delete"
 msgid_plural "%{count} threads to delete"
@@ -8734,7 +8691,6 @@ msgstr[0] "Fil %{count} à supprimer"
 msgstr[1] "Les fils %{count} à supprimer"
 
 #: src/scenes/forum.rb:2469
-#, fuzzy
 msgctxt "Forum"
 msgid "Threads destination"
 msgstr "Destination des fils"
@@ -8777,22 +8733,19 @@ msgid "Text post"
 msgstr "MESSAGE texte"
 
 #: src/scenes/forum.rb:2540
-#, fuzzy
 msgctxt "Forum"
 msgid "Thread name"
 msgstr "Nom du fil"
 
 #: src/scenes/forum.rb:2542 src/scenes/forum.rb:3687 src/scenes/forum.rb:3748
-#, fuzzy
 msgctxt "Forum"
 msgid "Post content"
-msgstr "Contenu de l'article"
+msgstr "Contenu"
 
 #: src/scenes/forum.rb:2542 src/scenes/forum.rb:3107 src/scenes/forum.rb:3888
-#, fuzzy
 msgctxt "Forum"
 msgid "Use Markdown in this post"
-msgstr "Utiliser Markdown dans ce message"
+msgstr "Utiliser Markdown dans ce post"
 
 #: src/scenes/forum.rb:2542
 msgctxt "Forum"
@@ -8805,26 +8758,22 @@ msgid "Attach a file"
 msgstr "Joindre un fichier"
 
 #: src/scenes/forum.rb:2570
-#, fuzzy
 msgctxt "Forum"
 msgid "No tag value"
-msgstr "Pas de valeur d'étiquette"
+msgstr "Pas des étiquettes"
 
 #: src/scenes/forum.rb:2604
-#, fuzzy
 msgctxt "Forum"
 msgid "You haven't selected all tags. Do you want to select the missing tags?"
 msgstr ""
-"Vous n'avez pas sélectionné toutes les balises. Voulez-vous sélectionner les "
-"balises manquantes?"
+"Vous n'avez pas sélectionné toutes les étiquettes. Voulez-vous sélectionner "
+"les étiquettes manquantes?"
 
 #: src/scenes/forum.rb:2614
-#, fuzzy
 msgctxt "Forum"
 msgid ""
 "The selected forum is closed. Are you sure you want to create a thread there?"
-msgstr ""
-"Le forum sélectionné est fermé. Voulez-vous vraiment créer un sujet là-bas?"
+msgstr "Le forum sélectionné est fermé. Voulez-vous vraiment créer un fil ici?"
 
 #: src/scenes/forum.rb:2620 src/scenes/forum.rb:2628 src/scenes/forum.rb:3221
 #: src/scenes/forum.rb:3253
@@ -8868,10 +8817,9 @@ msgid "This file has already been attached"
 msgstr "Ce fichier a déjà été joint"
 
 #: src/scenes/forum.rb:2680 src/scenes/forum.rb:2980 src/scenes/forum.rb:3903
-#, fuzzy
 msgctxt "Forum"
 msgid "This file is too large"
-msgstr "Ce fichier est trop grand"
+msgstr "Ce fichier est trop volumineux"
 
 #: src/scenes/forum.rb:2685 src/scenes/forum.rb:2985
 msgctxt "Forum"
@@ -8879,7 +8827,6 @@ msgid "The file has been attached"
 msgstr "Le fichier a été joint"
 
 #: src/scenes/forum.rb:2722
-#, fuzzy
 msgctxt "Forum"
 msgid "Are you sure you want to cancel creating this thread?"
 msgstr "Voulez-vous vraiment annuler la création de ce fil?"
@@ -8895,20 +8842,18 @@ msgid "Thread has been created."
 msgstr "Fil créé."
 
 #: src/scenes/forum.rb:2897
-#, fuzzy
 msgctxt "Forum"
 msgid ""
 "The thread is unavailable. It may have been deleted or you may not have "
 "access to it."
 msgstr ""
-"Le sujet n'est pas disponible. Il peut avoir été supprimé ou vous n'avez pas "
-"accès à celui-ci."
+"Le fil n'est pas disponible. Il peut avoir été supprimé ou vous n'y avez pas "
+"accès."
 
 #: src/scenes/forum.rb:2931
-#, fuzzy
 msgctxt "Forum"
 msgid "Are you sure you want to cancel creating this post?"
-msgstr "Voulez-vous vraiment annuler la création de ce billet?"
+msgstr "Voulez-vous vraiment annuler la création de ce post?"
 
 #: src/scenes/forum.rb:2954 src/scenes/messages.rb:653 src/scenes/polls.rb:24
 #: src/scenes/polls.rb:91
@@ -8918,7 +8863,6 @@ msgstr "Afficher les résultats"
 
 #: src/scenes/forum.rb:2954 src/scenes/messages.rb:653 src/scenes/polls.rb:24
 #: src/scenes/polls.rb:94
-#, fuzzy
 msgctxt "Polls"
 msgid "Show report"
 msgstr "Afficher le rapport"
@@ -8930,16 +8874,14 @@ msgid "Vote"
 msgstr "Voter"
 
 #: src/scenes/forum.rb:3065
-#, fuzzy
 msgctxt "Forum"
 msgid "Account archived"
 msgstr "Compte archivé"
 
 #: src/scenes/forum.rb:3095
-#, fuzzy
 msgctxt "Forum"
 msgid "Post type"
-msgstr "Type de message"
+msgstr "Type de post"
 
 #: src/scenes/forum.rb:3106
 msgctxt "Forum"
@@ -8947,10 +8889,9 @@ msgid "Your reply"
 msgstr "Votre réponse"
 
 #: src/scenes/forum.rb:3120
-#, fuzzy
 msgctxt "Forum"
 msgid "Write a post despite the thread being closed"
-msgstr "Écrire un message malgré la fermeture du fil"
+msgstr "Écrire un post malgré la fermeture du fil"
 
 #: src/scenes/forum.rb:3125
 msgctxt "Forum"
@@ -8969,10 +8910,9 @@ msgid "Sound"
 msgstr "Son"
 
 #: src/scenes/forum.rb:3159
-#, fuzzy
 msgctxt "Forum"
 msgid "Text information"
-msgstr "Informations textuelles"
+msgstr "Information textuelle"
 
 #: src/scenes/forum.rb:3160
 msgctxt "Forum"
@@ -9001,12 +8941,12 @@ msgstr "Signature : %{signature}"
 #: src/scenes/forum.rb:3243 src/scenes/forum.rb:3268
 msgctxt "Forum"
 msgid "The post was created."
-msgstr "poste créé."
+msgstr "post créé."
 
 #: src/scenes/forum.rb:3264
 msgctxt "Forum"
 msgid "Post creation failure."
-msgstr "Impossible de créer le poste."
+msgstr "Impossible de créer le post."
 
 #: src/scenes/forum.rb:3280
 msgctxt "Forum"
@@ -9111,12 +9051,12 @@ msgstr "Signets"
 #: src/scenes/forum.rb:3369
 msgctxt "Forum"
 msgid "Go to post"
-msgstr "Aller au poste"
+msgstr "Aller au post"
 
 #: src/scenes/forum.rb:3374 src/scenes/forum.rb:3400
 msgctxt "Forum"
 msgid "Select post"
-msgstr "Choisissez un poste"
+msgstr "Choisissez un post"
 
 #: src/scenes/forum.rb:3377
 #, fuzzy
@@ -9148,17 +9088,17 @@ msgstr "La phrase donnée n'a pas été trouvée."
 #: src/scenes/forum.rb:3409
 msgctxt "Forum"
 msgid "Go to first post"
-msgstr "Aller au premier poste"
+msgstr "Aller au premier post"
 
 #: src/scenes/forum.rb:3413
 msgctxt "Forum"
 msgid "Go to last post"
-msgstr "Aller au dernier poste"
+msgstr "Aller au dernier post"
 
 #: src/scenes/forum.rb:3418
 msgctxt "Forum"
 msgid "Go to first new post"
-msgstr "Aller au premier nouveau poste"
+msgstr "Aller au premier nouveau post"
 
 #: src/scenes/forum.rb:3425
 msgctxt "Forum"
@@ -9179,7 +9119,7 @@ msgstr "Notifications de signature"
 #: src/scenes/forum.rb:3529
 msgctxt "Forum"
 msgid "Edit post"
-msgstr "Modifier le poste"
+msgstr "Modifier le post"
 
 #: src/scenes/forum.rb:3535
 msgctxt "Forum"
@@ -9193,10 +9133,9 @@ msgid "Post destination"
 msgstr "Après destination"
 
 #: src/scenes/forum.rb:3568
-#, fuzzy
 msgctxt "Forum"
 msgid "The post has been moved."
-msgstr "l’article a été déplacé."
+msgstr "Post déplacé"
 
 #: src/scenes/forum.rb:3574
 #, fuzzy
@@ -9205,10 +9144,9 @@ msgid "Lock post"
 msgstr "Verrouillage"
 
 #: src/scenes/forum.rb:3575
-#, fuzzy
 msgctxt "Forum"
 msgid "Unlock post"
-msgstr "Déverrouiller le message"
+msgstr "Déverrouiller le post"
 
 #: src/scenes/forum.rb:3583
 #, fuzzy
@@ -9225,7 +9163,7 @@ msgstr "Débloqué"
 #: src/scenes/forum.rb:3589
 msgctxt "Forum"
 msgid "Delete post"
-msgstr "Supprimer le poste"
+msgstr "Supprimer le post"
 
 #: src/scenes/forum.rb:3592 src/scenes/forum.rb:3600
 #, fuzzy
@@ -9236,17 +9174,17 @@ msgstr "Voulez-vous vraiment supprimer cette publication?"
 #: src/scenes/forum.rb:3614
 msgctxt "Forum"
 msgid "Change post position"
-msgstr "Changer la position du poste"
+msgstr "Changer la position du post"
 
 #: src/scenes/forum.rb:3620
 msgctxt "Forum"
 msgid "Place post above"
-msgstr "Placer le poste au-dessus"
+msgstr "Placer le post au-dessus"
 
 #: src/scenes/forum.rb:3625
 msgctxt "Forum"
 msgid "The post has been repositioned."
-msgstr "poste déplacé."
+msgstr "post déplacé."
 
 #: src/scenes/forum.rb:3658
 #, fuzzy
@@ -9341,10 +9279,9 @@ msgid "Reported post"
 msgstr "MESSAGE déclaré"
 
 #: src/scenes/forum.rb:3863
-#, fuzzy
 msgctxt "Forum"
 msgid "Send post report"
-msgstr "Envoyer un rapport de message"
+msgstr "Envoyer un rapport de post"
 
 #: src/scenes/forum.rb:3873
 #, fuzzy
@@ -9355,7 +9292,7 @@ msgstr "Un rapport a été envoyé."
 #: src/scenes/forum.rb:3888
 msgctxt "Forum"
 msgid "edit your post here"
-msgstr "modifiez votre poste ici"
+msgstr "modifiez votre post ici"
 
 #: src/scenes/forum.rb:3896
 #, fuzzy
@@ -9371,12 +9308,12 @@ msgstr "Supprimer le pièce jointe"
 #: src/scenes/forum.rb:3934
 msgctxt "Forum"
 msgid "The post has been modified"
-msgstr "poste modifié."
+msgstr "post modifié."
 
 #: src/scenes/forum.rb:3954
 msgctxt "Forum"
 msgid "Post %{postnumber} by %{author}"
-msgstr "poste% {postenumber} par% {author}"
+msgstr "post% {postnumber} par% {author}"
 
 #: src/scenes/forum.rb:3961
 msgctxt "Forum"
@@ -9443,12 +9380,9 @@ msgid "Select parent group"
 msgstr "Sélectionner le groupe parent"
 
 #: src/scenes/forum.rb:4493
-#, fuzzy
 msgctxt "Forum"
 msgid "Prevent globally banned users from posting in this group"
-msgstr ""
-"Empêcher les utilisateurs bannis de publier dans le monde entier dans ce "
-"groupe"
+msgstr "Empêcher les utilisateurs globalement bannis de publier dans ce groupe"
 
 #: src/scenes/forum.rb:4496
 #, fuzzy
@@ -9487,19 +9421,16 @@ msgid "Permissions"
 msgstr "Autorisations"
 
 #: src/scenes/forum.rb:4571
-#, fuzzy
 msgctxt "Forum"
 msgid "Prevent users from editing their posts"
-msgstr "Empêcher les utilisateurs de modifier leurs messages"
+msgstr "Empêcher les utilisateurs de modifier leurs posts"
 
 #: src/scenes/forum.rb:4572
-#, fuzzy
 msgctxt "Forum"
 msgid "Prevent users from attaching polls"
 msgstr "Empêcher les utilisateurs de joindre les sondages"
 
 #: src/scenes/forum.rb:4573
-#, fuzzy
 msgctxt "Forum"
 msgid "Prevent users from attaching files"
 msgstr "Empêcher les utilisateurs de joindre des fichiers"
@@ -9528,10 +9459,9 @@ msgid "Reports visibility"
 msgstr "Signalement de la visibilité"
 
 #: src/scenes/forum.rb:4577
-#, fuzzy
 msgctxt "Forum"
 msgid "Disabled"
-msgstr "Handicapés"
+msgstr "Désactivé"
 
 #: src/scenes/forum.rb:4577
 #, fuzzy
@@ -9546,11 +9476,9 @@ msgid "Show all accepted reports"
 msgstr "Montrer tous les rapports acceptés"
 
 #: src/scenes/forum.rb:4578
-#, fuzzy
 msgctxt "Forum"
 msgid "Maximum duration of audio posts in seconds; 0 means no limit"
-msgstr ""
-"Durée maximale des messages audio en secondes; 0 signifie aucune limite"
+msgstr "Durée maximale des posts audio en secondes; 0 signifie aucune limite"
 
 #: src/scenes/honors.rb:22
 msgctxt "Honors"
@@ -9663,7 +9591,6 @@ msgid "Like or dislike a feed message"
 msgstr "Aimer ou ne pas aimer un message du fil d’actualité"
 
 #: src/scenes/iikeys.rb:13
-#, fuzzy
 msgctxt "IIKeys"
 msgid "Write a new message"
 msgstr "Écrire un nouveau message"
@@ -9697,11 +9624,12 @@ msgid "Installer download failed."
 msgstr "Le téléchargement de l'installateur a échoué."
 
 #: src/scenes/install.rb:10
-#, fuzzy
 msgctxt "Install"
 msgid ""
 "The installer has been downloaded. Elten will close and launch the installer."
-msgstr "Elten fermera et lancera l'installateur."
+msgstr ""
+"•La Mise à jour a été téléchargée. Elten va se fermer et lancer son "
+"installation."
 
 #: src/scenes/loading.rb:230
 msgctxt "Loading"
@@ -9862,7 +9790,6 @@ msgid "Authenticate using backup code"
 msgstr "Authentifier en utilisant le code de sauvegarde"
 
 #: src/scenes/login.rb:106
-#, fuzzy
 msgctxt "Login"
 msgid ""
 "Two-factor authentication is enabled on this account. Select an "
@@ -9872,7 +9799,6 @@ msgstr ""
 "une méthode d'authentification."
 
 #: src/scenes/login.rb:130
-#, fuzzy
 msgctxt "Login"
 msgid ""
 "Enter the code sent to you by text message to allow this device to log in. "
@@ -10076,11 +10002,12 @@ msgstr ""
 "minutes avant de demander un autre."
 
 #: src/scenes/login.rb:317
-#, fuzzy
 msgctxt "Login"
 msgid ""
 "Activation could not be started for this account. It may already be active."
-msgstr "L'activation n'a pas pu être amorcée pour ce compte."
+msgstr ""
+"L'activation n'a pas pu être démarrée pour ce compte. Il est peut-être déjà "
+"actif."
 
 #: src/scenes/login.rb:330
 #, fuzzy
@@ -10089,10 +10016,9 @@ msgid "Account activated. You can now log in."
 msgstr "Compte activé. Vous pouvez maintenant vous connecter."
 
 #: src/scenes/login.rb:336
-#, fuzzy
 msgctxt "Login"
 msgid "Activation failed."
-msgstr "L'activation a échoué."
+msgstr "Activation échoué."
 
 #: src/scenes/login.rb:339
 #, fuzzy
@@ -10125,7 +10051,6 @@ msgid "The PINs you entered do not match. Please try again."
 msgstr "Les codes PIN entrés sont différents, veuillez réessayer."
 
 #: src/scenes/main.rb:157
-#, fuzzy
 msgctxt "Main"
 msgid "Main window"
 msgstr "Fenêtre principale"
@@ -10173,10 +10098,9 @@ msgid "Rename"
 msgstr "Renommer"
 
 #: src/scenes/main.rb:494
-#, fuzzy
 msgctxt "Main"
 msgid "Action label"
-msgstr "Étiquette action"
+msgstr "Nom de l'action"
 
 #: src/scenes/main.rb:501
 #, fuzzy
@@ -10295,7 +10219,6 @@ msgstr[0] "L'utilisateur %{count} l'aime bien"
 msgstr[1] "Les utilisateurs %{count} l'aiment"
 
 #: src/scenes/main.rb:635
-#, fuzzy
 msgctxt "Main"
 msgid "Feed"
 msgstr "fil d’actualité"
@@ -10649,7 +10572,6 @@ msgid "Delete conversation"
 msgstr "Supprimer la conversation"
 
 #: src/scenes/messages.rb:507 src/scenes/messages.rb:815
-#, fuzzy
 msgctxt "Messages"
 msgid "Send a new message in this conversation"
 msgstr "Envoyer un nouveau message dans cette conversation"
@@ -11039,10 +10961,9 @@ msgid "Node"
 msgstr "Nœud"
 
 #: src/scenes/palantiri.rb:10
-#, fuzzy
 msgctxt "Palantiri"
 msgid "Node connectivity test"
-msgstr "Essai de connectivité des nœuds"
+msgstr "Test de connectivité des nœuds"
 
 #: src/scenes/palantiri.rb:25 src/scenes/palantiri.rb:26
 #, fuzzy
@@ -11051,10 +10972,9 @@ msgid "lost"
 msgstr "perdu"
 
 #: src/scenes/palantiri.rb:27
-#, fuzzy
 msgctxt "Palantiri"
 msgid "routing only to the West"
-msgstr "itinéraire vers l'Ouest seulement"
+msgstr "Routage vers l'Ouest uniquement"
 
 #: src/scenes/palantiri.rb:28
 #, fuzzy
@@ -11140,7 +11060,6 @@ msgid "Questions"
 msgstr "Questions"
 
 #: src/scenes/polls.rb:146
-#, fuzzy
 msgctxt "Polls"
 msgid "Set the expiry date for this poll"
 msgstr "Fixer la date d'expiration de ce sondage"
@@ -11326,19 +11245,16 @@ msgid "Poll results: %{name}"
 msgstr "Résultats du sondage: %{name}"
 
 #: src/scenes/polls.rb:565
-#, fuzzy
 msgctxt "Polls"
 msgid "Filters"
 msgstr "Filtres"
 
 #: src/scenes/polls.rb:587
-#, fuzzy
 msgctxt "Polls"
 msgid "Filter with this answer"
 msgstr "Filtrer avec cette réponse"
 
 #: src/scenes/polls.rb:591
-#, fuzzy
 msgctxt "Polls"
 msgid "Filter without this answer"
 msgstr "Filtrer sans cette réponse"
@@ -11356,13 +11272,11 @@ msgid "Includes"
 msgstr "Comprend"
 
 #: src/scenes/polls.rb:678
-#, fuzzy
 msgctxt "Polls"
 msgid "Excludes"
 msgstr "Exclus"
 
 #: src/scenes/premiumpackages.rb:14
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "status"
 msgstr "État"
@@ -11420,16 +11334,14 @@ msgid "Protection of private messages against accidental deletion"
 msgstr "Protection des messages privés contre la suppression accidentelle"
 
 #: src/scenes/premiumpackages.rb:36
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "History of mentions and replying to mentions"
 msgstr "Historique des mentions et réponse aux mentions"
 
 #: src/scenes/premiumpackages.rb:37
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "Pinning groups"
-msgstr "Groupes de sélection"
+msgstr "Épinglage de groupes"
 
 #: src/scenes/premiumpackages.rb:38
 #, fuzzy
@@ -11444,7 +11356,6 @@ msgid "Larger private-message attachments, up to 32 MB"
 msgstr "Pièces de mémoire privées plus grandes, jusqu'à 32 Mo"
 
 #: src/scenes/premiumpackages.rb:40
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "Attaching polls to private messages"
 msgstr "Joindre les sondages aux messages privés"
@@ -11514,10 +11425,9 @@ msgid "Setting specific ringtones for users"
 msgstr "Réglage des sonneries spécifiques pour les utilisateurs"
 
 #: src/scenes/premiumpackages.rb:54
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "Attaching audio to feed entries"
-msgstr "Joindre l'audio aux entrées de fil d’actualité"
+msgstr "Joindre l'audio aux publications de fil d’actualité"
 
 #: src/scenes/premiumpackages.rb:56
 #, fuzzy
@@ -11568,7 +11478,6 @@ msgid "Option to disable request for support on blogs"
 msgstr "Option pour désactiver la demande de support sur les blogs"
 
 #: src/scenes/premiumpackages.rb:67
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "Informing about new blog followers"
 msgstr "Information sur les nouveaux suiveurs du blog"
@@ -11591,7 +11500,6 @@ msgid "Director"
 msgstr "Réalisateur"
 
 #: src/scenes/premiumpackages.rb:74
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "Conference streaming to shoutcast servers"
 msgstr "Diffusion de conférences vers des serveurs SHOUTcast"
@@ -11664,7 +11572,6 @@ msgstr ""
 "Reconnaissance spéciale pour l'utilisateur dans les listes et sur le forum"
 
 #: src/scenes/premiumpackages.rb:91
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "Listing in the sponsors list"
 msgstr "Inscription dans la liste des sponsors"
@@ -11682,10 +11589,9 @@ msgid "Buy"
 msgstr "Acheter"
 
 #: src/scenes/premiumpackages.rb:103 src/scenes/premiumpackages.rb:148
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "Extend"
-msgstr "Élargir"
+msgstr "Prolonger"
 
 #: src/scenes/premiumpackages.rb:110 src/scenes/premiumpackages.rb:149
 #, fuzzy
@@ -11718,16 +11624,14 @@ msgid "Change currency"
 msgstr "Changer de devise"
 
 #: src/scenes/premiumpackages.rb:141
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "Euro"
 msgstr "Euro"
 
 #: src/scenes/premiumpackages.rb:141
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "US dollar"
-msgstr "Dollar des États-Unis"
+msgstr "Dollar américain"
 
 #: src/scenes/premiumpackages.rb:141
 #, fuzzy
@@ -11759,7 +11663,6 @@ msgid "Close"
 msgstr "Fermer"
 
 #: src/scenes/premiumpackages.rb:220
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "Inactive"
 msgstr "Inactif"
@@ -11835,13 +11738,11 @@ msgid "Information"
 msgstr "Information"
 
 #: src/scenes/premiumpackages.rb:269 src/scenes/premiumpackages.rb:337
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "I accept"
 msgstr "J'accepte"
 
 #: src/scenes/premiumpackages.rb:270
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid "I refuse"
 msgstr "Je refuse"
@@ -11931,7 +11832,6 @@ msgstr ""
 "des aînés."
 
 #: src/scenes/premiumpackages.rb:325
-#, fuzzy
 msgctxt "PremiumPackages"
 msgid ""
 "Domestic bank transfer details (from Poland):\n"
@@ -11948,7 +11848,7 @@ msgstr ""
 "Données de virement bancaire (de la Pologne): %{holder} Adresse : %{address} "
 "Numéro de compte : %{placcount} Données supplémentaires pour les virements "
 "étrangers : IBAN : %{iban} BIC / SWIFT : %{swift} Adresse bancaire : %"
-"{bankaddress} Code de tri : %{sortcode}"
+"{bankaddress} Sort code (Code guichet): %{sortcode}"
 
 #: src/scenes/premiumpackages.rb:343
 #, fuzzy
@@ -12032,7 +11932,6 @@ msgid "Version"
 msgstr "Version"
 
 #: src/scenes/programs.rb:17
-#, fuzzy
 msgctxt "Programs"
 msgid "Installation"
 msgstr "Installation"
@@ -12054,13 +11953,11 @@ msgid "Name"
 msgstr "Nom"
 
 #: src/scenes/programs.rb:39
-#, fuzzy
 msgctxt "Programs"
 msgid "Install from file"
 msgstr "Installer à partir du fichier"
 
 #: src/scenes/programs.rb:42
-#, fuzzy
 msgctxt "Programs"
 msgid "Install from server"
 msgstr "Installer à partir du serveur"
@@ -12072,7 +11969,6 @@ msgid "Check for updates"
 msgstr "Vérifier les mises à jour"
 
 #: src/scenes/programs.rb:50
-#, fuzzy
 msgctxt "Programs"
 msgid "Details"
 msgstr "Détails"
@@ -12114,10 +12010,9 @@ msgid "Unload always"
 msgstr "Décharge toujours"
 
 #: src/scenes/programs.rb:68
-#, fuzzy
 msgctxt "Programs"
 msgid "Keep program %{name} disabled?"
-msgstr "Gardez le programme %{name} désactivé?"
+msgstr "Garder le programme %{name} désactivé?"
 
 #: src/scenes/programs.rb:74
 #, fuzzy
@@ -12158,10 +12053,9 @@ msgid "Program uninstalled."
 msgstr "Programme désinstallé."
 
 #: src/scenes/programs.rb:83
-#, fuzzy
 msgctxt "Programs"
 msgid "Remove the program %{name} and all its data?"
-msgstr "Enlever le programme %{name} et toutes ses données?"
+msgstr "Supprimer le programme %{name} et toutes ses données?"
 
 #: src/scenes/programs.rb:85
 #, fuzzy
@@ -12248,19 +12142,16 @@ msgid "Platforms: %{platforms}"
 msgstr "Plateformes : %{platforms}"
 
 #: src/scenes/programs.rb:162
-#, fuzzy
 msgctxt "Programs"
 msgid "Installation: %{type}"
 msgstr "Installation : %{type}"
 
 #: src/scenes/programs.rb:163
-#, fuzzy
 msgctxt "Programs"
 msgid "Installed from: %{source}"
 msgstr "Installé à partir de : %{source}"
 
 #: src/scenes/programs.rb:164
-#, fuzzy
 msgctxt "Programs"
 msgid "Status: %{status}"
 msgstr "État : %{status}"
@@ -12284,10 +12175,9 @@ msgid "Installation time: %{time}"
 msgstr "Temps d'installation : %{time}"
 
 #: src/scenes/programs.rb:169
-#, fuzzy
 msgctxt "Programs"
 msgid "Update time: %{time}"
-msgstr "Heure de mise à jour : %{time}"
+msgstr "Temps de mise à jour : %{time}"
 
 #: src/scenes/programs.rb:170
 #, fuzzy
@@ -12313,7 +12203,6 @@ msgid "no"
 msgstr ""
 
 #: src/scenes/programs.rb:172
-#, fuzzy
 msgctxt "Programs"
 msgid "Entry: %{path}"
 msgstr "Entrée : %{path}"
@@ -12349,22 +12238,19 @@ msgid "Signed by: %{subject}"
 msgstr "Signé par : %{subject}"
 
 #: src/scenes/programs.rb:179
-#, fuzzy
 msgctxt "Programs"
 msgid "Signature fingerprint: %{fingerprint}"
-msgstr "Empreinte signature : %{fingerprint}"
+msgstr "Empreinte numérique de la signature : %{fingerprint}"
 
 #: src/scenes/programs.rb:181
-#, fuzzy
 msgctxt "Programs"
 msgid "Error: %{error}"
 msgstr "Erreur : %{error}"
 
 #: src/scenes/programs.rb:182
-#, fuzzy
 msgctxt "Programs"
 msgid "Program details"
-msgstr "Détails du programme"
+msgstr "Détails"
 
 #: src/scenes/programs.rb:232
 #, fuzzy
@@ -12373,13 +12259,11 @@ msgid "signed application bundle"
 msgstr "le paquet de demandes signé"
 
 #: src/scenes/programs.rb:234
-#, fuzzy
 msgctxt "Programs"
 msgid "application bundle"
-msgstr "Ensemble d'applications"
+msgstr "paquet d'application"
 
 #: src/scenes/programs.rb:236
-#, fuzzy
 msgctxt "Programs"
 msgid "code file"
 msgstr "fichier de code"
@@ -12391,7 +12275,6 @@ msgid "legacy format"
 msgstr "Le format de l'héritage"
 
 #: src/scenes/programs.rb:240 src/scenes/programs.rb:283
-#, fuzzy
 msgctxt "Programs"
 msgid "incompatible"
 msgstr "incompatible"
@@ -12408,7 +12291,6 @@ msgid "server"
 msgstr "serveur"
 
 #: src/scenes/programs.rb:252
-#, fuzzy
 msgctxt "Programs"
 msgid "file"
 msgstr "fichier"
@@ -12450,10 +12332,9 @@ msgid "not signed"
 msgstr "non signé"
 
 #: src/scenes/programs.rb:281
-#, fuzzy
 msgctxt "Programs"
 msgid "unsupported legacy format"
-msgstr "format de l'héritage non soutenu"
+msgstr "uormat hérité non pris en charge"
 
 #: src/scenes/programs.rb:285
 msgctxt "Programs"
@@ -12490,7 +12371,6 @@ msgid "update available"
 msgstr "mise à jour disponible"
 
 #: src/scenes/programs.rb:325
-#, fuzzy
 msgctxt "Programs"
 msgid "installed"
 msgstr "installé"
@@ -12533,7 +12413,6 @@ msgstr "La liste des programmes ne pouvait pas être chargée."
 
 #: src/scenes/programs.rb:419 src/scenes/programs.rb:439
 #: src/scenes/programs.rb:494
-#, fuzzy
 msgctxt "Programs"
 msgid "Installation cancelled."
 msgstr "Installation annulée."
@@ -12630,7 +12509,6 @@ msgid "The entered passwords differ"
 msgstr "Les mots de passe entrés ne sont pas identiques."
 
 #: src/scenes/registration.rb:69
-#, fuzzy
 msgctxt "Registration"
 msgid ""
 "Enter your email address. It will be used to reset a forgotten password and "
@@ -12755,10 +12633,9 @@ msgid "Interface"
 msgstr "Interface"
 
 #: src/scenes/settings.rb:173
-#, fuzzy
 msgctxt "Settings"
 msgid "Play sounds from sound themes"
-msgstr "Jouer des sons à partir de thèmes sonores"
+msgstr "Jouer des sons de thèmes sonores"
 
 #: src/scenes/settings.rb:174
 #, fuzzy
@@ -12864,7 +12741,6 @@ msgid "Default"
 msgstr "Défaut"
 
 #: src/scenes/settings.rb:184
-#, fuzzy
 msgctxt "Settings"
 msgid "Windows"
 msgstr "Fenêtres"
@@ -12904,7 +12780,6 @@ msgid "Enable"
 msgstr "Activer"
 
 #: src/scenes/settings.rb:207
-#, fuzzy
 msgctxt "Settings"
 msgid "Main window"
 msgstr "Fenêtre principale"
@@ -12916,7 +12791,6 @@ msgid "Tabs visible in the main window"
 msgstr "Tabs visibles dans la fenêtre principale"
 
 #: src/scenes/settings.rb:210 src/scenes/settings.rb:374
-#, fuzzy
 msgctxt "Settings"
 msgid "Feed"
 msgstr "fil d’actualité"
@@ -13007,10 +12881,9 @@ msgid "Speech volume"
 msgstr "Volume de la parole"
 
 #: src/scenes/settings.rb:249
-#, fuzzy
 msgctxt "Settings"
 msgid "Speech pitch"
-msgstr "Discours"
+msgstr "Hauteur"
 
 #: src/scenes/settings.rb:250
 #, fuzzy
@@ -13100,10 +12973,9 @@ msgid "Use Default"
 msgstr "Utiliser par défaut"
 
 #: src/scenes/settings.rb:351
-#, fuzzy
 msgctxt "Settings"
 msgid "Loopback device"
-msgstr "Dispositif de retour de boucle"
+msgstr "Périphérique de loopback"
 
 #: src/scenes/settings.rb:354
 msgctxt "Settings"
@@ -13130,7 +13002,6 @@ msgid "Use noise reduction"
 msgstr "Utiliser la réduction du bruit"
 
 #: src/scenes/settings.rb:357
-#, fuzzy
 msgctxt "Settings"
 msgid "In audio conferences only"
 msgstr "En audioconférences seulement"
@@ -13148,7 +13019,6 @@ msgid "Enable echo cancellation"
 msgstr "Activer l'annulation de l'écho"
 
 #: src/scenes/settings.rb:362
-#, fuzzy
 msgctxt "Settings"
 msgid "Invisible interface"
 msgstr "Interface invisible"
@@ -13212,10 +13082,9 @@ msgid "Recover responses after request timeout"
 msgstr "Récupérer les réponses après l'expiration du délai de demande"
 
 #: src/scenes/settings.rb:382
-#, fuzzy
 msgctxt "Settings"
 msgid "Disabled"
-msgstr "Handicapés"
+msgstr "Désactivé"
 
 #: src/scenes/settings.rb:382
 #, fuzzy
@@ -13334,16 +13203,14 @@ msgid "Item selected"
 msgstr "Élément coché"
 
 #: src/scenes/sounds.rb:32
-#, fuzzy
 msgctxt "Sounds"
 msgid "Ticked item in a list box"
-msgstr "Élément coché dans une boîte de liste"
+msgstr "Élément coché dans une liste"
 
 #: src/scenes/sounds.rb:33
-#, fuzzy
 msgctxt "Sounds"
 msgid "Unticked item in a list box"
-msgstr "Élément décoché dans une zone de liste"
+msgstr "Élément décoché dans une liste"
 
 #: src/scenes/sounds.rb:34
 msgctxt "Sounds"
@@ -13491,7 +13358,6 @@ msgid "Marker of a checkbox in a form"
 msgstr "Marqueur d'une case à cocher dans un formulaire"
 
 #: src/scenes/sounds.rb:61
-#, fuzzy
 msgctxt "Sounds"
 msgid "Feed updated"
 msgstr "fil d’actualité mis à jour"
@@ -13568,12 +13434,12 @@ msgstr "Notification: Nouveau fil sur un forum suivi"
 #: src/scenes/sounds.rb:75
 msgctxt "Sounds"
 msgid "Notification: new post on a followed forum"
-msgstr "Notification: nouveau poste sur un forum suivi"
+msgstr "Notification: nouveau post sur un forum suivi"
 
 #: src/scenes/sounds.rb:76
 msgctxt "Sounds"
 msgid "Notification: new post in a followed thread"
-msgstr "Notification: Nouveau poste dans un fil suivi"
+msgstr "Notification: Nouveau post dans un fil suivi"
 
 #: src/scenes/sounds.rb:77
 msgctxt "Sounds"
@@ -13658,22 +13524,19 @@ msgid "Push-to-talk disabled in conferences"
 msgstr "Mode « appuyer pour parler » désactivé dans les conférences"
 
 #: src/scenes/sounds.rb:95
-#, fuzzy
 msgctxt "Sounds"
 msgid "Speech requested in conferences"
-msgstr "Discours demandé lors des conférences"
+msgstr "Prise de parole demandée en conférences"
 
 #: src/scenes/sounds.rb:96
-#, fuzzy
 msgctxt "Sounds"
 msgid "Speech allowed in conferences"
-msgstr "Discours autorisé lors des conférences"
+msgstr "Prise de parole autorisée en conférences"
 
 #: src/scenes/sounds.rb:97
-#, fuzzy
 msgctxt "Sounds"
 msgid "Speech denied in conferences"
-msgstr "Discours refusé lors de conférences"
+msgstr "Prise de parole refusée en conférences"
 
 #: src/scenes/sounds.rb:98
 #, fuzzy
@@ -13698,7 +13561,6 @@ msgid "Recording stopped"
 msgstr "Enregistrement arrêté"
 
 #: src/scenes/sounds.rb:102
-#, fuzzy
 msgctxt "Sounds"
 msgid "Only five seconds of recording left"
 msgstr "Il ne reste que cinq secondes d'enregistrement"
@@ -13750,7 +13612,6 @@ msgid "Play"
 msgstr "Lire"
 
 #: src/scenes/sounds.rb:144
-#, fuzzy
 msgctxt "Sounds"
 msgid "Play original sound"
 msgstr "Jouer son original"
@@ -13761,10 +13622,9 @@ msgid "Stop"
 msgstr "Stop"
 
 #: src/scenes/sounds.rb:146 src/scenes/sounds.rb:270
-#, fuzzy
 msgctxt "Sounds"
 msgid "Extract"
-msgstr "Extrait"
+msgstr "Extraire"
 
 #: src/scenes/sounds.rb:147
 #, fuzzy
@@ -13822,7 +13682,6 @@ msgid "Do you want to save this sound theme?"
 msgstr "Voulez-vous enregistrer ce thème sonore?"
 
 #: src/scenes/sounds.rb:263
-#, fuzzy
 msgctxt "Sounds"
 msgid "Unable to export sound theme."
 msgstr "Impossible d'exporter un thème sonore."
@@ -13833,7 +13692,6 @@ msgid "File name"
 msgstr "Nom de fichier"
 
 #: src/scenes/sounds.rb:269
-#, fuzzy
 msgctxt "Sounds"
 msgid "Destination"
 msgstr "Destination"
@@ -13848,13 +13706,12 @@ msgstr ""
 "télécharger de toute façon?"
 
 #: src/scenes/sounds.rb:320
-#, fuzzy
 msgctxt "Sounds"
 msgid ""
 "Sound theme ID. This ID will be used to track updates to this sound theme. "
 "Keep the current ID if you want to update the existing sound theme."
 msgstr ""
-"ID de son thème. Cet ID sera utilisé pour suivre les mises à jour de ce "
+"ID de thème sonore. Cet ID sera utilisé pour suivre les mises à jour de ce "
 "thème sonore. Gardez l'ID actuel si vous voulez mettre à jour le thème "
 "sonore existant."
 
@@ -14065,7 +13922,6 @@ msgid "Test results"
 msgstr "Résultats de test"
 
 #: src/scenes/speedtest.rb:61
-#, fuzzy
 msgctxt "SpeedTest"
 msgid ""
 "HTCPCP/1.0 418. The teapot refuses to brew coffee. No request has been sent."
@@ -14120,10 +13976,9 @@ msgid "overdue"
 msgstr "retard"
 
 #: src/scenes/tasks.rb:28
-#, fuzzy
 msgctxt "Tasks"
 msgid "due %{date}"
-msgstr "échéance : %{date}"
+msgstr "À rendre : %{date}"
 
 #: src/scenes/tasks.rb:29
 #, fuzzy
@@ -14170,7 +14025,6 @@ msgid "Completed %{date}"
 msgstr "%{date} achevée"
 
 #: src/scenes/tasks.rb:56
-#, fuzzy
 msgctxt "Tasks"
 msgid "Task details"
 msgstr "Détails de la tâche"
@@ -14199,7 +14053,6 @@ msgid "No performer"
 msgstr "Pas d'interprète"
 
 #: src/scenes/tasks.rb:96
-#, fuzzy
 msgctxt "Tasks"
 msgid "Performer"
 msgstr "Interprète"
@@ -14267,13 +14120,11 @@ msgstr ""
 "réalisation de la tâche."
 
 #: src/scenes/tasks.rb:256
-#, fuzzy
 msgctxt "Tasks"
 msgid "Invitation: %{project}"
 msgstr "Invitation : %{project}"
 
 #: src/scenes/tasks.rb:261 src/scenes/tasks.rb:533
-#, fuzzy
 msgctxt "Tasks"
 msgid "Projects management"
 msgstr "Gestion des projets"
@@ -14284,10 +14135,9 @@ msgid "Accept invitation"
 msgstr "Accepter l'invitation"
 
 #: src/scenes/tasks.rb:270 src/scenes/tasks.rb:420
-#, fuzzy
 msgctxt "Tasks"
 msgid "Reject invitation"
-msgstr "Invitation au rejet"
+msgstr "Refuser l'invitation"
 
 #: src/scenes/tasks.rb:272
 #, fuzzy
@@ -14302,7 +14152,6 @@ msgid "Share project"
 msgstr "Projet de partage"
 
 #: src/scenes/tasks.rb:276
-#, fuzzy
 msgctxt "Tasks"
 msgid "Manage project shares"
 msgstr "Gérer les parts de projet"
@@ -14368,7 +14217,6 @@ msgid "accepted"
 msgstr "accepté"
 
 #: src/scenes/tasks.rb:379
-#, fuzzy
 msgctxt "Tasks"
 msgid "pending"
 msgstr "en attente"
@@ -14404,7 +14252,6 @@ msgid "Do you really want to leave project %{name}?"
 msgstr "Voulez-vous vraiment quitter le projet %{name}?"
 
 #: src/scenes/tasks.rb:505
-#, fuzzy
 msgctxt "Tasks"
 msgid "Filter by project"
 msgstr "Filtrer par projet"
@@ -14718,7 +14565,6 @@ msgid "Show pages that do not apply to me"
 msgstr "Afficher les pages qui ne s'appliquent pas à moi"
 
 #: src/scenes/welcome_wizard.rb:122
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "Elten on desktop, mobile and the web"
 msgstr "Elten sur le bureau, mobile et le web"
@@ -14737,7 +14583,6 @@ msgstr ""
 "fonctionnalités."
 
 #: src/scenes/welcome_wizard.rb:126
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Until now, Elten was a Windows-only program. Elten 3.0 also runs on GNU/"
@@ -14746,10 +14591,11 @@ msgid ""
 "every system receives exactly the same client, with the same interface and "
 "the same features."
 msgstr ""
-"Elten 3.0 fonctionne également sur GNU/Linux et sur macOS sur Apple Silicon, "
-"et au lieu d'être un programme x86, il fonctionne maintenant nativement sur "
-"les processeurs x64 et arm64. Ce ne sont pas des ports coupe-bas : chaque "
-"système reçoit exactement le même client, avec la même interface et les "
+"Jusqu'à présent, Elten était un programme exclusif à Windows. Elten 3.0 "
+"fonctionne également sous GNU/Linux et macOS sur Apple Silicon, et au lieu "
+"d'être un programme en x86, il s'exécute désormais de manière native sur les "
+"processeurs x64 et arm64. Il ne s'agit pas de versions allégées : chaque "
+"système reçoit exactement le même client, doté de la même interface et des "
 "mêmes fonctionnalités."
 
 #: src/scenes/welcome_wizard.rb:128
@@ -14759,7 +14605,6 @@ msgid "Desktop computers"
 msgstr "Ordinateurs de bureau"
 
 #: src/scenes/welcome_wizard.rb:130
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Eltenger is a separate, native application for iOS and Android, designed to "
@@ -14768,10 +14613,10 @@ msgid ""
 "in features or stability just yet."
 msgstr ""
 "Eltenger est une application séparée, native pour iOS et Android, conçue "
-"pour permettre en fin de compte la pleine participation dans la communauté à "
-"partir d'un smartphone. Il est encore en test précoce, donc ne vous attendez "
-"pas à ce qu'il corresponde au client de bureau dans les fonctionnalités ou "
-"la stabilité juste pour l'instant."
+"pour permettre à terme une participation complète à la communauté depuis un "
+"smartphone. Elle en est encore aux premiers stades de test, alors ne vous "
+"attendez pas à ce qu'elle égale encore le client de bureau en termes de "
+"fonctionnalités ou de stabilité."
 
 #: src/scenes/welcome_wizard.rb:132
 #, fuzzy
@@ -14871,7 +14716,6 @@ msgid "Announcing controls"
 msgstr "Contrôles annoncés"
 
 #: src/scenes/welcome_wizard.rb:172
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "As you move around Elten, every control introduces itself: a button, a list, "
@@ -14882,13 +14726,14 @@ msgid ""
 "current behaviour, and you can change it at any time under Tools, Program "
 "settings."
 msgstr ""
-"En se déplaçant autour d'Elten, chaque contrôle se présente : un bouton, une "
-"liste, un champ texte. Comment ça se passe est à vous. Elten peut nommer le "
-"type dans la parole, le marquer avec son seul, ou faire les deux à la fois. "
-"La voix et le son est le choix le plus amical pendant que vous apprenez "
-"encore; le son ne rend la navigation plus rapide que lorsque les sons se "
-"sentent familiers. La liste ci-dessous montre le comportement actuel, et "
-"vous pouvez le modifier à tout moment sous Outils, paramètres du programme."
+"Au fil de vos déplacements dans Elten, chaque élément de contrôle se "
+"présente : un bouton, une liste, un champ de texte. La manière dont cela se "
+"produit dépend de vous. Elten peut prononcer le type à voix haute, "
+"l'identifier uniquement par son son, ou faire les deux à la fois. Voix et "
+"son est le choix le plus convivial pendant votre apprentissage ; le son seul "
+"accélère la navigation une fois que les sons vous sont familiers. La liste "
+"ci-dessous indique le comportement actuel, et vous pouvez le modifier à tout "
+"moment sous Outils, Paramètres du programme."
 
 #: src/scenes/welcome_wizard.rb:177
 msgctxt "WelcomeWizard"
@@ -14918,7 +14763,6 @@ msgid "Minimising to the system tray"
 msgstr "Minimiser sur le zone de notification"
 
 #: src/scenes/welcome_wizard.rb:193
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten does not have to occupy your taskbar all day. With the option below "
@@ -14931,7 +14775,7 @@ msgstr ""
 "l'option ci-dessous activée, minimiser la fenêtre Elten l'envoie au zone de "
 "notification à la place, où le programme continue à fonctionner "
 "tranquillement et continue à recevoir des notifications; l'icône Elten dans "
-"le plateau ramène la fenêtre. Laissez l'option décochée si vous préférez "
+"cette zone maximise la fenêtre. Laissez l'option décochée si vous préférez "
 "Elten se comporter comme une fenêtre ordinaire."
 
 #: src/scenes/welcome_wizard.rb:196
@@ -14942,7 +14786,6 @@ msgstr ""
 "Réduire automatiquement la fenêtre d’Elten dans la zone de notification"
 
 #: src/scenes/welcome_wizard.rb:207
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "Main window"
 msgstr "Fenêtre principale"
@@ -14998,7 +14841,6 @@ msgid "The main window"
 msgstr "La fenêtre principale"
 
 #: src/scenes/welcome_wizard.rb:216 src/scenes/welcome_wizard.rb:781
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "Feed"
 msgstr "fil d’actualité"
@@ -15142,13 +14984,11 @@ msgid "Automatically play audio content"
 msgstr "Lecture automatique du contenu audio"
 
 #: src/scenes/welcome_wizard.rb:313
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "Elten and NVDA"
 msgstr "Elten et NVDA"
 
 #: src/scenes/welcome_wizard.rb:314
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten has noticed that you are using the NVDA screen reader. A dedicated add-"
@@ -15163,7 +15003,7 @@ msgstr ""
 "étroitement : il ajoute le support braille-affichage, permet de faire "
 "défiler le texte en lecture et apporte des raccourcis de lecture que vous "
 "connaissez de NVDA, comme Insert+A pour lire le texte. Elten propose "
-"d'installer l'module complémentaire au démarrage et vous permet de savoir "
+"d'installer le module complémentaire au démarrage et vous permet de savoir "
 "quand il faut mettre à jour, donc il n'y a rien à configurer ici."
 
 #: src/scenes/welcome_wizard.rb:324
@@ -15274,13 +15114,11 @@ msgid "Finding your way around"
 msgstr "Trouver votre chemin"
 
 #: src/scenes/welcome_wizard.rb:373
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "Invisible Interface"
 msgstr "Interface invisible"
 
 #: src/scenes/welcome_wizard.rb:374
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten does not stop being useful when you switch to another program. The "
@@ -15294,17 +15132,17 @@ msgid ""
 "list is available under Help, List of Invisible Interface hotkeys."
 msgstr ""
 "Elten n'arrête pas d'être utile lorsque vous passez à un autre programme. "
-"L'interface invisible est un ensemble de touches de frappe mondiales qui "
+"L'interface invisible est un ensemble de touches de frappe globales qui "
 "fonctionnent sur tout le système pendant qu'Elten fonctionne, de sorte que "
 "vous pouvez vérifier de nouveaux messages, parcourir le fil d’actualité ou "
 "contrôler une conférence sans quitter l'application dans laquelle vous êtes. "
 "Son contenu est organisé en cartes, telles que Messages, fil d’actualité et "
-"Options de Conférence : tenir les touches de modification Elten et utiliser "
+"Options de Conférence : tenez les touches de modification Elten et utilisez "
 "les touches fléchées pour se déplacer entre les cartes et leurs éléments, "
 "appuyez sur Entrée pour activer une, ou ajouter une touche de commande, par "
 "exemple M pour écrire un message ou F pour publier au fil d’actualité. La "
 "liste complète est disponible sous Aide, Liste des touches d'interface "
-"invisibles."
+"invisible."
 
 #: src/scenes/welcome_wizard.rb:377
 #, fuzzy
@@ -15350,7 +15188,6 @@ msgid "Sounds and sound themes"
 msgstr "Sons et thèmes sonores"
 
 #: src/scenes/welcome_wizard.rb:429
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten deliberately speaks less than it could: much of what happens is "
@@ -15364,17 +15201,18 @@ msgid ""
 "shares sound themes that replace the whole set. You can preview and install "
 "them under Soundthemes in the Tools menu."
 msgstr ""
-"Elten parle délibérément de moins que ce qu'il pouvait : la plupart de ce "
-"qui se passe est signalé par des sons courts, comme atteindre le bord d'une "
-"liste, un nouveau message arrivant ou quelqu'un se joignant à une "
-"conférence. Vous allez les ramasser naturellement au fur et à mesure que "
-"vous allez, et le bouton ci-dessous ouvre le guide des sons, où vous pouvez "
-"écouter n'importe lequel d'entre eux avec sa description ; le guide est "
-"également toujours disponible dans le menu Aide.\n"
+"Elten parle délibérément moins qu'il ne le pourrait : une grande partie de "
+"ce qui se passe est signalée par de brefs sons, tels que l'atteinte du bord "
+"d'une liste, l'arrivée d'un nouveau message ou l'entrée de quelqu'un dans "
+"une conférence. Vous vous familiariserez naturellement avec la plupart "
+"d'entre eux au fil du temps, et le bouton ci-dessous ouvre le guide des "
+"sons, où vous pouvez écouter chacun d'eux accompagné de sa description ; ce "
+"guide est également toujours disponible dans le menu Aide.\n"
 "\n"
-"Si vous préférez Elten à sonner différemment, la communauté partage des "
-"thèmes sonores qui remplacent l'ensemble. Vous pouvez les prévisualiser et "
-"les installer dans Thèmes sonores dans le menu Outils."
+"Si vous préférez qu'Elten ait une sonorité entièrement différente, la "
+"communauté partage des thèmes sonores qui remplacent l'ensemble complet. "
+"Vous pouvez les prévisualiser et les installer sous Thèmes sonores dans le "
+"menu Outils."
 
 #: src/scenes/welcome_wizard.rb:430
 #, fuzzy
@@ -15487,7 +15325,6 @@ msgid "Calendar"
 msgstr "Calendrier"
 
 #: src/scenes/welcome_wizard.rb:461
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten 3.0 introduces a calendar, which you will find in the Community menu. "
@@ -15497,13 +15334,13 @@ msgid ""
 "public calendar for anyone to subscribe to, so it covers everything from "
 "private appointments to events for a whole community."
 msgstr ""
-"Elten 3.0 présente un calendrier que vous trouverez dans le menu Communauté. "
-"C'est un endroit où planifier vos événements et garder une trace de ce qui "
-"se passe, pour vous-même et avec les autres. Outre votre calendrier "
-"personnel, vous pouvez créer plus, partager un calendrier avec un autre "
-"utilisateur, ou publier un calendrier public spécifique à la langue pour "
-"quiconque à s'abonner, donc il couvre tout, des rendez-vous privés aux "
-"événements pour toute une communauté."
+"•Elten 3.0 introduit un calendrier, que vous trouverez dans le menu Réseau. "
+"C'est un endroit pour planifier vos événements et suivre ce qui s'en vient, "
+"pour vous-même et avec les autres. En plus de votre calendrier personnel, "
+"vous pouvez en créer d'autres, partager un calendrier avec un autre "
+"utilisateur ou publier un calendrier public spécifique à une langue auquel "
+"tout le monde peut s'abonner, de sorte qu'il couvre tout, des rendez-vous "
+"privés aux événements pour toute une communauté."
 
 #: src/scenes/welcome_wizard.rb:465
 #, fuzzy
@@ -15512,7 +15349,6 @@ msgid "Tasks"
 msgstr "Tâches"
 
 #: src/scenes/welcome_wizard.rb:466
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Alongside the calendar, Elten 3.0 also introduces tasks. A task can carry a "
@@ -15537,7 +15373,6 @@ msgid "Activity statistics"
 msgstr "Statistiques d'activité"
 
 #: src/scenes/welcome_wizard.rb:471
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Until now, a summary of the past year's activity was sent out on the first "
@@ -15551,18 +15386,18 @@ msgid ""
 "and rankings show, among other things, the forums you used most and the "
 "people you wrote with most often."
 msgstr ""
-"Jusqu'à présent, un résumé de l'activité de l'année écoulée a été envoyé le "
-"premier jour de chaque nouvelle année, et seulement quelques-uns pouvaient "
-"le lire : il a atteint les utilisateurs parlant polonais qui étaient actifs "
-"à cette époque, et il n'existait qu'en polonais. Elten 3.0 remplace cette "
-"tradition par quelque chose de mieux. Les statistiques d'activité sont "
-"maintenant accessibles à tous, pour n'importe quel an et à tout moment, sous "
-"Gérer mon compte. Vous pouvez vérifier combien de messages, de blogs et de "
-"commentaires de forum par année, combien de temps vous avez passé dans des "
-"conférences et combien de fois vous vous êtes inscrits; chaque année peut "
-"être comparée à celui avant, et les classements montrent, entre autres "
-"choses, les forums que vous avez utilisés la plupart et les personnes que "
-"vous avez écrit le plus souvent."
+"Jusqu'à présent, un résumé de l'activité de l'année écoulée était envoyé le "
+"premier jour de chaque nouvelle année, et seuls certains pouvaient le lire : "
+"il parvenait aux utilisateurs polonais actifs à cette période et n'existait "
+"qu'en polonais. Elten 3.0 remplace cette tradition par quelque chose de "
+"mieux. Les statistiques d'activité sont désormais accessibles à tous, pour "
+"n'importe quelle année et à tout moment, sous Gérer mon compte. Vous pouvez "
+"vérifier combien de posts sur les forums, de messages privés, des articles "
+"de blog et de commentaires une année a apporté, combien de temps vous avez "
+"passé en conférences et à quelle fréquence vous vous êtes connecté ; chaque "
+"année peut être comparée à la précédente, et des classements montrent, entre "
+"autres, les forums que vous avez le plus utilisés et les personnes avec "
+"lesquelles vous avez le plus souvent écrit."
 
 #: src/scenes/welcome_wizard.rb:475
 #, fuzzy
@@ -15655,7 +15490,6 @@ msgid "Keyboard behaviour on macOS"
 msgstr "Comportement du clavier sur macOS"
 
 #: src/scenes/welcome_wizard.rb:498
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten on macOS can follow either the native macOS conventions or the Ctrl-"
@@ -15666,14 +15500,15 @@ msgid ""
 "show the current settings; both can also be adjusted at any time under "
 "Tools, Program settings."
 msgstr ""
-"Elten sur macOS peut suivre soit les conventions macOS natives ou la "
-"disposition Windows basée sur Ctrl que les versions Elten plus anciennes "
-"utilisées. Le style clavier décide quelles touches de modification Les "
-"raccourcis Elten s'attendent : Commande et Option, ou Ctrl. La navigation de "
-"caractères décide séparément si les touches Flèche gauche et droite "
-"examinent le texte de la manière macOS ou de la manière Windows. Les listes "
-"ci-dessous montrent les paramètres actuels; les deux peuvent également être "
-"ajustés à tout moment sous Outils, paramètres du programme."
+"Elten sur macOS peut suivre soit les conventions natives de macOS, soit la "
+"disposition Windows basée sur la touche Ctrl qu'utilisaient les anciennes "
+"versions d'Elten. Le style de clavier détermine quelles touches "
+"modificatrices les raccourcis d'Elten attendent : Commande et Option, ou "
+"Ctrl. La navigation par caractères détermine séparément si les touches "
+"Flèche gauche et Flèche droite parcourent le texte à la manière de macOS ou "
+"à la manière de Windows. Les listes ci-dessous affichent les paramètres "
+"actuels ; les deux peuvent également être modifiés à tout moment dans "
+"Outils, Paramètres du programme."
 
 #: src/scenes/welcome_wizard.rb:503 src/scenes/welcome_wizard.rb:510
 #, fuzzy
@@ -15724,7 +15559,6 @@ msgid "Your main language"
 msgstr "Votre langue principale"
 
 #: src/scenes/welcome_wizard.rb:530
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "Elten could not load your current main-language setting."
 msgstr ""
@@ -15769,14 +15603,13 @@ msgstr ""
 "avec le contenu que vous pouvez lire."
 
 #: src/scenes/welcome_wizard.rb:541
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "It matches the language of the interface, which is usually exactly right. "
 "Change it only if you prefer community content in another language."
 msgstr ""
 "Il correspond à la langue de l'interface, qui est généralement exactement "
-"droite. Le modifier seulement si vous préférez le contenu communautaire dans "
+"droite. Le modifiez seulement si vous préférez le contenu communautaire dans "
 "une autre langue."
 
 #: src/scenes/welcome_wizard.rb:543
@@ -15804,16 +15637,15 @@ msgid "Other languages"
 msgstr "Autres langues"
 
 #: src/scenes/welcome_wizard.rb:571
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten could not load your other language settings. Any languages selected "
 "here will replace the unread setting. Leave every item unticked to make no "
 "change and review it later in your account settings."
 msgstr ""
-"Elten n'a pas pu charger vos autres paramètres de langue. N'importe quelle "
+"Elten n'a pas pu charger vos paramètres d'autres langues. N'importe quelle "
 "langue sélectionnée ici remplacera le paramètre non lu. Laissez chaque "
-"élément non sélectionné pour ne pas modifier et revisiter plus tard dans les "
+"élément non sélectionné pour ne pas modifier et revisitez plus tard dans les "
 "paramètres de votre compte."
 
 #: src/scenes/welcome_wizard.rb:573
@@ -15854,19 +15686,17 @@ msgid "Public name"
 msgstr "Nom public"
 
 #: src/scenes/welcome_wizard.rb:602
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten could not load the public name currently stored on your profile. Enter "
 "a name only if you want to replace it. Leave the field empty to make no "
 "change and review your profile later."
 msgstr ""
-"Elten ne pouvait pas charger le nom public actuellement stocké sur votre "
-"profil. Saisissez un nom seulement si vous voulez le remplacer. Laissez le "
-"champ vide pour ne pas modifier et consultez votre profil plus tard."
+"•Elten n'a pas pu charger le nom public actuellement enregistré sur votre "
+"profil. Saisissez un nom uniquement si vous souhaitez le remplacer. Laissez "
+"le champ vide pour ne rien modifier et vérifiez votre profil plus tard."
 
 #: src/scenes/welcome_wizard.rb:604
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Alongside your username, your profile can display a public name. Many people "
@@ -15876,9 +15706,9 @@ msgid ""
 msgstr ""
 "En plus de votre nom d'utilisateur, votre profil peut afficher un nom "
 "public. Beaucoup de gens utilisent leur vrai nom, mais n'importe quel nom "
-"que la communauté vous connaît par le fera. Il est facultatif et ne change "
-"pas le nom avec lequel vous vous connectez. Laissez le champ vide si vous "
-"préférez ne pas en afficher un."
+"par lequel la communauté vous connaît fera l'affaire. C'est facultatif et "
+"cela ne change pas le nom avec lequel vous vous connectez. Laissez le champ "
+"vide si vous préférez ne pas en afficher."
 
 #: src/scenes/welcome_wizard.rb:606
 #, fuzzy
@@ -15920,7 +15750,6 @@ msgstr ""
 "si vous préférez ne pas la partager."
 
 #: src/scenes/welcome_wizard.rb:621
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten could not load your current gender setting. Choose Female or Male only "
@@ -16047,16 +15876,15 @@ msgid "Your visiting card"
 msgstr "Votre carte de visite"
 
 #: src/scenes/welcome_wizard.rb:694
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten could not load your current visiting card. Enter text only if you want "
 "to replace it. Leave the field empty to make no change and review your "
 "profile later."
 msgstr ""
-"Elten ne pouvait pas charger votre carte de visite actuelle. Saisissez le "
-"texte seulement si vous voulez le remplacer. Laissez le champ vide pour ne "
-"pas modifier et consultez votre profil plus tard."
+"•Elten n'a pas pu charger votre carte de visite actuelle. Saisissez du texte "
+"uniquement si vous souhaitez la remplacer. Laissez le champ vide pour ne "
+"rien modifier et vérifiez votre profil plus tard."
 
 #: src/scenes/welcome_wizard.rb:696
 #, fuzzy
@@ -16099,20 +15927,18 @@ msgid "Status and signature"
 msgstr "Statut et signature"
 
 #: src/scenes/welcome_wizard.rb:710
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten could not load your current status and signature. Enter text only if "
 "you want to replace them. Leave both fields empty to make no change and "
 "review them later in your account settings."
 msgstr ""
-"Elten ne pouvait pas charger votre statut et signature actuels. Saisissez le "
-"texte seulement si vous voulez les remplacer. Laissez les deux champs vides "
-"pour ne pas modifier et relisez-les plus tard dans les paramètres de votre "
-"compte."
+"•Elten n'a pas pu charger votre statut et votre signature actuels. Saisissez "
+"du texte uniquement si vous souhaitez les remplacer. Laissez les deux champs "
+"vides pour ne rien modifier et vérifiez-les plus tard dans les paramètres de "
+"votre compte."
 
 #: src/scenes/welcome_wizard.rb:712
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Two more short lines can accompany you around Elten, and both are optional. "
@@ -16148,7 +15974,6 @@ msgid "Two-factor authentication"
 msgstr "Authentification à deux facteurs"
 
 #: src/scenes/welcome_wizard.rb:739
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten could not check whether two-factor authentication is enabled. No "
@@ -16156,11 +15981,10 @@ msgid ""
 "Factor authentication."
 msgstr ""
 "Elten n'a pas pu vérifier si l'authentification à deux facteurs est activée. "
-"Aucune action n'est proposée ici; revisite-la plus tard dans Gérer mon "
+"Aucune action n'est proposée ici; revisitez-la plus tard dans Gérer mon "
 "compte, Gérer l'authentification à deux facteurs."
 
 #: src/scenes/welcome_wizard.rb:741
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Two-factor authentication is already enabled on this account. There is "
@@ -16345,7 +16169,6 @@ msgstr ""
 "des appels."
 
 #: src/scenes/welcome_wizard.rb:794
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "And there is more"
 msgstr "Et il y en a d'autres"
@@ -16374,20 +16197,18 @@ msgstr ""
 "immédiatement."
 
 #: src/scenes/welcome_wizard.rb:802 src/scenes/welcome_wizard.rb:815
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "Recommended forum groups"
 msgstr "Groupes de forum recommandés"
 
 #: src/scenes/welcome_wizard.rb:806
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten could not load the forum groups available to your account. Nothing can "
 "be selected on this page; open the Forum later to review groups."
 msgstr ""
 "Elten n'a pas pu charger les groupes de forum disponibles sur votre compte. "
-"Rien ne peut être sélectionné sur cette page; ouvrir le Forum plus tard pour "
+"Rien ne peut être sélectionné sur cette page; ouvrez le Forum plus tard pour "
 "examiner les groupes."
 
 #: src/scenes/welcome_wizard.rb:808
@@ -16441,7 +16262,6 @@ msgid "The available groups could not be loaded."
 msgstr "Les groupes disponibles n'ont pas pu être chargés."
 
 #: src/scenes/welcome_wizard.rb:820
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "There are no other matching recommended groups available to join."
 msgstr "Il n'y a pas d'autres groupes recommandés pour les rejoindre."
@@ -16458,13 +16278,11 @@ msgstr ""
 
 #: src/scenes/welcome_wizard.rb:824 src/scenes/welcome_wizard.rb:891
 #: src/scenes/welcome_wizard.rb:924
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "Availability"
 msgstr "Disponibilité"
 
 #: src/scenes/welcome_wizard.rb:831
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "Recommended groups"
 msgstr "Groupes recommandés"
@@ -16574,10 +16392,9 @@ msgstr ""
 "Les blogs récents appartenant à vos contacts n'ont pas pu être vérifiés."
 
 #: src/scenes/welcome_wizard.rb:887
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "There are no contacts from whom Elten can suggest a blog."
-msgstr "Il n'y a aucun contact avec Elten qui peut suggérer un blog."
+msgstr "Aucun contact auprès duquel Elten ne peut suggérer de blog."
 
 #: src/scenes/welcome_wizard.rb:889
 #, fuzzy
@@ -16602,7 +16419,7 @@ msgid ""
 "someone's feed does not add or remove a contact. Leave every item unticked "
 "to make no change."
 msgstr ""
-"Le fil d’actualité est où les gens postent des mises à jour de statut "
+"Le fil d’actualité est où les gens postnt des mises à jour de statut "
 "courtes, séparées de leurs blogs. Ci-dessous sont des contacts dont les fil "
 "d’actualité ne vous suivent pas encore; cochez n'importe qui dont les mises "
 "à jour vous souhaitez voir sur votre onglet de fil d’actualité. Suivre le "
@@ -16617,7 +16434,6 @@ msgstr ""
 "vérifiées."
 
 #: src/scenes/welcome_wizard.rb:920
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "There are no contacts to suggest."
 msgstr "Il n'y a pas de contacts à suggérer."
@@ -16640,7 +16456,6 @@ msgid "Post to the feed"
 msgstr "Publier dans le fil d’actualité"
 
 #: src/scenes/welcome_wizard.rb:941
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten could not load your feed history, so it cannot determine whether a new "
@@ -16687,7 +16502,6 @@ msgstr ""
 "écrire une mise à jour si vous le souhaitez."
 
 #: src/scenes/welcome_wizard.rb:950
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "It will be published when you finish the wizard; leave the field empty to "
@@ -16729,13 +16543,11 @@ msgstr ""
 "téléchargement : %{size}."
 
 #: src/scenes/welcome_wizard.rb:988
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "Install %{program} when I finish"
-msgstr "Installez %{program} lorsque je finis"
+msgstr "Installer %{program} lorsque je finis"
 
 #: src/scenes/welcome_wizard.rb:1008 src/scenes/welcome_wizard.rb:1009
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "FFmpeg encoders"
 msgstr "Encodeurs FFmpeg"
@@ -16758,10 +16570,9 @@ msgstr ""
 "propre."
 
 #: src/scenes/welcome_wizard.rb:1014 src/scenes/welcome_wizard.rb:1015
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "File Manager"
-msgstr "Gestionnaire de fichiers"
+msgstr "File Manager"
 
 #: src/scenes/welcome_wizard.rb:1016
 #, fuzzy
@@ -16780,7 +16591,6 @@ msgstr ""
 "si vous souhaitez gérer des fichiers locaux sans quitter Elten."
 
 #: src/scenes/welcome_wizard.rb:1020
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "MCP integration for advanced users"
 msgstr "Intégration de la MCP pour les utilisateurs avancés"
@@ -16821,7 +16631,6 @@ msgid "Source code and contributions"
 msgstr "Code source et contributions"
 
 #: src/scenes/welcome_wizard.rb:1033
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten is free, open-source software released under the GNU General Public "
@@ -16831,11 +16640,13 @@ msgid ""
 "ever decide to contribute, thank you in advance for the time and care you "
 "put into it."
 msgstr ""
-"Elten est un logiciel libre et libre publié sous la licence publique "
-"générale GNU, version 3, et son code source complet et son historique de "
-"développement sont publics sur GitHub. Les contributions sont les "
-"bienvenues : des fonctionnalités bien adaptées, des corrections de bogues et "
-"des traductions sont toutes examinées et fusionnées lorsqu'elles sont prêtes."
+"•Elten est un logiciel libre et open-source publié sous la licence publique "
+"générale GNU, version 3, et l'intégralité de son code source ainsi que son "
+"historique de développement sont publics sur GitHub. Les contributions sont "
+"les bienvenues : les fonctionnalités bien ciblées, les corrections de bugs "
+"et les traductions sont toutes examinées et fusionnées lorsqu'elles sont "
+"prêtes. Si vous décidez un jour de contribuer, merci d'avance pour le temps "
+"et le soin que vous y consacrerez."
 
 #: src/scenes/welcome_wizard.rb:1034
 #, fuzzy
@@ -16850,7 +16661,6 @@ msgid "Supporting Elten"
 msgstr "Soutien à Elten"
 
 #: src/scenes/welcome_wizard.rb:1044
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten is free to use, but keeping it running is not free: servers, domains "
@@ -16861,13 +16671,13 @@ msgid ""
 "will find them under Manage my account. You can also simply make a donation "
 "towards Elten's development."
 msgstr ""
-"Elten est libre d'utiliser, mais le faire fonctionner n'est pas gratuit : "
-"les serveurs, les domaines et les infrastructures supportent tous des coûts "
-"réels, supportés par la Fondation Prowadnica, qui soutient le développement "
-"du projet. Si Elten est précieux pour vous, il y a deux façons faciles "
-"d'aider. Les paquets Premium ajoutent des commodités optionnelles à votre "
-"compte, et le produit va vers l'entretien du service; vous les trouverez "
-"sous Gérer mon compte. Vous pouvez également faire un don vers le "
+"Elten est gratuit, mais son maintien en ligne ne l'est pas : les serveurs, "
+"les domaines et l'infrastructure engendrent de réels coûts, pris en charge "
+"par la Fondation Prowadnica, qui soutient le développement du projet. Si "
+"Elten vous est utile, il y a deux façons simples d'aider. Les packs premium "
+"ajoutent des fonctionnalités de confort optionnelles à votre compte, et les "
+"revenus servent à l'entretien du service ; vous les trouverez sous Gérer mon "
+"compte. Vous pouvez également tout simplement faire un don pour le "
 "développement d'Elten."
 
 #: src/scenes/welcome_wizard.rb:1048
@@ -16889,7 +16699,6 @@ msgid "Account number (Poland)"
 msgstr "Numéro de compte (Pologne)"
 
 #: src/scenes/welcome_wizard.rb:1051
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "IBAN"
 msgstr "IBAN"
@@ -16925,7 +16734,6 @@ msgstr ""
 "fondation pour le don correctement."
 
 #: src/scenes/welcome_wizard.rb:1061 src/scenes/welcome_wizard.rb:1064
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "Donation by bank transfer"
 msgstr "Don par virement bancaire"
@@ -16975,7 +16783,6 @@ msgid "Contributors and testers"
 msgstr "Cotisants et expérimentations"
 
 #: src/scenes/welcome_wizard.rb:1087
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten 3.0 exists thanks to the people around it: those who contributed, "
@@ -16983,10 +16790,10 @@ msgid ""
 "improvements and patiently helped other users through the changes. To every "
 "one of them, thank you."
 msgstr ""
-"Elten 3.0 existe grâce aux personnes qui l'entourent : ceux qui ont "
-"contribué, testé les constructions de développement, rapporté des problèmes "
-"reproductibles, proposé des améliorations et a aidé patiemment d'autres "
-"utilisateurs à travers les changements."
+"Elten 3.0 existe grâce à son entourage : ceux qui ont contribué, testé les "
+"versions de développement, signalé des problèmes reproductibles, proposé des "
+"améliorations et aidé patiemment les autres utilisateurs à travers les "
+"changements. Un grand merci à chacun d'entre eux."
 
 #: src/scenes/welcome_wizard.rb:1092 src/scenes/welcome_wizard.rb:1093
 #, fuzzy
@@ -17003,9 +16810,8 @@ msgid "Next"
 msgstr "Suivant"
 
 #: src/scenes/welcome_wizard.rb:1271
-#, fuzzy
 msgid "Finish"
-msgstr "Finition"
+msgstr "Finir"
 
 #: src/scenes/welcome_wizard.rb:1275
 #, fuzzy
@@ -17014,7 +16820,6 @@ msgid "%{title}, page %{current} of %{total}"
 msgstr "%{title}, page %{current} de %{total}"
 
 #: src/scenes/welcome_wizard.rb:1289
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten could not read the choices on this page. Review them and try again. "
@@ -17085,7 +16890,6 @@ msgid "Choose Finish to apply the following selections:"
 msgstr "Choisissez Terminer pour appliquer les sélections suivantes :"
 
 #: src/scenes/welcome_wizard.rb:1487
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "Elten could not check the following information. The wizard will make no "
@@ -17290,7 +17094,6 @@ msgstr "Activer les notifications de fil d’actualité"
 
 #: src/scenes/welcome_wizard.rb:1578 src/scenes/welcome_wizard.rb:1736
 #: src/scenes/welcome_wizard.rb:1739
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "Install %{program}"
 msgstr "Installer %{program}"
@@ -17302,7 +17105,6 @@ msgid "account language and configuration"
 msgstr "langue et configuration du compte"
 
 #: src/scenes/welcome_wizard.rb:1585
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "profile information"
 msgstr "Informations sur le profil"
@@ -17314,13 +17116,11 @@ msgid "visiting card"
 msgstr "carte de visite"
 
 #: src/scenes/welcome_wizard.rb:1587
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "two-factor authentication status"
 msgstr "État d'authentification des deux facteurs"
 
 #: src/scenes/welcome_wizard.rb:1588
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "forum groups and introduction thread"
 msgstr "groupes de discussion et fil d'introduction"
@@ -17356,10 +17156,9 @@ msgid "your feed history"
 msgstr "votre historique de fil d’actualité"
 
 #: src/scenes/welcome_wizard.rb:1594
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "donation transfer details"
-msgstr "détails du transfert de don"
+msgstr "Coordonnées bancaires pour le don"
 
 #: src/scenes/welcome_wizard.rb:1595
 #, fuzzy
@@ -17368,13 +17167,11 @@ msgid "programs available on the server"
 msgstr "programmes disponibles sur le serveur"
 
 #: src/scenes/welcome_wizard.rb:1596
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid "installed program status"
 msgstr "état du programme installé"
 
 #: src/scenes/welcome_wizard.rb:1617
-#, fuzzy
 msgctxt "WelcomeWizard"
 msgid ""
 "The wizard stopped unexpectedly. Some earlier operations may already have "
@@ -17678,7 +17475,6 @@ msgid "Day"
 msgstr "Un jour"
 
 #: src/ui/controls/date_button.rb:30 src/ui/controls/player.rb:154
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Hour"
 msgstr "Heure"
@@ -17690,10 +17486,9 @@ msgid "Minute"
 msgstr "Minute"
 
 #: src/ui/controls/date_button.rb:32 src/ui/controls/player.rb:156
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Second"
-msgstr "Deuxième"
+msgstr "Seconde"
 
 #: src/ui/controls/date_button.rb:33 src/ui/controls/opus_record_button.rb:41
 #, fuzzy
@@ -17868,7 +17663,6 @@ msgid "Use custom text"
 msgstr "Utiliser un texte personnalisé"
 
 #: src/ui/controls/edit_box.rb:670
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Ignore"
 msgstr "Ignorer"
@@ -18013,7 +17807,6 @@ msgid "The folder has been created."
 msgstr "Le dossier a été créé."
 
 #: src/ui/controls/files_tree.rb:362
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "File"
 msgstr "Fichier"
@@ -18150,18 +17943,16 @@ msgid "Press Ctrl+Down Arrow to hear the number of items"
 msgstr "Appuyez sur Ctrl+bas Flèche pour entendre le nombre d'éléments"
 
 #: src/ui/controls/opus_record_button.rb:32
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "record"
-msgstr "enregistrement"
+msgstr "Enregistrer"
 
 #: src/ui/controls/opus_record_button.rb:33
 #: src/ui/controls/opus_record_button.rb:93
 #: src/ui/controls/opus_record_button.rb:123
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Pause recording"
-msgstr "Enregistrement des pauses"
+msgstr "Pause"
 
 #: src/ui/controls/opus_record_button.rb:34
 #, fuzzy
@@ -18225,7 +18016,6 @@ msgid "Select audio file"
 msgstr "Sélectionnez un fichier audio"
 
 #: src/ui/controls/opus_record_button.rb:102
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "File selected"
 msgstr "Fichier sélectionné"
@@ -18237,10 +18027,9 @@ msgid "Recording preview"
 msgstr "Aperçu de l'enregistrement"
 
 #: src/ui/controls/opus_record_button.rb:127
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Resume recording"
-msgstr "Enregistrement de la consommation de carburant"
+msgstr "Reprendre l'enregistrement"
 
 #: src/ui/controls/opus_record_button.rb:133
 #, fuzzy
@@ -18259,7 +18048,6 @@ msgid "Are you sure you want to delete recorded audio?"
 msgstr "Voulez-vous vraiment supprimer l'audio enregistré?"
 
 #: src/ui/controls/opus_record_button.rb:172
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Low"
 msgstr "Faible"
@@ -18282,10 +18070,9 @@ msgid "Higher"
 msgstr "Supérieur"
 
 #: src/ui/controls/opus_record_button.rb:176
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "High"
-msgstr "Élevée"
+msgstr "Haut"
 
 #: src/ui/controls/opus_record_button.rb:177
 #, fuzzy
@@ -18382,10 +18169,9 @@ msgid "Track number"
 msgstr "Numéro de piste"
 
 #: src/ui/controls/opus_record_button.rb:276 src/ui/controls/player.rb:364
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Copyright"
-msgstr "Droit d'auteur"
+msgstr "Copyright"
 
 #: src/ui/controls/opus_record_button.rb:328
 #: src/ui/controls/opus_record_button.rb:369
@@ -18401,16 +18187,15 @@ msgid "Chapter time (hh:mm:ss.uuu)"
 msgstr "Temps de chapitre (hh:mm:ss.uu)"
 
 #: src/ui/controls/opus_record_button.rb:340
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid ""
 "Invalid time format. Use hh:mm:ss.uuu: two digits each for hours, minutes "
 "and seconds, optionally followed by a full stop and three digits for "
 "milliseconds."
 msgstr ""
-"Format de temps non valide. Utilisez hh:mm:ss.uu : deux chiffres chacun pour "
-"les heures, minutes et secondes, suivi en option d'un arrêt complet et trois "
-"chiffres pour les millisecondes."
+"Format d'heure invalide. Utilisez hh:mm:ss.uuu : deux chiffres chacun pour "
+"les heures, les minutes et les secondes, suivis facultativement d'un point "
+"et de trois chiffres pour les millisecondes."
 
 #: src/ui/controls/opus_record_button.rb:357
 #, fuzzy
@@ -18425,7 +18210,6 @@ msgid "Add chapters during playback"
 msgstr "Ajouter des chapitres pendant la lecture"
 
 #: src/ui/controls/opus_record_button.rb:360
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Chapter editor; use the context menu to add chapters"
 msgstr ""
@@ -18460,13 +18244,11 @@ msgid "Copy original stream"
 msgstr "Copier le flux original"
 
 #: src/ui/controls/player.rb:220
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Destination"
 msgstr "Destination"
 
 #: src/ui/controls/player.rb:221
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "File format"
 msgstr "Format de fichier"
@@ -18477,10 +18259,9 @@ msgid "File name"
 msgstr "Nom de fichier"
 
 #: src/ui/controls/player.rb:323
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Play/pause"
-msgstr "Jouer/pause"
+msgstr "Play/pause"
 
 #: src/ui/controls/player.rb:334
 #, fuzzy
@@ -18489,16 +18270,14 @@ msgid "Get sound position"
 msgstr "Obtenir une position sonore"
 
 #: src/ui/controls/player.rb:347
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Get sound duration"
 msgstr "Durée du son"
 
 #: src/ui/controls/player.rb:356
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Track info"
-msgstr "Informations sur le suivi"
+msgstr "Track info"
 
 #: src/ui/controls/player.rb:378
 #, fuzzy
@@ -18519,7 +18298,6 @@ msgid "Jump to position"
 msgstr "Aller à la position"
 
 #: src/ui/controls/player.rb:413
-#, fuzzy
 msgctxt "EAPI_Form"
 msgid "Save file"
 msgstr "Enregistrer le fichier"
