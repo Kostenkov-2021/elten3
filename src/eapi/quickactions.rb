@@ -60,6 +60,11 @@ module EltenAPI
         end
       def call_symbol
         case @action
+        when :whatsnew
+          if !GlobalMenu.opened?
+            scene = Scene_Notifications.whatsnew
+            scene == nil ? alert(p_("Notifications", "There is nothing new."), false) : insert_scene(scene)
+          end
         when :context
                    $opencontextmenu=true
         when :lastspeech
@@ -218,11 +223,14 @@ end
     def load_json_actions(path)
       data=JSON.parse(File.binread(path).to_s)
       fail TypeError, "Quick actions JSON must be an array" if !data.is_a?(Array)
+      migrated=false
       for ac in Array(data)
+        migrated=true if legacy_whatsnew_record?(ac)
         action=normalize_record(ac)
         register(*action) if action!=nil
       end
       delete_legacy_data_file
+      save_actions if migrated
     rescue Exception => e
       Log.error("Quick actions JSON load failed: #{e.class}: #{e.message}") if defined?(Log)
       @@actions=[]
@@ -266,7 +274,7 @@ end
     end
     def default_actions
       [
-      [Scene_Notifications, p_("EAPI_QuickActions", "Notification history"), [], 10],
+      whatsnew_action(10, false),
             [Scene_Contacts, p_("EAPI_QuickActions", "My contacts"), [], 9],
       [Scene_Online, p_("EAPI_QuickActions", "Who is online?"), [], -9],
       [Scene_Messages, p_("EAPI_QuickActions", "Messages"), [], -11],
@@ -275,6 +283,9 @@ end
       [Scene_Conference, p_("EAPI_QuickActions", "Conferences")],
       [Scene_PremiumPackages, p_("EAPI_QuickActions", "Premium packages")],
       ]+predefined_procs(true)
+    end
+    def whatsnew_action(key=0, show=false)
+      [:whatsnew, p_("EAPI_QuickActions", "What's new"), [], key, show]
     end
     def register_proc(program, ident, label, proc)
             s=program.to_s+"__"+ident.to_s
@@ -302,6 +313,7 @@ end
       [:donotdisturb, p_("EAPI_QuickActions", "Switch \"Do not disturb\" mode"), [], -2, false],
       [:feed, p_("EAPI_QuickActions", "Publish to a feed"), [], 4, false],
       ]
+      a.unshift(whatsnew_action) if defaults!=true
       a.delete_if{|action| action[0]==:tray} if !tray_supported?
       a.delete_if{|action| action[0]==:srsapi} if !defined?(NVDA) && !defined?(Sapi)
       if defaults!=true
@@ -439,6 +451,7 @@ end
       }
     end
     def normalize_record(record)
+      legacy_whatsnew=legacy_whatsnew_record?(record)
       if record.is_a?(Hash)
         action=deserialize_action(record["action"])
         label=record["label"].to_s
@@ -454,8 +467,20 @@ end
       else
         return nil
       end
+      if legacy_whatsnew
+        action=:whatsnew
+        show=false if key==10
+      end
       return nil if action==nil
       [action, label, params, key, show]
+    end
+    def legacy_whatsnew_record?(record)
+      action = if record.is_a?(Hash)
+        record["action"]
+      elsif record.is_a?(Array) && record.size>0
+        record[0]
+      end
+      action.to_s=="Scene_WhatsNew"
     end
     def deserialize_action(action)
       return action if action.is_a?(Symbol) || action.is_a?(Class)

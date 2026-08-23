@@ -376,6 +376,16 @@ module NotificationGroups
     sort_notification_groups_by_type(groups, type_order)
   end
 
+  def build_active_main_notification_groups(notifications)
+    groups = build_notification_groups(notifications, include_revoked: false)
+    append_virtual_notification_groups(groups, collect_virtual_notification_groups, include_revoked: false)
+    sort_main_notification_groups(
+      groups,
+      sort_mode: Configuration.mainnotificationsort,
+      type_order: Configuration.mainnotificationtypeorder
+    )
+  end
+
   def sort_notification_groups_by_type(groups, type_order)
     order = NotificationGroups.normalize_notification_type_order(type_order)
     ranks = order.each_with_index.to_h

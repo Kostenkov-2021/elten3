@@ -274,13 +274,7 @@ def notifications_load(fc=false, focus_policy: :keep_current)
     return
   end
   notifications = fetch_main_notifications
-  groups = build_notification_groups(notifications, include_revoked: false)
-  append_virtual_notification_groups(groups, collect_virtual_notification_groups, include_revoked: false)
-  @notification_groups = sort_main_notification_groups(
-    groups,
-    sort_mode: Configuration.mainnotificationsort,
-    type_order: Configuration.mainnotificationtypeorder
-  )
+  @notification_groups = build_active_main_notification_groups(notifications)
   latest_time = latest_notification_group_time(@notification_groups)
   jump_to_notifications = focus_notifications_on_entry?(focus_policy, latest_time, previous_visible_time)
   @@notifications_last_visible_time = [previous_visible_time, notification_visibility_time(latest_time), latest_time].max
