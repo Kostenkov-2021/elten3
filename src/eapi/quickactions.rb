@@ -10,6 +10,7 @@ module EltenAPI
             @@hotkey_actions=nil
         @@addprocs = []
     EMPTY_HOTKEY_ACTIONS = [].freeze
+    HOTKEY_KEYS = (1..11).flat_map { |key| [key, -key, key + 12, -(key + 12)] }.freeze
     class QuickAction
       attr_accessor :label, :key, :show
       attr_reader :action, :params
@@ -202,6 +203,22 @@ end
       build_hotkey_actions if @@hotkey_actions==nil
       @@hotkey_actions[key.to_i] || EMPTY_HOTKEY_ACTIONS
     end
+    def hotkey_keys
+      HOTKEY_KEYS
+    end
+    def hotkey_label(key)
+      key=key.to_i
+      return "" if !HOTKEY_KEYS.include?(key)
+      value=key.abs
+      parts=[]
+      if value>12
+        parts.push(KeyboardScheme.modifier_name)
+        value-=12
+      end
+      parts.push("SHIFT") if key<0
+      parts.push("F#{value}")
+      parts.join("+")
+    end
     def load_actions
       @@actions=[]
       invalidate_hotkey_cache
@@ -349,6 +366,58 @@ end
       @@actions.delete(action)
       invalidate_hotkey_cache
       false
+    end
+    def action_identity(action, params=[])
+      serialized=serialize_action(action)
+      return nil if serialized==nil
+      [serialized, params.is_a?(Array) ? params : []]
+    end
+    def find_action(action, params=[])
+      load_actions if @@actions==nil
+      identity=action_identity(action, params)
+      return nil if identity==nil
+      @@actions.find { |item| action_identity(item.action, item.params)==identity }
+    end
+    def assign_hotkey(key, action, label="", params=[])
+      load_actions if @@actions==nil
+      key=key.to_i
+      return false if !HOTKEY_KEYS.include?(key)
+      return false if action_identity(action, params)==nil
+      target=find_action(action, params)
+      mutate_actions do
+        @@actions.delete_if do |item|
+          next false if item.equal?(target) || item.key.to_i!=key
+          if item.show==false
+            true
+          else
+            item.key=0
+            false
+          end
+        end
+        if target==nil
+          target=QuickAction.new(action, label, params, key, false)
+          @@actions.push(target)
+        else
+          target.key=key
+        end
+      end
+    end
+    def remove_hotkey(key)
+      load_actions if @@actions==nil
+      key=key.to_i
+      return false if !HOTKEY_KEYS.include?(key)
+      return true if !@@actions.any? { |item| item.key.to_i==key }
+      mutate_actions do
+        @@actions.delete_if do |item|
+          next false if item.key.to_i!=key
+          if item.show==false
+            true
+          else
+            item.key=0
+            false
+          end
+        end
+      end
     end
     def delete(index)
       index=normalize_index(index)
@@ -549,6 +618,23 @@ end
     def invalidate_hotkey_cache
       @@hotkey_actions=nil
     end
+    def mutate_actions
+      snapshot=@@actions.map { |action| [action, action.key] }
+      yield
+      invalidate_hotkey_cache
+      return true if save_actions
+      restore_action_snapshot(snapshot)
+      false
+    rescue Exception
+      restore_action_snapshot(snapshot) if snapshot!=nil
+      raise
+    end
+    def restore_action_snapshot(snapshot)
+      @@actions=snapshot.map { |entry| entry[0] }
+      snapshot.each { |action, key| action.key=key }
+      invalidate_hotkey_cache
+    end
+    private :mutate_actions, :restore_action_snapshot
     end
   end
   end

@@ -76,6 +76,7 @@ src/scenes/install.rb
 src/scenes/conference.rb
 src/eapi/conference.rb
 src/scenes/account.rb
+src/scenes/keyboardshortcuts.rb
 src/scenes/settings.rb
 src/scenes/clock.rb
 src/scenes/programs.rb
