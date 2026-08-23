@@ -23,6 +23,7 @@ attr_accessor :autosayoption
 attr_accessor :limit
 attr_accessor :item_audio_autoplay
 attr_accessor :item_audio_space_mode
+attr_reader :empty_label
 # Creates a listbox
 #
 class Flags
@@ -77,7 +78,8 @@ class Flags
 # @param index [Numeric] an initial index
 # @param flags [Int] combination of flags
 # @param quiet [Boolean] don't read a caption at creation
-def initialize(options, header: "", index: 0, flags: 0, quiet: true)
+# @param empty_label [String, nil] custom text announced when the list is empty
+def initialize(options, header: "", index: 0, flags: 0, quiet: true, empty_label: nil)
     $lastkeychar=nil
     @border = true
             @border=false if Configuration.listtype == :circular or (flags&Flags::Circular)>0
@@ -102,6 +104,7 @@ def initialize(options, header: "", index: 0, flags: 0, quiet: true)
 @selected_now=false
 @requested_select=false
 @required_multiselection_indices=[]
+  self.empty_label=empty_label
   options=options.deep_dup
         index = 0 if index == nil
            index = 0 if index >= options.size
@@ -118,6 +121,10 @@ self.options=(options)
                                     @autosayoption=true
                                                   focus if quiet == false
                                         end
+
+def empty_label=(label)
+  @empty_label=label==nil ? nil : text_utf8(label)
+end
 
             def options=(opts)
               @required_multiselection_indices.clear if @required_multiselection_indices!=nil
@@ -651,6 +658,14 @@ speak((@index+1).to_s) if position_action == :list_position
 speak(@options.size.to_s) if position_action == :list_count
     oldindex = self.index
       options = @options
+if options.empty? && @empty_label!=nil && (key_pressed?(:key_up) || key_pressed?(:key_down))
+  speech_stop
+  lspeak(@empty_label)
+  play_sound("border", volume: 100, pitch: 100, pan: 50) if @silent == false
+  trigger(:border, self.index)
+  @run=false
+  return
+end
 multiselection_range_action=keyboard_action_pressed?(:list_select_start, :list_select_end, :list_select_previous, :list_select_next, :list_select_page_up, :list_select_page_down) if @multi
 select_multiselection_range(multiselection_range_action) if multiselection_range_action!=nil
   boundary_action = keyboard_action_pressed?(:list_start, :list_end)
@@ -935,7 +950,7 @@ end
                 end
               end
 end
-sp += text_utf8(p_("EAPI_Form", "Empty list")) if @options.size==0
+sp += text_utf8(@empty_label==nil ? p_("EAPI_Form", "Empty list") : @empty_label) if @options.size==0
 braille_text=sp if braille_text==""
 lspeak(sp) if spk && sp!=""
 NVDA.braille(braille_text) if defined?(NVDA) && NVDA.check

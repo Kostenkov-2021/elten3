@@ -14,16 +14,22 @@ module EltenAPI
          attr_reader :row_audio_urls
          attr_accessor :header
          attr_reader :column
-                           def initialize(columns=[], rows=[], index: 0, header: "", quiet: true, flags: 0)
+                           def initialize(columns=[], rows=[], index: 0, header: "", quiet: true, flags: 0, empty_label: nil)
            @columns, @rows = columns, rows
            @flags=flags
            @column=0
            @row_states=[]
            @row_audio_urls=[]
            @header=text_utf8(header)
-           @sel = ListBox.new(format_rows(@column), header: @header, index: index, flags: @flags, quiet: quiet)
+           @sel = ListBox.new(format_rows(@column), header: @header, index: index, flags: @flags, quiet: quiet, empty_label: empty_label)
            @sel.on(:move) {|arg|trigger(:move, arg)}
           end
+           def empty_label
+             @sel.empty_label
+           end
+           def empty_label=(label)
+             @sel.empty_label=label
+           end
            def autosayoption
              @sel.autosayoption
            end
