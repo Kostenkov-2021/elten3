@@ -68,6 +68,10 @@ class Scene_Notifications
     whatsnew? ? p_("Notifications", "There is nothing new.") : p_("Notifications", "No notifications.")
   end
 
+  def notification_list_header
+    whatsnew? ? p_("Notifications", "Notifications") : p_("Notifications", "Notification history")
+  end
+
   def load_groups(index=@index)
     notifications = fetch_notifications
     if whatsnew?
@@ -78,7 +82,7 @@ class Scene_Notifications
       @groups = limit_visible_notification_groups(sort_notification_groups(groups))
     end
     @index = [[index.to_i, 0].max, [@groups.size - 1, 0].max].min
-    @list = TableBox.new(notification_columns, notification_rows(@groups), index: @index, header: p_("Notifications", "Notifications"), quiet: whatsnew?)
+    @list = TableBox.new(notification_columns, notification_rows(@groups), index: @index, header: notification_list_header, quiet: whatsnew?)
     apply_notification_group_states(@list, @groups) if !whatsnew?
     @list.bind_context { |menu| context(menu) }
   end
