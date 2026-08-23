@@ -2657,3 +2657,5 @@ class EltenApp
     @package.manifest.author
   end
 end
+
+require_relative "unsigned_package_builder" if !defined?(Programs::UnsignedPackageBuilder)
