@@ -304,8 +304,11 @@ module EltenAPI
         last_activity = @last_activity
         return false if last_activity == nil
 
-        threshold = active_connection_requests?(@connection_generation) ? ACTIVE_STALE_AFTER : STALE_AFTER
-        last_activity < monotonic_time - threshold
+        now = monotonic_time
+        pending_started_at = oldest_pending_request_started_at(@connection_generation)
+        return pending_started_at < now - ACTIVE_STALE_AFTER if pending_started_at != nil
+
+        last_activity < now - STALE_AFTER
       end
 
       def disable_http2?
@@ -434,6 +437,7 @@ module EltenAPI
           @pending_requests ||= {}
           @pending_requests[token] = {
             generation: generation,
+            started_at: monotonic_time,
             failure: failure
           }
         end
@@ -475,11 +479,15 @@ module EltenAPI
         end
       end
 
-      def active_connection_requests?(generation)
-        return false if generation == nil
+      def oldest_pending_request_started_at(generation)
+        return nil if generation == nil
 
         pending_mutex.synchronize do
-          (@pending_requests || {}).any? { |_token, entry| entry[:generation] == generation }
+          (@pending_requests || {}).values
+            .select { |entry| entry[:generation] == generation }
+            .map { |entry| entry[:started_at] }
+            .compact
+            .min
         end
       end
 
