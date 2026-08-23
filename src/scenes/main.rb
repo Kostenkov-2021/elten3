@@ -76,25 +76,18 @@ class Scene_Main
       if $main_notifications_changed == true || notifications_changed
         $main_notifications_changed = false
         previous_section = current_main_section
-        focused_notifications = previous_section == :notifications
-        had_notifications = notifications_visible?
-        active = main_window_active?
         minimized = main_window_minimized?
         notifications_load(false, focus_policy: Configuration.mainnotificationfocus)
-        @focus_notifications_when_active = true if !had_notifications && notifications_visible? && !active
-        if focused_notifications
-          if @skip_next_notifications_change_say == true
-            @skip_next_notifications_change_say = false
-          elsif minimized
-            @focus_notifications_when_active = true
-          else
-            announce_after_notifications_reload(previous_section)
+        if minimized
+          current_section = current_main_section
+          if previous_section != :notifications && current_section == :notifications
+            @announce_notifications_after_restore = true
+          elsif previous_section == :notifications && current_section != :notifications
+            @announce_notifications_after_restore = false
           end
-        elsif active && current_main_section != previous_section
-          focus_current_control
         end
       end
-      focus_deferred_notifications_if_active
+      announce_notifications_after_restore_if_active
       feeds_load if Session.feeds_updated?
       update_current_main_control
       if key_pressed?(0x9)
@@ -234,14 +227,14 @@ rescue Exception
   false
 end
 
-def focus_deferred_notifications_if_active
-  return if @focus_notifications_when_active != true
-  return if !notifications_visible? || @notifications_sel == nil
+def announce_notifications_after_restore_if_active
+  return if @announce_notifications_after_restore != true
   return if main_window_minimized?
   return if !main_window_active?
 
-  @focus_notifications_when_active = false
-  @@focus = :notifications
+  @announce_notifications_after_restore = false
+  return if current_main_section != :notifications || @notifications_sel == nil
+
   @notifications_sel.focus
 end
 def update_current_main_control
@@ -349,7 +342,6 @@ def notifications_open
       previous_section = current_main_section
       notifications_load(false)
       announce_after_notifications_reload(previous_section)
-      @skip_next_notifications_change_say = true
     end
   end
 end
@@ -364,7 +356,6 @@ def notifications_revoke_current
       previous_section = current_main_section
       notifications_load(false)
       announce_after_notifications_reload(previous_section)
-      @skip_next_notifications_change_say = true
     end
   end
 end
@@ -392,7 +383,6 @@ def notifications_revoke_all
       previous_section = current_main_section
       notifications_load(false)
       announce_after_notifications_reload(previous_section)
-      @skip_next_notifications_change_say = true
     end
   end
 end
