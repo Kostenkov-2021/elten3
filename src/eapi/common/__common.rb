@@ -60,7 +60,7 @@ loop_update
                 $exit = false
                 return false
                 when 3
-                                  return quit("W zasadzie, jak mam zejść z oczu osobie niewidomej? Nie rozumiem. Proszę o doprecyzowanie.")
+                                  return quit(p_("EAPI_Common","Could you provide me more details on that matter? I have no sense of seeing. And do you?"))
           end
           end
         end
