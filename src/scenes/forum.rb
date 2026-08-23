@@ -2024,22 +2024,22 @@ break
         forumtagsedit(@sforums[@frmsel.index])
         @frmsel.focus
         }
-        m.option(p_("Forum", "Change forum position")) {
-          selt = []
-          @sforums.each { |f| selt.push(f.fullname) }
-          ind = selector(selt + [p_("Forum", "Move to end")], header: p_("Forum", "Move forum"), start_index: 0, cancel_index: -1)
-          if ind != -1
-            if forum_attempt(nil) {
-              EltenLink::Forum.move_forum(elten_link, forumid: @sforums[@frmsel.index].id, position: ind)
-            }
-              alert(_("Saved"))
-            end
-            getcache
-            forumsmain(@group)
-          else
-            @frmsel.focus
-          end
-        }
+#        m.option(p_("Forum", "Change forum position")) {
+#          selt = []
+#          @sforums.each { |f| selt.push(f.fullname) }
+#          ind = selector(selt + [p_("Forum", "Move to end")], header: p_("Forum", "Move forum"), start_index: 0, cancel_index: -1)
+#          if ind != -1
+#            if forum_attempt(nil) {
+#              EltenLink::Forum.move_forum(elten_link, forumid: @sforums[@frmsel.index].id, position: ind)
+#            }
+#              alert(_("Saved"))
+#            end
+#            getcache
+#            forumsmain(@group)
+#          else
+#            @frmsel.focus
+#          end
+#        }
         if @sforums[@frmsel.index].posts == 0
           m.option(p_("Forum", "Delete forum")) {
             confirm(p_("Forum", "Are you sure you want to delete forum %{forum}?")%{ :forum => @sforums[@frmsel.index].fullname}) {
