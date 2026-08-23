@@ -1099,6 +1099,51 @@ end
               details.join("\n")
             end
 
+            def forum_report_details(report)
+              details=[]
+              report_reason=report.content.to_s.empty? ? p_("Forum", "Not provided") : report.content.to_s
+              original_post=report.postvalue.to_s.empty? ? p_("Forum", "Not available") : report.postvalue.to_s
+              details.push(p_("Forum", "Reported by: %{user}")%{ user: report.user })
+              details.push(p_("Forum", "Reported at: %{date}")%{ date: format_date(report.creationtime) })
+              details.push(p_("Forum", "Report reason:\n%{reason}")%{ reason: report_reason })
+              details.push(p_("Forum", "Original post:\n%{post}")%{ post: original_post })
+              details.push(p_("Forum", "Status: %{status}")%{ status: report.solved ? p_("Forum", "Resolved") : p_("Forum", "Unresolved") })
+              if report.solved
+                details.push(p_("Forum", "Resolution: %{resolution}")%{ resolution: forum_report_status_name(report.status) })
+                details.push(p_("Forum", "Resolved by: %{moderator}")%{ moderator: report.moderator }) if !report.moderator.to_s.empty?
+                details.push(p_("Forum", "Resolved at: %{date}")%{ date: format_date(report.solutiontime) }) if report.solutiontime!=nil
+                details.push(p_("Forum", "Moderator response:\n%{response}")%{ response: report.reason }) if !report.reason.to_s.empty?
+              end
+              action=forum_report_suggestion_name(report.suggestion)
+              if action==nil
+                details.push(p_("Forum", "Suggested action: None"))
+              else
+                details.push(p_("Forum", "Suggested action: %{action}")%{ action: action })
+                action_details=forum_report_suggestion_details(report)
+                details.push(p_("Forum", "Suggested action details:\n%{details}")%{ details: action_details }) if !action_details.empty?
+                if report.solved
+                  performed=report.suggestion_used ? _("Yes") : _("No")
+                  details.push(p_("Forum", "Suggested action performed: %{performed}")%{ performed: performed })
+                end
+              end
+              details.join("\n\n")
+            end
+
+            def show_group_report_details(report)
+              input_text(p_("Forum", "Report details"), flags: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly, text: forum_report_details(report), escapable: true)
+            end
+
+            def activate_group_report(group, report)
+              return false if report==nil
+              if group.role==2 && !report.solved
+                groupreportresolver(group, report)
+                true
+              else
+                show_group_report_details(report)
+                false
+              end
+            end
+
             def open_group_reports_target(target)
               group=@groups.to_a.find{|candidate|candidate.id==target["groupid"].to_i}
               if group==nil
@@ -1144,8 +1189,8 @@ end
                           report=reports[sel.index]
                           if report!=nil
                             menu.useroption(report.user)
-                            menu.option(p_("Forum", "Show reported post")) {
-                            input_text(p_("Forum", "Post"), flags: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly, text: report.postvalue, escapable: true)
+                            menu.option(p_("Forum", "Details")) {
+                            show_group_report_details(report)
                             loop_update
                             }
                             menu.option(p_("Forum", "Go to reported post"), nil, "o") {
@@ -1159,8 +1204,7 @@ insert_scene(Scene_Forum_Thread.new(thread, -13, 0, report.post, nil, Scene_Main
                             }
                             if group.role==2 && !report.solved
                               menu.option(p_("Forum", "Resolve")) {
-                              groupreportresolver(group, report)
-                              rfr.call
+                              rfr.call if activate_group_report(group, report)
                               sel.update
                               }
                               end
@@ -1188,7 +1232,7 @@ rfr.call
               sel.update
               if key_pressed?(:key_enter)
                 report=reports[sel.index]
-                input_text(p_("Forum", "Post"), flags: EditBox::Flags::MultiLine|EditBox::Flags::ReadOnly, text: report.postvalue, escapable: true) if report!=nil
+                rfr.call if activate_group_report(group, report)
                 loop_update
                 end
               break if key_pressed?(:key_escape)
@@ -5379,9 +5423,9 @@ end
     end
     
     class Struct_Forum_Report
-      attr_accessor :id, :user, :thread, :post, :postvalue, :content, :creationtime, :solved, :status, :reason, :solutiontime, :suggestion, :suggestion_flags, :suggestion_range, :suggestion_used
+      attr_accessor :id, :user, :thread, :post, :postvalue, :content, :creationtime, :solved, :status, :reason, :solutiontime, :moderator, :suggestion, :suggestion_flags, :suggestion_range, :suggestion_used
       def initialize
-        @id, @user, @thread, @post, @postvalue, @content, @creationtime, @solved, @status, @reason, @solutiontime = 0, "", 0, 0, "", "", Time.now, false, 0, "", nil
+        @id, @user, @thread, @post, @postvalue, @content, @creationtime, @solved, @status, @reason, @solutiontime, @moderator = 0, "", 0, 0, "", "", Time.now, false, 0, "", nil, ""
         @suggestion, @suggestion_flags, @suggestion_range, @suggestion_used = nil, {}, nil, false
       end
       end

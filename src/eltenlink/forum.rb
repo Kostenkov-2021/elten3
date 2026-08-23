@@ -867,6 +867,7 @@ module EltenLink
         report.status = row["status"].to_i
         report.reason = row["reason"].to_s
         report.solutiontime = Time.at(row["solution_time"].to_i) if row["solution_time"].to_i.positive?
+        report.moderator = row["moderator"].to_s
         report.suggestion = row["suggestion"].to_s
         report.suggestion = nil if report.suggestion.empty?
         report.suggestion_flags = row["suggestion_flags"].to_h.transform_keys(&:to_s)
