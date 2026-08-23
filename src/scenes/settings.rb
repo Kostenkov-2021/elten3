@@ -239,7 +239,13 @@ def make_window
       make_setting(p_("Settings", "Language"), langs, "Interface", "Language", langsmapping)
                             make_setting(p_("Settings", "Automatically minimize Elten Window to system tray"), :bool, "Interface", "HideWindow") if tray_supported?
                                         make_setting(p_("Settings", "Enable auto-login"), :bool, "Login", "EnableAutoLogin")
-        make_setting(p_("Settings", "Automatically start Elten after I log on to Windows"), :bool, "System", "AutoStart") if tray_supported?
+        make_setting(
+          p_("Settings", "Start Elten after I log on to Windows"),
+          [p_("Settings", "Do not start automatically"), p_("Settings", "Start hidden"), p_("Settings", "Start with the window visible")],
+          "System",
+          "AutoStart",
+          ["disabled", "hidden", "visible"]
+        ) if tray_supported?
         make_setting(p_("Settings", "Check for updates at startup"), :bool, "Updates", "CheckAtStartup")
         make_setting(p_("Settings", "Updates branch"), [p_("Settings", "Auto"),p_("Settings", "Stable"), p_("Settings", "RC"), p_("Settings", "Beta")], "Updates", "Branch", ["auto","stable","rc","beta"])
         make_setting(p_("Settings", "Send Elten usage reports"), :bool, "Privacy", "RegisterActivity")

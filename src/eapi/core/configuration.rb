@@ -116,11 +116,11 @@ Configuration.checkupdates = load_configuration_boolean("Updates", "CheckAtStart
 Configuration.autoplay = load_configuration_choice("Interface", "AutoPlay", [:always, :without_transcription, :never], :always)
 Configuration.branch = load_configuration_choice("Updates", "Branch", [:auto, :stable, :rc, :beta], :auto)
 if tray_supported?
-c_autostart=load_configuration_boolean("System", "AutoStart", false)
+Configuration.autostart=load_configuration_choice("System", "AutoStart", [:disabled, :hidden, :visible], :disabled)
 path=EltenSystemHelpers.autostart_executable_path(current_executable_path)
-c_autostart=false if !EltenSystemHelpers.autostart_executable?(path)
-autostart_cmd=EltenSystemHelpers.autostart_command(path)
-EltenSystemHelpers.sync_autostart(c_autostart, autostart_cmd)
+Configuration.autostart=:disabled if !EltenSystemHelpers.autostart_executable?(path)
+autostart_cmd=EltenSystemHelpers.autostart_command(path, hidden: Configuration.autostart == :hidden)
+EltenSystemHelpers.sync_autostart(Configuration.autostart != :disabled, autostart_cmd)
 end
 Configuration.voice = readconfig("Voice","Voice","")
 if $rvc==nil

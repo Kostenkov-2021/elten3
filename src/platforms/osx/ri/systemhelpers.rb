@@ -535,8 +535,8 @@ module EltenSystemHelpers
       false
     end
 
-    def autostart_command(path)
-      command_line_join([path.to_s])
+    def autostart_command(path, hidden: false)
+      command_line_join([path.to_s, hidden ? "--hidden" : nil].compact)
     end
 
     def sync_autostart(_enabled, _command)

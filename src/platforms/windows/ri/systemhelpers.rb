@@ -381,8 +381,10 @@ module EltenSystemHelpers
       false
     end
 
-    def autostart_command(path)
-      "\"#{path.to_s.tr("/", "\\")}\""
+    def autostart_command(path, hidden: false)
+      command = "\"#{path.to_s.tr("/", "\\")}\""
+      command += " /hidden" if hidden
+      command
     end
 
     def sync_autostart(enabled, command)
