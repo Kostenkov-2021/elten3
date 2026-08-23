@@ -15,6 +15,7 @@ attr_reader :options
 attr_reader :grayed
 attr_reader :item_states
 attr_reader :item_audio_urls
+attr_reader :item_audio_completion_labels
 attr_reader :selected
 attr_reader :required_multiselection_indices
 attr_accessor :silent
@@ -36,6 +37,8 @@ class Flags
   Tagged=64
   end
 
+  ITEM_AUDIO_COMPLETION_BUFFER_SECONDS=0.1
+
   @@audio_entries={}
   ItemStatus = Struct.new(:sound, :speech_prefix, :braille_prefix, keyword_init: true) do
     def key
@@ -53,13 +56,6 @@ class Flags
       player=entry[:player]
       if player==nil
         true
-      elsif player.completed
-        begin
-          player.close
-        rescue Exception
-        end
-        entry[:player]=nil
-        true
       elsif entry[:last_update_serial].to_i<serial-1
         begin
           player.close
@@ -68,9 +64,30 @@ class Flags
         entry[:player]=nil
         true
       else
-        false
+        announce_item_audio_completion(entry, player)
+        if player.completed
+          begin
+            player.close
+          rescue Exception
+          end
+          entry[:player]=nil
+          true
+        else
+          false
+        end
       end
     end
+  end
+
+  def self.announce_item_audio_completion(entry, player)
+    label=entry[:completion_label]
+    return if label==nil || label.to_s=="" || entry[:completion_announced]
+    return if player.respond_to?(:paused?) && player.paused?
+    duration=player.duration.to_f
+    return if duration<=0 || duration-player.position.to_f>ITEM_AUDIO_COMPLETION_BUFFER_SECONDS
+    entry[:completion_announced]=true
+    speak(label, pan: entry[:pan]||50)
+  rescue Exception
   end
   #
 # @param options [Array] an options list
@@ -93,6 +110,7 @@ def initialize(options, header: "", index: 0, flags: 0, quiet: true, empty_label
 @item_states=[]
 @item_audio_urls=[]
 @item_audio_autoplay_values=[]
+@item_audio_completion_labels=[]
 @item_audio_entries={}
 @item_audio_autoplay=true
 @item_audio_space_mode=:pause
@@ -178,13 +196,14 @@ def request_select
   @requested_select=true
 end
 
-def prepend_options(opts, states=[], audio_urls=[], audio_autoplay=[])
+def prepend_options(opts, states=[], audio_urls=[], audio_autoplay=[], audio_completion_labels=[])
   old_options=@options.dup
   old_grayed=@grayed.dup
   old_selected=@selected.dup
   old_states=@item_states.dup
   old_audio_urls=@item_audio_urls.dup
   old_audio_autoplay=@item_audio_autoplay_values.dup
+  old_audio_completion_labels=@item_audio_completion_labels.dup
   old_audio_entries=@item_audio_entries.dup
   @item_audio_entries={}
   self.options=opts
@@ -192,7 +211,7 @@ def prepend_options(opts, states=[], audio_urls=[], audio_autoplay=[])
     set_item_states(i, states[i]) if states[i]!=nil
   end
   for i in 0...audio_urls.size
-    set_item_audio(i, audio_urls[i], autoplay: audio_autoplay[i]!=false) if audio_urls[i]!=nil && audio_urls[i].to_s!=""
+    set_item_audio(i, audio_urls[i], autoplay: audio_autoplay[i]!=false, completion_label: audio_completion_labels[i]) if audio_urls[i]!=nil && audio_urls[i].to_s!=""
   end
   @options+=old_options
   @grayed+=old_grayed
@@ -202,6 +221,8 @@ def prepend_options(opts, states=[], audio_urls=[], audio_autoplay=[])
   @item_audio_urls+=old_audio_urls
   @item_audio_autoplay_values.fill(nil, @item_audio_autoplay_values.size...opts.size)
   @item_audio_autoplay_values+=old_audio_autoplay
+  @item_audio_completion_labels.fill(nil, @item_audio_completion_labels.size...opts.size)
+  @item_audio_completion_labels+=old_audio_completion_labels
   audio_offset=opts.size
   old_audio_entries.each{|i, entry|@item_audio_entries[i+audio_offset]=entry}
 end
@@ -262,10 +283,11 @@ def item_states_for(id)
   @item_states[id]
 end
 
-def set_item_audio(id, url, autoplay: true)
+def set_item_audio(id, url, autoplay: true, completion_label: nil)
   return if id==nil || id<0
   @item_audio_urls||=[]
   @item_audio_autoplay_values||=[]
+  @item_audio_completion_labels||=[]
   @item_audio_entries||={}
   old=@item_audio_urls[id]
   if url==nil || url.to_s==""
@@ -277,21 +299,26 @@ def set_item_audio(id, url, autoplay: true)
   end
   @item_audio_urls[id]=url.to_s
   @item_audio_autoplay_values[id]=autoplay!=false
+  @item_audio_completion_labels[id]=completion_label==nil ? nil : text_utf8(completion_label)
+  @item_audio_entries[id][:completion_label]=@item_audio_completion_labels[id] if @item_audio_entries[id]!=nil
 end
 alias set_item_audio_url set_item_audio
 
 def clear_item_audio(id=nil)
   @item_audio_urls||=[]
   @item_audio_autoplay_values||=[]
+  @item_audio_completion_labels||=[]
   @item_audio_entries||={}
   if id==nil
     @item_audio_entries.keys.each{|i|close_item_audio(i)}
     @item_audio_urls.clear
     @item_audio_autoplay_values.clear
+    @item_audio_completion_labels.clear
   else
     close_item_audio(id)
     @item_audio_urls[id]=nil
     @item_audio_autoplay_values[id]=nil
+    @item_audio_completion_labels[id]=nil
   end
 end
 
@@ -324,12 +351,22 @@ end
 def item_audio_entry(id=self.index)
   url=item_audio_url(id)
   return nil if url==""
+  @item_audio_completion_labels||=[]
   @item_audio_entries||={}
   entry=@item_audio_entries[id]
   if entry==nil || entry[:url]!=url
     close_item_audio(id) if entry!=nil
-    entry={:url=>url, :player=>nil, :last_update_serial=>0}
+    entry={
+      :url=>url,
+      :player=>nil,
+      :last_update_serial=>0,
+      :completion_label=>@item_audio_completion_labels[id],
+      :completion_announced=>false,
+      :pan=>lpos
+    }
     @item_audio_entries[id]=entry
+  else
+    entry[:completion_label]=@item_audio_completion_labels[id]
   end
   entry
 end
@@ -343,6 +380,7 @@ def item_audio_player(id=self.index)
     rescue Exception
     end
     entry[:player]=Player.new(entry[:url], label: @header, autoplay: false, quiet: true, stream: nil, lazy: true)
+    entry[:completion_announced]=false
   end
   entry[:player]
 end
@@ -351,6 +389,7 @@ def mark_item_audio_active(id=self.index)
   entry=item_audio_entry(id)
   return if entry==nil
   entry[:last_update_serial]=($input_frame_serial||0)+1
+  entry[:pan]=lpos
   @@audio_entries[entry.object_id]=entry if entry[:player]!=nil
 end
 

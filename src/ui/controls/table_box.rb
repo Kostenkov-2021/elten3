@@ -12,6 +12,8 @@ module EltenAPI
          attr_reader :sel
          attr_reader :row_states
          attr_reader :row_audio_urls
+         attr_reader :row_audio_autoplay_values
+         attr_reader :row_audio_completion_labels
          attr_accessor :header
          attr_reader :column
                            def initialize(columns=[], rows=[], index: 0, header: "", quiet: true, flags: 0, empty_label: nil)
@@ -20,6 +22,8 @@ module EltenAPI
            @column=0
            @row_states=[]
            @row_audio_urls=[]
+           @row_audio_autoplay_values=[]
+           @row_audio_completion_labels=[]
            @header=text_utf8(header)
            @sel = ListBox.new(format_rows(@column), header: @header, index: index, flags: @flags, quiet: quiet, empty_label: empty_label)
            @sel.on(:move) {|arg|trigger(:move, arg)}
@@ -74,26 +78,45 @@ module EltenAPI
            @row_states=[]
            @sel.item_states.clear if @sel.item_states!=nil
          end
-         def set_row_audio(id, url)
+         def set_row_audio(id, url, autoplay: true, completion_label: nil)
            return if id==nil || id<0
+           if url==nil || url.to_s==""
+             clear_row_audio(id)
+             return
+           end
+           @row_audio_autoplay_values||=[]
+           @row_audio_completion_labels||=[]
            @row_audio_urls[id]=url.to_s
-           @sel.set_item_audio(id, url)
+           @row_audio_autoplay_values[id]=autoplay!=false
+           @row_audio_completion_labels[id]=completion_label==nil ? nil : text_utf8(completion_label)
+           @sel.set_item_audio(id, url, autoplay: autoplay, completion_label: @row_audio_completion_labels[id])
          end
          alias set_row_audio_url set_row_audio
          def clear_row_audio(id=nil)
            @row_audio_urls||=[]
+           @row_audio_autoplay_values||=[]
+           @row_audio_completion_labels||=[]
            if id==nil
              @row_audio_urls=[]
+             @row_audio_autoplay_values=[]
+             @row_audio_completion_labels=[]
              @sel.clear_item_audio if @sel!=nil
            else
              @row_audio_urls[id]=nil
+             @row_audio_autoplay_values[id]=nil
+             @row_audio_completion_labels[id]=nil
              @sel.clear_item_audio(id) if @sel!=nil
            end
          end
          def apply_row_audio
            return if @row_audio_urls==nil
            for i in 0...@row_audio_urls.size
-             @sel.set_item_audio(i, @row_audio_urls[i]) if @row_audio_urls[i]!=nil && @row_audio_urls[i].to_s!=""
+             @sel.set_item_audio(
+               i,
+               @row_audio_urls[i],
+               autoplay: @row_audio_autoplay_values[i]!=false,
+               completion_label: @row_audio_completion_labels[i]
+             ) if @row_audio_urls[i]!=nil && @row_audio_urls[i].to_s!=""
            end
          end
          def apply_row_states
