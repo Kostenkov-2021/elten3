@@ -19,6 +19,7 @@ module EltenAPI
                                                       @file=file
                                                       @stream=stream
                                                                                                             @sound=nil
+                                                                                                            @closed=false
                                                                                                             if file.is_a?(Sound)
                                                          @sound=file
   @file=@sound.file
@@ -55,6 +56,7 @@ end
 
 def get_sound
   return @sound if @sound!=nil
+  return nil if @closed
   if @file.is_a?(String)
 setsound(@file)
 elsif @file==nil
@@ -274,20 +276,29 @@ form.wait
           end
 
 def play
+  return if @closed
+  sound=get_sound
+  return if sound==nil || sound.closed?
   @pause=false
   Programs.emit_event(:player_play)
-  get_sound.play if get_sound!=nil
+  sound.play
 end
 
 def stop
+  return if @closed
+  sound=get_sound
+  return if sound==nil || sound.closed?
   Programs.emit_event(:player_stop)
-  get_sound.stop if get_sound!=nil
+  sound.stop
   @pause=true
 end
 
 def pause
+  return if @closed
+  sound=get_sound
+  return if sound==nil || sound.closed?
   Programs.emit_event(:player_pause)
-  get_sound.pause if get_sound!=nil
+  sound.pause
   @pause=true
 end
 
@@ -314,8 +325,28 @@ def fade
   end
 
 def close
+  return if @closed
+  @closed=true
+  @pause=true
   Programs.emit_event(:player_close)
-  get_sound.close if get_sound!=nil
+  @sound.close if @sound!=nil && !@sound.closed?
+end
+
+def jump_to_position
+  sound=get_sound
+  return if sound==nil || sound.closed?
+  was_playing=!paused?
+  pause if was_playing
+  position=getposition(sound.position, sound.length)
+  if !@closed && @sound.equal?(sound) && !sound.closed?
+    unless position==nil
+      position=position.to_i
+      position=sound.length if position>sound.length
+      sound.position=position
+    end
+    play if was_playing
+  end
+  loop_update
 end
 
 def context(menu, submenu=false)
@@ -325,9 +356,7 @@ def context(menu, submenu=false)
                     if @pause!=true
                   pause
       else
-        Programs.emit_event(:player_play)
-                        get_sound.play
-        @pause=false
+        play
       end
       end
     }
@@ -400,14 +429,7 @@ h=d/3600
       }
       end
     menu.option(p_("EAPI_Form", "Jump to position"), nil, :j) {
-                get_sound.pause
-      dpos=getposition(get_sound.position, get_sound.length)
-      dpos=get_sound.position if get_sound!=nil && dpos==nil
-      dpos=dpos.to_i
-      dpos=get_sound.length if get_sound!=nil && dpos>get_sound.length
-            get_sound.play if get_sound!=nil
-      get_sound.position=dpos if get_sound!=nil
-      loop_update
+      jump_to_position
     }
     if @file!=nil && (@file.include?("http:") || @file.include?("https:"))
     menu.option(p_("EAPI_Form", "Save file"), nil, "s") {
