@@ -423,13 +423,16 @@ class Scene_WelcomeWizard
   end
 
   def add_sounds_page
-    add_action_page(
-      :sounds,
-      p_("WelcomeWizard", "Sounds and sound themes"),
-      p_("WelcomeWizard", "Elten deliberately speaks less than it could: much of what happens is signalled by short sounds instead, such as reaching the edge of a list, a new message arriving or someone joining a conference. You will pick most of them up naturally as you go, and the button below opens the Sounds guide, where you can listen to any of them together with its description; the guide is also always available from the Help menu.\n\nIf you would prefer Elten to sound different altogether, the community shares sound themes that replace the whole set. You can preview and install them under Soundthemes in the Tools menu."),
-      p_("WelcomeWizard", "Open the Sounds guide")
-    ) do
-      insert_scene(Scene_Sounds.new)
+    add_page(:sounds, p_("WelcomeWizard", "Sounds and sound themes")) do
+      info = information_field(
+        p_("WelcomeWizard", "Sounds and sound themes"),
+        p_("WelcomeWizard", "Elten deliberately speaks less than it could: much of what happens is signalled by short sounds instead, such as reaching the edge of a list, a new message arriving or someone joining a conference. You will pick most of them up naturally as you go. The Sounds guide lets you listen to each one together with its description and remains available from the Help menu.\n\nIf you would prefer Elten to sound different altogether, the community shares sound themes that replace the whole set. The sound themes manager lets you browse, download and select them and remains available under Sound themes in the Tools menu. Both screens can be opened directly with the buttons below.")
+      )
+      guide_button = Button.new(p_("WelcomeWizard", "Open the Sounds guide"))
+      guide_button.on(:press) { insert_scene(Scene_Sounds.new) }
+      themes_button = Button.new(p_("WelcomeWizard", "Manage sound themes"))
+      themes_button.on(:press) { insert_scene(Scene_SoundThemes.new) }
+      view([info, guide_button, themes_button])
     end
   end
 
