@@ -507,13 +507,17 @@ if $setkeys.is_a?(Array)
             return ([0, false])
           end
 
-                    def clear_keyboard_input_state
+                    def clear_keyboard_input_state(preserve_activation_guard: false)
                       EltenAPI::KeyboardState.reset
                       $keyboard_state_frame_serial = nil
                       $keyboard_state_frame_thread = nil
                       $getkeychar_cache_serial = nil
                       $getkeychar_cache = nil
-                      EltenWindow.clear_input_state
+                      if preserve_activation_guard && EltenWindow.respond_to?(:clear_input_state_preserving_activation_guard)
+                        EltenWindow.clear_input_state_preserving_activation_guard
+                      else
+                        EltenWindow.clear_input_state
+                      end
                     end
 
                     def run_window_action(wait=false, &block)

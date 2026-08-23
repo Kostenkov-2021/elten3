@@ -386,7 +386,9 @@ module EltenWindow
   SC_CLOSE = 0xF060
   SC_MINIMIZE = 0xF020
   KEYBOARD_ACTIVATION_MIN_DELAY = 0.05
-  KEYBOARD_ACTIVATION_MAX_DELAY = 2.0
+  KEYBOARD_ACTIVATION_MAX_DELAY = 0.5
+  ACTIVATION_ACK_WARNING_SECONDS = 1.0
+  WINDOW_UPDATE_WARNING_SECONDS = 1.0
   MINIMIZE_RESTORE_SUPPRESS_TIME = 1.0
   MSG_SIZE = Fiddle::SIZEOF_VOIDP == 8 ? 48 : 28
 
@@ -508,7 +510,7 @@ module EltenWindow
       suppress_minimize_requests
       show(SW_RESTORE)
       focus(@hwnd)
-      clear_input_state
+      clear_input_state(preserve_activation_guard: true)
       suppress_minimize_requests
       true
     rescue Exception => e
@@ -613,21 +615,26 @@ module EltenWindow
       DEF_WINDOW_PROC.call(hwnd, message, wparam, lparam) rescue 0
     end
 
-    def activation_input_blocked?
+    def activation_input_blocked?(consume_finish: false)
       unless window_thread?
-        return window_state_monitor.synchronize { @activation_ignore_max_until != nil }
+        return window_state_monitor.synchronize { @activation_input_guard_active == true }
       end
       window_state_monitor.synchronize do
-        next false if @activation_ignore_max_until == nil
+        next false if @activation_input_guard_active != true
         now = monotonic_time
         state = capture_keyboard_state_raw
+        if @activation_input_acknowledged != true
+          sync_keyboard_state_without_delivery(state)
+          clear_character_queue
+          next true
+        end
         if now <= @activation_ignore_min_until.to_f || (now <= @activation_ignore_max_until.to_f && keyboard_state_has_pressed_keys?(state))
           sync_keyboard_state_without_delivery(state)
           clear_character_queue
           next true
         end
         finish_activation_ignore(state)
-        false
+        consume_finish == true
       end
     rescue Exception
       clear_activation_guard
@@ -703,10 +710,10 @@ module EltenWindow
       end
     end
 
-    def clear_input_state
-      clear_activation_guard
+    def clear_input_state(preserve_activation_guard: false)
+      clear_activation_guard if preserve_activation_guard != true
       if !window_thread?
-        post_window_action(true) { clear_input_state }
+        post_window_action(true) { clear_input_state(preserve_activation_guard: preserve_activation_guard) }
         return true
       end
       clear_native_keyboard_state
@@ -717,6 +724,10 @@ module EltenWindow
       end
       EltenKeyboard.clear_state
       true
+    end
+
+    def clear_input_state_preserving_activation_guard
+      clear_input_state(preserve_activation_guard: true)
     end
 
     def post_window_action(wait = false, &block)
@@ -823,6 +834,7 @@ module EltenWindow
 
     def request_window_update
       pump_sync
+      started_at = monotonic_time
       token = nil
       @pump_mutex.synchronize do
         @pump_request += 1
@@ -834,6 +846,8 @@ module EltenWindow
         raise RuntimeError, "Windows message loop stopped during an update" if @completed_updates[token] != true
         @completed_updates.delete(token)
       end
+      elapsed = monotonic_time - started_at
+      Log.warning("Windows window update dispatch waited %.3f seconds" % elapsed) if elapsed >= WINDOW_UPDATE_WARNING_SECONDS && defined?(Log)
       true
     end
 
@@ -959,8 +973,11 @@ module EltenWindow
     def ignore_activation_input
       window_state_monitor.synchronize do
         now = monotonic_time
-        @activation_ignore_min_until = now + KEYBOARD_ACTIVATION_MIN_DELAY
-        @activation_ignore_max_until = now + KEYBOARD_ACTIVATION_MAX_DELAY
+        @activation_input_guard_active = true
+        @activation_input_acknowledged = false
+        @activation_input_started_at = now
+        @activation_ignore_min_until = nil
+        @activation_ignore_max_until = nil
         clear_character_queue
         clear_key_events
         EltenKeyboard.clear_state
@@ -970,10 +987,32 @@ module EltenWindow
 
     def clear_activation_guard
       window_state_monitor.synchronize do
+        @activation_input_guard_active = false
+        @activation_input_acknowledged = false
+        @activation_input_started_at = nil
         @activation_ignore_min_until = nil
         @activation_ignore_max_until = nil
       end
       true
+    end
+
+    def acknowledge_activation_input
+      delay = window_state_monitor.synchronize do
+        return false if @activation_input_guard_active != true
+        return true if @activation_input_acknowledged == true
+        now = monotonic_time
+        @activation_input_acknowledged = true
+        @activation_ignore_min_until = now + KEYBOARD_ACTIVATION_MIN_DELAY
+        @activation_ignore_max_until = now + KEYBOARD_ACTIVATION_MAX_DELAY
+        now - @activation_input_started_at.to_f
+      end
+      if delay >= ACTIVATION_ACK_WARNING_SECONDS && defined?(Log)
+        Log.warning("Windows input activation waited %.3f seconds for UI acknowledgement" % delay)
+      end
+      true
+    rescue Exception
+      clear_activation_guard
+      false
     end
 
     def finish_activation_ignore(state = nil)
@@ -1060,6 +1099,7 @@ module EltenWindow
       token = token.to_i
       run_window_actions
       capture_keyboard_state
+      acknowledge_activation_input if token > 0
       run_window_actions
       snapshot_character_frame if token > 0
       @pump_mutex.synchronize do
@@ -1213,7 +1253,7 @@ module EltenWindow
 
     def activation_key_message?(message)
       return false unless message == WM_KEYDOWN || message == WM_KEYUP || message == WM_SYSKEYDOWN || message == WM_SYSKEYUP || message == WM_SYSCHAR
-      activation_input_blocked?
+      activation_input_blocked?(consume_finish: true)
     rescue Exception
       false
     end

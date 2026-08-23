@@ -280,7 +280,7 @@ if tr == true
             EltenWindow.restore_from_tray
         }
         $tray_restore_ignore_until = Time.now.to_f + 1.0
-        clear_keyboard_input_state
+        clear_keyboard_input_state(preserve_activation_guard: true)
         play_sound("login")
   speak("ELTEN")
   end
