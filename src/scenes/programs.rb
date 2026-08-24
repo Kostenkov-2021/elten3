@@ -171,7 +171,6 @@ when 1
          p_("Programs", "Status: %{status}")%{:status=>status_label(program)},
          p_("Programs", "Size: %{size}")%{:size=>format_size(program.respond_to?(:size) ? program.size : 0)}
        ]
-       lines.push(p_("Programs", "Installation source path: %{path}")%{:path=>program.installation_source_path.to_s}) if program.respond_to?(:installation_source_path) && program.installation_source_path.to_s!=""
        lines.push(p_("Programs", "Installation time: %{time}")%{:time=>format_registry_time(program.installation_time)}) if program.respond_to?(:installation_time) && program.installation_time.to_i>0
        lines.push(p_("Programs", "Update time: %{time}")%{:time=>format_registry_time(program.update_time)}) if program.respond_to?(:update_time) && program.update_time.to_i>0
        lines.push(p_("Programs", "Folder ID: %{id}")%{:id=>program_storage_id(program)})
@@ -427,7 +426,7 @@ when 1
            return false
          end
          waiting_end
-         installed_entry=install_downloaded_package(tempfile, program, installation_source: "server", installation_source_path: package_url)
+         installed_entry=install_downloaded_package(tempfile, program, installation_source: "server")
        rescue Exception => e
          Log.warning("Program installation failed: #{e.class}: #{e.message}")
        ensure
@@ -448,17 +447,17 @@ when 1
        end
      end
 
-     def install_downloaded_package(file, preferred_program=nil, installation_source: nil, installation_source_path: nil)
+     def install_downloaded_package(file, preferred_program=nil, installation_source: nil)
        if Programs::EltenAppPackage.package?(file)
          package=Programs::EltenAppPackage.new(file)
          existing=installed_entry_for_manifest(package.manifest)
          destination=eltenapp_install_path(file,package.manifest,existing,preferred_program)
-         install_eltenapp_package(file,destination,existing,installation_source: installation_source, installation_source_path: installation_source_path)
+         install_eltenapp_package(file,destination,existing,installation_source: installation_source)
        else
          info=Programs.setup_package_info(file)
          existing=installed_entry_for_setup_info(info)
          destination=install_destination_for_info(file,info,existing,preferred_program)
-         install_setup_package(file,destination,existing,info,installation_source: installation_source, installation_source_path: installation_source_path)
+         install_setup_package(file,destination,existing,info,installation_source: installation_source)
        end
      end
      def install_from_file
@@ -487,7 +486,7 @@ when 1
          info=Programs.setup_package_info(file) if info==nil
          existing=installed_entry_for_setup_info(info)
          destination=install_destination_for_info(file,info,existing)
-         installed_entry=install_setup_package(file,destination,existing,info,installation_source: "file", installation_source_path: file)
+         installed_entry=install_setup_package(file,destination,existing,info,installation_source: "file")
        rescue Exception => e
          Log.warning("Program local installation failed: #{e.class}: #{e.message}")
        ensure
@@ -543,9 +542,9 @@ when 1
         end
       end
 
-     def install_setup_package(file,destination,existing_entry=nil,info=nil,installation_source: nil, installation_source_path: nil)
+     def install_setup_package(file,destination,existing_entry=nil,info=nil,installation_source: nil)
        info=Programs.setup_package_info(file) if info==nil
-       return install_setup_single_file_package(file,destination,existing_entry,info,installation_source: installation_source, installation_source_path: installation_source_path) if info[:single_file]
+       return install_setup_single_file_package(file,destination,existing_entry,info,installation_source: installation_source) if info[:single_file]
        staging=unique_install_path("staging")
        backups=[]
        replaced=false
@@ -556,7 +555,7 @@ when 1
          replace_destination_with_staging(staging,destination,existing_entry,backups)
          replaced=true
          entry=EltenPath.relative_from(destination,Dirs.apps)
-         activate_installed_entry(entry,existing_entry,destination,backups,installation_source: installation_source, installation_source_path: installation_source_path)
+         activate_installed_entry(entry,existing_entry,destination,backups,installation_source: installation_source)
        rescue Exception => e
          Log.warning("Program setup installation failed: #{e.class}: #{e.message}")
          rollback_install(destination,backups,existing_entry,replaced)
@@ -566,7 +565,7 @@ when 1
        end
      end
 
-     def install_setup_single_file_package(file,destination,existing_entry,info,installation_source: nil, installation_source_path: nil)
+     def install_setup_single_file_package(file,destination,existing_entry,info,installation_source: nil)
        staging=unique_install_path("staging")+".eltenapp"
        begin
          Programs.open_zip(file) do |zip|
@@ -574,7 +573,7 @@ when 1
            raise RuntimeError, "Missing setup eltenapp payload" if entry==nil
            Programs.zip_extract(entry,staging)
          end
-         install_eltenapp_package(staging,destination,existing_entry,installation_source: installation_source, installation_source_path: installation_source_path)
+         install_eltenapp_package(staging,destination,existing_entry,installation_source: installation_source)
        rescue Exception => e
          Log.warning("Program single-file setup installation failed: #{e.class}: #{e.message}")
          nil
@@ -583,7 +582,7 @@ when 1
        end
      end
 
-     def install_eltenapp_package(file,destination,existing_entry=nil,installation_source: nil, installation_source_path: nil)
+     def install_eltenapp_package(file,destination,existing_entry=nil,installation_source: nil)
        backups=[]
        replaced=false
        begin
@@ -594,7 +593,7 @@ when 1
          FileUtils.mv(file,destination)
          replaced=true
          entry=EltenPath.relative_from(destination,Dirs.apps)
-         activate_installed_entry(entry,existing_entry,destination,backups,installation_source: installation_source, installation_source_path: installation_source_path)
+         activate_installed_entry(entry,existing_entry,destination,backups,installation_source: installation_source)
        rescue Exception => e
          Log.warning("Program eltenapp installation failed: #{e.class}: #{e.message}")
          rollback_install(destination,backups,existing_entry,replaced)
@@ -609,10 +608,10 @@ when 1
        FileUtils.mv(staging,destination)
      end
 
-     def activate_installed_entry(entry,existing_entry,destination,backups,installation_source: nil, installation_source_path: nil)
+     def activate_installed_entry(entry,existing_entry,destination,backups,installation_source: nil)
        Programs.delete(existing_entry, :reason => :reload) if existing_entry!=nil
        Programs.delete(entry, :reason => :reload) if existing_entry==nil || existing_entry!=entry
-       if Programs.load_sig(entry, installation_source: installation_source, installation_source_path: installation_source_path)
+       if Programs.load_sig(entry, installation_source: installation_source)
          cleanup_install_backups(backups)
          entry
        else

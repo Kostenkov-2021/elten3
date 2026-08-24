@@ -1526,6 +1526,7 @@ module Programs
       apps.each_value do |record|
         next if !record.is_a?(Hash)
         record.delete("entry")
+        record.delete("installation_source_path")
       end
       tmp = "#{file}.tmp-#{$$}-#{Thread.current.object_id}"
       File.binwrite(tmp, JSON.pretty_generate({ "apps" => apps }))
@@ -1592,7 +1593,7 @@ module Programs
       removed
     end
 
-    def register_app_entry(entry, uuid:, loaded:, installation_source: nil, installation_source_path: nil)
+    def register_app_entry(entry, uuid:, loaded:, installation_source: nil)
       registry = apps_registry
       apps = registry["apps"]
       uuid = uuid.to_s.downcase
@@ -1614,12 +1615,6 @@ module Programs
       end
       if installation_source != nil
         record["installation_source"] = normalize_installation_source(installation_source)
-        source_path = installation_source_path.to_s
-        if source_path == ""
-          record.delete("installation_source_path")
-        else
-          record["installation_source_path"] = source_path
-        end
         record["update_time"] = now
       elsif record["installation_source"].to_s == ""
         record["installation_source"] = "autodetected"
@@ -1893,7 +1888,6 @@ module Programs
         :registered => record.is_a?(Hash),
         :registry_loaded => record.is_a?(Hash) && record["loaded"] == true,
         :installation_source => installation_source,
-        :installation_source_path => record.is_a?(Hash) ? record["installation_source_path"].to_s : "",
         :installation_time => record.is_a?(Hash) ? record["installation_time"].to_s.to_i : 0,
         :update_time => record.is_a?(Hash) ? record["update_time"].to_s.to_i : 0,
         :error => error.to_s
@@ -1960,7 +1954,7 @@ module Programs
       nil
     end
 
-    def load_sig(entry, persist: true, installation_source: nil, installation_source_path: nil)
+    def load_sig(entry, persist: true, installation_source: nil)
       Log.info("Loading program #{entry}")
       return true if @@runtimes.key?(entry)
       runtime = nil
@@ -1992,7 +1986,7 @@ module Programs
       if persist
         source = installation_source
         source = "autodetected" if source == nil && registry_record(entry) == nil
-        register_app_entry(entry, uuid: manifest.id, loaded: true, installation_source: source, installation_source_path: installation_source_path)
+        register_app_entry(entry, uuid: manifest.id, loaded: true, installation_source: source)
       end
       initialize_program_class(main_class)
       true
