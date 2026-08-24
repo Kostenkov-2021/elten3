@@ -98,6 +98,13 @@ module EltenAPI
         # Updates a files tree
       def update(init=false)
 super
+        if @path!="" && !current_directory_available?
+          close_preview
+          @path=""
+          @file=""
+          @sel=nil
+          @refresh=false
+        end
         if @sel == nil or @refresh == true
               if @path == ""
           @disks=EltenSystemHelpers.logical_drives
@@ -197,6 +204,13 @@ end
 end
 $filestrees[@id]=[@path,@file]
 end
+
+def current_directory_available?
+  File.directory?(@path)
+rescue StandardError
+  false
+end
+private :current_directory_available?
 
 def handle_preview_keys
   return if !handles_file_preview_keys?
