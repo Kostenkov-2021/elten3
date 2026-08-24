@@ -4,6 +4,8 @@
 class Runner
   include EltenAPI
 
+  ACTION_PHASES = [:start, :update, :finish].freeze
+
   class Timer
     attr_reader :interval, :repeat, :phase
 
@@ -95,6 +97,10 @@ class Runner
 
     def pressed?(runner)
       @press_keys.any? { |key| runner.__send__(:key_first_pressed?, key) } || @hold_keys.any? { |key| runner.__send__(:key_first_pressed?, key) }
+    end
+
+    def released?(runner)
+      @press_keys.any? { |key| runner.__send__(:key_released?, key) } || @hold_keys.any? { |key| runner.__send__(:key_released?, key) }
     end
 
     private
@@ -257,6 +263,8 @@ class Runner
     @key_handlers = []
     @action_handlers = []
     @actions = {}
+    @action_states = {}
+    @phased_action_names = []
     @cooldowns = {}
     @timed_flags = {}
     @stopwatches = []
@@ -283,17 +291,33 @@ class Runner
 
   def on_key(key, repeat: false, &block)
     raise ArgumentError, "block is required" if block == nil
-    @key_handlers << { :key => key, :repeat => repeat == true, :block => block }
+    @key_handlers << { :key => key, :event => :down, :repeat => repeat == true, :block => block }
     self
   end
+
+  def on_key_down(key, repeat: false, &block)
+    on_key(key, repeat: repeat, &block)
+  end
+
+  def on_key_released(key, &block)
+    raise ArgumentError, "block is required" if block == nil
+    @key_handlers << { :key => key, :event => :released, :repeat => false, :block => block }
+    self
+  end
+
+  alias on_key_up on_key_released
 
   def action(name, hold: [], press: [], keys: nil)
-    @actions[name.to_sym] = Action.new(name, hold: hold, press: press, keys: keys)
+    key = name.to_sym
+    @action_states.delete(key)
+    @actions[key] = Action.new(name, hold: hold, press: press, keys: keys)
     self
   end
 
-  def on_action(name, repeat: false, guard: nil, cooldown: nil, initially_blocked_for: 0.0, &block)
+  def on_action(name, repeat: false, phase: nil, guard: nil, cooldown: nil, initially_blocked_for: 0.0, &block)
     raise ArgumentError, "block is required" if block == nil
+    phase = normalize_action_phase(phase)
+    raise ArgumentError, "repeat cannot be used with an action phase" if phase != nil && repeat == true
     limiter = action_limiter(cooldown)
     if limiter == nil && guard != nil && guard.respond_to?(:use)
       limiter = guard
@@ -310,10 +334,12 @@ class Runner
     @action_handlers << {
       :name => name.to_sym,
       :repeat => repeat == true,
+      :phase => phase,
       :guard => guard,
       :limiter => limiter,
       :block => block
     }
+    @phased_action_names << name.to_sym if phase != nil && !@phased_action_names.include?(name.to_sym)
     self
   end
 
@@ -428,6 +454,13 @@ class Runner
     raise ArgumentError, "guard must be callable or respond to #allow?"
   end
 
+  def normalize_action_phase(phase)
+    return nil if phase == nil
+    phase = phase.to_sym if phase.respond_to?(:to_sym)
+    return phase if ACTION_PHASES.include?(phase)
+    raise ArgumentError, "unsupported action phase: #{phase.inspect}"
+  end
+
   def action_guard_allows?(guard, time, name)
     return true if guard == nil
     callable = guard.respond_to?(:allow?) ? guard.method(:allow?) : guard
@@ -447,6 +480,7 @@ class Runner
   def finish_run
     stop_stopwatches
     time = monotonic_time
+    finish_active_actions(time)
     @stop_handlers.each do |handler|
       invoke_callback(handler, time)
     rescue Exception => e
@@ -473,24 +507,92 @@ class Runner
   def process_key_handlers(time)
     @key_handlers.each do |handler|
       key = handler[:key]
-      pressed = handler[:repeat] == true ? key_pressed?(key) : key_first_pressed?(key)
-      next if pressed != true
+      triggered = if handler[:event] == :released
+        key_released?(key)
+      else
+        handler[:repeat] == true ? key_pressed?(key) : key_first_pressed?(key)
+      end
+      next if triggered != true
       invoke_callback(handler[:block], time, key)
       break if @running != true
     end
   end
 
   def process_action_handlers(time)
+    if !@phased_action_names.empty?
+      states = update_action_states(@phased_action_names)
+      phases_completed = process_action_phase_handlers(@action_handlers, states, time)
+      settle_finished_action_states(states) if phases_completed == true
+      return if @running != true
+    end
+
     @action_handlers.each do |handler|
+      next if handler[:phase] != nil
       action = @actions[handler[:name]]
       next if action == nil
       pressed = handler[:repeat] == true ? action.held?(self) : action.pressed?(self)
       next if pressed != true
-      next if !action_guard_allows?(handler[:guard], time, handler[:name])
-      next if handler[:limiter] != nil && !handler[:limiter].use(time)
-      invoke_callback(handler[:block], time, handler[:name])
+      invoke_action_handler(handler, time)
       break if @running != true
     end
+  end
+
+  def update_action_states(names)
+    names.each_with_object({}) do |name, states|
+      action = @actions[name]
+      next if action == nil
+      was_active = @action_states[name] == true
+      pressed = action.pressed?(self)
+      held = action.held?(self)
+      released = action.released?(self)
+      started = !was_active && (pressed || held)
+      finished = (was_active || started) && !held && (released || was_active)
+      states[name] = {
+        :start => started,
+        :update => held || started,
+        :finish => finished
+      }
+      @action_states[name] = held || started
+    end
+  end
+
+  def process_action_phase_handlers(handlers, states, time)
+    ACTION_PHASES.each do |phase|
+      handlers.each do |handler|
+        next if handler[:phase] != phase
+        next if states.dig(handler[:name], phase) != true
+        invoke_action_handler(handler, time)
+        return false if @running != true && phase != :finish
+      end
+    end
+    true
+  end
+
+  def settle_finished_action_states(states)
+    states.each do |name, phases|
+      @action_states[name] = false if phases[:finish] == true
+    end
+  end
+
+  def finish_active_actions(time)
+    active = @action_states.select { |_name, state| state == true }.keys
+    active.each do |name|
+      @action_handlers.each do |handler|
+        next if handler[:name] != name || handler[:phase] != :finish
+        begin
+          invoke_action_handler(handler, time)
+        rescue Exception => e
+          Log.warning("Runner action finish handler failed: #{e.class}: #{e.message}") if defined?(Log)
+        end
+      end
+      @action_states[name] = false
+    end
+  end
+
+  def invoke_action_handler(handler, time)
+    return if !action_guard_allows?(handler[:guard], time, handler[:name])
+    return if handler[:limiter] != nil && !handler[:limiter].use(time)
+    invoke_callback(handler[:block], time, handler[:name])
   end
 
   def process_timers(time)
