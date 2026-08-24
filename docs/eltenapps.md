@@ -326,6 +326,7 @@ Using one of the cross-platform gems below does not by itself make an applicatio
 | `bigdecimal` | 3.3.x | `require "bigdecimal"` |
 | `fiddle` | 1.1.x | `require "fiddle"` |
 | `http-2` | 1.1.x | `require "http/2"` |
+| `net-http` | 0.9.x | `require "net/http"` |
 | `nokogiri` | 1.19.x | `require "nokogiri"` |
 | `ostruct` | 0.6.x | `require "ostruct"` |
 | `ruby-xz` | 1.0.x | `require "xz"` |
