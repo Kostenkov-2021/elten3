@@ -6,6 +6,8 @@
 
 
 
+require "monitor"
+
 module EltenAPI
   class Conference
 class Channel
@@ -139,6 +141,7 @@ class Channel
 @@keyboard_thread=nil
 @@configuration_signature=nil
 @@configuration_tick=0
+@@core_lifecycle=Monitor.new
 
 def self.load_steamaudio(file=nil)
   setup_core_runtime(false)
@@ -303,12 +306,14 @@ end
 
 def self.open_core(nick=nil)
   setup_core_runtime
-  close_core(false)
-  sync_core_settings
-  @@configuration_signature=configuration_signature
-  @@core=Core.new(nick)
-  attach_core_callbacks(@@core)
-  @@core
+  @@core_lifecycle.synchronize do
+    close_core(false)
+    sync_core_settings
+    @@configuration_signature=configuration_signature
+    @@core=Core.new(nick)
+    attach_core_callbacks(@@core)
+    @@core
+  end
 end
 
 def self.refresh_open_state
@@ -325,16 +330,20 @@ def self.refresh_open_state
 end
 
 def self.close_core(trigger_close=true)
-  if @@core!=nil
-    begin
-      @@core.free
-    rescue Exception
-      Log.error("Conference close: #{$!.class}: #{$!.message}")
+  @@core_lifecycle.synchronize do
+    core=@@core
+    notify_closed=@@opened || core!=nil
+    @@core=nil
+    @@configuration_signature=nil
+    if core!=nil
+      begin
+        core.free
+      rescue Exception
+        Log.error("Conference close: #{$!.class}: #{$!.message}")
+      end
     end
+    setclosed if trigger_close && notify_closed
   end
-  @@core=nil
-  @@configuration_signature=nil
-  setclosed if trigger_close
 end
 
 def self.attach_core_callbacks(conf)
