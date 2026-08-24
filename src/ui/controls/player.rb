@@ -11,13 +11,15 @@ module EltenAPI
            attr_reader :sound
            attr_reader :pause
            attr_accessor :label
-                        def initialize(file, label: "", autoplay: true, quiet: true, stream: nil, lazy: false)
+                        # @param owns_sound [Boolean] close a supplied Sound with this Player
+                        def initialize(file, label: "", autoplay: true, quiet: true, stream: nil, lazy: false, owns_sound: true)
                           Programs.emit_event(:player_init)
-                          file=EltenLink::Client.absolute_api_url(file) if file!=nil && FileTest.exists?(file)==false && file[0..0]=="/"
+                          file=EltenLink::Client.absolute_api_url(file) if file.is_a?(String) && FileTest.exists?(file)==false && file[0..0]=="/"
                           @label=label
                                                       focus if quiet==false
                                                       @file=file
                                                       @stream=stream
+                                                      @owns_sound=!file.is_a?(Sound) || owns_sound!=false
                                                                                                             @sound=nil
                                                                                                             @closed=false
                                                                                                             if file.is_a?(Sound)
@@ -329,7 +331,14 @@ def close
   @closed=true
   @pause=true
   Programs.emit_event(:player_close)
-  @sound.close if @sound!=nil && !@sound.closed?
+  if @sound!=nil && !@sound.closed?
+    if @owns_sound
+      @sound.close
+    else
+      @sound.pause
+      @sound.position=0
+    end
+  end
 end
 
 def jump_to_position

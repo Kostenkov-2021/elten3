@@ -40,6 +40,20 @@ class Flags
 
   ITEM_AUDIO_COMPLETION_BUFFER_SECONDS=0.1
 
+  class ItemAudioSource
+    attr_reader :kind, :value, :identity
+
+    def initialize(kind, value, identity=value)
+      @kind, @value, @identity=kind, value, identity
+    end
+
+    def ==(other)
+      return false unless other.is_a?(ItemAudioSource) && other.kind==kind
+      [:location, :data].include?(kind) ? other.value==value : other.identity.equal?(identity)
+    end
+  end
+  private_constant :ItemAudioSource
+
   @@audio_entries={}
   ItemStatus = Struct.new(:sound, :speech_prefix, :braille_prefix, keyword_init: true) do
     def key
@@ -110,6 +124,7 @@ def initialize(options, header: "", index: 0, flags: 0, quiet: true, empty_label
 @limit=-1
 @item_states=[]
 @item_audio_urls=[]
+@item_audio_sources=[]
 @item_audio_autoplay_values=[]
 @item_audio_completion_labels=[]
 @item_audio_entries={}
@@ -198,12 +213,13 @@ def request_select
   @requested_select=true
 end
 
-def prepend_options(opts, states=[], audio_urls=[], audio_autoplay=[], audio_completion_labels=[])
+def prepend_options(opts, states=[], audio_sources=[], audio_autoplay=[], audio_completion_labels=[])
   old_options=@options.dup
   old_grayed=@grayed.dup
   old_selected=@selected.dup
   old_states=@item_states.dup
   old_audio_urls=@item_audio_urls.dup
+  old_audio_sources=@item_audio_sources.dup
   old_audio_autoplay=@item_audio_autoplay_values.dup
   old_audio_completion_labels=@item_audio_completion_labels.dup
   old_audio_entries=@item_audio_entries.dup
@@ -212,8 +228,8 @@ def prepend_options(opts, states=[], audio_urls=[], audio_autoplay=[], audio_com
   for i in 0...states.size
     set_item_states(i, states[i]) if states[i]!=nil
   end
-  for i in 0...audio_urls.size
-    set_item_audio(i, audio_urls[i], autoplay: audio_autoplay[i]!=false, completion_label: audio_completion_labels[i]) if audio_urls[i]!=nil && audio_urls[i].to_s!=""
+  for i in 0...audio_sources.size
+    set_item_audio(i, audio_sources[i], autoplay: audio_autoplay[i]!=false, completion_label: audio_completion_labels[i]) if audio_sources[i]!=nil
   end
   @options+=old_options
   @grayed+=old_grayed
@@ -221,6 +237,8 @@ def prepend_options(opts, states=[], audio_urls=[], audio_autoplay=[], audio_com
   @item_states+=old_states
   @item_audio_urls.fill(nil, @item_audio_urls.size...opts.size)
   @item_audio_urls+=old_audio_urls
+  @item_audio_sources.fill(nil, @item_audio_sources.size...opts.size)
+  @item_audio_sources+=old_audio_sources
   @item_audio_autoplay_values.fill(nil, @item_audio_autoplay_values.size...opts.size)
   @item_audio_autoplay_values+=old_audio_autoplay
   @item_audio_completion_labels.fill(nil, @item_audio_completion_labels.size...opts.size)
@@ -285,21 +303,98 @@ def item_states_for(id)
   @item_states[id]
 end
 
-def set_item_audio(id, url, autoplay: true, completion_label: nil)
+private
+
+def normalize_item_audio_source(source, data)
+  if data!=nil
+    raise ArgumentError, "source and data cannot be used together" if source!=nil
+    raise ArgumentError, "audio data must be a String" unless data.is_a?(String)
+    bytes=data.dup.b.freeze
+    return nil if bytes.empty?
+    return ItemAudioSource.new(:data, bytes, data)
+  end
+  return source if source.is_a?(ItemAudioSource)
+  return nil if source==nil || (source.is_a?(String) && source.empty?)
+  if source.is_a?(String)
+    ItemAudioSource.new(:location, source.dup.freeze)
+  elsif defined?(::Sound) && source.is_a?(::Sound)
+    source.pause if source.respond_to?(:playing?) && source.playing?
+    ItemAudioSource.new(:sound, source)
+  elsif source.is_a?(Player)
+    raise ArgumentError, "use a factory when supplying a Player"
+  elsif source.respond_to?(:read)
+    bytes=read_item_audio_io(source)
+    return nil if bytes.empty?
+    ItemAudioSource.new(:data, bytes.freeze, source)
+  elsif source.respond_to?(:call)
+    ItemAudioSource.new(:factory, source)
+  else
+    raise ArgumentError, "unsupported item audio source: #{source.class}"
+  end
+end
+
+def read_item_audio_io(io)
+  position=nil
+  begin
+    position=io.pos if io.respond_to?(:pos)
+  rescue StandardError
+  end
+  begin
+    io.read.to_s.b
+  ensure
+    if position!=nil
+      begin
+        io.pos=position
+      rescue StandardError
+      end
+    end
+  end
+end
+
+def create_item_audio_player(source)
+  case source.kind
+  when :location
+    Player.new(source.value, label: @header, autoplay: false, quiet: true, stream: nil, lazy: true)
+  when :data
+    Player.new(nil, label: @header, autoplay: false, quiet: true, stream: source.value, lazy: true)
+  when :sound
+    Player.new(source.value, label: @header, autoplay: false, quiet: true, stream: nil, lazy: true, owns_sound: false)
+  when :factory
+    player=source.value.call
+    raise TypeError, "item audio factory must return a Player" unless player.is_a?(Player)
+    player.label=@header
+    player
+  end
+end
+
+public
+
+# Assigns audio to an item.
+# @param source [String, IO, Sound, #call, nil] a location, readable stream,
+#   borrowed Sound or a factory returning a new Player
+# @param data [String, nil] binary audio data, specified explicitly to avoid
+#   confusing it with a String location
+# @param autoplay [Boolean] whether focusing the item starts playback
+# @param completion_label [String, nil] text spoken shortly before audio ends
+# Readable sources are snapshotted without changing their position. A supplied
+# Sound is borrowed; a Player returned by a factory is owned by the control.
+def set_item_audio(id, source=nil, data: nil, autoplay: true, completion_label: nil)
   return if id==nil || id<0
   @item_audio_urls||=[]
+  @item_audio_sources||=[]
   @item_audio_autoplay_values||=[]
   @item_audio_completion_labels||=[]
   @item_audio_entries||={}
-  old=@item_audio_urls[id]
-  if url==nil || url.to_s==""
+  source=normalize_item_audio_source(source, data)
+  if source==nil
     clear_item_audio(id)
     return
   end
-  if old!=nil && old.to_s!=url.to_s
+  if @item_audio_sources[id]!=nil && @item_audio_sources[id]!=source
     close_item_audio(id)
   end
-  @item_audio_urls[id]=url.to_s
+  @item_audio_sources[id]=source
+  @item_audio_urls[id]=source.kind==:location ? source.value : nil
   @item_audio_autoplay_values[id]=autoplay!=false
   @item_audio_completion_labels[id]=completion_label==nil ? nil : text_utf8(completion_label)
   @item_audio_entries[id][:completion_label]=@item_audio_completion_labels[id] if @item_audio_entries[id]!=nil
@@ -308,17 +403,20 @@ alias set_item_audio_url set_item_audio
 
 def clear_item_audio(id=nil)
   @item_audio_urls||=[]
+  @item_audio_sources||=[]
   @item_audio_autoplay_values||=[]
   @item_audio_completion_labels||=[]
   @item_audio_entries||={}
   if id==nil
     @item_audio_entries.keys.each{|i|close_item_audio(i)}
     @item_audio_urls.clear
+    @item_audio_sources.clear
     @item_audio_autoplay_values.clear
     @item_audio_completion_labels.clear
   else
     close_item_audio(id)
     @item_audio_urls[id]=nil
+    @item_audio_sources[id]=nil
     @item_audio_autoplay_values[id]=nil
     @item_audio_completion_labels[id]=nil
   end
@@ -329,8 +427,22 @@ def item_audio_url(id=self.index)
   @item_audio_urls[id].to_s
 end
 
+def item_audio_source(id=self.index)
+  return nil if id==nil || id<0 || @item_audio_sources==nil || @item_audio_sources[id]==nil
+  @item_audio_sources[id].value
+end
+
+def item_audio_sources
+  (@item_audio_sources||[]).map{|source|source==nil ? nil : source.value}
+end
+
+def item_audio_source_descriptor(id=self.index)
+  return nil if id==nil || id<0 || @item_audio_sources==nil
+  @item_audio_sources[id]
+end
+
 def item_audio?(id=self.index)
-  item_audio_url(id)!=""
+  item_audio_source_descriptor(id)!=nil
 end
 
 def item_audio_autoplay?(id=self.index)
@@ -351,15 +463,15 @@ def close_item_audio(id)
 end
 
 def item_audio_entry(id=self.index)
-  url=item_audio_url(id)
-  return nil if url==""
+  source=item_audio_source_descriptor(id)
+  return nil if source==nil
   @item_audio_completion_labels||=[]
   @item_audio_entries||={}
   entry=@item_audio_entries[id]
-  if entry==nil || entry[:url]!=url
+  if entry==nil || entry[:source]!=source
     close_item_audio(id) if entry!=nil
     entry={
-      :url=>url,
+      :source=>source,
       :player=>nil,
       :last_update_serial=>0,
       :completion_label=>@item_audio_completion_labels[id],
@@ -381,10 +493,14 @@ def item_audio_player(id=self.index)
       entry[:player].close if entry[:player]!=nil
     rescue Exception
     end
-    entry[:player]=Player.new(entry[:url], label: @header, autoplay: false, quiet: true, stream: nil, lazy: true)
+    entry[:player]=create_item_audio_player(entry[:source])
     entry[:completion_announced]=false
   end
   entry[:player]
+rescue StandardError => e
+  Log.error("List item audio player failed: #{e.class}: #{e.message} #{Array(e.backtrace).join("\n")}")
+  alert(p_("EAPI_Common", "This file cannot be played."))
+  nil
 end
 
 def mark_item_audio_active(id=self.index)
@@ -416,7 +532,7 @@ def close_other_item_audio(id)
 end
 
 def play_item_audio(id=self.index)
-  return if id==nil || id<0 || hidden?(id) || item_audio_url(id)==""
+  return if id==nil || id<0 || hidden?(id) || !item_audio?(id)
   close_other_item_audio(id)
   player=item_audio_player(id)
   return if player==nil
@@ -425,7 +541,7 @@ def play_item_audio(id=self.index)
 end
 
 def toggle_item_audio(id=self.index)
-  return false if id==nil || id<0 || hidden?(id) || item_audio_url(id)==""
+  return false if id==nil || id<0 || hidden?(id) || !item_audio?(id)
   player=item_audio_player(id)
   return false if player==nil
   mark_item_audio_active(id)
@@ -578,7 +694,7 @@ def toggle_existing_item_audio(id=self.index)
 end
 
 def toggle_item_audio_stop(id=self.index)
-  return false if id==nil || id<0 || hidden?(id) || item_audio_url(id)==""
+  return false if id==nil || id<0 || hidden?(id) || !item_audio?(id)
   entry=@item_audio_entries[id] if @item_audio_entries!=nil
   if entry!=nil && entry[:player]!=nil && !entry[:player].completed
     close_item_audio(id)
