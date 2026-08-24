@@ -4746,6 +4746,19 @@ class Scene_Forum_Trash
     return if thread == nil
 
     menu.option(p_("Forum", "Open")) { open_thread(thread) }
+    if !thread.trashed && thread.contains_trashed_posts
+      menu.option(p_("Forum", "Delete all trashed posts permanently")) {
+        mutate(
+          p_("Forum", "Permanently delete all posts from thread %{thread} that are currently in the trash? This cannot be undone.") % {
+            thread: thread.name
+          },
+          p_("Forum", "All trashed posts from this thread have been permanently deleted."),
+          :refresh_threads
+        ) {
+          EltenLink::Forum.delete_trashed_posts(elten_link, thread_id: thread.id)
+        }
+      }
+    end
     return unless thread.trashed
 
     unless thread.forum_trashed

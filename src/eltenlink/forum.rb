@@ -118,6 +118,11 @@ module EltenLink
         )
       end
 
+      def delete_trashed_posts(client, thread_id:)
+        client.api_data("DELETE", "/api/v1/forum/#{thread_id.to_i}/trash", {})
+        true
+      end
+
       def user_posts(client, user:, before: nil, limit: 50)
         data = client.api_data("GET", "/api/v1/forum/users/#{user.to_s.urlenc}/posts", clean_hash(
           "before" => before,
