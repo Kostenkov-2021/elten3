@@ -10,12 +10,36 @@ module EltenAPI
     class TimedOut < StandardError
     end
 
+    class CancellationRegistration
+      def initialize(token=nil, id=nil)
+        @mutex = Mutex.new
+        @token = token
+        @id = id
+      end
+
+      def unregister
+        token = nil
+        id = nil
+        @mutex.synchronize do
+          token = @token
+          id = @id
+          @token = nil
+          @id = nil
+        end
+        token == nil ? false : token.__send__(:unregister, id)
+      end
+
+      alias close unregister
+    end
+
     class CancellationToken
       def initialize
         @mutex = Mutex.new
         @condition = ConditionVariable.new
         @cancelled = false
         @reason = nil
+        @callbacks = {}
+        @next_callback_id = 0
       end
 
       def cancelled?
@@ -49,16 +73,53 @@ module EltenAPI
         self
       end
 
-      private
-
-      def cancel(reason)
+      def cancel(reason=nil)
+        reason = Cancelled.new("Task cancelled") if reason == nil
+        reason = Cancelled.new(reason.to_s) unless reason.is_a?(Exception)
+        callbacks = nil
         @mutex.synchronize do
           return false if @cancelled
           @cancelled = true
           @reason = reason
+          callbacks = @callbacks.values
+          @callbacks.clear
           @condition.broadcast
         end
+        callbacks.each { |callback| invoke_callback(callback, reason) }
         true
+      end
+
+      def on_cancel(&callback)
+        raise ArgumentError, "block is required" if callback == nil
+        id = nil
+        cancelled_reason = nil
+        @mutex.synchronize do
+          if @cancelled
+            cancelled_reason = @reason
+          else
+            @next_callback_id += 1
+            id = @next_callback_id
+            @callbacks[id] = callback
+          end
+        end
+        if id == nil
+          invoke_callback(callback, cancelled_reason)
+          CancellationRegistration.new
+        else
+          CancellationRegistration.new(self, id)
+        end
+      end
+
+      private
+
+      def invoke_callback(callback, reason)
+        callback.call(reason)
+      rescue Exception => error
+        Log.error("Cancellation callback error: #{error.class}: #{error.message}") if defined?(Log)
+      end
+
+      def unregister(id)
+        @mutex.synchronize { @callbacks.delete(id) != nil }
       end
 
       def monotonic_time
@@ -109,7 +170,7 @@ module EltenAPI
         @total = nil
         @message = nil
         @version = 0
-        @read_version = -1
+        @read_version = 0
       end
 
       def update(value = UNSET, total: UNSET, message: UNSET)
@@ -152,7 +213,7 @@ module EltenAPI
         dialog_open
         @opened = true
         type = EltenAPI::Controls::EditBox::Flags::MultiLine | EltenAPI::Controls::EditBox::Flags::ReadOnly
-        @info = EltenAPI::Controls::EditBox.new(title.to_s, type: type, text: "", quiet: true)
+        @info = EltenAPI::Controls::EditBox.new(title.to_s, type: type, text: _("Please wait..."), quiet: true)
         fields = [@info]
         if @cancellable
           @cancel = EltenAPI::Controls::Button.new(_("Cancel"))
@@ -207,19 +268,38 @@ module EltenAPI
       end
     end
 
+    class PassiveUI
+      include EltenAPI
+
+      def initialize(form=nil)
+        @form = form
+      end
+
+      def tick
+        loop_update
+        @form.update if @form != nil
+      end
+    end
+
     Outcome = Struct.new(:value, :error)
-    private_constant :Dispatcher, :Screen, :Outcome
+    private_constant :Dispatcher, :Screen, :PassiveUI, :Outcome
 
     class << self
-      def run(title:, cancellable: false, timeout: nil, &task)
+      def run(title:, ui: :automatic, show_after: 0.5, cancellable: true, cancellation_token: nil, timeout: nil, &task)
         raise ArgumentError, "block is required" if task == nil
         timeout = normalize_timeout(timeout)
+        show_after = normalize_show_after(show_after)
+        ui = normalize_ui(ui)
         dispatcher = Dispatcher.new(Thread.current)
         progress = Progress.new(dispatcher)
-        token = CancellationToken.new
-        screen = build_screen(title, cancellable)
+        token = cancellation_token || CancellationToken.new
+        raise ArgumentError, "cancellation_token must be a CancellationToken" unless token.is_a?(CancellationToken)
+        token.raise_if_cancelled!
+        passive_ui = PassiveUI.new(ui == :none || ui == :automatic ? nil : ui)
+        screen = nil
         result = Queue.new
         runtime = current_runtime
+        started_at = monotonic_time
         worker = Thread.new do
           Thread.current.report_on_exception = false
           begin
@@ -234,30 +314,36 @@ module EltenAPI
 
         loop do
           dispatcher.drain
-          render_progress(screen, progress)
           break if !worker.alive?
-          screen.tick
-          if interruption == nil && cancellable && screen.cancelled?
-            interruption = Cancelled.new("Task cancelled")
+          if ui == :automatic && screen == nil && monotonic_time - started_at >= show_after
+            screen = build_screen(title, cancellable)
+          end
+          render_progress(screen, progress) if screen != nil
+          (screen || passive_ui).tick
+          if interruption == nil && cancellable && screen != nil && screen.cancelled?
+            token.cancel(Cancelled.new("Task cancelled"))
             screen.cancellation_feedback
-            interrupt(worker, token, interruption)
           elsif interruption == nil && deadline != nil && monotonic_time >= deadline
-            interruption = TimedOut.new("Task timed out after #{timeout} seconds")
-            interrupt(worker, token, interruption)
+            token.cancel(TimedOut.new("Task timed out after #{timeout} seconds"))
+          end
+          if interruption == nil && token.cancelled?
+            interruption = token.reason || Cancelled.new("Task cancelled")
+            interrupt(worker, interruption)
           end
           Thread.pass
         end
 
         worker.join
         dispatcher.drain
-        render_progress(screen, progress)
+        render_progress(screen, progress) if screen != nil
         outcome = result.pop
+        interruption ||= token.reason if token.cancelled?
         raise interruption if interruption != nil
         raise outcome.error if outcome.error != nil
         outcome.value
       ensure
         if defined?(worker) && worker != nil && worker.alive?
-          token.__send__(:cancel, Cancelled.new("Task cancelled")) if defined?(token) && token != nil
+          token.cancel(Cancelled.new("Task cancelled")) if defined?(token) && token != nil
           worker.kill
           worker.join(0.2)
         end
@@ -299,8 +385,7 @@ module EltenAPI
         parts.join("\n")
       end
 
-      def interrupt(worker, token, error)
-        token.__send__(:cancel, error)
+      def interrupt(worker, error)
         worker.raise(error.class, error.message) if worker.alive?
       rescue ThreadError
         nil
@@ -317,6 +402,20 @@ module EltenAPI
         value
       rescue TypeError, ArgumentError
         raise ArgumentError, "timeout must be a finite number greater than zero"
+      end
+
+      def normalize_show_after(show_after)
+        value = Float(show_after)
+        raise ArgumentError, "show_after must be a finite number greater than or equal to zero" if !value.finite? || value < 0
+        value
+      rescue TypeError, ArgumentError
+        raise ArgumentError, "show_after must be a finite number greater than or equal to zero"
+      end
+
+      def normalize_ui(ui)
+        return ui if ui == :automatic || ui == :none
+        return ui if ui.respond_to?(:update)
+        raise ArgumentError, "ui must be :automatic, :none or a form"
       end
 
       def render_progress(screen, progress)

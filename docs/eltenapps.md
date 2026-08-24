@@ -160,7 +160,7 @@ Applications share Elten's thread and event model. In particular:
 
 - the instance which created a form owns that interaction;
 - background work must not change that form or `$scene` directly;
-- `Tasks.run` should be used for finite cancellable work, with `progress.ui` for an owner-thread callback;
+- `Tasks.run` should be used for finite cancellable work, with delayed automatic progress UI, optional reuse of an existing form and `progress.ui` for an owner-thread callback;
 - `Runner` should own a non-form interaction with timers or repeated actions; and
 - an extension `tick` callback runs as part of Elten's main application pump and must return promptly.
 

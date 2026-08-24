@@ -158,12 +158,11 @@ form.wait
 
 ### Finite background work
 
-Use `EltenAPI::Tasks.run` for work which may take time but has a definite result. The block runs on a worker thread; the task screen retains ownership of UI updates, cancellation, timeout handling and cleanup. Worker exceptions are re-raised to the caller.
+Use `EltenAPI::Tasks.run` for work which may take time but has a definite result. The block runs on a worker thread, while the calling thread retains ownership of UI updates, cancellation, timeout handling and cleanup. Worker exceptions are re-raised to the caller. By default, a cancellable progress screen is opened only if the work lasts at least half a second, so short operations do not flash a dialog.
 
 ```ruby
 result = EltenAPI::Tasks.run(
   title: _("Importing items"),
-  cancellable: true,
   timeout: 60
 ) do |progress, token|
   items.each_with_index do |item, index|
@@ -179,7 +178,21 @@ result = EltenAPI::Tasks.run(
 end
 ```
 
-Use `token.sleep(duration)` rather than an ordinary `sleep` when a delay must react promptly to cancellation. Do not mutate UI controls from the worker; schedule a necessary UI-thread callback through `progress.ui { ... }`.
+Set `show_after: 0` when the owned screen must be shown immediately. Pass `ui: :none` for work which should only keep the application pump responsive, or pass an existing `Form` as `ui:` to update that form without opening or closing another dialog. In the latter case the caller retains the form's complete lifecycle and may connect its controls to an explicit token:
+
+```ruby
+token = EltenAPI::Tasks::CancellationToken.new
+cancel.on(:press) { token.cancel }
+EltenAPI::Tasks.run(
+  title: _("Importing items"),
+  ui: form,
+  cancellation_token: token
+) do |progress, task_token|
+  import_items(progress, task_token)
+end
+```
+
+Use `token.sleep(duration)` rather than an ordinary `sleep` when a delay must react promptly to cancellation. Pass the token as `cancellation_token:` to EltenLink requests, file downloads or `ChildProc.new` so cancellation also interrupts the underlying operation. Do not mutate UI controls from the worker; schedule a necessary UI-thread callback through `progress.ui { ... }`.
 
 ### Event-driven non-form flows
 
