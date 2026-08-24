@@ -111,6 +111,7 @@ Choose the smallest component which can own the complete interaction:
 | Requirement | Preferred owner |
 | --- | --- |
 | A contained form or dialogue | `Form#wait` |
+| A contained list or table | `ListBox#wait_for_item` or `TableBox#wait_for_item` |
 | A finite operation which must keep the UI responsive | `EltenAPI::Tasks.run` |
 | A non-form event loop with keys, actions or timers | `Runner#run` |
 | A top-level transition between scenes | `$scene` or `insert_scene` |
@@ -155,6 +156,26 @@ form.wait
 ```
 
 `Form#wait` centralises `loop_update` and `form.update`, while `accept_button` and `cancel_button` preserve standard Enter and Escape behaviour. This is preferable to surrounding the same form with a custom loop and inspecting `$scene` after every frame.
+
+### Lists and tables
+
+For a contained browser backed by one `ListBox` or `TableBox`, use `wait_for_item`. It centralises `loop_update`, control updates and focus restoration after returning from a nested interaction. Selection and expansion return the current option or row; collapse and Escape return `nil`.
+
+```ruby
+while category = categories.wait_for_item
+  while question = questions.wait_for_item
+    show_question(question)
+  end
+end
+```
+
+The standard action set is `[:select, :expand, :collapse, :escape]`. Pass an explicit subset when a browser has different navigation semantics:
+
+```ruby
+item = list.wait_for_item(actions: [:select, :escape])
+```
+
+Supported actions omitted from `actions` continue to be processed by the control without completing the wait. Unknown action names raise `ArgumentError`.
 
 ### Finite background work
 

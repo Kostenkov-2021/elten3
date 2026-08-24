@@ -8,6 +8,7 @@ module EltenAPI
   module Controls
     private
     class ListBox < FormField
+      include WaitForItem
       # @return [Numeric] a listbox index
 attr_accessor :index
 # @return [Array] listbox options
@@ -122,6 +123,7 @@ def initialize(options, header: "", index: 0, flags: 0, quiet: true, empty_label
 @selected_now=false
 @requested_select=false
 @required_multiselection_indices=[]
+@wait_for_item_quiet=quiet
   self.empty_label=empty_label
   options=options.deep_dup
         index = 0 if index == nil
@@ -1057,6 +1059,14 @@ end
 def collapsed?
   return !key_held?(0x10) && ((@lr && key_pressed?(:key_up)) || (!@lr && key_pressed?(:key_left)))
 end
+private
+def wait_item_available?(id)
+  id>=0 && id<@options.size && !hidden?(id)
+end
+def wait_item_at(id)
+  @options[id]
+end
+public
 def key_processed(k)
   if (@lr==false and (k==:up || k==:down))
     return true

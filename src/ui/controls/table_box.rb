@@ -8,6 +8,7 @@ module EltenAPI
   module Controls
     private
        class TableBox < FormField
+         include WaitForItem
          attr_accessor :columns, :rows
          attr_reader :sel
          attr_reader :row_states
@@ -25,6 +26,7 @@ module EltenAPI
            @row_audio_autoplay_values=[]
            @row_audio_completion_labels=[]
            @header=text_utf8(header)
+           @wait_for_item_quiet=quiet
            @sel = ListBox.new(format_rows(@column), header: @header, index: index, flags: @flags, quiet: quiet, empty_label: empty_label)
            @sel.on(:move) {|arg|trigger(:move, arg)}
           end
@@ -213,6 +215,18 @@ super
          def expanded?
            @sel.expanded?
            end
+
+         private
+
+         def wait_item_available?(id)
+           id>=0 && id<@rows.size && !@sel.hidden?(id)
+         end
+
+         def wait_item_at(id)
+           @rows[id]
+         end
+
+         public
 
          def lpos
            @sel.lpos
