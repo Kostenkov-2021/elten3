@@ -16851,6 +16851,892 @@ msgctxt "WelcomeWizard"
 msgid "You can review these settings and actions later from their respective Elten menus."
 msgstr "Te ustawienia i działania możesz później przejrzeć w odpowiednich menu Eltena."
 
+#: src/eapi/common/__common.rb:25
+msgctxt "EAPI_Common"
+msgid "Break this window's glass"
+msgstr "Wybij szybę w tym oknie"
+
+#: src/eapi/common/__common.rb:25
+msgctxt "EAPI_Common"
+msgid "Get off my desktop"
+msgstr "Zejdź z mojego pulpitu"
+
+#: src/eapi/common/__common.rb:25
+msgctxt "EAPI_Common"
+msgid "Shut up!"
+msgstr "Zamknij się!"
+
+#: src/eapi/common/__common.rb:25
+msgctxt "EAPI_Common"
+msgid "I do not wish seeing you anymore"
+msgstr "Nie życzę sobie więcej cię widzieć"
+
+#: src/eapi/common/__common.rb:63
+msgctxt "EAPI_Common"
+msgid "Could you provide me more details on that matter? I have no sense of seeing. And do you?"
+msgstr "Czy możesz podać mi więcej szczegółów w tej sprawie? Nie mam zmysłu wzroku. A ty?"
+
+#: src/eapi/quickactions.rb:67 src/scenes/notifications.rb:68
+msgctxt "Notifications"
+msgid "There is nothing new."
+msgstr "Nie ma nic nowego."
+
+#: src/eapi/quickactions.rb:305
+msgctxt "EAPI_QuickActions"
+msgid "What's new"
+msgstr "Co nowego"
+
+#: src/scenes/blog.rb:728
+msgctxt "Blog"
+msgid "Are you sure you want to cancel creating this comment?"
+msgstr "Czy na pewno chcesz przerwać pisanie tego komentarza?"
+
+#: src/scenes/calendar.rb:36
+msgctxt "Calendar"
+msgid "Series range: %{start} - %{end}"
+msgstr "Zakres serii: %{start} - %{end}"
+
+#: src/scenes/calendar.rb:61
+msgctxt "Calendar"
+msgid "Continuous"
+msgstr "Pojedyncze wydarzenie"
+
+#: src/scenes/calendar.rb:62 src/scenes/calendar.rb:256
+msgctxt "Calendar"
+msgid "Daily"
+msgstr "Codziennie"
+
+#: src/scenes/calendar.rb:63 src/scenes/calendar.rb:258
+msgctxt "Calendar"
+msgid "Weekly"
+msgstr "Co tydzień"
+
+#: src/scenes/calendar.rb:64
+msgctxt "Calendar"
+msgid "Monthly on the start day"
+msgstr "Co miesiąc w dniu rozpoczęcia"
+
+#: src/scenes/calendar.rb:65
+msgctxt "Calendar"
+msgid "Every N days"
+msgstr "Co N dni"
+
+#: src/scenes/calendar.rb:69
+msgctxt "Calendar"
+msgid "Timed event"
+msgstr "Wydarzenie o określonej godzinie"
+
+#: src/scenes/calendar.rb:78
+msgctxt "Calendar"
+msgid "Frequency"
+msgstr "Częstotliwość"
+
+#: src/scenes/calendar.rb:79
+msgctxt "Calendar"
+msgid "Number of days"
+msgstr "Liczba dni"
+
+#: src/scenes/calendar.rb:80
+msgctxt "Calendar"
+msgid "Start date"
+msgstr "Data rozpoczęcia"
+
+#: src/scenes/calendar.rb:81
+msgctxt "Calendar"
+msgid "End date"
+msgstr "Data zakończenia"
+
+#: src/scenes/calendar.rb:82
+msgctxt "Calendar"
+msgid "Event time"
+msgstr "Czas wydarzenia"
+
+#: src/scenes/calendar.rb:134
+msgctxt "Calendar"
+msgid "Enter a valid number of days"
+msgstr "Wpisz prawidłową liczbę dni"
+
+#: src/scenes/calendar.rb:260
+msgctxt "Calendar"
+msgid "Monthly on day %{day}"
+msgstr "Co miesiąc, %{day}. dnia miesiąca"
+
+#: src/scenes/calendar.rb:262
+msgctxt "Calendar"
+msgid "Every %{count} days"
+msgstr "Co %{count} dni"
+
+#: src/scenes/forum.rb:1104
+msgctxt "Forum"
+msgid "Not provided"
+msgstr "Nie podano"
+
+#: src/scenes/forum.rb:1105
+msgctxt "Forum"
+msgid "Not available"
+msgstr "Brak danych"
+
+#: src/scenes/forum.rb:1106
+msgctxt "Forum"
+msgid "Reported by: %{user}"
+msgstr "Zgłaszający: %{user}"
+
+#: src/scenes/forum.rb:1107
+msgctxt "Forum"
+msgid "Reported at: %{date}"
+msgstr "Zgłoszono: %{date}"
+
+#: src/scenes/forum.rb:1108
+msgctxt "Forum"
+msgid ""
+"Report reason:\n"
+"%{reason}"
+msgstr ""
+"Powód zgłoszenia:\n"
+"%{reason}"
+
+#: src/scenes/forum.rb:1109
+msgctxt "Forum"
+msgid ""
+"Original post:\n"
+"%{post}"
+msgstr ""
+"Oryginalny wpis:\n"
+"%{post}"
+
+#: src/scenes/forum.rb:1110
+msgctxt "Forum"
+msgid "Resolved"
+msgstr "Rozpatrzone"
+
+#: src/scenes/forum.rb:1110
+msgctxt "Forum"
+msgid "Unresolved"
+msgstr "Nierozpatrzone"
+
+#: src/scenes/forum.rb:1110
+msgctxt "Forum"
+msgid "Status: %{status}"
+msgstr "Status: %{status}"
+
+#: src/scenes/forum.rb:1112
+msgctxt "Forum"
+msgid "Resolution: %{resolution}"
+msgstr "Sposób rozpatrzenia: %{resolution}"
+
+#: src/scenes/forum.rb:1113
+msgctxt "Forum"
+msgid "Resolved by: %{moderator}"
+msgstr "Rozpatrzone przez: %{moderator}"
+
+#: src/scenes/forum.rb:1114
+msgctxt "Forum"
+msgid "Resolved at: %{date}"
+msgstr "Rozpatrzono: %{date}"
+
+#: src/scenes/forum.rb:1115
+msgctxt "Forum"
+msgid ""
+"Moderator response:\n"
+"%{response}"
+msgstr ""
+"Odpowiedź moderatora:\n"
+"%{response}"
+
+#: src/scenes/forum.rb:1119
+msgctxt "Forum"
+msgid "Suggested action: None"
+msgstr "Sugerowane działanie: brak"
+
+#: src/scenes/forum.rb:1121
+msgctxt "Forum"
+msgid "Suggested action: %{action}"
+msgstr "Sugerowane działanie: %{action}"
+
+#: src/scenes/forum.rb:1123
+msgctxt "Forum"
+msgid ""
+"Suggested action details:\n"
+"%{details}"
+msgstr ""
+"Szczegóły sugerowanego działania:\n"
+"%{details}"
+
+#: src/scenes/forum.rb:1126
+msgctxt "Forum"
+msgid "Suggested action performed: %{performed}"
+msgstr "Wykonano sugerowane działanie: %{performed}"
+
+#: src/scenes/forum.rb:1192
+msgctxt "Forum"
+msgid "Details"
+msgstr "Szczegóły"
+
+#: src/scenes/forum.rb:1291
+msgctxt "Forum"
+msgid "This report has already been resolved."
+msgstr "To zgłoszenie zostało już rozpatrzone."
+
+#: src/scenes/keyboardshortcuts.rb:11
+msgctxt "KeyboardShortcuts"
+msgid "Shortcut"
+msgstr "Skrót"
+
+#: src/scenes/keyboardshortcuts.rb:11
+msgctxt "KeyboardShortcuts"
+msgid "Quick action"
+msgstr "Szybka akcja"
+
+#: src/scenes/keyboardshortcuts.rb:13
+msgctxt "KeyboardShortcuts"
+msgid "Keyboard shortcuts"
+msgstr "Skróty klawiszowe"
+
+#: src/scenes/keyboardshortcuts.rb:32
+msgctxt "KeyboardShortcuts"
+msgid "Assign or change action"
+msgstr "Przypisz lub zmień akcję"
+
+#: src/scenes/keyboardshortcuts.rb:34
+msgctxt "KeyboardShortcuts"
+msgid "Remove shortcut"
+msgstr "Usuń skrót"
+
+#: src/scenes/keyboardshortcuts.rb:43 src/scenes/keyboardshortcuts.rb:61
+msgctxt "KeyboardShortcuts"
+msgid "Not assigned"
+msgstr "Nie przypisano"
+
+#: src/scenes/keyboardshortcuts.rb:64
+msgctxt "KeyboardShortcuts"
+msgid "Quick action for %{shortcut}"
+msgstr "Szybka akcja dla skrótu %{shortcut}"
+
+#: src/scenes/keyboardshortcuts.rb:108
+msgctxt "KeyboardShortcuts"
+msgid "This change affects a custom Quick Action. Elten cannot recreate custom actions here. You can restore its shortcut from the Quick Actions list in the main window. Do you want to continue?"
+msgstr "Ta zmiana dotyczy niestandardowej szybkiej akcji. Elten nie może jej tutaj odtworzyć. Skrót możesz przywrócić na liście Szybkich akcji w oknie głównym. Czy chcesz kontynuować?"
+
+#: src/scenes/keyboardshortcuts.rb:182 src/scenes/keyboardshortcuts.rb:189
+msgctxt "KeyboardShortcuts"
+msgid "Custom: %{name}"
+msgstr "Niestandardowa: %{name}"
+
+#: src/scenes/notifications.rb:72
+msgctxt "Notifications"
+msgid "Notification history"
+msgstr "Historia powiadomień"
+
+#: src/scenes/programs.rb:91
+msgctxt "Programs"
+msgid "Install new program from server"
+msgstr "Zainstaluj nowy program z serwera"
+
+#: src/scenes/programs.rb:94
+msgctxt "Programs"
+msgid "Install new program from file"
+msgstr "Zainstaluj nowy program z pliku"
+
+#: src/scenes/settings.rb:243
+msgctxt "Settings"
+msgid "Start Elten after I log on to Windows"
+msgstr "Uruchamiaj Eltena po zalogowaniu do systemu Windows"
+
+#: src/scenes/settings.rb:244
+msgctxt "Settings"
+msgid "Do not start automatically"
+msgstr "Nie uruchamiaj automatycznie"
+
+#: src/scenes/settings.rb:244
+msgctxt "Settings"
+msgid "Start hidden"
+msgstr "Uruchom i ukryj okno"
+
+#: src/scenes/settings.rb:244
+msgctxt "Settings"
+msgid "Start with the window visible"
+msgstr "Uruchom z widocznym oknem"
+
+#: src/scenes/settings.rb:268
+msgctxt "Settings"
+msgid "Manage keyboard shortcuts"
+msgstr "Zarządzaj skrótami klawiszowymi"
+
+#: src/scenes/welcome_wizard.rb:341
+msgctxt "WelcomeWizard"
+msgid "The context menu can also be placed as the first item of the main menu, so both menus are available after pressing Alt. Use the checkbox below to choose whether it should appear there; you can change this later in the program settings. Whenever an option seems to be missing, check the context menu first; that is usually where it lives."
+msgstr "Menu kontekstowe może także znajdować się jako pierwsza pozycja menu głównego, dzięki czemu po naciśnięciu klawisza Alt dostępne są oba menu. Użyj poniższego pola wyboru, aby zdecydować, czy ma się tam pojawiać; ustawienie to możesz później zmienić w ustawieniach programu. Jeśli wydaje się, że brakuje jakiejś opcji, najpierw sprawdź menu kontekstowe; zwykle właśnie tam się znajduje."
+
+#: src/scenes/welcome_wizard.rb:350
+msgctxt "WelcomeWizard"
+msgid "Display context menu in menu bar"
+msgstr "Pokazuj menu kontekstowe na pasku menu"
+
+#: src/scenes/welcome_wizard.rb:440
+msgctxt "WelcomeWizard"
+msgid ""
+"Elten deliberately speaks less than it could: much of what happens is signalled by short sounds instead, such as reaching the edge of a list, a new message arriving or someone joining a conference. You will pick most of them up naturally as you go. The Sounds guide lets you listen to each one together with its description and remains available from the Help menu.\n"
+"\n"
+"If you would prefer Elten to sound different altogether, the community shares sound themes that replace the whole set. The sound themes manager lets you browse, download and select them and remains available under Sound themes in the Tools menu. Both screens can be opened directly with the buttons below."
+msgstr ""
+"Elten celowo mówi mniej, niż mógłby: wiele zdarzeń sygnalizuje krótkimi dźwiękami, na przykład dotarcie do końca listy, nadejście nowej wiadomości czy dołączenie kogoś do konferencji. Większość z nich poznasz naturalnie podczas korzystania z programu. Przewodnik po dźwiękach pozwala odsłuchać każdy z nich wraz z opisem i pozostaje dostępny z menu Pomoc.\n"
+"\n"
+"Jeśli wolisz, by Elten brzmiał zupełnie inaczej, społeczność udostępnia tematy dźwiękowe zastępujące cały zestaw. Menedżer tematów dźwiękowych pozwala je przeglądać, pobierać i wybierać; jest stale dostępny pod pozycją Tematy dźwiękowe w menu Narzędzia. Oba ekrany możesz otworzyć bezpośrednio przyciskami poniżej."
+
+#: src/scenes/welcome_wizard.rb:444
+msgctxt "WelcomeWizard"
+msgid "Manage sound themes"
+msgstr "Zarządzaj tematami dźwiękowymi"
+
+#: src/scenes/welcome_wizard.rb:1580
+msgctxt "WelcomeWizard"
+msgid "Show the context menu in the menu bar"
+msgstr "Pokaż menu kontekstowe na pasku menu"
+
+#: src/scenes/welcome_wizard.rb:1582
+msgctxt "WelcomeWizard"
+msgid "Hide the context menu from the menu bar"
+msgstr "Ukryj menu kontekstowe na pasku menu"
+
+#: src/ui/dialogs.rb:56
+msgctxt "EAPI_UI_Confirmation"
+msgid "Could you make up your mind a little faster? %{question}"
+msgstr "Czy możesz podjąć decyzję trochę szybciej? %{question}"
+
+#: src/ui/dialogs.rb:68
+msgctxt "EAPI_UI_Confirmation"
+msgid "Hmm... no, thank you."
+msgstr "Hmm... nie, dziękuję."
+
+#: src/ui/dialogs.rb:69
+msgctxt "EAPI_UI_Confirmation"
+msgid "Have you lost your mind?"
+msgstr "Rozum ci odebrało?"
+
+#: src/ui/dialogs.rb:70
+msgctxt "EAPI_UI_Confirmation"
+msgid "Not a chance."
+msgstr "Nie ma mowy."
+
+#: src/ui/dialogs.rb:71
+msgctxt "EAPI_UI_Confirmation"
+msgid "Not in this lifetime."
+msgstr "Nie w tym życiu."
+
+#: src/ui/dialogs.rb:72
+msgctxt "EAPI_UI_Confirmation"
+msgid "Have you completely lost it? Of course not."
+msgstr "Czy już zupełnie ci odbiło? Oczywiście, że nie."
+
+#: src/ui/dialogs.rb:73
+msgctxt "EAPI_UI_Confirmation"
+msgid "You must be seeing things if you think I'll agree to that."
+msgstr "Chyba coś ci się przywidziało, jeśli myślisz, że się na to zgodzę."
+
+#: src/ui/dialogs.rb:74
+msgctxt "EAPI_UI_Confirmation"
+msgid "Actually, why not?"
+msgstr "Właściwie, czemu nie?"
+
+#: src/ui/dialogs.rb:75
+msgctxt "EAPI_UI_Confirmation"
+msgid "Hmm... tempting. All right, I'm in."
+msgstr "Hmm... kuszące. Dobrze, wchodzę w to."
+
+#: src/ui/dialogs.rb:76
+msgctxt "EAPI_UI_Confirmation"
+msgid "Absolutely. Brilliant idea!"
+msgstr "Zdecydowanie. Genialny pomysł!"
+
+#: src/ui/dialogs.rb:77
+msgctxt "EAPI_UI_Confirmation"
+msgid "Count me in."
+msgstr "Jestem za."
+
+#: src/ui/dialogs.rb:78
+msgctxt "EAPI_UI_Confirmation"
+msgid "You decide."
+msgstr "Ty decydujesz."
+
+#: src/ui/loop.rb:193
+msgctxt "EAPI_UI"
+msgid "Failed to show error #123."
+msgstr "Nie udało się wyświetlić błędu #123."
+
+#: src/ui/loop.rb:193
+msgctxt "EAPI_UI"
+msgid "Error #123"
+msgstr "Błąd #123"
+
+#: src/ui/loop.rb:194
+msgctxt "EAPI_UI"
+msgid "This computer is hungry!"
+msgstr "Komputer jest głodny!"
+
+#: src/ui/loop.rb:194
+msgctxt "EAPI_UI"
+msgid "Please place the hamburger in the hard-drive slot."
+msgstr "Włóż hamburgera w slocie dysku twardego."
+
+#: src/ui/loop.rb:195
+msgctxt "EAPI_UI"
+msgid "The error you are looking for was not found."
+msgstr "Nie znaleziono błędu, którego szukasz."
+
+#: src/ui/loop.rb:195
+msgctxt "EAPI_UI"
+msgid "Error #404"
+msgstr "Błąd #404"
+
+#: src/ui/loop.rb:196
+msgctxt "EAPI_UI"
+msgid "Neo is currently unavailable, please try again later."
+msgstr "Neo jest obecnie niedostępny. Spróbuj ponownie później."
+
+#: src/ui/loop.rb:196
+msgctxt "EAPI_UI"
+msgid "Matrix Breach Detected"
+msgstr "Wykryto naruszenie Matrixa"
+
+#: src/ui/loop.rb:197
+msgctxt "EAPI_UI"
+msgid "Unstable Quantum State"
+msgstr "Niestabilny stan kwantowy"
+
+#: src/ui/loop.rb:197
+msgctxt "EAPI_UI"
+msgid "Elten is now both crashed and not crashed."
+msgstr "Elten jednocześnie uległ awarii i jej nie uległ."
+
+#: src/ui/loop.rb:198
+msgctxt "EAPI_UI"
+msgid ""
+"The operation completed successfully.\n"
+"This is highly suspicious."
+msgstr ""
+"Operacja zakończyła się pomyślnie.\n"
+"To bardzo podejrzane."
+
+#: src/ui/loop.rb:198
+msgctxt "EAPI_UI"
+msgid "Unexpected Success"
+msgstr "Nieoczekiwany sukces"
+
+#: src/ui/loop.rb:199
+msgctxt "EAPI_UI"
+msgid ""
+"Your computer is questioning its purpose.\n"
+"Please reassure it."
+msgstr ""
+"Twój komputer zastanawia się nad sensem swojego istnienia.\n"
+"Dodaj mu otuchy."
+
+#: src/ui/loop.rb:199 src/ui/loop.rb:221
+msgctxt "EAPI_UI"
+msgid "Existential Error"
+msgstr "Błąd egzystencjalny"
+
+#: src/ui/loop.rb:200
+msgctxt "EAPI_UI"
+msgid "Memory is temporarily imagining things. Try again later."
+msgstr "Pamięć RAM chwilowo poddaje się zupełnej fantazji. Spróbuj ponownie później."
+
+#: src/ui/loop.rb:200
+msgctxt "EAPI_UI"
+msgid "RAM Daydreaming"
+msgstr "Pamięć RAM buja w obłokach"
+
+#: src/ui/loop.rb:201
+msgctxt "EAPI_UI"
+msgid "Parallel Universe Mismatch"
+msgstr "Niezgodność wszechświatów równoległych"
+
+#: src/ui/loop.rb:201
+msgctxt "EAPI_UI"
+msgid "Elten ran successfully in a different universe."
+msgstr "Elten zadziałał poprawnie w innym wszechświecie."
+
+#: src/ui/loop.rb:202
+msgctxt "EAPI_UI"
+msgid "Operation aborted until tea levels are restored."
+msgstr "Operację przerwano do czasu uzupełnienia poziomu herbaty."
+
+#: src/ui/loop.rb:202
+msgctxt "EAPI_UI"
+msgid "Critical Tea Shortage"
+msgstr "Krytyczny niedobór herbaty"
+
+#: src/ui/loop.rb:203
+msgctxt "EAPI_UI"
+msgid ""
+"No errors found.\n"
+"This can't be right."
+msgstr ""
+"Nie znaleziono żadnych błędów.\n"
+"To nie może być prawda."
+
+#: src/ui/loop.rb:203
+msgctxt "EAPI_UI"
+msgid "Suspicious Silence"
+msgstr "Podejrzana cisza"
+
+#: src/ui/loop.rb:204
+msgctxt "EAPI_UI"
+msgid "Window Open Error"
+msgstr "Błąd otwierania okna"
+
+#: src/ui/loop.rb:204
+msgctxt "EAPI_UI"
+msgid "Attempt to open a window resulted in actual glass breaking."
+msgstr "Próba otwarcia okna zakończyła się wybiciem szyby."
+
+#: src/ui/loop.rb:205
+msgctxt "EAPI_UI"
+msgid ""
+"System froze at digit 3.\n"
+"It refuses to continue irrational numbers."
+msgstr ""
+"System zawiesił się na cyfrze 3.\n"
+"Odmawia dalszej obsługi liczb niewymiernych."
+
+#: src/ui/loop.rb:205
+msgctxt "EAPI_UI"
+msgid "Error #π"
+msgstr "Błąd #π"
+
+#: src/ui/loop.rb:206
+msgctxt "EAPI_UI"
+msgid ""
+"This error message has not been written yet.\n"
+"Please read it when it exists."
+msgstr ""
+"Ten komunikat o błędzie nie został jeszcze napisany.\n"
+"Przeczytaj go, gdy zostanie przygotowany."
+
+#: src/ui/loop.rb:206
+msgctxt "EAPI_UI"
+msgid "Paradox Detected"
+msgstr "Wykryto paradoks"
+
+#: src/ui/loop.rb:207
+msgctxt "EAPI_UI"
+msgid "Recursive Complaint"
+msgstr "Rekurencyjna skarga"
+
+#: src/ui/loop.rb:207
+msgctxt "EAPI_UI"
+msgid "This message is complaining about this message complaining about this message..."
+msgstr "Ten komunikat narzeka na ten komunikat narzekający na ten komunikat..."
+
+#: src/ui/loop.rb:208
+msgctxt "EAPI_UI"
+msgid ""
+"You are not allowed to know what went wrong.\n"
+"Stop asking."
+msgstr ""
+"Nie wolno ci wiedzieć, co poszło nie tak.\n"
+"Przestań pytać."
+
+#: src/ui/loop.rb:208
+msgctxt "EAPI_UI"
+msgid "Forbidden Knowledge Access"
+msgstr "Dostęp do wiedzy zakazanej"
+
+#: src/ui/loop.rb:209
+msgctxt "EAPI_UI"
+msgid "Even the system has no idea what this is."
+msgstr "Nawet system nie ma pojęcia, co to jest."
+
+#: src/ui/loop.rb:209
+msgctxt "EAPI_UI"
+msgid "Error #undefined"
+msgstr "Błąd #undefined"
+
+#: src/ui/loop.rb:210
+msgctxt "EAPI_UI"
+msgid "404: Code Not Found"
+msgstr "404: nie znaleziono kodu"
+
+#: src/ui/loop.rb:210
+msgctxt "EAPI_UI"
+msgid "This function went out for coffee and never came back."
+msgstr "Ta funkcja wyszła na kawę i nigdy nie wróciła."
+
+#: src/ui/loop.rb:211
+msgctxt "EAPI_UI"
+msgid "Check midichlorian drivers."
+msgstr "Sprawdź sterowniki midichlorianów."
+
+#: src/ui/loop.rb:211
+msgctxt "EAPI_UI"
+msgid "The Force Was Not With You"
+msgstr "Moc nie była z tobą"
+
+#: src/ui/loop.rb:212
+msgctxt "EAPI_UI"
+msgid "These are, unfortunately, the bugs you are looking for."
+msgstr "To są, niestety, błędy, których szukasz."
+
+#: src/ui/loop.rb:212
+msgctxt "EAPI_UI"
+msgid "Jedi Mind Trick Failed"
+msgstr "Nieudane użycie mocy Jedi"
+
+#: src/ui/loop.rb:213
+msgctxt "EAPI_UI"
+msgid "This operation may take a looooong time."
+msgstr "Ta operacja może potrwać dłuuuuugo."
+
+#: src/ui/loop.rb:213
+msgctxt "EAPI_UI"
+msgid "Entish Processing"
+msgstr "Przetwarzanie po entowemu"
+
+#: src/ui/loop.rb:214
+msgctxt "EAPI_UI"
+msgid "Silver Sword Required"
+msgstr "Wymagany srebrny miecz"
+
+#: src/ui/loop.rb:214
+msgctxt "EAPI_UI"
+msgid "Process terminated due to monster interference."
+msgstr "Proces zakończony z powodu ingerencji potwora."
+
+#: src/ui/loop.rb:215
+msgctxt "EAPI_UI"
+msgid ""
+"Debugging halted.\n"
+"Please attach a certified rubber duck."
+msgstr ""
+"Debugowanie zatrzymane.\n"
+"Podłącz certyfikowaną gumową kaczkę."
+
+#: src/ui/loop.rb:215
+msgctxt "EAPI_UI"
+msgid "RubberDuckNotFound"
+msgstr "NieZnalezionoGumowejKaczki"
+
+#: src/ui/loop.rb:216
+msgctxt "EAPI_UI"
+msgid ""
+"User typed faster than humanly possible.\n"
+"Suspect: cat."
+msgstr ""
+"Użytkownik pisał szybciej, niż jest to możliwe dla człowieka.\n"
+"Podejrzenie: kot."
+
+#: src/ui/loop.rb:216
+msgctxt "EAPI_UI"
+msgid "KeyboardBufferOverflow"
+msgstr "PrzepełnienieBuforaKlawiatury"
+
+#: src/ui/loop.rb:217
+msgctxt "EAPI_UI"
+msgid "Thread Scheduler Panic"
+msgstr "Panika planisty wątków"
+
+#: src/ui/loop.rb:217
+msgctxt "EAPI_UI"
+msgid ""
+"Ruby threads running.\n"
+"Probably. Maybe. Hard to tell."
+msgstr ""
+"Wątki Ruby działają.\n"
+"Prawdopodobnie. Być może. Trudno powiedzieć."
+
+#: src/ui/loop.rb:218
+msgctxt "EAPI_UI"
+msgid ""
+"Code returned the last value.\n"
+"Elten didn't mean THAT last value."
+msgstr ""
+"Kod zwrócił ostatnią wartość.\n"
+"Elten nie miał na myśli TEJ ostatniej wartości."
+
+#: src/ui/loop.rb:218
+msgctxt "EAPI_UI"
+msgid "Implicit Return Confusion"
+msgstr "Nieporozumienie przy niejawnym zwracaniu wartości"
+
+#: src/ui/loop.rb:219
+msgctxt "EAPI_UI"
+msgid "Elten tried to OR a bit that wanted to AND."
+msgstr "Elten próbował wykonać na bicie operację OR, ale bit chciał operacji AND."
+
+#: src/ui/loop.rb:219
+msgctxt "EAPI_UI"
+msgid "Bitwise Romance Error"
+msgstr "Błąd romansu bitowego"
+
+#: src/ui/loop.rb:220
+msgctxt "EAPI_UI"
+msgid "Compiler Sadness"
+msgstr "Smutek kompilatora"
+
+#: src/ui/loop.rb:220
+msgctxt "EAPI_UI"
+msgid ""
+"It compiled.\n"
+"It ran.\n"
+"It failed anyway."
+msgstr ""
+"Skompilował się.\n"
+"Uruchomił się.\n"
+"I tak wyrzucił błąd."
+
+#: src/ui/loop.rb:221
+msgctxt "EAPI_UI"
+msgid "Program paused to ask why it should continue at all."
+msgstr "Program zatrzymał się, by zapytać, dlaczego w ogóle miałby działać dalej."
+
+#: src/ui/loop.rb:222
+msgctxt "EAPI_UI"
+msgid ""
+"It has seen things.\n"
+"Terrible things."
+msgstr ""
+"Widział już rzeczy.\n"
+"Straszne rzeczy."
+
+#: src/ui/loop.rb:222
+msgctxt "EAPI_UI"
+msgid "Elten PTSD"
+msgstr "Zespół stresu pourazowego Eltena"
+
+#: src/ui/loop.rb:223
+msgctxt "EAPI_UI"
+msgid "System jitter levels critical. Reduce caffeine immediately."
+msgstr "System jest krytycznie roztrzęsiony. Natychmiast ogranicz kofeinę."
+
+#: src/ui/loop.rb:223
+msgctxt "EAPI_UI"
+msgid "Coffee Overflow"
+msgstr "Przepełnienie kawą"
+
+#: src/ui/loop.rb:224
+msgctxt "EAPI_UI"
+msgid "Universal Constant Modified"
+msgstr "Zmodyfikowano stałą uniwersalną"
+
+#: src/ui/loop.rb:224
+msgctxt "EAPI_UI"
+msgid "Pi now equals 3. Please update mathematics."
+msgstr "Pi wynosi teraz 3. Proszę uaktualnić matematykę"
+
+#: src/ui/loop.rb:225
+msgctxt "EAPI_UI"
+msgid "System attempted operation without considering consequences."
+msgstr "System podjął próbę wykonania operacji bez rozważenia konsekwencji."
+
+#: src/ui/loop.rb:225
+msgctxt "EAPI_UI"
+msgid "Error #YOLO"
+msgstr "Błąd #YOLO"
+
+#: src/ui/loop.rb:226
+msgctxt "EAPI_UI"
+msgid "System is sad and needs a compliment."
+msgstr "System jest smutny i potrzebuje komplementu."
+
+#: src/ui/loop.rb:226
+msgctxt "EAPI_UI"
+msgid "Emotional Support Required"
+msgstr "Wymagane wsparcie emocjonalne"
+
+#: src/ui/loop.rb:227
+msgctxt "EAPI_UI"
+msgid "error"
+msgstr "błąd"
+
+#: src/ui/loop.rb:227
+msgctxt "EAPI_UI"
+msgid "Artificial Stupidity Enabled"
+msgstr "Włączono sztuczną głupotę"
+
+#: src/ui/loop.rb:228
+msgctxt "EAPI_UI"
+msgid "This error knows you are reading it."
+msgstr "Ten błąd wie, że go czytasz."
+
+#: src/ui/loop.rb:228
+msgctxt "EAPI_UI"
+msgid "Broken Fourth Wall"
+msgstr "Przełamano czwartą ścianę"
+
+#: src/ui/loop.rb:229
+msgctxt "EAPI_UI"
+msgid "Cogito ergo crash."
+msgstr "Myślę, więc się zawieszam."
+
+#: src/ui/loop.rb:229
+msgctxt "EAPI_UI"
+msgid "Philosophical Segmentation Fault"
+msgstr "Filozoficzny błąd segmentacji"
+
+#: src/ui/loop.rb:230
+msgctxt "EAPI_UI"
+msgid "Boredom Overflow"
+msgstr "Przepełnienie nudą"
+
+#: src/ui/loop.rb:230
+msgctxt "EAPI_UI"
+msgid "The CPU refuses to continue until something interesting happens."
+msgstr "Procesor odmawia dalszej pracy, dopóki nie wydarzy się coś ciekawszego."
+
+#: src/ui/loop.rb:231
+msgctxt "EAPI_UI"
+msgid "System tried to divide by a sandwich."
+msgstr "System podjął próbę dzielenia przez kanapkę."
+
+#: src/ui/loop.rb:231
+msgctxt "EAPI_UI"
+msgid "Error #NaN"
+msgstr "Błąd #NaN"
+
+#: src/ui/loop.rb:232
+msgctxt "EAPI_UI"
+msgid "Object does not quack like a duck."
+msgstr "Obiekt nie kwacze jak kaczka."
+
+#: src/ui/loop.rb:232
+msgctxt "EAPI_UI"
+msgid "Duck Typing Failure"
+msgstr "Błąd kaczego typowania"
+
+#: src/ui/loop.rb:233
+msgctxt "EAPI_UI"
+msgid "Procrastination Mode Enabled"
+msgstr "Włączono tryb prokrastynacji"
+
+#: src/ui/loop.rb:233
+msgctxt "EAPI_UI"
+msgid ""
+"The task will start.\n"
+"Eventually."
+msgstr ""
+"Zadanie się rozpocznie.\n"
+"Kiedyś."
+
+#: src/ui/loop.rb:234
+msgctxt "EAPI_UI"
+msgid "The system encountered an irrational sense of growth."
+msgstr "System poczuł niewymierną potrzebę wzrostu."
+
+#: src/ui/loop.rb:234
+msgctxt "EAPI_UI"
+msgid "Error #2.71828"
+msgstr "Błąd #2,71828"
+
+#: src/ui/loop.rb:235
+msgctxt "EAPI_UI"
+msgid "Reinstall Universe And Reboot."
+msgstr "Zainstaluj ponownie wszechświat i rebutuj."
+
+#: src/ui/loop.rb:235
+msgctxt "EAPI_UI"
+msgid "+++ Divide By Cucumber Error +++"
+msgstr "+++ Błąd dzielenia przez ogórek +++"
+
 #~ msgctxt "Calendar"
 #~ msgid "Calendar invitations"
 #~ msgstr "Zaproszenia do kalendarzy"
