@@ -284,10 +284,28 @@ def waiting_end
   @@dialogvoice_generation=0
   @@dialogvoice_muted_generation=nil
   @@dialogopened=false
+  @@modal_interaction_depth=0
+  @@modal_interaction_started_at=nil
+  @@modal_interaction_elapsed=0.0
+  @@modal_interaction_mutex=Mutex.new
 
   def dialog_opened
     return @@dialogopened
     end
+
+  def modal_interaction_elapsed
+    now = modal_interaction_time
+    @@modal_interaction_mutex.synchronize do
+      modal_interaction_elapsed_at(now)
+    end
+  end
+
+  def modal_interaction_adjusted_time
+    now = modal_interaction_time
+    @@modal_interaction_mutex.synchronize do
+      now - modal_interaction_elapsed_at(now)
+    end
+  end
 
   def dialog_mute
     @@dialogvoice_muted_generation=@@dialogvoice_generation
@@ -296,44 +314,95 @@ def waiting_end
 
       # Opens a dialog
   def dialog_open
-            play_sound("dialog_open")
-            dialog_close if @@dialogvoice!=nil
-            generation = (@@dialogvoice_generation += 1)
-        if Configuration.bgsounds==true && Configuration.soundthemeactivation==true
-          snd=getsound("dialog_background")
-          if snd!=nil
-                          Thread.new do
-                            Thread.current.report_on_exception = false
-                            begin
-                              sound = Sound.new(loop: true, stream: snd)
-                              sound.volume=Configuration.volume.to_f/100.0
-                              sound.position=0
-                              if @@dialogvoice_generation == generation
-                                @@dialogvoice = sound
-                                sound.volume=0 if @@dialogvoice_muted_generation == generation
-                                @@dialogvoice.play
-                              else
-                                sound.close
-                              end
-                            rescue Exception => e
-                              Log.warning("Dialog background sound failed: #{e.class}: #{e.message}")
-                            end
-                          end
-                                                  end
-                                                  end
-  @@dialogopened = true
-end
+    modal_interaction_open
+    opened = false
+    begin
+      play_sound("dialog_open")
+      close_dialog_output if @@dialogvoice!=nil
+      generation = (@@dialogvoice_generation += 1)
+      if Configuration.bgsounds==true && Configuration.soundthemeactivation==true
+        snd=getsound("dialog_background")
+        if snd!=nil
+          Thread.new do
+            Thread.current.report_on_exception = false
+            begin
+              sound = Sound.new(loop: true, stream: snd)
+              sound.volume=Configuration.volume.to_f/100.0
+              sound.position=0
+              if @@dialogvoice_generation == generation
+                @@dialogvoice = sound
+                sound.volume=0 if @@dialogvoice_muted_generation == generation
+                @@dialogvoice.play
+              else
+                sound.close
+              end
+            rescue Exception => e
+              Log.warning("Dialog background sound failed: #{e.class}: #{e.message}")
+            end
+          end
+        end
+      end
+      @@dialogopened = true
+      opened = true
+    ensure
+      modal_interaction_close if !opened
+    end
+  end
 
 # Closes a dialog
 def dialog_close
-    @@dialogvoice_generation += 1
-    if @@dialogvoice != nil
+  begin
+    close_dialog_output
+  ensure
+    modal_interaction_close
+    @@dialogopened=modal_interaction_active?
+  end
+end
+
+def close_dialog_output
+  @@dialogvoice_generation += 1
+  if @@dialogvoice != nil
     @@dialogvoice.close
     @@dialogvoice=nil
   end
   play_sound("dialog_close")
   NVDA.braille("") if defined?(NVDA) && NVDA.check
-  @@dialogopened=false
+end
+
+def modal_interaction_open
+  now = modal_interaction_time
+  @@modal_interaction_mutex.synchronize do
+    if @@modal_interaction_depth == 0
+      @@modal_interaction_started_at = now
+    end
+    @@modal_interaction_depth += 1
+  end
+end
+
+def modal_interaction_close
+  now = modal_interaction_time
+  @@modal_interaction_mutex.synchronize do
+    return if @@modal_interaction_depth <= 0
+    @@modal_interaction_depth -= 1
+    if @@modal_interaction_depth == 0
+      @@modal_interaction_elapsed += now - @@modal_interaction_started_at
+      @@modal_interaction_started_at = nil
+    end
+  end
+end
+
+def modal_interaction_active?
+  @@modal_interaction_mutex.synchronize { @@modal_interaction_depth > 0 }
+end
+
+def modal_interaction_elapsed_at(time)
+  elapsed = @@modal_interaction_elapsed
+  elapsed += time - @@modal_interaction_started_at if @@modal_interaction_depth > 0
+  [elapsed, 0.0].max
+end
+
+def modal_interaction_time
+  Process.clock_gettime(Process::CLOCK_MONOTONIC)
   end
    class ConfigEntry
      attr_accessor :id, :name, :value_type, :current_value

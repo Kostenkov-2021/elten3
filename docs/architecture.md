@@ -221,14 +221,23 @@ Use `Runner` when an interaction is not naturally a form or a finite task. A run
 
 ```ruby
 runner = Runner.new(frame_interval: 0.05)
+session_time = runner.stopwatch(pause_on_dialogs: true)
 runner.action(:close, press: :escape)
+runner.action(:move, press: [:left, :right])
+runner.on_action(:move) do
+  session_time.start
+  move
+end
 runner.on_action(:close) { |current| current.stop(:cancelled) }
 runner.every(5, immediate: true) { refresh_state }
 
 result = runner.run
+elapsed = session_time.elapsed
 ```
 
 Prefer named actions over scattering raw key checks across tick callbacks. Resources registered with `runner.manage` are released when `run` ends, including exceptional exits, so a runner is also the appropriate owner for a subscription or handle whose lifetime matches the interaction.
+
+A stopwatch created with `runner.stopwatch` uses a monotonic clock and is stopped automatically when the runner ends. Pass `autostart: true` to start it immediately. Otherwise, `start` is idempotent while the stopwatch is running or paused, so an interaction may call it from every relevant action and the first action starts the measurement. Use `pause`, `resume`, `stop` and `elapsed` for explicit control. With `pause_on_dialogs: true`, time spent in nested modal dialogs and blocking alerts is excluded; non-blocking alerts do not pause the stopwatch.
 
 ## Evolution and migration policy
 

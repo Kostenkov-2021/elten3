@@ -178,6 +178,76 @@ class Runner
     end
   end
 
+  class Stopwatch
+    attr_reader :state
+
+    def initialize(clock: nil, autostart: false)
+      @clock = clock || lambda { Process.clock_gettime(Process::CLOCK_MONOTONIC) }
+      @elapsed = 0.0
+      @started_at = nil
+      @state = :stopped
+      start if autostart == true
+    end
+
+    def start
+      return self if running? || paused?
+      @elapsed = 0.0
+      @started_at = current_time
+      @state = :running
+      self
+    end
+
+    def pause
+      return self if !running?
+      @elapsed = elapsed_at(current_time)
+      @started_at = nil
+      @state = :paused
+      self
+    end
+
+    def resume
+      return self if !paused?
+      @started_at = current_time
+      @state = :running
+      self
+    end
+
+    def stop
+      if running?
+        @elapsed = elapsed_at(current_time)
+        @started_at = nil
+      end
+      @state = :stopped
+      self
+    end
+
+    def elapsed
+      running? ? elapsed_at(current_time) : @elapsed
+    end
+
+    def running?
+      @state == :running
+    end
+
+    def paused?
+      @state == :paused
+    end
+
+    def stopped?
+      @state == :stopped
+    end
+
+    private
+
+    def current_time
+      @clock.call.to_f
+    end
+
+    def elapsed_at(time)
+      @elapsed + [time.to_f - @started_at.to_f, 0.0].max
+    end
+  end
+
   attr_reader :result
   attr_accessor :frame_interval
 
@@ -189,6 +259,7 @@ class Runner
     @actions = {}
     @cooldowns = {}
     @timed_flags = {}
+    @stopwatches = []
     @tick_handlers = []
     @next_tick_callbacks = []
     @stop_handlers = []
@@ -267,6 +338,17 @@ class Runner
     @timed_flags[name.to_sym] ||= TimedFlag.new
   end
 
+  def stopwatch(autostart: false, pause_on_dialogs: false)
+    clock = if pause_on_dialogs == true
+      lambda { modal_interaction_adjusted_time }
+    else
+      lambda { monotonic_time }
+    end
+    stopwatch = Stopwatch.new(clock: clock, autostart: autostart)
+    @stopwatches << stopwatch
+    stopwatch
+  end
+
   def on_tick(&block)
     raise ArgumentError, "block is required" if block == nil
     @tick_handlers << block
@@ -317,6 +399,7 @@ class Runner
   end
 
   def stop(result = nil)
+    stop_stopwatches
     @result = result
     @running = false
     result
@@ -362,6 +445,7 @@ class Runner
   end
 
   def finish_run
+    stop_stopwatches
     time = monotonic_time
     @stop_handlers.each do |handler|
       invoke_callback(handler, time)
@@ -369,6 +453,10 @@ class Runner
       Log.warning("Runner stop handler failed: #{e.class}: #{e.message}") if defined?(Log)
     end
     @managed_resources.close
+  end
+
+  def stop_stopwatches
+    @stopwatches.each(&:stop)
   end
 
   def add_timer(interval, repeat:, immediate: false, phase: :timer, dynamic: false, &block)
