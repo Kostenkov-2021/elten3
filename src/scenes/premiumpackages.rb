@@ -1,5 +1,6 @@
 class Scene_PremiumPackages
   CURRENCIES = ["PLN", "EUR", "USD", "GBP"].freeze
+  SPONSOR_MERGED_PACKAGES = ["courier", "audiophile", "scribe", "director"].freeze
 
   def main
     unless Session.logged?
@@ -210,31 +211,32 @@ sactivate=p_("PremiumPackages", "Activate package using code")
             if c.package==k
               c.activable=true  
               c.price=j[k]["price$#{@currency}"]
-                c.monthlyprice=j[k]["monthlyprice$#{@currency}"]
-                c.available=j[k]['available']
-                c.allowed=true if c.totime==0 || j[k]['yearlimit']>=Time.at(c.totime).year
-                c.special=j[k]['special']
-              end
+              c.monthlyprice=j[k]["monthlyprice$#{@currency}"]
+              c.available=j[k]['available']==true
+              c.allowed=c.available && (c.totime==0 || j[k]['yearlimit']>=Time.at(c.totime).year)
+              c.special=j[k]['special']
             end
           end
         end
+        end
         apply_sponsor_only_offer if sponsor_only
+        apply_offer_availability
         @sel.rows=@packages.map{|c|
         st=p_("PremiumPackages", "Inactive")
         st=p_("PremiumPackages", "Active until %{time}")%{:time=>format_date(Time.at(c.totime))} if c.totime>0
         monthlyprice=nil
         price=nil
         conversionprice=nil
-                if c.package=="sponsor"
+        if c.available && c.package=="sponsor"
           z=conversion_credit("sponsor")
           conversionprice=(c.price-z).ceil if z>0
         end
-if c.package=="orchestra" && c.price.is_a?(Numeric)
+        if c.available && c.package=="orchestra" && c.price.is_a?(Numeric)
           z=conversion_credit("orchestra")
           conversionprice=(c.price-z).ceil if z>0
-end       
-monthlyprice=c.monthlyprice.to_s+" "+@currency if c.monthlyprice!=nil
-        price=c.price.to_s+" "+@currency if c.price!=nil
+        end
+        monthlyprice=c.monthlyprice.to_s+" "+@currency if c.available && c.monthlyprice!=nil
+        price=c.price.to_s+" "+@currency if c.available && c.price!=nil
         conversionprice=nil if conversionprice!=nil && conversionprice<=0
         conversionprice=conversionprice.to_s+" "+@currency if conversionprice!=nil
           [c.name, st, price, monthlyprice, conversionprice]
@@ -243,21 +245,21 @@ monthlyprice=c.monthlyprice.to_s+" "+@currency if c.monthlyprice!=nil
       rescue EltenLink::Error, JSON::ParserError
       end
       def sponsor_only_offer?(prices)
-        prices.is_a?(Hash) && prices.keys.map(&:to_s).uniq==["sponsor"]
+        return false if !prices.is_a?(Hash)
+        prices.select{|_package, offer|offer.is_a?(Hash) && offer['available']==true}.keys.map(&:to_s).uniq==["sponsor"]
       end
       def apply_sponsor_only_offer
         sponsor=@packages.find{|package|package.package=="sponsor"}
         return if sponsor==nil
-        sponsor.profits=@packages.reject{|package|package.equal?(sponsor)}.flat_map(&:profits).uniq
-        @packages.select!{|package|package.equal?(sponsor) || package.totime>0}
+        sponsor.profits=@packages.select{|package|SPONSOR_MERGED_PACKAGES.include?(package.package)}.flat_map(&:profits).uniq
+      end
+      def apply_offer_availability
         @packages.each do |package|
-          next if package.equal?(sponsor)
-          package.price=nil
-          package.monthlyprice=nil
-          package.available=false
+          next if package.available
           package.allowed=false
           package.activable=false
         end
+        @packages.select!{|package|package.available || package.totime>0}
       end
       def conversion_credit(excluded_package)
         @packages.sum do |package|
