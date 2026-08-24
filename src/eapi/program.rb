@@ -13,6 +13,7 @@ require "stringio"
 module Programs
   MAGIC = "Elten3AppPackage".b
   ELTEN_API_VERSION = "3.0".freeze
+  ELTENLINK_CONTRACT_VERSION = "3.0".freeze
   MANIFEST_BEGIN = /^\=begin[ \t]+Elten3AppInfo[ \t]*\r?\n/.freeze
   MANIFEST_END = /^\=end[ \t]+Elten3AppInfo[ \t]*$/m.freeze
   UUID_PATTERN = /\A[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\z/i.freeze
@@ -39,7 +40,7 @@ module Programs
   end
 
   class Manifest
-    attr_reader :id, :name, :version, :build_id, :elten_api_version, :author, :main, :main_class, :platforms, :menu, :gems, :required_assets, :raw
+    attr_reader :id, :name, :version, :build_id, :elten_api_version, :eltenlink_contract_version, :author, :main, :main_class, :platforms, :menu, :gems, :required_assets, :raw
 
     def initialize(raw, source)
       @raw = raw.is_a?(Hash) ? raw : {}
@@ -49,6 +50,7 @@ module Programs
       @version = string_value("version", "version_string")
       @build_id = normalize_build_id(string_value("build_id", "BuildID"))
       @elten_api_version = string_value("EltenAPIVersion")
+      @eltenlink_contract_version = string_value("EltenLinkContractVersion")
       @author = string_value("author")
       @main = string_value("main", "file")
       @main_class = string_value("main_class", "class")
@@ -94,6 +96,7 @@ module Programs
         :version => @version,
         :build_id => @build_id,
         :elten_api_version => @elten_api_version,
+        :eltenlink_contract_version => @eltenlink_contract_version,
         :author => @author,
         :file => main_file || @main,
         :main_class => @main_class,
@@ -154,6 +157,9 @@ module Programs
       raise ProgramError, "Missing program build_id in #{@source}" if @build_id == nil
       raise ProgramError, "Missing EltenAPIVersion in #{@source}" if @elten_api_version == ""
       raise ProgramError, "Program #{@name} requires unsupported Elten API #{@elten_api_version}" if !Programs.api_version_compatible?(@elten_api_version)
+      if @eltenlink_contract_version != "" && !Programs.eltenlink_contract_version_compatible?(@eltenlink_contract_version)
+        raise ProgramError, "Program #{@name} requires unsupported Elten API #{@eltenlink_contract_version}"
+      end
       raise ProgramError, "Missing program main_class in #{@source}" if @main_class == ""
       raise ProgramError, "Missing program platforms in #{@source}" if @platforms.empty?
     end
@@ -1066,6 +1072,10 @@ module Programs
       ELTEN_API_VERSION
     end
 
+    def eltenlink_contract_version
+      ELTENLINK_CONTRACT_VERSION
+    end
+
     def api_version_compatible?(required)
       required_parts = parse_api_version(required)
       current_parts = parse_api_version(ELTEN_API_VERSION)
@@ -1075,6 +1085,13 @@ module Programs
       current_parts += [0] * (max - current_parts.size)
       return false if required_parts[0] != current_parts[0]
       (current_parts <=> required_parts).to_i >= 0
+    end
+
+    def eltenlink_contract_version_compatible?(required)
+      required_parts = parse_api_version(required)
+      current_parts = parse_api_version(ELTENLINK_CONTRACT_VERSION)
+      return false if required_parts == nil || required_parts.size < 2 || current_parts == nil
+      required_parts[0, 2] == current_parts[0, 2]
     end
 
     def setup_package_info(file)
