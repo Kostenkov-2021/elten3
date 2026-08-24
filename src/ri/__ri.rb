@@ -110,12 +110,6 @@ t.each do |o|
       end
     return self
   end
-  def sum
-    return 0 if self.size==0
-    s=self[0]
-    self[1..-1].each {|a| s+=a}
-    return s
-  end
   def polsort
         return self.sort_by {|a| polsort_key(a)} if self.all? {|a| a.is_a?(String)}
         a=self.sort {|a,b|
