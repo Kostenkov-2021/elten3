@@ -290,7 +290,7 @@ module EltenRecorderRuntime
       end
     ensure
       session.finish if session != nil
-      Bass::BASS_StreamFree.call(channel) if channel != nil && channel != 0
+      Bass.free_stream(channel) if channel != nil && channel != 0
     end
 
     private

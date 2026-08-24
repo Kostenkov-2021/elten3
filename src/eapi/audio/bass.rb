@@ -235,9 +235,77 @@ module Bass
     "BASS_ERROR_UNKNOWN"
   end
 
+  MemoryStreamEntry = Struct.new(:data, :auto_free, :started)
+
+  def self.memory_stream_mutex
+    @memory_stream_mutex ||= Mutex.new
+  end
+
+  def self.remember_stream_data(channel, data, auto_free)
+    channel = channel.to_i
+    return false if channel == 0 || data == nil
+    memory_stream_mutex.synchronize do
+      @memory_stream_data ||= {}
+      @memory_stream_data[channel] = MemoryStreamEntry.new(data, auto_free == true, false)
+    end
+    true
+  end
+
+  def self.release_stream_data(channel, expected_entry = nil)
+    memory_stream_mutex.synchronize do
+      @memory_stream_data ||= {}
+      current = @memory_stream_data[channel.to_i]
+      return false if expected_entry != nil && !current.equal?(expected_entry)
+      @memory_stream_data.delete(channel.to_i)
+    end
+  end
+
+  def self.clear_memory_stream_data
+    memory_stream_mutex.synchronize do
+      @memory_stream_data ||= {}
+      @memory_stream_data.clear
+    end
+    true
+  end
+
+  def self.cleanup_memory_streams
+    entries = memory_stream_mutex.synchronize do
+      @memory_stream_data ||= {}
+      @memory_stream_data.select { |_channel, entry| entry.auto_free && entry.started }.to_a
+    end
+    entries.each do |channel, entry|
+      next if BASS_ChannelIsActive.call(channel).to_i != 0
+      memory_stream_mutex.synchronize do
+        @memory_stream_data.delete(channel) if @memory_stream_data[channel].equal?(entry)
+      end
+    rescue Exception
+    end
+    true
+  end
+
   def self.create_file_stream_from_memory(data, flags)
     data = data.to_s.b
-    BASS_StreamCreateFile.call(1, data, 0, data.bytesize, flags)
+    channel = BASS_StreamCreateFile.call(1, data, 0, data.bytesize, flags)
+    remember_stream_data(channel, data, (flags.to_i & BASS_STREAM_AUTOFREE) != 0)
+    channel
+  end
+
+  def self.play_stream(channel, restart = 0)
+    result = BASS_ChannelPlay.call(channel.to_i, restart.to_i)
+    if result.to_i != 0
+      memory_stream_mutex.synchronize do
+        entry = (@memory_stream_data ||= {})[channel.to_i]
+        entry.started = true if entry != nil
+      end
+    end
+    result
+  end
+
+  def self.free_stream(channel)
+    entry = memory_stream_mutex.synchronize { (@memory_stream_data ||= {})[channel.to_i] }
+    result = BASS_StreamFree.call(channel.to_i)
+    release_stream_data(channel, entry) if result.to_i != 0 && entry != nil
+    result
   end
 
   def self.create_file_stream_from_path(filename, pos = 0, flags = 0, tries = 1)
@@ -379,6 +447,7 @@ module Bass
             @@device=d
             if @init==true
             BASS_Free.call
+            clear_memory_stream_data
       BASS_Init.call(d, samplerate, 4, hWnd)
       BASS_SetDevice.call(d)
     else
@@ -516,6 +585,7 @@ prewarm_url_loader
     if BASS_Free.call == 0 then
       raise(error_name)
     end
+    clear_memory_stream_data
   end
 
   def self.create_stream_channel(filename, pos = 0, stream = nil, tries = 10)

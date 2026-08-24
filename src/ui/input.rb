@@ -56,7 +56,7 @@ if pitch != 100
 if Configuration.usepan==true
   Bass::BASS_ChannelSetAttribute.call(stream, 3, pan.to_f/50.0-1.0)
                                                   end
-                                                                                                                                                                                                      Bass::BASS_ChannelPlay.call(stream, 0)
+                                                                                                                                                                                                      Bass.play_stream(stream, 0)
                         end
                         end
                       end

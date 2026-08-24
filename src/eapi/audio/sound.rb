@@ -407,7 +407,7 @@ class Sound
   end
 
   def self.free_stream_handle(handle)
-    Bass::BASS_StreamFree.call(handle)
+    Bass.free_stream(handle)
   end
 
   def effect_buffer_seconds=(value)

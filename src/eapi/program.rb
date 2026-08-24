@@ -409,7 +409,7 @@ module Programs
       stream = create_bass_stream
       return false if stream.to_i == 0
       apply_bass_attributes(stream, volume: volume, pitch: pitch, pan: pan, ignore_elten_volume: ignore_elten_volume)
-      Bass::BASS_ChannelPlay.call(stream, 0) != 0
+      Bass.play_stream(stream, 0) != 0
     rescue Exception => e
       Log.warning("Program sound asset #{@name} play failed: #{e.class}: #{e.message}")
       false

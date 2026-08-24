@@ -2155,7 +2155,7 @@ if subs
 @hrtf.free if @hrtf!=nil
 }
 end
-Bass::BASS_StreamFree.call(@whisper_sound) if @whisper_sound!=nil
+Bass.free_stream(@whisper_sound) if @whisper_sound!=nil
 rescue Exception
 log(2, "Conference: Free error: "+$!.to_s+" "+$@.to_s)
 end

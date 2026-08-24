@@ -160,6 +160,7 @@ end
            Log.error("Notification service UI drain: #{$!.class}: #{$!.message}")
          end
        loop_now = loop_update_time
+       Bass.cleanup_memory_streams if defined?(Bass) && loop_update_due?(:bass_memory_streams, PERIODIC_SLOW_SECONDS, loop_now)
        if loop_update_due?(:alarms, PERIODIC_SLOW_SECONDS, loop_now)
          Alarms.update
        end
