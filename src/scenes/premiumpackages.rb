@@ -39,7 +39,6 @@ show(package)
         p_("PremiumPackages", "Larger private-message attachments, up to 32 MB"),
     p_("PremiumPackages", "Attaching polls to private messages"),
     p_("PremiumPackages", "Using Markdown in forum posts"),
-    p_("PremiumPackages", "Reading transcriptions of audio posts in recommended groups"),
     ])
   end
   def get_audiophile
@@ -52,7 +51,6 @@ show(package)
     p_("PremiumPackages", "Using VST plugins in conferences"),
     p_("PremiumPackages", "Setting specific ringtones for users"),
     p_("PremiumPackages", "Attaching audio to feed entries"),
-    #p_("PremiumPackages", "Placing beacons in HRTF channels"),
     p_("PremiumPackages", "Splitting audio into chapters"),
     p_("PremiumPackages", "Creating hidden channels in conferences"),
     ])
