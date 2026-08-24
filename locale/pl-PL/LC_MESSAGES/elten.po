@@ -13450,7 +13450,7 @@ msgstr "&Zadania"
 #: src/eapi/mainmenu.rb:129
 msgctxt "MainMenu"
 msgid "Welcome &wizards"
-msgstr "Kreatory &powitalne"
+msgstr "&Kreatory powitalne"
 
 #: src/eapi/mainmenu.rb:130
 msgctxt "MainMenu"
