@@ -2139,15 +2139,37 @@ def dir=(d)
 }
 d
 end
-def free(subs=true)
-@free_mutex.synchronize do
-return if @freed
+def request_close
+return false if @closing
 @closing=true
 begin
 calling_stop
 rescue Exception
 log(2, "Conference: calling stop error: "+$!.to_s+" "+$@.to_s)
 end
+hooks=[
+@channel_hooks, @waitingchannel_hooks, @volumes_hooks, @streammute_hooks,
+@user_hooks, @waitinguser_hooks, @status_hooks, @text_hooks, @ping_hooks,
+@diceroll_hooks, @change_hooks, @mystreams_hooks, @streams_hooks, @speaker_hooks
+]
+hooks.compact.each{|hook|hook.clear}
+begin
+@voip.request_close
+rescue Exception
+log(2, "Conference: VoIP close request error: "+$!.to_s+" "+$@.to_s)
+end
+[@output_thread, @recorder_thread, @saver_thread, @processor_thread].each do |thread|
+begin
+thread.wakeup if thread!=nil && thread.alive?
+rescue ThreadError
+end
+end
+true
+end
+def free(subs=true)
+@free_mutex.synchronize do
+return if @freed
+request_close
 if subs
 begin
 @voip.free

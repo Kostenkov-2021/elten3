@@ -71,6 +71,7 @@ def initialize
 @ping_hooks=[]
 @params_queue=Queue.new
 @params_stop=Object.new
+@params_stop_enqueued=false
 @params_thread=Thread.new do
 Thread.current.report_on_exception=false
 loop do
@@ -245,18 +246,35 @@ private :stop_transport_thread
 def disconnect
 log(0, "Conference: disconnecting from server")
 @closing=true
-executecommand("close") if @tcp!=nil
+tcp=@tcp
+executecommand("close") if tcp!=nil && !(tcp.closed? rescue true)
 close_transport
 end
-def free
+def request_close
 @closing=true
+@receive_hooks.clear
+@params_hooks.clear
+@status_hooks.clear
+@ping_hooks.clear
+if !@params_stop_enqueued
+@params_stop_enqueued=true
+@params_queue << @params_stop
+end
+[@tcp, @udp].each do |socket|
+begin
+socket.close if socket!=nil && socket.respond_to?(:close) && !socket.closed?
+rescue Exception
+end
+end
+true
+end
+def free
+request_close
 if @reconnect_thread!=nil
 stop_transport_thread(@reconnect_thread)
 @reconnect_thread=nil
 end
 if @params_thread!=nil
-@params_hooks.clear
-@params_queue << @params_stop
 @params_thread.join if @params_thread!=Thread.current
 @params_thread=nil
 end

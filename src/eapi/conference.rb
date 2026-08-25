@@ -142,6 +142,7 @@ class Channel
 @@configuration_signature=nil
 @@configuration_tick=0
 @@core_lifecycle=Monitor.new
+@@closing_cores={}
 
 def self.load_steamaudio(file=nil)
   setup_core_runtime(false)
@@ -330,41 +331,72 @@ def self.refresh_open_state
 end
 
 def self.close_core(trigger_close=true)
+  core=nil
   @@core_lifecycle.synchronize do
     core=@@core
     notify_closed=@@opened || core!=nil
     @@core=nil
     @@configuration_signature=nil
-    if core!=nil
-      begin
-        core.free
-      rescue Exception
-        Log.error("Conference close: #{$!.class}: #{$!.message}")
-      end
-    end
+    @@closing_cores[core.object_id]=core if core!=nil
     setclosed if trigger_close && notify_closed
   end
+  retire_core(core)
+end
+
+def self.retire_core(core)
+  return if core==nil
+  begin
+    core.request_close
+  rescue Exception
+    Log.error("Conference close request: #{$!.class}: #{$!.message}")
+  end
+  cleanup_thread=Thread.new(core) do |closing_core|
+    Thread.current.report_on_exception=false
+    begin
+      closing_core.free
+    rescue Exception
+      Log.error("Conference close: #{$!.class}: #{$!.message}")
+    ensure
+      @@core_lifecycle.synchronize do
+        id=closing_core.object_id
+        @@closing_cores.delete(id) if @@closing_cores[id].equal?(closing_core)
+      end
+    end
+  end
+  Thread.new(cleanup_thread, core.object_id) do |thread, core_id|
+    Thread.current.report_on_exception=false
+    sleep(2)
+    if thread.alive?
+      backtrace=Array(thread.backtrace).join(" | ")
+      Log.warning("Conference cleanup #{core_id} is still running: #{backtrace}")
+    end
+  end
+rescue Exception
+  Log.error("Conference cleanup start: #{$!.class}: #{$!.message}")
 end
 
 def self.attach_core_callbacks(conf)
-  conf.on_channel {|ch| setchannel(JSON.generate(ch))}
-  conf.on_waitingchannel {|chid| setwaitingchannel(chid)}
-  conf.on_status {|st| setstatus(JSON.generate(st))}
-  conf.on_volumes {|vl| setvolumes(JSON.generate(vl))}
-  conf.on_streammute {|id,mute| setstreamidmute(id, mute)}
-  conf.on_change {|param,value| setchange(param, value)}
-  conf.on_mystreams {|params| setmystreams(JSON.generate(params))}
+  conf.on_channel {|ch| setchannel(JSON.generate(ch)) if @@core.equal?(conf)}
+  conf.on_waitingchannel {|chid| setwaitingchannel(chid) if @@core.equal?(conf)}
+  conf.on_status {|st| setstatus(JSON.generate(st)) if @@core.equal?(conf)}
+  conf.on_volumes {|vl| setvolumes(JSON.generate(vl)) if @@core.equal?(conf)}
+  conf.on_streammute {|id,mute| setstreamidmute(id, mute) if @@core.equal?(conf)}
+  conf.on_change {|param,value| setchange(param, value) if @@core.equal?(conf)}
+  conf.on_mystreams {|params| setmystreams(JSON.generate(params)) if @@core.equal?(conf)}
   conf.on_streams {|streams|
+    next unless @@core.equal?(conf)
     setstreams(JSON.generate(streams.values.map{|s|{"id"=>s.streamid, "name"=>s.name, "userid"=>s.userid, "username"=>s.username, "x"=>s.stream_x, "y"=>s.stream_y, "volume"=>s.volume}}))
   }
-  conf.on_user {|joined, username| announce_user(joined ? "conference_userjoin" : "conference_userleave", username)}
-  conf.on_waitinguser {|joined, username| announce_user(joined ? "conference_userknock" : "conference_userleave", username)}
-  conf.on_speaker {|status, username, _userid| announce_speaker(status, username)}
+  conf.on_user {|joined, username| announce_user(joined ? "conference_userjoin" : "conference_userleave", username) if @@core.equal?(conf)}
+  conf.on_waitinguser {|joined, username| announce_user(joined ? "conference_userknock" : "conference_userleave", username) if @@core.equal?(conf)}
+  conf.on_speaker {|status, username, _userid| announce_speaker(status, username) if @@core.equal?(conf)}
   conf.on_text {|username, userid, message|
+    next unless @@core.equal?(conf)
     settext(username, userid, message)
     announce_text(username, message, "conference_message")
   }
   conf.on_diceroll {|username, userid, value, count|
+    next unless @@core.equal?(conf)
     setdiceroll(username, userid, value, count)
     announce_text(username, value.to_s, "conference_diceroll")
   }
