@@ -49,6 +49,15 @@ module EltenPath
     File.dirname(normalize(path))
   end
 
+  def extname(path)
+    value = normalize(path)
+    extension = File.extname(value)
+    return extension unless extension.empty?
+
+    name = File.basename(value)
+    name.match?(/\A\.[^.]+\z/) ? name : ""
+  end
+
   def relative_from(path, root)
     value = normalize(path)
     prefix = with_separator(root)

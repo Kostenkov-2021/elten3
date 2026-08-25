@@ -129,7 +129,7 @@ else
     begin
       if File.directory?(full)
         dirs.push(entry)
-      elsif @hidefiles!=true && (allowed_exts==nil || allowed_exts.include?(File.extname(entry).downcase))
+      elsif @hidefiles!=true && (allowed_exts==nil || allowed_exts.include?(EltenPath.extname(entry).downcase))
         fls.push(entry)
       end
     rescue Exception
@@ -239,7 +239,7 @@ end
 def preview_selected_file
   file=selected
   return if file=="" || !File.file?(file)
-  case File.extname(file).downcase
+  case EltenPath.extname(file).downcase
   when *AUDIO_EXTENSIONS
     toggle_audio_preview(file)
   when *TEXT_EXTENSIONS
@@ -393,7 +393,7 @@ end
 
 def filetype
   return 0 if File.directory?(cfile(true))
-  ext=File.extname(selected).downcase
+  ext=EltenPath.extname(selected).downcase
   if AUDIO_EXTENSIONS.include?(ext)
     return 1
   elsif TEXT_EXTENSIONS.include?(ext)
