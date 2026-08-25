@@ -15,6 +15,8 @@ class Scene_Conference
     @timeout=timeout
     @prefocus=prefocus
     @target=target
+    @call_mutex=Mutex.new
+    @call_id=nil
     if channel_target?(@target) && Conference.opened? && Conference.channel.id!=0 && (($scenes && $scenes[0].is_a?(Scene_Conference)) || $scene.is_a?(Scene_Conference))
       speak(p_("Conference", "You are already connected to another channel."))
     end
@@ -351,7 +353,8 @@ elsif channel_target?(@target)
 end
 def invite(user)
   begin
-    @call_id=EltenLink::Calls.call_user(elten_link, Conference.channel, user)
+    call_id=EltenLink::Calls.call_user(elten_link, Conference.channel, user)
+    @call_mutex.synchronize {@call_id=call_id}
   rescue EltenLink::Error => e
     Log.warning("Call invite failed: #{e.message}")
     alert(p_("EAPI_UI", "You cannot call this user")) if e.code.to_s == "calls.not_callable"
@@ -1555,9 +1558,25 @@ lst_whitelist.focus
   dialog_close
 end
 def cancel_outgoing_call
-  call_id=@call_id
-  @call_id=nil
-  EltenAPI::EltenSRV.cancel_call(call_id, self) if call_id!=nil
+  call_id=@call_mutex.synchronize do
+    if @call_id!=nil
+      id=@call_id
+      @call_id=nil
+      id
+    end
+  end
+  schedule_outgoing_call_cancel(call_id)
+end
+def schedule_outgoing_call_cancel(call_id)
+  return if call_id==nil
+  Thread.new(call_id) do |id|
+    Thread.current.report_on_exception=false
+    begin
+      EltenAPI::EltenSRV.cancel_call(id)
+    rescue Exception
+      Log.error("Call cancel background error: #{$!.class}: #{$!.message}")
+    end
+  end
 end
 def start_timeout(seconds)
   return if seconds==nil
