@@ -2555,6 +2555,10 @@ class Program
     )
   end
 
+  def close_sound_pool
+    self.class.close_sound_pool
+  end
+
   def play_app_sound(name, volume: 100, pitch: 100, pan: 50, ignore_elten_volume: false)
     self.class.play_app_sound(name, volume: volume, pitch: pitch, pan: pan, ignore_elten_volume: ignore_elten_volume)
   end
