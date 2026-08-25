@@ -48,7 +48,7 @@ class Scene_Loading
             Log.info("Tray icon created")
           end
           end
-      $computer=Socket.gethostname.to_s
+      $computer=platform_computer_name
       Log.info("Computer: #{$computer}")
             $sprite = Sprite.new
     $sprite.bitmap = Bitmap.new("elten.jpg") if FileTest.exists?("elten.jpg")

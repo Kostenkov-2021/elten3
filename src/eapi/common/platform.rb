@@ -61,6 +61,16 @@ end
     platform_os
   end
 
+  def platform_computer_name
+    name = EltenSystemHelpers.computer_name if EltenSystemHelpers.respond_to?(:computer_name)
+    name = Socket.gethostname.to_s if name.to_s == ""
+    name = name.to_s.dup
+    name.force_encoding(Encoding::UTF_8) if name.encoding == Encoding::ASCII_8BIT
+    name.encode(Encoding::UTF_8, invalid: :replace, undef: :replace)
+  rescue Exception
+    ""
+  end
+
   def beta_version_creation_supported?
     EltenSystemHelpers.beta_version_creation_supported?
   rescue Exception

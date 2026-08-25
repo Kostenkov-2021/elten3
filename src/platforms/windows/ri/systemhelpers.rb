@@ -22,6 +22,7 @@ module EltenSystemHelpers
   VERSION_DLL = Fiddle.dlopen("version.dll")
   SIZE_T = EltenWin32::POINTER_SIZE == 8 ? Fiddle::TYPE_LONG_LONG : Fiddle::TYPE_INT
   GET_USER_DEFAULT_LCID = Fiddle::Function.new(KERNEL32["GetUserDefaultLCID"], [], INT, ABI)
+  GET_COMPUTER_NAME_W = Fiddle::Function.new(KERNEL32["GetComputerNameW"], [PTR, PTR], INT, ABI)
   GET_LOCALE_INFO_W = Fiddle::Function.new(KERNEL32["GetLocaleInfoW"], [INT, INT, PTR, INT], INT, ABI)
   GET_LOGICAL_DRIVE_STRINGS = Fiddle::Function.new(KERNEL32["GetLogicalDriveStringsW"], [INT, PTR], INT, ABI)
   SET_DLL_DIRECTORY = Fiddle::Function.new(KERNEL32["SetDllDirectoryW"], [PTR], INT, ABI)
@@ -66,6 +67,17 @@ module EltenSystemHelpers
       length = GET_LOCALE_INFO_W.call(lcid, LOCALE_SNAME, buffer, buffer.bytesize / 2)
       return "" if length.to_i <= 0
       from_wide(buffer.byteslice(0, (length - 1) * 2).to_s)
+    rescue Exception
+      ""
+    end
+
+    def computer_name
+      size = [256].pack("V")
+      buffer = ("\0" * 512).b
+      return "" if GET_COMPUTER_NAME_W.call(buffer, size) == 0
+      length = size.unpack1("V").to_i
+      return "" if length <= 0
+      from_wide(buffer.byteslice(0, length * 2))
     rescue Exception
       ""
     end
