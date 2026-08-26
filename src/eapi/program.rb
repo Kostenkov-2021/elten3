@@ -7,6 +7,7 @@
 require_relative "programsigning" if !defined?(Programs::ProgramSigning)
 require "fileutils"
 require "json"
+require "monitor"
 require "ostruct"
 require "stringio"
 
@@ -524,6 +525,8 @@ module Programs
       @sound_assets = {}
       @sound_pool = nil
       @managed_resources = EltenAPI::Resources::Registry.new
+      @json_file_monitors = {}
+      @json_file_monitors_guard = Monitor.new
       @language_files = {}
       language_files.each { |code, data| @language_files[normalize_language_code(code)] = data.to_s.b }
       @namespace = Programs.namespace_for(manifest)
@@ -638,14 +641,25 @@ module Programs
 
     def read_json(path, default: nil)
       file = data_path(path)
-      return default if !File.file?(file)
-      JSON.parse(File.binread(file))
+      json_file_monitor(file).synchronize { read_json_file(file) { default } }
     rescue Exception
       default
     end
 
     def write_json(path, data)
-      write_text(path, JSON.generate(data))
+      file = data_path(path)
+      json_file_monitor(file).synchronize { write_json_file(file, data) }
+    end
+
+    def update_json(path, default: nil)
+      raise ArgumentError, "update_json requires a block" if !block_given?
+      file = data_path(path)
+      json_file_monitor(file).synchronize do
+        value = read_json_file(file) { duplicate_json_value(default) }
+        yield value
+        write_json_file(file, value)
+        value
+      end
     end
 
     def read_text(path, default: "")
@@ -670,12 +684,7 @@ module Programs
 
     def write_binary(path, data)
       file = data_path(path)
-      tmp = file + ".tmp-#{$$}-#{Thread.current.object_id}"
-      File.binwrite(tmp, data.to_s.b)
-      FileUtils.mv(tmp, file)
-      true
-    ensure
-      File.delete(tmp) if tmp != nil && File.file?(tmp) rescue nil
+      write_binary_file(file, data)
     end
 
     def add_sound_asset(logical_path, data: nil, physical_path: nil)
@@ -849,6 +858,40 @@ module Programs
     end
 
     private
+
+    def json_file_monitor(file)
+      @json_file_monitors_guard.synchronize do
+        @json_file_monitors[file] ||= Monitor.new
+      end
+    end
+
+    def read_json_file(file)
+      return yield if !File.file?(file)
+      begin
+        JSON.parse(File.binread(file))
+      rescue Exception
+        yield
+      end
+    end
+
+    def write_json_file(file, data)
+      payload = JSON.generate(data)
+      payload = payload.to_s.encode(Encoding::UTF_8, invalid: :replace, undef: :replace)
+      write_binary_file(file, payload)
+    end
+
+    def duplicate_json_value(value)
+      JSON.parse(JSON.generate(value))
+    end
+
+    def write_binary_file(file, data)
+      tmp = file + ".tmp-#{$$}-#{Thread.current.object_id}"
+      File.binwrite(tmp, data.to_s.b)
+      FileUtils.mv(tmp, file)
+      true
+    ensure
+      File.delete(tmp) if tmp != nil && File.file?(tmp) rescue nil
+    end
 
     def collect_physical_sound_assets
       audio = physical_path("Audio")
@@ -2361,6 +2404,10 @@ class Program
 
     def write_json(path, data)
       @app_runtime != nil && @app_runtime.write_json(path, data)
+    end
+
+    def update_json(path, default: nil, &block)
+      @app_runtime != nil && @app_runtime.update_json(path, default: default, &block)
     end
 
     def read_text(path, default: "")

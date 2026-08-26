@@ -207,6 +207,16 @@ raw = app.read_binary("state.bin", default: "".b)
 
 Here `app` is the runtime returned by the instance helper. The same read and write helpers are available as application class methods, which is convenient in `self.activate` or `self.init`.
 
+Use `update_json` when a change depends on the current contents of a file:
+
+```ruby
+scores = app.update_json("scores.json", default: { "records" => [] }) do |data|
+  data["records"] << record
+end
+```
+
+Updates of the same resolved data file are serialised within the application runtime. `read_json` and `write_json` participate in the same per-file lock, so another JSON operation cannot run between the transaction's single read and atomic replacement. A missing, unreadable or invalid file starts from a deep JSON copy of `default`; mutating it never changes the caller's default object. The block mutates the yielded root value, and its incidental return value is ignored. After a successful write, `update_json` returns that root value. If the block or write raises, the original file is left unchanged. The application remains responsible for validating the parsed structure before mutating it. Like the other JSON helpers, `update_json` is also available as an application class method.
+
 Uninstalling an application normally leaves its data available for a later reinstall. The Programs screen offers a separate operation which removes both the application and its data. An application must not use its cache for anything whose loss would surprise the user.
 
 ## Packaged assets
@@ -287,9 +297,9 @@ class ExampleApplication < Program
           label: _("Announce updates"),
           get: proc { read_json("settings.json", default: {})["announcements"] == true },
           set: proc do |value|
-            state = read_json("settings.json", default: {})
-            state["announcements"] = value
-            write_json("settings.json", state)
+            update_json("settings.json", default: {}) do |state|
+              state["announcements"] = value
+            end
           end
         )
       end
