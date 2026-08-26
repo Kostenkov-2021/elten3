@@ -4,6 +4,8 @@
 # Elten is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details.
 # You should have received a copy of the GNU General Public License along with Elten. If not, see <https://www.gnu.org/licenses/>.
 
+require "weakref"
+
 class SoundStatus
   attr_reader :name, :bass_code
 
@@ -312,6 +314,194 @@ class AudioInfo
   end
 end
 
+class SoundAttribute
+  class UnsupportedOperation < StandardError; end
+
+  NAME = nil
+  ID = nil
+  TARGET = :channel
+  WRITABLE = true
+  SLIDABLE = false
+
+  attr_reader :sound
+
+  def initialize
+    @sound = nil
+  end
+
+  def attached?
+    @sound != nil
+  end
+
+  def name
+    self.class::NAME
+  end
+
+  def id
+    self.class::ID
+  end
+
+  def target
+    self.class::TARGET
+  end
+
+  def writable?
+    self.class::WRITABLE
+  end
+
+  def slidable?
+    self.class::SLIDABLE
+  end
+
+  def available?
+    attached? && !value.nil?
+  end
+
+  def value
+    attached_sound.__send__(:read_sound_attribute, self)
+  end
+
+  def value=(value)
+    raise UnsupportedOperation, "#{self.class} is read-only" if !writable?
+    prepare
+    attached_sound.__send__(:write_sound_attribute, self, value)
+  end
+
+  def slide(value, duration:, logarithmic: false)
+    raise UnsupportedOperation, "#{self.class} does not support slides" if !slidable?
+    prepare
+    attached_sound.__send__(:slide_sound_attribute, self, value, duration, logarithmic: logarithmic)
+  end
+
+  def sliding?
+    return false if !slidable?
+    attached_sound.__send__(:sound_attribute_sliding?, self)
+  end
+
+  def prepare
+  end
+
+  private
+
+  def attach(sound)
+    if @sound != nil && !@sound.equal?(sound)
+      raise ArgumentError, "Sound attribute is already attached to another sound"
+    end
+    @sound = sound
+    self
+  end
+
+  def detach(sound)
+    @sound = nil if @sound.equal?(sound)
+    self
+  end
+
+  def attached_sound
+    raise RuntimeError, "Sound attribute is not attached" if @sound == nil
+    @sound
+  end
+end
+
+class VolumeSoundAttribute < SoundAttribute
+  NAME = :volume
+  ID = Bass::BASS_ATTRIB_VOL
+  TARGET = :playback
+  SLIDABLE = true
+end
+
+class PanSoundAttribute < SoundAttribute
+  NAME = :pan
+  ID = Bass::BASS_ATTRIB_PAN
+  TARGET = :playback
+  SLIDABLE = true
+end
+
+class FrequencySoundAttribute < SoundAttribute
+  NAME = :frequency
+  ID = Bass::BASS_ATTRIB_FREQ
+  SLIDABLE = true
+end
+
+class TempoSoundAttribute < SoundAttribute
+  NAME = :tempo
+  ID = Bass::BASS_ATTRIB_TEMPO
+  SLIDABLE = true
+
+  def prepare
+    attached_sound.__send__(:prepare_tempo_attribute)
+  end
+end
+
+class PitchSoundAttribute < SoundAttribute
+  NAME = :pitch
+  ID = Bass::BASS_ATTRIB_TEMPO_PITCH
+  SLIDABLE = true
+end
+
+class TempoFrequencySoundAttribute < SoundAttribute
+  NAME = :tempo_frequency
+  ID = Bass::BASS_ATTRIB_TEMPO_FREQ
+  SLIDABLE = true
+end
+
+class SourceQualitySoundAttribute < SoundAttribute
+  NAME = :source_quality
+  ID = Bass::BASS_ATTRIB_SRC
+  TARGET = :playback
+end
+
+class NetworkResumeSoundAttribute < SoundAttribute
+  NAME = :network_resume
+  ID = Bass::BASS_ATTRIB_NET_RESUME
+  TARGET = :source
+end
+
+class NoRampSoundAttribute < SoundAttribute
+  NAME = :no_ramp
+  ID = Bass::BASS_ATTRIB_NORAMP
+  TARGET = :playback
+end
+
+class BufferSoundAttribute < SoundAttribute
+  NAME = :buffer
+  ID = Bass::BASS_ATTRIB_BUFFER
+  TARGET = :playback
+end
+
+class GranularitySoundAttribute < SoundAttribute
+  NAME = :granularity
+  ID = Bass::BASS_ATTRIB_GRANULE
+  TARGET = :source
+end
+
+class TailSoundAttribute < SoundAttribute
+  NAME = :tail
+  ID = Bass::BASS_ATTRIB_TAIL
+end
+
+class DSPVolumeSoundAttribute < SoundAttribute
+  NAME = :dsp_volume
+  ID = Bass::BASS_ATTRIB_VOLDSP
+end
+
+class DSPVolumePrioritySoundAttribute < SoundAttribute
+  NAME = :dsp_volume_priority
+  ID = Bass::BASS_ATTRIB_VOLDSP_PRIORITY
+end
+
+class CPUUsageSoundAttribute < SoundAttribute
+  NAME = :cpu_usage
+  ID = Bass::BASS_ATTRIB_CPU
+  WRITABLE = false
+end
+
+class BitrateSoundAttribute < SoundAttribute
+  NAME = :bitrate
+  ID = Bass::BASS_ATTRIB_BITRATE
+  TARGET = :source
+  WRITABLE = false
+end
+
 class SoundEffect
   def output_channels(channels, _frequency)
     channels
@@ -342,10 +532,29 @@ class Sound
   BASS_DATA_AVAILABLE = 0
   BASS_CONFIG_UPDATE_PERIOD = 1
   BASS_ACTIVE_STOPPED = 0
+  MAX_SLIDE_MILLISECONDS = 0xffffffff
   FRAME_MILLISECONDS = 20
   FLOAT_SAMPLE_BYTES = 4
   EFFECT_QUEUE_POLL_SECONDS = FRAME_MILLISECONDS / 2000.0
   INTERACTIVE_EFFECT_BUFFER_SECONDS = FRAME_MILLISECONDS / 1000.0
+  ATTRIBUTE_CLASSES = {
+    volume: VolumeSoundAttribute,
+    pan: PanSoundAttribute,
+    frequency: FrequencySoundAttribute,
+    tempo: TempoSoundAttribute,
+    pitch: PitchSoundAttribute,
+    tempo_frequency: TempoFrequencySoundAttribute,
+    source_quality: SourceQualitySoundAttribute,
+    network_resume: NetworkResumeSoundAttribute,
+    no_ramp: NoRampSoundAttribute,
+    buffer: BufferSoundAttribute,
+    granularity: GranularitySoundAttribute,
+    tail: TailSoundAttribute,
+    dsp_volume: DSPVolumeSoundAttribute,
+    dsp_volume_priority: DSPVolumePrioritySoundAttribute,
+    cpu_usage: CPUUsageSoundAttribute,
+    bitrate: BitrateSoundAttribute
+  }.freeze
   @@finalizers = {}
 
   # :interactive selects a safe bounded buffer. Nil and :eager preserve eager buffering.
@@ -369,6 +578,11 @@ class Sound
     @effects = []
     @effects_mutex = Mutex.new
     @pipeline_mutex = Mutex.new
+    @sound_attributes = {}
+    @slide_event_id = nil
+    @slide_event_listeners = []
+    @active_slides = {}
+    @slide_mutex = Mutex.new
     @pipeline = false
     @processing_thread = nil
     @processing_playing = false
@@ -388,7 +602,7 @@ class Sound
       begin
         entry = @@finalizers.delete(id)
         next if entry == nil
-        sample_handle, source_channel, channel, playback_channel, source_mixer, kind = entry
+        sample_handle, source_channel, channel, playback_channel, source_mixer, kind, slide_event_id = entry
         if kind == nil
           kind = source_mixer
           source_mixer = 0
@@ -401,6 +615,7 @@ class Sound
           free_stream_handle(source_channel) if source_channel.to_i != 0 && source_channel != channel && source_channel != source_mixer
           free_stream_handle(playback_channel) if playback_channel.to_i != 0
         end
+        unregister_slide_event_sound(slide_event_id)
       rescue Exception
       end
     end
@@ -408,6 +623,41 @@ class Sound
 
   def self.free_stream_handle(handle)
     Bass.free_stream(handle)
+  end
+
+  def self.register_slide_event_sound(sound)
+    slide_event_registry_mutex.synchronize do
+      @slide_event_sequence = @slide_event_sequence.to_i + 1
+      @slide_event_registry ||= {}
+      @slide_event_registry[@slide_event_sequence] = WeakRef.new(sound)
+      @slide_event_sequence
+    end
+  end
+
+  def self.unregister_slide_event_sound(event_id)
+    return if event_id == nil
+    slide_event_registry_mutex.synchronize { (@slide_event_registry ||= {}).delete(event_id.to_i) }
+    nil
+  end
+
+  def self.update_slide_events
+    registry = @slide_event_registry
+    return 0 if registry == nil || registry.empty?
+    slide_event_sounds.sum { |sound| sound.__send__(:poll_slide_completions) }
+  end
+
+  def self.slide_event_registry_mutex
+    @slide_event_registry_mutex ||= Mutex.new
+  end
+
+  def self.slide_event_sounds
+    entries = slide_event_registry_mutex.synchronize { (@slide_event_registry ||= {}).to_a }
+    entries.filter_map do |event_id, reference|
+      reference.__getobj__
+    rescue WeakRef::RefError
+      unregister_slide_event_sound(event_id)
+      nil
+    end
   end
 
   def effect_buffer_seconds=(value)
@@ -614,12 +864,20 @@ class Sound
 
   def close
     return if @closed
+    self.class.unregister_slide_event_sound(@slide_event_id)
+    @slide_event_id = nil
+    @slide_mutex.synchronize do
+      @active_slides.clear
+      @slide_event_listeners.clear
+    end
     @closed = true
     @processing_playing = false
     @processing_output_started = false
     @processing_thread.kill if @processing_thread != nil && @processing_thread.alive?
     @processing_thread = nil
     @effects_mutex.synchronize { @effects.each { |effect| effect.close if effect.respond_to?(:close) } }
+    @sound_attributes.each_value { |attribute| attribute.__send__(:detach, self) }
+    @sound_attributes.clear
     close_native_handles
     @sample_handle = 0
     @source_channel = 0
@@ -638,45 +896,115 @@ class Sound
     @closed == true
   end
 
+  def attribute(name)
+    name = name.to_sym if name.respond_to?(:to_sym)
+    return @sound_attributes[name] if @sound_attributes.key?(name)
+    attribute_class = ATTRIBUTE_CLASSES[name]
+    raise ArgumentError, "Unknown sound attribute #{name.inspect}" if attribute_class == nil
+    attribute_add(attribute_class.new)
+  end
+
+  def attribute_add(attribute)
+    raise ArgumentError, "Sound attribute must inherit from SoundAttribute" if !attribute.is_a?(SoundAttribute)
+    raise ArgumentError, "Sound attribute must define NAME and ID" if attribute.name == nil || attribute.id == nil
+
+    name = attribute.name.to_sym
+    previous = @sound_attributes[name]
+    return attribute if previous.equal?(attribute)
+    attribute.__send__(:attach, self)
+    if previous != nil
+      cancel_tracked_slide(sound_attribute_channel(previous), previous.id)
+      previous.__send__(:detach, self)
+    end
+    @sound_attributes[name] = attribute
+    attribute
+  end
+
+  def attribute_remove(attribute)
+    name = attribute.is_a?(SoundAttribute) ? attribute.name : attribute
+    name = name.to_sym if name.respond_to?(:to_sym)
+    current = @sound_attributes[name]
+    return false if current == nil || (attribute.is_a?(SoundAttribute) && !current.equal?(attribute))
+
+    target = sound_attribute_channel(current)
+    cancel_tracked_slide(target, current.id)
+    @sound_attributes.delete(name)
+    current.__send__(:detach, self)
+    release_slide_event_registration_if_unused
+    true
+  end
+
+  ATTRIBUTE_CLASSES.each_key do |name|
+    define_method("#{name}_attribute") { attribute(name) }
+  end
+
+  def on(event, &block)
+    raise ArgumentError, "Sound#on requires a block" if block == nil
+    raise ArgumentError, "Unknown sound event #{event.inspect}" if event.to_sym != :slide_end
+
+    first_listener = @slide_mutex.synchronize do
+      first = @slide_event_listeners.empty?
+      @slide_event_listeners << block
+      first
+    end
+    track_active_attribute_slides if first_listener
+    block
+  end
+
+  def fade_in(duration, to: 1.0, logarithmic: false, play: true)
+    self.volume = 0.0
+    self.play if play
+    volume_attribute.slide(to.to_f, duration: duration, logarithmic: logarithmic) ? self : false
+  end
+
+  def fade_out(duration, stop: true, logarithmic: false)
+    result = volume_attribute.slide(stop ? -1.0 : 0.0, duration: duration, logarithmic: logarithmic)
+    result ? self : false
+  end
+
   def frequency
-    attribute(1).to_i
+    (frequency_attribute.value || 0.0).to_i
   end
 
   def frequency=(value)
-    set_attribute(1, value.to_f)
+    frequency_attribute.value = value.to_f
   end
 
   def pan
-    attribute(3, playback_attribute_channel)
+    (pan_attribute.value || 0.0).to_f
   end
 
   def pan=(value)
-    set_attribute(3, value.to_f, playback_attribute_channel)
+    pan_attribute.value = value.to_f
   end
 
   def tempo
-    attribute(0x10000)
+    (tempo_attribute.value || 0.0).to_f
   end
 
   def tempo=(value)
-    if @tempo == nil
-      @tempo = value
-      Bass::BASS_ChannelSetAttribute.call(@channel, 65555, 60) if opened?
-      Bass::BASS_ChannelSetAttribute.call(@channel, 65554, 1) if opened?
-    end
-    set_attribute(0x10000, value.to_f)
+    tempo_attribute.value = value.to_f
+  end
+
+  def pitch
+    (pitch_attribute.value || 0.0).to_f
+  end
+
+  def pitch=(value)
+    pitch_attribute.value = value.to_f
   end
 
   def volume
-    attribute(2, playback_attribute_channel)
+    (volume_attribute.value || 0.0).to_f
   end
 
   def volume=(value)
-    set_attribute(2, value.to_f, playback_attribute_channel)
+    volume_attribute.value = value.to_f
   end
 
   def new_channel
     return nil if @kind != :sample || @sample_handle.to_i == 0
+    cancel_all_tracked_slides
     @channel = Bass::BASS_SampleGetChannel.call(@sample_handle, 0)
     Bass::BASS_ChannelFlags.call(@channel, BASS_SAMPLE_LOOP, BASS_SAMPLE_LOOP) if @looper
     update_finalizer
@@ -719,11 +1047,22 @@ class Sound
   private
 
   def update_finalizer
-    @@finalizers[@finalizer_id] = [@sample_handle, @source_channel, @channel, @playback_channel, @source_mixer, @kind]
+    @@finalizers[@finalizer_id] = [@sample_handle, @source_channel, @channel, @playback_channel, @source_mixer, @kind, @slide_event_id]
   end
 
   def playback_attribute_channel
     @pipeline && @playback_channel.to_i != 0 ? @playback_channel : @channel
+  end
+
+  def sound_attribute_channel(attribute)
+    case attribute.target
+    when :playback
+      playback_attribute_channel
+    when :source
+      @source_channel.to_i != 0 ? @source_channel : @channel
+    else
+      @channel
+    end
   end
 
   def info_values
@@ -735,17 +1074,126 @@ class Sound
     @info_values
   end
 
-  def attribute(id, target = @channel)
-    return 0.0 if target.to_i == 0 || closed?
+  def read_sound_attribute(attribute)
+    target = sound_attribute_channel(attribute)
+    return nil if target.to_i == 0 || closed?
     buffer = [0.0].pack("f")
-    Bass::BASS_ChannelGetAttribute.call(target, id, buffer)
+    return nil if Bass::BASS_ChannelGetAttribute.call(target, attribute.id, buffer) == 0
     buffer.unpack1("f").to_f
   end
 
-  def set_attribute(id, value, target = @channel)
-    return 0.0 if target.to_i == 0 || closed?
-    Bass::BASS_ChannelSetAttribute.call(target, id, value.to_f)
-    value.to_f
+  def write_sound_attribute(attribute, value)
+    target = sound_attribute_channel(attribute)
+    return nil if target.to_i == 0 || closed?
+    result = Bass::BASS_ChannelSetAttribute.call(target, attribute.id, value.to_f)
+    result == 0 ? nil : value.to_f
+  end
+
+  def slide_sound_attribute(attribute, value, duration, logarithmic: false)
+    target = sound_attribute_channel(attribute)
+    return false if target.to_i == 0 || closed?
+    seconds = Float(duration)
+    target_value = Float(value)
+    raise ArgumentError, "duration must be a positive finite number" if !seconds.finite? || seconds <= 0.0
+    raise ArgumentError, "duration exceeds the BASS slide limit" if seconds > MAX_SLIDE_MILLISECONDS / 1000.0
+    raise ArgumentError, "slide value must be finite" if !target_value.finite?
+
+    tracked = @slide_mutex.synchronize { !@slide_event_listeners.empty? }
+    attribute_id = attribute.id
+    attribute_id |= Bass::BASS_SLIDE_LOG if logarithmic
+    milliseconds = [(seconds * 1000.0).round, 1].max
+    raise ArgumentError, "duration exceeds the BASS slide limit" if milliseconds > MAX_SLIDE_MILLISECONDS
+    result = Bass::BASS_ChannelSlideAttribute.call(target, attribute_id, target_value, milliseconds) != 0
+    if result && tracked
+      @slide_mutex.synchronize { @active_slides[[target, attribute.id]] = attribute }
+      ensure_slide_event_registration
+    elsif !result
+      release_slide_event_registration_if_unused
+    end
+    result
+  end
+
+  def sound_attribute_sliding?(attribute)
+    target = sound_attribute_channel(attribute)
+    return false if target.to_i == 0 || closed?
+    Bass::BASS_ChannelIsSliding.call(target, attribute.id) != 0
+  end
+
+  def prepare_tempo_attribute
+    return if !opened? || @tempo_prepared_channel == @channel
+    Bass::BASS_ChannelSetAttribute.call(@channel, Bass::BASS_ATTRIB_TEMPO_OPTION_SEQUENCE_MS, 60)
+    Bass::BASS_ChannelSetAttribute.call(@channel, Bass::BASS_ATTRIB_TEMPO_OPTION_USE_QUICKALGO, 1)
+    @tempo_prepared_channel = @channel
+  end
+
+  def ensure_slide_event_registration
+    return false if closed?
+    if @slide_event_id == nil
+      @slide_event_id = self.class.register_slide_event_sound(self)
+      update_finalizer
+    end
+    true
+  end
+
+  def track_active_attribute_slides
+    tracked = false
+    @sound_attributes.each_value do |attribute|
+      next if !attribute.slidable?
+      target = sound_attribute_channel(attribute)
+      next if target.to_i == 0 || Bass::BASS_ChannelIsSliding.call(target, attribute.id) == 0
+      @slide_mutex.synchronize { @active_slides[[target, attribute.id]] ||= attribute }
+      tracked = true
+    end
+    ensure_slide_event_registration if tracked
+    tracked
+  end
+
+  def cancel_tracked_slide(channel, attribute_id)
+    @slide_mutex.synchronize { @active_slides.delete([channel.to_i, attribute_id.to_i]) }
+  end
+
+  def cancel_all_tracked_slides
+    @slide_mutex.synchronize { @active_slides.clear }
+    release_slide_event_registration_if_unused
+  end
+
+  def handle_slide_completion(channel, attribute_id)
+    key = [channel.to_i, attribute_id.to_i]
+    record = @slide_mutex.synchronize { @active_slides[key] }
+    return false if record == nil
+    return false if Bass::BASS_ChannelIsSliding.call(channel.to_i, attribute_id.to_i) != 0
+
+    listeners = nil
+    record = @slide_mutex.synchronize do
+      current = @active_slides[key]
+      if current.equal?(record)
+        @active_slides.delete(key)
+        listeners = @slide_event_listeners.dup
+        current
+      end
+    end
+    return false if record == nil
+    listeners.each do |listener|
+      begin
+        listener.call(record)
+      rescue Exception => e
+        Log.warning("Sound slide event failed: #{e.class}: #{e.message}") if defined?(Log)
+      end
+    end
+    release_slide_event_registration_if_unused
+    true
+  end
+
+  def poll_slide_completions
+    slides = @slide_mutex.synchronize { @active_slides.keys }
+    slides.count { |channel, attribute_id| handle_slide_completion(channel, attribute_id) }
+  end
+
+  def release_slide_event_registration_if_unused
+    needed = @slide_mutex.synchronize { !@active_slides.empty? }
+    return if needed || @slide_event_id == nil
+    self.class.unregister_slide_event_sound(@slide_event_id)
+    @slide_event_id = nil
   end
 
   def seconds_from_bytes(bytes)
@@ -769,6 +1217,7 @@ class Sound
   end
 
   def close_native_handles
+    cancel_all_tracked_slides
     if @kind == :sample
       Bass::BASS_SampleFree.call(@sample_handle) if @sample_handle.to_i != 0
     else
@@ -785,6 +1234,7 @@ class Sound
     @processing_channel = 0
     @processing_frequency = nil
     @processing_channels = 0
+    @tempo_prepared_channel = nil
     @info_values = nil
   end
 
