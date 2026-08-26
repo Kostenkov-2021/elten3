@@ -358,6 +358,14 @@ module EltenLink
         data["id"].to_i
       end
 
+      def update(client, calendar, name: nil, public_state: nil)
+        params = {}
+        params["name"] = name if name != nil
+        params["public"] = public_state if public_state != nil
+        client.api_data("PATCH", "/api/v1/calendars/#{calendar_id(calendar)}", params)
+        true
+      end
+
       def delete(client, calendar)
         client.api_data("DELETE", "/api/v1/calendars/#{calendar_id(calendar)}")
         true
