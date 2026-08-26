@@ -567,6 +567,11 @@ class Sound
   FLOAT_SAMPLE_BYTES = 4
   EFFECT_QUEUE_POLL_SECONDS = FRAME_MILLISECONDS / 2000.0
   INTERACTIVE_EFFECT_BUFFER_SECONDS = FRAME_MILLISECONDS / 1000.0
+  PCM_FORMATS = {
+    s16le: [0, 2],
+    float: [Bass::BASS_SAMPLE_FLOAT, 4],
+    u8: [Bass::BASS_SAMPLE_8BITS, 1]
+  }.freeze
   ATTRIBUTE_CLASSES = {
     volume: VolumeSoundAttribute,
     pan: PanSoundAttribute,
@@ -587,13 +592,34 @@ class Sound
   }.freeze
   @@finalizers = {}
 
+  def self.open_pcm(frequency:, channels:, type:, buffer:)
+    sound = allocate
+    sound.__send__(:initialize_pcm, frequency: frequency, channels: channels, type: type, buffer: buffer)
+  end
+
   # :interactive selects a safe bounded buffer. Nil and :eager preserve eager buffering.
   # effect_buffer_seconds remains available for advanced callers.
   def initialize(file = nil, sample: false, loop: false, stream: nil, effect_buffer: nil, effect_buffer_seconds: nil)
+    initialize_sound_state(
+      file: file,
+      sample: sample,
+      loop: loop,
+      stream: stream,
+      effect_buffer: effect_buffer,
+      effect_buffer_seconds: effect_buffer_seconds
+    )
+    open_direct
+    finish_initialization
+  end
+
+  def initialize_sound_state(file:, sample:, loop:, stream:, effect_buffer:, effect_buffer_seconds:)
     @file = file
     @stream_data = stream
     @sample = sample == true
     @looper = loop == true
+    @pcm_type = nil
+    @pcm_sample_bytes = nil
+    @pcm_frame_bytes = nil
     configure_effect_buffer(effect_buffer, effect_buffer_seconds)
     @closed = false
     @sample_handle = 0
@@ -618,14 +644,19 @@ class Sound
     @processing_playing = false
     @processing_paused = false
     @processing_output_started = false
-    open_direct
+  end
+
+  def finish_initialization
     @basefrequency = frequency
     Bass::BASS_ChannelFlags.call(@channel, BASS_STREAM_DECODE, BASS_STREAM_DECODE) if @channel.to_i != 0
     Bass::BASS_ChannelFlags.call(@channel, BASS_SAMPLE_LOOP, BASS_SAMPLE_LOOP) if @looper && @channel.to_i != 0
     @finalizer_id = object_id
     update_finalizer
     ObjectSpace.define_finalizer(self, self.class.finalizer(@finalizer_id))
+    self
   end
+
+  private :initialize_sound_state, :finish_initialization
 
   def self.finalizer(id)
     proc do
@@ -774,6 +805,20 @@ class Sound
     buffer.byteslice(0, read).to_s.b
   end
 
+  def write_pcm(buffer)
+    raise RuntimeError, "Sound is not a PCM push stream" if @kind != :pcm
+    raise RuntimeError, "Cannot write PCM data to a closed sound" if !opened?
+    data = pcm_buffer(buffer)
+    return 0 if data.empty?
+    if data.bytesize % @pcm_frame_bytes != 0
+      raise ArgumentError, "PCM data must contain complete sample frames (#{@pcm_frame_bytes} bytes per frame)"
+    end
+
+    queued = Bass::BASS_StreamPutData.call(@source_channel, data, data.bytesize).to_i
+    raise RuntimeError, "Cannot write PCM data: #{Bass.error_name}" if queued < 0
+    data.bytesize
+  end
+
   def status
     return SoundStatus::Stopped if !opened?
     if @pipeline
@@ -865,6 +910,7 @@ class Sound
   def effect_add(effect)
     fail(ArgumentError, "Sound effect must respond to #process") if !effect.respond_to?(:process)
     native = native_effect?(effect)
+    raise RuntimeError, "Frame effects cannot be attached to PCM push streams" if @kind == :pcm && !native
     if native && @kind == :sample
       raise RuntimeError, "Native effects cannot be attached to sample sounds"
     end
@@ -1112,6 +1158,7 @@ class Sound
   end
 
   def bitrate
+    return @pcm_sample_bytes * 8 if @kind == :pcm
     flags = info_values[2].to_i
     return 32 if (flags & SAMPLE_FLOAT) != 0
     bits = info_values[5].to_i
@@ -1119,11 +1166,53 @@ class Sound
   end
 
   def type
+    return @pcm_type if @kind == :pcm
     return :float if bitrate == 32 && (info_values[2].to_i & SAMPLE_FLOAT) != 0
     "s#{bitrate}le".to_sym
   end
 
   private
+
+  def initialize_pcm(frequency:, channels:, type:, buffer:)
+    frequency = Integer(frequency)
+    channels = Integer(channels)
+    raise ArgumentError, "PCM frequency must be positive" if frequency <= 0
+    raise ArgumentError, "PCM channels must be between 1 and 8" if channels < 1 || channels > 8
+    type = type.to_sym if type.respond_to?(:to_sym)
+    format = PCM_FORMATS[type]
+    raise ArgumentError, "Unsupported PCM type #{type.inspect}" if format == nil
+    data = pcm_buffer(buffer)
+    frame_bytes = format[1] * channels
+    if data.bytesize % frame_bytes != 0
+      raise ArgumentError, "PCM data must contain complete sample frames (#{frame_bytes} bytes per frame)"
+    end
+
+    initialize_sound_state(
+      file: nil,
+      sample: false,
+      loop: false,
+      stream: nil,
+      effect_buffer: nil,
+      effect_buffer_seconds: nil
+    )
+    @pcm_type = type
+    @pcm_sample_bytes = format[1]
+    @pcm_frame_bytes = frame_bytes
+    @source_channel, @channel = Bass.create_push_stream_channel(frequency, channels, format[0])
+    raise RuntimeError, "Cannot create PCM stream: #{Bass.error_name}" if @channel.to_i == 0
+    @kind = :pcm
+    finish_initialization
+    write_pcm(data)
+    self
+  rescue Exception
+    close if instance_variable_defined?(:@closed) && !closed?
+    raise
+  end
+
+  def pcm_buffer(buffer)
+    raise TypeError, "PCM buffer must be a string" if !buffer.respond_to?(:to_str)
+    buffer.to_str.b
+  end
 
   def update_finalizer
     @@finalizers[@finalizer_id] = [@sample_handle, @source_channel, @channel, @playback_channel, @source_mixer, @kind, @slide_event_id]

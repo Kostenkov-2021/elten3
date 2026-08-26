@@ -72,8 +72,11 @@ module Bass
   F_DOUBLE = Fiddle::TYPE_DOUBLE
   F_QWORD = Fiddle::TYPE_LONG_LONG
   BASS_UNICODE = 0x80000000
+  BASS_SAMPLE_8BITS = 1
+  BASS_SAMPLE_FLOAT = 0x100
   BASS_STREAM_DECODE = 0x200000
   BASS_STREAM_AUTOFREE = 0x40000
+  STREAMPROC_PUSH = -1
   BASS_MIXER_CHAN_PAUSE = 0x20000
   BASS_SLIDE_LOG = 0x1000000
   BASS_FILEPOS_DOWNLOAD = 1
@@ -658,6 +661,23 @@ prewarm_url_loader
     else
       [source, source]
     end
+  end
+
+  def self.create_push_stream_channel(frequency, channels, flags = 0)
+    flags = flags.to_i
+    source_flags = flags
+    source_flags |= BASS_STREAM_DECODE if Configuration.usefx == true
+    source = BASS_StreamCreate.call(frequency.to_i, channels.to_i, source_flags, STREAMPROC_PUSH, nil)
+    return [0, 0] if source == 0
+    return [source, source] if Configuration.usefx != true
+
+    @@BASS_FX_TempoCreate ||= Bass.optional_fiddle(BASSFX, "BASS_FX_TempoCreate", [F_UINT, F_UINT], F_UINT)
+    channel = @@BASS_FX_TempoCreate.call(source, 0)
+    return [source, channel] if channel != 0
+
+    BASS_StreamFree.call(source)
+    source = BASS_StreamCreate.call(frequency.to_i, channels.to_i, flags, STREAMPROC_PUSH, nil)
+    [source, source]
   end
 
   def self.create_sample_channel(filename, max = 1)
