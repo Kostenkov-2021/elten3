@@ -2749,6 +2749,90 @@ class Program
     self.class.app_runtime
   end
 
+  def name
+    self.class.name
+  end
+
+  def version
+    self.class.version
+  end
+
+  def build_id
+    self.class.build_id
+  end
+
+  def elten_api_version
+    self.class.elten_api_version
+  end
+
+  def author
+    self.class.author
+  end
+
+  def menu_label
+    self.class.menu_label
+  end
+
+  def hidden?
+    self.class.hidden?
+  end
+
+  def user_menu_options
+    self.class.user_menu_options
+  end
+
+  def app_uuid
+    self.class.app_uuid
+  end
+
+  def asset_path(path)
+    self.class.asset_path(path)
+  end
+
+  def data_path(path = "")
+    self.class.data_path(path)
+  end
+
+  def cache_path(path = "")
+    self.class.cache_path(path)
+  end
+
+  def read_json(path, default: nil)
+    self.class.read_json(path, default: default)
+  end
+
+  def write_json(path, data)
+    self.class.write_json(path, data)
+  end
+
+  def update_json(path, default: nil, &block)
+    self.class.update_json(path, default: default, &block)
+  end
+
+  def read_text(path, default: "")
+    self.class.read_text(path, default: default)
+  end
+
+  def write_text(path, text)
+    self.class.write_text(path, text)
+  end
+
+  def read_binary(path, default: "".b)
+    self.class.read_binary(path, default: default)
+  end
+
+  def write_binary(path, data)
+    self.class.write_binary(path, data)
+  end
+
+  def server_app_definition
+    self.class.server_app_definition
+  end
+
+  def server_app_uuid
+    self.class.server_app_uuid
+  end
+
   def server_table(name, uuid = nil)
     self.class.server_table(name, uuid)
   end
