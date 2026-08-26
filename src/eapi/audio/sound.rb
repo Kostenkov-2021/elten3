@@ -1533,8 +1533,11 @@ class Sound
       end
       read = Bass::BASS_ChannelGetData.call(read_channel, buffer, frame_bytes)
       if read.to_i <= 0
-        start_effect_output if @effect_buffer_seconds != nil
-        @processing_playing = false if read.to_i == -1 || read.to_i == 0
+        if Bass::BASS_ChannelIsActive.call(read_channel).to_i == BASS_ACTIVE_STOPPED
+          start_effect_output if @effect_buffer_seconds != nil
+          end_effect_output
+          @processing_playing = false
+        end
         sleep(FRAME_MILLISECONDS / 1000.0)
         next
       end
@@ -1620,6 +1623,20 @@ class Sound
     @processing_output_started = Bass::BASS_ChannelPlay.call(@playback_channel, 0).to_i != 0
   rescue Exception
     @processing_output_started = false
+  end
+
+  def end_effect_output
+    return true if @playback_channel.to_i == 0
+    queued = Bass::BASS_StreamPutData.call(@playback_channel, nil, Bass::BASS_STREAMPROC_END).to_i
+    return true if queued >= 0
+
+    Log.error("Cannot end Sound effect output: #{Bass.error_name}")
+    Bass::BASS_ChannelStop.call(@playback_channel)
+    false
+  rescue Exception => e
+    Log.error("Cannot end Sound effect output: #{e.class}: #{e.message}")
+    Bass::BASS_ChannelStop.call(@playback_channel) if @playback_channel.to_i != 0
+    false
   end
 
   def normalize_effect_buffer_seconds(value)
