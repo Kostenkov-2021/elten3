@@ -475,6 +475,11 @@ class Sound
     closed? || status.stopped?
   end
 
+  def wait
+    loop_update until finished?
+    self
+  end
+
   def channels
     info_values[1].to_i
   end

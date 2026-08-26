@@ -201,6 +201,9 @@ manage(sound) if sound != nil
 sound.play if sound != nil
 
 play_sound_from_asset("notification", volume: 0.8)
+
+sound = play_sound_from_asset("success")
+sound.wait if sound != nil
 ```
 
 `play_sound_from_asset` uses the runtime's managed `SoundPool`, which limits simultaneous voices and closes completed sounds. Use `create_sound_from_asset` when the application needs direct control over the sound lifetime, and register the resulting object with `manage`.
