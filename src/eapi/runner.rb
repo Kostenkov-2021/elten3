@@ -6,6 +6,19 @@ class Runner
 
   ACTION_PHASES = [:start, :update, :finish].freeze
 
+  def self.wait(seconds, cancel_keys: [])
+    raise ArgumentError, "wait duration must be numeric" if !seconds.is_a?(Numeric) || seconds.is_a?(Complex)
+    duration = seconds.to_f
+    raise ArgumentError, "wait duration must be a non-negative finite number" if !duration.finite? || duration < 0.0
+
+    runner = new
+    runner.after(duration) { |current| current.stop(:elapsed) }
+    Array(cancel_keys).flatten.compact.uniq.each do |key|
+      runner.on_key(key) { |current| current.stop(:cancelled) }
+    end
+    runner.run
+  end
+
   class Timer
     attr_reader :interval, :repeat, :phase
 
