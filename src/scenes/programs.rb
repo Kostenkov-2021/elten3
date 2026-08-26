@@ -323,7 +323,9 @@ when 1
 
      def server_status_label(program)
        installed=installed_program_for(program)
-       if installed==nil
+       if !remote_program_api_compatible?(program)
+         p_("Programs", "requires Elten API %{version}")%{:version=>program.elten_api_version.to_s}
+       elsif installed==nil
          p_("Programs", "not installed")
        elsif update_available?(installed, program)
          p_("Programs", "update available")
@@ -384,6 +386,7 @@ when 1
 
      def update_available?(installed, remote)
        return false if installed==nil || remote==nil
+       return false if !remote_program_api_compatible?(remote)
        if installed.respond_to?(:build_id) && remote.respond_to?(:build_id) && build_id_present?(installed.build_id) && build_id_present?(remote.build_id)
          normalize_build_id(installed.build_id)!=normalize_build_id(remote.build_id)
        else
@@ -404,8 +407,19 @@ when 1
        normalize_build_id(value)!=nil
      end
 
+     def remote_program_api_compatible?(program)
+       program!=nil && program.respond_to?(:elten_api_version) && Programs.api_version_compatible?(program.elten_api_version)
+     end
+
      def install_remote_program(program, ask: true)
        return false if program==nil
+       if !remote_program_api_compatible?(program)
+         alert(p_("Programs", "This program requires Elten API %{required}. The current Elten API version is %{current}.")%{
+           :required=>program.elten_api_version.to_s,
+           :current=>Programs.elten_api_version
+         })
+         return false
+       end
        if ask
          installed=false
          confirm(install_details(program, format_size(program.size), nil)) do
