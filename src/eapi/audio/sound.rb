@@ -503,6 +503,10 @@ class BitrateSoundAttribute < SoundAttribute
 end
 
 class SoundEffect
+  def native?
+    false
+  end
+
   def output_channels(channels, _frequency)
     channels
   end
@@ -807,8 +811,28 @@ class Sound
 
   def effect_add(effect)
     fail(ArgumentError, "Sound effect must respond to #process") if !effect.respond_to?(:process)
+    native = native_effect?(effect)
+    if native && @kind == :sample
+      raise RuntimeError, "Native effects cannot be attached to sample sounds"
+    end
+    if native && @effects_mutex.synchronize { @effects.include?(effect) }
+      raise ArgumentError, "Sound effect is already attached"
+    end
+    effect.__send__(:attach, self) if native
     @effects_mutex.synchronize { @effects << effect }
-    rebuild_effect_pipeline
+    if native
+      begin
+        if !effect.__send__(:bind, native_effect_channel)
+          raise RuntimeError, "Cannot attach effect to an unopened sound"
+        end
+      rescue Exception
+        @effects_mutex.synchronize { @effects.delete(effect) }
+        effect.__send__(:detach, self)
+        raise
+      end
+    else
+      rebuild_effect_pipeline
+    end
     effect
   end
 
@@ -817,7 +841,7 @@ class Sound
     @effects_mutex.synchronize { removed = @effects.delete(effect) != nil }
     @spatial_effect = nil if removed && @spatial_effect.equal?(effect)
     effect.close if removed && effect.respond_to?(:close)
-    rebuild_effect_pipeline
+    rebuild_effect_pipeline if removed && !native_effect?(effect)
     removed
   end
 
@@ -1005,8 +1029,10 @@ class Sound
   def new_channel
     return nil if @kind != :sample || @sample_handle.to_i == 0
     cancel_all_tracked_slides
+    unbind_native_effects
     @channel = Bass::BASS_SampleGetChannel.call(@sample_handle, 0)
     Bass::BASS_ChannelFlags.call(@channel, BASS_SAMPLE_LOOP, BASS_SAMPLE_LOOP) if @looper
+    bind_native_effects
     update_finalizer
     @channel
   end
@@ -1218,6 +1244,7 @@ class Sound
 
   def close_native_handles
     cancel_all_tracked_slides
+    unbind_native_effects
     if @kind == :sample
       Bass::BASS_SampleFree.call(@sample_handle) if @sample_handle.to_i != 0
     else
@@ -1247,7 +1274,7 @@ class Sound
       @processing_thread.kill if @processing_thread != nil && @processing_thread.alive?
       @processing_thread = nil
       reset_effects
-      if @effects.empty?
+      if frame_effects.empty?
         close_native_handles
         @pipeline = false
         open_direct
@@ -1255,6 +1282,7 @@ class Sound
         @pipeline = true
         open_effect_source(pos)
       end
+      bind_native_effects
       play if was_playing
     end
   end
@@ -1267,6 +1295,7 @@ class Sound
     ch = 2 if ch > 2
     @effects_mutex.synchronize do
       @effects.each do |effect|
+        next if native_effect?(effect)
         if effect.respond_to?(:output_frequency)
           next_frequency = effect.output_frequency(freq, ch)
           freq = next_frequency.to_i if next_frequency != nil
@@ -1284,6 +1313,7 @@ class Sound
     ch = 1 if ch <= 0
     @effects_mutex.synchronize do
       @effects.each do |effect|
+        next if native_effect?(effect)
         ch = effect.output_channels(ch, freq) if effect.respond_to?(:output_channels)
       end
     end
@@ -1365,6 +1395,7 @@ class Sound
       channels_now = source_channels
       @effects_mutex.synchronize do
         @effects.each do |effect|
+          next if native_effect?(effect)
           audio = effect.process(audio, freq, channels_now).to_s.b
           channels_now = effect.output_channels(channels_now, freq) if effect.respond_to?(:output_channels)
         end
@@ -1385,6 +1416,31 @@ class Sound
 
   def reset_effects
     @effects_mutex.synchronize { @effects.each { |effect| effect.reset if effect.respond_to?(:reset) } }
+  end
+
+  def native_effect?(effect)
+    effect.respond_to?(:native?) && effect.native? == true
+  end
+
+  def frame_effects
+    @effects_mutex.synchronize { @effects.reject { |effect| native_effect?(effect) } }
+  end
+
+  def native_effects
+    @effects_mutex.synchronize { @effects.select { |effect| native_effect?(effect) } }
+  end
+
+  def native_effect_channel
+    @pipeline && @playback_channel.to_i != 0 ? @playback_channel : @channel
+  end
+
+  def bind_native_effects
+    channel = native_effect_channel
+    native_effects.each { |effect| effect.__send__(:bind, channel) }
+  end
+
+  def unbind_native_effects
+    native_effects.each { |effect| effect.__send__(:unbind) }
   end
 
   def effect_queue_full?(next_frame_bytes, frequency, channels)

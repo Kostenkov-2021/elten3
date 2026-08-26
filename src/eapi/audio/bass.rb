@@ -94,6 +94,19 @@ module Bass
   BASS_ATTRIB_TEMPO_FREQ = 0x10002
   BASS_ATTRIB_TEMPO_OPTION_USE_QUICKALGO = 0x10012
   BASS_ATTRIB_TEMPO_OPTION_SEQUENCE_MS = 0x10013
+  BASS_BFX_CHANALL = -1
+  BASS_FX_BFX_ROTATE = 0x10000
+  BASS_FX_BFX_PEAKEQ = 0x10004
+  BASS_FX_BFX_DAMP = 0x10008
+  BASS_FX_BFX_AUTOWAH = 0x10009
+  BASS_FX_BFX_PHASER = 0x1000b
+  BASS_FX_BFX_CHORUS = 0x1000d
+  BASS_FX_BFX_DISTORTION = 0x10010
+  BASS_FX_BFX_COMPRESSOR2 = 0x10011
+  BASS_FX_BFX_BQF = 0x10013
+  BASS_FX_BFX_ECHO4 = 0x10014
+  BASS_FX_BFX_FREEVERB = 0x10016
+  BASS_BFX_FREEVERB_MODE_FREEZE = 1
 
   def self.optional_dlopen(lib)
     EltenRuntimePaths.dlopen(lib)
@@ -170,7 +183,15 @@ module Bass
   BASS_ChannelSetPosition = Fiddle::Function.new(BASSDLL["BASS_ChannelSetPosition"], [F_UINT, F_QWORD, F_UINT], F_INT, BASS_ABI)
   BASS_ChannelSet3DPosition = Fiddle::Function.new(BASSDLL["BASS_ChannelSet3DPosition"], [F_UINT, F_PTR, F_PTR, F_PTR], F_INT, BASS_ABI)
   BASS_StreamGetFilePosition = Fiddle::Function.new(BASSDLL["BASS_StreamGetFilePosition"], [F_UINT, F_UINT], F_QWORD, BASS_ABI)
+  BASS_ChannelSetFX = Fiddle::Function.new(BASSDLL["BASS_ChannelSetFX"], [F_UINT, F_UINT, F_INT], F_UINT, BASS_ABI)
+  BASS_ChannelRemoveFX = Fiddle::Function.new(BASSDLL["BASS_ChannelRemoveFX"], [F_UINT, F_UINT], F_INT, BASS_ABI)
+  BASS_FXFree = optional_fiddle(BASSDLL, "BASS_FXFree", [F_UINT], F_INT)
+  BASS_FXGetParameters = Fiddle::Function.new(BASSDLL["BASS_FXGetParameters"], [F_UINT, F_PTR], F_INT, BASS_ABI)
+  BASS_FXReset = Fiddle::Function.new(BASSDLL["BASS_FXReset"], [F_UINT], F_INT, BASS_ABI)
+  BASS_FXSetBypass = optional_fiddle(BASSDLL, "BASS_FXSetBypass", [F_UINT, F_INT], F_INT)
+  BASS_FXSetParameters = Fiddle::Function.new(BASSDLL["BASS_FXSetParameters"], [F_UINT, F_PTR], F_INT, BASS_ABI)
   BASS_FXSetPriority = optional_fiddle(BASSDLL, "BASS_FXSetPriority", [F_UINT, F_INT], F_INT)
+  BASS_FX_GetVersion = optional_fiddle(BASSFX, "BASS_FX_GetVersion", [], F_UINT)
   BASS_Mixer_StreamCreate = Fiddle::Function.new(BASSMIX["BASS_Mixer_StreamCreate"], [F_UINT, F_UINT, F_UINT], F_UINT, BASS_ABI)
   BASS_Mixer_StreamAddChannel = Fiddle::Function.new(BASSMIX["BASS_Mixer_StreamAddChannel"], [F_UINT, F_UINT, F_UINT], F_INT, BASS_ABI)
   BASS_Mixer_ChannelRemove = Fiddle::Function.new(BASSMIX["BASS_Mixer_ChannelRemove"], [F_UINT], F_INT, BASS_ABI)
