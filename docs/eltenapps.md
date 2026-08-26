@@ -56,7 +56,7 @@ A development directory normally starts with `__app.rb`. The file contains exact
 =end Elten3AppInfo
 
 class ExampleApplication < Program
-  def main
+  def program_main
     information = EditBox.new(
       _("Example application"),
       type: EditBox::Flags::ReadOnly | EditBox::Flags::MultiLine,
@@ -68,14 +68,15 @@ class ExampleApplication < Program
     form.cancel_button = close_button
     close_button.on(:press) { form.resume }
     form.wait
-    finish
   end
 end
 ```
 
 Do not add the generated `EltenPrograms` namespace yourself. The runtime evaluates the file inside the namespace assigned to the manifest UUID, then resolves `main_class` relative to it. The resolved class must inherit from `Program`.
 
-`Program` is scene-compatible: the main menu can use the application class as a destination and instantiate it when selected. Its instance `main` method therefore owns the launched interaction. Use the same `Form#wait`, `Tasks.run`, `Runner`, `$scene` and `insert_scene` rules described in the [architecture guide](architecture.md#owning-an-interaction).
+`Program` is scene-compatible: the main menu can use the application class as a destination and instantiate it when selected. Define `program_main` for a Core-managed launch. Returning from it, or raising an application error from it, always finalises the instance. If `program_main` is absent, the dispatcher falls back to `main` and leaves lifecycle management to the application for compatibility with existing programs. When both methods exist, `program_main` takes precedence. This lookup applies only to scenes which inherit from `Program`.
+
+The launched interaction follows the same `Form#wait`, `Tasks.run`, `Runner`, `$scene` and `insert_scene` rules described in the [architecture guide](architecture.md#owning-an-interaction).
 
 ## Manifest
 
@@ -138,16 +139,33 @@ The application class and its launched instances have different lifetimes:
 | Load | Manifest and package validation | Checks identity, API version, platform, signature policy and required assets before activation. |
 | Class registration | `self.activate` | Runs synchronously when the class is registered, with its runtime associated. Use it for short class-level registrations. |
 | Background initialisation | `self.init` | Runs on a worker thread after registration. It may prepare non-UI state, but must not mutate forms or navigation directly. Exceptions are logged. |
-| Launch | `main` on a new instance | Owns the user interaction when the application is selected from the menu. |
-| Instance exit | `finish` | Calls the instance `close` hook, releases instance-managed resources, closes the application sound pool and returns to `Scene_Main`. |
+| Managed launch | `program_main` on a new instance | Owns the user interaction. Core guarantees instance finalisation when the method returns or raises an application error. |
+| Manual launch | `main` on a new instance | Compatibility path used only when `program_main` is absent. The application remains responsible for calling `finish`. |
+| Instance finalisation | `finalize` | Idempotently calls the instance `close` hook, releases instance-managed resources and closes the application sound pool. Normal completion also announces the exit and returns to `Scene_Main`; exceptional completion leaves recovery navigation to the scene dispatcher. |
 | Runtime unload | `Programs.unregister_runtime` | Closes runtime-managed resources and sound state, stops extensions, removes loader mappings and removes the generated namespace. |
 
-Override `close` for cleanup which belongs to one launched instance. Call `finish` rather than calling `close` directly when the application is leaving its main interaction:
+Override `close` for custom cleanup which belongs to one launched instance. In `program_main`, simply return when the interaction ends; Core invokes `finalize` even when the application raises. Managed resources and the application sound pool therefore do not require a manual `ensure` block:
 
 ```ruby
 class ExampleApplication < Program
+  def program_main
+    run_application
+  end
+
   def close
     @subscription.close if @subscription != nil
+  end
+end
+```
+
+Existing applications may retain a manually managed `main`. In that mode, use `finish` rather than calling `close` or `finalize` directly. `finish` performs normal finalisation and remains safe to call repeatedly:
+
+```ruby
+class LegacyApplication < Program
+  def main
+    run_application
+  ensure
+    finish
   end
 end
 ```
@@ -227,16 +245,15 @@ Only declare an asset as required when the application genuinely cannot start wi
 
 `manage` attaches an object to a resource registry and normally calls its `close` method when that registry ends. Registries close in last-in, first-out order and make repeated cleanup safe.
 
-Calling `manage` on a `Program` instance gives the resource the lifetime of that launch; `finish` releases it. Calling the class method `manage` gives it the lifetime of the loaded runtime; it is released when the application is unloaded. Choose the narrower lifetime whenever possible:
+Calling `manage` on a `Program` instance gives the resource the lifetime of that launch; automatic finalisation after `program_main` releases it. Calling the class method `manage` gives it the lifetime of the loaded runtime; it is released when the application is unloaded. Choose the narrower lifetime whenever possible:
 
 ```ruby
 class ExampleApplication < Program
-  def main
+  def program_main
     sound = create_sound_from_asset("introduction")
     @sound = manage(sound) if sound != nil
     @sound.play if @sound != nil
     # ...
-    finish
   end
 end
 ```

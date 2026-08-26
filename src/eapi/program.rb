@@ -1299,7 +1299,7 @@ module Programs
       runtime = runtime_from_error(error, scene)
       return false if runtime == nil
       begin
-        close_scene_after_error(scene) if scene != nil && runtime_for(scene).equal?(runtime)
+        finalize_scene_after_error(scene) if scene != nil && runtime_for(scene).equal?(runtime)
         report_execution_error(scene || error.class, error, runtime: runtime)
       rescue Exception => handler_error
         Log.error("Cannot handle program error: #{handler_error.class}: #{handler_error.message}") if defined?(Log)
@@ -1307,9 +1307,13 @@ module Programs
       true
     end
 
-    def close_scene_after_error(scene)
-      return if scene == nil || !scene.respond_to?(:close, true)
-      scene.__send__(:close)
+    def finalize_scene_after_error(scene)
+      return if scene == nil
+      if defined?(Program) && scene.is_a?(Program)
+        scene.finalize(reason: :error)
+      elsif scene.respond_to?(:close, true)
+        scene.__send__(:close)
+      end
     rescue Exception => error
       Log.error("Program cleanup failed: #{error.class}: #{error.message}\n#{Array(error.backtrace).join("\n")}")
     end
@@ -2622,17 +2626,36 @@ class Program
     resources.close
   end
 
-  def finish(v = nil)
-    begin
-      close
-    ensure
-      close_managed_resources
-      self.class.close_sound_pool
+  def finalize(v = nil, reason: :normal)
+    raise ArgumentError, "Invalid program finalization reason #{reason.inspect}" if reason != :normal && reason != :error
+    return v if @program_finalized == true
+    @program_finalized = true
+
+    cleanup_error = nil
+    {
+      "close hook" => proc { close },
+      "managed resources" => proc { close_managed_resources },
+      "sound pool" => proc { self.class.close_sound_pool }
+    }.each do |label, action|
+      begin
+        action.call
+      rescue Exception => error
+        cleanup_error ||= error
+        Log.error("Program #{self.class} #{label} cleanup failed: #{error.class}: #{error.message}\n#{Array(error.backtrace).join("\n")}") if defined?(Log)
+      end
     end
+
+    raise cleanup_error if cleanup_error != nil && reason == :normal
+    return v if reason == :error
+
     Log.info("Program exited #{self.class}")
     alert(p_("Program", "The program has been closed."))
     $scene = Scene_Main.new
     v
+  end
+
+  def finish(v = nil)
+    finalize(v, reason: :normal)
   end
 
   def close
