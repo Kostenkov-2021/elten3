@@ -873,7 +873,7 @@ class Scene_Calendar_Public
     apply_language_filter
     index = @calendars.index { |calendar| calendar.id == calendar_id } || 0
     @sel = ListBox.new(
-      @calendars.map { |calendar| calendar_label(calendar) },
+      @calendars.map { |calendar| public_calendar_label(calendar) },
       header: p_("Calendar", "Public calendars"),
       index: index,
       quiet: false
@@ -912,10 +912,17 @@ class Scene_Calendar_Public
     @calendars[@sel.index]
   end
 
+  def public_calendar_label(calendar)
+    count = calendar.subscribers_count.to_i
+    subscribers = np_("Calendar", "%{count} subscriber", "%{count} subscribers", count) % { count: count }
+    "#{calendar_label(calendar)}, #{subscribers}"
+  end
+
   def subscribe(calendar)
     EltenLink::Calendars.subscribe(elten_link, calendar)
     @subscribed_ids << calendar.id
     @subscribed_ids.uniq!
+    calendar.subscribers_count += 1
     alert(p_("Calendar", "The calendar has been subscribed"))
     build_list(calendar.id)
   rescue EltenLink::Error => error
@@ -928,6 +935,7 @@ class Scene_Calendar_Public
 
     EltenLink::Calendars.delete_membership(elten_link, calendar)
     @subscribed_ids.delete(calendar.id)
+    calendar.subscribers_count = [calendar.subscribers_count - 1, 0].max
     alert(p_("Calendar", "The calendar has been unsubscribed"))
     build_list(calendar.id)
   rescue EltenLink::Error => error
