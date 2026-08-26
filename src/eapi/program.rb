@@ -31,6 +31,39 @@ module Programs
   class ProgramError < StandardError
   end
 
+  class UnsupportedAPIVersionError < ProgramError
+    attr_reader :program, :required, :current
+
+    def initialize(program:, required:, current: ELTEN_API_VERSION)
+      @program = program.to_s
+      @required = required.to_s
+      @current = current.to_s
+      super("Program #{@program} requires unsupported Elten API #{@required}")
+    end
+  end
+
+  class UnsupportedEltenLinkContractError < ProgramError
+    attr_reader :program, :required, :current
+
+    def initialize(program:, required:, current: ELTENLINK_CONTRACT_VERSION)
+      @program = program.to_s
+      @required = required.to_s
+      @current = current.to_s
+      super("Program #{@program} requires unsupported EltenLink contract #{@required}")
+    end
+  end
+
+  class UnsupportedPlatformError < ProgramError
+    attr_reader :program, :required, :current
+
+    def initialize(program:, required:, current:)
+      @program = program.to_s
+      @required = Array(required).map(&:to_s)
+      @current = current.to_s
+      super("Program #{@program} does not support platform #{@current}")
+    end
+  end
+
   class EventListener
     attr_accessor :event, :cls, :proc
 
@@ -156,9 +189,11 @@ module Programs
       raise ProgramError, "Missing program version in #{@source}" if @version == ""
       raise ProgramError, "Missing program build_id in #{@source}" if @build_id == nil
       raise ProgramError, "Missing EltenAPIVersion in #{@source}" if @elten_api_version == ""
-      raise ProgramError, "Program #{@name} requires unsupported Elten API #{@elten_api_version}" if !Programs.api_version_compatible?(@elten_api_version)
+      if !Programs.api_version_compatible?(@elten_api_version)
+        raise UnsupportedAPIVersionError.new(program: @name, required: @elten_api_version)
+      end
       if @eltenlink_contract_version != "" && !Programs.eltenlink_contract_version_compatible?(@eltenlink_contract_version)
-        raise ProgramError, "Program #{@name} requires unsupported Elten API #{@eltenlink_contract_version}"
+        raise UnsupportedEltenLinkContractError.new(program: @name, required: @eltenlink_contract_version)
       end
       raise ProgramError, "Missing program main_class in #{@source}" if @main_class == ""
       raise ProgramError, "Missing program platforms in #{@source}" if @platforms.empty?
@@ -1954,7 +1989,7 @@ module Programs
       nil
     end
 
-    def load_sig(entry, persist: true, installation_source: nil)
+    def load_sig(entry, persist: true, installation_source: nil, raise_errors: false)
       Log.info("Loading program #{entry}")
       return true if @@runtimes.key?(entry)
       runtime = nil
@@ -1965,6 +2000,9 @@ module Programs
       @@configs[entry] = manifest.to_config(source[:main])
       if !manifest.supports_current_platform?
         Log.info("Skipping program #{manifest.name}: unsupported platform #{platform_target}")
+        if raise_errors
+          raise UnsupportedPlatformError.new(program: manifest.name, required: manifest.platforms, current: platform_target)
+        end
         return false
       end
       runtime = Runtime.new(
@@ -1993,6 +2031,7 @@ module Programs
     rescue Exception => e
       rollback_program_load(entry, runtime)
       Log.error("Failed to load program #{entry}: #{e.class}: #{e.message}, #{e.backtrace}")
+      raise if raise_errors
       false
     end
 
