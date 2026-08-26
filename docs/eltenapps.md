@@ -312,6 +312,50 @@ Extension names and setting keys use lower-case letters, numbers and underscores
 
 The tick callback is synchronous and runs from `loop_update` on `$mainthread`. It must not wait for a network response, display a modal interaction or perform substantial parsing. Keep persistent work in an owned worker or service and use the tick only to inspect or apply ready results.
 
+## Server applications and leaderboards
+
+An application can bind its server-side registration and table schema to its `Program` class:
+
+```ruby
+SERVER_TABLES = {
+  "scores" => {
+    "visibility" => "public",
+    "columns" => {
+      "points" => "int",
+      "level" => "int"
+    }
+  }
+}.freeze
+
+server_app(
+  uuid: "12345678-1234-4123-8123-123456789abc",
+  tables: SERVER_TABLES,
+  protected: true
+)
+```
+
+`server_table("scores")`, `server_resources` and `delete_server_app` then use the declared UUID unless an explicit UUID is passed. `update_server_schema!` updates the declared tables and protection setting. The existing argument-based helpers remain available for applications which manage their server registration themselves.
+
+For an initial registration, declare `uuid: nil` and call `register_server_app!`. It returns the generated UUID and keeps it for the current process. Put that UUID into the declaration before distributing the application. To prevent accidental duplicate registrations, `register_server_app!` refuses to run when the declaration already contains a UUID.
+
+Rankings can use the optional `Leaderboard` wrapper instead of duplicating availability checks and error handling:
+
+```ruby
+scores = leaderboard(
+  "scores",
+  order: [["points", "desc"], ["level", "desc"]],
+  log_label: "Example scores"
+)
+
+scores.available?
+rows = scores.top(limit: 25)
+scores.submit("points" => 1200, "level" => 8)
+```
+
+Keep the returned leaderboard object for as long as its availability state should be shared. `top` also accepts `where`, `order`, `limit` and `offset`. A successful operation restores availability. After an EltenLink failure, subsequent operations are held for 5, 30 and then 120 seconds; later failures continue to use the 120-second delay. These delays can be replaced with `retry_delays:`. `top` returns an empty array and `submit` returns `false` while unavailable, and `last_error` exposes the last failure.
+
+`submit` makes at most one insertion attempt per call. The cooldown only permits a later explicit call to try again; it never resends a mutating request in the background. Cancellation does not mark the leaderboard unavailable, and exceptions outside EltenLink are not converted into network failures.
+
 ## Other integration points
 
 `Program` currently exposes further integration mechanisms:

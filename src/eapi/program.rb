@@ -65,6 +65,137 @@ module Programs
     end
   end
 
+  class ServerAppDefinition
+    attr_reader :uuid, :tables
+
+    def initialize(uuid:, tables:, protected:)
+      value = uuid == nil ? nil : uuid.to_s.strip
+      value = nil if value == ""
+      raise ProgramError, "Invalid server application UUID #{uuid.inspect}" if value != nil && value !~ UUID_PATTERN
+      raise ProgramError, "Server application tables must be a hash" if !tables.is_a?(Hash)
+      raise ProgramError, "Server application protection must be a boolean" if protected != true && protected != false
+
+      @uuid = value
+      @tables = immutable_copy(tables)
+      @protected = protected
+      freeze
+    end
+
+    def protected?
+      @protected
+    end
+
+    def with_uuid(uuid)
+      self.class.new(uuid: uuid, tables: @tables, protected: @protected)
+    end
+
+    private
+
+    def immutable_copy(value)
+      case value
+      when Hash
+        value.each_with_object({}) { |(key, entry), result| result[immutable_copy(key)] = immutable_copy(entry) }.freeze
+      when Array
+        value.map { |entry| immutable_copy(entry) }.freeze
+      when String
+        value.dup.freeze
+      else
+        value
+      end
+    end
+  end
+
+  class Leaderboard
+    DEFAULT_RETRY_DELAYS = [5.0, 30.0, 120.0].freeze
+
+    attr_reader :last_error
+
+    def initialize(table, order: nil, retry_delays: DEFAULT_RETRY_DELAYS, log_label: "Leaderboard")
+      raise ArgumentError, "Leaderboard table must support select and insert" if !table.respond_to?(:select) || !table.respond_to?(:insert)
+
+      @table = table
+      @order = order
+      @retry_delays = Array(retry_delays).map(&:to_f)
+      raise ArgumentError, "Leaderboard retry delays cannot be empty" if @retry_delays.empty?
+      raise ArgumentError, "Leaderboard retry delays cannot be negative" if @retry_delays.any?(&:negative?)
+
+      @log_label = log_label.to_s
+      @available = nil
+      @failure_count = 0
+      @retry_at = nil
+      @last_error = nil
+      @state_mutex = Mutex.new
+    end
+
+    def available?
+      return true if state_available?
+      return false if !request_allowed?
+
+      @table.select(limit: 1)
+      mark_success
+      true
+    rescue EltenLink::Error => error
+      handle_error(error)
+      false
+    end
+
+    def top(where: nil, order: nil, limit: 25, offset: nil)
+      return [] if !request_allowed?
+
+      rows = @table.select(where: where, order: order || @order, limit: limit, offset: offset)
+      mark_success
+      rows.to_a
+    rescue EltenLink::Error => error
+      handle_error(error)
+      []
+    end
+
+    def submit(values)
+      return false if !request_allowed?
+
+      @table.insert(values)
+      mark_success
+      true
+    rescue EltenLink::Error => error
+      handle_error(error)
+      false
+    end
+
+    private
+
+    def state_available?
+      @state_mutex.synchronize { @available == true }
+    end
+
+    def request_allowed?
+      @state_mutex.synchronize do
+        @available != false || Process.clock_gettime(Process::CLOCK_MONOTONIC) >= @retry_at
+      end
+    end
+
+    def mark_success
+      @state_mutex.synchronize do
+        @available = true
+        @failure_count = 0
+        @retry_at = nil
+        @last_error = nil
+      end
+    end
+
+    def handle_error(error)
+      return if error.code.to_s == "cancelled"
+
+      @state_mutex.synchronize do
+        delay = @retry_delays[[@failure_count, @retry_delays.size - 1].min]
+        @failure_count += 1
+        @available = false
+        @retry_at = Process.clock_gettime(Process::CLOCK_MONOTONIC) + delay
+        @last_error = error
+      end
+      Log.warning("#{@log_label} unavailable: #{error.class}: #{error.message}")
+    end
+  end
+
   class EventListener
     attr_accessor :event, :cls, :proc
 
@@ -2524,25 +2655,76 @@ class Program
       @app_info == nil ? const_get(:AppID).to_s : @app_info.id.to_s
     end
 
+    def server_app(uuid: nil, tables: {}, protected: false)
+      @server_app_definition = Programs::ServerAppDefinition.new(uuid: uuid, tables: tables, protected: protected)
+    end
+
+    def server_app_definition
+      @server_app_definition
+    end
+
+    def server_app_uuid
+      definition = server_app_definition
+      definition == nil ? app_uuid : definition.uuid.to_s
+    end
+
     def register_server_app(name: nil, data: nil, tables: nil, tables_protected: false)
       EltenLink::Apps.register(EltenLink.client(self), :name => (name || self.name), :data => data, :tables => tables, :tables_protected => tables_protected)
+    end
+
+    def register_server_app!
+      definition = required_server_app_definition
+      raise Programs::ProgramError, "Server application is already registered as #{definition.uuid}" if definition.uuid != nil
+
+      uuid = register_server_app(tables: definition.tables, tables_protected: definition.protected?)
+      raise Programs::ProgramError, "Server application registration returned an invalid UUID" if uuid.to_s !~ Programs::UUID_PATTERN
+
+      @server_app_definition = definition.with_uuid(uuid)
+      uuid
     end
 
     def update_server_app(uuid = nil, name: nil, data: nil, tables: nil, tables_protected: nil)
       EltenLink::Apps.update(EltenLink.client(self), uuid || app_uuid, :name => (name || self.name), :data => data, :tables => tables, :tables_protected => tables_protected)
     end
 
+    def update_server_schema!
+      definition = required_server_app_definition
+      raise Programs::ProgramError, "Server application UUID is not set" if definition.uuid == nil
+
+      update_server_app(definition.uuid, tables: definition.tables, tables_protected: definition.protected?)
+    end
+
     def server_table(name, uuid = nil)
-      EltenLink::Apps.table(EltenLink.client(self), uuid || app_uuid, name)
+      EltenLink::Apps.table(EltenLink.client(self), server_app_identifier(uuid), name)
+    end
+
+    def leaderboard(name, order: nil, retry_delays: Programs::Leaderboard::DEFAULT_RETRY_DELAYS, log_label: "Leaderboard")
+      Programs::Leaderboard.new(server_table(name), order: order, retry_delays: retry_delays, log_label: log_label)
     end
 
     def server_resources(uuid = nil)
-      EltenLink::Apps.resources(EltenLink.client(self), uuid || app_uuid)
+      EltenLink::Apps.resources(EltenLink.client(self), server_app_identifier(uuid))
     end
 
     def delete_server_app(uuid = nil)
-      EltenLink::Apps.delete(EltenLink.client(self), uuid || app_uuid)
+      EltenLink::Apps.delete(EltenLink.client(self), server_app_identifier(uuid))
     end
+
+    def required_server_app_definition
+      server_app_definition || raise(Programs::ProgramError, "Server application is not declared")
+    end
+
+    def server_app_identifier(uuid)
+      return uuid if uuid != nil
+
+      definition = server_app_definition
+      return app_uuid if definition == nil
+      raise Programs::ProgramError, "Server application UUID is not set" if definition.uuid == nil
+
+      definition.uuid
+    end
+
+    private :required_server_app_definition, :server_app_identifier
 
     def on(event, &proc)
       Programs.register_event_listener(event, self, proc)
@@ -2569,6 +2751,10 @@ class Program
 
   def server_table(name, uuid = nil)
     self.class.server_table(name, uuid)
+  end
+
+  def leaderboard(name, order: nil, retry_delays: Programs::Leaderboard::DEFAULT_RETRY_DELAYS, log_label: "Leaderboard")
+    Programs::Leaderboard.new(server_table(name), order: order, retry_delays: retry_delays, log_label: log_label)
   end
 
   def server_resources(uuid = nil)
