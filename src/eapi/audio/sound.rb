@@ -533,6 +533,10 @@ class SoundEffect
     false
   end
 
+  def latency_ms
+    0.0
+  end
+
   def output_channels(channels, _frequency)
     channels
   end
@@ -942,6 +946,12 @@ class Sound
     effect.close if removed && effect.respond_to?(:close)
     rebuild_effect_pipeline if removed && !native_effect?(effect)
     removed
+  end
+
+  def effects_latency_ms
+    update_period = [Bass::BASS_GetConfig.call(BASS_CONFIG_UPDATE_PERIOD).to_f, 0.0].max
+    effects = @effects_mutex.synchronize { @effects.dup }
+    update_period + effects.sum { |effect| declared_effect_latency_ms(effect) }
   end
 
   def spatialize(position: nil, interpolation: :bilinear)
@@ -1570,6 +1580,15 @@ class Sound
 
   def native_effect?(effect)
     effect.respond_to?(:native?) && effect.native? == true
+  end
+
+  def declared_effect_latency_ms(effect)
+    return 0.0 if !effect.respond_to?(:latency_ms)
+
+    latency = Float(effect.latency_ms)
+    latency.finite? && latency > 0.0 ? latency : 0.0
+  rescue StandardError
+    0.0
   end
 
   def frame_effects

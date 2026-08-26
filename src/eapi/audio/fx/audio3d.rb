@@ -91,6 +91,10 @@ class Audio3DEffect < SoundEffect
     @frequency
   end
 
+  def latency_ms
+    @framesize.to_f
+  end
+
   def process(audio, _frequency, channels)
     audio = audio.to_s.b
     channels = [[channels.to_i, 1].max, 2].min
