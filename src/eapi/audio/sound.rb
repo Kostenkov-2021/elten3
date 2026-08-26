@@ -56,6 +56,32 @@ class SoundStatus
   end
 end
 
+class SoundDownloadStatus
+  attr_reader :downloaded_bytes, :buffered_bytes, :file_size, :buffering_progress, :data_start_offset
+
+  def initialize(downloaded_bytes:, buffered_bytes:, file_size:, connection_state:, buffering_progress:, data_start_offset:)
+    @downloaded_bytes = downloaded_bytes
+    @buffered_bytes = buffered_bytes
+    @file_size = file_size
+    @connection_state = connection_state
+    @buffering_progress = buffering_progress
+    @data_start_offset = data_start_offset
+  end
+
+  def connected?
+    @connection_state == 1 || reconnecting?
+  end
+
+  def reconnecting?
+    @connection_state == 2
+  end
+
+  def download_complete?
+    return false if @downloaded_bytes == nil || @file_size == nil || @file_size <= 0
+    @downloaded_bytes + @data_start_offset.to_i >= @file_size
+  end
+end
+
 class AudioInfo
   class ID3Frame
     attr_accessor :id, :size, :encrypted, :compressed, :grouped, :group, :numvalue, :strvalue
@@ -760,6 +786,33 @@ class Sound
     SoundStatus.from_bass(Bass::BASS_ChannelIsActive.call(@channel))
   end
 
+  def download_status
+    return nil if closed? || @file == nil || !@file.to_s.downcase.start_with?("http://", "https://")
+    source = @source_channel.to_i
+    source = @channel.to_i if source == 0
+    return nil if source == 0
+
+    downloaded = stream_file_position(source, Bass::BASS_FILEPOS_DOWNLOAD)
+    buffered = stream_file_position(source, Bass::BASS_FILEPOS_BUFFER)
+    file_size = stream_file_position(source, Bass::BASS_FILEPOS_SIZE)
+    connection_state = stream_file_position(source, Bass::BASS_FILEPOS_CONNECTED)
+    buffering_remaining = stream_file_position(source, Bass::BASS_FILEPOS_BUFFERING)
+    data_start_offset = stream_file_position(source, Bass::BASS_FILEPOS_START)
+    return nil if [downloaded, buffered, file_size, connection_state, buffering_remaining, data_start_offset].all?(&:nil?)
+    buffering_progress = buffering_remaining == nil ? nil : [[100 - buffering_remaining, 0].max, 100].min
+
+    SoundDownloadStatus.new(
+      downloaded_bytes: downloaded,
+      buffered_bytes: buffered,
+      file_size: file_size,
+      connection_state: connection_state,
+      buffering_progress: buffering_progress,
+      data_start_offset: data_start_offset
+    )
+  rescue Exception
+    nil
+  end
+
   def play
     return if !opened?
     if @pipeline
@@ -1098,6 +1151,11 @@ class Sound
     @info_values = EltenBassStructs.bass_channel_info_values(buffer)
     @info_values_channel = @channel
     @info_values
+  end
+
+  def stream_file_position(channel, mode)
+    value = Bass::BASS_StreamGetFilePosition.call(channel, mode).to_i
+    value < 0 || value == 0xffffffffffffffff ? nil : value
   end
 
   def read_sound_attribute(attribute)
