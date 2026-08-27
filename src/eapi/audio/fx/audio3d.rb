@@ -92,7 +92,7 @@ class Audio3DEffect < SoundEffect
   end
 
   def latency_ms
-    @framesize.to_f
+    @framesize.to_f / 2.0
   end
 
   def process(audio, _frequency, channels)

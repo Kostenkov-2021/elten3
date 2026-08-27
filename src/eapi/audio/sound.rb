@@ -566,6 +566,7 @@ class Sound
   BASS_DATA_AVAILABLE = 0
   BASS_CONFIG_UPDATE_PERIOD = 1
   BASS_ACTIVE_STOPPED = 0
+  BASS_ACTIVE_PLAYING = 1
   MAX_SLIDE_MILLISECONDS = 0xffffffff
   FRAME_MILLISECONDS = 20
   FLOAT_SAMPLE_BYTES = 4
@@ -648,6 +649,15 @@ class Sound
     @processing_playing = false
     @processing_paused = false
     @processing_output_started = false
+    @effect_playback_mutex = Mutex.new
+    @effect_output_bytes_written = 0
+    @effect_output_bytes_per_second = 0.0
+    @effect_playback_output_seconds = 0.0
+    @effect_output_latency_seconds = 0.0
+    @effect_playback_clock_at = nil
+    @effect_playback_clock_running = false
+    @spatial_automation_mutex = Mutex.new
+    @spatial_automation = nil
   end
 
   def finish_initialization
@@ -775,6 +785,7 @@ class Sound
     @processing_channel = build_effect_source_channel(@processing_frequency, @processing_channels)
     @playback_channels = pipeline_output_channels(@processing_frequency, @processing_channels)
     @playback_channel = Bass::BASS_StreamCreate.call(@processing_frequency, @playback_channels, SAMPLE_FLOAT, -1, nil)
+    reset_effect_playback_state(@processing_frequency, @playback_channels)
     update_finalizer
   end
 
@@ -867,9 +878,12 @@ class Sound
     if @pipeline
       was_paused = @processing_paused
       @processing_playing = true
-      @processing_paused = false
       ensure_processing_thread
-      Bass::BASS_ChannelPlay.call(@playback_channel, 0) if was_paused && @processing_output_started && @playback_channel.to_i != 0
+      if was_paused && @processing_output_started && @playback_channel.to_i != 0
+        resumed = Bass::BASS_ChannelPlay.call(@playback_channel, 0).to_i != 0
+        start_effect_playback_clock if resumed
+      end
+      @processing_paused = false
       return
     end
     if Bass::BASS_ChannelPlay.call(@channel, 0) == 0
@@ -885,6 +899,7 @@ class Sound
       @processing_paused = false
       @processing_output_started = false
       Bass::BASS_ChannelStop.call(@playback_channel) if @playback_channel.to_i != 0
+      reset_effect_playback_state(@processing_frequency, @playback_channels)
       self.position = 0
     elsif @kind == :sample
       Bass::BASS_SampleStop.call(@sample_handle)
@@ -898,6 +913,7 @@ class Sound
     if @pipeline
       @processing_paused = true
       Bass::BASS_ChannelPause.call(@playback_channel) if @playback_channel.to_i != 0
+      pause_effect_playback_clock
     else
       Bass::BASS_ChannelPause.call(@channel)
     end
@@ -954,6 +970,27 @@ class Sound
     update_period + effects.sum { |effect| declared_effect_latency_ms(effect) }
   end
 
+  def effect_playback_seconds
+    return 0.0 if !@pipeline || @playback_channel.to_i == 0
+
+    output_seconds = effect_playback_output_seconds
+    [output_seconds - effect_total_latency_seconds, 0.0].max
+  rescue Exception
+    0.0
+  end
+
+  def effect_playback_seconds_at(time)
+    seconds = effect_playback_seconds
+    requested = Float(time)
+    return seconds if !requested.finite?
+
+    now = monotonic_time
+    seconds += requested - now if effect_output_advancing?
+    [[seconds, 0.0].max, effect_playback_max_source_seconds].min
+  rescue ArgumentError, TypeError
+    effect_playback_seconds
+  end
+
   def spatialize(position: nil, interpolation: :bilinear)
     fail(RuntimeError, "Audio3DEffect is unavailable") if !defined?(::Audio3DEffect)
     position = Audio3DEffect::ORIGIN if position == nil
@@ -977,6 +1014,7 @@ class Sound
   end
 
   def spatial_position=(position)
+    cancel_spatial_position_slide
     spatial? ? @spatial_effect.position = position : spatialize(position: position)
     position
   end
@@ -990,7 +1028,43 @@ class Sound
     interpolation
   end
 
+  def spatial_position_slide(position, duration:, from: nil, start_at: 0.0)
+    duration = Float(duration)
+    start_at = Float(start_at)
+    raise ArgumentError, "duration must be a positive finite number" if !duration.finite? || duration <= 0.0
+    raise ArgumentError, "start_at must be a non-negative finite number" if !start_at.finite? || start_at < 0.0
+
+    origin = from == nil ? spatial_position : from
+    origin = Audio3DEffect::ORIGIN if origin == nil && defined?(::Audio3DEffect)
+    origin = normalize_spatial_coordinates(origin)
+    target = normalize_spatial_coordinates(position)
+    spatialize(position: origin) if !spatial?
+    @spatial_effect.position = origin
+    @spatial_automation_mutex.synchronize do
+      @spatial_automation = {
+        :from => origin.freeze,
+        :to => target.freeze,
+        :start_at => start_at,
+        :duration => duration
+      }
+    end
+    self
+  end
+
+  def spatial_position_sliding?
+    @spatial_automation_mutex.synchronize { @spatial_automation != nil }
+  end
+
+  def cancel_spatial_position_slide
+    @spatial_automation_mutex.synchronize do
+      active = @spatial_automation != nil
+      @spatial_automation = nil
+      active
+    end
+  end
+
   def despatialize
+    cancel_spatial_position_slide
     effect_remove(@spatial_effect) if spatial?
     self
   end
@@ -1021,6 +1095,8 @@ class Sound
     @processing_frequency = nil
     @processing_channels = 0
     @spatial_effect = nil
+    @spatial_automation_mutex.synchronize { @spatial_automation = nil }
+    reset_effect_playback_state
     @@finalizers.delete(@finalizer_id)
     nil
   end
@@ -1420,6 +1496,7 @@ class Sound
     @processing_channels = 0
     @tempo_prepared_channel = nil
     @info_values = nil
+    reset_effect_playback_state
   end
 
   def rebuild_effect_pipeline
@@ -1552,6 +1629,8 @@ class Sound
         next
       end
       audio = buffer.byteslice(0, read).to_s.b
+      frame_duration = read.to_f / ([freq, 1].max * [source_channels, 1].max * FLOAT_SAMPLE_BYTES)
+      apply_spatial_automation(effect_output_written_seconds, frame_duration)
       channels_now = source_channels
       @effects_mutex.synchronize do
         @effects.each do |effect|
@@ -1562,10 +1641,10 @@ class Sound
       end
       if audio.bytesize > 0
         written = Bass::BASS_StreamPutData.call(@playback_channel, audio, audio.bytesize)
+        track_effect_output_bytes(audio.bytesize) if written.to_i >= 0
         if written.to_i > 0 && @playback_channel.to_i != 0
           if @effect_buffer_seconds == nil
-            @processing_output_started = true
-            Bass::BASS_ChannelPlay.call(@playback_channel, 0)
+            start_effect_output
           end
         end
       end
@@ -1612,6 +1691,136 @@ class Sound
     native_effects.each { |effect| effect.__send__(:unbind) }
   end
 
+  def reset_effect_playback_state(frequency = nil, channels = nil)
+    bytes_per_second = [frequency.to_i, 0].max * [channels.to_i, 0].max * FLOAT_SAMPLE_BYTES
+    @effect_playback_mutex.synchronize do
+      @effect_output_bytes_written = 0
+      @effect_output_bytes_per_second = bytes_per_second.to_f
+      @effect_playback_output_seconds = 0.0
+      @effect_output_latency_seconds = 0.0
+      @effect_playback_clock_at = nil
+      @effect_playback_clock_running = false
+    end
+  end
+
+  def track_effect_output_bytes(bytes)
+    @effect_playback_mutex.synchronize { @effect_output_bytes_written += [bytes.to_i, 0].max }
+  end
+
+  def effect_output_written_seconds
+    written, bytes_per_second = @effect_playback_mutex.synchronize do
+      [@effect_output_bytes_written.to_i, @effect_output_bytes_per_second.to_f]
+    end
+    bytes_per_second > 0.0 ? written / bytes_per_second : 0.0
+  end
+
+  def effect_playback_output_seconds
+    now = monotonic_time
+    advancing = effect_output_advancing?
+    @effect_playback_mutex.synchronize do
+      update_effect_playback_clock_locked(now, advancing)
+      @effect_playback_output_seconds
+    end
+  end
+
+  def effect_playback_max_source_seconds
+    [effect_output_written_seconds - effect_total_latency_seconds, 0.0].max
+  end
+
+  def start_effect_playback_clock
+    now = monotonic_time
+    output_latency = effect_device_output_latency_seconds
+    @effect_playback_mutex.synchronize do
+      update_effect_playback_clock_locked(now, @effect_playback_clock_running)
+      @effect_output_latency_seconds = output_latency
+      @effect_playback_clock_at = now
+      @effect_playback_clock_running = true
+    end
+  end
+
+  def pause_effect_playback_clock
+    now = monotonic_time
+    @effect_playback_mutex.synchronize do
+      update_effect_playback_clock_locked(now, @effect_playback_clock_running)
+      @effect_playback_clock_at = nil
+      @effect_playback_clock_running = false
+    end
+  end
+
+  def update_effect_playback_clock_locked(now, advancing)
+    if advancing && @effect_playback_clock_running && @effect_playback_clock_at != nil
+      elapsed = now.to_f - @effect_playback_clock_at.to_f
+      @effect_playback_output_seconds += elapsed if elapsed.finite? && elapsed > 0.0
+    end
+    @effect_playback_clock_at = now if @effect_playback_clock_running
+    bytes_per_second = @effect_output_bytes_per_second.to_f
+    maximum = bytes_per_second > 0.0 ? @effect_output_bytes_written.to_i / bytes_per_second : 0.0
+    @effect_playback_output_seconds = @effect_playback_output_seconds.clamp(0.0, maximum)
+  end
+
+  def effect_output_advancing?
+    return false if @processing_paused || !@processing_output_started || @playback_channel.to_i == 0
+    Bass::BASS_ChannelIsActive.call(@playback_channel).to_i == BASS_ACTIVE_PLAYING
+  rescue Exception
+    false
+  end
+
+  def effect_processing_latency_seconds
+    effects = @effects_mutex.synchronize { @effects.dup }
+    effects.sum { |effect| declared_effect_latency_ms(effect) } / 1000.0
+  rescue Exception
+    0.0
+  end
+
+  def effect_total_latency_seconds
+    output_latency = @effect_playback_mutex.synchronize { @effect_output_latency_seconds.to_f }
+    output_latency + effect_processing_latency_seconds
+  end
+
+  def effect_device_output_latency_seconds
+    buffer = "\0".b * 56
+    return 0.0 if Bass::BASS_GetInfo.call(buffer).to_i == 0
+
+    latency = buffer.byteslice(40, 4).to_s.unpack1("L<").to_f / 1000.0
+    latency.finite? && latency > 0.0 ? latency : 0.0
+  rescue Exception
+    0.0
+  end
+
+  def apply_spatial_automation(frame_start, frame_duration)
+    automation = @spatial_automation_mutex.synchronize { @spatial_automation }
+    return if automation == nil || !spatial?
+
+    frame_time = frame_start.to_f + [frame_duration.to_f, 0.0].max / 2.0
+    elapsed = frame_time - automation[:start_at]
+    progress = (elapsed / automation[:duration]).clamp(0.0, 1.0)
+    position = automation[:from].zip(automation[:to]).map do |origin, target|
+      origin + (target - origin) * progress
+    end
+    @spatial_effect.position = position
+    if progress >= 1.0
+      @spatial_automation_mutex.synchronize do
+        @spatial_automation = nil if @spatial_automation.equal?(automation)
+      end
+    end
+  end
+
+  def normalize_spatial_coordinates(position)
+    coordinates = Array(position)
+    raise ArgumentError, "position must contain three numeric coordinates" if coordinates.size < 3
+    coordinates.first(3).map do |coordinate|
+      value = Float(coordinate)
+      raise ArgumentError, "position coordinates must be finite" if !value.finite?
+      value
+    end
+  rescue TypeError
+    raise ArgumentError, "position must contain three numeric coordinates"
+  end
+
+  def monotonic_time
+    Process.clock_gettime(Process::CLOCK_MONOTONIC)
+  end
+
   def effect_queue_full?(next_frame_bytes, frequency, channels)
     seconds = @effect_buffer_seconds
     return false if seconds == nil || @playback_channel.to_i == 0
@@ -1640,6 +1849,7 @@ class Sound
       return if active != BASS_ACTIVE_STOPPED
     end
     @processing_output_started = Bass::BASS_ChannelPlay.call(@playback_channel, 0).to_i != 0
+    start_effect_playback_clock if @processing_output_started
   rescue Exception
     @processing_output_started = false
   end
