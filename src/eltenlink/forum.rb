@@ -298,7 +298,7 @@ module EltenLink
       end
 
       def accept_thread_offer(client, thread_id:, forum_id:)
-        client.api_data("PATCH", "/api/v1/forum/#{thread_id.to_i}", { "forum" => forum_id.to_i })
+        client.api_data("PATCH", "/api/v1/forum/#{thread_id.to_i}/offer", { "forum" => forum_id.to_i })
         true
       end
 
