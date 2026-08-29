@@ -196,8 +196,18 @@ module EltenLink
       payload["data"] || {}
     end
 
-    def e_json_request(method, path, params, data=nil, headers: nil, cancellation_token: nil, &block)
-      ::EltenAPI::HTTPClient.ejrequest(method, path, params, data, headers: headers, cancellation_token: cancellation_token, &block)
+    def e_json_request(method, path, params, data=nil, headers: nil, cancellation_token: nil, protocol: nil, &block)
+      ::EltenAPI::HTTPClient.ejrequest(
+        method, path, params, data,
+        headers: headers,
+        cancellation_token: cancellation_token,
+        protocol: protocol,
+        &block
+      )
+    end
+
+    def e_realtime_stream(path, params, data=nil, cancellation_token: nil, &block)
+      ::EltenAPI::HTTPClient.ejstream(path, params, data, cancellation_token: cancellation_token, &block)
     end
 
     def e_read_url(url, method="get", body="", headers={}, data=nil, cancellation_token: nil, &block)

@@ -31,7 +31,9 @@ module EltenAPI
   end
 
   module ConfigurationMigrations
-    CURRENT_VERSION = 3
+    CURRENT_VERSION = 4
+    REMOVED_SESSION_REFRESH_KEYS = %w[AgentSessionTime RefreshTime SessionRefreshInterval].freeze
+    LEGACY_SESSION_REFRESH_KEYS = %w[AgentSessionTime RefreshTime].freeze
 
     BOOLEAN_KEYS = [
       ["Interface", "DisableFeedNotifications"],
@@ -126,6 +128,7 @@ module EltenAPI
       migrate_configuration_to_version_1(path) if version < 1
       migrate_configuration_to_version_2(path) if version < 2
       migrate_configuration_to_version_3(path) if version < 3
+      migrate_configuration_to_version_4(path) if version < 4
       writeini(path, "Elten", "ConfigurationVersion", CURRENT_VERSION)
       true
     end
@@ -140,12 +143,7 @@ module EltenAPI
     end
 
     def migrate_configuration_to_version_2(path)
-      current = readini(path, "Advanced", "AgentSessionTime", "$DEFAULT")
-      return if current == "$DEFAULT"
-
-      writeini(path, "Advanced", "SessionRefreshInterval", current)
-      writeini(path, "Advanced", "AgentSessionTime", nil)
-      WelcomeWizardLaunch.upgrade_detected
+      remove_session_refresh_configuration(path)
     end
 
     def migrate_configuration_to_version_3(path)
@@ -155,6 +153,18 @@ module EltenAPI
         "AutoStart",
         { "0" => "disabled", "false" => "disabled", "1" => "hidden", "true" => "hidden" }
       )
+    end
+
+    def migrate_configuration_to_version_4(path)
+      remove_session_refresh_configuration(path)
+    end
+
+    def remove_session_refresh_configuration(path)
+      upgrade = LEGACY_SESSION_REFRESH_KEYS.any? do |key|
+        readini(path, "Advanced", key, "$DEFAULT") != "$DEFAULT"
+      end
+      REMOVED_SESSION_REFRESH_KEYS.each { |key| writeini(path, "Advanced", key, nil) }
+      WelcomeWizardLaunch.upgrade_detected if upgrade
     end
 
     def migrate_configuration_value(path, group, key, mapping)

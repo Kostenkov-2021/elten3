@@ -33,6 +33,7 @@ module EltenAPI
     ACTIVE_STALE_AFTER = 45
     MAX_REDIRECTS = 5
     TRANSPORT_SESSION_ALGORITHM = "AES-256-GCM-SESSION"
+    REALTIME_STREAM_ALGORITHM = "AES-256-GCM-STREAM"
     TRANSPORT_SESSION_INFO = "elten transport session v1".b
     TRANSPORT_SESSION_NONCE_BYTES = 32
     TRANSPORT_SESSION_KEY_BYTES = 32
@@ -54,7 +55,17 @@ module EltenAPI
         close_http2(true)
       end
 
-      def ejrequest(method, path, params, data=nil, encrypted: nil, headers: nil, transport_session_retry: true, cancellation_token: nil, &block)
+      def ejrequest(method, path, params, data=nil, encrypted: nil, headers: nil, transport_session_retry: true, cancellation_token: nil, protocol: nil, &block)
+        if protocol == :http1 || (protocol == nil && disable_http2?)
+          return ejrequest_http1(
+            method, path, params, data,
+            encrypted: encrypted,
+            headers: headers,
+            transport_session_retry: transport_session_retry,
+            cancellation_token: cancellation_token,
+            &block
+          )
+        end
         params = {} unless params.is_a?(Hash)
         headers = headers.is_a?(Hash) ? headers : {}
         Thread.new do
@@ -121,7 +132,7 @@ module EltenAPI
                   if transport_session_retry && decrypt_context.is_a?(Hash) && decrypt_context[:mode] == :session
                     log_warning("Encrypted session request failed, retrying with RSA: #{format_exception(e)}")
                     clear_transport_session(decrypt_context[:session_id])
-                    ejrequest(method, path, params, data, encrypted: true, headers: headers, transport_session_retry: false, cancellation_token: cancellation_token, &block)
+                    ejrequest(method, path, params, data, encrypted: true, headers: headers, transport_session_retry: false, cancellation_token: cancellation_token, protocol: :http2, &block)
                     next
                   end
                   log_error("JSON body error: #{format_exception(e)}")
@@ -152,6 +163,161 @@ module EltenAPI
             else
               safe_call(block, :error, data)
             end
+          end
+        end
+      end
+
+      def ejrequest_http1(method, path, params, data=nil, encrypted: nil, headers: nil, transport_session_retry: true, cancellation_token: nil, &block)
+        params = {} unless params.is_a?(Hash)
+        headers = headers.is_a?(Hash) ? headers : {}
+        Thread.new do
+          Thread.current.report_on_exception = false
+          begin
+            raise_if_cancelled!(cancellation_token, data)
+            encrypted_request = encrypted.nil? ? encrypted_transport? : encrypted == true
+            json, decrypt_context = json_request_body(params, encrypted_request)
+            request_headers = {
+              "Content-Type" => "application/json",
+              "Accept-Encoding" => "zstd, identity"
+            }.merge(headers)
+            response = readurl_sync(
+              "https://#{HOST}:#{PORT}#{path}",
+              method,
+              json,
+              request_headers,
+              data,
+              cancellation_token: cancellation_token
+            )
+            body = response.is_a?(Hash) ? response[:body] : :error
+            if body == :error
+              safe_call(block, :error, data)
+              next
+            end
+            data["headers"] = response[:headers] if data.is_a?(Hash)
+            begin
+              body = decrypt_json_response(body, decrypt_context) if decrypt_context != nil
+              safe_call(block, body, data)
+            rescue Exception => e
+              if transport_session_retry && decrypt_context.is_a?(Hash) && decrypt_context[:mode] == :session
+                log_warning("Encrypted session request failed, retrying with RSA: #{format_exception(e)}")
+                clear_transport_session(decrypt_context[:session_id])
+                ejrequest_http1(
+                  method, path, params, data,
+                  encrypted: true,
+                  headers: headers,
+                  transport_session_retry: false,
+                  cancellation_token: cancellation_token,
+                  &block
+                )
+                next
+              end
+              raise
+            end
+          rescue Exception => e
+            log_error("HTTP/1.1 JSON request error: #{format_exception(e)}") unless cancelled?(data, cancellation_token)
+            safe_call(block, :error, data)
+          end
+        end
+      end
+
+      def ejstream(path, params, data=nil, cancellation_token: nil, &block)
+        params = {} unless params.is_a?(Hash)
+        Thread.new do
+          Thread.current.report_on_exception = false
+          pending_token = nil
+          generation = nil
+          begin
+            raise_if_cancelled!(cancellation_token, data)
+            raise "HTTP/2 disabled" if disable_http2?
+            raise "HTTP/2 unavailable" unless ensure_http2_connection
+            json, context = json_request_body(params, true)
+            raise "Encrypted transport session unavailable" unless context.is_a?(Hash) && context[:mode] == :session
+
+            buffer = +"".b
+            sequence = 0
+            status = 0
+            response_headers = {}
+            failure_reason = nil
+            http_mutex.synchronize do
+              stream = nil
+              connection_mutex.synchronize do
+                generation = @connection_generation
+                http = @http
+                ssl = @ssl
+                raise "HTTP/2 connection changed" unless connection_current?(generation, ssl, http)
+
+                stream = http.new_stream
+                pending_token = register_pending_request(generation, stream, cancellation_token, persistent: true) do
+                  reason = failure_reason || realtime_stream_http_error(status, buffer, response_headers, context)
+                  set_realtime_stream_error(data, reason)
+                  safe_call(block, :error, data)
+                end
+              end
+              if cancelled?(data, cancellation_token)
+                fail_pending_request(pending_token)
+                next
+              end
+              stream.on(:headers) do |values|
+                response_headers = values.to_h
+                status = (response_headers[":status"] || response_headers[:status]).to_i
+              end
+              stream.on(:data) do |chunk|
+                buffer << chunk.to_s.b
+                raise "Realtime stream frame is too large" if buffer.bytesize > 8 * 1024 * 1024
+
+                while (newline = buffer.index("\n"))
+                  line = buffer.slice!(0..newline).strip
+                  next if line.empty?
+
+                  decoded, sequence = decrypt_stream_frame(line, context, sequence)
+                  safe_call(block, decoded, data)
+                end
+              rescue Exception => e
+                failure_reason = "invalid frame: #{e.message}"
+                set_realtime_stream_error(data, failure_reason)
+                log_error("Realtime stream frame error: #{format_exception(e)}")
+                begin
+                  stream.cancel unless stream.respond_to?(:closed?) && stream.closed?
+                rescue Exception
+                end
+              end
+              stream.on(:close) do
+                next unless take_pending_request(pending_token)
+
+                touch_connection_activity(generation)
+                if status.between?(200, 299)
+                  set_realtime_stream_error(data, failure_reason || "connection closed before first frame") if sequence.zero?
+                  safe_call(block, :closed, data)
+                else
+                  set_realtime_stream_error(
+                    data,
+                    failure_reason || realtime_stream_http_error(status, buffer, response_headers, context)
+                  )
+                  safe_call(block, :error, data)
+                end
+              end
+              head = {
+                ":scheme" => "https",
+                ":authority" => "api.elten.link:443",
+                ":path" => path,
+                ":method" => "GET",
+                "user-agent" => user_agent,
+                "accept" => "application/x-ndjson",
+                "accept-encoding" => "identity",
+                "content-type" => "application/json",
+                "content-length" => json.bytesize.to_s
+              }
+              stream.headers(head, end_stream: false)
+              until json.empty?
+                chunk = json.slice!(0...4096)
+                stream.data(chunk, end_stream: json.empty?)
+              end
+            end
+          rescue Exception => e
+            set_realtime_stream_error(data, "setup failed: #{e.class}: #{e.message}")
+            log_error("Realtime stream error: #{format_exception(e)}") unless cancelled?(data, cancellation_token)
+            close_http2(false, generation) unless pending_token.nil? || generation.nil?
+            pending_token.nil? ? safe_call(block, :error, data) : fail_pending_request(pending_token)
           end
         end
       end
@@ -227,6 +393,10 @@ module EltenAPI
       def encrypted_transport_enabled=(enabled)
         @encrypted_transport_enabled = enabled == true
         clear_transport_session unless @encrypted_transport_enabled
+      end
+
+      def http2_enabled?
+        !disable_http2?
       end
 
       private
@@ -444,13 +614,14 @@ module EltenAPI
         @last_activity = monotonic_time if @connection_generation == generation
       end
 
-      def register_pending_request(generation, stream, cancellation_token=nil, &failure)
+      def register_pending_request(generation, stream, cancellation_token=nil, persistent: false, &failure)
         token = Object.new
         entry = {
           generation: generation,
           started_at: monotonic_time,
           failure: failure,
           stream: stream,
+          persistent: persistent,
           cancellation_registration: nil
         }
         pending_mutex.synchronize do
@@ -543,7 +714,7 @@ module EltenAPI
 
         pending_mutex.synchronize do
           (@pending_requests || {}).values
-            .select { |entry| entry[:generation] == generation }
+            .select { |entry| entry[:generation] == generation && entry[:persistent] != true }
             .map { |entry| entry[:started_at] }
             .compact
             .min
@@ -749,6 +920,59 @@ module EltenAPI
         decode_encrypted_payload(plaintext, envelope["content_encoding"])
       rescue JSON::ParserError, KeyError, ArgumentError, OpenSSL::Cipher::CipherError => e
         raise "Invalid encrypted response: #{e.message}"
+      end
+
+      def decrypt_stream_frame(line, context, previous_sequence)
+        envelope = JSON.load(line.to_s)
+        unless envelope.is_a?(Hash) && envelope["elten_encryption"] == "v1" && envelope["alg"] == REALTIME_STREAM_ALGORITHM
+          raise "Invalid realtime stream envelope"
+        end
+
+        session_id = envelope.fetch("session_id").to_s
+        raise "Realtime stream session mismatch" unless session_id == context[:session_id].to_s
+        sequence = envelope.fetch("sequence").to_i
+        raise "Invalid realtime stream sequence" unless sequence == previous_sequence.to_i + 1
+
+        encoding = envelope["content_encoding"].to_s
+        cipher = OpenSSL::Cipher.new("aes-256-gcm")
+        cipher.decrypt
+        cipher.key = context[:key]
+        cipher.iv = Base64.strict_decode64(envelope.fetch("iv"))
+        cipher.auth_tag = Base64.strict_decode64(envelope.fetch("tag"))
+        cipher.auth_data = ["v1", REALTIME_STREAM_ALGORITHM, session_id, "stream", sequence, encoding].join("|").b
+        plaintext = cipher.update(Base64.strict_decode64(envelope.fetch("payload"))) + cipher.final
+        [decode_encrypted_payload(plaintext, encoding), sequence]
+      rescue JSON::ParserError, KeyError, ArgumentError, OpenSSL::Cipher::CipherError => e
+        raise "Invalid realtime stream frame: #{e.message}"
+      end
+
+      def realtime_stream_http_error(status, body, headers, context)
+        prefix = if status.to_i.between?(200, 299)
+                   "HTTP/2 connection closed after HTTP #{status.to_i}"
+                 elsif status.to_i.positive?
+                   "HTTP #{status.to_i}"
+                 else
+                   "HTTP/2 connection closed before response"
+                 end
+        return prefix if body.to_s.empty?
+
+        decoded = decode_body(body, headers)
+        decoded = decrypt_json_response(decoded, context)
+        payload = JSON.load(decoded.to_s)
+        error = payload.is_a?(Hash) ? payload["error"] : nil
+        return prefix unless error.is_a?(Hash)
+
+        details = [error["code"], error["message"]].map(&:to_s).reject(&:empty?).join(": ")
+        details.empty? ? prefix : "#{prefix}: #{details}"
+      rescue Exception
+        prefix
+      end
+
+      def set_realtime_stream_error(data, reason)
+        return unless data.is_a?(Hash)
+
+        value = reason.to_s.gsub(/\s+/, " ").strip
+        data["stream_error"] = value[0, 240] unless value.empty?
       end
 
       def process_transport_session_response(session_response, session_open)
