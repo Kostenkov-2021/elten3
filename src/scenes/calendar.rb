@@ -267,8 +267,10 @@ end
 class Scene_Calendar
   include CalendarSceneHelpers
 
-  def initialize(calendar_id=nil, date=nil)
-    @filter_calendar_id = calendar_id == nil ? nil : calendar_id.to_i
+  def initialize(calendar_id=nil, date=nil, preview_calendar: nil, return_scene: nil)
+    @preview_calendar = preview_calendar
+    @return_scene = return_scene
+    @filter_calendar_id = @preview_calendar == nil ? (calendar_id == nil ? nil : calendar_id.to_i) : @preview_calendar.id
     @selected_date = normalize_calendar_date(date || Date.today)
   end
 
@@ -303,21 +305,23 @@ class Scene_Calendar
         move_to_adjacent_event_day(direction)
       end
       if key_pressed?(:key_escape)
-        $scene = Scene_Main.new
+        $scene = @return_scene || Scene_Main.new
       end
       break if $scene != self
     end
   end
 
   def context(menu)
-    menu.submenu(p_("Calendar", "Filter by calendar")) do |submenu|
-      submenu.option(p_("Calendar", "All calendars")) { select_calendar(nil) }
-      @calendars.each do |calendar|
-        submenu.option(calendar_label(calendar)) { select_calendar(calendar) }
+    if !preview_mode?
+      menu.submenu(p_("Calendar", "Filter by calendar")) do |submenu|
+        submenu.option(p_("Calendar", "All calendars")) { select_calendar(nil) }
+        @calendars.each do |calendar|
+          submenu.option(calendar_label(calendar)) { select_calendar(calendar) }
+        end
       end
     end
     target_calendar = default_calendar
-    if can_manage_calendar_events?(target_calendar)
+    if calendar_events_editable?(target_calendar)
       menu.option(p_("Calendar", "Add event"), nil, "n") do
         if create_or_update_event(@calendars, target_calendar, @grid.date)
           load_events
@@ -327,10 +331,21 @@ class Scene_Calendar
     end
     menu.option(p_("Calendar", "Events on selected day"), nil, "e") { show_day_events(@grid.date) }
     menu.option(p_("Calendar", "Upcoming events"), nil, "u") do
-      $scene = Scene_Calendar_Upcoming.new(@filter_calendar_id, @grid.date)
+      if preview_mode?
+        $scene = Scene_Calendar_Upcoming.new(
+          @filter_calendar_id,
+          @grid.date,
+          preview_calendar: @preview_calendar,
+          return_scene: self
+        )
+      else
+        $scene = Scene_Calendar_Upcoming.new(@filter_calendar_id, @grid.date)
+      end
     end
-    menu.option(p_("Calendar", "Calendar management"), nil, "c") do
-      $scene = Scene_Calendar_Management.new(@filter_calendar_id, @grid.date)
+    if !preview_mode?
+      menu.option(p_("Calendar", "Calendar management"), nil, "c") do
+        $scene = Scene_Calendar_Management.new(@filter_calendar_id, @grid.date)
+      end
     end
     menu.option(_("Refresh"), nil, "r") do
       if load_calendars
@@ -341,7 +356,7 @@ class Scene_Calendar
   end
 
   def load_calendars
-    @calendars = EltenLink::Calendars.list(elten_link)
+    @calendars = preview_mode? ? [@preview_calendar] : EltenLink::Calendars.list(elten_link)
     if @calendars.empty?
       alert(p_("Calendar", "No calendars are available"))
       return false
@@ -358,7 +373,11 @@ class Scene_Calendar
   end
 
   def load_events
-    @all_events = EltenLink::Calendars.all_events(elten_link)
+    @all_events = if preview_mode?
+                    EltenLink::Calendars.events(elten_link, @preview_calendar)
+                  else
+                    EltenLink::Calendars.all_events(elten_link)
+                  end
     mark_public_calendar_events(@all_events, @calendars)
     apply_event_filter
     true
@@ -470,6 +489,14 @@ class Scene_Calendar
     @calendars.find(&:personal?) || @calendars.first
   end
 
+  def preview_mode?
+    @preview_calendar != nil
+  end
+
+  def calendar_events_editable?(calendar)
+    !preview_mode? && can_manage_calendar_events?(calendar)
+  end
+
   def calendar_for_event(event)
     @calendars.find { |calendar| calendar.id == event.calendar_id }
   end
@@ -486,7 +513,7 @@ class Scene_Calendar
           event = day_events[list.index]
           calendar = calendar_for_event(event)
           menu.option(p_("Calendar", "Show details")) { show_event_details(event, calendar) }
-          if can_manage_calendar_events?(calendar)
+          if calendar_events_editable?(calendar)
             menu.option(_("Edit"), nil, "e") do
               refresh = create_or_update_event(@calendars, calendar, date, event)
             end
@@ -496,7 +523,7 @@ class Scene_Calendar
           end
         end
         target_calendar = default_calendar
-        if can_manage_calendar_events?(target_calendar)
+        if calendar_events_editable?(target_calendar)
           menu.option(p_("Calendar", "Add event"), nil, "n") do
             refresh = create_or_update_event(@calendars, target_calendar, date)
           end
@@ -839,12 +866,14 @@ class Scene_Calendar_Public
       return_to_management
       return
     end
-    build_list
+    build_list(@selected_calendar_id)
     loop do
       loop_update
       @sel.update
       if key_pressed?(:key_escape)
         return_to_management
+      elsif @sel.selected? && current_calendar != nil
+        open_preview(current_calendar)
       end
       break if $scene != self
     end
@@ -884,6 +913,7 @@ class Scene_Calendar_Public
   def context(menu)
     calendar = current_calendar
     if calendar != nil
+      menu.option(p_("Calendar", "Preview calendar")) { open_preview(calendar) }
       if @subscribed_ids.include?(calendar.id)
         menu.option(p_("Calendar", "Unsubscribe"), nil, "l") { unsubscribe(calendar) }
       elsif !calendar.owned_by?(Session.name) && !calendar.moderator?
@@ -916,6 +946,16 @@ class Scene_Calendar_Public
     count = calendar.subscribers_count.to_i
     subscribers = np_("Calendar", "%{count} subscriber", "%{count} subscribers", count) % { count: count }
     "#{calendar_label(calendar)}, #{subscribers}"
+  end
+
+  def open_preview(calendar)
+    @selected_calendar_id = calendar.id
+    $scene = Scene_Calendar.new(
+      calendar.id,
+      @return_date,
+      preview_calendar: calendar,
+      return_scene: self
+    )
   end
 
   def subscribe(calendar)
@@ -951,9 +991,11 @@ end
 class Scene_Calendar_Upcoming
   include CalendarSceneHelpers
 
-  def initialize(filter_calendar_id=nil, date=nil)
+  def initialize(filter_calendar_id=nil, date=nil, preview_calendar: nil, return_scene: nil)
     @return_filter_id = filter_calendar_id == nil ? nil : filter_calendar_id.to_i
     @return_date = normalize_calendar_date(date || Date.today)
+    @preview_calendar = preview_calendar
+    @return_scene = return_scene
   end
 
   def main(index=0)
@@ -964,7 +1006,7 @@ class Scene_Calendar_Upcoming
       loop_update
       @sel.update
       if key_pressed?(:key_escape)
-        $scene = Scene_Calendar.new(@return_filter_id, @return_date)
+        $scene = @return_scene || Scene_Calendar.new(@return_filter_id, @return_date)
       end
       show_event_details(current_event, calendar_for(current_event)) if @sel.selected? && current_event != nil
       if @refresh
@@ -982,7 +1024,7 @@ class Scene_Calendar_Upcoming
     if event != nil
       calendar = calendar_for(event)
       menu.option(p_("Calendar", "Show details")) { show_event_details(event, calendar) }
-      if can_manage_calendar_events?(calendar)
+      if !preview_mode? && can_manage_calendar_events?(calendar)
         menu.option(_("Edit"), nil, "e") do
           @refresh = create_or_update_event(@calendars, calendar, normalize_calendar_date(event.starttime), event)
         end
@@ -995,9 +1037,13 @@ class Scene_Calendar_Upcoming
   end
 
   def load_upcoming
-    @calendars = EltenLink::Calendars.list(elten_link)
+    @calendars = preview_mode? ? [@preview_calendar] : EltenLink::Calendars.list(elten_link)
     now = Time.now
-    events = EltenLink::Calendars.all_events(elten_link)
+    events = if preview_mode?
+               EltenLink::Calendars.events(elten_link, @preview_calendar)
+             else
+               EltenLink::Calendars.all_events(elten_link)
+             end
     mark_public_calendar_events(events, @calendars)
     events.select! { |event| event.endtime.to_i >= now.to_i }
     if @return_filter_id == nil
@@ -1022,5 +1068,9 @@ class Scene_Calendar_Upcoming
   def calendar_for(event)
     return nil if event == nil
     @calendars.find { |calendar| calendar.id == event.calendar_id }
+  end
+
+  def preview_mode?
+    @preview_calendar != nil
   end
 end
