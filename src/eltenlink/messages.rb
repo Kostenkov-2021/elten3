@@ -32,7 +32,7 @@ module EltenLink
 
   class Message
     attr_accessor :id, :receiver, :sender, :sender_is_user, :subject, :mread, :marked, :date, :attachments,
-      :text, :transcription, :audio_url, :attachments_names, :protected, :polls, :polls_names
+      :text, :transcription, :audio_url, :attachments_names, :protected, :polls, :polls_names, :forwardedfrom
 
     def initialize(id = 0)
       @id = id.to_i
@@ -51,13 +51,14 @@ module EltenLink
       @text = ""
       @transcription = ""
       @audio_url = ""
+      @forwardedfrom = ""
     end
   end
 
   class QuickMessage
-    attr_accessor :id, :sender, :receiver, :group_name, :subject, :text, :audio_url
+    attr_accessor :id, :sender, :receiver, :group_name, :subject, :text, :audio_url, :forwardedfrom
 
-    def initialize(id: 0, sender: "", receiver: "", group_name: "", subject: "", text: "", audio_url: "")
+    def initialize(id: 0, sender: "", receiver: "", group_name: "", subject: "", text: "", audio_url: "", forwardedfrom: "")
       @id = id.to_i
       @sender = sender.to_s
       @receiver = receiver.to_s
@@ -65,6 +66,7 @@ module EltenLink
       @subject = subject.to_s
       @text = text.to_s
       @audio_url = audio_url.to_s
+      @forwardedfrom = forwardedfrom.to_s
     end
   end
 
@@ -111,6 +113,15 @@ module EltenLink
       def users(client, limit:)
         data = client.api_data("GET", "/api/v1/messages", { "limit" => limit })
         MessageUsersList.new(users: parse_users(data["participants"]), more: truthy?(data["more"]))
+      end
+
+      def groups(client)
+        refresh_conversation_names(client)
+        @conversation_names.map do |id, name|
+          group = MessageUser.new(utf8(id))
+          group.name = utf8(name)
+          group
+        end
       end
 
       def conversations(client, user:, limit:)
@@ -206,6 +217,11 @@ module EltenLink
         true
       end
 
+      def forward(client, id, to:)
+        client.api_data("POST", "/api/v1/messages/#{id.to_i}/forward", { "to" => to.to_s })
+        true
+      end
+
       def send_text(client, to:, subject:, text:, attachments: [], polls: [], admin: false)
         params = { "to" => to, "subject" => subject }
         attach_payload(client, params, {}, attachments, polls) do |payload|
@@ -233,7 +249,8 @@ module EltenLink
           group_name: utf8(data["group_name"]),
           subject: utf8(data["subject"]),
           text: content_text(data, "message"),
-          audio_url: content_audio_url(data)
+          audio_url: content_audio_url(data),
+          forwardedfrom: utf8(data["forwardedfrom"])
         )
       end
 
@@ -319,6 +336,7 @@ module EltenLink
           message.text = content_text(row, "message")
           message.transcription = utf8(row["transcription"])
           message.audio_url = content_audio_url(row)
+          message.forwardedfrom = utf8(row["forwardedfrom"])
           message
         end
         MessagesList.new(

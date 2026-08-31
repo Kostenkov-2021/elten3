@@ -122,8 +122,14 @@ def import(arr)
     return true if Configuration.autoplay == :always
     Configuration.autoplay == :without_transcription && message.transcription.to_s.strip == ""
   end
+  def forwarded_message_label(message)
+    source=message.forwardedfrom.to_s
+    return "" if source.empty?
+    source=name_conversation(source) if source.start_with?("[")
+    p_("Messages", "Forwarded from %{user}")%{:user=>source}
+  end
   def message_display_text(message, date)
-    [message.text, message.transcription, date].map(&:to_s).reject { |part| part.strip == "" }.join("\r\n")
+    [forwarded_message_label(message), message.text, message.transcription, date].map(&:to_s).reject { |part| part.strip == "" }.join("\r\n")
   end
   def message_item_statuses(message)
     states=[]
@@ -136,6 +142,33 @@ def import(arr)
   rescue EltenLink::Error
     conv
     end
+  def forward_message(message)
+    recipients=EltenLink::Messages.users(elten_link, limit: 100).users
+    recipients+=EltenLink::Messages.groups(elten_link)
+    recipients=recipients.select{|recipient|recipient.is_user || recipient.user.to_s.start_with?("[")}.uniq{|recipient|recipient.user.to_s.downcase}
+    labels=recipients.map do |recipient|
+      name=recipient.name.to_s
+      name=recipient.user.to_s if name.empty?
+      name
+    end
+    other_index=labels.size
+    labels << p_("Messages", "Other user")
+    index=selector(labels, header: p_("Messages", "Forward message to"), cancel_index: -1)
+    return if index<0
+    recipient=recipients[index]&.user.to_s
+    if index==other_index
+      recipient=input_text(p_("Messages", "Recipient"), flags: 0, text: "", escapable: true)
+      return if recipient==nil || recipient.strip.empty?
+      recipient=recipient.strip.sub(/@elten\.me\z/i, "")
+    end
+    EltenLink::Messages.forward(elten_link, message.id, to: recipient)
+    alert(p_("Messages", "The message has been forwarded"))
+  rescue EltenLink::Error => e
+    Log.warning("Forward message failed: #{e.message}")
+    alert(_("Error"))
+  ensure
+    @form_messages.focus if @form_messages!=nil
+  end
  def load_users(limit=@users_limit||20)
    @lastuser=nil
    @lastuser=@users[@sel_users.index] if @users.is_a?(Array) and @sel_users.is_a?(ListBox)
@@ -600,8 +633,12 @@ end
             autoplay_audio=message_list_audio_autoplay?(m)
             audio_autoplay[selt.size-1]=autoplay_audio
             audio_completion_labels[selt.size-1]=format_date(m.date) if autoplay_audio
-            if !autoplay_audio
+            forwarded=forwarded_message_label(m)
+            if autoplay_audio
+              selt[-1]+=":\r\n"+forwarded if !forwarded.empty?
+            else
               text=message_list_content(m)
+              text=[forwarded, text].reject{|part|part.empty?}.join("\r\n")
               subject=utf8(m.subject)
               selt[-1]+=":\r\n"+((sp!=nil and sp!="new")?(subject+":\r\n"):"")+text.split("")[0...5000].join+((text.size>5000)?"... #{p_("Messages", "Open this message to read more")}":"")+"\r\n"+format_date(m.date)+"\r\n"
             end
@@ -830,8 +867,7 @@ $scene = Scene_Messages_New.new(@messages_user,"","",export)
 end
 if @messages.size>0 and @sel_messages.index<@messages.size
 menu.option(p_("Messages", "Forward"), nil, "d") {
-  t="#{@messages[@sel_messages.index].sender}: \r\n" + @messages[@sel_messages.index].text
-    $scene = Scene_Messages_New.new("","FW: " + @messages[@sel_messages.index].subject, t, export)
+  forward_message(@messages[@sel_messages.index])
 }
 end
 menu.option(_("Refresh"), nil, "r") {
