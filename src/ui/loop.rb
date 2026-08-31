@@ -102,6 +102,7 @@ end
                $main_notifications_changed = true
                Session.notifications_update
              end
+             next if $donotdisturb == true
              if $notifications_callback!=nil
                $notifications_callback.call(d)
              else
