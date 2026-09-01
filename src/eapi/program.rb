@@ -65,6 +65,295 @@ module Programs
     end
   end
 
+  class UnsupportedExecutionBackendError < ProgramError
+    attr_reader :backend
+
+    def initialize(backend:, source: nil)
+      @backend = backend.to_s
+      location = source.to_s == "" ? "" : " in #{source}"
+      super("Unsupported program execution backend #{@backend.inspect}#{location}")
+    end
+  end
+
+  module Execution
+    DEFAULT_BACKEND = "runtime".freeze
+
+    class Spec
+      attr_reader :backend
+
+      def initialize(value = nil, source = nil)
+        if value == nil
+          @backend = DEFAULT_BACKEND
+        elsif value.is_a?(Hash)
+          backend = value["backend"]
+          @backend = backend == nil || backend.to_s.strip == "" ? DEFAULT_BACKEND : backend.to_s.downcase.strip
+        else
+          raise ProgramError, "Invalid program execution declaration in #{source}"
+        end
+        @backend = @backend.freeze
+        Execution.backend_class(@backend, source: source)
+        freeze
+      end
+
+      def to_h
+        { "backend" => @backend }
+      end
+    end
+
+    class Backend
+      attr_reader :runtime, :namespace
+
+      def initialize(runtime)
+        @runtime = runtime
+      end
+
+      def evaluate(_code, _filename, _line = 1)
+        raise NotImplementedError
+      end
+
+      def resolve_constant(name)
+        parts = name.to_s.split("::").reject { |part| part == "" }
+        current = @namespace
+        parts.each do |part|
+          raise ProgramError, "Invalid main_class #{name}" if part !~ /\A[A-Z]\w*\z/
+          raise ProgramError, "Main class #{name} not found" if !current.const_defined?(part.to_sym, false)
+          current = current.const_get(part.to_sym, false)
+        end
+        current
+      end
+
+      def box?
+        false
+      end
+
+      def native_box?
+        false
+      end
+
+      def dispose(_reason = :unload)
+      end
+    end
+
+    class RuntimeBackend < Backend
+      def initialize(runtime)
+        super
+        @namespace = Programs.namespace_for(runtime.manifest)
+      end
+
+      def evaluate(code, filename, line = 1)
+        @namespace.module_eval(code, filename, line)
+      end
+
+      def dispose(_reason = :unload)
+        Programs.remove_runtime_namespace(@runtime)
+      end
+    end
+
+    class NativeBoxBridge
+      def initialize(runtime)
+        @runtime = runtime
+        @top_level = TOPLEVEL_BINDING.receiver
+        @loaded_features = $LOADED_FEATURES.map { |feature| feature.to_s.tr("\\", "/") }.freeze
+      end
+
+      def require_program_file(path)
+        return true if @runtime != nil && @runtime.require_file(path)
+        return false if host_feature_loaded?(path)
+        nil
+      end
+
+      def require_relative_program_file(path, caller_path)
+        return true if @runtime != nil && @runtime.require_relative_file(path, caller_path)
+        nil
+      end
+
+      def top_level_method?(name)
+        @top_level != nil && @top_level.respond_to?(name, true)
+      end
+
+      def call_top_level(name, *args, **kwargs, &block)
+        raise NoMethodError, "undefined host method #{name}" if !top_level_method?(name)
+        Programs.with_runtime(@runtime) do
+          @top_level.__send__(name, *args, **kwargs, &block)
+        end
+      end
+
+      def close
+        @runtime = nil
+        @top_level = nil
+        @loaded_features = nil
+      end
+
+      private
+
+      def host_feature_loaded?(path)
+        requested = path.to_s.tr("\\", "/")
+        return false if requested == ""
+        extensions = ["", ".rb", ".so", ".bundle", ".dll"]
+        Array(@loaded_features).any? do |loaded|
+          extensions.any? do |extension|
+            candidate = requested.end_with?(extension) ? requested : requested + extension
+            loaded == candidate || loaded.end_with?("/" + candidate)
+          end
+        end
+      end
+    end
+
+    class BoxBackend < Backend
+      BRIDGE_CONSTANT = :ELTEN_APP_BOX_BRIDGE
+      HOST_CONSTANT_EXCLUSIONS = [:EltenPrograms, BRIDGE_CONSTANT].freeze
+
+      def initialize(runtime)
+        super
+        @native = Execution.native_box_available?
+        if @native
+          begin
+            initialize_native_box
+          rescue Exception => e
+            Log.warning("Cannot initialize native Ruby::Box, using compatibility wrapper: #{e.class}: #{e.message}") if defined?(Log)
+            @bridge.close if @bridge != nil
+            @bridge = nil
+            @binding = nil
+            @native = false
+          end
+        end
+        @namespace = Programs.namespace_for(runtime.manifest) if !@native
+      end
+
+      def evaluate(code, filename, line = 1)
+        if @native
+          Kernel.eval(code, @binding, filename, line)
+        else
+          @namespace.module_eval(code, filename, line)
+        end
+      end
+
+      def box?
+        true
+      end
+
+      def native_box?
+        @native
+      end
+
+      def dispose(_reason = :unload)
+        if @native
+          @bridge.close if @bridge != nil
+          if @namespace != nil && @namespace.const_defined?(BRIDGE_CONSTANT, false)
+            @namespace.send(:remove_const, BRIDGE_CONSTANT)
+          end
+          @binding = nil
+        else
+          Programs.remove_runtime_namespace(@runtime)
+        end
+      rescue Exception => e
+        Log.warning("Cannot dispose program Box: #{e.class}: #{e.message}") if defined?(Log)
+      end
+
+      private
+
+      def initialize_native_box
+        @namespace = Ruby::Box.new
+        expose_host_constants
+        @bridge = NativeBoxBridge.new(@runtime)
+        @namespace.const_set(BRIDGE_CONSTANT, @bridge)
+        @namespace.eval(native_box_bootstrap)
+        @binding = @namespace.eval("Kernel.binding")
+      end
+
+      def expose_host_constants
+        Object.constants(false).each do |name|
+          next if HOST_CONSTANT_EXCLUSIONS.include?(name)
+          next if @namespace.const_defined?(name, false)
+          next if Object.autoload?(name) != nil
+          @namespace.const_set(name, Object.const_get(name, false))
+        rescue NameError
+          next
+        end
+      end
+
+      def native_box_bootstrap
+        <<~RUBY
+          module EltenAppBoxTopLevelBridge
+            private
+
+            def method_missing(name, *args, **kwargs, &block)
+              bridge = ::#{BRIDGE_CONSTANT}
+              return bridge.call_top_level(name, *args, **kwargs, &block) if bridge.top_level_method?(name)
+              super
+            end
+
+            def respond_to_missing?(name, include_private = false)
+              ::#{BRIDGE_CONSTANT}.top_level_method?(name) || super
+            end
+          end
+
+          Object.include(EltenAppBoxTopLevelBridge)
+
+          module Kernel
+            unless private_method_defined?(:__elten_app_box_original_require)
+              alias __elten_app_box_original_require require
+              alias __elten_app_box_original_require_relative require_relative
+
+              def require(path)
+                result = ::#{BRIDGE_CONSTANT}.require_program_file(path)
+                return result if result != nil
+                __elten_app_box_original_require(path)
+              end
+
+              def require_relative(path)
+                location = caller_locations(1, 1)[0]
+                caller_path = location && (location.absolute_path || location.path)
+                result = ::#{BRIDGE_CONSTANT}.require_relative_program_file(path, caller_path)
+                return result if result != nil
+                __elten_app_box_original_require_relative(path)
+              end
+            end
+          end
+        RUBY
+      end
+    end
+
+    @backends = {}
+
+    class << self
+      def register(name, backend_class)
+        name = name.to_s.downcase.strip.freeze
+        raise ArgumentError, "Execution backend name cannot be empty" if name == ""
+        raise ArgumentError, "Execution backend must inherit from Programs::Execution::Backend" if !backend_class.is_a?(Class) || !(backend_class <= Backend)
+        @backends[name] = backend_class
+      end
+
+      def backend_class(name, source: nil)
+        name = name.to_s.downcase.strip
+        backend = @backends[name]
+        raise UnsupportedExecutionBackendError.new(backend: name, source: source) if backend == nil
+        backend
+      end
+
+      def build(spec, runtime)
+        backend_class(spec.backend).new(runtime)
+      end
+
+      def backends
+        @backends.keys.sort.freeze
+      end
+
+      def native_box_available?
+        return false if !defined?(Ruby::Box)
+        return false if !Ruby::Box.is_a?(Class) || !Ruby::Box.respond_to?(:new)
+        return false if !Ruby::Box.respond_to?(:enabled?) || !Ruby::Box.enabled?
+        required = [:eval, :require, :require_relative]
+        required.all? { |method| Ruby::Box.instance_methods.include?(method) }
+      rescue Exception
+        false
+      end
+    end
+
+    register(DEFAULT_BACKEND, RuntimeBackend)
+    register("box", BoxBackend)
+  end
+
   class ServerAppDefinition
     attr_reader :uuid, :tables
 
@@ -281,7 +570,7 @@ module Programs
   end
 
   class Manifest
-    attr_reader :id, :name, :version, :build_id, :elten_api_version, :eltenlink_contract_version, :author, :main, :main_class, :platforms, :menu, :gems, :required_assets, :raw
+    attr_reader :id, :name, :version, :build_id, :elten_api_version, :eltenlink_contract_version, :author, :main, :main_class, :platforms, :menu, :gems, :required_assets, :execution, :raw
 
     def initialize(raw, source)
       @raw = raw.is_a?(Hash) ? raw : {}
@@ -299,6 +588,7 @@ module Programs
       @menu = @raw["menu"].is_a?(Hash) ? @raw["menu"] : {}
       @gems = Array(@raw["gems"]).map { |gem| gem.is_a?(Hash) ? gem["name"].to_s : gem.to_s }.reject { |gem| gem == "" }
       @required_assets = normalize_required_assets(@raw["required_assets"])
+      @execution = Execution::Spec.new(@raw["execution"], @source)
       validate
     end
 
@@ -715,7 +1005,7 @@ module Programs
   end
 
   class Runtime
-    attr_reader :entry_id, :root, :manifest, :namespace, :virtual_files, :sound_assets, :language_files
+    attr_reader :entry_id, :root, :manifest, :namespace, :execution, :virtual_files, :sound_assets, :language_files
 
     def initialize(entry_id:, root:, manifest:, virtual_files: {}, language_files: {}, native_files: {}, package_file: nil)
       @entry_id = entry_id
@@ -736,7 +1026,8 @@ module Programs
       @json_file_monitors_guard = Monitor.new
       @language_files = {}
       language_files.each { |code, data| @language_files[normalize_language_code(code)] = data.to_s.b }
-      @namespace = Programs.namespace_for(manifest)
+      @execution = Execution.build(@manifest.execution, self)
+      @namespace = @execution.namespace
       @gem_load_paths = collect_gem_load_paths
       @native_lookup = build_native_lookup
       collect_physical_sound_assets
@@ -761,8 +1052,28 @@ module Programs
       code = code_for(logical)
       raise ProgramError, "Cannot load missing program file #{logical}" if code == nil
       @loaded[logical] = true
-      Programs.with_runtime(self) { @namespace.module_eval(code, virtual_path(logical), 1) }
+      Programs.with_runtime(self) { @execution.evaluate(code, virtual_path(logical), 1) }
       true
+    end
+
+    def resolve_constant(name)
+      @execution.resolve_constant(name)
+    end
+
+    def execution_backend
+      @manifest.execution.backend
+    end
+
+    def box?
+      @execution.box?
+    end
+
+    def native_box?
+      @execution.native_box?
+    end
+
+    def dispose_execution(reason = :unload)
+      @execution.dispose(reason) if @execution != nil
     end
 
     def require_file(name)
@@ -1268,6 +1579,25 @@ module Programs
       Thread.current[:elten_program_runtime]
     end
 
+    def current_execution_backend
+      runtime = current_runtime
+      runtime == nil ? nil : runtime.execution_backend
+    end
+
+    def box?
+      runtime = current_runtime
+      runtime != nil && runtime.box?
+    end
+
+    def native_box?
+      runtime = current_runtime
+      runtime != nil && runtime.native_box?
+    end
+
+    def native_box_available?
+      Execution.native_box_available?
+    end
+
     def with_runtime(runtime)
       previous = Thread.current[:elten_program_runtime]
       Thread.current[:elten_program_runtime] = runtime
@@ -1311,7 +1641,11 @@ module Programs
       @@runtime_by_prefix.delete(runtime.virtual_prefix)
       root = File.expand_path(runtime.root).tr("\\", "/").downcase rescue nil
       @@runtime_by_root.delete(root) if root != nil
-      remove_runtime_namespace(runtime)
+      if runtime.respond_to?(:dispose_execution)
+        runtime.dispose_execution(reason)
+      else
+        remove_runtime_namespace(runtime)
+      end
     end
 
     def runtime_namespace_active?(namespace)
@@ -2417,13 +2751,7 @@ module Programs
     end
 
     def resolve_main_class(runtime)
-      parts = runtime.manifest.main_class.split("::").reject { |part| part == "" }
-      current = runtime.namespace
-      parts.each do |part|
-        raise ProgramError, "Invalid main_class #{runtime.manifest.main_class}" if part !~ /\A[A-Z]\w*\z/
-        raise ProgramError, "Main class #{runtime.manifest.main_class} not found" if !current.const_defined?(part.to_sym, false)
-        current = current.const_get(part.to_sym, false)
-      end
+      current = runtime.resolve_constant(runtime.manifest.main_class)
       raise ProgramError, "Main class #{runtime.manifest.main_class} is not a Program" if !(current < Program)
       current
     end
@@ -2612,6 +2940,21 @@ class Program
 
   class << self
     attr_reader :app_info, :app_runtime
+
+    def execution_backend
+      runtime = @app_runtime || Programs.current_runtime
+      runtime == nil ? nil : runtime.execution_backend
+    end
+
+    def box?
+      runtime = @app_runtime || Programs.current_runtime
+      runtime != nil && runtime.box?
+    end
+
+    def native_box?
+      runtime = @app_runtime || Programs.current_runtime
+      runtime != nil && runtime.native_box?
+    end
 
     def activate
     end
@@ -2947,6 +3290,18 @@ class Program
 
   def app
     self.class.app_runtime
+  end
+
+  def execution_backend
+    self.class.execution_backend
+  end
+
+  def box?
+    self.class.box?
+  end
+
+  def native_box?
+    self.class.native_box?
   end
 
   def name

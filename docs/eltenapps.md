@@ -96,6 +96,34 @@ The manifest is JSON, even though it is embedded in a Ruby block comment. JSON k
 | `menu` | Optional main-menu and user-menu metadata. |
 | `gems` | Optional declarations for additional Ruby gems not already supplied by Elten. They are used by the full setup builder. |
 | `required_assets` | Optional declaration of resources which must be available before the application is loaded. |
+| `execution` | Optional execution declaration. When omitted, it defaults to the `runtime` backend. Supported backends are `runtime` and `box` (for future RubyBox usage). |
+
+The execution declaration is not required. Existing manifests without this field continue to use `runtime`. An application opts into Box execution explicitly:
+
+```json
+{
+  "execution": {
+    "backend": "box"
+  }
+}
+```
+
+When the running Ruby declares and enables the experimental `Ruby::Box` API, each `box` application receives a native Box. Native support requires `Ruby::Box.enabled?` and the Box evaluation/loading methods; on current Ruby builds this normally means enabling Box when the Ruby process starts. If native support is absent or disabled, Elten uses a compatibility wrapper based on the existing per-application namespace. The wrapper preserves ordinary application loading but does not provide the definition and global-state isolation of a native Box.
+Non-experimental native boxing is a planned feature for Ruby 4.1 and will be enabled in the future!
+
+Application code can distinguish these cases without referring to an optional Ruby constant:
+
+```ruby
+Programs.box?         # true for both a native Box and the compatibility wrapper
+Programs.native_box?  # true only while code is executing in a native Ruby::Box
+
+# After the main class has been bound, the same checks are available there
+# and on its instances:
+ProgramExample.box?
+ProgramExample.native_box?
+```
+
+`Programs.native_box_available?` reports whether this Ruby process can create native boxes. Runtime objects returned by `app` also provide `execution_backend`, `box?` and `native_box?`.
 
 Platform entries are lower-case. The runtime recognises `all`, `universal` and `*`, a family such as `windows`, `linux` or `osx`, or an exact target such as `windows-x64`, `windows-arm64`, `linux-x64`, `linux-arm64` or `osx-arm64`. Prefer the narrowest truthful declaration when an application contains native code.
 
