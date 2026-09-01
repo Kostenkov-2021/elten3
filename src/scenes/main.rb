@@ -64,6 +64,7 @@ class Scene_Main
     notifications_load(false, focus_policy: entry_notification_focus_policy)
     acsel_load(false)
     feeds_load(false)
+    @program_ui_revision = program_ui_revision
     focus_current_control
     if current_main_section == :notifications
       Session.notifications_updated?
@@ -72,6 +73,7 @@ class Scene_Main
 
     loop do
       loop_update
+      refresh_program_ui_if_needed
       notifications_changed = Session.notifications_updated?
       if $main_notifications_changed == true || notifications_changed
         $main_notifications_changed = false
@@ -128,12 +130,68 @@ def main_sections
   sections << :notifications if notifications_visible?
   sections << :actions if main_tab_enabled?(:actions)
   sections << :feed if main_tab_enabled?(:feed)
+  sections.concat(program_main_tabs.map { |tab| tab.section_id })
   sections << :empty if sections.empty?
   sections
 end
 
 def main_tab_enabled?(tab)
   Configuration.maintabs.to_a.include?(tab)
+end
+
+def program_main_tabs
+  return [] if !defined?(Programs::Extensions)
+  Programs::Extensions.main_tabs
+end
+
+def program_main_tab(section)
+  return nil if !defined?(Programs::Extensions)
+  Programs::Extensions.main_tab(section)
+end
+
+def program_main_tab_control(section=current_main_section)
+  contribution = program_main_tab(section)
+  return nil if contribution == nil
+  @program_main_tab_entries ||= {}
+  entry = @program_main_tab_entries[contribution.section_id]
+  if entry == nil || !entry[:contribution].equal?(contribution)
+    entry = { :contribution => contribution, :control => nil, :state => {} }
+    @program_main_tab_entries[contribution.section_id] = entry
+  end
+  control = contribution.build_control(self, entry[:control], entry[:state])
+  entry[:control] = control if control != nil
+  entry[:control]
+end
+
+def program_ui_revision
+  return 0 if !defined?(Programs::Extensions)
+  Programs::Extensions.ui_revision
+end
+
+def refresh_program_ui_if_needed
+  revision = program_ui_revision
+  return if @program_ui_revision == revision
+  previous_section = @@focus
+  @program_ui_revision = revision
+  prune_program_main_tab_entries
+  acsel_load(false) if @acsel != nil
+  normalize_main_focus
+  focus_current_control if @@focus != previous_section
+end
+
+def prune_program_main_tab_entries
+  return if @program_main_tab_entries == nil
+  contributions = if defined?(Programs::Extensions)
+                    Programs::Extensions.all_main_tabs
+                  else
+                    []
+                  end
+  active = {}
+  contributions.each { |tab| active[tab.section_id] = tab }
+  @program_main_tab_entries.delete_if do |section, entry|
+    contribution = active[section]
+    contribution == nil || !entry[:contribution].equal?(contribution)
+  end
 end
 
 def entry_notification_focus_policy
@@ -191,6 +249,9 @@ def focus_current_control
     @feedsel.focus if @feedsel!=nil
   when :empty
     empty_main_control.focus
+  else
+    control = program_main_tab_control
+    control.focus if control != nil
   end
 end
 
@@ -204,6 +265,9 @@ def say_current_option
     @feedsel.sayoption if @feedsel!=nil
   when :empty
     empty_main_control.sayoption
+  else
+    control = program_main_tab_control
+    control.sayoption if control != nil
   end
 end
 
@@ -252,6 +316,9 @@ def update_current_main_control
     @feedsel.update if @feedsel!=nil
   when :empty
     empty_main_control.update
+  else
+    control = program_main_tab_control
+    control.update if control != nil
   end
 end
 
@@ -459,6 +526,11 @@ def qacdown
 end
 def acsel_load(fc=true)
   @specials=@@specials.dup
+  if defined?(Programs::Extensions)
+    Programs::Extensions.main_actions.each do |action|
+      @specials << [action.id, action.label, proc { action.call }]
+    end
+  end
   @acselshowhidden||=false
   @@acselindex=@acsel.index if @acsel!=nil
       @actions = QuickActions.get

@@ -200,6 +200,11 @@ Log.info("Switching to thread #{i+1}")
         end
       }
       end
+    if defaults==true && defined?(Programs::Extensions)
+      Programs::Extensions.menu_items.each do |item|
+        @menu.option(item.label) { item.call }
+      end
+    end
   end
   return true
   end
