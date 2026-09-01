@@ -70,13 +70,10 @@ module EltenLink
           state_mutex.synchronize { accept_response = false }
           break
         end
-        if @context != nil
-          call_context(:loop_update, false)
-        else
-          sleep(0.01)
-        end
+        interaction_owner = context_interaction_owner?
+        wait_for_response_iteration(interaction_owner)
         elapsed = Time.now.to_f - started
-        if elapsed > 2 && waiting_visible == false
+        if interaction_owner && elapsed > 2 && waiting_visible == false
           call_context(:waiting)
           waiting_visible = true
         elsif elapsed > timeout.to_f
@@ -96,7 +93,7 @@ module EltenLink
             break
           end
         end
-        if call_context(:key_pressed?, :key_escape) && waiting_visible
+        if interaction_owner && call_context(:key_pressed?, :key_escape) && waiting_visible
           should_cancel = state_mutex.synchronize do
             if done
               false
@@ -172,7 +169,7 @@ module EltenLink
       started = Time.now.to_f
       while done == false
         raise_if_cancelled!(cancellation_token)
-        @context == nil ? sleep(0.01) : call_context(:loop_update, false)
+        wait_for_response_iteration
         if timeout != nil && Time.now.to_f - started > timeout.to_f
           @last_error = Error.timeout(module_name: safe_request_path)
           break
@@ -367,7 +364,7 @@ module EltenLink
       while state_mutex.synchronize { done == false }
         break if Process.clock_gettime(Process::CLOCK_MONOTONIC) >= deadline
 
-        @context == nil ? sleep(0.01) : call_context(:loop_update, false)
+        wait_for_response_iteration
       end
       state_mutex.synchronize { accept_response = false }
       return nil if response == nil
@@ -406,6 +403,18 @@ module EltenLink
 
     def raise_if_cancelled!(cancellation_token)
       cancellation_token.raise_if_cancelled! if cancellation_token != nil && cancellation_token.respond_to?(:raise_if_cancelled!)
+    end
+
+    def wait_for_response_iteration(interaction_owner=context_interaction_owner?)
+      interaction_owner ? call_context(:loop_update, false) : sleep(0.01)
+    end
+
+    def context_interaction_owner?
+      return false if @context == nil
+
+      owner = $currentthread if defined?($currentthread)
+      owner = $mainthread if owner == nil && defined?($mainthread)
+      owner == nil || Thread.current == owner
     end
 
     def call_context(name, *args)

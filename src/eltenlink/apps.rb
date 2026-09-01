@@ -137,36 +137,38 @@ module EltenLink
         @used_size = nil
       end
 
-      def list
-        data = @client.api_data("GET", path)
+      def list(timeout: nil, cancellation_token: nil)
+        data = @client.api_data("GET", path, **request_options(timeout, cancellation_token))
         @maxsize = data["maxsize"].to_i
         @used_size = data["used_size"].to_i
         data["resources"].to_a.map { |row| Apps.resource_from(row, @app_uuid) }
       end
 
-      def info(resource)
-        data = @client.api_data("GET", "#{path}/#{resource_id(resource)}")
+      def info(resource, timeout: nil, cancellation_token: nil)
+        data = @client.api_data("GET", "#{path}/#{resource_id(resource)}", **request_options(timeout, cancellation_token))
         Apps.resource_from(data, @app_uuid)
       end
 
-      def upload(resource, data, meta: nil, timeout: nil)
+      def upload(resource, data, meta: nil, timeout: nil, cancellation_token: nil)
         Apps.validate_resource_name!(resource)
         Apps.validate_resource_meta!(meta)
         params = { "resource" => resource.to_s }
         params["meta"] = meta.to_s if meta != nil
+        options = { timeout: timeout }
+        options[:cancellation_token] = cancellation_token if cancellation_token != nil
         result = @client.api_binary_data(
           "POST",
           path,
           data.to_s.b,
           { "Content-Type" => "application/octet-stream" },
           params,
-          timeout: timeout
+          **options
         )
         Apps.resource_from(result, @app_uuid)
       end
 
-      def delete(resource)
-        @client.api_data("DELETE", "#{path}/#{resource_id(resource)}")
+      def delete(resource, timeout: nil, cancellation_token: nil)
+        @client.api_data("DELETE", "#{path}/#{resource_id(resource)}", **request_options(timeout, cancellation_token))
         true
       end
 
@@ -177,6 +179,13 @@ module EltenLink
       end
 
       private
+
+      def request_options(timeout, cancellation_token)
+        options = {}
+        options[:timeout] = timeout if timeout != nil
+        options[:cancellation_token] = cancellation_token if cancellation_token != nil
+        options
+      end
 
       def path
         "/api/v1/apps/#{Apps.query_escape(@app_uuid)}/resources"
