@@ -68,16 +68,18 @@ module Programs
   class ServerAppDefinition
     attr_reader :uuid, :tables
 
-    def initialize(uuid:, tables:, protected:)
+    def initialize(uuid:, tables:, protected:, notifications: false)
       value = uuid == nil ? nil : uuid.to_s.strip
       value = nil if value == ""
       raise ProgramError, "Invalid server application UUID #{uuid.inspect}" if value != nil && value !~ UUID_PATTERN
       raise ProgramError, "Server application tables must be a hash" if !tables.is_a?(Hash)
       raise ProgramError, "Server application protection must be a boolean" if protected != true && protected != false
+      raise ProgramError, "Server application notification support must be a boolean" if notifications != true && notifications != false
 
       @uuid = value
       @tables = immutable_copy(tables)
       @protected = protected
+      @notifications = notifications
       freeze
     end
 
@@ -85,8 +87,12 @@ module Programs
       @protected
     end
 
+    def notifications?
+      @notifications
+    end
+
     def with_uuid(uuid)
-      self.class.new(uuid: uuid, tables: @tables, protected: @protected)
+      self.class.new(uuid: uuid, tables: @tables, protected: @protected, notifications: @notifications)
     end
 
     private
@@ -102,6 +108,76 @@ module Programs
       else
         value
       end
+    end
+  end
+
+  class NotificationPresentation
+    attr_accessor :title, :body, :sound, :action
+    attr_reader :metadata
+
+    def initialize(title: "", body: "", sound: "notification", action: nil, metadata: {})
+      raise ProgramError, "Notification presentation metadata must be a hash" if !metadata.is_a?(Hash)
+
+      @title = title.to_s
+      @body = body.to_s
+      @sound = sound == nil ? nil : sound.to_s
+      @action = action
+      @metadata = metadata.dup.freeze
+      @default_suppressed = false
+    end
+
+    def suppress_default!
+      @default_suppressed = true
+      self
+    end
+
+    def default_suppressed?
+      @default_suppressed == true
+    end
+
+    def alert
+      [@title, @body].map(&:to_s).reject(&:empty?).join(": ")
+    end
+  end
+
+  class AppNotification
+    attr_reader :id, :app_uuid, :type, :sender, :created_at, :metadata, :fallback_text
+
+    def initialize(id:, app_uuid:, type:, sender:, created_at:, metadata:, fallback_text: "")
+      @id = id.to_i
+      @app_uuid = app_uuid.to_s
+      @type = type.to_s
+      @sender = sender.to_s
+      @created_at = created_at.to_i
+      @metadata = metadata.is_a?(Hash) ? metadata.dup.freeze : {}.freeze
+      @fallback_text = fallback_text.to_s
+      freeze
+    end
+
+    def presentation(title: "", body: "", sound: "notification", action: nil, metadata: {})
+      NotificationPresentation.new(title: title, body: body, sound: sound, action: action, metadata: metadata)
+    end
+  end
+
+  class NotificationActionScene
+    def initialize(program_class, action, notification)
+      @program_class = program_class
+      @action = action
+      @notification = notification
+    end
+
+    def main
+      program = @program_class.new
+      runtime = Programs.runtime_for(@program_class)
+      result = Programs.with_runtime(runtime) { program.notification_action(@action, @notification) }
+      program.finalize(result, reason: :notification)
+    rescue Exception => error
+      if program != nil
+        Programs.handle_execution_error(error, program)
+      else
+        Programs.report_execution_error(@program_class, error, runtime: Programs.runtime_for(@program_class))
+      end
+      $scene = Scene_Main.new
     end
   end
 
@@ -2376,6 +2452,79 @@ module Programs
       @@programs
     end
 
+    def notification_programs
+      @@programs.select do |program|
+        definition = program.respond_to?(:server_app_definition) ? program.server_app_definition : nil
+        definition != nil && definition.notifications? && definition.uuid != nil
+      end
+    end
+
+    def notification_app_uuids
+      notification_programs.map { |program| program.server_app_uuid.to_s.downcase }.reject(&:empty?).uniq.sort
+    end
+
+    def notification_program(app_uuid)
+      uuid = app_uuid.to_s.downcase
+      notification_programs.find { |program| program.server_app_uuid.to_s.downcase == uuid }
+    end
+
+    def app_notification_from(value)
+      payload = notification_value(value, :payload)
+      payload = {} unless payload.is_a?(Hash)
+      metadata = payload["metadata"] || payload[:metadata]
+      metadata = {} unless metadata.is_a?(Hash)
+      AppNotification.new(
+        id: notification_value(value, :id),
+        app_uuid: notification_value(value, :app_uuid),
+        type: payload["type"] || payload[:type] || notification_value(value, :alert),
+        sender: payload["sender"] || payload[:sender],
+        created_at: notification_value(value, :date),
+        metadata: metadata,
+        fallback_text: notification_value(value, :alert)
+      )
+    end
+
+    def map_app_notification(value)
+      notification = value.is_a?(AppNotification) ? value : app_notification_from(value)
+      program = notification_program(notification.app_uuid)
+      return [nil, notification, nil] if program == nil
+
+      presentation = begin
+        with_runtime(runtime_for(program)) { program.map_notification(notification) }
+      rescue Exception => error
+        Log.error("Program notification mapping failed for #{program}: #{error.class}: #{error.message}") if defined?(Log)
+        nil
+      end
+      presentation = nil unless presentation.is_a?(NotificationPresentation)
+      presentation ||= NotificationPresentation.new(
+        title: program.name.to_s,
+        body: notification.fallback_text.empty? ? notification.type : notification.fallback_text,
+        sound: "notification"
+      )
+      [program, notification, presentation]
+    end
+
+    def receive_app_notification(value)
+      program, notification, presentation = map_app_notification(value)
+      return [nil, notification, nil] if program == nil
+
+      begin
+        with_runtime(runtime_for(program)) { program.notification_received(notification, presentation) }
+      rescue Exception => error
+        Log.error("Program notification receipt hook failed for #{program}: #{error.class}: #{error.message}") if defined?(Log)
+      end
+      [program, notification, presentation]
+    end
+
+    def notification_value(value, key)
+      if value.is_a?(Hash)
+        value[key.to_s] || value[key]
+      elsif value.respond_to?(key)
+        value.__send__(key)
+      end
+    end
+    private :notification_value
+
     def register_event_listener(event, cls, proc)
       listener = EventListener.new
       listener.event = event
@@ -2468,6 +2617,13 @@ class Program
     end
 
     def init
+    end
+
+    def map_notification(_notification)
+      nil
+    end
+
+    def notification_received(_notification, _presentation)
     end
 
     def get_configuration
@@ -2655,8 +2811,13 @@ class Program
       @app_info == nil ? const_get(:AppID).to_s : @app_info.id.to_s
     end
 
-    def server_app(uuid: nil, tables: {}, protected: false)
-      @server_app_definition = Programs::ServerAppDefinition.new(uuid: uuid, tables: tables, protected: protected)
+    def server_app(uuid: nil, tables: {}, protected: false, notifications: false)
+      @server_app_definition = Programs::ServerAppDefinition.new(
+        uuid: uuid,
+        tables: tables,
+        protected: protected,
+        notifications: notifications
+      )
     end
 
     def server_app_definition
@@ -2668,30 +2829,69 @@ class Program
       definition == nil ? app_uuid : definition.uuid.to_s
     end
 
-    def register_server_app(name: nil, data: nil, tables: nil, tables_protected: false)
-      EltenLink::Apps.register(EltenLink.client(self), :name => (name || self.name), :data => data, :tables => tables, :tables_protected => tables_protected)
+    def register_server_app(name: nil, data: nil, tables: nil, tables_protected: false, notifications: false)
+      EltenLink::Apps.register(
+        EltenLink.client(self),
+        :name => (name || self.name),
+        :data => data,
+        :tables => tables,
+        :tables_protected => tables_protected,
+        :notifications => notifications
+      )
     end
 
     def register_server_app!
       definition = required_server_app_definition
       raise Programs::ProgramError, "Server application is already registered as #{definition.uuid}" if definition.uuid != nil
 
-      uuid = register_server_app(tables: definition.tables, tables_protected: definition.protected?)
+      uuid = register_server_app(
+        tables: definition.tables,
+        tables_protected: definition.protected?,
+        notifications: definition.notifications?
+      )
       raise Programs::ProgramError, "Server application registration returned an invalid UUID" if uuid.to_s !~ Programs::UUID_PATTERN
 
       @server_app_definition = definition.with_uuid(uuid)
       uuid
     end
 
-    def update_server_app(uuid = nil, name: nil, data: nil, tables: nil, tables_protected: nil)
-      EltenLink::Apps.update(EltenLink.client(self), uuid || app_uuid, :name => (name || self.name), :data => data, :tables => tables, :tables_protected => tables_protected)
+    def update_server_app(uuid = nil, name: nil, data: nil, tables: nil, tables_protected: nil, notifications: nil)
+      EltenLink::Apps.update(
+        EltenLink.client(self),
+        uuid || app_uuid,
+        :name => (name || self.name),
+        :data => data,
+        :tables => tables,
+        :tables_protected => tables_protected,
+        :notifications => notifications
+      )
     end
 
     def update_server_schema!
       definition = required_server_app_definition
       raise Programs::ProgramError, "Server application UUID is not set" if definition.uuid == nil
 
-      update_server_app(definition.uuid, tables: definition.tables, tables_protected: definition.protected?)
+      update_server_app(
+        definition.uuid,
+        tables: definition.tables,
+        tables_protected: definition.protected?,
+        notifications: definition.notifications?
+      )
+    end
+
+    def send_notification(user, type:, metadata: {}, expires_in: 0)
+      definition = required_server_app_definition
+      raise Programs::ProgramError, "Server application UUID is not set" if definition.uuid == nil
+      raise Programs::ProgramError, "Server application does not declare notification support" if !definition.notifications?
+
+      EltenLink::Apps.notify(
+        EltenLink.client(self),
+        appid: definition.uuid,
+        user: user,
+        type: type,
+        metadata: metadata,
+        expires_in: expires_in
+      )
     end
 
     def server_table(name, uuid = nil)
@@ -2833,6 +3033,14 @@ class Program
     self.class.server_app_uuid
   end
 
+  def send_notification(user, type:, metadata: {}, expires_in: 0)
+    self.class.send_notification(user, type: type, metadata: metadata, expires_in: expires_in)
+  end
+
+  def notification_action(_action, _notification)
+    false
+  end
+
   def server_table(name, uuid = nil)
     self.class.server_table(name, uuid)
   end
@@ -2949,7 +3157,7 @@ class Program
   end
 
   def finalize(v = nil, reason: :normal)
-    raise ArgumentError, "Invalid program finalization reason #{reason.inspect}" if reason != :normal && reason != :error
+    raise ArgumentError, "Invalid program finalization reason #{reason.inspect}" if ![:normal, :error, :notification].include?(reason)
     return v if @program_finalized == true
     @program_finalized = true
 
@@ -2969,6 +3177,11 @@ class Program
 
     raise cleanup_error if cleanup_error != nil && reason == :normal
     return v if reason == :error
+
+    if reason == :notification
+      $scene = Scene_Main.new
+      return v
+    end
 
     Log.info("Program exited #{self.class}")
     alert(p_("Program", "The program has been closed."))

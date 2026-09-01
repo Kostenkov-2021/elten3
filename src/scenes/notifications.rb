@@ -90,7 +90,7 @@ class Scene_Notifications
   def fetch_notifications
     return EltenAPI::NotificationService.active_notifications if whatsnew?
 
-    notifications = EltenLink::Notifications.list(elten_link, all: true)
+    notifications = EltenLink::Notifications.list(elten_link, all: true, app_uuids: Programs.notification_app_uuids)
     EltenAPI::NotificationService.synchronize_active_notifications(notifications)
     notifications
   rescue EltenLink::Error => e

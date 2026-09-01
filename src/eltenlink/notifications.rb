@@ -2,12 +2,14 @@
 # Copyright (C) 2014-2026 Dawid Pieper
 
 module EltenLink
-  Notification = Struct.new(:id, :date, :update_time, :alert, :notification, :sound, :cat, :expiration, :revoked, :payload, keyword_init: true)
+  Notification = Struct.new(:id, :date, :update_time, :alert, :notification, :sound, :cat, :app_uuid, :expiration, :revoked, :payload, keyword_init: true)
 
   module Notifications
     class << self
-      def list(client, all: false)
-        data = client.api_data("GET", "/api/v1/notifications", { "all" => truth_param(all) })
+      def list(client, all: false, app_uuids: nil)
+        params = { "all" => truth_param(all) }
+        params["notification_apps"] = Array(app_uuids).join(",") if app_uuids != nil
+        data = client.api_data("GET", "/api/v1/notifications", params)
         data["notifications"].to_a.map { |row| from_data(row) }
       end
 
@@ -20,6 +22,7 @@ module EltenLink
           notification: row["notification"].to_s,
           sound: row["sound"].to_s,
           cat: row["cat"].to_s,
+          app_uuid: row["app_uuid"].to_s,
           expiration: row["expiration"].to_i,
           revoked: truthy?(row["revoked"]),
           payload: row["payload"].is_a?(Hash) ? row["payload"] : {}
@@ -39,8 +42,10 @@ module EltenLink
         true
       end
 
-      def revoke_all(client)
-        client.api_data("PATCH", "/api/v1/notifications/revoke-all")
+      def revoke_all(client, app_uuids: nil)
+        params = {}
+        params["notification_apps"] = Array(app_uuids).join(",") if app_uuids != nil
+        client.api_data("PATCH", "/api/v1/notifications/revoke-all", params)
         true
       end
 

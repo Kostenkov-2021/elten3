@@ -201,6 +201,7 @@ module EltenAPI
         @http2_enabled = realtime_http2_enabled?
         @realtime_mode_reported = false
         @pending_signal_acks = {}
+        @notification_apps = installed_notification_apps
         @stopped = false
       end
 
@@ -219,6 +220,7 @@ module EltenAPI
             else
               reset_session(key) if @session_key != key
               now = monotonic_time
+              reconcile_notification_apps(now)
               http2_enabled = reconcile_realtime_transport(now)
               drain_responses
               drain_stream_responses
@@ -296,6 +298,7 @@ module EltenAPI
           @realtime_cursor_request_id = 0
         end
         @pending_signal_acks = {}
+        @notification_apps = installed_notification_apps
         @stream_control_pending = false
         @stream_last_shown = nil
         @premiumpackages = []
@@ -837,6 +840,12 @@ module EltenAPI
           id = notification["id"]
           queued << notification if remember_notification(id)
         end
+        app_notifications, queued = queued.partition do |notification|
+          notification["cat"].to_s == "app" && !notification["app_uuid"].to_s.empty?
+        end
+        app_notifications.each do |notification|
+          enqueue_event("func" => "app_notification", "notification" => notification)
+        end
         visible, invisible = queued.partition { |notification| !notification_invisible?(notification) }
         if visible.size > 10
           enqueue_event("func" => "notif", "sound" => "new")
@@ -1165,7 +1174,8 @@ module EltenAPI
           "lasttime" => lasttime,
           "language" => configuration_string(:language),
           "soundtheme" => configuration_string(:soundtheme),
-          "notifications_hash" => active_notifications_hash
+          "notifications_hash" => active_notifications_hash,
+          "notification_apps" => Array(@notification_apps).join(",")
         }
         params["shown"] = 1 if shown == true
         params
@@ -1200,13 +1210,44 @@ module EltenAPI
 
       def normalize_active_notifications(notifications)
         now = Time.now.to_i
+        allowed_apps = Array(@notification_apps)
         notifications.to_a.each_with_object({}) do |notification, result|
           next unless notification.is_a?(EltenLink::Notification)
           next if notification.id.to_i <= 0 || notification.revoked == true
           next if notification.expiration.to_i > 0 && notification.date.to_i + notification.expiration.to_i < now
+          next if !notification.app_uuid.to_s.empty? && !allowed_apps.include?(notification.app_uuid.to_s.downcase)
 
           result[notification.id.to_i] = notification
         end.values.sort_by { |notification| [notification.date.to_i, notification.id.to_i] }
+      end
+
+      def installed_notification_apps
+        return [] if !defined?(Programs) || !Programs.respond_to?(:notification_app_uuids)
+
+        Programs.notification_app_uuids
+      rescue Exception => error
+        Log.warning("Cannot build app notification capability list: #{error.class}: #{error.message}")
+        []
+      end
+
+      def reconcile_notification_apps(now)
+        current = installed_notification_apps
+        return false if current == @notification_apps
+
+        @notification_apps = current
+        stop_stream
+        changed = false
+        @active_notifications_mutex.synchronize do
+          previous = @active_notifications.size
+          @active_notifications = normalize_active_notifications(@active_notifications)
+          changed = previous != @active_notifications.size
+          @active_notifications_hash = ""
+          @active_notifications_request_id = @request_serial.to_i + 1
+        end
+        clear_realtime_cursor
+        @next_request_at = now
+        enqueue_event("func" => "notifications") if changed
+        true
       end
 
       def active_notification_signature(notifications)

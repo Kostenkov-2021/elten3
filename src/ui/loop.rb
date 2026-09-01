@@ -98,7 +98,30 @@ end
        begin
          NotificationService.start
          NotificationService.drain_events.each do |d|
-           if d['func']=="notif"
+           if d['func']=="app_notification"
+             program, notification, presentation = Programs.receive_app_notification(d["notification"])
+             next if program == nil || presentation == nil
+
+             $main_notifications_changed = true
+             Session.notifications_update
+             next if presentation.default_suppressed? || $donotdisturb == true
+
+             event = {
+               "func" => "notif",
+               "alert" => presentation.alert,
+               "sound" => presentation.sound,
+               "id" => notification.id,
+               "app_uuid" => notification.app_uuid,
+               "type" => notification.type,
+               "metadata" => notification.metadata,
+               "presentation_metadata" => presentation.metadata
+             }
+             if $notifications_callback!=nil
+               $notifications_callback.call(event)
+             else
+               process_notification(event)
+             end
+           elsif d['func']=="notif"
              if d['invisible'] != true
                $main_notifications_changed = true
                Session.notifications_update

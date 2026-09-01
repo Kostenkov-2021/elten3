@@ -168,21 +168,38 @@ module EltenLink
         true
       end
 
-      def register(client, name:, data: nil, tables: nil, tables_protected: false)
+      def notify(client, appid:, user:, type:, metadata: {}, expires_in: 0)
+        client.api_data(
+          "POST",
+          "/api/v1/apps/notifications",
+          {
+            "appid" => appid.to_s,
+            "user" => user.to_s,
+            "type" => type.to_s,
+            "metadata" => metadata,
+            "expires_in" => expires_in.to_i
+          }
+        )
+        true
+      end
+
+      def register(client, name:, data: nil, tables: nil, tables_protected: false, notifications: false)
         params = { "name" => name.to_s }
         params["data"] = data if data != nil
         params["tables"] = tables if tables != nil
         params["tables_protected"] = tables_protected == true || tables_protected.to_s == "1" || tables_protected.to_s.downcase == "true"
+        params["notifications"] = notifications == true || notifications.to_s == "1" || notifications.to_s.downcase == "true"
         data = client.api_data("POST", "/api/v1/apps", params)
         data.dig("app", "uuid").to_s
       end
 
-      def update(client, uuid, name: nil, data: nil, tables: nil, tables_protected: nil)
+      def update(client, uuid, name: nil, data: nil, tables: nil, tables_protected: nil, notifications: nil)
         params = {}
         params["name"] = name.to_s if name != nil
         params["data"] = data if data != nil
         params["tables"] = tables if tables != nil
         params["tables_protected"] = tables_protected == true || tables_protected.to_s == "1" || tables_protected.to_s.downcase == "true" if tables_protected != nil
+        params["notifications"] = notifications == true || notifications.to_s == "1" || notifications.to_s.downcase == "true" if notifications != nil
         data = client.api_data("PUT", "/api/v1/apps/#{query_escape(uuid)}", params)
         data["app"]
       end

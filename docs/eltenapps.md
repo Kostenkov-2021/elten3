@@ -330,13 +330,75 @@ SERVER_TABLES = {
 server_app(
   uuid: "12345678-1234-4123-8123-123456789abc",
   tables: SERVER_TABLES,
-  protected: true
+  protected: true,
+  notifications: true
 )
 ```
 
 `server_table("scores")`, `server_resources` and `delete_server_app` then use the declared UUID unless an explicit UUID is passed. `update_server_schema!` updates the declared tables and protection setting. The existing argument-based helpers remain available for applications which manage their server registration themselves.
 
 For an initial registration, declare `uuid: nil` and call `register_server_app!`. It returns the generated UUID and keeps it for the current process. Put that UUID into the declaration before distributing the application. To prevent accidental duplicate registrations, `register_server_app!` refuses to run when the declaration already contains a UUID.
+
+`notifications: true` is an explicit declaration that the program handles notifications for this server application. The client advertises the UUID only while such a program is installed and loaded. A notification addressed to an application is not delivered to clients which do not advertise that UUID.
+
+Send a typed notification from either the program class or an instance:
+
+```ruby
+send_notification(
+  "Bob",
+  type: "game.turn",
+  metadata: { "game_id" => 123, "round" => 4 },
+  expires_in: 86_400
+)
+```
+
+`metadata` must be a JSON-compatible object. Delivery is best effort. A successful return confirms that the request was valid, but deliberately does not reveal whether the recipient currently has the program installed.
+
+Map the stable type and metadata to local presentation in a pure class hook:
+
+```ruby
+def self.map_notification(notification)
+  case notification.type
+  when "game.turn"
+    notification.presentation(
+      title: _("Your turn"),
+      body: _("Game %{id}, round %{round}") % {
+        id: notification.metadata["game_id"],
+        round: notification.metadata["round"]
+      },
+      sound: "notification",
+      action: :open_game,
+      metadata: { "source" => "game list" }
+    )
+  end
+end
+```
+
+`notification` exposes `id`, `app_uuid`, `type`, `sender`, `created_at` and the application-owned `metadata`. Returning `nil`, another value or raising from the mapper uses a generic fallback, so a malformed presentation does not hide the list item.
+
+The receipt hook runs only for a newly delivered live notification. It may take over immediate presentation without removing the item from Elten's notification list:
+
+```ruby
+def self.notification_received(notification, presentation)
+  if notification.metadata["quiet"]
+    presentation.suppress_default!
+    # The program may present the event through its own UI here.
+  end
+end
+```
+
+If the mapped presentation has an `action`, opening the list item creates a program instance and invokes:
+
+```ruby
+def notification_action(action, notification)
+  return false unless action == :open_game
+
+  open_game(notification.metadata["game_id"])
+  true
+end
+```
+
+Application notifications are always separate list entries; they are not collapsed into a category aggregate. Mapper and hook failures are isolated to the responsible program.
 
 Rankings can use the optional `Leaderboard` wrapper instead of duplicating availability checks and error handling:
 

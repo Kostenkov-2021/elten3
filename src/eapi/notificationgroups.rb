@@ -19,6 +19,7 @@ module NotificationGroups
     blogmention
     groupinvitation
     mtr
+    app
     program_updates
     update
   ].freeze
@@ -27,7 +28,7 @@ module NotificationGroups
   }.freeze
   NOTIFICATION_HISTORY_LIMIT = 100
 
-  NotificationGroup = Struct.new(:key, :cat, :label, :category, :date, :revoked, :ids, :payload, :payloads, :fallback_text, :event_count, :virtual, :action, keyword_init: true) do
+  NotificationGroup = Struct.new(:key, :cat, :label, :category, :date, :revoked, :ids, :payload, :payloads, :fallback_text, :event_count, :virtual, :action, :program_class, :app_notification, :presentation, keyword_init: true) do
     def virtual?
       virtual == true
     end
@@ -119,6 +120,9 @@ module NotificationGroups
     by_key = {}
     notifications.each do |notification|
       next if include_revoked != true && notification.revoked
+      if notification.cat.to_s == "app" && !notification.app_uuid.to_s.empty?
+        next if !defined?(Programs) || Programs.notification_program(notification.app_uuid) == nil
+      end
 
       change_time = notification_change_time(notification)
       payload = notification.payload
@@ -146,7 +150,8 @@ module NotificationGroups
         date: change_time,
         id: notification.id.to_i,
         payload: payload,
-        fallback_text: notification_fallback_text(notification)
+        fallback_text: notification_fallback_text(notification),
+        notification: notification
       }
     end
 
@@ -159,9 +164,13 @@ module NotificationGroups
         group.date = latest[:date]
         group.payload = latest[:payload]
         group.fallback_text = latest[:fallback_text]
+        if group.cat.to_s == "app" && defined?(Programs)
+          group.program_class, group.app_notification, group.presentation = Programs.map_app_notification(latest[:notification])
+          group.category = group.program_class.name.to_s if group.program_class != nil
+        end
       end
       group.payloads = entries.map { |entry| entry[:payload] }
-      group.action = action_for(group.cat, group.payload)
+      group.action = action_for(group.cat, group.payload, group: group)
       group.label = group_label(group)
     end
   end
@@ -471,6 +480,11 @@ module NotificationGroups
   end
 
   def group_description(group)
+    if group.cat.to_s == "app" && group.presentation != nil
+      text = group.presentation.alert.to_s
+      return text if !text.empty?
+    end
+
     title = title_for(group.cat, group.payload, count: group_count(group), payloads: group.payloads)
     title = single_line_notification_text(group.fallback_text) if title.to_s.empty?
     title = single_line_notification_text(group.payload["title"]) if title.to_s.empty? && group.payload.is_a?(Hash)
@@ -520,6 +534,8 @@ module NotificationGroups
       p_("Notifications", "Group invitations")
     when "mtr"
       p_("Notifications", "Online monitors")
+    when "app"
+      p_("Notifications", "Programs")
     when "program_updates"
       p_("Notifications", "Program updates")
     when "update"
@@ -896,7 +912,7 @@ module NotificationGroups
     np_("Notifications", "A program update is available: %{programs}", "Program updates are available: %{programs}", count) % { programs: names }
   end
 
-  def action_for(cat, payload)
+  def action_for(cat, payload, group: nil)
     payload = {} unless payload.is_a?(Hash)
     case cat.to_s
     when "message"
@@ -919,6 +935,21 @@ module NotificationGroups
       Proc.new { open_birthday(payload) }
     when "groupinvitation"
       Proc.new { insert_scene(Scene_Forum.new(nil, nil, 4), true) }
+    when "app"
+      return nil if group == nil || group.program_class == nil || group.app_notification == nil
+      return nil if group.presentation == nil || group.presentation.action == nil
+
+      Proc.new do
+        insert_scene(
+          Programs::NotificationActionScene.new(
+            group.program_class,
+            group.presentation.action,
+            group.app_notification
+          ),
+          true,
+          return_to_main: true
+        )
+      end
     else
       nil
     end
@@ -1069,7 +1100,7 @@ module NotificationGroups
   end
 
   def revoke_all_notification_groups(groups=nil)
-    EltenLink::Notifications.revoke_all(elten_link)
+    EltenLink::Notifications.revoke_all(elten_link, app_uuids: Programs.notification_app_uuids)
     EltenAPI::NotificationService.revoke_active_notifications
     groups.to_a.each do |group|
       revoke_virtual_notification(group) if group.virtual? && !group.revoked
