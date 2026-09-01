@@ -6,6 +6,7 @@ require "fileutils"
 require "json"
 require "securerandom"
 require "zlib"
+require_relative "program_package_metadata" if !defined?(Programs::ProgramPackageMetadata)
 
 module Programs
   # Shared, deliberately reduced builder for local developer workflows. It
@@ -89,6 +90,7 @@ module Programs
         format = format.to_s.downcase
         raise ProgramError, "format must be eltenapp or eltsetup" if !%w[eltenapp eltsetup].include?(format)
         raise ProgramError, "Package metadata must be an object" if !metadata.is_a?(Hash)
+        metadata = ProgramPackageMetadata.prepare(metadata, :source_dir => root, :warning => method(:metadata_warning))
         raise ProgramError, "Unsigned developer builder does not bundle declared gems" if !Array(metadata["gems"]).empty?
         root_key = normalized_path(root)
         target_key = normalized_path(target)
@@ -175,6 +177,14 @@ module Programs
       def normalized_path(path)
         value = path.to_s.tr("\\", "/")
         RUBY_PLATFORM.match?(/mswin|mingw|cygwin/i) ? value.downcase : value
+      end
+
+      def metadata_warning(message)
+        if defined?(Log) && Log.respond_to?(:warning)
+          Log.warning(message)
+        else
+          warn "Warning: #{message}"
+        end
       end
     end
   end

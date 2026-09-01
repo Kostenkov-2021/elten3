@@ -6,6 +6,7 @@ require "fileutils"
 require "optparse"
 require "zstd-ruby"
 require_relative "../src/EAPI/ProgramSigning"
+require_relative "../src/eapi/program_package_metadata"
 
 MAGIC = "Elten3AppPackage".b
 SOUND_EXTENSIONS = %w[.ogg .opus .wav .wave .mp3 .flac .aac .m4a .wma .spx .webm].freeze
@@ -100,6 +101,8 @@ end
 main_file = manifest_file(source_dir)
 metadata = extract_manifest(File.binread(main_file), main_file)
 metadata["main"] = normalize(main_file.delete_prefix(source_dir + File::SEPARATOR)) if metadata["main"].to_s == ""
+metadata = Programs::ProgramPackageMetadata.prepare(metadata, :source_dir => source_dir,
+  :warning => ->(message) { warn "Warning: #{message}" })
 
 files = []
 Dir.glob(File.join(source_dir, "**", "*")).sort.each do |file|

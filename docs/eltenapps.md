@@ -42,6 +42,9 @@ A development directory normally starts with `__app.rb`. The file contains exact
 {
   "id": "67b1132e-f2ac-4d0a-b329-42fc1dc2a490",
   "name": "Example application",
+  "description": "A short description of the example application.",
+  "main_language": "en",
+  "supported_languages": ["en"],
   "version": "0.1.0",
   "build_id": "1",
   "EltenAPIVersion": "3.0",
@@ -86,6 +89,11 @@ The manifest is JSON, even though it is embedded in a Ruby block comment. JSON k
 | --- | --- |
 | `id` | Stable UUID for the application. It determines identity, namespace and persistent storage association. Do not generate a new UUID for each release. |
 | `name` | Human-readable application name. |
+| `description` | Raw short application description. It remains a string for compatibility and is treated as being in `main_language` when no localized value overrides it. |
+| `localized_names` | Optional object mapping language codes to localized application names. |
+| `localized_descriptions` | Optional object mapping language codes to localized short descriptions. |
+| `main_language` | Optional main application language. It defaults to `unknown`; builders warn when it is omitted. |
+| `supported_languages` | Optional list of languages supported by the application. Builders warn when packaged locale files use languages outside this list. |
 | `version` | User-facing version string. |
 | `build_id` | Non-empty, non-zero build identity used when comparing releases and updates. Change it when publishing a different build. |
 | `EltenAPIVersion` | Minimum compatible Elten application API. The current runtime accepts the same major version when its own version is at least this value. |
@@ -138,6 +146,57 @@ The menu object currently supports:
 ```
 
 Omitting `menu.main` uses the application name. Setting `menu.hidden` to `true` prevents the ordinary main-menu entry, which is useful only when another supported entry point is registered.
+
+### Localized application metadata
+
+The existing `name` and `description` fields remain raw strings. Localizations are declared separately so old manifests and code which inspect the raw values keep their meaning:
+
+```json
+{
+  "name": "Polska nazwa",
+  "description": "Polski opis",
+  "main_language": "pl",
+  "supported_languages": ["pl", "en"],
+  "localized_names": {
+    "en": "English name"
+  },
+  "localized_descriptions": {
+    "en": "English description"
+  }
+}
+```
+
+When no explicit localization exists for `main_language`, the raw value is treated as that language's value. A localized name or description is selected in this order: the current Elten interface language, English, the application's main language, the first available language in lexical order, then the raw value. Elten currently normalizes application metadata languages to two-letter lower-case codes, so `pl-PL` and `pl` both identify `pl`.
+
+Builders fill missing localization entries from UTF-8 JSON files without replacing values written explicitly in the manifest:
+
+```text
+locale/pl_metadata.json
+locale/en_metadata.json
+```
+
+Each metadata file is a JSON object whose `name` and `description` members are independently optional, for example `{"name":"Polska nazwa","description":"Polski opis"}`. Explicit `localized_names` and `localized_descriptions` entries in the input manifest take precedence over values read from these files.
+
+`supported_languages` is optional. When it is present and omits a known `main_language`, the builder adds the main language and warns. The builder also warns about languages detected in `locale/<language>.mo` or `locale/<language>_metadata.json` which are absent from `supported_languages`; when the list itself is omitted, every detected locale language is reported without synthesising the list. These are build warnings, not package-loading errors, so existing applications remain loadable.
+
+Manifest-backed program classes and instances expose both resolved and raw metadata:
+
+```ruby
+name                         # resolved for the current Elten language
+name(:de)                    # explicit first-choice language
+raw_name                     # exact manifest name
+name_languages               # e.g. [:en, :pl]
+
+description
+description(:de)
+raw_description
+description_languages
+
+main_language                # e.g. :pl or :unknown
+supported_languages          # e.g. [:en, :pl]
+```
+
+The compatibility constants are `Name`, `Description`, `MainLanguage` and `SupportedLanguages`. `Name` and `Description` contain the value resolved when the program class is bound; use the methods when the interface language may change while Elten is running.
 
 ## Loading and source resolution
 
@@ -264,7 +323,7 @@ sound.wait if sound != nil
 
 `play_sound_from_asset` uses the runtime's managed `SoundPool`, which limits simultaneous voices and closes completed sounds. Use `create_sound_from_asset` when the application needs direct control over the sound lifetime, and register the resulting object with `manage`.
 
-Translations are read from `locale/<language>.mo`, where the package format currently records a two-letter language code. Native entries are selected by the exact platform target and materialised into the application cache before loading.
+Translations are read from `locale/<language>.mo`, where the package format currently records a two-letter language code. The `_metadata.json` files described above are consumed into manifest metadata by builders rather than loaded as gettext catalogs. Native entries are selected by the exact platform target and materialised into the application cache before loading.
 
 `required_assets` can make loading fail early with an informative error instead of failing later in the interaction. The recognised groups are `sounds`, `files`, `locales` and `native`:
 

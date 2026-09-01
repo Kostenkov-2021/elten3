@@ -5,6 +5,7 @@
 # You should have received a copy of the GNU General Public License along with Elten. If not, see <https://www.gnu.org/licenses/>.
 
 require_relative "programsigning" if !defined?(Programs::ProgramSigning)
+require_relative "program_package_metadata" if !defined?(Programs::ProgramPackageMetadata)
 require "fileutils"
 require "json"
 require "monitor"
@@ -570,13 +571,15 @@ module Programs
   end
 
   class Manifest
-    attr_reader :id, :name, :version, :build_id, :elten_api_version, :eltenlink_contract_version, :author, :main, :main_class, :platforms, :menu, :gems, :required_assets, :execution, :raw
+    attr_reader :id, :raw_name, :raw_description, :version, :build_id, :elten_api_version, :eltenlink_contract_version, :author, :main, :main_class, :platforms, :menu, :gems, :required_assets, :execution, :raw,
+      :localized_names, :localized_descriptions, :name_languages, :description_languages, :main_language, :supported_languages
 
     def initialize(raw, source)
       @raw = raw.is_a?(Hash) ? raw : {}
       @source = source
       @id = string_value("id")
-      @name = string_value("name")
+      @raw_name = string_value("name")
+      @raw_description = string_value("description")
       @version = string_value("version", "version_string")
       @build_id = normalize_build_id(string_value("build_id", "BuildID"))
       @elten_api_version = string_value("EltenAPIVersion")
@@ -589,7 +592,30 @@ module Programs
       @gems = Array(@raw["gems"]).map { |gem| gem.is_a?(Hash) ? gem["name"].to_s : gem.to_s }.reject { |gem| gem == "" }
       @required_assets = normalize_required_assets(@raw["required_assets"])
       @execution = Execution::Spec.new(@raw["execution"], @source)
+      @main_language = normalize_main_language(@raw["main_language"])
+      @supported_languages_declared = @raw.key?("supported_languages")
+      @supported_languages = normalize_supported_languages(@raw["supported_languages"])
+      @localized_names = normalize_localizations(@raw["localized_names"], "localized_names")
+      @localized_descriptions = normalize_localizations(@raw["localized_descriptions"], "localized_descriptions")
+      add_raw_localization(@localized_names, @raw_name)
+      add_raw_localization(@localized_descriptions, @raw_description)
+      @localized_names.freeze
+      @localized_descriptions.freeze
+      @name_languages = @localized_names.keys.sort.freeze
+      @description_languages = @localized_descriptions.keys.sort.freeze
       validate
+    end
+
+    def name(language = nil)
+      localized_value(@localized_names, @raw_name, language)
+    end
+
+    def description(language = nil)
+      localized_value(@localized_descriptions, @raw_description, language)
+    end
+
+    def supported_languages_declared?
+      @supported_languages_declared
     end
 
     def required_asset_names(type)
@@ -598,7 +624,7 @@ module Programs
 
     def menu_label
       value = @menu["main"]
-      value = @name if value == nil || value.to_s == ""
+      value = name if value == nil || value.to_s == ""
       value.to_s
     end
 
@@ -623,7 +649,14 @@ module Programs
     def to_config(main_file = nil)
       {
         :id => @id,
-        :name => @name,
+        :name => name,
+        :description => description,
+        :raw_name => @raw_name,
+        :raw_description => @raw_description,
+        :name_languages => @name_languages,
+        :description_languages => @description_languages,
+        :main_language => @main_language,
+        :supported_languages => @supported_languages,
         :version => @version,
         :build_id => @build_id,
         :elten_api_version => @elten_api_version,
@@ -679,19 +712,68 @@ module Programs
       assets.freeze
     end
 
+    def normalize_main_language(value)
+      return :unknown if value == nil || value.to_s.strip == ""
+      Programs::ProgramPackageMetadata.normalize_language!(value, "main_language", :allow_unknown => true).to_sym
+    end
+
+    def normalize_supported_languages(value)
+      return [].freeze if !@supported_languages_declared
+      languages = Programs::ProgramPackageMetadata.normalize_languages(value, "supported_languages").map(&:to_sym)
+      languages << @main_language if @main_language != :unknown && !languages.include?(@main_language)
+      languages.sort.freeze
+    end
+
+    def normalize_localizations(value, field)
+      Programs::ProgramPackageMetadata.normalize_localizations(value, field).each_with_object({}) do |(language, text), result|
+        result[language.to_sym] = text.freeze
+      end
+    end
+
+    def add_raw_localization(localizations, value)
+      return if @main_language == :unknown || value == "" || localizations.key?(@main_language)
+      localizations[@main_language] = value
+    end
+
+    def localized_value(localizations, raw_value, language)
+      requested = language == nil ? current_elten_language : normalize_requested_language(language)
+      candidates = [requested, :en, @main_language].compact.reject { |candidate| candidate == :unknown }.uniq
+      candidates.each do |candidate|
+        value = localizations[candidate]
+        return value if value != nil && value != ""
+      end
+      localizations.keys.sort.each do |candidate|
+        value = localizations[candidate]
+        return value if value != nil && value != ""
+      end
+      raw_value.to_s
+    end
+
+    def current_elten_language
+      return nil if !defined?(Configuration) || !Configuration.respond_to?(:language)
+      normalize_requested_language(Configuration.language)
+    rescue Exception
+      nil
+    end
+
+    def normalize_requested_language(value)
+      language = Programs::ProgramPackageMetadata.normalize_language(value)
+      language == nil ? nil : language.to_sym
+    end
+
     def validate
       raise ProgramError, "Missing program id in #{@source}" if @id == ""
       raise ProgramError, "Invalid program UUID #{@id.inspect} in #{@source}" if @id !~ UUID_PATTERN
-      raise ProgramError, "Missing program name in #{@source}" if @name == ""
+      raise ProgramError, "Missing program name in #{@source}" if @raw_name == ""
       raise ProgramError, "Missing program author in #{@source}" if @author == ""
       raise ProgramError, "Missing program version in #{@source}" if @version == ""
       raise ProgramError, "Missing program build_id in #{@source}" if @build_id == nil
       raise ProgramError, "Missing EltenAPIVersion in #{@source}" if @elten_api_version == ""
       if !Programs.api_version_compatible?(@elten_api_version)
-        raise UnsupportedAPIVersionError.new(program: @name, required: @elten_api_version)
+        raise UnsupportedAPIVersionError.new(program: @raw_name, required: @elten_api_version)
       end
       if @eltenlink_contract_version != "" && !Programs.eltenlink_contract_version_compatible?(@eltenlink_contract_version)
-        raise UnsupportedEltenLinkContractError.new(program: @name, required: @eltenlink_contract_version)
+        raise UnsupportedEltenLinkContractError.new(program: @raw_name, required: @eltenlink_contract_version)
       end
       raise ProgramError, "Missing program main_class in #{@source}" if @main_class == ""
       raise ProgramError, "Missing program platforms in #{@source}" if @platforms.empty?
@@ -2419,6 +2501,13 @@ module Programs
         entry: entry,
         id: manifest.id,
         name: manifest.name,
+        description: manifest.description,
+        raw_name: manifest.raw_name,
+        raw_description: manifest.raw_description,
+        name_languages: manifest.name_languages,
+        description_languages: manifest.description_languages,
+        main_language: manifest.main_language,
+        supported_languages: manifest.supported_languages,
         version: manifest.version,
         build_id: manifest.build_id,
         author: manifest.author,
@@ -2447,6 +2536,13 @@ module Programs
         entry: entry,
         id: manifest == nil ? "" : manifest.id,
         name: manifest == nil ? entry.sub(/\.eltenapp\z/i, "") : manifest.name,
+        description: manifest == nil ? "" : manifest.description,
+        raw_name: manifest == nil ? entry.sub(/\.eltenapp\z/i, "") : manifest.raw_name,
+        raw_description: manifest == nil ? "" : manifest.raw_description,
+        name_languages: manifest == nil ? [] : manifest.name_languages,
+        description_languages: manifest == nil ? [] : manifest.description_languages,
+        main_language: manifest == nil ? :unknown : manifest.main_language,
+        supported_languages: manifest == nil ? [] : manifest.supported_languages,
         version: manifest == nil ? "" : manifest.version,
         build_id: manifest == nil ? nil : manifest.build_id,
         author: manifest == nil ? "" : manifest.author,
@@ -2484,7 +2580,8 @@ module Programs
       text
     end
 
-    def local_entry_record(entry:, id:, name:, version:, build_id:, author:, size:, install_type:, status:, source_type: nil, source_path: nil, signature_info: nil, elten_api_version: "", platforms: [], main: "", error: nil)
+    def local_entry_record(entry:, id:, name:, version:, build_id:, author:, size:, install_type:, status:, source_type: nil, source_path: nil, signature_info: nil, elten_api_version: "", platforms: [], main: "", error: nil,
+      description: "", raw_name: nil, raw_description: "", name_languages: [], description_languages: [], main_language: :unknown, supported_languages: [])
       storage_id = storage_id_for_entry(entry, uuid: id)
       record = apps_registry["apps"][storage_id]
       installation_source = record.is_a?(Hash) ? record["installation_source"].to_s : "autodetected"
@@ -2495,6 +2592,13 @@ module Programs
         :storage_id => storage_id,
         :realpath => entry,
         :name => name.to_s,
+        :description => description.to_s,
+        :raw_name => (raw_name == nil ? name : raw_name).to_s,
+        :raw_description => raw_description.to_s,
+        :name_languages => Array(name_languages).map(&:to_sym),
+        :description_languages => Array(description_languages).map(&:to_sym),
+        :main_language => main_language.to_sym,
+        :supported_languages => Array(supported_languages).map(&:to_sym),
         :version => version.to_s,
         :build_id => normalize_build_id(build_id),
         :author => author.to_s,
@@ -2760,10 +2864,13 @@ module Programs
       cls.instance_variable_set(:@app_info, runtime.manifest)
       cls.instance_variable_set(:@app_runtime, runtime)
       set_class_constant(cls, :Name, runtime.manifest.name)
+      set_class_constant(cls, :Description, runtime.manifest.description)
       set_class_constant(cls, :Version, runtime.manifest.version)
       set_class_constant(cls, :BuildID, runtime.manifest.build_id)
       set_class_constant(cls, :EltenAPIVersion, runtime.manifest.elten_api_version)
       set_class_constant(cls, :Author, runtime.manifest.author)
+      set_class_constant(cls, :MainLanguage, runtime.manifest.main_language)
+      set_class_constant(cls, :SupportedLanguages, runtime.manifest.supported_languages)
       set_class_constant(cls, :MainMenuOption, runtime.manifest.menu_label)
       set_class_constant(cls, :NoMenuItem, runtime.manifest.hidden?)
       set_class_constant(cls, :UserMenuOptions, runtime.manifest.user_menu)
@@ -2929,6 +3036,7 @@ end
 class Program
   public
   Name = ""
+  Description = ""
   Version = "0.0"
   BuildID = nil
   EltenAPIVersion = Programs::ELTEN_API_VERSION
@@ -2937,6 +3045,8 @@ class Program
   MainMenuOption = nil
   AppID = 0
   NoMenuItem = false
+  MainLanguage = :unknown
+  SupportedLanguages = []
 
   class << self
     attr_reader :app_info, :app_runtime
@@ -2977,8 +3087,46 @@ class Program
       nil
     end
 
-    def name
-      @app_info == nil ? const_get(:Name) : @app_info.name
+    def name(language = nil)
+      @app_info == nil ? const_get(:Name) : @app_info.name(language)
+    end
+
+    def raw_name
+      @app_info == nil ? const_get(:Name) : @app_info.raw_name
+    end
+
+    def description(language = nil)
+      @app_info == nil ? const_get(:Description) : @app_info.description(language)
+    end
+
+    def raw_description
+      @app_info == nil ? const_get(:Description) : @app_info.raw_description
+    end
+
+    def name_languages
+      return @app_info.name_languages if @app_info != nil
+      language = main_language
+      language == :unknown || raw_name.to_s == "" ? [] : [language]
+    end
+
+    def description_languages
+      return @app_info.description_languages if @app_info != nil
+      language = main_language
+      language == :unknown || raw_description.to_s == "" ? [] : [language]
+    end
+
+    def main_language
+      return @app_info.main_language if @app_info != nil
+      value = Programs::ProgramPackageMetadata.normalize_language(const_get(:MainLanguage), :allow_unknown => true)
+      value == nil ? :unknown : value.to_sym
+    end
+
+    def supported_languages
+      return @app_info.supported_languages if @app_info != nil
+      Array(const_get(:SupportedLanguages)).map do |language|
+        value = Programs::ProgramPackageMetadata.normalize_language(language)
+        value == nil ? nil : value.to_sym
+      end.compact.uniq.sort
     end
 
     def version
@@ -3304,8 +3452,36 @@ class Program
     self.class.native_box?
   end
 
-  def name
-    self.class.name
+  def name(language = nil)
+    self.class.name(language)
+  end
+
+  def raw_name
+    self.class.raw_name
+  end
+
+  def description(language = nil)
+    self.class.description(language)
+  end
+
+  def raw_description
+    self.class.raw_description
+  end
+
+  def name_languages
+    self.class.name_languages
+  end
+
+  def description_languages
+    self.class.description_languages
+  end
+
+  def main_language
+    self.class.main_language
+  end
+
+  def supported_languages
+    self.class.supported_languages
   end
 
   def version
@@ -3608,8 +3784,36 @@ class EltenApp
     @package.manifest.raw
   end
 
-  def name
-    @package.manifest.name
+  def name(language = nil)
+    @package.manifest.name(language)
+  end
+
+  def raw_name
+    @package.manifest.raw_name
+  end
+
+  def description(language = nil)
+    @package.manifest.description(language)
+  end
+
+  def raw_description
+    @package.manifest.raw_description
+  end
+
+  def name_languages
+    @package.manifest.name_languages
+  end
+
+  def description_languages
+    @package.manifest.description_languages
+  end
+
+  def main_language
+    @package.manifest.main_language
+  end
+
+  def supported_languages
+    @package.manifest.supported_languages
   end
 
   def version

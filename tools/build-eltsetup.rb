@@ -10,6 +10,7 @@ require "rubygems"
 require "zlib"
 require "zstd-ruby"
 require_relative "../src/EAPI/ProgramSigning"
+require_relative "../src/eapi/program_package_metadata"
 
 SETUP_TYPE = "application"
 CODE_MAGIC = "Elten3AppPackage".b
@@ -376,6 +377,8 @@ end
 main_file = manifest_file(source_dir)
 metadata = extract_manifest(File.binread(main_file), main_file)
 metadata["main"] = normalize(main_file.delete_prefix(source_dir + File::SEPARATOR)) if metadata["main"].to_s == ""
+metadata = Programs::ProgramPackageMetadata.prepare(metadata, :source_dir => source_dir,
+  :warning => ->(message) { warn "Warning: #{message}" })
 
 code_name = "#{File.basename(output, ".eltsetup")}.eltenapp"
 setup_manifest = {
