@@ -2927,6 +2927,11 @@ class Program
     @managed_resources ||= EltenAPI::Resources::Registry.new
   end
 
+  def communication
+    @communication = nil if @communication != nil && @communication.closed?
+    @communication ||= manage(EltenAPI::Communication::Endpoint.new(app_id: app_uuid))
+  end
+
   def manage(resource, release: :close, &block)
     @managed_resources = nil if @managed_resources != nil && @managed_resources.closed?
     managed_resources.manage(resource, release: release, &block)

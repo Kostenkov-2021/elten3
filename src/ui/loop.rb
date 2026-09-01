@@ -78,6 +78,7 @@ end
     $scene=sc
        end
        Programs::Extensions.tick if defined?(Programs::Extensions) && Thread::current == $mainthread
+       EltenAPI::Communication.tick if defined?(EltenAPI::Communication) && Thread::current == $mainthread
        $input_frame_serial=($input_frame_serial||0)+1
        EltenAPI::Controls::ListBox.tick_audio_players if defined?(EltenAPI::Controls::ListBox)
        Sound.update_slide_events if defined?(Sound) && Thread.current == $mainthread
