@@ -1795,6 +1795,19 @@ module Programs
       required_parts[0, 2] == current_parts[0, 2]
     end
 
+    # Uploads an .eltsetup package using the current authenticated EltenLink
+    # session. The EltenLink contract remains the canonical implementation.
+    def upload_package(file, original_filename: nil, uuid: nil, timeout: nil, cancellation_token: nil)
+      EltenLink::Apps.upload_package(
+        EltenLink.client(nil),
+        file,
+        uuid: uuid,
+        original_filename: original_filename,
+        timeout: timeout,
+        cancellation_token: cancellation_token
+      )
+    end
+
     def setup_package_info(file)
       open_zip(file) do |zip|
         entries = zip_entries(zip)

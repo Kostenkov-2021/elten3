@@ -15,20 +15,114 @@ module EltenLink
   end
 
   class AppPackage
-    attr_accessor :id, :name, :size, :version, :build_id, :elten_api_version, :author, :path, :url
-    attr_reader :realpath
+    attr_accessor :id, :size, :version, :build_id, :elten_api_version, :eltenlink_contract_version,
+      :author, :owner, :path, :url, :original_filename, :recommended, :creation_time, :update_time,
+      :platforms, :metadata
+    attr_reader :realpath, :raw_name, :raw_description, :localized_names, :localized_descriptions,
+      :name_languages, :description_languages, :main_language, :supported_languages
 
-    def initialize(path:, name:, version:, author:, size:, realpath: nil, url: "", build_id: nil, elten_api_version: "", id: "")
+    def initialize(path:, name:, version:, author:, size:, realpath: nil, url: "", build_id: nil,
+      elten_api_version: "", eltenlink_contract_version: "", id: "", description: "",
+      raw_name: nil, raw_description: nil, localized_names: {}, localized_descriptions: {},
+      main_language: "unknown", supported_languages: [], owner: "", original_filename: "",
+      supported_languages_declared: nil, recommended: false, creation_time: 0, update_time: 0,
+      platforms: [], metadata: {})
       @id = id.to_s
       @path = path
-      @name = name
+      @raw_name = (raw_name.nil? ? name : raw_name).to_s
+      @raw_description = (raw_description.nil? ? description : raw_description).to_s
       @version = version
       @build_id = Apps.normalize_build_id(build_id)
       @elten_api_version = elten_api_version.to_s
+      @eltenlink_contract_version = eltenlink_contract_version.to_s
       @author = author
+      @owner = owner.to_s
       @size = size.to_i
       @realpath = realpath
       @url = url.to_s
+      @localized_names = normalize_localizations(localized_names)
+      @localized_descriptions = normalize_localizations(localized_descriptions)
+      @metadata = metadata.is_a?(Hash) ? metadata : {}
+      @main_language = normalize_language(main_language, allow_unknown: true) || "unknown"
+      add_raw_localization(@localized_names, @raw_name)
+      add_raw_localization(@localized_descriptions, @raw_description)
+      @name_languages = @localized_names.keys.sort.freeze
+      @description_languages = @localized_descriptions.keys.sort.freeze
+      @supported_languages_declared = supported_languages_declared.nil? ?
+        (@metadata.is_a?(Hash) && @metadata.key?("supported_languages")) : supported_languages_declared == true
+      normalized_supported = Array(supported_languages).filter_map { |language| normalize_language(language) }.uniq
+      if @supported_languages_declared && @main_language != "unknown" && !normalized_supported.include?(@main_language)
+        normalized_supported << @main_language
+      end
+      @supported_languages = normalized_supported.sort.freeze
+      @original_filename = original_filename.to_s
+      @recommended = recommended == true || recommended.to_s == "1" || recommended.to_s.casecmp?("true")
+      @creation_time = creation_time.to_i
+      @update_time = update_time.to_i
+      @platforms = Array(platforms).map(&:to_s)
+    end
+
+    def supported_languages_declared?
+      @supported_languages_declared
+    end
+
+    def name(language = nil)
+      localized_value(@localized_names, @raw_name, language)
+    end
+
+    def name=(value)
+      @raw_name = value.to_s
+    end
+
+    def description(language = nil)
+      localized_value(@localized_descriptions, @raw_description, language)
+    end
+
+    def description=(value)
+      @raw_description = value.to_s
+    end
+
+    private
+
+    def normalize_localizations(value)
+      return {} unless value.is_a?(Hash)
+      value.each_with_object({}) do |(language, text), result|
+        code = normalize_language(language)
+        content = text.to_s.strip
+        result[code] = content if code != nil && !content.empty?
+      end
+    end
+
+    def normalize_language(value, allow_unknown: false)
+      text = value.to_s.strip.tr("_", "-")
+      return "unknown" if allow_unknown && text.casecmp?("unknown")
+      match = /\A([a-zA-Z]{2})(?:-[a-zA-Z]{2})?\z/.match(text)
+      match && match[1].downcase
+    end
+
+    def add_raw_localization(values, raw)
+      return if @main_language == "unknown" || raw.to_s.empty? || values.key?(@main_language)
+      values[@main_language] = raw.to_s
+    end
+
+    def localized_value(values, raw, language)
+      requested = language == nil ? current_elten_language : normalize_language(language)
+      [requested, "en", @main_language].compact.reject { |candidate| candidate == "unknown" }.uniq.each do |candidate|
+        value = values[candidate]
+        return value if value != nil && !value.empty?
+      end
+      values.keys.sort.each do |candidate|
+        value = values[candidate]
+        return value if value != nil && !value.empty?
+      end
+      raw.to_s
+    end
+
+    def current_elten_language
+      return nil unless defined?(Configuration) && Configuration.respond_to?(:language)
+      normalize_language(Configuration.language)
+    rescue Exception
+      nil
     end
   end
 
@@ -148,19 +242,76 @@ module EltenLink
         prm = {}
         prm["os"] = os if os != nil
         data = client.api_data("GET", "/api/v1/apps", prm)
-        data["apps"].to_a.map do |row|
-          AppPackage.new(
-            id: row["id"].to_s,
-            path: row["path"].to_s,
-            name: row["name"].to_s,
-            version: row["version"].to_s,
-            build_id: normalize_build_id(row["build_id"]),
-            elten_api_version: row["elten_api_version"].to_s,
-            author: row["author"].to_s,
-            size: row["size"].to_i,
-            url: row["url"].to_s
-          )
+        data["apps"].to_a.map { |row| package_from(row) }
+      end
+
+      def upload_package(elten_link, file, uuid: nil, original_filename: nil, timeout: nil, cancellation_token: nil)
+        path = File.expand_path(file.to_s)
+        raise ArgumentError, "Program package file not found" unless File.file?(path)
+
+        if uuid.to_s.empty? && defined?(Programs) && Programs.respond_to?(:setup_package_info)
+          uuid = Programs.setup_package_info(path).dig(:manifest)&.id
         end
+        uuid = uuid.to_s.downcase
+        unless uuid.match?(/\A[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}\z/)
+          raise ArgumentError, "A valid program UUID is required"
+        end
+
+        filename = original_filename.to_s
+        filename = File.basename(path.tr("\\", "/")) if filename.empty?
+        File.open(path, "rb") do |input|
+          data = elten_link.api_binary_data(
+            "PUT",
+            "/api/v1/apps/#{query_escape(uuid)}/package",
+            input,
+            { "Content-Type" => "application/vnd.elten.setup" },
+            { "original_filename" => filename },
+            timeout: timeout,
+            cancellation_token: cancellation_token
+          )
+          package_from(data["package"] || {})
+        end
+      end
+
+      def package_from(row)
+        row = {} unless row.is_a?(Hash)
+        metadata = row["metadata"].is_a?(Hash) ? row["metadata"] : {}
+        id = (row["id"] || metadata["id"]).to_s
+        path = row["path"].to_s
+        path = id if path.empty?
+        original_filename = row["original_filename"].to_s
+        if original_filename.empty?
+          base = File.basename(path.tr("\\", "/"))
+          original_filename = base.downcase.end_with?(".eltsetup") ? base : "#{base}.eltsetup"
+        end
+        AppPackage.new(
+          id: id,
+          path: path,
+          name: (row["name"] || metadata["name"]).to_s,
+          description: (row["description"] || metadata["description"]).to_s,
+          raw_name: (row["raw_name"] || row["name"] || metadata["name"]),
+          raw_description: (row["raw_description"] || row["description"] || metadata["description"]),
+          localized_names: row["localized_names"] || metadata["localized_names"] || {},
+          localized_descriptions: row["localized_descriptions"] || metadata["localized_descriptions"] || {},
+          main_language: row["main_language"] || metadata["main_language"] || "unknown",
+          supported_languages: row["supported_languages"] || metadata["supported_languages"] || [],
+          supported_languages_declared: row.key?("supported_languages_declared") ?
+            row["supported_languages_declared"] : (row.key?("supported_languages") ? true : nil),
+          version: (row["version"] || metadata["version"] || metadata["version_string"]).to_s,
+          build_id: normalize_build_id(row["build_id"] || metadata["build_id"] || metadata["BuildID"]),
+          elten_api_version: (row["elten_api_version"] || metadata["EltenAPIVersion"]).to_s,
+          eltenlink_contract_version: (row["eltenlink_contract_version"] || metadata["EltenLinkContractVersion"]).to_s,
+          author: (row["author"] || metadata["author"]).to_s,
+          owner: row["owner"].to_s,
+          size: row["size"].to_i,
+          url: row["url"].to_s,
+          original_filename: original_filename,
+          recommended: row["recommended"],
+          creation_time: row["creation_time"],
+          update_time: row["update_time"],
+          platforms: row["platforms"] || metadata["platforms"] || [],
+          metadata: metadata
+        )
       end
 
       def signal(client, appid:, user:, packet:)

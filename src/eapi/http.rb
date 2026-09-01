@@ -721,12 +721,21 @@ module EltenAPI
         end
       end
 
-      def write_http1_request(io, method, path, host, headers, body)
+      def write_http1_request(io, method, path, host, headers, body, cancellation_token=nil)
         request = "#{method} #{path} HTTP/1.1\r\nHost: #{host}\r\n".b
         headers.each { |key, value| request << "#{key}: #{value}\r\n".b }
         request << "\r\n".b
         io.write(request)
-        io.write(body) if body != nil && !body.empty?
+        if body.respond_to?(:read)
+          body.rewind if body.respond_to?(:rewind)
+          while (chunk = body.read(64 * 1024))
+            break if chunk.empty?
+            raise_if_cancelled!(cancellation_token)
+            io.write(chunk)
+          end
+        elsif body != nil && !body.empty?
+          io.write(body)
+        end
         io.flush if io.respond_to?(:flush)
       end
 
@@ -1166,13 +1175,23 @@ module EltenAPI
         raise "Too many redirects" if redirects > MAX_REDIRECTS
         raise_if_cancelled!(cancellation_token)
         uri = URI.parse(url)
-        body_data = body.nil? ? nil : body.to_s.b
+        body_data = if body.nil?
+                      nil
+                    elsif body.respond_to?(:read)
+                      body.rewind if body.respond_to?(:rewind)
+                      body
+                    else
+                      body.to_s.b
+                    end
         request_headers = {
           "User-Agent" => user_agent,
           "Connection" => "close",
           "Accept-Encoding" => "identity, chunked, *;q=0"
         }.merge(normalize_headers(headers))
-        request_headers["Content-Length"] = body_data.bytesize.to_s if body_data != nil
+        if body_data != nil
+          body_size = body_data.respond_to?(:size) ? body_data.size : body_data.bytesize
+          request_headers["Content-Length"] = body_size.to_i.to_s
+        end
         response = http1_request_uri(uri, method.to_s.upcase, body_data, request_headers, data, cancellation_token)
         if response[:redirect] != nil
           return readurl_sync(uri.merge(response[:redirect]).to_s, method, body, headers, data, redirects + 1, cancellation_token: cancellation_token)
@@ -1199,7 +1218,7 @@ module EltenAPI
           Timeout.timeout(CONNECT_TIMEOUT) { ssl.connect }
           io = ssl
         end
-        write_http1_request(io, method, uri.request_uri, uri.host, headers, body)
+        write_http1_request(io, method, uri.request_uri, uri.host, headers, body, cancellation_token)
         response = read_http1_response(io)
         location = header_value(response[:headers], "Location")
         response[:redirect] = location if location != nil

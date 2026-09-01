@@ -4,6 +4,9 @@
 # Elten is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for more details. 
 # You should have received a copy of the GNU General Public License along with Elten. If not, see <https://www.gnu.org/licenses/>. 
 
+require "fileutils"
+require "tmpdir"
+
 class Scene_Programs
   def initialize(initial_action=nil)
     @initial_action=initial_action
@@ -301,24 +304,64 @@ when 1
          alert(p_("Programs", "No programs available."))
          return
        end
-       rows=@programs.map{|program| server_row(program)}
-       sel=TableBox.new([p_("Programs", "Name"), p_("Programs", "Version"), p_("Programs", "Status"), p_("Programs", "Size")], rows, index: 0, header: p_("Programs", "Programs available on server"), quiet: false)
+       authors=@programs.map{|program|server_program_author(program)}.reject{|author|author==""}.uniq.polsort
+       categories=[p_("Programs", "Featured")]+authors
+       sel=ListBox.new(categories, header: p_("Programs", "Programs available on server"), index: 0, flags: 0, quiet: false)
+       sel.disable_item(0) if !@programs.any?{|program|program.respond_to?(:recommended) && program.recommended}
        loop do
          loop_update
          sel.update
-         if sel.selected?
-           program=@programs[sel.index]
-           if program!=nil && install_remote_program(program, ask: true)
+         if sel.selected? || sel.expanded?
+           category=sel.index==0 ? :featured : authors[sel.index-1]
+           if install_server_category(category)
              @refresh=true
              return
            end
+           sel.focus
          end
          break if key_pressed?(:key_escape)
        end
      end
 
      def server_row(program)
-       [program.name.to_s, program.version.to_s, server_status_label(program), format_size(program.size)]
+       [
+         program.name.to_s,
+         program.version.to_s,
+         program.description.to_s,
+         server_program_author(program),
+         server_status_label(program),
+         format_size(program.size)
+       ]
+     end
+
+     def install_server_category(category)
+       programs=if category==:featured
+         @programs.select{|program|program.respond_to?(:recommended) && program.recommended}
+       else
+         @programs.select{|program|server_program_author(program)==category.to_s}
+       end
+       programs=programs.sort_by{|program|program.name.to_s.downcase}
+       return false if programs.empty?
+       header=category==:featured ? p_("Programs", "Featured programs") : p_("Programs", "Programs by %{author}")%{:author=>category.to_s}
+       rows=programs.map{|program|server_row(program)}
+       sel=TableBox.new(
+         [p_("Programs", "Name"), p_("Programs", "Version"), p_("Programs", "Description"), p_("Programs", "Author"), p_("Programs", "Status"), p_("Programs", "Size")],
+         rows,
+         index: 0,
+         header: header,
+         quiet: false
+       )
+       sel.focus
+       loop do
+         loop_update
+         sel.update
+         if sel.selected?
+           program=programs[sel.index]
+           return true if program!=nil && install_remote_program(program, ask: true)
+         end
+         break if key_pressed?(:key_escape) || sel.collapsed?
+       end
+       false
      end
 
      def server_status_label(program)
@@ -332,6 +375,14 @@ when 1
        else
          p_("Programs", "installed")
        end
+     end
+
+     def server_program_author(program)
+       if program.respond_to?(:owner)
+         uploader=program.owner.to_s
+         return uploader if uploader!=""
+       end
+       program.respond_to?(:author) ? program.author.to_s : ""
      end
 
      def check_updates
@@ -426,12 +477,15 @@ when 1
          return false if !confirmed
        end
        tempfile=nil
+       tempdir=nil
        installed_entry=nil
        install_error=nil
        cancelled=false
        begin
          waiting
-         tempfile=EltenPath.join(Dirs.temp, safe_install_base(program.path)+".eltsetup")
+         uuid_base=safe_install_base(program.respond_to?(:id) ? program.id : program.path)
+         tempdir=Dir.mktmpdir(["elten-program-#{uuid_base}-", ""], Dirs.temp)
+         tempfile=EltenPath.join(tempdir, remote_package_filename(program))
          package_url=EltenLink::Apps.package_url(program)
          download_file(package_url, tempfile, use_waiting: false, can_cancel: true, override: true)
          if !FileTest.exists?(tempfile)
@@ -446,7 +500,11 @@ when 1
        ensure
          waiting_end rescue nil
          begin
-           File.delete(tempfile) if tempfile!=nil && FileTest.exists?(tempfile)
+           if tempdir!=nil && File.directory?(tempdir)
+             FileUtils.remove_entry(tempdir)
+           elsif tempfile!=nil && FileTest.exists?(tempfile)
+             File.delete(tempfile)
+           end
          rescue Exception => e
            Log.warning("Program package cleanup failed: #{e.class}: #{e.message}")
          end
@@ -525,9 +583,11 @@ when 1
      def install_details(program, size, package_file=nil)
        lines=[p_("Programs", "Do you want to install this program?"), ""]
        lines.push(p_("Programs", "Name: %{name}")%{:name=>program.name.to_s}) if program.respond_to?(:name)
+       lines.push(p_("Programs", "Description: %{description}")%{:description=>program.description.to_s}) if program.respond_to?(:description) && program.description.to_s!=""
        lines.push(p_("Programs", "Version: %{version}")%{:version=>program.version.to_s}) if program.respond_to?(:version)
        lines.push(p_("Programs", "Build ID: %{build}")%{:build=>program.build_id.to_s}) if program.respond_to?(:build_id)
-       lines.push(p_("Programs", "Author: %{author}")%{:author=>program.author.to_s}) if program.respond_to?(:author)
+       author=program.respond_to?(:owner) ? server_program_author(program) : (program.respond_to?(:author) ? program.author.to_s : "")
+       lines.push(p_("Programs", "Author: %{author}")%{:author=>author}) if author!=""
        lines.push(p_("Programs", "Elten API: %{version}")%{:version=>program.elten_api_version.to_s}) if program.respond_to?(:elten_api_version)
        if program.respond_to?(:platforms)
          lines.push(p_("Programs", "Platforms: %{platforms}")%{:platforms=>Array(program.platforms).join(", ")})
@@ -804,7 +864,7 @@ when 1
 
      def eltenapp_install_path(file,manifest,existing_entry=nil,preferred_program=nil,entry_name=nil)
        base=safe_install_base(entry_name)
-       base=safe_install_base(preferred_program.path) if base=="program" && preferred_program!=nil && preferred_program.respond_to?(:path)
+       base=preferred_program_install_base(preferred_program) if base=="program" && preferred_program!=nil
        base=safe_install_base(manifest.name) if base=="program" && manifest!=nil
        base=safe_install_base(File.basename(file,File.extname(file))) if base=="program"
        available_install_path(EltenPath.join(Dirs.apps,base+".eltenapp"),existing_entry,manifest==nil ? "" : manifest.id)
@@ -812,10 +872,23 @@ when 1
 
      def folder_install_path(file,payload,existing_entry=nil,preferred_program=nil,entry_name=nil,manifest=nil)
        base=safe_install_base(payload["path"]) if payload.is_a?(Hash)
-       base=safe_install_base(preferred_program.path) if (base==nil || base=="program") && preferred_program!=nil && preferred_program.respond_to?(:path)
+       base=preferred_program_install_base(preferred_program) if (base==nil || base=="program") && preferred_program!=nil
        base=safe_install_base(File.basename(entry_name.to_s,File.extname(entry_name.to_s))) if (base==nil || base=="program") && entry_name!=nil
        base=safe_install_base(File.basename(file,File.extname(file))) if base==nil || base=="program"
        available_install_path(EltenPath.join(Dirs.apps,base),existing_entry,manifest==nil ? "" : manifest.id)
+     end
+
+     def remote_package_filename(program)
+       value=program.respond_to?(:original_filename) ? program.original_filename.to_s : ""
+       value=program.respond_to?(:path) ? program.path.to_s : "" if value==""
+       safe_install_base(value)+".eltsetup"
+     end
+
+     def preferred_program_install_base(program)
+       return "program" if program==nil
+       value=program.respond_to?(:original_filename) ? program.original_filename.to_s : ""
+       value=program.path.to_s if value=="" && program.respond_to?(:path)
+       safe_install_base(value)
      end
 
      def safe_install_base(value)

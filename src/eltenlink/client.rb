@@ -162,7 +162,8 @@ module EltenLink
       response = nil
       done = false
       @last_error = nil
-      e_read_url(self.class.absolute_api_url(request_path), method.to_s.upcase, body.to_s.b, headers, nil, cancellation_token: cancellation_token) do |resp, _data|
+      request_body = body.respond_to?(:read) ? body : body.to_s.b
+      e_read_url(self.class.absolute_api_url(request_path), method.to_s.upcase, request_body, headers, nil, cancellation_token: cancellation_token) do |resp, _data|
         response = resp == :error ? nil : resp
         @last_error = Error.network(module_name: safe_request_path) if resp == :error
         done = true
