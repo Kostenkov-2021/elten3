@@ -8,6 +8,11 @@ require "fileutils"
 require "tmpdir"
 
 class Scene_Programs
+  PROGRAM_LANGUAGE_FILTER_KEY = "ProgramsLanguageFilter"
+  PROGRAM_LANGUAGE_FILTER_KNOWN_OR_ENGLISH = "known_or_english"
+  PROGRAM_LANGUAGE_FILTER_KNOWN = "known"
+  PROGRAM_LANGUAGE_FILTER_ALL = "all"
+
   def initialize(initial_action=nil)
     @initial_action=initial_action
   end
@@ -299,15 +304,27 @@ when 1
 
      def install_from_server
        @installed=Programs.local_entries
-       @programs=fetch_server_programs
-       if @programs.empty?
+       server_programs=fetch_server_programs
+       if server_programs.empty?
          alert(p_("Programs", "No programs available."))
          return
        end
+       @programs=filter_server_programs(server_programs)
        authors=@programs.map{|program|server_program_author(program)}.reject{|author|author==""}.uniq.polsort
        categories=[p_("Programs", "Featured")]+authors
        sel=ListBox.new(categories, header: p_("Programs", "Programs available on server"), index: 0, flags: 0, quiet: false)
        sel.disable_item(0) if !@programs.any?{|program|program.respond_to?(:recommended) && program.recommended}
+       refresh_filter=proc do
+         @programs=filter_server_programs(server_programs)
+         authors=@programs.map{|program|server_program_author(program)}.reject{|author|author==""}.uniq.polsort
+         sel.options=[p_("Programs", "Featured")]+authors
+         sel.disable_item(0) if !@programs.any?{|program|program.respond_to?(:recommended) && program.recommended}
+         sel.index=0
+         sel.focus
+       end
+       sel.bind_context do |menu|
+         server_program_language_filter_menu(menu) { refresh_filter.call }
+       end
        loop do
          loop_update
          sel.update
@@ -383,6 +400,50 @@ when 1
          return uploader if uploader!=""
        end
        program.respond_to?(:author) ? program.author.to_s : ""
+     end
+
+     def server_program_language_filter
+       mode=LocalConfig[PROGRAM_LANGUAGE_FILTER_KEY, PROGRAM_LANGUAGE_FILTER_KNOWN_OR_ENGLISH, type: :string]
+       [PROGRAM_LANGUAGE_FILTER_KNOWN_OR_ENGLISH, PROGRAM_LANGUAGE_FILTER_KNOWN, PROGRAM_LANGUAGE_FILTER_ALL].include?(mode) ? mode : PROGRAM_LANGUAGE_FILTER_KNOWN_OR_ENGLISH
+     end
+
+     def filter_server_programs(programs)
+       mode=server_program_language_filter
+       return Array(programs) if mode==PROGRAM_LANGUAGE_FILTER_ALL
+       known=Session.languages.to_s.split(",").filter_map{|language|normalize_server_program_language(language)}.uniq
+       known.push("en") if mode==PROGRAM_LANGUAGE_FILTER_KNOWN_OR_ENGLISH && !known.include?("en")
+       Array(programs).select do |program|
+         !(server_program_languages(program)&known).empty?
+       end
+     end
+
+     def server_program_languages(program)
+       languages=[]
+       if program.respond_to?(:supported_languages)
+         languages.concat(Array(program.supported_languages))
+       end
+       languages.push(program.main_language) if program.respond_to?(:main_language)
+       languages.filter_map{|language|normalize_server_program_language(language)}.uniq
+     end
+
+     def normalize_server_program_language(language)
+       match=/\A([a-zA-Z]{2})(?:[-_][a-zA-Z]{2})?\z/.match(language.to_s.strip)
+       match==nil ? nil : match[1].downcase
+     end
+
+     def server_program_language_filter_menu(menu, &on_change)
+       menu.submenu(p_("Programs", "Language filter")) do |submenu|
+         [
+           [PROGRAM_LANGUAGE_FILTER_KNOWN_OR_ENGLISH, p_("Programs", "Hide programs in foreign languages except English")],
+           [PROGRAM_LANGUAGE_FILTER_KNOWN, p_("Programs", "Hide all programs in unknown languages")],
+           [PROGRAM_LANGUAGE_FILTER_ALL, p_("Programs", "Show all programs, including those in unknown languages")]
+         ].each do |mode,label|
+           submenu.option(label) do
+             LocalConfig[PROGRAM_LANGUAGE_FILTER_KEY]=mode
+             on_change.call if on_change!=nil
+           end
+         end
+       end
      end
 
      def check_updates
