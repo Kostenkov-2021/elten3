@@ -34,6 +34,7 @@ src/platforms/linux/ri/desktopruntime.rb :linux
 src/eltenlink/__eltenlink.rb
 src/eltenlink/error.rb
 src/eltenlink/client.rb
+src/eltenlink/relay.rb
 src/eltenlink/attachments.rb
 src/eltenlink/users.rb
 src/eltenlink/contacts.rb

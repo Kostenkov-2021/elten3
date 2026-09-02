@@ -22,6 +22,7 @@ CommandAliases = {'update'=>1}
 ResponseAliases={'success'=>0,'error'=>1}
 CommandTimeout = 5.0
 CommandReadChunk = 16 * 1024
+ConferenceHost = "conferencing.elten.link"
 
 class CommandTimeoutError < StandardError; end
 
@@ -99,25 +100,27 @@ def connect(username, token)
 @token=token
 @mutes=[@username]
 @bigpackets=false
-tcp=TCPSocket.new("conferencing.elten.link",8133)
-ctx = OpenSSL::SSL::SSLContext.new()
+tcp=TCPSocket.new(ConferenceHost,8133)
+ctx = EltenAPI::TLS.client_context
 @tcp = OpenSSL::SSL::SSLSocket.new(tcp, ctx)
 @tcp.sync_close=true
+@tcp.hostname = ConferenceHost if @tcp.respond_to?(:hostname=)
 begin
 @tcp.connect_nonblock
-rescue IO::WaitReadable
+rescue IO::WaitReadable, OpenSSL::SSL::SSLErrorWaitReadable
 if IO.select([@tcp], nil, nil, 2)
 retry
 else
-    return false
+raise CommandTimeoutError, "TLS connection timed out"
 end
-rescue IO::WaitWritable
+rescue IO::WaitWritable, OpenSSL::SSL::SSLErrorWaitWritable
 if IO.select(nil, [@tcp], nil, 2)
 retry
   else
-return false
+raise CommandTimeoutError, "TLS connection timed out"
 end
 end
+@tcp.post_connection_check(ConferenceHost)
 encodings = ['deflate', 'zstd']
 encodings.push('xz') if defined?(XZ_AVAILABLE) && XZ_AVAILABLE
 command("session_encodings", {'encodings'=>encodings}, reconnect: false)
@@ -144,6 +147,15 @@ return false
 end
 return true
 rescue Exception
+begin
+@tcp.close if @tcp!=nil && !@tcp.closed?
+rescue Exception
+end
+@tcp=nil
+begin
+tcp.close if tcp!=nil && !tcp.closed?
+rescue Exception
+end
 return false
 end
 def create_channel(params)

@@ -12,12 +12,28 @@ module EltenAPI
     end
 
     class << self
+      def certificate_store
+        @certificate_store || install!
+      end
+
+      def client_context
+        context = OpenSSL::SSL::SSLContext.new
+        context.set_params(
+          verify_mode: OpenSSL::SSL::VERIFY_PEER,
+          verify_hostname: true,
+          cert_store: certificate_store
+        )
+        context
+      end
+
       def install!
+        return @certificate_store if @certificate_store != nil
+
         pem = EltenAPI::Resources.read("ssl/cert.pem").to_s.b
         if pem == ""
           raise Error, "Embedded TLS CA bundle is unavailable" if defined?(::EltenEmbedded)
           Log.warning("Embedded TLS CA bundle is unavailable; using OpenSSL defaults") if defined?(Log)
-          return OpenSSL::SSL::SSLContext::DEFAULT_CERT_STORE
+          return @certificate_store = OpenSSL::SSL::SSLContext::DEFAULT_CERT_STORE
         end
 
         certificates = OpenSSL::X509::Certificate.load(pem)
@@ -34,7 +50,7 @@ module EltenAPI
           end
         end
         Log.info("Embedded TLS certificate store installed: #{certificates.size} CAs, #{added} added") if defined?(Log)
-        store
+        @certificate_store = store
       rescue ArgumentError, OpenSSL::OpenSSLError => e
         raise Error, "Cannot install embedded TLS CA bundle: #{e.message}"
       end
