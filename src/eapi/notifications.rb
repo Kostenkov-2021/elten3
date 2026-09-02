@@ -18,6 +18,7 @@ module EltenAPI
       STREAM_CONTROL_TIMEOUT = 2.5
       STREAM_RETRY_INTERVAL = 60.0
       STREAM_OPEN_TIMEOUT = 20.0
+      STREAM_FAST_RECONNECT_TIMEOUT = 5.0
       STREAM_IDLE_TIMEOUT = 30.0
       LONG_POLL_WAIT_MS = 5_000
       POLL_ERROR_RETRY_INTERVAL = 2.0
@@ -197,6 +198,7 @@ module EltenAPI
         @stream_retry_at = 0.0
         @stream_failures = 0
         @stream_recovery = false
+        @stream_fast_reconnect = false
         @stream_ever_connected = false
         @http2_enabled = realtime_http2_enabled?
         @realtime_mode_reported = false
@@ -287,6 +289,7 @@ module EltenAPI
         @stream_retry_at = 0.0
         @stream_failures = 0
         @stream_recovery = false
+        @stream_fast_reconnect = false
         @stream_ever_connected = false
         @http2_enabled = realtime_http2_enabled?
         @realtime_mode_reported = false
@@ -435,8 +438,10 @@ module EltenAPI
       end
 
       def maintain_stream(key, now)
-        if @stream_opening && now - @stream_started_at.to_f > STREAM_OPEN_TIMEOUT
-          stream_failed(now, reason: "opening timeout")
+        open_timeout = @stream_fast_reconnect ? STREAM_FAST_RECONNECT_TIMEOUT : STREAM_OPEN_TIMEOUT
+        if @stream_opening && now - @stream_started_at.to_f > open_timeout
+          reason = @stream_fast_reconnect ? "reconnect after clean close timed out" : "opening timeout"
+          stream_failed(now, reason: reason)
           return
         end
         if @stream_connected && now - @stream_last_frame_at.to_f > STREAM_IDLE_TIMEOUT
@@ -505,6 +510,7 @@ module EltenAPI
         @stream_control_pending = false
         @stream_started_at = nil
         @stream_last_frame_at = nil
+        @stream_fast_reconnect = false
       end
 
       def stop_stream_request
@@ -573,6 +579,7 @@ module EltenAPI
         @stream_control_pending = false
         @stream_started_at = nil
         @stream_last_frame_at = nil
+        @stream_fast_reconnect = false
         if immediate
           @stream_failures = 0
           @stream_retry_at = now
@@ -586,6 +593,18 @@ module EltenAPI
         Log.warning("Realtime stream #{state}: #{reason}; switching to #{fallback_mode_description}, retry in #{STREAM_RETRY_INTERVAL.to_i}s")
       end
 
+      def retry_stream_after_clean_close(now, reason)
+        if @stream_fast_reconnect
+          stream_failed(now, reason: "reconnect after clean close failed: #{reason}")
+          return
+        end
+
+        stop_stream
+        @stream_fast_reconnect = true
+        @stream_retry_at = now
+        Log.debug("Realtime stream closed after successful HTTP response: #{reason}; reconnecting immediately")
+      end
+
       def drain_stream_responses(limit=50)
         limit.times do
           answer, data = @stream_responses.pop(true)
@@ -593,9 +612,15 @@ module EltenAPI
           generation = data.is_a?(Hash) ? data["generation"].to_i : 0
           next unless key == @session_key && generation == @stream_generation.to_i
 
-          if answer == :error || answer == :closed
+          if answer == :closed
             reason = data.is_a?(Hash) ? data["stream_error"].to_s : ""
-            reason = answer == :closed ? "connection closed" : "request failed" if reason.empty?
+            reason = "connection closed" if reason.empty?
+            retry_stream_after_clean_close(monotonic_time, reason)
+            next
+          end
+          if answer == :error
+            reason = data.is_a?(Hash) ? data["stream_error"].to_s : ""
+            reason = "request failed" if reason.empty?
             stream_failed(monotonic_time, reason: reason)
             next
           end
@@ -625,11 +650,13 @@ module EltenAPI
         return if @stream_id.empty?
 
         restored = @stream_recovery
+        fast_reconnected = @stream_fast_reconnect
         @stream_opening = false
         @stream_connected = true
         @stream_failures = 0
         @stream_retry_at = 0.0
         @stream_recovery = false
+        @stream_fast_reconnect = false
         @stream_ever_connected = true
         @next_stream_control_at ||= monotonic_time
         @stream_state = {} if frame["full"] == true
@@ -645,6 +672,7 @@ module EltenAPI
         handle_status_data(response, key, false, @request_serial, nil, stream: true)
         @stream_wn_cursor = data["wn_cursor"].to_s unless data["wn_cursor"].to_s.empty?
         Log.info("Realtime stream restored over HTTP/2") if restored
+        Log.debug("Realtime stream reconnected after clean HTTP response") if fast_reconnected
         report_realtime_mode(:stream)
       end
 

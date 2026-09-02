@@ -250,7 +250,8 @@ module EltenAPI
                 pending_token = register_pending_request(generation, stream, cancellation_token, persistent: true) do
                   reason = failure_reason || realtime_stream_http_error(status, buffer, response_headers, context)
                   set_realtime_stream_error(data, reason)
-                  safe_call(block, :error, data)
+                  result = status.between?(200, 299) && failure_reason == nil ? :closed : :error
+                  safe_call(block, result, data)
                 end
               end
               if cancelled?(data, cancellation_token)
@@ -285,7 +286,7 @@ module EltenAPI
                 next unless take_pending_request(pending_token)
 
                 touch_connection_activity(generation)
-                if status.between?(200, 299)
+                if status.between?(200, 299) && failure_reason == nil
                   set_realtime_stream_error(data, failure_reason || "connection closed before first frame") if sequence.zero?
                   safe_call(block, :closed, data)
                 else
