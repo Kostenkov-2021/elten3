@@ -537,6 +537,7 @@ when 1
          confirm(install_details(program, format_size(program.size), nil)) { confirmed=true }
          return false if !confirmed
        end
+       return false if !confirm_unverified_program_install(program)
        tempfile=nil
        tempdir=nil
        installed_entry=nil
@@ -581,6 +582,21 @@ when 1
          alert(p_("Programs", "Installation cancelled.")) if ask && cancelled
          false
        end
+     end
+
+     def confirm_unverified_program_install(program)
+       return true if installed_program_for(program)!=nil
+       return true if program.respond_to?(:verified?) && program.verified? == true
+
+       confirmed=false
+       confirm(unverified_program_warning(program)) { confirmed=true }
+       confirmed
+     end
+
+     def unverified_program_warning(program)
+       p_("Programs", "Warning! The program %{name} was released by 3rd party developer. It will have access to your computer, including your files and data. Install programs only from publishers you trust. Do you want to continue?")%{
+         :name=>program.name.to_s
+       }
      end
 
      def install_from_file
@@ -723,7 +739,7 @@ when 1
      end
 
      def installed_program_for(program)
-       @installed.find{|entry| same_program?(entry,program)}
+       (@installed||=Programs.local_entries).find{|entry| same_program?(entry,program)}
      end
 
      def remote_program_for(program)

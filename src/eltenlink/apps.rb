@@ -17,7 +17,7 @@ module EltenLink
   class AppPackage
     attr_accessor :id, :size, :version, :build_id, :elten_api_version, :eltenlink_contract_version,
       :author, :owner, :path, :url, :original_filename, :recommended, :creation_time, :update_time,
-      :platforms, :metadata
+      :verified, :platforms, :metadata
     attr_reader :realpath, :raw_name, :raw_description, :localized_names, :localized_descriptions,
       :name_languages, :description_languages, :main_language, :supported_languages
 
@@ -26,7 +26,7 @@ module EltenLink
       raw_name: nil, raw_description: nil, localized_names: {}, localized_descriptions: {},
       main_language: "unknown", supported_languages: [], owner: "", original_filename: "",
       supported_languages_declared: nil, recommended: false, creation_time: 0, update_time: 0,
-      platforms: [], metadata: {})
+      verified: false, platforms: [], metadata: {})
       @id = id.to_s
       @path = path
       @raw_name = (raw_name.nil? ? name : raw_name).to_s
@@ -57,6 +57,7 @@ module EltenLink
       @supported_languages = normalized_supported.sort.freeze
       @original_filename = original_filename.to_s
       @recommended = recommended == true || recommended.to_s == "1" || recommended.to_s.casecmp?("true")
+      @verified = verified == true || verified.to_s == "1" || verified.to_s.casecmp?("true")
       @creation_time = creation_time.to_i
       @update_time = update_time.to_i
       @platforms = Array(platforms).map(&:to_s)
@@ -64,6 +65,10 @@ module EltenLink
 
     def supported_languages_declared?
       @supported_languages_declared
+    end
+
+    def verified?
+      @verified == true
     end
 
     def name(language = nil)
@@ -316,6 +321,7 @@ module EltenLink
           url: row["url"].to_s,
           original_filename: original_filename,
           recommended: row["recommended"],
+          verified: row["verified"],
           creation_time: row["creation_time"],
           update_time: row["update_time"],
           platforms: row["platforms"] || metadata["platforms"] || [],
