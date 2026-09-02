@@ -119,6 +119,7 @@ rescue Exception => error
   Log.error("Critical exception occurred, terminating!")
   fail
             ensure
+            EltenAPI::Scheduler.shutdown(:client_shutdown) if defined?(EltenAPI::Scheduler)
             Programs::Extensions.shutdown(:client_shutdown) if defined?(Programs::Extensions)
             if $immediateexit!=true
   ActivityReports.shutdown

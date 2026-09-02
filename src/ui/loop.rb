@@ -78,6 +78,7 @@ end
     $scene=sc
        end
        Programs::Extensions.tick if defined?(Programs::Extensions) && Thread::current == $mainthread
+       EltenAPI::Scheduler.tick if defined?(EltenAPI::Scheduler) && Thread::current == $mainthread
        EltenAPI::Communication.tick if defined?(EltenAPI::Communication) && Thread::current == $mainthread
        EltenAPI::LiveSessions.tick if defined?(EltenAPI::LiveSessions) && Thread::current == $mainthread
        $input_frame_serial=($input_frame_serial||0)+1

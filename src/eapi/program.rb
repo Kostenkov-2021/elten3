@@ -1716,6 +1716,10 @@ module Programs
 
     def unregister_runtime(runtime, reason = :unload)
       return if runtime == nil
+      if defined?(EltenAPI::Scheduler)
+        EltenAPI::Scheduler.unregister_program_runtime(runtime, reason,
+          :remove_state => reason.to_sym == :uninstall)
+      end
       runtime.close_managed_resources if runtime.respond_to?(:close_managed_resources)
       runtime.close_sound_pool if runtime.respond_to?(:close_sound_pool)
       MediaEncoders.unregister_owner(runtime) if defined?(MediaEncoders) && MediaEncoders.respond_to?(:unregister_owner)
@@ -2311,6 +2315,37 @@ module Programs
       save_apps_registry(registry) if removed
       removed
     end
+
+    def cleanup_uninstalled_program(storage_id, entry: nil, remove_data: false)
+      storage_id = storage_id.to_s
+      return false if storage_id == "" && (entry == nil || entry.to_s == "")
+      EltenAPI::Scheduler.remove_program(storage_id) if defined?(EltenAPI::Scheduler) && storage_id != ""
+      remove_app_storage_path(Dirs.apps, entry) if entry != nil && entry.to_s != ""
+      if remove_data && storage_id != ""
+        remove_app_storage_path(apps_data_root, storage_id)
+        remove_app_storage_path(apps_cache_root, storage_id)
+        remove_registry_storage(storage_id)
+      end
+      true
+    end
+
+    def remove_app_storage_path(root, storage_id)
+      root_path = File.expand_path(root.to_s).tr("\\", "/")
+      target_path = File.expand_path(EltenPath.join(root.to_s, storage_id.to_s)).tr("\\", "/")
+      compared_root = root_path
+      compared_target = target_path
+      if RUBY_PLATFORM =~ /mswin|mingw/i
+        compared_root = compared_root.downcase
+        compared_target = compared_target.downcase
+      end
+      raise ProgramError, "Invalid program storage path" if compared_target == compared_root || !compared_target.start_with?(compared_root + "/")
+      FileUtils.rm_rf(target_path) if File.exist?(target_path)
+      true
+    rescue Exception => error
+      Log.warning("Program storage cleanup failed for #{storage_id}: #{error.class}: #{error.message}")
+      false
+    end
+    private :remove_app_storage_path
 
     def register_app_entry(entry, uuid:, loaded:, installation_source: nil)
       registry = apps_registry

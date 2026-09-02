@@ -399,6 +399,25 @@ Extension names and setting keys use lower-case letters, numbers and underscores
 
 The tick callback is synchronous and runs from `loop_update` on `$mainthread`. It must not wait for a network response, display a modal interaction or perform substantial parsing. Keep persistent work in an owned worker or service and use the tick only to inspect or apply ready results.
 
+For longer periodic work, declare a managed scheduler in the extension:
+
+```ruby
+class ExampleApplication < Program
+  def self.activate
+    @background = extension("background") do |extension|
+      extension.every("refresh", minutes: 15) { |run| refresh_data(run.token) }
+      extension.every("libraries", hours: 4, autorun: false, persistent: false) { update_libraries }
+    end
+  end
+
+  def self.update_libraries_if_due
+    @background.trigger("libraries")
+  end
+end
+```
+
+Declare the scheduler in `self.activate`, which runs when the application runtime is loaded, not when its first window is opened. Scheduled callbacks run on a managed worker. Persistent tasks resume after an Elten restart and run overdue work at the next opportunity. Set `autorun: false` for an explicitly triggered task, or `persistent: false` to keep its interval only for the current Elten session.
+
 ## Server applications and leaderboards
 
 An application can bind its server-side registration and table schema to its `Program` class:

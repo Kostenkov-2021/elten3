@@ -198,7 +198,7 @@ module Programs
 
     class Definition
       attr_reader :name, :start_callback, :tick_callback, :tick_interval, :stop_callback, :settings_callback,
-        :commands, :main_tabs
+        :commands, :main_tabs, :schedules
 
       def initialize(name)
         @name = name.to_s
@@ -206,8 +206,10 @@ module Programs
         @tick_interval = 0.0
         @commands = []
         @main_tabs = []
+        @schedules = []
         @command_keys = {}
         @main_tab_keys = {}
+        @schedule_keys = {}
       end
 
       def start(&callback)
@@ -233,6 +235,19 @@ module Programs
         @settings_callback = required_callback(callback)
       end
 
+      def every(key, seconds: 0, minutes: 0, hours: 0, days: 0, autorun: true,
+        persistent: true, first: :after_interval, &callback)
+        normalized_key = ui_key!(key, @schedule_keys, "scheduler task")
+        definition = EltenAPI::Scheduler::TaskDefinition.new(normalized_key,
+          seconds: seconds, minutes: minutes, hours: hours, days: days,
+          autorun: autorun, persistent: persistent, first: first, &callback)
+        @schedules << definition
+        definition
+      rescue EltenAPI::Scheduler::SchedulerError => error
+        @schedule_keys.delete(key.to_s)
+        raise ExtensionError, error.message
+      end
+
       def command(key, label:, visible: nil, &callback)
         normalized_key = ui_key!(key, @command_keys, "command")
         validate_label!(label, "Command")
@@ -256,8 +271,10 @@ module Programs
         @main_tabs.each { |tab| tab.finalize! }
         @commands.freeze
         @main_tabs.freeze
+        @schedules.freeze
         @command_keys.freeze
         @main_tab_keys.freeze
+        @schedule_keys.freeze
         freeze
       end
 
@@ -301,6 +318,7 @@ module Programs
         @stopped = false
         @running = false
         @last_tick = nil
+        @scheduled_tasks = {}
         @menu_items = []
         @main_actions = []
         @main_tabs = @definition.main_tabs.map { |tab| MainTabContribution.new(self, tab) }
@@ -347,6 +365,21 @@ module Programs
 
       def main_tabs
         @main_tabs
+      end
+
+      def trigger(key)
+        task = scheduled_task(key)
+        raise ExtensionError, "Unknown scheduler task #{key}" if task == nil
+        task.trigger
+      end
+
+      def scheduled_task(key)
+        @scheduled_tasks[key.to_s]
+      end
+
+      def attach_scheduled_task(key, handle)
+        @scheduled_tasks[key.to_s] = handle
+        handle
       end
 
       def ui_identifier(kind, key, surface = nil)
@@ -545,9 +578,11 @@ module Programs
         end
         begin
           registration.start!
+          EltenAPI::Scheduler.register_extension(registration)
           mark_ui_changed
         rescue Exception
           mutex.synchronize { registrations.delete(key) if registrations[key].equal?(registration) }
+          EltenAPI::Scheduler.unregister_extension(registration, :load_rollback) rescue nil
           registration.stop!(:load_rollback) rescue nil
           mark_ui_changed
           raise
@@ -706,6 +741,7 @@ module Programs
       def stop_all(selected, reason)
         selected.each do |registration|
           begin
+            EltenAPI::Scheduler.unregister_extension(registration, reason) if defined?(EltenAPI::Scheduler)
             registration.stop!(reason.to_sym)
           rescue Exception => error
             log_error("stop", registration, error)
