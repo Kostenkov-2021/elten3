@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Elten 3.0\n"
 "Report-Msgid-Bugs-To: dawidpieper@o2.pl\n"
-"POT-Creation-Date: 2026-09-01 19:00+0200\n"
-"PO-Revision-Date: 2026-09-01 19:00+0200\n"
+"POT-Creation-Date: 2026-09-02 12:47+0200\n"
+"PO-Revision-Date: 2026-09-02 12:47+0200\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1729,22 +1729,22 @@ msgctxt "Notifications"
 msgid "Would you like to write a private message to %{moderator}?"
 msgstr ""
 
-#: src/eapi/program.rb:2009
+#: src/eapi/program.rb:2014
 msgctxt "Program"
 msgid "Backtrace:"
 msgstr ""
 
-#: src/eapi/program.rb:2011
+#: src/eapi/program.rb:2016
 msgctxt "Program"
 msgid "Error in program %{name}"
 msgstr ""
 
-#: src/eapi/program.rb:2026
+#: src/eapi/program.rb:2031
 msgctxt "Program"
 msgid "Unknown program"
 msgstr ""
 
-#: src/eapi/program.rb:3731
+#: src/eapi/program.rb:3772
 msgctxt "Program"
 msgid "The program has been closed."
 msgstr ""
@@ -5473,7 +5473,7 @@ msgctxt "CallHistory"
 msgid "Call History"
 msgstr ""
 
-#: src/scenes/changes.rb:150
+#: src/scenes/changes.rb:151
 msgctxt "Changes"
 msgid "Changelog"
 msgstr ""
@@ -11152,12 +11152,12 @@ msgstr ""
 
 #: src/scenes/notes.rb:24
 msgctxt "Notes"
-msgid "Modified"
+msgid "Author"
 msgstr ""
 
 #: src/scenes/notes.rb:24
 msgctxt "Notes"
-msgid "Author"
+msgid "Modified"
 msgstr ""
 
 #: src/scenes/notes.rb:26
@@ -11451,6 +11451,11 @@ msgstr ""
 
 #: src/scenes/polls.rb:198
 msgctxt "Polls"
+msgid "Single choice"
+msgstr ""
+
+#: src/scenes/polls.rb:198
+msgctxt "Polls"
 msgid "Multiple choice"
 msgstr ""
 
@@ -11462,11 +11467,6 @@ msgstr ""
 #: src/scenes/polls.rb:198
 msgctxt "Polls"
 msgid "Question type"
-msgstr ""
-
-#: src/scenes/polls.rb:198
-msgctxt "Polls"
-msgid "Single choice"
 msgstr ""
 
 #: src/scenes/polls.rb:199
@@ -11603,11 +11603,6 @@ msgstr ""
 
 #: src/scenes/premiumpackages.rb:21
 msgctxt "PremiumPackages"
-msgid "status"
-msgstr ""
-
-#: src/scenes/premiumpackages.rb:21
-msgctxt "PremiumPackages"
 msgid "Yearly price"
 msgstr ""
 
@@ -11624,6 +11619,11 @@ msgstr ""
 #: src/scenes/premiumpackages.rb:21
 msgctxt "PremiumPackages"
 msgid "Premium packages"
+msgstr ""
+
+#: src/scenes/premiumpackages.rb:21
+msgctxt "PremiumPackages"
+msgid "status"
 msgstr ""
 
 #: src/scenes/premiumpackages.rb:38
@@ -11890,6 +11890,11 @@ msgstr ""
 
 #: src/scenes/premiumpackages.rb:148
 msgctxt "PremiumPackages"
+msgid "Polish zloty"
+msgstr ""
+
+#: src/scenes/premiumpackages.rb:148
+msgctxt "PremiumPackages"
 msgid "Euro"
 msgstr ""
 
@@ -11906,11 +11911,6 @@ msgstr ""
 #: src/scenes/premiumpackages.rb:148
 msgctxt "PremiumPackages"
 msgid "Select your currency."
-msgstr ""
-
-#: src/scenes/premiumpackages.rb:148
-msgctxt "PremiumPackages"
-msgid "Polish zloty"
 msgstr ""
 
 #: src/scenes/premiumpackages.rb:159
@@ -12129,6 +12129,11 @@ msgstr ""
 
 #: src/scenes/programs.rb:25 src/scenes/programs.rb:365
 msgctxt "Programs"
+msgid "Name"
+msgstr ""
+
+#: src/scenes/programs.rb:25 src/scenes/programs.rb:365
+msgctxt "Programs"
 msgid "Version"
 msgstr ""
 
@@ -12145,11 +12150,6 @@ msgstr ""
 #: src/scenes/programs.rb:25
 msgctxt "Programs"
 msgid "Installed programs"
-msgstr ""
-
-#: src/scenes/programs.rb:25 src/scenes/programs.rb:365
-msgctxt "Programs"
-msgid "Name"
 msgstr ""
 
 #: src/scenes/programs.rb:47
@@ -12277,22 +12277,22 @@ msgctxt "Programs"
 msgid "Program disabled."
 msgstr ""
 
-#: src/scenes/programs.rb:170 src/scenes/programs.rb:646
+#: src/scenes/programs.rb:170 src/scenes/programs.rb:647
 msgctxt "Programs"
 msgid "Name: %{name}"
 msgstr ""
 
-#: src/scenes/programs.rb:171 src/scenes/programs.rb:648
+#: src/scenes/programs.rb:171 src/scenes/programs.rb:649
 msgctxt "Programs"
 msgid "Version: %{version}"
 msgstr ""
 
-#: src/scenes/programs.rb:172 src/scenes/programs.rb:649
+#: src/scenes/programs.rb:172 src/scenes/programs.rb:650
 msgctxt "Programs"
 msgid "Build ID: %{build}"
 msgstr ""
 
-#: src/scenes/programs.rb:173 src/scenes/programs.rb:651
+#: src/scenes/programs.rb:173 src/scenes/programs.rb:652
 msgctxt "Programs"
 msgid "Author: %{author}"
 msgstr ""
@@ -12302,12 +12302,12 @@ msgctxt "Programs"
 msgid "UUID: %{uuid}"
 msgstr ""
 
-#: src/scenes/programs.rb:175 src/scenes/programs.rb:652
+#: src/scenes/programs.rb:175 src/scenes/programs.rb:653
 msgctxt "Programs"
 msgid "Elten API: %{version}"
 msgstr ""
 
-#: src/scenes/programs.rb:176 src/scenes/programs.rb:654
+#: src/scenes/programs.rb:176 src/scenes/programs.rb:655
 msgctxt "Programs"
 msgid "Platforms: %{platforms}"
 msgstr ""
@@ -12327,7 +12327,7 @@ msgctxt "Programs"
 msgid "Status: %{status}"
 msgstr ""
 
-#: src/scenes/programs.rb:180 src/scenes/programs.rb:657
+#: src/scenes/programs.rb:180 src/scenes/programs.rb:658
 msgctxt "Programs"
 msgid "Size: %{size}"
 msgstr ""
@@ -12597,85 +12597,93 @@ msgctxt "Programs"
 msgid "The list of programs could not be loaded."
 msgstr ""
 
-#: src/scenes/programs.rb:529 src/scenes/programs.rb:663
+#: src/scenes/programs.rb:529 src/scenes/programs.rb:664
 msgctxt "Programs"
 msgid ""
 "This program requires Elten API %{required}. The current Elten API version is "
 "%{current}."
 msgstr ""
 
-#: src/scenes/programs.rb:574 src/scenes/programs.rb:634
+#: src/scenes/programs.rb:575 src/scenes/programs.rb:635
 msgctxt "Programs"
 msgid "Installation completed."
 msgstr ""
 
-#: src/scenes/programs.rb:581 src/scenes/programs.rb:640
+#: src/scenes/programs.rb:582 src/scenes/programs.rb:641
 msgctxt "Programs"
 msgid "Installation cancelled."
 msgstr ""
 
-#: src/scenes/programs.rb:600
+#: src/scenes/programs.rb:597
 msgctxt "Programs"
-msgid "Select program package"
+msgid ""
+"Warning! The program %{name} was released by 3rd party developer. It will have"
+" access to your computer, including your files and data. Install programs only"
+" from publishers you trust. Do you want to continue?"
 msgstr ""
 
 #: src/scenes/programs.rb:603
 msgctxt "Programs"
+msgid "Select program package"
+msgstr ""
+
+#: src/scenes/programs.rb:606
+msgctxt "Programs"
 msgid "The selected file is not an Elten program package."
 msgstr ""
 
-#: src/scenes/programs.rb:645
+#: src/scenes/programs.rb:646
 msgctxt "Programs"
 msgid "Do you want to install this program?"
 msgstr ""
 
-#: src/scenes/programs.rb:647
+#: src/scenes/programs.rb:648
 msgctxt "Programs"
 msgid "Description: %{description}"
 msgstr ""
 
-#: src/scenes/programs.rb:656
+#: src/scenes/programs.rb:657
 msgctxt "Programs"
 msgid "Package: %{file}"
 msgstr ""
 
-#: src/scenes/programs.rb:669
+#: src/scenes/programs.rb:670
 msgctxt "Programs"
 msgid ""
 "This program requires EltenLink contract %{required}. The current contract ver"
 "sion is %{current}."
 msgstr ""
 
-#: src/scenes/programs.rb:675
+#: src/scenes/programs.rb:676
 msgctxt "Programs"
 msgid ""
 "This program does not support the current platform %{current}. Supported platf"
 "orms: %{required}."
 msgstr ""
 
-#: src/scenes/programs.rb:681
+#: src/scenes/programs.rb:682
 msgctxt "Programs"
 msgid ""
 "The program package signature cannot be verified because trusted signing infor"
 "mation is unavailable."
 msgstr ""
 
-#: src/scenes/programs.rb:684
+#: src/scenes/programs.rb:685
 msgctxt "Programs"
 msgid "The program package is not signed."
 msgstr ""
 
-#: src/scenes/programs.rb:687
+#: src/scenes/programs.rb:688
 msgctxt "Programs"
 msgid "The program package signature could not be verified: %{reason}"
 msgstr ""
 
-#: src/scenes/programs.rb:691
+#: src/scenes/programs.rb:692
 msgctxt "Programs"
 msgid "The program could not be installed: %{reason}"
 msgstr ""
 
-#: src/scenes/programs.rb:712
+#: src/scenes/programs.rb:713
 msgctxt "Programs"
 msgid "Unknown error"
 msgstr ""
@@ -17636,304 +17644,304 @@ msgctxt "EAPI_UI"
 msgid "Do you want to restart Elten?"
 msgstr ""
 
-#: src/ui/loop.rb:220
+#: src/ui/loop.rb:222
 msgctxt "EAPI_UI"
 msgid "Failed to show error #123."
 msgstr ""
 
-#: src/ui/loop.rb:220
+#: src/ui/loop.rb:222
 msgctxt "EAPI_UI"
 msgid "Error #123"
 msgstr ""
 
-#: src/ui/loop.rb:221
+#: src/ui/loop.rb:223
 msgctxt "EAPI_UI"
 msgid "This computer is hungry!"
 msgstr ""
 
-#: src/ui/loop.rb:221
+#: src/ui/loop.rb:223
 msgctxt "EAPI_UI"
 msgid "Please place the hamburger in the hard-drive slot."
 msgstr ""
 
-#: src/ui/loop.rb:222
+#: src/ui/loop.rb:224
 msgctxt "EAPI_UI"
 msgid "The error you are looking for was not found."
 msgstr ""
 
-#: src/ui/loop.rb:222
+#: src/ui/loop.rb:224
 msgctxt "EAPI_UI"
 msgid "Error #404"
 msgstr ""
 
-#: src/ui/loop.rb:223
+#: src/ui/loop.rb:225
 msgctxt "EAPI_UI"
 msgid "Neo is currently unavailable, please try again later."
 msgstr ""
 
-#: src/ui/loop.rb:223
+#: src/ui/loop.rb:225
 msgctxt "EAPI_UI"
 msgid "Matrix Breach Detected"
 msgstr ""
 
-#: src/ui/loop.rb:224
+#: src/ui/loop.rb:226
 msgctxt "EAPI_UI"
 msgid "Unstable Quantum State"
 msgstr ""
 
-#: src/ui/loop.rb:224
+#: src/ui/loop.rb:226
 msgctxt "EAPI_UI"
 msgid "Elten is now both crashed and not crashed."
 msgstr ""
 
-#: src/ui/loop.rb:225
+#: src/ui/loop.rb:227
 msgctxt "EAPI_UI"
 msgid ""
 "The operation completed successfully.\n"
 "This is highly suspicious."
 msgstr ""
 
-#: src/ui/loop.rb:225
+#: src/ui/loop.rb:227
 msgctxt "EAPI_UI"
 msgid "Unexpected Success"
 msgstr ""
 
-#: src/ui/loop.rb:226
+#: src/ui/loop.rb:228
 msgctxt "EAPI_UI"
 msgid ""
 "Your computer is questioning its purpose.\n"
 "Please reassure it."
 msgstr ""
 
-#: src/ui/loop.rb:226 src/ui/loop.rb:248
+#: src/ui/loop.rb:228 src/ui/loop.rb:250
 msgctxt "EAPI_UI"
 msgid "Existential Error"
 msgstr ""
 
-#: src/ui/loop.rb:227
+#: src/ui/loop.rb:229
 msgctxt "EAPI_UI"
 msgid "Memory is temporarily imagining things. Try again later."
 msgstr ""
 
-#: src/ui/loop.rb:227
+#: src/ui/loop.rb:229
 msgctxt "EAPI_UI"
 msgid "RAM Daydreaming"
 msgstr ""
 
-#: src/ui/loop.rb:228
+#: src/ui/loop.rb:230
 msgctxt "EAPI_UI"
 msgid "Parallel Universe Mismatch"
 msgstr ""
 
-#: src/ui/loop.rb:228
+#: src/ui/loop.rb:230
 msgctxt "EAPI_UI"
 msgid "Elten ran successfully in a different universe."
 msgstr ""
 
-#: src/ui/loop.rb:229
+#: src/ui/loop.rb:231
 msgctxt "EAPI_UI"
 msgid "Operation aborted until tea levels are restored."
 msgstr ""
 
-#: src/ui/loop.rb:229
+#: src/ui/loop.rb:231
 msgctxt "EAPI_UI"
 msgid "Critical Tea Shortage"
 msgstr ""
 
-#: src/ui/loop.rb:230
+#: src/ui/loop.rb:232
 msgctxt "EAPI_UI"
 msgid ""
 "No errors found.\n"
 "This can't be right."
 msgstr ""
 
-#: src/ui/loop.rb:230
+#: src/ui/loop.rb:232
 msgctxt "EAPI_UI"
 msgid "Suspicious Silence"
 msgstr ""
 
-#: src/ui/loop.rb:231
+#: src/ui/loop.rb:233
 msgctxt "EAPI_UI"
 msgid "Window Open Error"
 msgstr ""
 
-#: src/ui/loop.rb:231
+#: src/ui/loop.rb:233
 msgctxt "EAPI_UI"
 msgid "Attempt to open a window resulted in actual glass breaking."
 msgstr ""
 
-#: src/ui/loop.rb:232
+#: src/ui/loop.rb:234
 msgctxt "EAPI_UI"
 msgid ""
 "System froze at digit 3.\n"
 "It refuses to continue irrational numbers."
 msgstr ""
 
-#: src/ui/loop.rb:232
+#: src/ui/loop.rb:234
 msgctxt "EAPI_UI"
 msgid "Error #π"
 msgstr ""
 
-#: src/ui/loop.rb:233
+#: src/ui/loop.rb:235
 msgctxt "EAPI_UI"
 msgid ""
 "This error message has not been written yet.\n"
 "Please read it when it exists."
 msgstr ""
 
-#: src/ui/loop.rb:233
+#: src/ui/loop.rb:235
 msgctxt "EAPI_UI"
 msgid "Paradox Detected"
 msgstr ""
 
-#: src/ui/loop.rb:234
+#: src/ui/loop.rb:236
 msgctxt "EAPI_UI"
 msgid "Recursive Complaint"
 msgstr ""
 
-#: src/ui/loop.rb:234
+#: src/ui/loop.rb:236
 msgctxt "EAPI_UI"
 msgid ""
 "This message is complaining about this message complaining about this message."
 ".."
 msgstr ""
 
-#: src/ui/loop.rb:235
+#: src/ui/loop.rb:237
 msgctxt "EAPI_UI"
 msgid ""
 "You are not allowed to know what went wrong.\n"
 "Stop asking."
 msgstr ""
 
-#: src/ui/loop.rb:235
+#: src/ui/loop.rb:237
 msgctxt "EAPI_UI"
 msgid "Forbidden Knowledge Access"
 msgstr ""
 
-#: src/ui/loop.rb:236
+#: src/ui/loop.rb:238
 msgctxt "EAPI_UI"
 msgid "Even the system has no idea what this is."
 msgstr ""
 
-#: src/ui/loop.rb:236
+#: src/ui/loop.rb:238
 msgctxt "EAPI_UI"
 msgid "Error #undefined"
 msgstr ""
 
-#: src/ui/loop.rb:237
+#: src/ui/loop.rb:239
 msgctxt "EAPI_UI"
 msgid "404: Code Not Found"
 msgstr ""
 
-#: src/ui/loop.rb:237
+#: src/ui/loop.rb:239
 msgctxt "EAPI_UI"
 msgid "This function went out for coffee and never came back."
 msgstr ""
 
-#: src/ui/loop.rb:238
+#: src/ui/loop.rb:240
 msgctxt "EAPI_UI"
 msgid "Check midichlorian drivers."
 msgstr ""
 
-#: src/ui/loop.rb:238
+#: src/ui/loop.rb:240
 msgctxt "EAPI_UI"
 msgid "The Force Was Not With You"
 msgstr ""
 
-#: src/ui/loop.rb:239
+#: src/ui/loop.rb:241
 msgctxt "EAPI_UI"
 msgid "These are, unfortunately, the bugs you are looking for."
 msgstr ""
 
-#: src/ui/loop.rb:239
+#: src/ui/loop.rb:241
 msgctxt "EAPI_UI"
 msgid "Jedi Mind Trick Failed"
 msgstr ""
 
-#: src/ui/loop.rb:240
+#: src/ui/loop.rb:242
 msgctxt "EAPI_UI"
 msgid "This operation may take a looooong time."
 msgstr ""
 
-#: src/ui/loop.rb:240
+#: src/ui/loop.rb:242
 msgctxt "EAPI_UI"
 msgid "Entish Processing"
 msgstr ""
 
-#: src/ui/loop.rb:241
+#: src/ui/loop.rb:243
 msgctxt "EAPI_UI"
 msgid "Silver Sword Required"
 msgstr ""
 
-#: src/ui/loop.rb:241
+#: src/ui/loop.rb:243
 msgctxt "EAPI_UI"
 msgid "Process terminated due to monster interference."
 msgstr ""
 
-#: src/ui/loop.rb:242
+#: src/ui/loop.rb:244
 msgctxt "EAPI_UI"
 msgid ""
 "Debugging halted.\n"
 "Please attach a certified rubber duck."
 msgstr ""
 
-#: src/ui/loop.rb:242
+#: src/ui/loop.rb:244
 msgctxt "EAPI_UI"
 msgid "RubberDuckNotFound"
 msgstr ""
 
-#: src/ui/loop.rb:243
+#: src/ui/loop.rb:245
 msgctxt "EAPI_UI"
 msgid ""
 "User typed faster than humanly possible.\n"
 "Suspect: cat."
 msgstr ""
 
-#: src/ui/loop.rb:243
+#: src/ui/loop.rb:245
 msgctxt "EAPI_UI"
 msgid "KeyboardBufferOverflow"
 msgstr ""
 
-#: src/ui/loop.rb:244
+#: src/ui/loop.rb:246
 msgctxt "EAPI_UI"
 msgid "Thread Scheduler Panic"
 msgstr ""
 
-#: src/ui/loop.rb:244
+#: src/ui/loop.rb:246
 msgctxt "EAPI_UI"
 msgid ""
 "Ruby threads running.\n"
 "Probably. Maybe. Hard to tell."
 msgstr ""
 
-#: src/ui/loop.rb:245
+#: src/ui/loop.rb:247
 msgctxt "EAPI_UI"
 msgid ""
 "Code returned the last value.\n"
 "Elten didn't mean THAT last value."
 msgstr ""
 
-#: src/ui/loop.rb:245
+#: src/ui/loop.rb:247
 msgctxt "EAPI_UI"
 msgid "Implicit Return Confusion"
 msgstr ""
 
-#: src/ui/loop.rb:246
+#: src/ui/loop.rb:248
 msgctxt "EAPI_UI"
 msgid "Elten tried to OR a bit that wanted to AND."
 msgstr ""
 
-#: src/ui/loop.rb:246
+#: src/ui/loop.rb:248
 msgctxt "EAPI_UI"
 msgid "Bitwise Romance Error"
 msgstr ""
 
-#: src/ui/loop.rb:247
+#: src/ui/loop.rb:249
 msgctxt "EAPI_UI"
 msgid "Compiler Sadness"
 msgstr ""
 
-#: src/ui/loop.rb:247
+#: src/ui/loop.rb:249
 msgctxt "EAPI_UI"
 msgid ""
 "It compiled.\n"
@@ -17941,156 +17949,156 @@ msgid ""
 "It failed anyway."
 msgstr ""
 
-#: src/ui/loop.rb:248
+#: src/ui/loop.rb:250
 msgctxt "EAPI_UI"
 msgid "Program paused to ask why it should continue at all."
 msgstr ""
 
-#: src/ui/loop.rb:249
+#: src/ui/loop.rb:251
 msgctxt "EAPI_UI"
 msgid ""
 "It has seen things.\n"
 "Terrible things."
 msgstr ""
 
-#: src/ui/loop.rb:249
+#: src/ui/loop.rb:251
 msgctxt "EAPI_UI"
 msgid "Elten PTSD"
 msgstr ""
 
-#: src/ui/loop.rb:250
+#: src/ui/loop.rb:252
 msgctxt "EAPI_UI"
 msgid "System jitter levels critical. Reduce caffeine immediately."
 msgstr ""
 
-#: src/ui/loop.rb:250
+#: src/ui/loop.rb:252
 msgctxt "EAPI_UI"
 msgid "Coffee Overflow"
 msgstr ""
 
-#: src/ui/loop.rb:251
+#: src/ui/loop.rb:253
 msgctxt "EAPI_UI"
 msgid "Universal Constant Modified"
 msgstr ""
 
-#: src/ui/loop.rb:251
+#: src/ui/loop.rb:253
 msgctxt "EAPI_UI"
 msgid "Pi now equals 3. Please update mathematics."
 msgstr ""
 
-#: src/ui/loop.rb:252
+#: src/ui/loop.rb:254
 msgctxt "EAPI_UI"
 msgid "System attempted operation without considering consequences."
 msgstr ""
 
-#: src/ui/loop.rb:252
+#: src/ui/loop.rb:254
 msgctxt "EAPI_UI"
 msgid "Error #YOLO"
 msgstr ""
 
-#: src/ui/loop.rb:253
+#: src/ui/loop.rb:255
 msgctxt "EAPI_UI"
 msgid "System is sad and needs a compliment."
 msgstr ""
 
-#: src/ui/loop.rb:253
+#: src/ui/loop.rb:255
 msgctxt "EAPI_UI"
 msgid "Emotional Support Required"
 msgstr ""
 
-#: src/ui/loop.rb:254
+#: src/ui/loop.rb:256
 msgctxt "EAPI_UI"
 msgid "error"
 msgstr ""
 
-#: src/ui/loop.rb:254
+#: src/ui/loop.rb:256
 msgctxt "EAPI_UI"
 msgid "Artificial Stupidity Enabled"
 msgstr ""
 
-#: src/ui/loop.rb:255
+#: src/ui/loop.rb:257
 msgctxt "EAPI_UI"
 msgid "This error knows you are reading it."
 msgstr ""
 
-#: src/ui/loop.rb:255
+#: src/ui/loop.rb:257
 msgctxt "EAPI_UI"
 msgid "Broken Fourth Wall"
 msgstr ""
 
-#: src/ui/loop.rb:256
+#: src/ui/loop.rb:258
 msgctxt "EAPI_UI"
 msgid "Cogito ergo crash."
 msgstr ""
 
-#: src/ui/loop.rb:256
+#: src/ui/loop.rb:258
 msgctxt "EAPI_UI"
 msgid "Philosophical Segmentation Fault"
 msgstr ""
 
-#: src/ui/loop.rb:257
+#: src/ui/loop.rb:259
 msgctxt "EAPI_UI"
 msgid "Boredom Overflow"
 msgstr ""
 
-#: src/ui/loop.rb:257
+#: src/ui/loop.rb:259
 msgctxt "EAPI_UI"
 msgid "The CPU refuses to continue until something interesting happens."
 msgstr ""
 
-#: src/ui/loop.rb:258
+#: src/ui/loop.rb:260
 msgctxt "EAPI_UI"
 msgid "System tried to divide by a sandwich."
 msgstr ""
 
-#: src/ui/loop.rb:258
+#: src/ui/loop.rb:260
 msgctxt "EAPI_UI"
 msgid "Error #NaN"
 msgstr ""
 
-#: src/ui/loop.rb:259
+#: src/ui/loop.rb:261
 msgctxt "EAPI_UI"
 msgid "Object does not quack like a duck."
 msgstr ""
 
-#: src/ui/loop.rb:259
+#: src/ui/loop.rb:261
 msgctxt "EAPI_UI"
 msgid "Duck Typing Failure"
 msgstr ""
 
-#: src/ui/loop.rb:260
+#: src/ui/loop.rb:262
 msgctxt "EAPI_UI"
 msgid "Procrastination Mode Enabled"
 msgstr ""
 
-#: src/ui/loop.rb:260
+#: src/ui/loop.rb:262
 msgctxt "EAPI_UI"
 msgid ""
 "The task will start.\n"
 "Eventually."
 msgstr ""
 
-#: src/ui/loop.rb:261
+#: src/ui/loop.rb:263
 msgctxt "EAPI_UI"
 msgid "The system encountered an irrational sense of growth."
 msgstr ""
 
-#: src/ui/loop.rb:261
+#: src/ui/loop.rb:263
 msgctxt "EAPI_UI"
 msgid "Error #2.71828"
 msgstr ""
 
-#: src/ui/loop.rb:262
+#: src/ui/loop.rb:264
 msgctxt "EAPI_UI"
 msgid "Reinstall Universe And Reboot."
 msgstr ""
 
-#: src/ui/loop.rb:262
+#: src/ui/loop.rb:264
 msgctxt "EAPI_UI"
 msgid "+++ Divide By Cucumber Error +++"
 msgstr ""
 
-#: src/ui/loop.rb:318
+#: src/ui/loop.rb:320
 msgctxt "EAPI_UI"
 msgid "Alarm"
 msgstr ""
