@@ -104,6 +104,16 @@ class BassFXEffect < SoundEffect
     end
   end
 
+  def audio_clone
+    values, priority, enabled = @mutex.synchronize do
+      public_values = self.class.parameters.each_with_object({}) do |(name, definition), result|
+        result[name] = @values[name] if definition[:public]
+      end
+      [public_values, @priority, @enabled]
+    end
+    self.class.new(:priority => priority, :enabled => enabled, **values)
+  end
+
   def close
     __send__(:detach, @sound)
     nil

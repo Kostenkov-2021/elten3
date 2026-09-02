@@ -1718,6 +1718,7 @@ module Programs
       return if runtime == nil
       runtime.close_managed_resources if runtime.respond_to?(:close_managed_resources)
       runtime.close_sound_pool if runtime.respond_to?(:close_sound_pool)
+      MediaEncoders.unregister_owner(runtime) if defined?(MediaEncoders) && MediaEncoders.respond_to?(:unregister_owner)
       Extensions.unregister_runtime(runtime, reason) if defined?(Extensions)
       @@runtimes.delete(runtime.entry_id) if @@runtimes[runtime.entry_id].equal?(runtime)
       @@runtime_by_prefix.delete(runtime.virtual_prefix)

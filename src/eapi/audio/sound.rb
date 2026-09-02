@@ -351,6 +351,20 @@ class SoundAttribute
 
   attr_reader :sound
 
+  class << self
+    def build_audio_source(_source, value:, envelope: nil)
+      error = defined?(Audio::UnsupportedOperation) ? Audio::UnsupportedOperation : UnsupportedOperation
+      raise error, "#{self} cannot be rendered to PCM"
+    end
+
+    def apply_to_sound(sound, value:, envelope: nil)
+      raise UnsupportedOperation, "Sound attribute envelopes must be rendered before playback" if envelope != nil
+      attribute = sound.attribute(self)
+      attribute.value = value
+      attribute
+    end
+  end
+
   def initialize
     @sound = nil
   end
@@ -433,6 +447,10 @@ class VolumeSoundAttribute < SoundAttribute
   ID = Bass::BASS_ATTRIB_VOL
   TARGET = :playback
   SLIDABLE = true
+
+  def self.build_audio_source(source, value:, envelope: nil)
+    Audio::GainSource.new(source, :value => value, :envelope => envelope)
+  end
 end
 
 class PanSoundAttribute < SoundAttribute
@@ -440,18 +458,32 @@ class PanSoundAttribute < SoundAttribute
   ID = Bass::BASS_ATTRIB_PAN
   TARGET = :playback
   SLIDABLE = true
+
+  def self.build_audio_source(source, value:, envelope: nil)
+    Audio::PanSource.new(source, :value => value, :envelope => envelope)
+  end
 end
 
 class FrequencySoundAttribute < SoundAttribute
   NAME = :frequency
   ID = Bass::BASS_ATTRIB_FREQ
   SLIDABLE = true
+
+  def self.build_audio_source(source, value:, envelope: nil)
+    raise UnsupportedOperation, "Frequency envelopes are not supported by the offline renderer" if envelope != nil
+    Audio::RateSource.new(source, :rate => value)
+  end
 end
 
 class TempoSoundAttribute < SoundAttribute
   NAME = :tempo
   ID = Bass::BASS_ATTRIB_TEMPO
   SLIDABLE = true
+
+  def self.build_audio_source(source, value:, envelope: nil)
+    raise UnsupportedOperation, "Tempo envelopes are not supported by the offline renderer" if envelope != nil
+    Audio::BassTempoSource.new(source, :attribute => ID, :value => value)
+  end
 
   def prepare
     attached_sound.__send__(:prepare_tempo_attribute)
@@ -462,12 +494,22 @@ class PitchSoundAttribute < SoundAttribute
   NAME = :pitch
   ID = Bass::BASS_ATTRIB_TEMPO_PITCH
   SLIDABLE = true
+
+  def self.build_audio_source(source, value:, envelope: nil)
+    raise UnsupportedOperation, "Pitch envelopes are not supported by the offline renderer" if envelope != nil
+    Audio::BassTempoSource.new(source, :attribute => ID, :value => value)
+  end
 end
 
 class TempoFrequencySoundAttribute < SoundAttribute
   NAME = :tempo_frequency
   ID = Bass::BASS_ATTRIB_TEMPO_FREQ
   SLIDABLE = true
+
+  def self.build_audio_source(source, value:, envelope: nil)
+    raise UnsupportedOperation, "Tempo frequency envelopes are not supported by the offline renderer" if envelope != nil
+    Audio::BassTempoSource.new(source, :attribute => ID, :value => value)
+  end
 end
 
 class SourceQualitySoundAttribute < SoundAttribute
@@ -508,6 +550,10 @@ end
 class DSPVolumeSoundAttribute < SoundAttribute
   NAME = :dsp_volume
   ID = Bass::BASS_ATTRIB_VOLDSP
+
+  def self.build_audio_source(source, value:, envelope: nil)
+    Audio::GainSource.new(source, :value => value, :envelope => envelope)
+  end
 end
 
 class DSPVolumePrioritySoundAttribute < SoundAttribute
@@ -553,6 +599,10 @@ class SoundEffect
   end
 
   def close
+  end
+
+  def audio_clone
+    dup
   end
 end
 
@@ -1106,10 +1156,21 @@ class Sound
   end
 
   def attribute(name)
-    name = name.to_sym if name.respond_to?(:to_sym)
-    return @sound_attributes[name] if @sound_attributes.key?(name)
-    attribute_class = ATTRIBUTE_CLASSES[name]
-    raise ArgumentError, "Unknown sound attribute #{name.inspect}" if attribute_class == nil
+    explicit_class = name.is_a?(Class) && name <= SoundAttribute
+    if explicit_class
+      attribute_class = name
+      attribute_name = attribute_class::NAME
+      raise ArgumentError, "Sound attribute class must define NAME" if attribute_name == nil
+      attribute_name = attribute_name.to_sym
+    else
+      attribute_name = name.respond_to?(:to_sym) ? name.to_sym : name
+      attribute_class = ATTRIBUTE_CLASSES[attribute_name]
+      raise ArgumentError, "Unknown sound attribute #{name.inspect}" if attribute_class == nil
+    end
+    if @sound_attributes.key?(attribute_name)
+      current = @sound_attributes[attribute_name]
+      return current if !explicit_class || current.is_a?(attribute_class)
+    end
     attribute_add(attribute_class.new)
   end
 
@@ -1130,10 +1191,17 @@ class Sound
   end
 
   def attribute_remove(attribute)
-    name = attribute.is_a?(SoundAttribute) ? attribute.name : attribute
+    name = if attribute.is_a?(Class) && attribute <= SoundAttribute
+      attribute::NAME
+    elsif attribute.is_a?(SoundAttribute)
+      attribute.name
+    else
+      attribute
+    end
     name = name.to_sym if name.respond_to?(:to_sym)
     current = @sound_attributes[name]
     return false if current == nil || (attribute.is_a?(SoundAttribute) && !current.equal?(attribute))
+    return false if attribute.is_a?(Class) && attribute <= SoundAttribute && !current.is_a?(attribute)
 
     target = sound_attribute_channel(current)
     cancel_tracked_slide(target, current.id)

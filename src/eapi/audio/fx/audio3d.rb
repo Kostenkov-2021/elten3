@@ -120,6 +120,15 @@ class Audio3DEffect < SoundEffect
   def reset
   end
 
+  def audio_clone
+    self.class.new(
+      @frequency,
+      @framesize,
+      :position => position,
+      :interpolation => interpolation
+    )
+  end
+
   def close
     @hrtf.remove_effect(@effect) if @hrtf != nil && @effect != nil
     @effect = nil
