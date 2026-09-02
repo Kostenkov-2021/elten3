@@ -3684,6 +3684,11 @@ class Program
     @communication ||= manage(EltenAPI::Communication::Endpoint.new(app_id: app_uuid))
   end
 
+  def live_sessions
+    @live_sessions = nil if @live_sessions != nil && @live_sessions.closed?
+    @live_sessions ||= manage(EltenAPI::LiveSessions::Endpoint.new(app_id: app_uuid, client: EltenLink.client(self)))
+  end
+
   def manage(resource, release: :close, &block)
     @managed_resources = nil if @managed_resources != nil && @managed_resources.closed?
     managed_resources.manage(resource, release: release, &block)

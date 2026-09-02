@@ -215,6 +215,7 @@ src/ui/controls/date_button.rb
 src/ui/controls/__controls.rb
 src/eapi/tasks.rb
 src/eapi/communication.rb
+src/eapi/live_sessions.rb
 src/eapi/dictionary.rb
 src/eapi/notifications.rb
 src/platforms/windows/invisibleinterface/nativedialogs.rb :windows

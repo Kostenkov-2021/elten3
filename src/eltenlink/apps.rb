@@ -328,6 +328,71 @@ module EltenLink
         true
       end
 
+      def create_live_session(client, appid:, instance_id:, metadata: {}, participant_metadata: {}, capacity: 2)
+        client.api_data(
+          "POST",
+          "/api/v1/apps/live-sessions",
+          {
+            "appid" => appid,
+            "instance_id" => instance_id,
+            "metadata" => metadata,
+            "participant_metadata" => participant_metadata,
+            "capacity" => capacity
+          }
+        )
+      end
+
+      def invite_live_session(client, session_id:, participant_id:, user:, metadata: {})
+        client.api_data(
+          "POST",
+          "#{live_session_path(session_id)}/invitations",
+          { "participant_id" => participant_id, "user" => user, "metadata" => metadata }
+        )
+      end
+
+      def accept_live_session(client, session_id:, appid:, instance_id:, participant_metadata: {})
+        client.api_data(
+          "POST",
+          "#{live_session_path(session_id)}/accept",
+          {
+            "appid" => appid,
+            "instance_id" => instance_id,
+            "participant_metadata" => participant_metadata
+          }
+        )
+      end
+
+      def reject_live_session(client, session_id:, appid:)
+        client.api_data("POST", "#{live_session_path(session_id)}/reject", { "appid" => appid })
+        true
+      end
+
+      def send_live_session(client, session_id:, participant_id:, packet:, message_id:)
+        client.api_data(
+          "POST",
+          "#{live_session_path(session_id)}/messages",
+          {
+            "participant_id" => participant_id,
+            "message_id" => message_id,
+            "packet" => packet
+          }
+        )
+      end
+
+      def leave_live_session(client, session_id:, participant_id:)
+        client.api_data("POST", "#{live_session_path(session_id)}/leave", { "participant_id" => participant_id })
+        true
+      end
+
+      def close_live_session(client, session_id:, participant_id:)
+        client.api_data("POST", "#{live_session_path(session_id)}/close", { "participant_id" => participant_id })
+        true
+      end
+
+      def live_session_path(session_id)
+        "/api/v1/apps/live-sessions/#{query_escape(session_id.to_s)}"
+      end
+
       def notify(client, appid:, user:, type:, metadata: {}, expires_in: 0)
         client.api_data(
           "POST",

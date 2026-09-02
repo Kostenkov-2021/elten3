@@ -633,10 +633,11 @@ module EltenAPI
         @stream_ever_connected = true
         @next_stream_control_at ||= monotonic_time
         @stream_state = {} if frame["full"] == true
-        transient = %w[signals wn wn_cursor wn_has_more notifications_state]
+        transient = %w[signals live_sessions wn wn_cursor wn_has_more notifications_state]
         data.each { |name, value| @stream_state[name] = value unless transient.include?(name) }
         response = @stream_state.merge(
           "signals" => data["signals"].is_a?(Array) ? data["signals"] : [],
+          "live_sessions" => data["live_sessions"].is_a?(Array) ? data["live_sessions"] : [],
           "wn" => data["wn"].is_a?(Array) ? data["wn"] : []
         )
         response["notifications_state"] = data["notifications_state"] if data["notifications_state"].is_a?(Array)
@@ -711,6 +712,7 @@ module EltenAPI
         handle_active_notifications(response, request_id)
         handle_notification_counter(response, calibrating)
         handle_signals(response, acknowledge: stream) if calibrating != true
+        EltenAPI::LiveSessions.receive(response["live_sessions"]) if defined?(EltenAPI::LiveSessions)
         handle_premium_packages(response)
         handle_call(response, key)
         if calibrating == true

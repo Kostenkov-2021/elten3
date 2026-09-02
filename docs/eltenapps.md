@@ -505,6 +505,65 @@ Keep the returned leaderboard object for as long as its availability state shoul
 
 `submit` makes at most one insertion attempt per call. The cooldown only permits a later explicit call to try again; it never resends a mutating request in the background. Cancellation does not mark the leaderboard unavailable, and exceptions outside EltenLink are not converted into network failures.
 
+`live_sessions` provides short-lived, ordered JSON exchange between active
+instances of the same server application. It reuses Elten's runtime connection:
+HTTP/2 carries events in the existing stream and HTTP/1.1 uses the existing
+long-poll response. Programs do not select or inspect that transport.
+
+For a direct session:
+
+```ruby
+session = live_sessions.connect(
+  "alice",
+  metadata: { "mode" => "editor" },
+  participant_metadata: { "color" => "blue" },
+  timeout: 10
+)
+
+session.on_message do |sender, packet|
+  Log.info("#{sender.user}: #{packet.inspect}")
+end
+
+session.send("type" => "cursor", "position" => 125)
+```
+
+For a small group, create a session and invite users:
+
+```ruby
+session = live_sessions.create(capacity: 4, metadata: { "document" => 15 })
+session.invite("alice")
+session.invite("bob", metadata: { "role" => "reviewer" })
+```
+
+Incoming invitations are asynchronous:
+
+```ruby
+live_sessions.on_invitation do |invitation|
+  if invitation.metadata["mode"] == "editor"
+    invitation.accept(participant_metadata: { "color" => "green" })
+  else
+    invitation.reject
+  end
+end
+```
+
+A session exposes `participants`, `owner`, `owner?`, `receive`,
+`leave` and, for its owner, `close`. It also supports
+`on_participant_joined`, `on_participant_left`, `on_gap` and
+`on_closed`. `receive(timeout:)` returns a message object with `id`,
+`sequence`, `sender` and `packet`.
+
+Delivery is ordered and at least once while the program keeps its live
+membership. Elten deduplicates repeated realtime envelopes and acknowledges
+the highest consumed cursor. A successful `send` means that the server
+accepted the event, not that every participant executed its callback.
+
+Live sessions are deliberately ephemeral, bounded and server-readable. They
+accept JSON-compatible values, have no public directory and allocate no
+dedicated socket. Use `communication` when an app needs binary payloads,
+unreliable delivery, per-recipient delivery reports or separate session
+encryption.
+
 ## Other integration points
 
 `Program` currently exposes further integration mechanisms:
@@ -513,6 +572,7 @@ Keep the returned leaderboard object for as long as its availability state shoul
 - `on` listens for selected client events such as speech or player state changes;
 - user-menu metadata can add application actions for a selected EltenLink user;
 - application signals exchange JSON-compatible packets through `EltenLink::Apps`; and
+- `live_sessions` provides small, ephemeral sessions over Elten's shared runtime transport;
 - server-application helpers register metadata and access application tables or resources.
 
 These areas are especially subject to the Elten 3.0 experimental status. Use the existing helpers rather than writing directly into global menu collections, and discuss additions to the event vocabulary or server contract before depending on them.
