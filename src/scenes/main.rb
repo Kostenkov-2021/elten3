@@ -61,15 +61,13 @@ class Scene_Main
     plsinfo = false
     ci += 1 if ci < 20
 
+    Session.notifications_updated?
+    $main_notifications_changed = false
     notifications_load(false, focus_policy: entry_notification_focus_policy)
     acsel_load(false)
     feeds_load(false)
     @program_ui_revision = program_ui_revision
     focus_current_control
-    if current_main_section == :notifications
-      Session.notifications_updated?
-      $main_notifications_changed = false
-    end
 
     loop do
       loop_update

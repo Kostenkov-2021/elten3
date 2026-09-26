@@ -297,11 +297,7 @@ module EltenAPI
                 request_status(key)
               end
               if now >= (@next_virtual_update_check_at || 0) && @virtual_update_request_pending != true
-                if launched_by_launcher?
-                  request_virtual_updates(key, now)
-                else
-                  @next_virtual_update_check_at = now + VIRTUAL_UPDATE_CHECK_INTERVAL
-                end
+                request_virtual_updates(key, now)
               end
             end
           rescue Exception
@@ -1009,7 +1005,7 @@ module EltenAPI
         name, = key
         params = {
           "branch" => get_updatesbranch,
-          "os" => platform_os,
+          "os" => platform_target,
           "current_build_id" => Elten.build_id.to_s,
           "name" => name,
           "apps" => NotificationGroups.installed_program_update_payload

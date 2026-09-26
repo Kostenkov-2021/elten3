@@ -316,6 +316,7 @@ module NotificationGroups
     true
   end
   def update_notification(updates)
+    return nil unless launched_by_launcher?
     client = updates == nil ? nil : updates.client
     return nil if client == nil || !client.update?
 
