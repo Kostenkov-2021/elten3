@@ -551,6 +551,10 @@ end
 end
   
 class Scene_Blog_Read
+  def self.draft_key(blog, post_id)
+    Digest::SHA256.hexdigest(JSON.generate([blog.to_s.downcase, post_id.to_i]))
+  end
+
   def initialize(post,category,categoryselindex=0,postselindex=0,scene=nil,page=0,search=nil,first_unread: false)
     @post=post
     @category = category
@@ -650,7 +654,14 @@ else
     end
 end
 if Session.logged?
-@fields.push(EditBox.new(p_("Blog", "Your comment"),type: EditBox::Flags::MultiLine,text: "",quiet: true))
+  @comment_field = EditBox.new(p_("Blog", "Your comment"), type: EditBox::Flags::MultiLine, text: @comment_field&.text.to_s, quiet: true)
+  if @comments != 0
+    @comment_draft ||= Draft.new(self.class.draft_key(@post.owner, @post.id),
+      config_key: "BlogCommentsDrafts", collection: "blog_comment_drafts")
+    data = @comment_draft.restore({ "text" => @comment_field.text })
+    @comment_field.set_text(data["text"]) if @comment_field.text != data["text"]
+  end
+  @fields.push(@comment_field)
 else
   @fields.push(nil)
   end
@@ -662,12 +673,14 @@ else
   end
 @fields.push(Button.new(p_("Blog", "Return")))
 @postcur=@knownposts+2 if @first_unread && @knownposts<@posts.size
-@form = Form.new(@fields,index: @postcur)
+@form = Form.new(@fields,index: @postcur,quiet: true)
 if @comments==0
   @form.fields[-3]=nil
   @form.fields[-4]=nil
 end
 @form.bind_context(p_("Blog", "Blogs")){|menu|context(menu)}
+@comment_draft.bind(@form, @comment_field) { { "text" => @comment_field.text } } if @comment_draft && @comments != 0
+@form.focus
 loop do
   loop_update
   @form.update
@@ -699,6 +712,8 @@ def update
     rescue EltenLink::Error
       alert(_("Error"))
     else
+      @comment_field.set_text("")
+      @comment_draft&.sent
       if comment_status == "hold"
         alert(p_("Blog", "The comment has been submitted and is awaiting moderation."))
       else
@@ -725,8 +740,7 @@ if @scene == nil
   end
 end
 def confirm_comment_discard
-  comment_field = @form.fields[@form.fields.size - 4]
-  comment_field==nil || comment_field.text=="" || comment_field.text=="\r\n" || confirm(p_("Blog", "Are you sure you want to cancel creating this comment?"))
+  @comment_draft == nil || @comment_draft.close
 end
 def format(post, comment_number, comments_count)
    date=Time.now
@@ -2131,7 +2145,29 @@ ph = EltenLink::Client.absolute_api_url(ph)
       lst_tags.selected[i] = (tags.include?(@tags[i].id))
     end
     end
-    @lasteditor=0
+    if @post == 0
+      @draft = Draft.new(@owner.to_s.downcase, config_key: "BlogPostsDrafts", collection: "blog_post_drafts",
+        empty: proc { |data| %w[text title excerpt].all? { |field| data[field].to_s == "" } })
+      data = @draft.restore({ "text" => "" }, editor: true)
+      edt_title.set_text(data.fetch("title", ""))
+      edt_excerpt.set_text(data.fetch("excerpt", ""))
+      lst_editor.index = data["editor"] == 1 ? 1 : 0
+      edt_post.flags = EditBox::Flags::MultiLine if lst_editor.index == 1
+      edt_post.set_text(data["text"])
+      lst_visibility.index = data["private"] == true ? 1 : 0
+      chk_comments.checked = data.fetch("comments", true) == true
+      chk_schedule.checked = data["schedule"] == true && holds_premiumpackage("scribe")
+      date = data["date"]
+      btn_scheduledate.setdate(*date) if date.is_a?(Array) && date.size == 6 && date[0].to_i > 0
+      if data["categories"].is_a?(Array)
+        @categories.each_with_index { |category, index| lst_categories.selected[index] = data["categories"].include?(category.id) }
+      end
+      if data["tags"].is_a?(Array)
+        @tags.each_with_index { |tag, index| lst_tags.selected[index] = data["tags"].include?(tag.id) }
+      end
+      changed = true if data["text"] != ""
+    end
+    @lasteditor=lst_editor.index
     lst_editor.on(:move) {
 if @lasteditor==0
   text=edt_post.text_html
@@ -2146,7 +2182,18 @@ if lst_editor.index==0
     edt_post.set_text(text)
     @lasteditor=lst_editor.index
     }
-@form = Form.new(@fields)
+@form = Form.new(@fields, quiet: @draft != nil)
+if @draft
+  @draft.bind(@form, edt_post) {
+    { "title" => edt_title.text, "text" => lst_editor.index == 0 ? edt_post.text_html : edt_post.text,
+      "editor" => lst_editor.index, "excerpt" => edt_excerpt.text,
+      "categories" => @categories.each_with_index.select { |_, index| lst_categories.selected[index] }.map { |category, _| category.id },
+      "tags" => @tags.each_with_index.select { |_, index| lst_tags.selected[index] }.map { |tag, _| tag.id },
+      "private" => lst_visibility.index == 1, "comments" => chk_comments.checked, "schedule" => chk_schedule.checked,
+      "date" => [btn_scheduledate.year, btn_scheduledate.month, btn_scheduledate.day, btn_scheduledate.hour, btn_scheduledate.min, btn_scheduledate.sec] }
+  }
+  @form.focus
+end
 @form.hide(btn_scheduledate) if !chk_schedule.checked
 @form.hide(chk_schedule) if !chk_schedule.checked && !holds_premiumpackage("scribe")
 chk_schedule.on(:change) {
@@ -2167,7 +2214,7 @@ loop do
     #end
   @form.update
   if key_pressed?(:key_escape) or btn_cancel.pressed?
-    if !changed or confirm(p_("Blog", "Are you sure you want to cancel creating this post?"))
+    if @draft ? @draft.close(detach: false) : (!changed || confirm(p_("Blog", "Are you sure you want to cancel creating this post?")))
       break if btn_audio.delete_audio==true
   end
   end
@@ -2245,6 +2292,7 @@ if suc
       next
     end
       end
+        @draft.sent if @draft
         alert(p_("Blog", "The post has been added."))
         btn_audio.delete_audio(true)
         break
@@ -2252,6 +2300,8 @@ if suc
       end
   end
     $scene = Scene_Blog_Posts.new(@owner,@category,@categoryselindex,@postselindex)
+  ensure
+    @draft&.detach
   end
   end
   

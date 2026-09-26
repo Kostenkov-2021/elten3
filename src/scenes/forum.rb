@@ -2972,9 +2972,16 @@ form.wait
         end
       end
     end
-    fields = [EditBox.new(p_("Forum", "Thread name"), type: 0, text: "", quiet: true)]
+    draft_data = { "title" => "", "text" => "", "markdown" => false, "forum_id" => @forum }
     if type == 0
-      fields[1..6] = [EditBox.new(p_("Forum", "Post content"), type: EditBox::Flags::MultiLine, text: "", quiet: true), CheckBox.new(p_("Forum", "Use Markdown in this post")), nil, Button.new(p_("Forum", "Attach a poll")), nil, Button.new(p_("Forum", "Attach a file"))]
+      draft = Draft.new("editor:#{@forum}", config_key: "ForumDrafts", collection: "forum_drafts",
+        empty: proc { |data| data["text"].to_s == "" && data["title"].to_s == "" })
+      draft_data = draft.restore(draft_data, editor: true)
+      forumindex = forumclasses.index { |forum| forum.id == draft_data["forum_id"] } || forumindex
+    end
+    fields = [EditBox.new(p_("Forum", "Thread name"), type: 0, text: draft_data["title"].to_s, quiet: true)]
+    if type == 0
+      fields[1..6] = [EditBox.new(p_("Forum", "Post content"), type: EditBox::Flags::MultiLine, text: draft_data["text"], quiet: true), CheckBox.new(p_("Forum", "Use Markdown in this post"), checked: draft_data["markdown"] == true && holds_premiumpackage("courier")), nil, Button.new(p_("Forum", "Attach a poll")), nil, Button.new(p_("Forum", "Attach a file"))]
     fields[2].on(:change) {
     fields[2].checked=false if !requires_premiumpackage("courier")
     }
@@ -2982,18 +2989,30 @@ form.wait
       fields[1..6] = [OpusRecordButton.new(p_("Forum", "Audio post"), EltenPath.join(Dirs.temp, "audiopost.opus"), max_bitrate: 96, bitrate: 48), nil, nil, nil, nil, nil]
     end
     fields += [CheckBox.new(p_("Forum", "Follow this thread")), ListBox.new(forums, header: p_("Forum", "Forum"), index: forumindex), nil, Button.new(_("Cancel"))]
-    form = Form.new(fields)
-    selected_tags = {}
+    form = Form.new(fields, quiet: type == 0)
+    selected_tags = { draft_data["forum_id"] => draft_data.fetch("tags", {}) }
     current_tag_forum_id = nil
     current_tags = []
     current_tag_fields = []
+    fields[-4].checked = draft_data["follow"] == true
+    if draft
+      draft.bind(form, fields[1]) {
+        { "title" => fields[0].text, "text" => fields[1].text, "markdown" => fields[2].checked,
+          "forum_id" => forumclasses[form.fields[-3].index].id, "follow" => form.fields[-4].checked,
+          "tags" => current_tags.each_with_index.to_h { |tag, index|
+            field = current_tag_fields[index]
+            [tag[0].to_s, field.index > 0 ? field.options[field.index] : nil]
+          } }
+      }
+      form.focus
+    end
     form.fields[-3].on(:move) {
     if current_tag_forum_id!=nil
       selections=selected_tags[current_tag_forum_id]||={}
       current_tags.each_with_index do |tag, index|
         field=current_tag_fields[index]
         next if field==nil
-        selections[tag[0]]=field.index>0 ? field.options[field.index] : nil
+        selections[tag[0].to_s]=field.index>0 ? field.options[field.index] : nil
       end
     end
     tin=false
@@ -3003,7 +3022,7 @@ form.wait
     f=[]
     for t in tags
       options=[p_("Forum", "No tag value")]+t[2..-1]
-      selected_value=selected_tags.dig(forum.id, t[0])
+      selected_value=selected_tags.dig(forum.id, t[0].to_s)
       selected_index=selected_value==nil ? nil : t[2..-1].find_index(selected_value)
       f.push(ListBox.new(options, header: t[1], index: selected_index==nil ? 0 : selected_index+1))
     end
@@ -3053,6 +3072,7 @@ form.wait
       send_confirmed = true if confirmed
       confirmed
     }
+    loop do
         loop do
       send_confirmed = false
       loop_update
@@ -3160,14 +3180,14 @@ form.wait
         end
       end
       if key_pressed?(:key_escape) or form.fields[-1].pressed?
-        if (!form.fields[1].is_a?(EditBox) && (form.fields[0].text=="" || confirm(p_("Forum", "Are you sure you want to cancel creating this thread?"))) && form.fields[1].delete_audio) or (form.fields[1].is_a?(EditBox) && ((form.fields[0].text=="" && form.fields[1].text=="") || confirm(p_("Forum", "Are you sure you want to cancel creating this thread?"))))
+        if (!form.fields[1].is_a?(EditBox) && (form.fields[0].text=="" || confirm(p_("Forum", "Are you sure you want to cancel creating this thread?"))) && form.fields[1].delete_audio) or (form.fields[1].is_a?(EditBox) && draft.close)
         loop_update
         return
         break
       end
       end
     end
-    return if ![1,2].include?(forumclasses[form.fields[-3].index].group.role) and !canjoin(forumclasses[form.fields[-3].index].group)
+    next if ![1,2].include?(forumclasses[form.fields[-3].index].group.role) and !canjoin(forumclasses[form.fields[-3].index].group)
     name=""
     for f in form.fields[7...-4]
       if f.index>0
@@ -3175,7 +3195,6 @@ form.wait
         end
       end
       name+=form.fields[0].text
-      form.fields[0].set_text(name)
     if type == 0
       format=0
       format=form.fields[2].checked if form.fields[2]!=nil
@@ -3189,7 +3208,7 @@ form.wait
         attachments = atts
       end
       ft = forum_attempt(nil, p_("Forum", "Error creating thread!")) {
-        EltenLink::Forum.create_thread(elten_link, forumid: forumclasses[form.fields[-3].index].id, name: form.fields[0].text, text: text, format: format, follow: form.fields[-4].checked, polls: polls, attachments: attachments)
+        EltenLink::Forum.create_thread(elten_link, forumid: forumclasses[form.fields[-3].index].id, name: name, text: text, format: format, follow: form.fields[-4].checked, polls: polls, attachments: attachments)
       }
     else
       fl = form.fields[1].get_recording_file(true)
@@ -3199,13 +3218,21 @@ if flp[0..3] != "OggS"
         return $scene = Scene_Main.new
       end
       ft = forum_attempt(nil, p_("Forum", "Error creating thread!")) {
-        EltenLink::Forum.create_audio_thread(elten_link, forumid: forumclasses[form.fields[-3].index].id, name: form.fields[0].text, audio: flp, follow: form.fields[-4].checked)
+        EltenLink::Forum.create_audio_thread(elten_link, forumid: forumclasses[form.fields[-3].index].id, name: name, audio: flp, follow: form.fields[-4].checked)
       }
       form.fields[1].delete_audio(true)
     end
     if ft
+      if draft
+        fields[1].set_text("")
+        draft.sent
+      end
       alert(p_("Forum", "Thread has been created."))
     end
+    break if ft || type != 0
+    end
+  ensure
+    draft&.detach
   end
   
   def getcache
@@ -3382,8 +3409,7 @@ return $scene=(@scene || Scene_Forum.new(@thread, @param, @cat, @query, @threadc
         end
       end
       if key_pressed?(:key_escape) or @form.fields[-1].pressed?
-        reply_field = @form.fields[@postscount * 3 + 1]
-        if @posttype != 0 or !reply_field.is_a?(EditBox) or reply_field.text == "" or confirm(p_("Forum", "Are you sure you want to cancel creating this post?"))
+        if @reply_draft == nil || @reply_draft.close
           r=true
           f=@form.fields[@form.fields.size-8]
           r=f.delete_audio if @posttype==1 && f!=nil
@@ -3394,7 +3420,10 @@ return $scene=(@scene || Scene_Forum.new(@thread, @param, @cat, @query, @threadc
       else
         $scene=@scene
         end
+        @reply_draft&.detach
         return
+      else
+        bind_reply_draft
       end
       end
       end
@@ -3558,8 +3587,15 @@ end
   else
     @fields.push(nil)
     end
+    markdown = @textfields && @textfields[3] && @textfields[3].checked
     @textfields = [EditBox.new(p_("Forum", "Your reply"), type: EditBox::Flags::MultiLine, text: pretext, quiet: true), nil, nil, nil, nil, nil, Button.new(p_("Forum", "Attach a file"))]
-      @textfields[3] = CheckBox.new(p_("Forum", "Use Markdown in this post"))
+      @textfields[3] = CheckBox.new(p_("Forum", "Use Markdown in this post"), checked: markdown)
+      if @noteditable == false && @type != 1
+        @reply_draft ||= Draft.new("thread:#{@thread}", config_key: "ForumDrafts", collection: "forum_drafts")
+        data = @reply_draft.restore({ "text" => pretext, "markdown" => markdown })
+        @textfields[0].set_text(data["text"]) if @textfields[0].text != data["text"]
+        @textfields[3].checked = data["markdown"] == true && holds_premiumpackage("courier")
+      end
       @textfields[3].on(:change) {
       @textfields[3].checked=false if !requires_premiumpackage("courier")
       }
@@ -3580,9 +3616,16 @@ end
         @fields.push(Button.new(p_("Forum", "Return")))
     index=lastindex if lastindex!=nil && index<@form.fields.size
     @attachments = []
-    @form = Form.new(@fields, index: index)
+    @form = Form.new(@fields, index: index, quiet: true)
     @form.hide(@fields.size-2) if @threadclass.forum.group.preventattachments
     @form.bind_context(p_("Forum", "Forum")) {|menu|context(menu)}
+    bind_reply_draft
+    @form.focus
+  end
+
+  def bind_reply_draft
+    return if @reply_draft == nil
+    @reply_draft.bind(@form, @textfields[0]) { { "text" => @textfields[0].text, "markdown" => @textfields[3].checked } }
   end
   
   def forum_signature_mode
@@ -3695,6 +3738,7 @@ end
         EltenLink::Forum.create_post(elten_link, thread_id: @thread, text: text, attachments: attachments, format: format)
       }
         @form.fields[@postscount * 3+1].set_text("")
+        @reply_draft&.sent
         alert(p_("Forum", "The post was created."))
       end
       return main
