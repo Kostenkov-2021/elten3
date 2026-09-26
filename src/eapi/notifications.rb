@@ -20,6 +20,7 @@ module EltenAPI
       STREAM_RETRY_INTERVAL = 60.0
       STREAM_OPEN_TIMEOUT = 20.0
       STREAM_FAST_RECONNECT_TIMEOUT = 5.0
+      STREAM_STABLE_INTERVAL = 30.0
       STREAM_IDLE_TIMEOUT = 30.0
       LONG_POLL_WAIT_MS = 5_000
       POLL_ERROR_RETRY_INTERVAL = 2.0
@@ -252,6 +253,8 @@ module EltenAPI
         @stream_failures = 0
         @stream_recovery = false
         @stream_fast_reconnect = false
+        @stream_fast_reconnect_used = false
+        @stream_connected_at = nil
         @stream_ever_connected = false
         @http2_enabled = realtime_http2_enabled?
         @realtime_mode_reported = false
@@ -342,6 +345,8 @@ module EltenAPI
         @stream_failures = 0
         @stream_recovery = false
         @stream_fast_reconnect = false
+        @stream_fast_reconnect_used = false
+        @stream_connected_at = nil
         @stream_ever_connected = false
         @http2_enabled = realtime_http2_enabled?
         @realtime_mode_reported = false
@@ -496,7 +501,7 @@ module EltenAPI
       def maintain_stream(key, now)
         open_timeout = @stream_fast_reconnect ? STREAM_FAST_RECONNECT_TIMEOUT : STREAM_OPEN_TIMEOUT
         if @stream_opening && now - @stream_started_at.to_f > open_timeout
-          reason = @stream_fast_reconnect ? "reconnect after clean close timed out" : "opening timeout"
+          reason = @stream_fast_reconnect ? "reconnect after HTTP close timed out" : "opening timeout"
           stream_failed(now, reason: reason)
           return
         end
@@ -534,6 +539,7 @@ module EltenAPI
         stop_stream_request
         @stream_opening = true
         @stream_started_at = monotonic_time
+        @stream_connected_at = nil
         @stream_last_frame_at = @stream_started_at
         @stream_request_data = { "key" => key, "generation" => generation }
         @stream_cancellation = EltenAPI::Tasks::CancellationToken.new if defined?(EltenAPI::Tasks::CancellationToken)
@@ -565,6 +571,7 @@ module EltenAPI
         @stream_id = nil
         @stream_control_pending = false
         @stream_started_at = nil
+        @stream_connected_at = nil
         @stream_last_frame_at = nil
         @stream_fast_reconnect = false
       end
@@ -613,7 +620,10 @@ module EltenAPI
           payload = answer.is_a?(String) ? JSON.load(answer) : nil
           accepted = payload.is_a?(Hash) && payload["success"] == true && payload.dig("data", "accepted") == true
           unless accepted
-            stream_failed(monotonic_time, reason: "control rejected")
+            error = payload.is_a?(Hash) && payload["error"].is_a?(Hash) ? payload["error"] : {}
+            details = error["details"].is_a?(Hash) ? error["details"] : {}
+            reason = ["control rejected", error["code"], details["profile"], details["rule"]].compact.join(": ")
+            stream_failed(monotonic_time, reason: reason, retry_after: error["retry_after"] || details["retry_after"])
             next
           end
           confirm_client_update(key, client_serial, payload["data"])
@@ -627,7 +637,7 @@ module EltenAPI
         end
       end
 
-      def stream_failed(now, immediate: false, reason: "connection failed")
+      def stream_failed(now, immediate: false, reason: "connection failed", retry_after: nil)
         was_connected = @stream_connected || @stream_ever_connected
         @stream_generation = @stream_generation.to_i + 1
         stop_stream_request
@@ -636,6 +646,7 @@ module EltenAPI
         @stream_id = nil
         @stream_control_pending = false
         @stream_started_at = nil
+        @stream_connected_at = nil
         @stream_last_frame_at = nil
         @stream_fast_reconnect = false
         if immediate
@@ -644,23 +655,25 @@ module EltenAPI
           return
         end
         @stream_failures = @stream_failures.to_i + 1
-        @stream_retry_at = now + STREAM_RETRY_INTERVAL
+        retry_delay = [STREAM_RETRY_INTERVAL, retry_after.to_s.to_i].max
+        @stream_retry_at = now + retry_delay
         @next_request_at = now
         @stream_recovery = true
         state = was_connected ? "lost" : "unavailable"
-        Log.warning("Realtime stream #{state}: #{reason}; switching to #{fallback_mode_description}, retry in #{STREAM_RETRY_INTERVAL.to_i}s")
+        Log.warning("Realtime stream #{state}: #{reason}; switching to #{fallback_mode_description}, retry in #{retry_delay.to_i}s")
       end
 
-      def retry_stream_after_clean_close(now, reason)
-        if @stream_fast_reconnect
-          stream_failed(now, reason: "reconnect after clean close failed: #{reason}")
+      def retry_stream_after_close(now, reason)
+        if @stream_fast_reconnect_used
+          stream_failed(now, reason: "repeated short stream: #{reason}")
           return
         end
 
         stop_stream
         @stream_fast_reconnect = true
+        @stream_fast_reconnect_used = true
         @stream_retry_at = now
-        Log.debug("Realtime stream closed after successful HTTP response: #{reason}; reconnecting immediately")
+        Log.debug("Realtime stream closed: #{reason}; reconnecting immediately")
       end
 
       def drain_stream_responses(limit=50)
@@ -673,13 +686,13 @@ module EltenAPI
           if answer == :closed
             reason = data.is_a?(Hash) ? data["stream_error"].to_s : ""
             reason = "connection closed" if reason.empty?
-            retry_stream_after_clean_close(monotonic_time, reason)
+            retry_stream_after_close(monotonic_time, reason)
             next
           end
           if answer == :error
             reason = data.is_a?(Hash) ? data["stream_error"].to_s : ""
             reason = "request failed" if reason.empty?
-            stream_failed(monotonic_time, reason: reason)
+            stream_failed(monotonic_time, reason: reason, retry_after: data["stream_retry_after"])
             next
           end
           @stream_last_frame_at = monotonic_time
@@ -688,7 +701,7 @@ module EltenAPI
           when "state"
             handle_stream_state(frame, key)
           when "heartbeat"
-            @stream_connected = true
+            mark_stream_connected
           when "close"
             rotating = frame["reason"] == "rotate"
             stream_failed(monotonic_time, immediate: rotating, reason: frame["reason"].to_s)
@@ -698,6 +711,13 @@ module EltenAPI
         rescue JSON::ParserError, TypeError => e
           stream_failed(monotonic_time, reason: "invalid frame: #{e.message}")
         end
+      end
+
+      def mark_stream_connected
+        now = monotonic_time
+        @stream_connected = true
+        @stream_connected_at ||= now
+        @stream_fast_reconnect_used = false if now - @stream_connected_at >= STREAM_STABLE_INTERVAL
       end
 
       def handle_stream_state(frame, key)
@@ -710,7 +730,7 @@ module EltenAPI
         restored = @stream_recovery
         fast_reconnected = @stream_fast_reconnect
         @stream_opening = false
-        @stream_connected = true
+        mark_stream_connected
         @stream_failures = 0
         @stream_retry_at = 0.0
         @stream_recovery = false
@@ -733,7 +753,7 @@ module EltenAPI
         handle_status_data(response, key, false, @request_serial, nil, stream: true)
         @stream_wn_cursor = data["wn_cursor"].to_s unless data["wn_cursor"].to_s.empty?
         Log.info("Realtime stream restored over HTTP/2") if restored
-        Log.debug("Realtime stream reconnected after clean HTTP response") if fast_reconnected
+        Log.debug("Realtime stream reconnected after HTTP close") if fast_reconnected
         report_realtime_mode(:stream)
       end
 

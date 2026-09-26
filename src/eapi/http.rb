@@ -10,6 +10,7 @@ require "monitor"
 require "openssl"
 require "securerandom"
 require "timeout"
+require "time"
 require "uri"
 
 module EltenAPI
@@ -155,7 +156,7 @@ module EltenAPI
               next
             end
             log_error("JSON request error: #{format_exception(e)}")
-            close_http2(false, request_generation) if request_generation != nil
+            close_http2(false, request_generation, reason: "request setup failed") if request_generation != nil
             if pending_token != nil
               fail_pending_request(pending_token)
             elsif attempts < 2
@@ -248,7 +249,7 @@ module EltenAPI
 
                 stream = http.new_stream
                 pending_token = register_pending_request(generation, stream, cancellation_token, persistent: true) do
-                  reason = failure_reason || realtime_stream_http_error(status, buffer, response_headers, context)
+                  reason = failure_reason || realtime_stream_http_error(status, buffer, response_headers, context, data)
                   set_realtime_stream_error(data, reason)
                   result = status.between?(200, 299) && failure_reason == nil ? :closed : :error
                   safe_call(block, result, data)
@@ -265,6 +266,7 @@ module EltenAPI
               stream.on(:data) do |chunk|
                 buffer << chunk.to_s.b
                 raise "Realtime stream frame is too large" if buffer.bytesize > 8 * 1024 * 1024
+                next unless status.between?(200, 299)
 
                 while (newline = buffer.index("\n"))
                   line = buffer.slice!(0..newline).strip
@@ -282,17 +284,18 @@ module EltenAPI
                 rescue Exception
                 end
               end
-              stream.on(:close) do
+              stream.on(:close) do |error|
                 next unless take_pending_request(pending_token)
 
                 touch_connection_activity(generation)
                 if status.between?(200, 299) && failure_reason == nil
-                  set_realtime_stream_error(data, failure_reason || "connection closed before first frame") if sequence.zero?
+                  reason = "HTTP/2 stream ended after HTTP #{status}: #{error || :end_stream}, frames=#{sequence}"
+                  set_realtime_stream_error(data, reason)
                   safe_call(block, :closed, data)
                 else
                   set_realtime_stream_error(
                     data,
-                    failure_reason || realtime_stream_http_error(status, buffer, response_headers, context)
+                    failure_reason || realtime_stream_http_error(status, buffer, response_headers, context, data)
                   )
                   safe_call(block, :error, data)
                 end
@@ -317,7 +320,7 @@ module EltenAPI
           rescue Exception => e
             set_realtime_stream_error(data, "setup failed: #{e.class}: #{e.message}")
             log_error("Realtime stream error: #{format_exception(e)}") unless cancelled?(data, cancellation_token)
-            close_http2(false, generation) unless pending_token.nil? || generation.nil?
+            close_http2(false, generation, reason: "stream setup failed") unless pending_token.nil? || generation.nil?
             pending_token.nil? ? safe_call(block, :error, data) : fail_pending_request(pending_token)
           end
         end
@@ -433,7 +436,8 @@ module EltenAPI
             return true if !force && (!reconnect_if_stale || !stale?)
           end
 
-          detached = detach_http2_locked
+          reason = force ? "forced reconnect" : (connected? ? "stale connection" : "connection no longer usable")
+          detached = detach_http2_locked(reason: reason)
           close_io(detached[:ssl]) if detached != nil
 
           socket = connect_socket(HOST, PORT)
@@ -456,7 +460,10 @@ module EltenAPI
           http.on(:frame) { |bytes| write_http2_frame(bytes, generation, ssl) }
           http.on(:error) do |error|
             log_warning("HTTP/2 connection error: #{error}")
-            close_http2(false, generation)
+            close_http2(false, generation, reason: "protocol error: #{error}")
+          end
+          http.on(:goaway) do |last_stream, error|
+            log_debug("HTTP/2 connection #{generation} received GOAWAY: #{error}, last_stream_id=#{last_stream}")
           end
           start_reader(generation, ssl, http)
         end
@@ -466,7 +473,7 @@ module EltenAPI
       rescue Exception => e
         finalize_detached_connection(detached, false)
         if generation != nil
-          close_http2(false, generation)
+          close_http2(false, generation, reason: "connection setup failed")
         else
           close_io(ssl || socket)
         end
@@ -519,6 +526,7 @@ module EltenAPI
       def start_reader(generation, ssl, http)
         @reader_thread = Thread.new do
           Thread.current.report_on_exception = false
+          reason = "reader stopped"
           loop do
             break unless connection_current?(generation, ssl, http)
             begin
@@ -531,20 +539,25 @@ module EltenAPI
               end
             rescue IO::WaitReadable
               IO.select([ssl], nil, nil, 0.5)
-            rescue EOFError, IOError
+            rescue EOFError
+              reason = "peer closed connection"
+              break
+            rescue IOError => e
+              reason = "reader failed: #{e.class}: #{e.message}"
               break
             rescue Exception => e
+              reason = "reader failed: #{e.class}: #{e.message}"
               log_error("HTTP reader error: #{format_exception(e)}")
               break
             end
           end
-          close_http2(false, generation)
+          close_http2(false, generation, reason: reason)
         end
       end
 
-      def close_http2(kill_reader, generation=nil)
+      def close_http2(kill_reader, generation=nil, reason: "client closed connection")
         detached = connection_mutex.synchronize do
-          detach_http2_locked(generation)
+          detach_http2_locked(generation, reason: reason)
         end
         return false if detached == nil
 
@@ -565,7 +578,7 @@ module EltenAPI
         end
       rescue Exception => e
         log_error("HTTP frame write error: #{format_exception(e)}")
-        close_http2(false, generation)
+        close_http2(false, generation, reason: "write failed: #{e.class}: #{e.message}")
       end
 
       def connection_current?(generation, ssl=nil, http=nil)
@@ -575,7 +588,7 @@ module EltenAPI
           (http == nil || @http.equal?(http))
       end
 
-      def detach_http2_locked(expected_generation=nil)
+      def detach_http2_locked(expected_generation=nil, reason: "connection replaced")
         return nil if expected_generation != nil && @connection_generation != expected_generation
         return nil if @http == nil && @ssl == nil && @reader_thread == nil
 
@@ -583,7 +596,8 @@ module EltenAPI
           generation: @connection_generation,
           http: @http,
           ssl: @ssl,
-          reader: @reader_thread
+          reader: @reader_thread,
+          reason: reason
         }
         @connection_generation = nil
         @reader_thread = nil
@@ -596,6 +610,7 @@ module EltenAPI
       def finalize_detached_connection(detached, kill_reader)
         return if detached == nil
 
+        log_debug("HTTP/2 connection #{detached[:generation]} closed: #{detached[:reason]}")
         close_io(detached[:ssl])
         reader = detached[:reader]
         begin
@@ -956,7 +971,7 @@ module EltenAPI
         raise "Invalid realtime stream frame: #{e.message}"
       end
 
-      def realtime_stream_http_error(status, body, headers, context)
+      def realtime_stream_http_error(status, body, headers, context, data=nil)
         prefix = if status.to_i.between?(200, 299)
                    "HTTP/2 connection closed after HTTP #{status.to_i}"
                  elsif status.to_i.positive?
@@ -964,18 +979,39 @@ module EltenAPI
                  else
                    "HTTP/2 connection closed before response"
                  end
-        return prefix if body.to_s.empty?
+        error = nil
+        unless body.to_s.empty?
+          begin
+            decoded = decode_body(body, headers)
+            payload = JSON.load(decoded.to_s)
+            if payload.is_a?(Hash) && payload["elten_encryption"] == "v1"
+              payload = JSON.load(decrypt_json_response(decoded, context))
+            end
+            error = payload["error"] if payload.is_a?(Hash)
+          rescue Exception
+          end
+        end
+        error = {} unless error.is_a?(Hash)
+        details = error["details"].is_a?(Hash) ? error["details"] : {}
+        retry_after = [headers["retry-after"], error["retry_after"], details["retry_after"]].map do |value|
+          http_retry_after(value)
+        end.max
+        data["stream_retry_after"] = retry_after if data.is_a?(Hash) && retry_after > 0
+        parts = [prefix, error["code"], error["message"]].map(&:to_s).reject(&:empty?)
+        parts << "profile=#{details["profile"]}" if details["profile"]
+        parts << "rule=#{details["rule"]}" if details["rule"]
+        parts << "retry_after=#{retry_after}s" if retry_after > 0
+        parts.join(": ")
+      end
 
-        decoded = decode_body(body, headers)
-        decoded = decrypt_json_response(decoded, context)
-        payload = JSON.load(decoded.to_s)
-        error = payload.is_a?(Hash) ? payload["error"] : nil
-        return prefix unless error.is_a?(Hash)
+      def http_retry_after(value)
+        text = value.to_s.strip
+        return text.to_i if text.match?(/\A\d+\z/)
+        return 0 if text.empty?
 
-        details = [error["code"], error["message"]].map(&:to_s).reject(&:empty?).join(": ")
-        details.empty? ? prefix : "#{prefix}: #{details}"
-      rescue Exception
-        prefix
+        [Time.httpdate(text) - Time.now, 0].max.ceil
+      rescue ArgumentError
+        0
       end
 
       def set_realtime_stream_error(data, reason)
@@ -1314,6 +1350,11 @@ module EltenAPI
 
       def log_error(message)
           Log.error(message)
+      rescue Exception
+      end
+
+      def log_debug(message)
+          Log.debug(message)
       rescue Exception
       end
 
