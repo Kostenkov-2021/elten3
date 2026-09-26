@@ -453,6 +453,20 @@ Use `"filter_for" => "everyone"` to hide the listed columns in your own rows as 
 
 For an initial registration, declare `uuid: nil` and call `register_server_app!`. It returns the generated UUID and keeps it for the current process. Put that UUID into the declaration before distributing the application. To prevent accidental duplicate registrations, `register_server_app!` refuses to run when the declaration already contains a UUID.
 
+`user_state` uses the declared server UUID and requires a registered application. Keys are separate for each collection and each server application, with a shared quota across that application's collections. Keys contain 1-256 UTF-8 bytes; collection names, keys and JSON-encoded values count towards the byte limit. Collection names contain at most 128 UTF-8 bytes; the empty name selects the default collection.
+
+```ruby
+drafts = user_state(collection: "drafts")
+drafts.write("message:123", {"text" => text}, override: true, evict_oldest: true)
+draft = drafts.read("message:123")
+pending = user_state(collection: "settings").write_async("main", settings, override: true, ttl: 0)
+drafts.delete("message:123")
+```
+
+`read` returns `nil` for a missing key or a stored JSON null. `write` returns `true`; `delete` returns whether an entry existed. `read_async`, `write_async` and `delete_async` return a `Tasks::Handle`: collect `take` once `done?` is true and check the outcome's `error` and `value`. Operations support timeouts; synchronous methods also accept a cancellation token. Cancelling an operation does not undo a write already accepted by the server. A UserState instance remains bound to the login session in which it was created; create a new instance after logging in again.
+
+Both `override` and `evict_oldest` default to `false`. The former permits replacing an existing key; the latter permits removing the least recently written entries in the selected collection to make room. Reads do not change their order. An unsuccessful write removes nothing. Entries expire 30 days after their last write by default; pass `ttl:` in seconds or `ttl: 0` to keep an entry indefinitely. `ttl: 0` disables time-based expiry but still permits explicit eviction. Reads do not extend the TTL. Expired entries cannot be read and do not prevent new writes within the quota. Account settings can clear this data for Elten and all applications.
+
 `notifications: true` is an explicit declaration that the program handles notifications for this server application. The client advertises the UUID only while such a program is installed and loaded. A notification addressed to an application is not delivered to clients which do not advertise that UUID.
 
 Send a typed notification from either the program class or an instance:

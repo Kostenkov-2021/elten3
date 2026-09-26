@@ -318,8 +318,20 @@ def load_notifications_settings
     make_setting(p_("Account", "Premium packages"), :custom, Proc.new{insert_scene(Scene_PremiumPackages.new)})
     make_setting(p_("Account", "Activity statistics"), :custom, Proc.new{insert_scene(Scene_Account_Statistics.new)})
     make_setting(p_("Account", "Export user data"), :custom, Proc.new{insert_scene(Scene_Account_Export.new)})
+    make_setting(p_("Account", "Clear supplementary user state saved by Elten and programs on server"), :custom, proc { clear_user_state })
     make_setting(p_("Account", "Archive this account"), :custom, Proc.new{insert_scene(Scene_Account_Archive.new)})
     end
+      def clear_user_state
+        return unless confirm(p_("Account", "Clear supplementary state saved by Elten and programs on server, such as drafts, caches, local configurations? This will not delete any published content."))
+
+        begin
+          EltenLink::UserState.new(elten_link).clear_all
+          alert(p_("Account", "Supplementary state has been cleared."))
+        rescue EltenLink::Error => error
+          alert(error.message)
+        end
+      end
+
       def main
         make_window
         load_profile

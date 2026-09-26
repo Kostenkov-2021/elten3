@@ -18,6 +18,10 @@ module EltenAPI
       def languages=(l)
         @@languages=l
       end
+      def user_state(collection: "")
+        EltenLink::UserState.new(EltenLink::Client.new(self), collection: collection)
+      end
+
       def logged?
         return @name!="" && @name!=nil && @token!="" && @token!=nil
       end

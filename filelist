@@ -55,6 +55,7 @@ src/eltenlink/soundthemes.rb
 src/eltenlink/auctions.rb
 src/eltenlink/authentication.rb
 src/eltenlink/accounts.rb
+src/eltenlink/user_state.rb
 src/eltenlink/bans.rb
 src/eltenlink/premiumpackages.rb
 src/eltenlink/payments.rb

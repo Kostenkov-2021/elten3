@@ -3549,6 +3549,13 @@ class Program
       EltenLink::Apps.resources(EltenLink.client(self), server_app_identifier(uuid))
     end
 
+    def user_state(collection: "")
+      definition = required_server_app_definition
+      raise Programs::ProgramError, "Server application UUID is not set" if definition.uuid == nil
+
+      EltenLink::UserState.new(EltenLink.client(self), app_uuid: definition.uuid, collection: collection, owner: self)
+    end
+
     def server_private_resources(uuid = nil)
       EltenLink::Apps.private_resources(EltenLink.client(self), server_app_identifier(uuid))
     end
@@ -3742,6 +3749,15 @@ class Program
 
   def server_private_resources(uuid = nil)
     self.class.server_private_resources(uuid)
+  end
+
+  def user_state(collection: "")
+    definition = self.class.server_app_definition
+    if definition == nil || definition.uuid == nil
+      raise Programs::ProgramError, "Server application UUID is not set"
+    end
+
+    EltenLink::UserState.new(EltenLink.client(self), app_uuid: definition.uuid, collection: collection, owner: self)
   end
 
   def delete_server_app(uuid = nil)
