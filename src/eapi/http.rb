@@ -221,7 +221,7 @@ module EltenAPI
         end
       end
 
-      def ejstream(path, params, data=nil, cancellation_token: nil, &block)
+      def ejstream(path, params, data=nil, cancellation_token: nil, transport_session_retry: true, &block)
         params = {} unless params.is_a?(Hash)
         Thread.new do
           Thread.current.report_on_exception = false
@@ -232,7 +232,21 @@ module EltenAPI
             raise "HTTP/2 disabled" if disable_http2?
             raise "HTTP/2 unavailable" unless ensure_http2_connection
             json, context = json_request_body(params, true)
-            raise "Encrypted transport session unavailable" unless context.is_a?(Hash) && context[:mode] == :session
+            unless context.is_a?(Hash) && context[:mode] == :session
+              raise "Encrypted transport session unavailable" unless transport_session_retry
+
+              ejrequest(
+                "GET", "/api/v1/system/time", {}, data,
+                encrypted: true, protocol: :http2, transport_session_retry: false,
+                cancellation_token: cancellation_token
+              ) do |_answer, _request_data|
+                ejstream(
+                  path, params, data, cancellation_token: cancellation_token,
+                  transport_session_retry: false, &block
+                )
+              end
+              next
+            end
 
             buffer = +"".b
             sequence = 0
