@@ -16,7 +16,7 @@ module EltenAPI
       VIRTUAL_UPDATE_RETRY_INTERVAL = 60.0
       INITIAL_RUNTIME_STATE_TIMEOUT = 5.0
       STREAM_CONTROL_INTERVAL = 6.0
-      STREAM_CONTROL_TIMEOUT = 2.5
+      STREAM_CONTROL_TIMEOUT = 10.0
       STREAM_RETRY_INTERVAL = 60.0
       STREAM_OPEN_TIMEOUT = 20.0
       STREAM_FAST_RECONNECT_TIMEOUT = 5.0
@@ -577,10 +577,21 @@ module EltenAPI
       end
 
       def stop_stream_request
+        stop_stream_control
         @stream_request_data[:cancelled] = true if @stream_request_data.is_a?(Hash)
         @stream_cancellation.cancel if @stream_cancellation != nil && !@stream_cancellation.cancelled?
         @stream_cancellation = nil
         @stream_request_data = nil
+      rescue Exception
+        nil
+      end
+
+      def stop_stream_control
+        cancellation = @stream_control_cancellation
+        @stream_control_cancellation = nil
+        @stream_control_pending = false
+        @stream_control_started_at = nil
+        cancellation.cancel if cancellation != nil && !cancellation.cancelled?
       rescue Exception
         nil
       end
@@ -603,7 +614,11 @@ module EltenAPI
         params.merge!(client_params)
         @stream_control_pending = true
         @stream_control_started_at = now
-        elten_link.e_json_request("POST", path, params, [key, @stream_generation, acknowledgements, shown, client_serial]) do |answer, data|
+        @stream_control_cancellation = EltenAPI::Tasks::CancellationToken.new if defined?(EltenAPI::Tasks::CancellationToken)
+        elten_link.e_json_request(
+          "POST", path, params, [key, @stream_generation, acknowledgements, shown, client_serial],
+          cancellation_token: @stream_control_cancellation
+        ) do |answer, data|
           @stream_controls << [answer, data]
         end
       rescue Exception => e
@@ -617,6 +632,8 @@ module EltenAPI
           next unless key == @session_key && generation.to_i == @stream_generation.to_i
 
           @stream_control_pending = false
+          @stream_control_cancellation = nil
+          @stream_control_started_at = nil
           payload = answer.is_a?(String) ? JSON.load(answer) : nil
           accepted = payload.is_a?(Hash) && payload["success"] == true && payload.dig("data", "accepted") == true
           unless accepted
