@@ -25,11 +25,11 @@ module EltenLink
   ForumThreadPage = Struct.new(:time, :count, :read_posts, :followed, :posts, keyword_init: true)
   ForumTrashThread = Struct.new(
     :id, :name, :forum_fullname, :forum_id, :last_update, :trashed, :thread_trashed, :forum_trashed,
-    :contains_trashed_posts,
+    :contains_trashed_posts, :meta,
     keyword_init: true
   )
   ForumTrashPage = Struct.new(:posts, :trashed, :thread_trashed, :forum_trashed, keyword_init: true)
-  ForumUserPost = Struct.new(:post_id, :thread_id, :text, :transcription, :audio_url, :date, :format, keyword_init: true)
+  ForumUserPost = Struct.new(:post_id, :thread_id, :text, :transcription, :audio_url, :date, :format, :meta, keyword_init: true)
   ForumUserPostsPage = Struct.new(:posts, :more, :next_before, keyword_init: true)
   ForumThreadStats = Struct.new(:followers, :mentions, :authors, :readers, :readers_below_half, :readers_above_90, :readers_all, keyword_init: true)
   ForumSearchResult = Struct.new(:thread, :count, keyword_init: true)
@@ -103,7 +103,8 @@ module EltenLink
             trashed: truthy?(row["trashed"]),
             thread_trashed: truthy?(row["thread_trashed"]),
             forum_trashed: truthy?(row["forum_trashed"]),
-            contains_trashed_posts: truthy?(row["contains_trashed_posts"])
+            contains_trashed_posts: truthy?(row["contains_trashed_posts"]),
+            meta: row["meta"].to_s
           )
         end
       end
@@ -136,7 +137,8 @@ module EltenLink
             transcription: row["transcription"].to_s,
             audio_url: content_audio_url(row),
             date: forum_post_date(row["date"]),
-            format: row["format"].to_i
+            format: row["format"].to_i,
+            meta: row["meta"].to_s
           )
         end
         ForumUserPostsPage.new(
@@ -245,6 +247,11 @@ module EltenLink
         true
       end
 
+      def set_thread_meta(client, thread_id:, meta:)
+        client.api_data("PATCH", "/api/v1/forum/#{thread_id.to_i}", { "meta" => meta })
+        true
+      end
+
       def rename_thread(client, thread_id:, name:)
         client.api_data("PATCH", "/api/v1/forum/#{thread_id.to_i}", { "name" => name })
         true
@@ -349,6 +356,11 @@ module EltenLink
           { "audio" => 1 }
         )
         data["id"].to_i
+      end
+
+      def set_post_meta(client, post_id:, meta:)
+        client.api_data("PATCH", "/api/v1/forum/post/#{post_id.to_i}", { "meta" => meta })
+        true
       end
 
       def edit_post(client, post_id:, text:, attachments: nil, format: 0)
@@ -640,6 +652,11 @@ module EltenLink
         true
       end
 
+      def set_forum_meta(client, forumid:, meta:)
+        client.api_data("PATCH", "/api/v1/forum/forum/#{forumid.to_i}", { "meta" => meta })
+        true
+      end
+
       def set_forum_closed(client, forumid:, closed:)
         client.api_data("PATCH", "/api/v1/forum/forum/#{forumid.to_i}", { "closed" => truth_param(closed) })
         true
@@ -759,6 +776,7 @@ module EltenLink
           forum.type = row["type"].to_i
           forum.group = group_by_id[row["group_id"].to_i] || Struct_Forum_Group.new(0)
           forum.description = row["description"].to_s
+          forum.meta = row["meta"].to_s
           forum.closed = truthy?(row["closed"])
           forum.private = truthy?(row["private"])
           forum.followed = truthy?(row["followed"])
@@ -774,6 +792,7 @@ module EltenLink
         rows.to_a.map do |row|
           thread = Struct_Forum_Thread.new(row["id"].to_i)
           thread.name = row["name"].to_s
+          thread.meta = row["meta"].to_s
           thread.author = row["author"].to_s
           thread.forum = forum_by_id[row["forumid"].to_i]
           thread.pinned = truthy?(row["pinned"])
@@ -807,6 +826,7 @@ module EltenLink
         post.author = author.respond_to?(:maintext) ? author.maintext : author
         post.authorname = author.respond_to?(:lore) ? author.lore : ""
         post.post = content_text(row, "text")
+        post.meta = row["meta"].to_s
         post.signature = row["signature"].to_s
         post.audio_url = content_audio_url(row) if post.respond_to?(:audio_url=)
         post.date = forum_post_date(row["date"])

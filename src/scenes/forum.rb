@@ -5386,6 +5386,7 @@ end
 
 class Struct_Forum_Forum
   attr_accessor :id
+  attr_accessor :meta
   attr_accessor :group
   attr_accessor :fullname
   attr_accessor :threads
@@ -5399,6 +5400,7 @@ class Struct_Forum_Forum
 
   def initialize(id = 0)
     @id = id.to_i
+    @meta = ""
     @group = Struct_Forum_Group.new(0)
     @fullname = ""
     @posts = 0
@@ -5415,6 +5417,7 @@ end
 
 class Struct_Forum_Thread
   attr_accessor :id
+  attr_accessor :meta
   attr_accessor :name
   attr_accessor :posts
   attr_accessor :readposts
@@ -5430,6 +5433,7 @@ attr_accessor :offered
 
   def initialize(id = 0, name = "")
     @id = id
+    @meta = ""
     @name = name
     @posts = 0
     @readposts = 0
@@ -5446,6 +5450,7 @@ end
 
 class Struct_Forum_Post
   attr_accessor :id
+  attr_accessor :meta
   attr_accessor :author
   attr_accessor :post
   attr_accessor :authorname
@@ -5466,6 +5471,7 @@ attr_accessor :trashed
 
   def initialize(id = 0)
     @id = id
+    @meta = ""
     @author = ""
     @post = ""
     @authorname = ""
