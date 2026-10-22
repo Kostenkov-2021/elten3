@@ -230,6 +230,7 @@ class Scene_Forum
   @@lastCache=nil
   @@lastCacheIdent=nil
   @@lastCacheTime=nil
+  @@url_templates = {}
 
   def self.forum_target(id)
     { "type" => "forum", "id" => id.to_i }
@@ -273,6 +274,15 @@ class Scene_Forum
 
   def forum_id?(value)
     value.is_a?(Integer) && value.positive?
+  end
+
+  def copy_forum_url_option(menu, type, id)
+    url = EltenLink::Forum.url_from_template(@@url_templates[type], id)
+    return if url == nil
+    menu.option(p_("Forum", "Copy URL"), nil, "c") do
+      Clipboard.text = url
+      alert(p_("Forum", "URL copied to clipboard"))
+    end
   end
 
   def forum_new_status
@@ -844,6 +854,7 @@ return result
     end
     if @grpsel.index >= @grpheadindex and @grpsel.index < @grpheadindex + @sgroups.size
       g = @sgroups[@grpsel.index - @grpheadindex]
+      copy_forum_url_option(menu, "group", g.id)
       menu.option(p_("Forum", "Show all threads"), nil, :shift_enter) {
       groupopen(@grpsel.index, type, true)
       }
@@ -2180,6 +2191,7 @@ form.focus
         @frmindex = @frmsel.index
         threadsmain(@sforums[@frmsel.index].id)
       }
+      copy_forum_url_option(menu, "forum", @sforums[@frmsel.index].id)
             s = p_("Forum", "Follow this forum")
       s = p_("Forum", "Unfollow this forum") if @sforums.size > 0 and @sforums[@frmsel.index].followed == true
       menu.option(s, nil, "l") {
@@ -2658,6 +2670,7 @@ threadopen(@thrsel.index)
         threadopen(@thrsel.index)
       }
       thread = @sthreads[@thrsel.index]
+      copy_forum_url_option(menu, "thread", thread.id)
       if thread.readposts < thread.posts
         menu.option(p_("Forum", "Mark this thread as read"), nil, "w") {
           unread = thread.posts - thread.readposts
@@ -3389,6 +3402,7 @@ if flp[0..3] != "OggS"
     @@groups = structure.groups
     @@forums = structure.forums
     @@threads = structure.threads
+    @@url_templates = structure.url_templates
     @@lastCache = structure.raw_cache
     @@lastCacheIdent = structure.ident
     @@lastCacheTime = structure.loaded_at
@@ -3404,13 +3418,13 @@ if flp[0..3] != "OggS"
 
   def getstruct
     getcache
-    return { "groups" => @groups, "forums" => @forums, "threads" => @threads }
+    return { "groups" => @groups, "forums" => @forums, "threads" => @threads, "url_templates" => @@url_templates }
   end
   
   def self.getstruct(require_fresh: false)
     loaded = self.getcache
     return nil if require_fresh && !loaded
-    return { "groups" => @@groups, "forums" => @@forums, "threads" => @@threads }
+    return { "groups" => @@groups, "forums" => @@forums, "threads" => @@threads, "url_templates" => @@url_templates }
   end
 
   def usequery

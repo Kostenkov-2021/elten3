@@ -4,22 +4,24 @@
 require "digest"
 require "json"
 require "securerandom"
+require "uri"
 
 module EltenLink
   class ForumStructure
-    attr_reader :groups, :forums, :threads, :ident, :raw_cache, :loaded_at
+    attr_reader :groups, :forums, :threads, :ident, :raw_cache, :loaded_at, :url_templates
 
-    def initialize(groups:, forums:, threads:, ident:, raw_cache:, loaded_at: Time.now.to_f)
+    def initialize(groups:, forums:, threads:, ident:, raw_cache:, loaded_at: Time.now.to_f, url_templates: {})
       @groups = groups
       @forums = forums
       @threads = threads
       @ident = ident
       @raw_cache = raw_cache
       @loaded_at = loaded_at
+      @url_templates = url_templates
     end
 
     def to_h
-      { "groups" => @groups, "forums" => @forums, "threads" => @threads }
+      { "groups" => @groups, "forums" => @forums, "threads" => @threads, "url_templates" => @url_templates }
     end
   end
 
@@ -61,7 +63,8 @@ module EltenLink
         cached_data = cached_structure_data(last_cache)
         if truthy?(data["unchanged"])
           data = if cached_data != nil
-            cached_data.merge("ident" => data["ident"].to_s.empty? ? last_ident.to_s : data["ident"].to_s)
+            cached_data.merge("ident" => data["ident"].to_s.empty? ? last_ident.to_s : data["ident"].to_s,
+              "url_templates" => data["url_templates"])
           else
             client.api_data("GET", "/api/v1/forum")
           end
@@ -78,7 +81,33 @@ module EltenLink
         raw_cache = JSON.generate(raw_cache_data)
         ident = data["ident"].to_s
         ident = Digest::SHA256.hexdigest(raw_cache)[0, 40] if ident.empty?
-        ForumStructure.new(groups: groups, forums: forums, threads: threads, ident: ident, raw_cache: raw_cache)
+        ForumStructure.new(groups: groups, forums: forums, threads: threads, ident: ident, raw_cache: raw_cache,
+          url_templates: raw_cache_data["url_templates"])
+      end
+
+      def url_from_template(template, id)
+        return nil unless template.is_a?(String) && id.is_a?(Integer) && id.positive?
+        valid = true
+        substituted = false
+        url = template.gsub(/\{\{|\}\}|\{id\}|[{}]/) do |token|
+          case token
+          when "{{"
+            "%7B"
+          when "}}"
+            "%7D"
+          when "{id}"
+            substituted = true
+            id.to_s
+          else
+            valid = false
+            ""
+          end
+        end
+        return nil unless valid && substituted
+        uri = URI.parse(url)
+        url if uri.is_a?(URI::HTTP) && !uri.host.to_s.empty?
+      rescue URI::InvalidURIError
+        nil
       end
 
       def thread(client, thread_id:)
@@ -729,7 +758,8 @@ module EltenLink
         {
           "groups" => data["groups"].to_a,
           "forums" => data["forums"].to_a,
-          "threads" => data["threads"].to_a
+          "threads" => data["threads"].to_a,
+          "url_templates" => data["url_templates"].is_a?(Hash) ? data["url_templates"].slice("group", "forum", "thread") : {}
         }
       end
 
@@ -745,7 +775,8 @@ module EltenLink
           "ident" => data["ident"].to_s,
           "groups" => groups,
           "forums" => forums,
-          "threads" => threads
+          "threads" => threads,
+          "url_templates" => data["url_templates"]
         }
       end
 
