@@ -27,22 +27,26 @@ module EltenAPI
         @next_autosave = Process.clock_gettime(Process::CLOCK_MONOTONIC) + 60
       end
 
-      def restore(data, editor: false)
+      def restore(data, editor: false, fallback_key: nil)
         @editor = editor
         return data if @loaded
         @loaded = true
         target = mode
         return data if target == "disabled" && !editor
         targets = target == "disabled" ? %w[local server] : [target]
-        key = entry_key(data)
+        keys = [entry_key(data), fallback_key].compact.map(&:to_s).uniq
         copies = {}
         targets.each do |backend|
           begin
-            ensure_session!
-            stored = backend == "server" ? server.read(key) : read_local(key)
-            next if stored == nil
-            raise TypeError, "Invalid draft" unless stored.is_a?(Hash) && stored["text"].is_a?(String)
-            copies[backend] = stored
+            keys.each do |key|
+              ensure_session!
+              stored = backend == "server" ? server.read(key) : read_local(key)
+              next if stored == nil
+              raise TypeError, "Invalid draft" unless stored.is_a?(Hash) && stored["text"].is_a?(String)
+              next if block_given? && !yield(stored)
+              copies[backend] = [key, stored]
+              break
+            end
           rescue StandardError => error
             Log.warning("Cannot restore draft: #{error.class}: #{error.message}")
             alert(p_("Drafts", "The draft could not be restored."))
@@ -56,7 +60,7 @@ module EltenAPI
             cancel_index: 1, flags: Controls::ListBox::Flags::AnyDir)
           return data if selected == 1
           if selected == 2
-            copies.each_key { |backend| @known[[backend, key]] = true }
+            copies.each { |backend, (key, _)| @known[[backend, key]] = true }
             discard(detach: false)
             return data
           end
@@ -68,7 +72,7 @@ module EltenAPI
             target = copies.keys[selected]
           end
         end
-        stored = copies[target]
+        key, stored = copies[target]
         @known[[target, key]] = true
         @saved[[target, key]] = stored
         return data unless prompt || empty?(data)

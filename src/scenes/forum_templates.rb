@@ -10,19 +10,13 @@ module ForumTemplatesScene
   TEMPLATE_TYPES = %w[checkbox select multiselect text multiline].freeze
   TEMPLATE_MODES = %w[default manual tag].freeze
 
-  def prepare_thread_template(forum, draft, data)
-    template = data["template"]
-    if template == nil
-      return data unless data["title"].to_s.empty? && data["text"].to_s.empty? && forum.has_templates
-      templates = forum_fetch(nil) { EltenLink::Forum.list_forum_templates(elten_link, forumid: forum.id) }
-      return data if templates == nil || templates.empty?
-      index = selector(templates.map { |item| item["name"] } + [p_("Forum", "Write manually")],
-        header: p_("Forum", "Thread template"), cancel_index: -1, flags: ListBox::Flags::AnyDir)
-      return nil if index < 0
-      return data if index == templates.size
-      template = templates[index]
-    end
-    fill_thread_template(template, draft, data)
+  def select_thread_template(forum)
+    return nil unless forum.has_templates
+    templates = forum_fetch(nil) { EltenLink::Forum.list_forum_templates(elten_link, forumid: forum.id) }
+    return nil if templates == nil || templates.empty?
+    index = selector(templates.map { |item| item["name"] } + [p_("Forum", "Write manually")],
+      header: p_("Forum", "Thread template"), cancel_index: -1, flags: ListBox::Flags::AnyDir)
+    index < 0 ? false : templates[index]
   end
 
   def fill_thread_template(definition, draft, data)

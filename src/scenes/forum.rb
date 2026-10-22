@@ -3076,15 +3076,24 @@ form.wait
     end
     draft_data = { "title" => "", "text" => "", "markdown" => false, "forum_id" => @forum }
     if type == 0
-      draft = Draft.new("editor:#{@forum}", config_key: "ForumDrafts", collection: "forum_drafts",
+      template = select_thread_template(forumclasses[forumindex])
+      return if template == false
+      template_id = template && template["id"]
+      draft_key = template_id ? "editor:#{@forum}:template:#{template_id}" : "editor:#{@forum}:manual"
+      draft = Draft.new(draft_key, config_key: "ForumDrafts", collection: "forum_drafts",
         empty: proc { |data|
           data["text"].to_s == "" && data["title"].to_s == "" && data.fetch("template_tags", []).empty? &&
             data.fetch("template_answers", {}).values.all? { |value| value == nil || value == false || value == "" || value == [] }
         })
-      draft_data = draft.restore(draft_data, editor: true)
+      draft_data = draft.restore(draft_data, editor: true, fallback_key: "editor:#{@forum}") { |stored|
+        (stored["template_id"] || stored.dig("template", "id")) == template_id
+      }
+      draft_data["template_id"] = template_id
       forumindex = forumclasses.index { |forum| forum.id == draft_data["forum_id"] } || forumindex
-      draft_data = prepare_thread_template(forumclasses[forumindex], draft, draft_data)
-      return if draft_data == nil
+      if template && draft_data["from_template"] != true
+        draft_data = fill_thread_template(draft_data["template"] || template, draft, draft_data)
+        return if draft_data == nil
+      end
     end
     fields = [EditBox.new(p_("Forum", "Thread name"), type: 0, text: draft_data["title"].to_s, quiet: true)]
     if type == 0
@@ -3109,7 +3118,7 @@ form.wait
       draft.bind(form, fields[1]) {
         { "title" => fields[0].text, "text" => fields[1].text, "markdown" => fields[2].checked,
           "forum_id" => forumclasses[form.fields[-3].index].id, "follow" => form.fields[-4].checked,
-          "from_template" => draft_data["from_template"] == true,
+          "template_id" => draft_data["template_id"], "from_template" => draft_data["from_template"] == true,
           "tags" => current_tags.each_with_index.to_h { |tag, index|
             field = current_tag_fields[index]
             [tag[0].to_s, field.index > 0 ? field.options[field.index] : nil]
