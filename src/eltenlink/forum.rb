@@ -3,6 +3,7 @@
 
 require "digest"
 require "json"
+require "securerandom"
 
 module EltenLink
   class ForumStructure
@@ -314,48 +315,76 @@ module EltenLink
         true
       end
 
-      def create_thread(client, forumid:, name:, text:, follow: false, polls: nil, attachments: nil, format: 0)
+      def create_thread(client, forumid:, name:, text:, follow: false, polls: nil, attachments: nil, format: 0, questions: nil)
         data = client.api_data("POST", "/api/v1/forum", clean_hash(
           "forum" => forumid.to_i,
           "thread_name" => name,
           "text" => text,
           "follow" => truth_param(follow),
           "polls" => csv_value(polls),
+          "questions" => questions,
           "attachments" => csv_value(attachments),
           "format" => format
         ))
         data["thread"].to_i
       end
 
-      def create_audio_thread(client, forumid:, name:, audio:, follow: false)
+      def create_audio_thread(client, forumid:, name:, audio:, follow: false, questions: nil)
+        body, headers = audio_question_payload(audio, questions)
         data = client.api_binary_data(
           "POST",
           "/api/v1/forum",
-          audio.to_s.b,
-          { "Content-Type" => "application/octet-stream" },
+          body,
+          headers,
           clean_hash("forum" => forumid.to_i, "thread_name" => name, "audio" => 1, "follow" => truth_param(follow))
         )
         data["thread"].to_i
       end
 
-      def create_post(client, thread_id:, text:, attachments: nil, format: 0)
+      def create_post(client, thread_id:, text:, attachments: nil, format: 0, questions: nil)
         data = client.api_data("POST", "/api/v1/forum/#{thread_id.to_i}", clean_hash(
           "text" => text,
+          "questions" => questions,
           "attachments" => csv_value(attachments),
           "format" => format
         ))
         data["id"].to_i
       end
 
-      def create_audio_post(client, thread_id:, audio:)
+      def create_audio_post(client, thread_id:, audio:, questions: nil)
+        body, headers = audio_question_payload(audio, questions)
         data = client.api_binary_data(
           "POST",
           "/api/v1/forum/#{thread_id.to_i}",
-          audio.to_s.b,
-          { "Content-Type" => "application/octet-stream" },
-          { "audio" => 1 }
+          body,
+          headers,
+          clean_hash("audio" => 1)
         )
         data["id"].to_i
+      end
+
+      def post_questions(client, post_id:)
+        client.api_data("GET", "/api/v1/forum/post/#{post_id.to_i}/questions")
+      end
+
+      def create_post_question(client, post_id:, question:)
+        client.api_data("POST", "/api/v1/forum/post/#{post_id.to_i}/questions", question)
+      end
+
+      def edit_post_question(client, post_id:, question_id:, question:)
+        client.api_data("PATCH", "/api/v1/forum/post/#{post_id.to_i}/questions/#{question_id.to_i}", question)
+      end
+
+      def delete_post_question(client, post_id:, question_id:)
+        client.api_data("DELETE", "/api/v1/forum/post/#{post_id.to_i}/questions/#{question_id.to_i}")
+      end
+
+      def answer_post_question(client, post_id:, question_id:, answer_id:)
+        client.api_data("PUT", "/api/v1/forum/post/#{post_id.to_i}/questions/#{question_id.to_i}/answer", { "answer" => answer_id })
+      end
+
+      def withdraw_post_question_answer(client, post_id:, question_id:)
+        client.api_data("DELETE", "/api/v1/forum/post/#{post_id.to_i}/questions/#{question_id.to_i}/answer")
       end
 
       def set_post_meta(client, post_id:, meta:)
@@ -842,6 +871,7 @@ module EltenLink
         post.audio_url = content_audio_url(row) if post.respond_to?(:audio_url=)
         post.date = forum_post_date(row["date"])
         post.polls = csv_list(row["polls"]).map(&:to_i)
+        post.questions_count = row["questions_count"].to_i
         post.attachments = csv_list(row["attachments"])
         post.liked = truthy?(row["liked"])
         post.edited = truthy?(row["edited"])
@@ -941,6 +971,20 @@ module EltenLink
         return "" unless audio.is_a?(Hash) && audio["url"].to_s != ""
 
         Client.absolute_api_url(audio["url"])
+      end
+
+      def audio_question_payload(audio, questions)
+        audio = audio.to_s.b
+        return [audio, { "Content-Type" => "application/octet-stream" }] if questions == nil || questions.empty?
+        definition = JSON.generate(questions).b
+        begin
+          boundary = "Elten#{SecureRandom.hex(16)}"
+        end while audio.include?(boundary) || definition.include?(boundary)
+        body = "--#{boundary}\r\nContent-Disposition: form-data; name=\"questions\"\r\n\r\n".b
+        body << definition << "\r\n--#{boundary}\r\n".b
+        body << "Content-Disposition: form-data; name=\"file\"; filename=\"post.opus\"\r\nContent-Type: audio/ogg\r\n\r\n".b
+        body << audio << "\r\n--#{boundary}--\r\n".b
+        [body, { "Content-Type" => "multipart/form-data; boundary=#{boundary}" }]
       end
 
       def clean_hash(hash)
