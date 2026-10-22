@@ -490,6 +490,16 @@ module EltenLink
         true
       end
 
+      def list_forum_templates(client, forumid:)
+        data = client.api_data("GET", "/api/v1/forum/forum/#{forumid.to_i}/templates")
+        data["templates"]
+      end
+
+      def set_forum_templates(client, forumid:, templates:)
+        data = client.api_data("PUT", "/api/v1/forum/forum/#{forumid.to_i}/templates", { "templates" => templates })
+        data["templates"]
+      end
+
       def list_forum_tags(client, forumid:)
         data = client.api_data("GET", "/api/v1/forum/forum/#{forumid.to_i}/tags")
         data["tags"].to_a.map { |row| build_tag(row) }
@@ -777,6 +787,7 @@ module EltenLink
           forum.group = group_by_id[row["group_id"].to_i] || Struct_Forum_Group.new(0)
           forum.description = row["description"].to_s
           forum.meta = row["meta"].to_s
+          forum.has_templates = truthy?(row["has_templates"])
           forum.closed = truthy?(row["closed"])
           forum.private = truthy?(row["private"])
           forum.followed = truthy?(row["followed"])

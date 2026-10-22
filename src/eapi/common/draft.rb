@@ -114,10 +114,10 @@ module EltenAPI
         end
       end
 
-      def close(detach: true)
+      def close(detach: true, editor: @editor)
         data = snapshot
         target = mode
-        if !empty?(data) && target == "disabled" && @editor
+        if !empty?(data) && target == "disabled" && editor
           selected = selector([p_("Drafts", "Discard"), p_("Drafts", "Return to editing"),
             p_("Drafts", "Save locally"), p_("Drafts", "Save on the server")],
             header: p_("Drafts", "What would you like to do with the draft?"),

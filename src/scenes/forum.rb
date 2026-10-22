@@ -101,6 +101,7 @@ end
 
 class Scene_Forum
   include ForumSceneClient
+  include ForumTemplatesScene
 
   def select_group_ban_expiry
     duration = select_action(
@@ -2139,6 +2140,12 @@ form.focus
         end
         }
     end
+    if @sforums.size > 0 && forum_group_moderator?(@sforums[@frmsel.index].group)
+      menu.option(p_("Forum", "Thread templates")) {
+        edit_forum_templates(@sforums[@frmsel.index])
+        @frmsel.focus
+      }
+    end
     groupclass = Struct_Forum_Group.new
     @groups.each { |g| groupclass = g if g.id == @group }
     if groupclass.founder == Session.name or groupclass.role == 2
@@ -2975,9 +2982,14 @@ form.wait
     draft_data = { "title" => "", "text" => "", "markdown" => false, "forum_id" => @forum }
     if type == 0
       draft = Draft.new("editor:#{@forum}", config_key: "ForumDrafts", collection: "forum_drafts",
-        empty: proc { |data| data["text"].to_s == "" && data["title"].to_s == "" })
+        empty: proc { |data|
+          data["text"].to_s == "" && data["title"].to_s == "" && data.fetch("template_tags", []).empty? &&
+            data.fetch("template_answers", {}).values.all? { |value| value == nil || value == false || value == "" || value == [] }
+        })
       draft_data = draft.restore(draft_data, editor: true)
       forumindex = forumclasses.index { |forum| forum.id == draft_data["forum_id"] } || forumindex
+      draft_data = prepare_thread_template(forumclasses[forumindex], draft, draft_data)
+      return if draft_data == nil
     end
     fields = [EditBox.new(p_("Forum", "Thread name"), type: 0, text: draft_data["title"].to_s, quiet: true)]
     if type == 0
@@ -2991,6 +3003,7 @@ form.wait
     fields += [CheckBox.new(p_("Forum", "Follow this thread")), ListBox.new(forums, header: p_("Forum", "Forum"), index: forumindex), nil, Button.new(_("Cancel"))]
     form = Form.new(fields, quiet: type == 0)
     selected_tags = { draft_data["forum_id"] => draft_data.fetch("tags", {}) }
+    pending_template_tags = draft_data["template_tags"]
     current_tag_forum_id = nil
     current_tags = []
     current_tag_fields = []
@@ -2999,12 +3012,12 @@ form.wait
       draft.bind(form, fields[1]) {
         { "title" => fields[0].text, "text" => fields[1].text, "markdown" => fields[2].checked,
           "forum_id" => forumclasses[form.fields[-3].index].id, "follow" => form.fields[-4].checked,
+          "from_template" => draft_data["from_template"] == true,
           "tags" => current_tags.each_with_index.to_h { |tag, index|
             field = current_tag_fields[index]
             [tag[0].to_s, field.index > 0 ? field.options[field.index] : nil]
           } }
       }
-      form.focus
     end
     form.fields[-3].on(:move) {
     if current_tag_forum_id!=nil
@@ -3019,6 +3032,12 @@ form.wait
     tin=true if form.index==form.fields.size-3
     forum=forumclasses[form.fields[-3].index]
     tags=forumtags(forum)
+    if pending_template_tags
+      selections = selected_tags[forum.id] ||= {}
+      remaining = assign_thread_template_tags!(pending_template_tags, tags, selections)
+      fields[0].set_text((remaining.map { |tag| "[#{tag}]" } + [fields[0].text]).reject(&:empty?).join(" "))
+      pending_template_tags = nil
+    end
     f=[]
     for t in tags
       options=[p_("Forum", "No tag value")]+t[2..-1]
@@ -3050,10 +3069,12 @@ form.wait
     form.index=form.fields.size-3 if tin
     }
     form.fields[-3].trigger(:move)
+    form.focus if draft
     polls = []
     files = []
     send_confirmed = false
     confirm_missing_tag = lambda {
+      return true if draft_data["from_template"] == true
       missing_tag_field = current_tag_fields.find { |field| field.index == 0 }
       return true if missing_tag_field == nil
       if confirm(p_("Forum", "You haven't selected all tags. Do you want to send the thread anyway?"))
@@ -3191,7 +3212,7 @@ form.wait
     name=""
     for f in form.fields[7...-4]
       if f.index>0
-        name+="["+f.options[f.index]+"] "
+        name+="["+f.options[f.index]+"] " unless form.fields[0].text.include?("[#{f.options[f.index]}]")
         end
       end
       name+=form.fields[0].text
@@ -5385,6 +5406,7 @@ attr_accessor :applyglobalbans
 end
 
 class Struct_Forum_Forum
+  attr_accessor :has_templates
   attr_accessor :id
   attr_accessor :meta
   attr_accessor :group
@@ -5401,6 +5423,7 @@ class Struct_Forum_Forum
   def initialize(id = 0)
     @id = id.to_i
     @meta = ""
+    @has_templates = false
     @group = Struct_Forum_Group.new(0)
     @fullname = ""
     @posts = 0
