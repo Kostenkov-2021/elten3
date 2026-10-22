@@ -2246,21 +2246,17 @@ form.focus
         end
         }
     end
-    if @sforums.size > 0 && forum_group_moderator?(@sforums[@frmsel.index].group)
-      menu.option(p_("Forum", "Thread templates")) {
-        edit_forum_templates(@sforums[@frmsel.index])
-        @frmsel.focus
-      }
-    end
     groupclass = Struct_Forum_Group.new
     @groups.each { |g| groupclass = g if g.id == @group }
-    if groupclass.founder == Session.name or groupclass.role == 2
+    can_manage_forums = groupclass.founder == Session.name || groupclass.role == 2
+    can_edit_templates = @sforums.size > 0 && forum_group_moderator?(@sforums[@frmsel.index].group)
+    if can_manage_forums || can_edit_templates
       menu.submenu(p_("Forum", "Moderation")) {|m|
       m.option(p_("Forum", "New forum"), nil, "n") {
         newforum
         getcache
         forumsmain(@group)
-      }
+      } if can_manage_forums
       if @sforums.size > 0
         m.option(p_("Forum", "Edit forum"), nil, "e") {
           form = Form.new([EditBox.new(p_("Forum", "Forum name"), type: 0, text: @sforums[@frmsel.index].fullname, quiet: true), EditBox.new(p_("Forum", "Forum description"), type: EditBox::Flags::MultiLine, text: @sforums[@frmsel.index].description, quiet: true), ListBox.new([p_("Forum", "Text forum"), p_("Forum", "Voice forum"), p_("Forum", "Mixed forum")], header: p_("Forum", "Forum type"), index: @sforums[@frmsel.index].type), ListBox.new([p_("Forum", "Public (visible according to the group settings)"), p_("Forum", "Private (visible only to group members)")], header: p_("Forum", "Forum visibility"), index: @sforums[@frmsel.index].private ? 1 : 0), nil, Button.new(_("Cancel"))])
@@ -2294,7 +2290,7 @@ break
           end
           loop_update
           @frmsel.focus
-        }
+        } if can_manage_forums
         s = p_("Forum", "Close forum")
         s = p_("Forum", "Open forum") if @sforums[@frmsel.index].closed
         m.option(s, nil, "k") {
@@ -2313,11 +2309,17 @@ break
             end
             @frmsel.reload
           end
-        }
+        } if can_manage_forums
         m.option(p_("Forum", "Edit forum tags"), nil, "t") {
         forumtagsedit(@sforums[@frmsel.index])
         @frmsel.focus
-        }
+        } if can_manage_forums
+        if can_edit_templates
+          m.option(p_("Forum", "Thread templates")) {
+            edit_forum_templates(@sforums[@frmsel.index])
+            @frmsel.focus
+          }
+        end
 #        m.option(p_("Forum", "Change forum position")) {
 #          selt = []
 #          @sforums.each { |f| selt.push(f.fullname) }
@@ -2334,7 +2336,7 @@ break
 #            @frmsel.focus
 #          end
 #        }
-        if @sforums[@frmsel.index].posts == 0
+        if can_manage_forums && @sforums[@frmsel.index].posts == 0
           m.option(p_("Forum", "Delete forum")) {
             confirm(p_("Forum", "Are you sure you want to delete forum %{forum}?")%{ :forum => @sforums[@frmsel.index].fullname}) {
               if forum_attempt(nil) {
