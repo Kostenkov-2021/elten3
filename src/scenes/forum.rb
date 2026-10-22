@@ -517,7 +517,6 @@ end
       for i in 0...@sgroups.size
         group = @sgroups[i]
         grpselt.push([group.name, group.forums.to_s, group.threads.to_s, group.posts.to_s, (group.posts - group.readposts).to_s])
-        @grpindex[0] = i + @grpheadindex if group.id == @grpsetindex
       end
       forfol = @forums.find_all{|forum|forum.followed}.map{|forum|forum.id}
             flt = flr = flp = 0
@@ -728,7 +727,7 @@ end
       end
       grpselh = [nil, p_("Forum", "Administrator"), nil, p_("Forum", "Forums"), p_("Forum", "Threads"), p_("Forum", "posts"), p_("Forum", "Unread")]
     end
-    if @grpindex[type] == nil and @grpsetindex != nil
+    if @grpsetindex != nil
       for i in 0...@sgroups.size
         @grpindex[type] = i + @grpheadindex if @sgroups[i].id == @grpsetindex
       end
@@ -2594,6 +2593,7 @@ break
         elsif id == -2 or id == -4 or id == -6 or id == -7
           return $scene = Scene_Main.new
         else
+          @grpsetindex = @query.groupid if id == -3 && @query.is_a?(Struct_Forum_SearchQuery)
           return groupsmain
         end
       end
