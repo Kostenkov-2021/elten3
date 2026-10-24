@@ -510,7 +510,16 @@ module EltenAPI
           return
         end
         if @stream_control_pending && now - @stream_control_started_at.to_f > STREAM_CONTROL_TIMEOUT
-          stream_failed(now, reason: "control timeout")
+          reason = "control timeout (waiting %.1fs, last frame %.1fs ago)" % [
+            now - @stream_control_started_at, now - @stream_last_frame_at.to_f
+          ]
+          if @stream_connected && !@stream_control_retried && @stream_last_frame_at.to_f > @stream_control_started_at
+            stop_stream_control
+            Log.warning("Realtime stream #{reason}; retrying control")
+            send_stream_control(key, window_active?, retrying: true)
+          else
+            stream_failed(now, reason: reason)
+          end
           return
         end
         if !@stream_connected && !@stream_opening
@@ -528,7 +537,7 @@ module EltenAPI
         return if @stream_control_pending
         return unless urgent || now >= @next_stream_control_at.to_f
 
-        send_stream_control(key, shown, now)
+        send_stream_control(key, shown)
       end
 
       def start_stream(key)
@@ -590,13 +599,15 @@ module EltenAPI
         cancellation = @stream_control_cancellation
         @stream_control_cancellation = nil
         @stream_control_pending = false
+        @stream_control_id = nil
         @stream_control_started_at = nil
+        @stream_control_retried = false
         cancellation.cancel if cancellation != nil && !cancellation.cancelled?
       rescue Exception
         nil
       end
 
-      def send_stream_control(key, shown, now)
+      def send_stream_control(key, shown, retrying: false)
         name, token = key
         acknowledgements = @pending_signal_acks.keys.first(200)
         params = {
@@ -613,10 +624,13 @@ module EltenAPI
         client_params, client_serial = client_update_params(key)
         params.merge!(client_params)
         @stream_control_pending = true
-        @stream_control_started_at = now
+        @stream_control_serial = @stream_control_serial.to_i + 1
+        @stream_control_id = @stream_control_serial
+        @stream_control_retried = retrying
         @stream_control_cancellation = EltenAPI::Tasks::CancellationToken.new if defined?(EltenAPI::Tasks::CancellationToken)
+        @stream_control_started_at = monotonic_time
         elten_link.e_json_request(
-          "POST", path, params, [key, @stream_generation, acknowledgements, shown, client_serial],
+          "POST", path, params, [key, @stream_generation, @stream_control_id, acknowledgements, shown, client_serial],
           cancellation_token: @stream_control_cancellation
         ) do |answer, data|
           @stream_controls << [answer, data]
@@ -628,12 +642,15 @@ module EltenAPI
       def drain_stream_controls(limit=10)
         limit.times do
           answer, data = @stream_controls.pop(true)
-          key, generation, acknowledgements, shown, client_serial = data
+          key, generation, control_id, acknowledgements, shown, client_serial = data
           next unless key == @session_key && generation.to_i == @stream_generation.to_i
+          next unless @stream_control_pending && control_id == @stream_control_id
 
           @stream_control_pending = false
+          @stream_control_id = nil
           @stream_control_cancellation = nil
           @stream_control_started_at = nil
+          @stream_control_retried = false
           payload = answer.is_a?(String) ? JSON.load(answer) : nil
           accepted = payload.is_a?(Hash) && payload["success"] == true && payload.dig("data", "accepted") == true
           unless accepted
