@@ -247,6 +247,10 @@ module EltenAPI
         @stream_generation = 0
         @stream_supported = nil
         @stream_capability_request_id = 0
+        @server_data_request_id = 0
+        @server_data_revision = nil
+        @server_data_request = nil
+        @server_data_retry_at = 0.0
         @stream_connected = false
         @stream_opening = false
         @stream_retry_at = 0.0
@@ -286,6 +290,7 @@ module EltenAPI
               drain_stream_responses
               drain_stream_controls
               drain_background_responses
+              refresh_server_data(key, now)
               clear_stale_requests(now)
               @feed_request_pending = false if @feed_request_pending == true && now - (@feed_request_started_at || 0) > 30
               @virtual_update_request_pending = false if @virtual_update_request_pending == true && now - (@virtual_update_request_started_at || 0) > REQUEST_STALE_AFTER
@@ -339,6 +344,10 @@ module EltenAPI
         @sigids = []
         @stream_supported = nil
         @stream_capability_request_id = 0
+        @server_data_request_id = 0
+        @server_data_revision = nil
+        @server_data_request = nil
+        @server_data_retry_at = 0.0
         @stream_connected = false
         @stream_opening = false
         @stream_retry_at = 0.0
@@ -846,6 +855,7 @@ module EltenAPI
 
       def handle_status_data(response, key, calibrating=false, request_id=0, refresh_ticket=nil, stream: false)
         return if key != @session_key
+        handle_server_data(response, request_id)
         handle_auctions(response)
         if response["time"].is_a?(Integer)
           server_time = response["time"].to_i
@@ -867,6 +877,48 @@ module EltenAPI
         complete_runtime_state_refresh(key, refresh_ticket)
       rescue Exception
         Log.error("Notification response error: #{$!.class}: #{$!.message}")
+      end
+
+      def handle_server_data(response, request_id)
+        revision = response["client_data_revision"]
+        return unless revision.is_a?(String) && revision.match?(/\A[0-9a-f]{64}\z/)
+        return if request_id < @server_data_request_id.to_i
+
+        @server_data_request_id = request_id
+        @server_data_retry_at = 0.0 if revision != @server_data_revision
+        @server_data_revision = revision
+      end
+
+      def refresh_server_data(key, now)
+        return if @server_data_revision == nil || @server_data_revision == ServerData.revision
+        return if @server_data_request != nil || now < @server_data_retry_at.to_f
+
+        request = @server_data_request = [key, @server_data_revision]
+        Thread.new do
+          Thread.current.report_on_exception = false
+          answer = nil
+          begin
+            answer = EltenLink::System.server_data(elten_link)
+          rescue StandardError => error
+            Log.warning("Server data request failed: #{error.class}: #{error.message}")
+          ensure
+            @background_responses << ["server_data", answer, request]
+          end
+        end
+      rescue StandardError
+        @server_data_request = nil
+        @server_data_retry_at = now + 60.0
+        raise
+      end
+
+      def handle_server_data_response(answer, request)
+        return unless request.equal?(@server_data_request)
+
+        @server_data_request = nil
+        return if request[0] != @session_key || request[1] != @server_data_revision
+
+        @server_data_retry_at = monotonic_time + 60.0
+        ServerData.__send__(:receive, answer) if answer != nil && answer.revision == @server_data_revision
       end
 
       def handle_auctions(response)
@@ -1186,6 +1238,8 @@ module EltenAPI
             end
           when "missed_call"
             handle_missed_call_response(answer, data)
+          when "server_data"
+            handle_server_data_response(answer, data)
           when "virtual_updates"
             begin
               handle_virtual_updates_response(answer, data)
