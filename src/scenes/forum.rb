@@ -495,8 +495,11 @@ end
       sgloc = false
       klangs=[]
       knownlanguages = Session.languages.split(",").map{|lg|lg.upcase}
+      testing_group_id = EltenAPI::ServerData[:beta_testing_group_id]
+      testing_group_id = nil unless testing_group_id.is_a?(Integer) && testing_group_id.positive?
+      testing_group_id = nil unless [Elten.branch, get_updatesbranch].any? { |branch| %w[beta rc].include?(branch.to_s.downcase) }
       for g in @groups
-        if g.role == 1 || g.role == 2
+        if g.role == 1 || g.role == 2 || g.id == testing_group_id
           @sgroups.push(g)
         end
         if !klangs.include?(g.lang[0..1].upcase) and knownlanguages.include?(g.lang[0..1].upcase) and g.recommended
