@@ -9,7 +9,7 @@ Dir.chdir(root)
 $LOAD_PATH.unshift(File.join(root, "src")) unless defined?(::EltenEmbedded)
 
 module Elten
-  VERSION_STRING = "ELTEN 3.0.5 RC 3"
+  VERSION_STRING = "ELTEN 3.0.5 RC 4"
   BRANCH = "rc"
 
   class << self
